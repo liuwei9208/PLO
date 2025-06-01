@@ -13,14 +13,14 @@
     <link rel="icon" href="favicon.ico">
 
     <!-- Scripts -->
-    @vite('resources/js/shop.js')
+    @vite(['resources/scss/shop.scss', 'resources/js/shop.js'])
 
     <!-- Styles -->
-    @if (Request::routeIs('public.shop.home'))
+    {{-- @if (Request::routeIs('public.shop.home'))
       @vite('resources/scss/shop/home.scss')
     @elseif (Request::routeIs('public.shop.cast.profile'))
       @vite('resources/scss/shop/cast/profile.scss')
-    @endif
+    @endif --}}
   </head>
   <body class="">
 

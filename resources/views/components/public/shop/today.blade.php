@@ -19,7 +19,7 @@
     </span>
   </div>
   <ul class="today-tags">
-    @foreach ($cast->personalities as $personality)
+    {{-- @foreach ($cast->personalities as $personality)
       <li class="today-tag">
         {{ $personality->name }}
       </li>
@@ -28,6 +28,6 @@
       <li class="today-tag">
         {{ $style->name }}
       </li>
-    @endforeach
+    @endforeach --}}
   </ul>
 </a>
