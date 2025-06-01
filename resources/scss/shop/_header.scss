@@ -1,0 +1,123 @@
+/**
+ * Shop Header
+ */
+
+@use '../global/vars' as *;
+@use '../mixins/button';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  transition: .25s;
+  @media #{media-query(sm)} {
+    height: 64px;
+  }
+  @media #{media-query(md)} {
+    height: 64px;
+  }
+  @media #{media-query(lg)} {
+    height: 104px;
+    padding: 6px 30px 0 0;
+    background-color: rgba($color: #FFF, $alpha: 0.93);
+  }
+
+  &.-scrolled {
+    top: -100%;
+  }
+
+  &.-hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  .header-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $shop-color-shizuku;
+    @media #{media-query(sm)} {
+    }
+    @media #{media-query(md)} {
+    }
+    @media #{media-query(lg)} {
+      width: 415px;
+      height: 238px;
+      padding: 0 0 30px;
+      clip-path: path(
+        "M415,30.5c0,114.6-92.9,207.5-207.5,207.5S0,145.1,0,30.5.8,10,2.2,0h410.5c1.5,10,2.2,20.1,2.2,30.5Z"
+      );
+    }
+
+    a {
+      display: block;
+      transition: .2s;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center center;
+      }
+      &:hover {
+        opacity: .8;
+      }
+    }
+
+    &.--shizuku {
+      background-color: $shop-color-shizuku;
+      a {
+        @media #{media-query(sm)} {
+        }
+        @media #{media-query(md)} {
+        }
+        @media #{media-query(lg)} {
+          width: 188px;
+          height: 132px;
+        }
+      }
+    }
+    &.--miyabi {
+      background-color: $shop-color-miyabi;
+    }
+    &.--en {
+      background-color: $shop-color-en;
+    }
+    &.--shiroganeze {
+      background-color: $shop-color-shiroganeze;
+    }
+    &.--lovestory {
+      background-color: $shop-color-lovestory;
+    }
+    &.--pussycat {
+      background-color: $shop-color-pussycat;
+    }
+  }
+
+  .header-toggle {
+    @include button.hamburger(
+      $container-width: 64px,
+      $container-height: 64px,
+      $width: 43px,
+      $height: 34px,
+      $bar-width: 5px,
+      $bar-corner-radius: 2.5px,
+      $bar-color: #000,
+    );
+
+    @media #{media-query(sm)} {
+    }
+    @media #{media-query(md)} {
+    }
+    @media #{media-query(lg)} {
+      margin: 0 0 0 30px;
+    }
+  }
+}

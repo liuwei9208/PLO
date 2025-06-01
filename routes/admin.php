@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\StyleController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RankingController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -126,5 +127,15 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [StyleController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [StyleController::class, 'update']);
         Route::delete('{id}', [StyleController::class, 'destroy']);
+    });
+   /**
+     * Raniking
+     *
+     * @see \App\Http\Controllers\Admin\PickupController
+     */
+    Route::prefix('ranking')->name('ranking.')->group(function () {
+        Route::get('/', [RankingController::class, 'index'])->name('index');
+        Route::get('{id}', [RankingController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [RankingController::class, 'update']);
     });
 });

@@ -1,0 +1,21 @@
+/**
+ * Main Visual
+ */
+
+@use '../global/vars' as *;
+
+.mv {
+  position: relative;
+  width: 100%;
+  @media #{media-query(lg)} {
+    padding: 104px 0 0;
+  }
+
+  .mv-main {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+}
