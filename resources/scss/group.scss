@@ -1,0 +1,33 @@
+/**
+ * Group page styles
+ */
+
+@use 'global/vars' as *;
+@use 'global/reset';
+@use 'global/base';
+@use 'global/utils';
+@use 'group/common';
+@use 'group/header';
+@use 'group/drawer';
+@use 'group/mv';
+@use 'group/newface';
+@use 'group/pickup';
+
+
+.mock {
+  width: 100%;
+
+  &.mock-1 {
+    @media #{media-query(sm)} {
+    }
+    @media #{media-query(md)} {
+    }
+    @media #{media-query(lg)} {
+      margin: 120px 0 0;
+    }
+  }
+}
+.mock img {
+  width: 100%;
+  height: auto;
+}

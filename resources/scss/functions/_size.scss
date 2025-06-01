@@ -1,0 +1,9 @@
+@use 'sass:math';
+
+/**
+ * liquid layout size calculation
+ * デザイン上のサイズからリキッドレイアウトのサイズを算出する
+ */
+@function liquid($element-width, $viewport-width: 390) {
+  @return #{math.div($element-width, $viewport-width) * 100}vw;
+}

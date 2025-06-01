@@ -1,0 +1,48 @@
+<?php
+
+use App\Http\Controllers\Public\GroupController;
+use App\Http\Controllers\Public\ShopController;
+use App\Http\Controllers\Public\TouchVipDiaryController;
+use App\Http\Middleware\PublicAvailable;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
+
+    /**
+     * Group routes
+     *
+     * @see \App\Http\Controllers\Public\GroupController
+     */
+    Route::prefix('/')->name('group.')->group(function () {
+        Route::get('/', [GroupController::class, 'showHome'])->name('home');
+        Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
+        Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
+        Route::get('event', [GroupController::class, 'showEvent'])->name('event');
+        Route::get('search', [GroupController::class, 'showSearch'])->name('search');
+        Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
+        Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+    });
+
+    /**
+     * Shop routes
+     *
+     * @see \App\Http\Controllers\Public\ShopController
+     */
+    $shop_list = ['shizuku'];
+    // $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
+    Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
+        Route::get('/', [ShopController::class, 'showHome'])->name('home');
+        Route::get('cast/{id}', [ShopController::class, 'showCastProfile'])->name('cast.profile');
+        Route::get('ranking', [ShopController::class, 'showRanking'])->name('ranking');
+    });
+});
+
+/**
+ * Touch VIP diary
+ *
+ * @see \App\Http\Controllers\Public\TouchVipDiaryController
+ */
+Route::prefix('touchvip/diary')->name('touchvip.diary.')->group(function () {
+    Route::get('{slug}', [TouchVipDiaryController::class, 'show'])->name('detail');
+    Route::get('{cast_id}/{month}', [TouchVipDiaryController::class, 'index'])->name('index');
+});

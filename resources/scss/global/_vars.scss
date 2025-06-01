@@ -1,0 +1,35 @@
+/**
+ * Global Variables
+ */
+
+@use 'sass:map';
+
+/**
+ * ----------------------------------------------------------------------------
+ * Color
+ * ----------------------------------------------------------------------------
+ */
+$black: #000;
+$white: #fff;
+
+$shop-color-pussycat: #F933A7;
+$shop-color-shizuku: #000;
+$shop-color-miyabi: #0B7AAB;
+$shop-color-en: #FFA700;
+$shop-color-shiroganeze: #00D140;
+$shop-color-lovestory: #FE3939;
+
+
+/**
+ * ----------------------------------------------------------------------------
+ * Media Query
+ * ----------------------------------------------------------------------------
+ */
+$media-query: (
+  sm: '(max-width: 767px)',
+  md: '(min-width: 768px) and (max-width: 1439px)',
+  lg: '(min-width: 1440px)'
+);
+@function media-query($width) {
+  @return map.get($media-query, $width);
+}

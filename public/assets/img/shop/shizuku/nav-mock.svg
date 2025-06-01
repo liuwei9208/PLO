@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="847" height="56" viewBox="0 0 847 56">
+  <g id="グループ_229" data-name="グループ 229" transform="translate(-468 -27)">
+    <rect id="長方形_71" data-name="長方形 71" width="152" height="49" rx="24.5" transform="translate(1003 30)"/>
+    <rect id="長方形_76" data-name="長方形 76" width="151" height="49" rx="24.5" transform="translate(1164 30)" fill="#f933a7"/>
+    <path id="Icon_awesome-phone" data-name="Icon awesome-phone" d="M42.949,2.036,33.9.05A2.132,2.132,0,0,0,31.5,1.2l-4.178,9.27a1.919,1.919,0,0,0,.6,2.317L33.2,16.892A31.51,31.51,0,0,1,17.775,31.558l-4.318-5.016a2.158,2.158,0,0,0-2.437-.571L1.271,29.944A1.987,1.987,0,0,0,.052,32.229l2.089,8.608a2.069,2.069,0,0,0,2.037,1.539c22.293,0,40.39-17.174,40.39-38.4A2.008,2.008,0,0,0,42.949,2.036Z" transform="translate(583.306 33.695)"/>
+    <text id="_011-533-8988" data-name="011-533-8988" transform="translate(634.815 74.197)" font-size="53" font-family="ToppanBunkyuMidashiMinchoStdN-ExtraBold, Toppan Bunkyu Midashi Mincho" font-weight="800"><tspan x="0" y="0">011-533-8988</tspan></text>
+    <rect id="長方形_73" data-name="長方形 73" width="101" height="56" transform="translate(468 27)" fill="#f933a7"/>
+    <text id="朝8:30_予約可能" data-name="朝8:30〜
+予約可能" transform="translate(512 50)" fill="#fff" font-size="16" font-family="ToppanBunkyuMidashiGothicStdN-ExtraBold, Toppan Bunkyu Midashi Gothic" font-weight="800"><tspan x="-33.44" y="0">朝8:30〜</tspan><tspan x="-32" y="20">予約可能</tspan></text>
+    <path id="Icon_ionic-md-contact" data-name="Icon ionic-md-contact" d="M22.436,3.375A19.061,19.061,0,1,0,41.5,22.436,19.117,19.117,0,0,0,22.436,3.375Zm0,5.718a5.718,5.718,0,1,1-5.718,5.718A5.738,5.738,0,0,1,22.436,9.093Zm0,27.529A13.886,13.886,0,0,1,11,30.519c.092-3.812,7.624-5.911,11.437-5.911s11.345,2.1,11.437,5.911A13.909,13.909,0,0,1,22.436,36.622Z" transform="translate(1168.806 31.637)" fill="#fff"/>
+    <text id="ログイン" transform="translate(1060 62)" fill="#fff" font-size="19" font-family="ToppanBunkyuMidashiMinchoStdN-ExtraBold, Toppan Bunkyu Midashi Mincho" font-weight="800"><tspan x="0" y="0">ログイン</tspan></text>
+    <text id="新規登録" transform="translate(1220 62)" fill="#fff" font-size="19" font-family="ToppanBunkyuMidashiMinchoStdN-ExtraBold, Toppan Bunkyu Midashi Mincho" font-weight="800"><tspan x="0" y="0">新規登録</tspan></text>
+    <circle id="楕円形_12" data-name="楕円形 12" cx="19" cy="19" r="19" transform="translate(1011 36)" fill="#fff"/>
+    <path id="Icon_open-account-login" data-name="Icon open-account-login" d="M9.746,0V3.249H22.741V19.492H9.746v3.249H25.989V0Zm3.249,6.5V9.746H0v3.249H12.995v3.249l6.5-4.873Z" transform="translate(1014.778 42.71)" fill="#1058aa"/>
+  </g>
+</svg>

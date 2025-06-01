@@ -1,0 +1,56 @@
+/**
+ * Common
+ */
+.white-space-nowrap {
+  white-space: nowrap;
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+
+/**
+ * Cast
+ */
+.cast-gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: calc((100% - 96px) / 5);
+  min-height: auto !important;
+}
+.cast-gallery-item.has-img {
+  border: 0 !important;
+  pointer-events: none;
+}
+
+.cast-gallery-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.cast-gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.cast-gallery-item:not(.has-img) .cast-gallery-img {
+  pointer-events: none;
+}
+
+.cast-gallery-remove {
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.cast-gallery-item:not(.has-img) .cast-gallery-remove {
+  display: none;
+}
+.cast-gallery-item.has-img .cast-gallery-remove {
+  cursor: pointer;
+  pointer-events: all;
+}
+.cast-gallery-item.has-img .cast-gallery-remove svg {
+  pointer-events: none;
+}

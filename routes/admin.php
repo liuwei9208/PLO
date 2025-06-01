@@ -1,0 +1,130 @@
+<?php
+
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\CastController;
+use App\Http\Controllers\Admin\TouchVipCastController;
+use App\Http\Controllers\Admin\PickupController;
+use App\Http\Controllers\Admin\DiaryController;
+use App\Http\Controllers\Admin\OptionController;
+use App\Http\Controllers\Admin\PersonalityController;
+use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Admin\StyleController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+        ->name('login');
+
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
+});
+
+Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [HomeController::class, 'show'])
+        ->name('home');
+
+    /**
+     * Touch VIP cast
+     *
+     * @see \App\Http\Controllers\Admin\TouchVipCastController
+     */
+    Route::prefix('touchvip-cast')->name('touchvip-cast.')->group(function () {
+        Route::get('/', [TouchVipCastController::class, 'index'])->name('index');
+        Route::get('add', [TouchVipCastController::class, 'create'])->name('create');
+        Route::post('add', [TouchVipCastController::class, 'store']);
+        Route::get('{id}', [TouchVipCastController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [TouchVipCastController::class, 'update']);
+        Route::delete('{id}', [TouchVipCastController::class, 'destroy']);
+    });
+
+    /**
+     * Cast
+     *
+     * @see \App\Http\Controllers\Admin\CastController
+     */
+    Route::prefix('cast')->name('cast.')->group(function () {
+        Route::get('/', [CastController::class, 'index'])->name('index');
+        Route::get('add', [CastController::class, 'create'])->name('create');
+        Route::post('add', [CastController::class, 'store']);
+        Route::get('{id}', [CastController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [CastController::class, 'update']);
+        Route::delete('{id}', [CastController::class, 'destroy']);
+    });
+
+    /**
+     * Pickup
+     *
+     * @see \App\Http\Controllers\Admin\PickupController
+     */
+    Route::prefix('pickup')->name('pickup.')->group(function () {
+        Route::get('/', [PickupController::class, 'index'])->name('index');
+        Route::get('{id}', [PickupController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [PickupController::class, 'update']);
+    });
+
+    /**
+     * Diary
+     *
+     * @see \App\Http\Controllers\Admin\DiaryController
+     */
+    Route::prefix('diary')->name('diary.')->group(function () {
+        Route::get('/', [DiaryController::class, 'index'])->name('index');
+        Route::get('{id}', [DiaryController::class, 'show'])->name('detail');
+        Route::delete('{id}', [DiaryController::class, 'destroy']);
+        Route::put('{id}/publish', [DiaryController::class, 'publish']);
+        Route::put('{id}/unpublish', [DiaryController::class, 'unpublish']);
+    });
+
+    /**
+     * Shop master
+     *
+     * @see \App\Http\Controllers\Admin\ShopController
+     */
+    Route::prefix('shop')->name('shop.')->group(function () {
+        Route::get('/', [ShopController::class, 'index'])->name('index');
+        Route::get('{id}', [ShopController::class, 'show'])->name('detail');
+        Route::put('{id}', [ShopController::class, 'update']);
+    });
+
+    /**
+     * Option master
+     *
+     * @see \App\Http\Controllers\Admin\OptionController
+     */
+    Route::prefix('option')->name('option.')->group(function () {
+        Route::get('/', [OptionController::class, 'index'])->name('index');
+        Route::get('add', [OptionController::class, 'create'])->name('create');
+        Route::post('add', [OptionController::class, 'store']);
+        Route::get('{id}', [OptionController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [OptionController::class, 'update']);
+        Route::delete('{id}', [OptionController::class, 'destroy']);
+    });
+
+    /**
+     * Personality master
+     *
+     * @see \App\Http\Controllers\Admin\PersonalityController
+     */
+    Route::prefix('personality')->name('personality.')->group(function () {
+        Route::get('/', [PersonalityController::class, 'index'])->name('index');
+        Route::get('add', [PersonalityController::class, 'create'])->name('create');
+        Route::post('add', [PersonalityController::class, 'store']);
+        Route::get('{id}', [PersonalityController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [PersonalityController::class, 'update']);
+        Route::delete('{id}', [PersonalityController::class, 'destroy']);
+    });
+
+    /**
+     * Style master
+     *
+     * @see \App\Http\Controllers\Admin\StyleController
+     */
+    Route::prefix('style')->name('style.')->group(function () {
+        Route::get('/', [StyleController::class, 'index'])->name('index');
+        Route::get('add', [StyleController::class, 'create'])->name('create');
+        Route::post('add', [StyleController::class, 'store']);
+        Route::get('{id}', [StyleController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [StyleController::class, 'update']);
+        Route::delete('{id}', [StyleController::class, 'destroy']);
+    });
+});

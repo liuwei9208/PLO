@@ -1,0 +1,45 @@
+<div class="drawer" id="drawer">
+  <nav class="drawer-nav">
+    <ul>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">TOP</span>
+        <a href="{{ route('public.group.home') }}" class="drawer-nav-ja">ホーム</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">SHOP LIST</span>
+        <a href="{{ route('public.group.shop') }}" class="drawer-nav-ja">店舗一覧</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">SCHEDULE</span>
+        <a href="{{ route('public.group.schedule') }}" class="drawer-nav-ja">出勤情報</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">EVENT LIST</span>
+        <a href="{{ route('public.group.event') }}" class="drawer-nav-ja">イベント一覧</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">SEARCH</span>
+        <a href="{{ route('public.group.search') }}" class="drawer-nav-ja">女の子検索ページ</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">RECRUIT</span>
+        <a href="https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/" target="_blank" class="drawer-nav-ja">女性求人ページ</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en"></span>
+        <a href="" target="_blank" class="drawer-nav-ja">男性求人ページ</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">PRIVACY POLICY</span>
+        <a href="{{ route('public.group.privacy-policy') }}" class="drawer-nav-ja">プライバシー<br class="sm">ポリシー</a>
+      </li>
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">CONTACT</span>
+        <a href="mailto:mail@example.com" target="_blank" class="drawer-nav-ja">お問い合わせ</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="drawer-img md lg">
+    <img src="{{ asset('assets/img/group/drawer/img.jpg') }}" alt="">
+  </div>
+</div>
