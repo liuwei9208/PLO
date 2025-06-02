@@ -44,6 +44,9 @@
     align-items: center;
     justify-content: center;
     background-color: $shop-color-shizuku;
+    opacity: 1;
+    transition: none;
+    z-index: 11;
     @media #{media-query(sm)} {
       width: 180px;
       height: 160px;

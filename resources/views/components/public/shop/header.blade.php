@@ -61,7 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const body = document.body;
   const headerLogo = document.getElementById('header-logo');
   let scrollPosition = 0;
-  let lastScrollTop = 0;
 
   function lockScroll() {
     scrollPosition = window.pageYOffset;
@@ -92,23 +91,6 @@ document.addEventListener('DOMContentLoaded', function() {
     drawer.classList.remove('is-open');
     unlockScroll();
   }
-
-  // スクロールイベントの処理
-  window.addEventListener('scroll', function() {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (st > lastScrollTop) {
-      // 下スクロール時
-      headerLogo.style.opacity = '1';
-      headerLogo.style.transition = 'opacity 0.3s ease-in-out';
-    } else {
-      // 上スクロール時
-      headerLogo.style.opacity = '0';
-      headerLogo.style.transition = 'opacity 0.3s ease-in-out';
-    }
-    
-    lastScrollTop = st <= 0 ? 0 : st;
-  });
 
   drawerToggle.addEventListener('click', function(e) {
     e.preventDefault();
