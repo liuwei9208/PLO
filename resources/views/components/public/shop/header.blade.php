@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="header-logo --shizuku lg md sm">
+  <div class="header-logo --shizuku lg md sm" id="header-logo">
     <a href="{{ url('/shizuku') }}">
       <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="" class="pc-logo">
       <img src="{{ asset('assets/img/logo/logo-sm.svg') }}" alt="" class="sp-logo">
@@ -59,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const drawerClose = document.getElementById('drawer-close');
   const drawer = document.getElementById('drawer');
   const body = document.body;
+  const headerLogo = document.getElementById('header-logo');
   let scrollPosition = 0;
+  let lastScrollTop = 0;
 
   function lockScroll() {
     scrollPosition = window.pageYOffset;
@@ -90,6 +92,23 @@ document.addEventListener('DOMContentLoaded', function() {
     drawer.classList.remove('is-open');
     unlockScroll();
   }
+
+  // スクロールイベントの処理
+  window.addEventListener('scroll', function() {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (st > lastScrollTop) {
+      // 下スクロール時
+      headerLogo.style.opacity = '1';
+      headerLogo.style.transition = 'opacity 0.3s ease-in-out';
+    } else {
+      // 上スクロール時
+      headerLogo.style.opacity = '0';
+      headerLogo.style.transition = 'opacity 0.3s ease-in-out';
+    }
+    
+    lastScrollTop = st <= 0 ? 0 : st;
+  });
 
   drawerToggle.addEventListener('click', function(e) {
     e.preventDefault();
