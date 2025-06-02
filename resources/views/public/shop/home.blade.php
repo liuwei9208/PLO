@@ -2,7 +2,8 @@
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
-
+  <x-public.shop.phone-link :shop="$shop" />
+  
   <!-- Today Schedule -->
   <div class="today">
     <h2 class="today-title">

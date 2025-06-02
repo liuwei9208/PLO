@@ -1,0 +1,21 @@
+/**
+ * Shop page styles
+ */
+
+ @use 'global/vars' as *;
+ @use 'global/reset';
+ @use 'global/base';
+ @use 'global/utils';
+ @use 'shop/header';
+ @use 'shop/mv';
+ @use 'shop/today';
+ @use 'shop/home';
+ @use 'shop/footer';
+ .mock {
+   width: 100%;
+ }
+ .mock img {
+   width: 100%;
+   height: auto;
+ }
+ 

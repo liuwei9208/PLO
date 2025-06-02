@@ -1,0 +1,66 @@
+@use '../global/vars' as *;
+
+.phone-link-container {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+
+  @media #{media-query(sm)} {
+    display: block;
+  }
+}
+
+.phone-link-wrapper {
+  width: 100%;
+}
+
+.phone-link-note {
+  background-color: rgba(0, 0, 0, 1);
+  text-align: center;
+  padding: 8px 0;
+  font-size: 12px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+
+  .phone-link-note-text {
+    background-color: #fff;
+    color: #000;
+    padding: 4px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 10rem;
+  }
+}
+
+.phone-link {
+  background-color: $shop-color-shizuku;
+  color: #fff;
+  text-decoration: none;
+  padding: 12px 24px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  .phone-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    vertical-align: middle;
+    filter: brightness(0) invert(1);
+  }
+
+  span {
+    font-size: 16px;
+    font-weight: bold;
+    vertical-align: middle;
+  }
+}
+
