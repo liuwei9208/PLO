@@ -37,6 +37,8 @@ class GroupController extends Controller
     public function showShop(Request $request): View
     {
         return view('public.group.shop', [
+            'pickups' => Pickup::inRandomOrder()->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
         ]);
     }
 

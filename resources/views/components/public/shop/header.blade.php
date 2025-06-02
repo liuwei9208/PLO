@@ -59,7 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const drawerClose = document.getElementById('drawer-close');
   const drawer = document.getElementById('drawer');
   const body = document.body;
-  const headerLogo = document.getElementById('header-logo');
   let scrollPosition = 0;
 
   function lockScroll() {

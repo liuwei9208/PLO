@@ -1,0 +1,146 @@
+@use '../global/vars' as *;
+@use '../mixins/text';
+
+.shop {
+  width: 100%;
+  @media #{media-query(sm)} {
+    padding: 50px 0 70px;
+  }
+  @media #{media-query(md)} {
+    padding: 90px 0 80px;
+  }
+  @media #{media-query(lg)} {
+    padding: 120px 0 90px;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .section-title-en {
+      display: block;
+      margin-bottom: 0.5rem;
+      
+      img {
+        max-width: 200px;
+        height: auto;
+      }
+    }
+
+    .section-title-ja {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+
+  .shop-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+    max-width: 600px;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
+
+    .shop-item {
+      width: 100%;
+      padding: 1.5rem;
+      background: #fff;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .shop-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        width: 100%;
+      }
+
+      .shop-address1,
+      .shop-address2 {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.3rem;
+        width: 100%;
+      }
+
+      .shop-tel {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1rem;
+        width: 100%;
+      }
+
+      .shop-more {
+        display: inline-block;
+        padding: 0.6rem 2rem;
+        background: #333;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        text-align: center;
+        font-size: 0.9rem;
+        min-width: 140px;
+        height: 40px;
+        line-height: 1.2;
+
+        &:hover {
+          background: #555;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+@media #{media-query(sm)} {
+  .shop {
+    .section-title {
+      margin-bottom: 2rem;
+
+      .section-title-ja {
+        font-size: 1.5rem;
+      }
+    }
+
+    .shop-list {
+      padding: 0 0.5rem;
+
+      .shop-item {
+        .shop-more {
+          padding: 0.5rem 1.8rem;
+          min-width: 130px;
+          height: 36px;
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
+
+@media #{media-query(md)} {
+  .shop {
+    .shop-list {
+      .shop-item {
+        .shop-more {
+          padding: 0.55rem 1.9rem;
+          min-width: 135px;
+          height: 38px;
+          font-size: 0.87rem;
+        }
+      }
+    }
+  }
+}

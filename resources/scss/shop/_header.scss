@@ -6,13 +6,10 @@
 @use '../mixins/button';
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 10;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
   transition: .25s;
   @media #{media-query(sm)} {
@@ -23,7 +20,7 @@
   }
   @media #{media-query(lg)} {
     height: 104px;
-    padding: 6px 30px 0 0;
+    padding: 6px 30px 0;
     background-color: rgba($color: #FFF, $alpha: 0.93);
   }
 
@@ -37,16 +34,13 @@
   }
 
   .header-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: $shop-color-shizuku;
-    opacity: 1;
-    transition: none;
     z-index: 11;
+    margin-right: auto;
     @media #{media-query(sm)} {
       width: 180px;
       height: 160px;
@@ -124,7 +118,21 @@
     }
   }
 
+  .header-nav {
+    position: fixed;
+    top: 0;
+    right: 30px;
+    z-index: 12;
+    @media #{media-query(lg)} {
+      margin: 0 80px 0 30px;
+    }
+  }
+
   .header-toggle {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 12;
     @include button.hamburger(
       $container-width: 64px,
       $container-height: 64px,
