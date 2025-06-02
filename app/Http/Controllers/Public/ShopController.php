@@ -7,6 +7,7 @@ use App\Models\Cast;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Ranking;
 
 class ShopController extends Controller
 {
@@ -31,8 +32,17 @@ class ShopController extends Controller
 
     public function showRanking(Request $request, string $shop): View
     {
+        $shop = Shop::where('slug', $shop)->get()->first();
+        $rankings = Ranking::where('rankings.shop_id', $shop->id)
+            ->join('casts', 'rankings.cast_id', '=', 'casts.id')
+            ->where('casts.shop_id', $shop->id)
+            ->select('rankings.*', 'casts.*')
+            ->orderBy('rankings.rank', 'asc')
+            ->get();
+        // dd($rankings);
         return view('public.shop.ranking', [
-            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'shop' => $shop,
+            'rankings' => $rankings,
         ]);
     }
 }

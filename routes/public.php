@@ -28,7 +28,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
      *
      * @see \App\Http\Controllers\Public\ShopController
      */
-    $shop_list = ['shizuku'];
+    $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
     // $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
     Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
         Route::get('/', [ShopController::class, 'showHome'])->name('home');

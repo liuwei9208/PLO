@@ -52,14 +52,8 @@
       clip-path: path("M0,0v141.25C18.25,153.11,40.03,160,63.42,160C127.8,160,180,107.8,180,43.42c0-15.35-2.97-30-8.36-43.42H0z");
     }
     @media #{media-query(md)} {
-      // width: 415px;
-      // height: 238px;
-      // padding: 0 0 30px;
-      // clip-path: circle(50% at 50% 50%);
     }
     @media #{media-query(lg)} {
-      // width: 415px;
-      // height: 238px;
       width: 320px;
       height: 180px;
       padding: 20px 0 30px;
