@@ -21,7 +21,6 @@
     @elseif (Request::routeIs('public.shop.cast.profile'))
       @vite('resources/scss/shop/cast/profile.scss')
     @endif --}}
-
   </head>
   <body class="">
 

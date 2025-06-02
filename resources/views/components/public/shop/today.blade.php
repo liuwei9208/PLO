@@ -18,7 +18,7 @@
       T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
     </span>
   </div>
-  <ul class="today-tags">
+  {{-- <ul class="today-tags">
     @foreach ($cast->personalities as $personality)
       <li class="today-tag">
         {{ $personality->name }}
@@ -29,5 +29,5 @@
         {{ $style->name }}
       </li>
     @endforeach
-  </ul>
+  </ul> --}}
 </a>

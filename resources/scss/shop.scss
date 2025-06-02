@@ -10,7 +10,9 @@
  @use 'shop/mv';
  @use 'shop/today';
  @use 'shop/ranking';
- 
+ @use 'shop/home';
+ @use 'shop/footer';
+
  .mock {
    width: 100%;
  }
