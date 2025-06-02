@@ -575,6 +575,15 @@
                   </a>
                 </li>
                 @endcan
+                <li>
+                  <a
+                    href="{{ url('/admin/qa') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'qa' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    Q&Aマスター
+                  </a>
+                </li>
               </ul>
             </div>
             <!-- Dropdown Menu End -->

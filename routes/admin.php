@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\StyleController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RankingController;
-
+use App\Http\Controllers\Admin\QaController;
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -131,11 +131,22 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
    /**
      * Raniking
      *
-     * @see \App\Http\Controllers\Admin\PickupController
+     * @see \App\Http\Controllers\Admin\RankingController
      */
     Route::prefix('ranking')->name('ranking.')->group(function () {
         Route::get('/', [RankingController::class, 'index'])->name('index');
         Route::get('{id}', [RankingController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [RankingController::class, 'update']);
+    });
+
+    /**
+     * Q&A
+     *
+     * @see \App\Http\Controllers\Admin\QaController
+     */
+    Route::prefix('qa')->name('qa.')->group(function () {
+        Route::get('/', [QaController::class, 'index'])->name('index');
+        Route::get('{id}', [QaController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [QaController::class, 'update']);
     });
 });
