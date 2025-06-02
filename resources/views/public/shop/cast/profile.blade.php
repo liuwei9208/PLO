@@ -1,4 +1,4 @@
-<x-public-shop-layout>
+<x-public-shop-layout :shop="$shop">
 
   <!-- Title -->
   <div class="title">
@@ -11,6 +11,5 @@
       Age {{ $cast->age }}／T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
     </p>
   </div>
-
 
 </x-public-shop-layout>

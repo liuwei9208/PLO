@@ -7,6 +7,10 @@ use Illuminate\View\View;
 
 class PublicShopLayout extends Component
 {
+    public function __construct(
+        public $shop = null
+    ) {}
+
     /**
      * Get the view / contents that represents the component.
      */

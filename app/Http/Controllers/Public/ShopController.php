@@ -33,6 +33,7 @@ class ShopController extends Controller
     public function showRanking(Request $request, string $shop): View
     {
         $shop = Shop::where('slug', $shop)->get()->first();
+
         $rankings = Ranking::where('rankings.shop_id', $shop->id)
             ->join('casts', 'rankings.cast_id', '=', 'casts.id')
             ->where('casts.shop_id', $shop->id)

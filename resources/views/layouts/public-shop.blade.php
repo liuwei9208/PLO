@@ -25,7 +25,7 @@
   <body class="">
 
     <!-- Header -->
-    <x-public.shop.header />
+    <x-public.shop.header :shop="$shop" />
 
     <!-- Main -->
     <main class="main" id="main">
