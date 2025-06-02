@@ -8,7 +8,8 @@
           x-text="pageName"
         ></h2>
         <a
-          href="{{ url('/admin/option/add') }}"
+          {{-- href="{{ url('/admin/qa/add') }}" --}}
+          href="{{ route('admin.qa.create') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
           新規登録
@@ -117,7 +118,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400 text-right">
-                      {{ $question->question }}円
+                      {{ $question->question }}
                     </p>
                   </div>
                 </td>

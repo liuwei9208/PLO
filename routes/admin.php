@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RankingController;
 use App\Http\Controllers\Admin\QaController;
+
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -146,6 +147,8 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
      */
     Route::prefix('qa')->name('qa.')->group(function () {
         Route::get('/', [QaController::class, 'index'])->name('index');
+        Route::get('add', [QaController::class, 'create'])->name('create');
+        Route::post('add', [QaController::class, 'store']);
         Route::get('{id}', [QaController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [QaController::class, 'update']);
     });

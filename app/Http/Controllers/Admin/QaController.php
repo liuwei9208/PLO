@@ -22,6 +22,31 @@ class QaController extends Controller
         ]);
     }
 
+        /**
+     * Create a question.
+     */
+    public function create(): View
+    {
+        return view('admin.qa.create');
+    }
+
+    /**
+     * Store a question.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        $validated = $request->validate([
+            'question' => 'required',
+        ],['question.required' => '質問を必須です。']);
+
+        $question = Qa::Create([
+            'question' => request('question'),
+            'is_public' => $request->is_public ? true : false,
+        ]);
+
+        return redirect('/admin/qa');
+    }
+
     public function show(Request $request, string $id): View
     {
         return view('admin.ranking.detail', [
