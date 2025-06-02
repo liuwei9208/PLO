@@ -1,4 +1,4 @@
-<x-public-shop-layout>
+<x-public-shop-layout :shop="$shop">
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
