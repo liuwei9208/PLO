@@ -322,9 +322,66 @@ $shops: (
       background-color: $shop-color-lovestory;
     }
 
+    &.--pussycat .pickup-name {
+      color: $shop-color-pussycat;
+    }
+    &.--shizuku .pickup-name {
+      color: $shop-color-shizuku;
+    }
+    &.--miyabi .pickup-name {
+      color: $shop-color-miyabi;
+    }
+    &.--en .pickup-name {
+      color: $shop-color-en;
+    }
+    &.--shiroganeze .pickup-name {
+      color: $shop-color-shiroganeze;
+    }
+    &.--lovestory .pickup-name {
+      color: $shop-color-lovestory;
+    }
+    .pickup-name {
+      display: block;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-align: center;
+      @media #{media-query(sm)} {
+        margin: 26px 0 0;
+        font-size: 26px;
+      }
+      @media #{media-query(md)} {
+        margin: 30px 0 0;
+        font-size: 30px;
+      }
+      @media #{media-query(lg)} {
+        margin: 35px 0 0;
+        font-size: 35px;
+      }
+
+      small {
+        font-size: 80%;
+        font-weight: 500;
+      }
+    }
+    .pickup-size {
+      display: block;
+      text-align: center;
+      @media #{media-query(sm)} {
+        font-size: 16px;
+        margin: 24px 0 0;
+      }
+      @media #{media-query(md)} {
+        font-size: 16px;
+        margin: 24px 0 0;
+      }
+      @media #{media-query(lg)} {
+        font-size: 18px;
+        margin: 28px 0 0;
+      }
+    }
     .pickup-intro {
       width: 100%;
-      @include text.multiline-ellipsis(4);
+      @include text.multiline-ellipsis(2);
       @media #{media-query(sm)} {
         margin: 8px 0 0;
         font-size: 15px;

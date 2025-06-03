@@ -21,6 +21,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('search', [GroupController::class, 'showSearch'])->name('search');
         Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+        Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
     });
 
     /**
