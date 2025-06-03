@@ -603,3 +603,40 @@
   }
 }
 
+.working {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+
+  &-title {
+    margin-bottom: 30px;
+
+    &__title {
+      font-size: 32px;
+      font-weight: bold;
+      background-color: #fff;
+      color: #000;
+      padding: 15px 30px;
+      display: inline-block;
+
+      @media #{media-query(sm)} {
+        font-size: 24px;
+        padding: 12px 20px;
+      }
+    }
+  }
+
+  &-container {
+    width: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+

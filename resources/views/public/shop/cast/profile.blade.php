@@ -44,7 +44,15 @@
       @endforeach
     </div>
   </div>
-  <div class="schedule">
+  <div class="working">
+    <div class="working-title">
+      <h2 class="working-title__title">Schedule</h2>
+    </div>
+    <div class="working-container">
+      <img src="{{ asset('assets/img/shop/working.png') }}" alt="Schedule" class="working-image">
+    </div>
+  </div>
+  {{-- <div class="schedule">
     <div class="schedule-title">
       <h2 class="schedule-title__title">Schedule</h2>
     </div>
@@ -96,7 +104,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="movie">
     <div class="movie-title">
       <h2 class="movie-title__title">Movie</h2>
