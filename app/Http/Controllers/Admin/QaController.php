@@ -11,14 +11,35 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Termwind\Components\Raw;
+use App\Models\Question;
 
 class QaController extends Controller
 {
+    const DEFAULT_LIMIT = 10;
     public function index(Request $request): View
     {
-        $questions = Qa::orderBy('id', 'asc')->get();
+        $query = Question::query();
+
+
+        $total = $query->count();
+
+        $page = $request->query('page') ? (int) $request->query('page') : 1;
+        $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
+        $skip = ($page - 1) * $limit;
+        $pages = ceil($total / $limit);
+
+        $questions = $query->skip($skip)
+            ->take($limit)
+            ->orderBy('id', 'desc')
+            ->get();
+        
         return view('admin.qa.index', [
             'questions' => $questions,
+            'page' => $page,
+            'limit' => $limit,
+            'skip' => $skip,
+            'total' => $total,
+            'pages' => $pages,
         ]);
     }
 
@@ -39,7 +60,7 @@ class QaController extends Controller
             'question' => 'required',
         ],['question.required' => '質問を必須です。']);
 
-        $question = Qa::Create([
+        $question = Question::Create([
             'question' => request('question'),
             'is_public' => $request->is_public ? true : false,
         ]);
@@ -49,10 +70,8 @@ class QaController extends Controller
 
     public function show(Request $request, string $id): View
     {
-        return view('admin.ranking.detail', [
-            'shop' => Shop::findOrFail($id),
-            'casts' => Cast::where('shop_id', $id)->where('is_public', 1)->get(),
-            'rankings' => Ranking::where('shop_id', $id)->get(),
+        return view('admin.qa.detail', [
+            'question' => Question::findOrFail($id),
         ]);
     }
 
@@ -61,40 +80,21 @@ class QaController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $rankings = $request->input('rank', []);
+        $request->validate([
+            'question' => 'required',
+        ],['question.required' => '質問を必須です。']);
+        Question::where('id', $id)->update([
+            'question' => $request->question,
+            'is_public' => $request->is_public ? true : false,
+        ]);
 
-        // 同じcast_idがないかチェック（nullは除外）
-        $nonNullRankings = array_filter($rankings, function($value) {
-            return $value !== null && $value !== '';
-        });
-        $uniqueRankings = array_unique($nonNullRankings);
-        $duplicateRankings = array_diff_assoc($nonNullRankings, $uniqueRankings);
-        if (count($uniqueRankings) !== count($nonNullRankings)) {
-            $duplicateCastIDs = array_unique($duplicateRankings);
-            $duplicateCastNames = array_map(function($value) {
-                return Cast::find($value)->name;
-            }, $duplicateCastIDs);
-            return redirect()->back()->withInput()->withErrors(['error' => '同じキャストは複数選択できません。キャスト名: ' . implode(', ', $duplicateCastNames)]);
-        }
+        return redirect('/admin/qa/' . $id)->with('success', '質問を更新しました。');
+    }
 
-        Ranking::where('shop_id', $id)->delete();
+    public function destroy(string $id): RedirectResponse
+    {
+        Question::where('id', $id)->delete();
 
-        foreach ($rankings as $index => $cast_id) {
-            if (is_numeric($cast_id)) {
-                Ranking::create([
-                    'shop_id' => $id,
-                    'cast_id' => $cast_id,
-                    'rank' => $index + 1,
-                ]);
-            }else if ( $cast_id === null ) {
-                Ranking::create([
-                    'shop_id' => $id,
-                    'cast_id' => null,
-                    'rank' => $index + 1,
-                ]);
-            }
-        }
-
-        return redirect('/admin/ranking/' . $id)->with('success', 'ランキングを更新しました。');
+        return redirect('/admin/qa')->with('success', '質問を削除しました。');
     }
 }

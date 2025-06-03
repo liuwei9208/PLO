@@ -12,13 +12,17 @@
           href="{{ route('admin.qa.create') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
-          新規登録
+          質問を追加
         </a>
       </div>
     </div>
-
+    @if (session('success'))
+      <div class="mb-6 rounded-lg p-4 text-sm font-medium" style="background-color: #f0fdf4; color: #15803d;">
+        {{ session('success') }}
+      </div>
+    @endif
     <!-- Search & Limit -->
-    {{-- <form
+    <form
       action="{{ route('admin.option.index') }}"
       method="get"
       id="search_form"
@@ -54,12 +58,12 @@
           </div>
         </div>
       </div>
-    </form> --}}
+    </form>
 
-    {{-- <!-- Page -->
+    <!-- Page -->
     <p class="px-2 py-2 text-sm text-gray-500 dark:text-gray-400 text-right">
       {{ $total }}件中 {{ ($page - 1) * $limit + 1 }} - {{ $page * $limit > $total ? $total : $page * $limit }}件を表示
-    </p> --}}
+    </p>
 
     <!-- Table -->
     <div
@@ -70,7 +74,7 @@
           <!-- table header start -->
           <thead>
             <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-5 py-3 sm:px-6 ">
                 <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
@@ -79,16 +83,16 @@
                   </p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-5 py-3 sm:px-6" style="width: 400px; min-width: 400px; max-width: 400px;">
                 <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    説明
+                    質問
                   </p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-5 py-3 sm:px-6 ">
                 <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
@@ -108,21 +112,21 @@
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
             @foreach ($questions as $question)
               <tr>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-5 py-4 sm:px-6 ">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $question->id }}
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400 text-right">
+                <td class="px-5 py-4 sm:px-6" style="width: 800px; min-width: 800px; max-width: 800px;">
+                  <div class="flex items-center w-full">
+                    <p class="text-gray-500 text-theme-sm dark:text-gray-400 w-full" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                       {{ $question->question }}
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-5 py-4 sm:px-6 ">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm dark:text-gray-400">
                       {{ $question->is_public ? '公開' : '非公開' }}
@@ -149,7 +153,7 @@
       </div>
     </div>
 
-    {{-- <!-- Pagination -->
+    <!-- Pagination -->
     <div class="mb-10 flex justify-center">
       <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         @if ($page > 1)
@@ -207,7 +211,7 @@
           </span>
         @endif
       </div>
-    </div> --}}
+    </div>
 
   </div>
 </x-admin-layout>

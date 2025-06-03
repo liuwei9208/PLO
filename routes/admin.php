@@ -151,5 +151,6 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('add', [QaController::class, 'store']);
         Route::get('{id}', [QaController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [QaController::class, 'update']);
+        Route::delete('{id}', [QaController::class, 'destroy']);
     });
 });
