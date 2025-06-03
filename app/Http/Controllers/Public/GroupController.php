@@ -19,11 +19,12 @@ class GroupController extends Controller
     {
         $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id);
         $newfaces_this_week = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subWeek())
+            ->where('created_at', '>=', Carbon::now()->subWeek(2))
             ->inRandomOrder()
             ->get();
         $newfaces_this_month = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subDays(30))
+            ->where('created_at', '>=', Carbon::now()->subMonth(30))
+            // ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->inRandomOrder()
             ->get();
 
@@ -69,6 +70,12 @@ class GroupController extends Controller
     public function showPrivacyPolicy(Request $request): View
     {
         return view('public.group.privacy-policy', [
+        ]);
+    }
+
+    public function showNewcomer(Request $request): View
+    {
+        return view('public.group.newcomer', [
         ]);
     }
 }

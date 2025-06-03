@@ -172,7 +172,7 @@ $shops: (
     display: flex;
     flex-wrap: wrap;
     @media #{media-query(sm)} {
-      justify-content: space-between;
+      justify-content: center;
       row-gap: 50px;
       width: calc(100% - 56px);
       margin: 30px auto 0;
@@ -190,157 +190,184 @@ $shops: (
       margin: 50px auto 0;
     }
 
-    &:not(.--expanded) {
-      @media #{media-query(sm)} {
-        .pickup-item:nth-child(n+8) {
-          display: none;
-        }
-      }
-      @media #{media-query(md)} {
-        .pickup-item:nth-child(n+9) {
-          display: none;
-        }
-      }
-      @media #{media-query(lg)} {
-        .pickup-item:nth-child(n+10) {
-          display: none;
-        }
-      }
-    }
-
-    @each $shop in $shops {
-      &[data-shop="#{$shop}"] {
-        .pickup-item:not(.--#{$shop}) {
-          display: none;
-        }
-      }
-    }
-  }
-
-  .pickup-item {
-    display: block;
-    transition: .2s;
-    @media #{media-query(sm)} {
-      &:first-child {
-        width: 100%;
-      }
-      &:nth-child(n+2) {
-        width: calc(50% - 20px);
-      }
-    }
-    @media #{media-query(md)} {
-      width: 340px;
-    }
-    @media #{media-query(lg)} {
-      width: 384px;
-    }
-
-    &,
-    &:link,
-    &:visited,
-    &:active,
-    &:focus {
-      color: #000;
-    }
-
-    &:hover {
-      opacity: .8;
-    }
-
-    .pickup-photo {
-      width: 100%;
-      overflow: hidden;
-      border-radius: 30px;
-      @media #{media-query(sm)} {
-        aspect-ratio: 384 / 425;
-      }
-      @media #{media-query(md)} {
-        height: 375px;
-      }
-      @media #{media-query(lg)} {
-        height: 425px;
-      }
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-        transition: .25s;
-      }
-    }
-    &:hover .pickup-photo {
-      img {
-        transform: scale(1.04);
-      }
-    }
-
-    .pickup-shop {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      color: #FFF;
-      font-weight: 700;
+    .pickup-item {
+      display: block;
+      transition: .2s;
       @media #{media-query(sm)} {
         width: 100%;
-        height: 30px;
-        margin: 12px 0 0;
-        border-radius: 15px;
-        font-size: 14px;
+        max-width: 384px;
       }
       @media #{media-query(md)} {
-        height: 36px;
-        margin: 18px 10px 0;
-        padding: 0 18px;
-        border-radius: 18px;
-        font-size: 16px;
+        width: 340px;
       }
       @media #{media-query(lg)} {
-        height: 42px;
-        margin: 22px 10px 0;
-        padding: 0 24px;
-        border-radius: 21px;
-        font-size: 19px;
+        width: 384px;
       }
-    }
-    &.--pussycat .pickup-shop {
-      background-color: $shop-color-pussycat;
-    }
-    &.--shizuku .pickup-shop {
-      background-color: $shop-color-shizuku;
-    }
-    &.--miyabi .pickup-shop {
-      background-color: $shop-color-miyabi;
-    }
-    &.--en .pickup-shop {
-      background-color: $shop-color-en;
-    }
-    &.--shiroganeze .pickup-shop {
-      background-color: $shop-color-shiroganeze;
-    }
-    &.--lovestory .pickup-shop {
-      background-color: $shop-color-lovestory;
-    }
 
-    .pickup-intro {
-      width: 100%;
-      @include text.multiline-ellipsis(4);
-      @media #{media-query(sm)} {
-        margin: 8px 0 0;
-        font-size: 15px;
-        line-height: 26px;
+      &,
+      &:link,
+      &:visited,
+      &:active,
+      &:focus {
+        color: #000;
       }
-      @media #{media-query(md)} {
-        margin: 14px 0 0;
-        padding: 0 10px;
-        font-size: 18px;
-        line-height: 30px;
+
+      &:hover {
+        opacity: .8;
       }
-      @media #{media-query(lg)} {
-        margin: 15px 0 0;
-        padding: 0 10px;
-        font-size: 20px;
-        line-height: 34px;
+
+      .pickup-photo {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 30px;
+        @media #{media-query(sm)} {
+          aspect-ratio: 384 / 425;
+        }
+        @media #{media-query(md)} {
+          height: 375px;
+        }
+        @media #{media-query(lg)} {
+          height: 425px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center center;
+          transition: .25s;
+        }
+      }
+      &:hover .pickup-photo {
+        img {
+          transform: scale(1.04);
+        }
+      }
+
+      .pickup-shop {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFF;
+        font-weight: 700;
+        @media #{media-query(sm)} {
+          width: 100%;
+          height: 30px;
+          margin: 12px 0 0;
+          border-radius: 15px;
+          font-size: 14px;
+        }
+        @media #{media-query(md)} {
+          height: 36px;
+          margin: 18px 10px 0;
+          padding: 0 18px;
+          border-radius: 18px;
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          height: 42px;
+          margin: 22px 10px 0;
+          padding: 0 24px;
+          border-radius: 21px;
+          font-size: 19px;
+        }
+      }
+      &.--pussycat .pickup-shop {
+        background-color: $shop-color-pussycat;
+      }
+      &.--shizuku .pickup-shop {
+        background-color: $shop-color-shizuku;
+      }
+      &.--miyabi .pickup-shop {
+        background-color: $shop-color-miyabi;
+      }
+      &.--en .pickup-shop {
+        background-color: $shop-color-en;
+      }
+      &.--shiroganeze .pickup-shop {
+        background-color: $shop-color-shiroganeze;
+      }
+      &.--lovestory .pickup-shop {
+        background-color: $shop-color-lovestory;
+      }
+
+      &.--pussycat .pickup-name {
+        color: $shop-color-pussycat;
+      }
+      &.--shizuku .pickup-name {
+        color: $shop-color-shizuku;
+      }
+      &.--miyabi .pickup-name {
+        color: $shop-color-miyabi;
+      }
+      &.--en .pickup-name {
+        color: $shop-color-en;
+      }
+      &.--shiroganeze .pickup-name {
+        color: $shop-color-shiroganeze;
+      }
+      &.--lovestory .pickup-name {
+        color: $shop-color-lovestory;
+      }
+      .pickup-name {
+        display: block;
+        font-weight: 700;
+        letter-spacing: .1em;
+        text-align: center;
+        @media #{media-query(sm)} {
+          margin: 26px 0 0;
+          font-size: 26px;
+        }
+        @media #{media-query(md)} {
+          margin: 30px 0 0;
+          font-size: 30px;
+        }
+        @media #{media-query(lg)} {
+          margin: 35px 0 0;
+          font-size: 35px;
+        }
+
+        small {
+          font-size: 80%;
+          font-weight: 500;
+        }
+      }
+      .pickup-size {
+        display: block;
+        text-align: center;
+        @media #{media-query(sm)} {
+          font-size: 16px;
+          margin: 24px 0 0;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+          margin: 24px 0 0;
+        }
+        @media #{media-query(lg)} {
+          font-size: 18px;
+          margin: 28px 0 0;
+        }
+      }
+      .pickup-intro {
+        width: 100%;
+        @include text.multiline-ellipsis(2);
+        @media #{media-query(sm)} {
+          margin: 8px 0 0;
+          font-size: 15px;
+          line-height: 26px;
+        }
+        @media #{media-query(md)} {
+          margin: 14px 0 0;
+          padding: 0 10px;
+          font-size: 18px;
+          line-height: 30px;
+        }
+        @media #{media-query(lg)} {
+          margin: 15px 0 0;
+          padding: 0 10px;
+          font-size: 20px;
+          line-height: 34px;
+        }
       }
     }
   }

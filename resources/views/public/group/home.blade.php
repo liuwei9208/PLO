@@ -29,12 +29,18 @@
           <div class="pickup-photo">
             <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
           </div>
-          <span class="pickup-shop">
+          {{-- <span class="pickup-shop">
             {{ $pickup->cast->shop->name }}
+          </span> --}}
+          <span class="pickup-name">
+            {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
           </span>
-          <p class="pickup-intro">
+          <span class="pickup-size">
+            B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
+          </span>
+          <span class="pickup-intro">
             {{ $pickup->cast->appeal_point }}
-          </p>
+          </span>
         </a>
       @endforeach
     </div>
@@ -79,7 +85,7 @@
         <x-public.group.newface :cast="$cast" />
       @endforeach
     </div>
-    <button class="newface-more more-button">もっと見る</button>
+    <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button">もっと見る</a>
   </section>
 
   <!-- 最新写メ日記 - Photo Diary -->
