@@ -8,7 +8,14 @@ class Qa extends Model
 {
     //
     protected $fillable = [
-        'question',
-        'is_public',
+        'cast_id',
+        'question_id',
+        'answer',
+        'rank',
     ];
+
+    public function question()
+    {
+        return $this->belongsTo(Question::class);
+    }
 }

@@ -11,6 +11,8 @@ use App\Models\Style;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use App\Models\Question;
+use App\Models\Qa;
 
 class CastController extends Controller
 {
@@ -136,6 +138,8 @@ class CastController extends Controller
      */
     public function show(Request $request, string $id): View
     {
+        $qas = Qa::where('cast_id', $id)->orderBy('rank', 'asc')->get();
+        
         return view('admin.cast.detail', [
             'cast' => Cast::find($id),
             'shop' => $request->user()->shops->first() ?? null,
@@ -143,6 +147,8 @@ class CastController extends Controller
             'options' => Option::all(),
             'personalities' => Personality::all(),
             'styles' => Style::all(),
+            'questions' => Question::where('is_public', true)->orderBy('id', 'asc')->get(),
+            'qas' => $qas,
         ]);
     }
 
@@ -156,12 +162,36 @@ class CastController extends Controller
             'shop_id' => 'required',
         ]);
 
+        $questions = $request->input('question', []);
+        // 同じcast_idがないかチェック（nullは除外）
+        $nonNullQuestions = array_filter($questions, function($value) {
+            return $value !== null && $value !== '';
+        });
+        $uniqueQuestions = array_unique($nonNullQuestions);
+        if (count($uniqueQuestions) !== count($nonNullQuestions)) {
+            return redirect()->back()->withInput()->withErrors(['error' => '同じ質問は複数選択できません。']);
+        }
+        $qas = Qa::where('cast_id', $id)->delete();
+        foreach ($uniqueQuestions as $index => $question_id) {
+            Qa::create([
+                'cast_id' => $id,
+                'question_id' => $question_id,
+                'answer' => $request->input('a'.($index + 1)),
+                'rank' => $index + 1,
+            ]);
+        }
+
         $file_path = "gallery/{$id}";
         $file1 = $request->file('file_1');
         $file2 = $request->file('file_2');
         $file3 = $request->file('file_3');
         $file4 = $request->file('file_4');
         $file5 = $request->file('file_5');
+        $file6 = $request->file('file_6');
+        $file7 = $request->file('file_7');
+        $file8 = $request->file('file_8');
+        $file9 = $request->file('file_9');
+        $file10 = $request->file('file_10');
 
         $cast = Cast::find($id);
         $cast->name = $request->cast_name;
@@ -182,6 +212,11 @@ class CastController extends Controller
         $cast->gallery_3 = $file3 ? $file3->store($file_path, 'public') : $request->path_3;
         $cast->gallery_4 = $file4 ? $file4->store($file_path, 'public') : $request->path_4;
         $cast->gallery_5 = $file5 ? $file5->store($file_path, 'public') : $request->path_5;
+        $cast->gallery_6 = $file6 ? $file6->store($file_path, 'public') : $request->path_6;
+        $cast->gallery_7 = $file7 ? $file7->store($file_path, 'public') : $request->path_7;
+        $cast->gallery_8 = $file8 ? $file8->store($file_path, 'public') : $request->path_8;
+        $cast->gallery_9 = $file9 ? $file9->store($file_path, 'public') : $request->path_9;
+        $cast->gallery_10 = $file10 ? $file10->store($file_path, 'public') : $request->path_10;
         $cast->is_public = $request->is_public ? true : false;
         $cast->memo = $request->memo;
         $cast->save();

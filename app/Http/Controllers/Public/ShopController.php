@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Ranking;
 use App\Models\Diary;
+use App\Models\Qa;
+
 class ShopController extends Controller
 {
     /**
@@ -24,7 +26,7 @@ class ShopController extends Controller
 
     public function showCastProfile(Request $request, string $shop, string $id): View
     {
-        $cast = Cast::where('id', $id)->where('is_public', 1)->firstOrFail();
+        $cast = Cast::where('id', $id)->where('is_public', 1)->with('styles')->with('personalities')->with('options')->firstOrFail();
         $gallerys = [];
         for ($i = 0; $i < 5; $i++) {
             if ($cast['gallery_'. ($i + 1)] !== null || $cast['gallery_'. ($i + 1)] !== '') {
@@ -33,12 +35,14 @@ class ShopController extends Controller
         }
         // $diarys = Diary::where('cast_id', $cast->id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
         $diarys = Diary::where('cast_id', '28')->where('is_public', 1)->orderBy('created_at', 'desc')->limit(4)->get();
+        $qas = Qa::where('cast_id', $cast->id)->with('question')->orderBy('rank', 'asc')->get();
 
         return view('public.shop.cast.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
             'gallerys' => $gallerys,
             'diarys' => $diarys,
+            'qas' => $qas,
         ]);
     }
 

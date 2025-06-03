@@ -131,12 +131,43 @@
       <div class="profile-content__qa">
         <h3 class="profile-content__title">Q&A</h3>
         <div class="profile-content__text">
+          @foreach($qas as $qa)
+            <div class="profile-content__qa-item">
+              <div class="profile-content__qa-item__question">{{ 'Q'.$qa->rank }}: {{ $qa->question->question }}</div>
+              <div class="profile-content__qa-item__answer">{{ 'A'.$qa->rank }}: {{ $qa->answer }}</div>
+            </div>
+          @endforeach
           {{-- {{ $shop->qa_content }} --}}
+          {{-- qa_content qa_content qa_content
           qa_content qa_content qa_content
           qa_content qa_content qa_content
-          qa_content qa_content qa_content
-          qa_content qa_content qa_content
+          qa_content qa_content qa_content --}}
         </div>
+      </div>
+    </div>
+    <div class="profile-content__style">
+      <h3 class="profile-content__title">性格＆スタイル</h3>
+      <div class="profile-content__text">
+        @foreach($cast->personalities as $personality)
+          <div class="profile-content__personality-item">
+            {{ $personality->name }}
+          </div>
+        @endforeach
+        @foreach($cast->styles as $style)
+          <div class="profile-content__style-item">
+            {{ $style->name }}
+          </div>
+        @endforeach
+      </div>
+    </div>
+    <div class="profile-content__option">
+      <h3 class="profile-content__title">Option</h3>
+      <div class="profile-content__text">
+        @foreach($cast->options as $option)
+          <div class="profile-content__option-item">
+            {{ $option->name }}
+          </div>
+        @endforeach
       </div>
     </div>
     <div class="profile-content__bottom">
