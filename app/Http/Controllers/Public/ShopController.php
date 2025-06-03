@@ -28,7 +28,7 @@ class ShopController extends Controller
     {
         $cast = Cast::where('id', $id)->where('is_public', 1)->with('styles')->with('personalities')->with('options')->firstOrFail();
         $gallerys = [];
-        for ($i = 0; $i < 5; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             if ($cast['gallery_'. ($i + 1)] !== null || $cast['gallery_'. ($i + 1)] !== '') {
                 $gallerys[$i] = $cast['gallery_'. ($i + 1)];
             }
