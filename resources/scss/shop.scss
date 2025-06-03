@@ -12,7 +12,8 @@
  @use 'shop/ranking';
  @use 'shop/home';
  @use 'shop/footer';
-
+ @use 'shop/cast';
+ 
  .mock {
    width: 100%;
  }
