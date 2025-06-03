@@ -29,9 +29,9 @@
           <div class="pickup-photo">
             <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
           </div>
-          {{-- <span class="pickup-shop">
+          <span class="pickup-shop">
             {{ $pickup->cast->shop->name }}
-          </span> --}}
+          </span>
           <span class="pickup-name">
             {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
           </span>

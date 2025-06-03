@@ -72,7 +72,11 @@ class GroupController extends Controller
         return view('public.group.privacy-policy', [
         ]);
     }
-
+    public function showPersonalPolicy(Request $request): View
+    {
+        return view('public.group.personal-policy', [
+        ]);
+    }
     public function showNewcomer(Request $request): View
     {
         return view('public.group.newcomer', [
