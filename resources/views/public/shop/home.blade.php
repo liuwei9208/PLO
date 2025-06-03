@@ -17,7 +17,7 @@
       @endforeach
     </div>
   </div>
-
+ 
   <!-- Mock -->
   <div class="mock mock">
     <picture>

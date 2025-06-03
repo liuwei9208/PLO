@@ -23,7 +23,7 @@ class GroupController extends Controller
             ->inRandomOrder()
             ->get();
         $newfaces_this_month = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subMonth(30))
+            ->where('created_at', '>=', Carbon::now()->subMonth(1))
             // ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->inRandomOrder()
             ->get();
@@ -79,7 +79,16 @@ class GroupController extends Controller
     }
     public function showNewcomer(Request $request): View
     {
+        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id);
+        $newcomers = $cast_query
+            ->where('created_at', '>=', Carbon::now()->subWeek(2))
+            ->inRandomOrder()
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->withPath('newcomer');
+
         return view('public.group.newcomer', [
+            'newcomers' => $newcomers,
         ]);
     }
 }
