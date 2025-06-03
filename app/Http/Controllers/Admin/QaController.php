@@ -65,7 +65,7 @@ class QaController extends Controller
             'is_public' => $request->is_public ? true : false,
         ]);
 
-        return redirect('/admin/qa');
+        return redirect('/admin/qa')->with('success', '質問を追加しました。');
     }
 
     public function show(Request $request, string $id): View
