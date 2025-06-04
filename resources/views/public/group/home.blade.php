@@ -3,6 +3,8 @@
   <!-- Main Visual -->
   <x-public.group.mv />
 
+
+
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
