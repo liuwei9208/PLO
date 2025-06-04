@@ -151,7 +151,11 @@
     <div class="profile-content__style">
       <h3 class="profile-content__title">性格＆スタイル</h3>
       <div class="profile-content__text">
-        {{ $personalities.','.$styles }}
+        @if($personalities == "")
+          {{ $styles }}
+        @else
+          {{ $personalities.','.$styles }}
+        @endif
         {{-- @foreach($cast->personalities as $personality)
           <div class="profile-content__personality-item">
             {{ $personality->name }}
