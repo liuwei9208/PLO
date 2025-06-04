@@ -141,8 +141,8 @@
         <div class="profile-content__text">
           @foreach($qas as $qa)
             <div class="profile-content__qa-item">
-              <div class="profile-content__qa-item__question">{{ 'Q'.$qa->rank }}: {{ $qa->question->question }}</div>
-              <div class="profile-content__qa-item__answer">{{ 'A'.$qa->rank }}: {{ $qa->answer }}</div>
+              <div class="profile-content__qa-item__question">{{ 'Q' }}: {{ $qa->question->question }}</div>
+              <div class="profile-content__qa-item__answer">{{ 'A' }}: {{ $qa->answer }}</div>
             </div>
           @endforeach
         </div>

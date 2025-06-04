@@ -138,7 +138,7 @@ class CastController extends Controller
      */
     public function show(Request $request, string $id): View
     {
-        $qas = Qa::where('cast_id', $id)->orderBy('rank', 'asc')->get();
+        $qas = Qa::where('cast_id', $id)->with('question')->orderBy('rank', 'asc')->get();
         
         return view('admin.cast.detail', [
             'cast' => Cast::find($id),
@@ -172,13 +172,22 @@ class CastController extends Controller
             return redirect()->back()->withInput()->withErrors(['error' => '同じ質問は複数選択できません。']);
         }
         $qas = Qa::where('cast_id', $id)->delete();
-        foreach ($uniqueQuestions as $index => $question_id) {
-            Qa::create([
-                'cast_id' => $id,
-                'question_id' => $question_id,
-                'answer' => $request->input('a'.($index + 1)),
-                'rank' => $index + 1,
-            ]);
+        foreach ($questions as $index => $question_id) {
+            if (is_numeric($question_id)) {
+                Qa::create([
+                    'cast_id' => $id,
+                    'question_id' => $question_id,
+                    'answer' => $request->input('a'.($index + 1)),
+                    'rank' => $index + 1,
+                ]);
+            }else if ( $question_id === null ) {
+                Qa::create([
+                    'cast_id' => $id,
+                    'question_id' => null,
+                    'answer' => $request->input('a'.($index + 1)),
+                    'rank' => $index + 1,
+                ]);
+            }
         }
 
         $file_path = "gallery/{$id}";
