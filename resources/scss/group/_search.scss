@@ -55,7 +55,11 @@
       font-size: 1.1rem;
       color: #e0b96a;
       margin-bottom: 12px;
-      span {
+      border: 1px solid #333;
+      border-radius: 25px;
+      padding: 16px;
+      background-color: #333;
+    span {
         // min-width: 80px;
         color: #e0b96a;
         font-weight: bold;
