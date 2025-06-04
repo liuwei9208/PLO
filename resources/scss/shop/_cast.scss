@@ -154,7 +154,6 @@
 
   &__text {
     font-size: 16px;
-    // line-height: 1.8;
     color: #333;
     white-space: pre-line;
     text-align: left;
@@ -162,8 +161,16 @@
 
     @media #{media-query(sm)} {
       font-size: 14px;
-      // line-height: 1.6;
-      padding: 15px 0;
+      padding: 15px ;
+    }
+
+    .profile-content__qa-item {
+      white-space: normal;
+      &__question {
+        color: #FF0000;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
     }
   }
 }
