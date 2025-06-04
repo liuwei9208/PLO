@@ -498,7 +498,7 @@
                     value="{{ $question->id }}"
                     class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                     @if (
-                      (old('rank') && array_key_exists($index, old('rank')) && old('rank')[$index] == $question->id) ||
+                      (old('question') && array_key_exists($index, old('question')) && old('question')[$index] == $qas->rank) ||
                       (
                         isset($qas[$index]) && $qas[$index]->question_id !== null
                         && $qas[$index]->question_id === $question->id

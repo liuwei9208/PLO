@@ -35,7 +35,7 @@ class ShopController extends Controller
         }
         // $diarys = Diary::where('cast_id', $cast->id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
         $diarys = Diary::where('cast_id', '28')->where('is_public', 1)->orderBy('created_at', 'desc')->limit(4)->get();
-        $qas = Qa::where('cast_id', $cast->id)->with('question')->orderBy('rank', 'asc')->get();
+        $qas = Qa::where('cast_id', $cast->id)->where('question_id', '!=', null)->with('question')->orderBy('rank', 'asc')->get();
         $personalities = [];
         $styles = [];
         $options = [];
