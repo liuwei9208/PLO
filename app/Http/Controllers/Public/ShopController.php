@@ -36,6 +36,21 @@ class ShopController extends Controller
         // $diarys = Diary::where('cast_id', $cast->id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
         $diarys = Diary::where('cast_id', '28')->where('is_public', 1)->orderBy('created_at', 'desc')->limit(4)->get();
         $qas = Qa::where('cast_id', $cast->id)->with('question')->orderBy('rank', 'asc')->get();
+        $personalities = [];
+        $styles = [];
+        $options = [];
+        foreach ($cast->personalities as $personality) {
+            $personalities[] = $personality->name;
+        }
+        $personalities = implode(', ', $personalities);
+        foreach ($cast->styles as $style) {
+            $styles[] = $style->name;
+        }
+        $styles = implode(', ', $styles);
+        foreach ($cast->options as $option) {
+            $options[] = $option->name;
+        }
+        $options = implode(', ', $options);
 
         return view('public.shop.cast.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
@@ -43,6 +58,9 @@ class ShopController extends Controller
             'gallerys' => $gallerys,
             'diarys' => $diarys,
             'qas' => $qas,
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
         ]);
     }
 
