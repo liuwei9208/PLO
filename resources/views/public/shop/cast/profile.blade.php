@@ -145,18 +145,14 @@
               <div class="profile-content__qa-item__answer">{{ 'A'.$qa->rank }}: {{ $qa->answer }}</div>
             </div>
           @endforeach
-          {{-- {{ $shop->qa_content }} --}}
-          {{-- qa_content qa_content qa_content
-          qa_content qa_content qa_content
-          qa_content qa_content qa_content
-          qa_content qa_content qa_content --}}
         </div>
       </div>
     </div>
     <div class="profile-content__style">
       <h3 class="profile-content__title">性格＆スタイル</h3>
       <div class="profile-content__text">
-        @foreach($cast->personalities as $personality)
+        {{ $personalities.','.$styles }}
+        {{-- @foreach($cast->personalities as $personality)
           <div class="profile-content__personality-item">
             {{ $personality->name }}
           </div>
@@ -165,24 +161,24 @@
           <div class="profile-content__style-item">
             {{ $style->name }}
           </div>
-        @endforeach
+        @endforeach --}}
       </div>
     </div>
     <div class="profile-content__option">
       <h3 class="profile-content__title">Option</h3>
       <div class="profile-content__text">
-        @foreach($cast->options as $option)
+        {{ $options }}
+        {{-- @foreach($cast->options as $option)
           <div class="profile-content__option-item">
             {{ $option->name }}
           </div>
-        @endforeach
+        @endforeach --}}
       </div>
     </div>
     <div class="profile-content__bottom">
       <div class="profile-content__shop-message">
         <h3 class="profile-content__title">Shop Message</h3>
         <div class="profile-content__text">
-          {{-- {{ $shop->shop_message }} --}}
           {{ $cast->manager_comment }}
         </div>
       </div>
