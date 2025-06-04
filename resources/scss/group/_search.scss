@@ -47,6 +47,9 @@
         padding: 16px;
         background-color: #333;
         width: 30%;
+        @media (max-width: 767px) {
+          width: 100%;
+        }
       } 
     }
     &--area, &--style, &--option {
@@ -55,7 +58,11 @@
       font-size: 1.1rem;
       color: #e0b96a;
       margin-bottom: 12px;
-      span {
+      border: 1px solid #333;
+      border-radius: 25px;
+      padding: 16px;
+      background-color: #333;
+    span {
         // min-width: 80px;
         color: #e0b96a;
         font-weight: bold;
@@ -179,4 +186,9 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 16px 2rem;
   width: 70rem;
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 12px 1rem;
+  }
 }
