@@ -9,6 +9,9 @@ use App\Models\Shop;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use App\Models\Personality;
+use App\Models\Style;
+use App\Models\Option;
 
 class GroupController extends Controller
 {
@@ -57,7 +60,13 @@ class GroupController extends Controller
 
     public function showSearch(Request $request): View
     {
+        $personalities = Personality::where('is_public', true)->get();
+        $styles = Style::where('is_public', true)->get();
+        $options = Option::where('is_public', true)->get();
         return view('public.group.search', [
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
         ]);
     }
 
