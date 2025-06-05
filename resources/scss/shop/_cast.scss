@@ -352,6 +352,9 @@
       font-size: 16px;
       line-height: 1.4;
       text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
 
       @media #{media-query(sm)} {
         font-size: 14px;
