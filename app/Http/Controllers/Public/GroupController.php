@@ -32,7 +32,7 @@ class GroupController extends Controller
             ->get();
 
         return view('public.group.home', [
-            'pickups' => Pickup::inRandomOrder()->get(),
+            'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
         ]);
@@ -72,9 +72,14 @@ class GroupController extends Controller
 
     public function showPickup(Request $request): View
     {
+        $pickups = Pickup::with('cast')->whereHas('cast', function ($query) {
+            $query->where('is_public', true);
+        })->get();
+
         return view('public.group.pickup', [
+            'pickups' => $pickups,
         ]);
-    }
+}
 
     public function showPrivacyPolicy(Request $request): View
     {

@@ -11,6 +11,7 @@
       Age {{ $cast->age }}／T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
     </p>
   </div>
+  @if(count($gallerys) > 0)
   <div class="gallery">
     <div class="gallery-slider">
       <div class="gallery-slider__container">
@@ -29,7 +30,7 @@
       </div>
     </div>
   </div>
-  
+  @endif
   <div class="diary">
     <div class="diary-title">
       <h2 class="diary-title__title">Photo Diary</h2>
@@ -156,27 +157,12 @@
         @else
           {{ $personalities.','.$styles }}
         @endif
-        {{-- @foreach($cast->personalities as $personality)
-          <div class="profile-content__personality-item">
-            {{ $personality->name }}
-          </div>
-        @endforeach
-        @foreach($cast->styles as $style)
-          <div class="profile-content__style-item">
-            {{ $style->name }}
-          </div>
-        @endforeach --}}
       </div>
     </div>
     <div class="profile-content__option">
       <h3 class="profile-content__title">Option</h3>
       <div class="profile-content__text">
         {{ $options }}
-        {{-- @foreach($cast->options as $option)
-          <div class="profile-content__option-item">
-            {{ $option->name }}
-          </div>
-        @endforeach --}}
       </div>
     </div>
     <div class="profile-content__bottom">

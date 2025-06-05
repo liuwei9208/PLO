@@ -157,7 +157,7 @@
     color: #333;
     white-space: pre-line;
     text-align: left;
-    padding: 20px;
+    padding: 0 20px 20px;
 
     @media #{media-query(sm)} {
       font-size: 14px;
