@@ -19,7 +19,7 @@
       <li class="pickup-shop" data-shop="shizuku">雫</li>
       <li class="pickup-shop" data-shop="miyabi">雅</li>
       <li class="pickup-shop" data-shop="en">艶</li>
-      <li class="pickup-shop" data-shop="shiroganeze">SIROGANEZE</li>
+      <li class="pickup-shop" data-shop="shiroganeze">シロガネーゼ</li>
       <li class="pickup-shop" data-shop="lovestory">ラブストーリー</li>
     </ul>
     <div class="pickup-list">
@@ -114,3 +114,7 @@
     </picture>
   </div>
 </x-public-group-layout>
+
+@once
+  @vite(['resources/scss/group/_pickup_top.scss'])
+@endonce
