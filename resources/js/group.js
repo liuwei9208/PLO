@@ -51,8 +51,22 @@ const pickupShops = document.querySelectorAll('.pickup-shop')
 if (pickupShops.length > 0) {
   pickupShops.forEach(button => {
     button.addEventListener('click', () => {
-      document.querySelector('.pickup-list').dataset.shop = button.dataset.shop
-      document.querySelector('.pickup-list').classList.add('--expanded')
+      const selectedShop = button.dataset.shop
+      const pickupItems = document.querySelectorAll('.pickup-item')
+      
+      // すべてのボタンからアクティブクラスを削除
+      pickupShops.forEach(btn => btn.classList.remove('is-active'))
+      // クリックされたボタンにアクティブクラスを追加
+      button.classList.add('is-active')
+
+      // 各アイテムの表示/非表示を制御
+      pickupItems.forEach(item => {
+        if (selectedShop === 'all') {
+          item.style.display = 'block'
+        } else {
+          item.style.display = item.classList.contains(`--${selectedShop}`) ? 'block' : 'none'
+        }
+      })
     })
   })
 }
