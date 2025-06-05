@@ -22,14 +22,10 @@
       <li class="pickup-shop-detail" data-shop="shiroganeze">シロガネーゼ</li>
       <li class="pickup-shop-detail" data-shop="lovestory">ラブストーリー</li>
     </div>
-<<<<<<< HEAD
-    {{-- ピックアップ一覧 --}}
-=======
->>>>>>> cdb9331 (新しいスタイルシートを追加し、エラーページやピックアップセクションのスタイルを強化しました。また、キャストコントローラーにギャラリーのファイルアップロード機能を追加し、グループコントローラーでのピックアップ表示を改善しました。さらに、ショップコントローラーのキャストプロフィール表示を修正し、フッターのスタイルを調整しました。)
     <div class="pickup-list-detail " data-shop="all">
     @foreach ($pickups as $pickup)
     <a
-    href=""
+    href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
     class="pickup-item --{{ $pickup->cast->shop->slug }}"
   >
     <div class="pickup-photo">
