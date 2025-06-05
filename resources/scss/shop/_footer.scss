@@ -26,16 +26,25 @@
       @media #{media-query(sm)} {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px 80px;
+        justify-content: center;
+        text-align: left;
+        padding: 0 30px;
       }
 
       li {
         a {
           color: #fff;
           text-decoration: none;
-          font-size: 14px;
+          font-size: 16px;
+          font-weight: 600;
           transition: opacity 0.3s;
           display: block;
           line-height: 1.5;
+          letter-spacing: 0.05em;
+
+          @media #{media-query(sm)} {
+            font-size: 15px;
+          }
 
           &:hover {
             opacity: 0.7;
@@ -46,11 +55,11 @@
   }
 
   .footer-logo {
-    width: 200px;
+    width: 280px;
     margin: 40px 0 0 auto;
 
     @media #{media-query(sm)} {
-      width: 120px;
+      width: 180px;
       margin: 30px 0 0 auto;
     }
 

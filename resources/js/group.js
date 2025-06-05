@@ -58,6 +58,8 @@ if (pickupShops.length > 0) {
 }
 
 
+
+
 /** 新人情報の「もっと見る」ボタン */
 const newfaceMore = document.querySelector('.newface-more')
 if (newfaceMore) {
@@ -67,3 +69,4 @@ if (newfaceMore) {
     document.querySelector('.newface-more').classList.add('is-hidden')
   })
 }
+
