@@ -150,12 +150,12 @@
     aspect-ratio: 108 / 426;
     @media #{media-query(md)} {
       right: 0;
-      bottom: -150px;
+      bottom: 0;
       width: 80px;
     }
     @media #{media-query(lg)} {
       right: 0;
-      bottom: -200px;
+      bottom: 0;
       width: 108px;
     }
   }
