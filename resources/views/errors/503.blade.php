@@ -1,8 +1,5 @@
-@extends('layouts.error')
+<x-error-layout>
 
-@section('title', '503 Service Unavailable')
-
-@section('content')
 <div class="error-page">
   <div class="error-page__content">
     <h1 class="error-page__title">503</h1>
@@ -15,4 +12,5 @@
     <a href="{{ route('public.group.home') }}" class="error-page__link">トップページに戻る</a>
   </div>
 </div>
-@endsection
+
+</x-error-layout>

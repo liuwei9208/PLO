@@ -1,8 +1,4 @@
-@extends('layouts.error')
-
-@section('title', '403 Forbidden')
-
-@section('content')
+<x-error-layout>
 <div class="error-page">
   <div class="error-page__content">
     <h1 class="error-page__title">403</h1>
@@ -14,4 +10,4 @@
     <a href="{{ route('admin.login') }}" class="error-page__link">ログインページに戻る</a>
   </div>
 </div>
-@endsection
+</x-error-layout>
