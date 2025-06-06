@@ -25,4 +25,10 @@ class Pickup extends Model
     {
         return $this->belongsTo(Cast::class);
     }
+
+
+    public function shop(): BelongsTo
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

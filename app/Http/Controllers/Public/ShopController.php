@@ -10,6 +10,8 @@ use Illuminate\View\View;
 use App\Models\Ranking;
 use App\Models\Diary;
 use App\Models\Qa;
+use App\Models\Event;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -18,9 +20,11 @@ class ShopController extends Controller
      */
     public function showHome(Request $request, string $shop): View
     {
+        $events = Event::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('published_at', 'desc')->get();
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
-            'todayCasts' => Cast::where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
+            'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
+            'events' => $events,
         ]);
     }
 
@@ -28,9 +32,14 @@ class ShopController extends Controller
     {
         $cast = Cast::where('id', $id)->where('is_public', 1)->with('styles')->with('personalities')->with('options')->firstOrFail();
         $gallerys = [];
+        $gallery_index = 0;
         for ($i = 0; $i < 10; $i++) {
-            if ($cast['gallery_'. ($i + 1)] !== null || $cast['gallery_'. ($i + 1)] !== '') {
-                $gallerys[$i] = $cast['gallery_'. ($i + 1)];
+            if ($cast['gallery_'. ($i + 1)] !== null && $cast['gallery_'. ($i + 1)] !== '') {
+                if (Storage::disk('public')->exists($cast['gallery_'. ($i + 1)])) {
+                    $gallerys[$gallery_index] = $cast['gallery_'. ($i + 1)];
+                    $gallery_index++;
+                }
+                
             }
         }
         // $diarys = Diary::where('cast_id', $cast->id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
@@ -51,7 +60,6 @@ class ShopController extends Controller
             $options[] = $option->name;
         }
         $options = implode(', ', $options);
-
         return view('public.shop.cast.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,

@@ -29,5 +29,8 @@ class Shop extends Model
     {
         return $this->hasMany(Banner::class);
     }
-
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

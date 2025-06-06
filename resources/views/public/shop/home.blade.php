@@ -18,22 +18,111 @@
     </div>
   </div>
  
-  <!-- Mock -->
+  {{-- <!-- Mock -->
   <div class="mock mock">
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop-mock-sp.png') }}">
       <img src="{{ asset('assets/img/shop-mock-pc.png') }}" alt="">
     </picture>
+  </div> --}}
+  <!-- New Girls -->
+  <div class="new-girls mock mock">
+    <h2 class="new-girls-title">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/newgirls-sm.png') }}">
+        <img src="{{ asset('assets/img/shop/newgirls.png') }}" alt="New Girls">
+      </picture>
+    </h2>
+    <div class="new-girls-list"></div>
   </div>
+  @if ($events->count() > 0)
+  <div class="evnet">
+    <h2 class="event-title">Event</h2>
+    <div class="event-main">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/event-store-sm.png') }}">
+        <img src="{{ asset('assets/img/shop/event-store.png') }}" alt="Event">
+      </picture>
+      <div class="event-slider swiper">
+        <div class="swiper-wrapper">
+          @foreach ($events as $event)
+            <div class="swiper-slide">
+              <div class="event-slide">
+                <div class="event-slide-image">
+                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                </div>
+              </div>
+            </div>
+          @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="event-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </div>
+        <div class="event-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </div>
 
+      </div>
+    </div>
+  </div>
+  @endif
+
+  <div class="castlist mock mock">
+    <h2 class="castlist-title">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/castlist-sm.png') }}">
+        <img src="{{ asset('assets/img/shop/castlist.png') }}" alt="Castlist">
+      </picture>
+    </h2>
+  </div>
   <!-- Fixed Phone Link (SP Only) -->
   <div class="phone-link-container --fixed">
     <x-public.shop.phone-link :shop="$shop" />
   </div>
 </x-public-shop-layout>
 
+@push('scripts')
 <script>
+  import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 document.addEventListener('DOMContentLoaded', function() {
+  if (typeof Swiper !== 'undefined') {
+    const eventSlider = new Swiper('.event-slider', {
+      modules: [Navigation, Pagination, Autoplay],
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      centeredSlides: true,
+      loop: true,
+      speed: 1000,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+        reverseDirection: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.event-slide-next',
+        prevEl: '.event-slide-prev',
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+          centeredSlides: false,
+        }
+      }
+    });
+  } else {
+    console.error('Swiper is not loaded');
+  }
+
   const mvLink = document.querySelector('.phone-link-container.--mv');
   const fixedLink = document.querySelector('.phone-link-container.--fixed');
   const mvElement = document.querySelector('.mv');
@@ -70,3 +159,4 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', updatePhoneLinkVisibility);
 });
 </script>
+@endpush

@@ -123,11 +123,21 @@ class CastController extends Controller
         $file3 = $request->file('file_3');
         $file4 = $request->file('file_4');
         $file5 = $request->file('file_5');
+        $file6 = $request->file('file_6');
+        $file7 = $request->file('file_7');
+        $file8 = $request->file('file_8');
+        $file9 = $request->file('file_9');
+        $file10 = $request->file('file_10');
         $cast->gallery_1 = $file1 ? $file1->store($file_path, 'public') : null;
         $cast->gallery_2 = $file2 ? $file2->store($file_path, 'public') : null;
         $cast->gallery_3 = $file3 ? $file3->store($file_path, 'public') : null;
         $cast->gallery_4 = $file4 ? $file4->store($file_path, 'public') : null;
         $cast->gallery_5 = $file5 ? $file5->store($file_path, 'public') : null;
+        $cast->gallery_6 = $file6 ? $file6->store($file_path, 'public') : null;
+        $cast->gallery_7 = $file7 ? $file7->store($file_path, 'public') : null;
+        $cast->gallery_8 = $file8 ? $file8->store($file_path, 'public') : null;
+        $cast->gallery_9 = $file9 ? $file9->store($file_path, 'public') : null;
+        $cast->gallery_10 = $file10 ? $file10->store($file_path, 'public') : null;
         $cast->save();
 
         return redirect('/admin/cast');
