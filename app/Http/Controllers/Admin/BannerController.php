@@ -72,10 +72,10 @@ class BannerController extends Controller
             'link_url' => 'required',
             'shop_id' => 'required',
         ],[
-            'file_1.required' => 'サムネイルは必須です',
-            'title.required' => 'タイトルは必須です',
-            'link_url.required' => 'リンクURLは必須です',
-            'shop_id.required' => '店舗は必須です',
+            'file_1.required' => __('message.thumbnail_required'),
+            'title.required' => __('message.title_required'),
+            'link_url.required' => __('message.link_url_required'),
+            'shop_id.required' => __('message.shop_id_required'),
         ]);
 
         $banner = Banner::Create([
@@ -91,7 +91,7 @@ class BannerController extends Controller
         $banner->thumbnail = $file1 ? $file1->store($file_path, 'public') : null;
         $banner->save();
 
-        return redirect('/admin/banner')->with('success', 'バナー広告を作登録しました');
+        return redirect('/admin/banner')->with('success', __('message.admin_banner_create_success'));
     }
     /**
      * Display the specified cast.
