@@ -19,6 +19,7 @@
             </div>
           @endforeach
         </div>
+        <div class="swiper-pagination"></div><div class="swiper-pagination"></div>
         <div class="profile-slide-prev">
           <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
         </div>
