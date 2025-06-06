@@ -36,6 +36,7 @@ class ShopController extends Controller
         $cast = Cast::where('id', $id)->where('is_public', 1)->with('styles')->with('personalities')->with('options')->firstOrFail();
         $gallerys = [];
         $gallery_index = 0;
+        // dd($cast);
         for ($i = 0; $i < 10; $i++) {
             if ($cast['gallery_'. ($i + 1)] !== null && $cast['gallery_'. ($i + 1)] !== '') {
                 if (Storage::disk('public')->exists($cast['gallery_'. ($i + 1)])) {

@@ -149,7 +149,7 @@ class CastController extends Controller
     public function show(Request $request, string $id): View
     {
         $qas = Qa::where('cast_id', $id)->with('question')->orderBy('rank', 'asc')->get();
-        
+        // dd(Cast::find($id));
         return view('admin.cast.detail', [
             'cast' => Cast::find($id),
             'shop' => $request->user()->shops->first() ?? null,
