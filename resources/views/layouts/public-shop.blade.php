@@ -11,7 +11,10 @@
     <title>{{ config('app.name', 'PLOグループ') }}</title>
 
     <link rel="icon" href="favicon.ico">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    {{-- {!! $styles ?? '' !!} --}}
+    {{-- {{ $styles ?? '' }} --}}
     <!-- Scripts -->
     @vite(['resources/scss/shop.scss', 'resources/js/shop.js'])
 
@@ -35,5 +38,8 @@
     <!-- Footer -->
     <x-public.shop.footer />
 
+
+    {{-- {!! $scripts ?? '' !!} --}}
+    {{-- {{ $scripts ?? '' }} --}}
   </body>
-</html>
+  </html>
