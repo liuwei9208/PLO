@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RankingController;
 use App\Http\Controllers\Admin\QaController;
+use App\Http\Controllers\Admin\BannerController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -152,5 +153,19 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [QaController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [QaController::class, 'update']);
         Route::delete('{id}', [QaController::class, 'destroy']);
+    });
+
+    /**
+     * Banner master
+     *
+     * @see \App\Http\Controllers\Admin\BannerController
+     */
+    Route::prefix('banner')->name('banner.')->group(function () {
+        Route::get('/', [BannerController::class, 'index'])->name('index');
+        Route::get('add', [BannerController::class, 'create'])->name('create');
+        Route::post('add', [BannerController::class, 'store']);
+        Route::get('{id}', [BannerController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [BannerController::class, 'update']);
+        Route::delete('{id}', [BannerController::class, 'destroy']);
     });
 });
