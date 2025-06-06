@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('shop_id')->constrained('shops')->onDelete('restrict');
+            $table->foreignId('shop_id')->constrained('shops')->onUpdate('cascade')->onDelete('cascade');
             $table->dateTime('published_at')->nullable();
             $table->string('title');
             $table->string('thumbnail')->nullable();
