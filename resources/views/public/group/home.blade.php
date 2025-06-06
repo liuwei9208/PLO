@@ -51,12 +51,45 @@
 
   <!-- 新着情報 - PLO News -->
   <div class="mock mock-1">
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-1-sm.png') }}">
-      <img src="{{ asset('assets/img/mock-1-lg.png') }}" alt="">
-    </picture>
-  </div>
+    <div class="section-title">
+      <h2 class="section-title-news">Event</h2>
+    </div>
+    @if($events->count() > 0)
+      <div class="event-main">
+        <div class="event-main-content">
+          <div class="event-main-date">{{ $events[0]->published_at->format('y.m.d')."  |  " }}</div>
+          <h3 class="event-main-title">{{ $events[0]->title }}</h3>
+        </div>
+        <div class="event-main-image">
+          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        </div>
+      </div>
 
+      <div class="event-slider swiper">
+        <div class="swiper-wrapper">
+          @foreach($events->skip(1) as $event)
+            <div class="swiper-slide">
+              <div class="event-slide">
+                <div class="event-slide-image">
+                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                </div>
+                {{-- <div class="event-slide-date">{{ $event->published_at->format('Y.m.d') }}</div>
+                <h4 class="event-slide-title">{{ $event->title }}</h4> --}}
+              </div>
+            </div>
+          @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+        <button class="event-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </button>
+        <button class="event-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </button>
+      </div>
+    @endif
+  </div>
+  
   <!-- 新人情報 - New Face -->
   <section class="newface">
     <div class="section-title">

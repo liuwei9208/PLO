@@ -14,6 +14,10 @@
 
     <!-- Scripts -->
     @vite(['resources/scss/group.scss', 'resources/js/group.js'])
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    @stack('styles')
   </head>
   <body class="">
 
@@ -30,6 +34,6 @@
 
     <!-- Footer -->
     <x-public.group.footer />
-
+    @stack('scripts')
   </body>
 </html>

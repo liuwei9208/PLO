@@ -13,6 +13,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RankingController;
 use App\Http\Controllers\Admin\QaController;
+use App\Http\Controllers\Admin\EventController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -152,5 +153,19 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [QaController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [QaController::class, 'update']);
         Route::delete('{id}', [QaController::class, 'destroy']);
+    });
+
+    /**
+     * Event
+     *
+     * @see \App\Http\Controllers\Admin\EventController
+     */
+    Route::prefix('event')->name('event.')->group(function () {
+        Route::get('/', [EventController::class, 'index'])->name('index');
+        Route::get('add', [EventController::class, 'create'])->name('create');
+        Route::post('add', [EventController::class, 'store']);
+        Route::get('{id}', [EventController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [EventController::class, 'update']);
+        Route::delete('{id}', [EventController::class, 'destroy']);
     });
 });

@@ -24,4 +24,9 @@ class Shop extends Model
         'folder',
         'video_folder',
     ];
+    
+    public function events()
+    {
+        return $this->hasMany(Event::class);
+    }
 }

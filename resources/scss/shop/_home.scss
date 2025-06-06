@@ -71,3 +71,169 @@
   }
 }
 
+.event {
+  padding: 40px 20px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('../../../public/assets/img/shop/event/bg.svg');
+
+  @media (max-width: 767px) {
+    background-image: url('../../../public/assets/img/shop/event/bg-sp.svg') !important;
+    padding: 30px 15px;
+  }
+
+  &-title {
+    color: #000;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: 30px 0;
+
+    @media (max-width: 767px) {
+      font-size: 24px;
+      margin: 20px 0;
+    }
+  }
+
+  &-main {
+    max-width: 1260px;
+    margin: 0 auto;
+    position: relative;
+
+    picture {
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  &-slider {
+    position: relative;
+    padding: 0 60px;
+    max-width: 1260px;
+    margin: 0 auto;
+
+    @media (max-width: 767px) {
+      padding: 0 40px;
+    }
+
+    .swiper-wrapper {
+      display: flex;
+      gap: 20px;
+
+      @media (max-width: 767px) {
+        gap: 15px;
+      }
+    }
+
+    .swiper-slide {
+      width: 280px;
+      transition: transform 0.3s ease;
+
+      @media (max-width: 767px) {
+        width: 240px;
+      }
+    }
+  }
+
+  &-slide {
+    &-image {
+      width: 100%;
+      height: auto;
+      overflow: hidden;
+      border-radius: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-prev,
+    &-next {
+      width: 40px;
+      height: 40px;
+      z-index: 10;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: none;
+      padding: 0;
+
+      @media (max-width: 767px) {
+        width: 30px;
+        height: 30px;
+      }
+
+      img {
+        width: 40px;
+        height: 40px;
+        object-fit: contain;
+
+        @media (max-width: 767px) {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+      &:hover {
+        background: #fff;
+      }
+
+      &:disabled {
+        opacity: 0.35;
+        cursor: auto;
+        pointer-events: none;
+      }
+    }
+
+    &-prev {
+      left: 0;
+    }
+
+    &-next {
+      right: 0;
+    }
+  }
+}
+
+.swiper {
+  &-pagination {
+    margin-top: 20px;
+    position: relative;
+    bottom: 0;
+
+    @media (max-width: 767px) {
+      margin-top: 15px;
+    }
+
+    &-bullet {
+      width: 8px;
+      height: 8px;
+      background: #ccc;
+      opacity: 1;
+
+      @media (max-width: 767px) {
+        width: 6px;
+        height: 6px;
+      }
+
+      &-active {
+        background: #333;
+      }
+    }
+  }
+}
+

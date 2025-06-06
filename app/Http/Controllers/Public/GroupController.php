@@ -12,7 +12,7 @@ use Illuminate\View\View;
 use App\Models\Personality;
 use App\Models\Style;
 use App\Models\Option;
-
+use App\Models\Event;
 class GroupController extends Controller
 {
     /**
@@ -30,11 +30,13 @@ class GroupController extends Controller
             // ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->inRandomOrder()
             ->get();
+        $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
 
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
+            'events' => $events,
         ]);
     }
 
@@ -54,7 +56,9 @@ class GroupController extends Controller
 
     public function showEvent(Request $request): View
     {
+        $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
         return view('public.group.event', [
+            'events' => $events,
         ]);
     }
 

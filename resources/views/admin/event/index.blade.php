@@ -1,23 +1,29 @@
 <x-admin-layout>
   <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
 
-    <div x-data="{ pageName: `キャスト管理`}">
+    <div x-data="{ pageName: `イベント管理`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
           x-text="pageName"
         ></h2>
         <a
-          href="{{ url('/admin/cast/add') }}"
+          href="{{ url('/admin/event/add') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
-          キャストを追加
+          イベントを追加
         </a>
       </div>
     </div>
+    @if (session('success'))
+      <div class="alert alert-success" style="position: relative; padding: 1rem; margin-bottom: 1rem; border: 1px solid #badbcc; border-radius: 0.375rem; color: #0f5132; background-color: #d1e7dd;">
+        {{ session('success') }}
+      </div>
+    @endif
+
     <!-- Search & Limit -->
     <form
-      action="{{ route('admin.cast.index') }}"
+      action="{{ route('admin.event.index') }}"
       method="get"
       id="search_form"
       class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
@@ -27,28 +33,6 @@
       <div
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
-        <!-- Cast filter -->
-        <div class="mr-2 hidden lg:block">
-          <div class="relative">
-            <span class="absolute top-1/2 left-4 -translate-y-1/2">
-              <svg class="fill-gray-500 dark:fill-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04175 9.37363C3.04175 5.87693 5.87711 3.04199 9.37508 3.04199C12.8731 3.04199 15.7084 5.87693 15.7084 9.37363C15.7084 12.8703 12.8731 15.7053 9.37508 15.7053C5.87711 15.7053 3.04175 12.8703 3.04175 9.37363ZM9.37508 1.54199C5.04902 1.54199 1.54175 5.04817 1.54175 9.37363C1.54175 13.6991 5.04902 17.2053 9.37508 17.2053C11.2674 17.2053 13.003 16.5344 14.357 15.4176L17.177 18.238C17.4699 18.5309 17.9448 18.5309 18.2377 18.238C18.5306 17.9451 18.5306 17.4703 18.2377 17.1774L15.418 14.3573C16.5365 13.0033 17.2084 11.2669 17.2084 9.37363C17.2084 5.04817 13.7011 1.54199 9.37508 1.54199Z" fill=""></path>
-              </svg>
-            </span>
-            <input
-              type="text"
-              name="cast"
-              id="search_form_cast"
-              placeholder="キャスト名"
-              value="{{ request()->cast }}"
-              class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[300px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
-            >
-            <button type="submit" class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
-              <span> 検索 </span>
-            </button>
-          </div>
-        </div>
-
         <!-- Shop filter -->
         @can('edit other shops diaries')
           <div class="mr-2">
@@ -80,7 +64,25 @@
           </div>
         @endcan
 
-        <div class="">
+        <!-- published -->
+        <div class="mr-2">
+          <div class="relative">
+            <input
+              name="published_at"
+              type="date"
+              class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+              onclick="this.showPicker()"
+              value="{{ old('published_at') }}"
+            >
+            <span class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+              <svg class="fill-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.66659 1.5415C7.0808 1.5415 7.41658 1.87729 7.41658 2.2915V2.99984H12.5833V2.2915C12.5833 1.87729 12.919 1.5415 13.3333 1.5415C13.7475 1.5415 14.0833 1.87729 14.0833 2.2915V2.99984L15.4166 2.99984C16.5212 2.99984 17.4166 3.89527 17.4166 4.99984V7.49984V15.8332C17.4166 16.9377 16.5212 17.8332 15.4166 17.8332H4.58325C3.47868 17.8332 2.58325 16.9377 2.58325 15.8332V7.49984V4.99984C2.58325 3.89527 3.47868 2.99984 4.58325 2.99984L5.91659 2.99984V2.2915C5.91659 1.87729 6.25237 1.5415 6.66659 1.5415ZM6.66659 4.49984H4.58325C4.30711 4.49984 4.08325 4.7237 4.08325 4.99984V6.74984H15.9166V4.99984C15.9166 4.7237 15.6927 4.49984 15.4166 4.49984H13.3333H6.66659ZM15.9166 8.24984H4.08325V15.8332C4.08325 16.1093 4.30711 16.3332 4.58325 16.3332H15.4166C15.6927 16.3332 15.9166 16.1093 15.9166 15.8332V8.24984Z" fill=""></path>
+              </svg>
+            </span>
+          </div>
+        </div>
+        <!-- public -->
+        <div class="mr-2">
           <div class="relative z-20 bg-transparent">
             <select
               name="public"
@@ -114,6 +116,11 @@
               </svg>
             </span>
           </div>
+        </div>
+        <div>
+          <button type="submit" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600">
+            <span>検索</span>
+          </button>
         </div>
       </div>
 
@@ -168,7 +175,7 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    キャスト名
+                    店舗名
                   </p>
                 </div>
               </th>
@@ -177,7 +184,16 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    登録日
+                    配信日時
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
+                    タイトル
                   </p>
                 </div>
               </th>
@@ -192,15 +208,6 @@
               </th>
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                    メモ
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
                 </div>
               </th>
             </tr>
@@ -209,51 +216,40 @@
 
           <!-- table body start -->
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-            @foreach ($casts as $cast)
+            @foreach ($events as $event)
               <tr>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
-                    <div class="flex items-center gap-3">
-                      <div>
-                        <span
-                          class="block font-medium text-gray-800 text-theme-sm white-space-nowrap dark:text-white/90"
-                        >
-                          {{ $cast->name }}
-                        </span>
-                        <span
-                          class="block text-gray-500 text-theme-xs white-space-nowrap dark:text-gray-400"
-                        >
-                          {{ $cast->shop->name }}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('Y/m/d') : '' }}
+                      {{ $event->shop->name }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $cast->is_public ? '公開' : '非公開' }}
+                      {{ $event->published_at ? \Carbon\Carbon::createFromTimeString($event->published_at)->format('Y/m/d H:i') : '' }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $cast->memo ? mb_strimwidth($cast->memo, 0, 60, '…') : '' }}
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
+                      {{ $event->title }}
+                    </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center">
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
+                      {{ $event->is_public ? '公開' : '非公開' }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
-                      href="{{ url('/admin/cast/' . $cast->id) }}"
+                      href="{{ url('/admin/event/' . $event->id) }}"
                       class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
                     >
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

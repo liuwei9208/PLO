@@ -1,7 +1,8 @@
 import Swiper from 'swiper'
-import { Autoplay, Navigation } from 'swiper/modules'
+import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
+import 'swiper/css/pagination'
 import Scroll from './group/Scroll'
 import Header from './group/Header'
 import Drawer from './group/Drawer'
@@ -84,3 +85,43 @@ if (newfaceMore) {
   })
 }
 
+// イベントスライダーの初期化
+const initEventSlider = () => {
+  const eventSlider = new Swiper('.event-slider', {
+      modules: [Navigation, Pagination, Autoplay],
+      slidesPerView: 'auto',
+      spaceBetween: 20,
+      centeredSlides: true,
+      loop: true,
+      speed: 1000,
+      autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+          reverseDirection: false,
+      },
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+      navigation: {
+          nextEl: '.event-slide-next',
+          prevEl: '.event-slide-prev',
+      },
+      breakpoints: {
+          320: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+          },
+          768: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+              centeredSlides: false,
+          }
+      }
+  });
+};
+
+// DOMContentLoadedイベントで初期化
+document.addEventListener('DOMContentLoaded', () => {
+  initEventSlider();
+});
