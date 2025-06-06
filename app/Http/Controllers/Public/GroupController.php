@@ -13,6 +13,7 @@ use App\Models\Personality;
 use App\Models\Style;
 use App\Models\Option;
 use App\Models\Event;
+use App\Models\Banner;
 class GroupController extends Controller
 {
     /**
@@ -31,12 +32,13 @@ class GroupController extends Controller
             ->inRandomOrder()
             ->get();
         $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
-
+        $banners = Banner::where('is_public', 1)->orderBy('updated_at', 'desc')->get();
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
             'events' => $events,
+            'banners' => $banners,
         ]);
     }
 

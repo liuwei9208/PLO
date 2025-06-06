@@ -11,6 +11,7 @@ use App\Models\Ranking;
 use App\Models\Diary;
 use App\Models\Qa;
 use App\Models\Event;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
@@ -21,10 +22,12 @@ class ShopController extends Controller
     public function showHome(Request $request, string $shop): View
     {
         $events = Event::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('published_at', 'desc')->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
             'events' => $events,
+            'banners' => $banners,
         ]);
     }
 

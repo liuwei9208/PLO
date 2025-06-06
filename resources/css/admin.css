@@ -54,7 +54,6 @@
 .cast-gallery-item.has-img .cast-gallery-remove svg {
   pointer-events: none;
 }
-
 /**
  * Event
  */
@@ -97,5 +96,49 @@
   pointer-events: all;
 }
 .event-gallery-item.has-img .event-gallery-remove svg {
+  pointer-events: none;
+}
+/**
+ * Banner
+ */
+ .banner-gallery-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 2;
+  width: calc(100% - 10%);
+  min-height: auto !important;
+}
+.banner-gallery-item.has-img {
+  border: 0 !important;
+  pointer-events: none;
+}
+
+.banner-gallery-img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.banner-gallery-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.banner-gallery-item:not(.has-img) .banner-gallery-img {
+  pointer-events: none;
+}
+
+.banner-gallery-remove {
+  top: 0.5rem;
+  right: 0.5rem;
+}
+.banner-gallery-item:not(.has-img) .banner-gallery-remove {
+  display: none;
+}
+.banner-gallery-item.has-img .banner-gallery-remove {
+  cursor: pointer;
+  pointer-events: all;
+}
+.banner-gallery-item.has-img .banner-gallery-remove svg {
   pointer-events: none;
 }

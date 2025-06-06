@@ -24,7 +24,11 @@ class Shop extends Model
         'folder',
         'video_folder',
     ];
-    
+
+    public function banners()
+    {
+        return $this->hasMany(Banner::class);
+    }
     public function events()
     {
         return $this->hasMany(Event::class);
