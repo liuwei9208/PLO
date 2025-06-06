@@ -11,19 +11,20 @@
     <title>{{ config('app.name', 'PLOグループ') }}</title>
 
     <link rel="icon" href="favicon.ico">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     {{-- {!! $styles ?? '' !!} --}}
     {{-- {{ $styles ?? '' }} --}}
     <!-- Scripts -->
     @vite(['resources/scss/shop.scss', 'resources/js/shop.js'])
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
     <!-- Styles -->
     {{-- @if (Request::routeIs('public.shop.home'))
       @vite('resources/scss/shop/home.scss')
     @elseif (Request::routeIs('public.shop.cast.profile'))
       @vite('resources/scss/shop/cast/profile.scss')
     @endif --}}
+    @stack('styles')
   </head>
   <body class="">
 
@@ -41,5 +42,6 @@
 
     {{-- {!! $scripts ?? '' !!} --}}
     {{-- {{ $scripts ?? '' }} --}}
+    @stack('scripts')
   </body>
   </html>

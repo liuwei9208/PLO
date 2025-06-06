@@ -12,6 +12,7 @@ export default defineConfig({
                 'resources/scss/error.scss',
                 'resources/scss/group/_pickup.scss',
                 'resources/scss/group/_pickup_top.scss',
+                'resources/scss/group/_eventview.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

@@ -15,6 +15,11 @@
         </a>
       </div>
     </div>
+    @if (session('success'))
+      <div class="alert alert-success" style="position: relative; padding: 1rem; margin-bottom: 1rem; border: 1px solid #badbcc; border-radius: 0.375rem; color: #0f5132; background-color: #d1e7dd;">
+        {{ session('success') }}
+      </div>
+    @endif
 
     <!-- Search & Limit -->
     <form

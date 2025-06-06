@@ -85,7 +85,7 @@
         </button>
         <button class="event-slide-next">
           <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-        </butt>
+        </button>
       </div>
     @endif
   </div>

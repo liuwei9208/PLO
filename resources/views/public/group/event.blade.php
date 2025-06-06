@@ -27,3 +27,6 @@
   </section>
 
 </x-public-group-layout>
+@once
+  @vite(['resources/scss/group/_eventview.scss'])
+@endonce

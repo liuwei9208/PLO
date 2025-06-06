@@ -15,7 +15,6 @@
         </a>
       </div>
     </div>
-
     <!-- Search & Limit -->
     <form
       action="{{ route('admin.cast.index') }}"

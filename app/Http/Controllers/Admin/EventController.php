@@ -124,14 +124,14 @@ class EventController extends Controller
         $event->thumbnail = $file1 ? $file1->store($file_path, 'public') : null;
         $event->save();
 
-        return redirect('/admin/event');
+        return redirect('/admin/event')->with('success', 'イベントを作成しました。');
     }
     public function destroy(string $id): RedirectResponse
     {
         $event = Event::findOrFail($id);
         $event->delete();
 
-        return redirect('/admin/event');
+        return redirect('/admin/event')->with('success', 'イベントを削除しました。');
     }
 }
 
