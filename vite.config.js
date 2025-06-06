@@ -16,6 +16,7 @@ export default defineConfig({
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
+                'resources/js/shop/profile.js',
             ],
             refresh: true,
         }),

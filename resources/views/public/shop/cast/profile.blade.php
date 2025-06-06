@@ -19,9 +19,12 @@
             </div>
           @endforeach
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
+        <div class="profile-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </div>
+        <div class="profile-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </div>
       </div>
     </div>
   @endif
@@ -118,7 +121,7 @@
       </div>
     </div>
   </div>
-
+  {{-- @push('scripts')
   <script>
   document.addEventListener('DOMContentLoaded', function() {
     const swiper = new Swiper('.gallery-slider', {
@@ -146,4 +149,8 @@
     });
   });
   </script>
+  @endpush --}}
+  @once
+    @vite('resources/js/shop/profile.js')
+  @endonce
 </x-public-shop-layout>
