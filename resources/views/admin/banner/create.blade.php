@@ -134,7 +134,11 @@
         <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
           サムネイル<span class="text-error-500">*</span>
         </h3>
+        @if ($errors->has('file_1'))
+          <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('file_1') }}</p>
+        @endif
       </div>
+
       <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
         <div class="flex gap-6">
           <label
@@ -165,10 +169,6 @@
               </svg>
             </button>
           </label>
-          @if ($errors->has('file_1'))
-            <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('file_1') }}</p>
-          @endif
-
         </div>
       </div>
     </div>

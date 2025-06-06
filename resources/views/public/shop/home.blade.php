@@ -76,6 +76,22 @@
       </picture>
     </h2>
   </div>
+  <!-- 相互リンク - Link -->
+  @if ($banners->count() > 0)
+  <div class="banner">
+    <div class="banner-title">
+      <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
+      <h2 class="banner-title-ja">相互リンク</h2>
+    </div>
+    <div class="banner-list">
+    @foreach ($banners as $banner)
+      <a href="{{ $banner->link_url }}" target="_blank">
+        <img src="{{ asset('storage/' . $banner->thumbnail) }}" alt="{{ $banner->title }}">
+        </a>
+      @endforeach
+    </div>
+  </div>
+  @endif
   <!-- Fixed Phone Link (SP Only) -->
   <div class="phone-link-container --fixed">
     <x-public.shop.phone-link :shop="$shop" />

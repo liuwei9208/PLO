@@ -15,6 +15,7 @@
   <div class="mv-scroll md lg">
     <img src="{{ asset('assets/img/group/mv/scroll.svg') }}" alt="">
   </div>
+  @if(request()->routeIs('public.group.home'))
   <div class="mv-member">
     <img src="{{ asset('assets/img/group/mv/member-sm.png') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/group/mv/member-lg.png') }}" alt="" class="pc-only">
@@ -22,4 +23,5 @@
       <img src="{{ asset('assets/img/group/mv/review-sm.png') }}" alt="">
     </picture>
   </div>
+  @endif
 </div>

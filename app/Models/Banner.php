@@ -14,4 +14,9 @@ class Banner extends Model
         'is_public',
         'thumbnail',
     ];
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

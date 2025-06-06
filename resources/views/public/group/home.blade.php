@@ -140,12 +140,21 @@
   </div>
 
   <!-- 相互リンク - Link -->
-  <div class="mock">
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-link-sm.png') }}">
-      <img src="{{ asset('assets/img/mock-link-lg.png') }}" alt="">
-    </picture>
+  @if ($banners->count() > 0)
+  <div class="banner">
+    <div class="banner-title">
+      <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
+      <h2 class="banner-title-ja">相互リンク</h2>
+    </div>
+    <div class="banner-list">
+    @foreach ($banners as $banner)
+      <a href="{{ $banner->link_url }}" target="_blank">
+        <img src="{{ asset('storage/' . $banner->thumbnail) }}" alt="{{ $banner->title }}">
+        </a>
+      @endforeach
+    </div>
   </div>
+  @endif
 </x-public-group-layout>
 
 @once

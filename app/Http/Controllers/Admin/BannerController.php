@@ -41,7 +41,7 @@ class BannerController extends Controller
         $pages = ceil($total / $limit);
 
         return view('admin.banner.index', [
-          'banners' => $query->orderBy('id', 'asc')->get(),
+          'banners' => $query->with('shop')->orderBy('id', 'asc')->get(),
           'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,
@@ -69,12 +69,10 @@ class BannerController extends Controller
         $validated = $request->validate([
             'file_1' => 'required',
             'title' => 'required',
-            'link_url' => 'required',
             'shop_id' => 'required',
         ],[
             'file_1.required' => __('message.thumbnail_required'),
             'title.required' => __('message.title_required'),
-            'link_url.required' => __('message.link_url_required'),
             'shop_id.required' => __('message.shop_id_required'),
         ]);
 
@@ -99,7 +97,8 @@ class BannerController extends Controller
     public function show(Request $request, string $id): View
     {
         return view('admin.banner.detail', [
-            'banner' => Banner::find($id)
+            'banner' => Banner::findOrFail($id),
+            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
         ]);
     }
 
@@ -115,18 +114,25 @@ class BannerController extends Controller
         // ]);
         $file_path = "banner/{$id}";
         $file1 = $request->file('file_1');
-        $file2 = $request->file('path_2');
-        if ( ($file1 == null && $request->path_1 == null) || ($file2 == null && $request->path_2 == null) ) {
-            return redirect()->back();
+        if ( ($file1 == null && $request->path_1 == null) ) {
+            return redirect()->back()->with('error', __('message.banner_thumbnail_required'));
         }
+        $request->validate([
+            'title' => 'required',
+            'shop_id' => 'required',
+        ],[
+            'title.required' => __('message.title_required'),
+            'shop_id.required' => __('message.shop_id_required'),
+        ]);
         $banner = Banner::find($id);
-        $banner->thumbnail_lg = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
-        $banner->thumbnail_sm = $file2 ? $file2->store($file_path, 'public') : $request->path_2;
+        $banner->thumbnail = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
         $banner->is_public = $request->is_public ? true : false;
-        $banner->url = $request->url;
+        $banner->link_url = $request->link_url;
+        $banner->title = $request->title;
+        $banner->shop_id = $request->shop_id;
         $banner->save();
 
-        return redirect('/admin/banner/' . $banner->id);
+        return redirect(route('admin.banner.index'))->with('success', __('message.admin_banner_update_success'));
     }
 
     /**
@@ -137,6 +143,6 @@ class BannerController extends Controller
         $banner = Banner::find($id);
         $banner->delete();
 
-        return redirect('admin/banner');
+        return redirect(route('admin.banner.index'))->with('success', __('message.admin_banner_delete_success'));
     }
 }
