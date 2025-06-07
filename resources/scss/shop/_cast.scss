@@ -104,19 +104,29 @@
     @media #{media-query(sm)} {
       grid-template-columns: 1fr;
       gap: 30px;
+      display: flex;
+      flex-direction: column;
     }
   }
 
   &__message {
     border-radius: 25px;
     border: 1px solid #000;
-    // padding: 0px 20px 20px;
+    order: 1;
+
+    @media #{media-query(sm)} {
+      order: 2;
+    }
   }
 
   &__qa {
     border-radius: 25px;
     border: 1px solid #000;
-    // padding: 20px;
+    order: 2;
+
+    @media #{media-query(sm)} {
+      order: 1;
+    }
   }
   // &__personality {
   //   border-radius: 25px;
@@ -195,7 +205,8 @@
     overflow: hidden;
 
     @media #{media-query(sm)} {
-      height: 300px;
+      // height: 300px;
+      height: 130%;
     }
 
     .swiper-slide {
@@ -211,7 +222,8 @@
         border-radius: 15px;
 
         @media #{media-query(sm)} {
-          width: 70%;
+          width: 100%;
+          height: 130%;
         }
       }
     }
@@ -331,8 +343,7 @@
       }
 
       @media #{media-query(sm)} {
-        font-size: 14px;
-        padding: 6px 15px;
+        display: none;
       }
     }
   }
@@ -384,6 +395,37 @@
       @media #{media-query(sm)} {
         font-size: 14px;
         padding: 8px;
+      }
+    }
+
+    &__more {
+      display: none;
+      text-align: center;
+      margin-top: 30px;
+
+      @media #{media-query(sm)} {
+        display: block;
+      }
+
+      &__link {
+        display: inline-block;
+        color: #000;
+        text-decoration: none;
+        font-size: 16px;
+        transition: all 0.3s;
+        padding: 8px 20px;
+        border: 1px solid #000;
+        border-radius: 25px;
+        width: 100%;
+        &:hover {
+          background-color: #000;
+          color: #fff;
+        }
+
+        @media #{media-query(sm)} {
+          font-size: 14px;
+          padding: 6px 15px;
+        }
       }
     }
   }

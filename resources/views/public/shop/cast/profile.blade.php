@@ -43,6 +43,9 @@
         </div>
       @endforeach
     </div>
+    <div class="diary-item__more">
+      <a href="#" class="diary-item__more__link">もっと見る</a>
+    </div>
   </div>
 
   <div class="working">
@@ -50,7 +53,10 @@
       <h2 class="working-title__title">Schedule</h2>
     </div>
     <div class="working-container">
-      <img src="{{ asset('assets/img/shop/working.png') }}" alt="Schedule" class="working-image">
+      <picture>
+        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/working-sm.png') }}">
+        <img src="{{ asset('assets/img/shop/working.png') }}" alt="Schedule" class="working-image">
+      </picture>
     </div>
   </div>
 
