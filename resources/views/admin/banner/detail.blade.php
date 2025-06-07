@@ -44,9 +44,6 @@
                 @change="isOptionSelected = true"
               >
                 @role('admin')
-                  <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
-                    店舗を選択してください
-                  </option>
                   @foreach ($shops as $shop)
                     <option
                       value="{{ $shop->id }}"

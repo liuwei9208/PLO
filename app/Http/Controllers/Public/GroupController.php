@@ -21,7 +21,7 @@ class GroupController extends Controller
      */
     public function showHome(Request $request): View
     {
-        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id);
+        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
         $newfaces_this_week = $cast_query
             ->where('created_at', '>=', Carbon::now()->subWeek(2))
             ->inRandomOrder()
@@ -32,7 +32,7 @@ class GroupController extends Controller
             ->inRandomOrder()
             ->get();
         $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
-        $banners = Banner::where('is_public', 1)->orderBy('updated_at', 'desc')->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
@@ -46,7 +46,7 @@ class GroupController extends Controller
     {
         return view('public.group.shop', [
             'pickups' => Pickup::inRandomOrder()->get(),
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
         ]);
     }
 
@@ -99,7 +99,7 @@ class GroupController extends Controller
     }
     public function showNewcomer(Request $request): View
     {
-        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id);
+        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->whereNot('slug', 'headquarter')->first()->id);
         $newcomers = $cast_query
             ->where('created_at', '>=', Carbon::now()->subWeek(2))
             ->inRandomOrder()

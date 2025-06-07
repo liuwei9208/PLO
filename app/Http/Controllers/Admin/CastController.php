@@ -28,7 +28,7 @@ class CastController extends Controller
             $shop_id = $request->user()->shops->first()->id;
             $query = Cast::where('shop_id', $shop_id);
         } else {
-            $query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id);
+            $query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
         }
 
         if ($request->has('cast') && $request->query('cast') !== null) {
@@ -67,7 +67,7 @@ class CastController extends Controller
             'skip' => $skip,
             'total' => $total,
             'pages' => $pages,
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
         ]);
     }
 
@@ -78,7 +78,7 @@ class CastController extends Controller
     {
         return view('admin.cast.create', [
             'shop' => $request->user()->shops->first() ?? null,
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
             'personalities' => Personality::all(),
             'styles' => Style::all(),
@@ -153,7 +153,7 @@ class CastController extends Controller
         return view('admin.cast.detail', [
             'cast' => Cast::find($id),
             'shop' => $request->user()->shops->first() ?? null,
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
             'personalities' => Personality::all(),
             'styles' => Style::all(),

@@ -18,7 +18,7 @@ class PickupController extends Controller
     public function index(Request $request): View
     {
         return view('admin.pickup.index', [
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
         ]);
     }
 
