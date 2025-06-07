@@ -185,6 +185,15 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
+                    サムネイル
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
                     公開設定
                   </p>
                 </div>
@@ -220,6 +229,11 @@
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $banner->link_url }}
                     </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center">
+                    <img src="{{ asset('storage/' . $banner->thumbnail) }}" alt="サムネイル" class="w-auto rounded-full">
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
