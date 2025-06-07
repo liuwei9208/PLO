@@ -15,7 +15,7 @@ class RankingController extends Controller
 {
     public function index(Request $request): View
     {
-        $shops = Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get();
+        $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get();
         return view('admin.ranking.index', [
             'shops' => $shops,
         ]);

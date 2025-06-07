@@ -42,7 +42,7 @@ class BannerController extends Controller
 
         return view('admin.banner.index', [
           'banners' => $query->with('shop')->orderBy('id', 'asc')->get(),
-          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,
           'skip' => $skip,
@@ -57,7 +57,7 @@ class BannerController extends Controller
     public function create(Request $request): View
     {
         return view('admin.banner.create', [
-          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
         ]);
     }
 
@@ -98,7 +98,7 @@ class BannerController extends Controller
     {
         return view('admin.banner.detail', [
             'banner' => Banner::findOrFail($id),
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
         ]);
     }
 

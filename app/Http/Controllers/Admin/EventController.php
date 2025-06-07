@@ -42,7 +42,7 @@ class EventController extends Controller
 
       return view('admin.event.index', [
           'events' => $query->orderBy('id', 'asc')->get(),
-          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+          'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,
           'skip' => $skip,
@@ -60,7 +60,7 @@ class EventController extends Controller
       // dd($event);
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
         ]);
     }
 
@@ -98,7 +98,7 @@ class EventController extends Controller
     public function create(Request $request): View
     {
         return view('admin.event.create', [
-            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
         ]);
     }
     /**
