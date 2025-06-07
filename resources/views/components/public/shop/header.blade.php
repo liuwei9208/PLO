@@ -24,7 +24,7 @@
     <nav class="drawer-nav">
       <div class="drawer-nav-lists">
         <ul class="drawer-nav-list">
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">TOPページ</a></li>
+          <li><a href="{{ route('public.shop.home', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">TOPページ</a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">イベント</a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">キャスト一覧</a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">口コミ一覧</a></li>
