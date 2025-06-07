@@ -14,8 +14,15 @@
  @use 'shop/footer';
  @use 'shop/cast';
  @use 'shop/banner';
+ 
+ 
  .mock {
-   width: 100%;
+  width: 1260px;
+  justify-self: center;
+
+  @media #{media-query(sm)} {
+    width: calc(100% - 40px);
+  }
  }
  .mock img {
    width: 100%;
