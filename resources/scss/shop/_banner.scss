@@ -70,14 +70,10 @@
     margin: 0 auto;
     
     @media #{media-query(md)} {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
     }
 
     @media #{media-query(lg)} {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
       gap: 40px;
     }
 
