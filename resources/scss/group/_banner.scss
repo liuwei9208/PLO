@@ -64,24 +64,20 @@
 
   .banner-list {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-    justify-content: space-around;  
-    @media #{media-query(sm)} {
-      flex-direction: column;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
+    
     @media #{media-query(md)} {
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 30px;
     }
 
     @media #{media-query(lg)} {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 40px;
     }
 
@@ -89,14 +85,6 @@
       display: block;
       width: 100%;
       transition: opacity 0.3s ease;
-
-      @media #{media-query(md)} {
-        width: calc(50% - 15px);
-      }
-
-      @media #{media-query(lg)} {
-        width: calc(50% - 20px);
-      }
 
       &:hover {
         opacity: 0.8;
