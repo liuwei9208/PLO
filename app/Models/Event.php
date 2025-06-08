@@ -12,7 +12,8 @@ class Event extends Model
         'published_at',
         'title',
         'thumbnail',
-        'is_public',
+        'contents',
+        'published_status',
     ];
 
     protected $casts = [

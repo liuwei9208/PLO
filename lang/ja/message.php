@@ -7,5 +7,8 @@ return [
     'admin_banner_create_success' => 'バナー広告を作成しました',
     'admin_banner_update_success' => 'バナー広告を更新しました',
     'admin_banner_delete_success' => 'バナー広告を削除しました',
+    'admin_event_create_success' => 'イベントを作成しました',
+    'admin_event_update_success' => 'イベントを更新しました',
+    'admin_event_delete_success' => 'イベントを削除しました',
 ];
 ?>
