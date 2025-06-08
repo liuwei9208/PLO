@@ -48,7 +48,11 @@
                         <option>17:00</option>
                         <option>17:30</option>
                     </select>
-                </div>
+                    <select style="padding: 4px 8px; border-radius: 4px; border: 1px solid #ccc; min-width: 90px;">
+                      <option>公開</option>
+                      <option>非公開</option>
+                  </select>
+              </div>
                 <!-- 時間軸 -->
                 <div style="display: flex; align-items: center; margin-bottom: 8px; width: 100%;">
                     <div style="width: 20px;"></div>
