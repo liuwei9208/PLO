@@ -63,7 +63,45 @@
             </div>
           </div>
         @endcan
-
+        <div class="mr-2">
+          <div class="relative z-20 bg-transparent">
+            <select
+              name="publish_type"
+              id="publish_type"
+              class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+            >
+              <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                全ての配信設定
+              </option>
+              <option
+                value="1"
+                class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                @selected(1 === request()->publish_type)
+              >
+              今すぐ配信
+              </option>
+              <option
+                value="2"
+                class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                @selected(2 === request()->publish_type)
+              >
+                予定配信
+              </option>
+              <option
+                value="3"
+                class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                @selected(3 === request()->publish_type)
+              >
+                非公開
+              </option>
+            </select>
+            <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+              <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+            </span>
+          </div>
+        </div>
         <!-- published -->
         <div class="mr-2">
           <div class="relative">
@@ -81,7 +119,7 @@
             </span>
           </div>
         </div>
-        <!-- public -->
+        {{-- <!-- public -->
         <div class="mr-2">
           <div class="relative z-20 bg-transparent">
             <select
@@ -116,7 +154,7 @@
               </svg>
             </span>
           </div>
-        </div>
+        </div> --}}
         <div>
           <button type="submit" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600">
             <span>検索</span>
@@ -184,15 +222,6 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    配信日時
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
                     タイトル
                   </p>
                 </div>
@@ -202,7 +231,25 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    公開設定
+                    サムネイル
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
+                   配信設定
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
+                    配信日時
                   </p>
                 </div>
               </th>
@@ -228,21 +275,26 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->published_at ? \Carbon\Carbon::createFromTimeString($event->published_at)->format('Y/m/d H:i') : '' }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $event->title }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
+                    <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="サムネイル" class="w-auto rounded-full">
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->is_public ? '公開' : '非公開' }}
+                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '予定配信' : ($event->published_status === 3 ? '下書中': '')) }}
+                    </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center">
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
+                      {{ $event->published_at ? \Carbon\Carbon::createFromTimeString($event->published_at)->format('Y/m/d H:i') : '' }}
                     </p>
                   </div>
                 </td>

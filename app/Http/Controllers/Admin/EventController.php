@@ -26,8 +26,11 @@ class EventController extends Controller
 
       }
 
-      if ($request->has('public') && $request->query('public') !== null) {
-        $query->where('is_public', $request->query('public') ? true : false);
+      // if ($request->has('public') && $request->query('public') !== null) {
+      //   $query->where('is_public', $request->query('public') ? true : false);
+      // }
+      if ( $request->has('publish_type') && $request->query('publish_type') !== null) {
+        $query->where('published_status', $request->query('publish_type'));
       }
       if ( $request->has('published_at') && $request->query('published_at') !== null) {
         $query->where('published_at', $request->query('published_at'));
@@ -42,7 +45,7 @@ class EventController extends Controller
 
       return view('admin.event.index', [
           'events' => $query->orderBy('id', 'asc')->get(),
-          'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
+          'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,
           'skip' => $skip,
@@ -56,11 +59,11 @@ class EventController extends Controller
      */
     public function show(Request $request, string $id): View
     {
-      $event = Event::findOrFail($id);
+      // $event = Event::findOrFail($id);
       // dd($event);
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
         ]);
     }
 
@@ -73,24 +76,27 @@ class EventController extends Controller
       //   'cast_name' => 'required',
       //   'shop_id' => 'required',
       // ]);
-
+      $request->validate([
+        'title' => 'required',
+        'shop_id' => 'required',
+      ],['title.required' => 'タイトルは必須です。','shop_id.required' => '店舗は必須です。']);
       $file_path = "event/{$id}";
       $file1 = $request->file('file_1');
       if ( ($file1 == null && $request->path_1 == null) ) {
-        return redirect()->back();
+        return redirect()->back()->withErrors(['file_1' => '画像は必須です。']);
       }
-
+      // dd($request);
       $event = Event::find($id);
       $event->title = $request->title;
       $event->shop_id = $request->shop_id;
       $event->published_at = $request->published_at;
-      $event->is_public = $request->is_public ? true : false;
+      $event->published_status = $request->publish_type;
       $event->thumbnail = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
-
+      $event->contents = $request->event_content;
       $event->save();
 
 
-      return redirect('/admin/event/' . $event->id);
+      return redirect('/admin/event')->with('success', __('message.admin_event_update_success'));
     }
     /**
      * Create a event.
@@ -98,7 +104,7 @@ class EventController extends Controller
     public function create(Request $request): View
     {
         return view('admin.event.create', [
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
         ]);
     }
     /**
@@ -111,27 +117,29 @@ class EventController extends Controller
             'title' => 'required',
             'file_1' => 'required',
         ],['file_1.required' => '画像は必須です。','title.required' => 'タイトルは必須です。','shop_id.required' => '店舗は必須です。']);
-        // dd($request->is_public ? true : false);
+        // dd($request);
+        $published_status = $request->publish_type;
+        // dd($published_status);
         $event = Event::Create([
             'title' => $request->title,
             'shop_id' => $request->shop_id,
             'published_at' => $request->published_at,
-            'is_public' => $request->is_public ? true : false,
-            'is_public' => 1,
+            'published_status' => $published_status,
+            'contents' => $request->event_content,
         ]);
         $file_path = "event/{$event->id}";
         $file1 = $request->file('file_1');
         $event->thumbnail = $file1 ? $file1->store($file_path, 'public') : null;
         $event->save();
 
-        return redirect('/admin/event')->with('success', 'イベントを作成しました。');
+        return redirect('/admin/event')->with('success', __('message.admin_event_create_success'));
     }
     public function destroy(string $id): RedirectResponse
     {
         $event = Event::findOrFail($id);
         $event->delete();
 
-        return redirect('/admin/event')->with('success', 'イベントを削除しました。');
+        return redirect('/admin/event')->with('success', __('message.admin_event_delete_success'));
     }
 }
 
