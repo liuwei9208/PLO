@@ -31,7 +31,13 @@ class GroupController extends Controller
             // ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->inRandomOrder()
             ->get();
-        $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
+        $events = Event::where('published_status', 1)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orderBy('published_at', 'desc')
+            ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),

@@ -76,10 +76,10 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-image: url('../../../public/assets/img/shop/event/bg.svg');
+  background-image: url('/assets/img/shop/event/bg.svg');
 
   @media (max-width: 767px) {
-    background-image: url('../../../public/assets/img/shop/event/bg-sp.svg') !important;
+    background-image: url('/assets/img/shop/event/bg-sp.svg') !important;
     padding: 30px 15px;
   }
 

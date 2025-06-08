@@ -25,6 +25,7 @@ export default defineConfig({
         viteStaticCopy({
             targets: [
               { src: 'node_modules/tinymce/skins', dest: 'js/tinymce' },
+              { src: 'public/assets/*', dest: 'assets' },
             ],
           }),
     ],
