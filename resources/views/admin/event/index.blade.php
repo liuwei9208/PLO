@@ -280,8 +280,8 @@
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center" style="width: 200px;">
-                    <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="サムネイル" class="w-auto rounded-full">
+                  <div class="flex items-center" style="width: 100px;">
+                    <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="サムネイル" class="w-auto">
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
