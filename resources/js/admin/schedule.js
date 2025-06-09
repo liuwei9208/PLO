@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const tab = document.createElement('div');
             tab.className = 'date-tab';
+            
+            // 土曜日と日曜日のクラスを追加
+            if (date.getDay() === 0) { // 日曜日
+                tab.classList.add('sunday');
+            } else if (date.getDay() === 6) { // 土曜日
+                tab.classList.add('saturday');
+            }
+            
             if (i === 0) {
                 tab.classList.add('active');
                 tab.innerHTML = `${month}/${day}(${weekday})<div class="active-indicator"></div>`;
