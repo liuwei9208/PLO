@@ -101,12 +101,22 @@ class ShopController extends Controller
     
     public function showEvent(Request $request, string $shop): View
     {
-        $events = Event::where('published_status', 1)
-            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
-            ->orWhere(function($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', Carbon::now());
-            })  
+        // $events = Event::where('published_status', 1)
+        //     ->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        //     ->orWhere(function($query) {
+        //         $query->where('published_status', 2)
+        //             ->where('published_at', '<=', Carbon::now());
+        //     })  
+        //     ->orderBy('published_at', 'desc')
+        //     ->get();
+        $events = Event::where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where(function($query) {
+                $query->where('published_status', 1)
+                    ->orWhere(function($query) {
+                        $query->where('published_status', 2)
+                            ->where('published_at', '<=', Carbon::now());
+                    });
+            })
             ->orderBy('published_at', 'desc')
             ->get();
         return view('public.shop.event', [
@@ -114,4 +124,13 @@ class ShopController extends Controller
             'events' => $events,
         ]);
     }
+
+    public function showEventDetail(Request $request, string $shop, string $id): View
+    {
+        $event = Event::find($id);
+        return view('public.shop.eventDetail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'event' => $event,
+        ]);
+    }   
 }

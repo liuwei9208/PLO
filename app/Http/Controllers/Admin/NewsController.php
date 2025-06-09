@@ -45,7 +45,7 @@ class NewsController extends Controller
       $pages = ceil($total / $limit);
 
       return view('admin.news.index', [
-          'news' => $query->orderBy('id', 'asc')->get(),
+          'news' => $query->orderBy('updated_at', 'desc')->get(),
           'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,

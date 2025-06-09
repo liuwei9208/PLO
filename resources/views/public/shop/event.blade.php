@@ -13,7 +13,9 @@
       @foreach ($events as $event)
         <div class="event-list-item">
           <div class="event-list-item-image">
-            <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+            <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $event->id]) }}">
+              <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+            </a>
           </div>
           <div class="event-list-item-published-at">
             <p>{{ $event->published_at->format('y:m:d') }}</p>
