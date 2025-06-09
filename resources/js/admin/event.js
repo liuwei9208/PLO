@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const input = instance.input;
       const inputRect = input.getBoundingClientRect();
       const scheduleDatetimeRect = scheduleDatetime.getBoundingClientRect();
+      calendar.style.zIndex = '1000';
       
     }
   });
