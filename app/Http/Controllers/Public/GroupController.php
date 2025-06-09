@@ -83,12 +83,18 @@ class GroupController extends Controller
                 ->where('published_at', '<=', Carbon::now());
         })
         ->orderBy('published_at', 'desc')
-        ->get();        
+        ->get();
         return view('public.group.event', [
             'events' => $events,
         ]);
     }
-
+    public function showEventDetail(Request $request, string $id): View
+    {
+        $event = Event::find($id);
+        return view('public.group.eventDetail', [
+            'event' => $event,
+        ]);
+    }
     public function showSearch(Request $request): View
     {
         $personalities = Personality::where('is_public', true)->get();

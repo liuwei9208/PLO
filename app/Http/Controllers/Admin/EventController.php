@@ -44,7 +44,7 @@ class EventController extends Controller
       $pages = ceil($total / $limit);
 
       return view('admin.event.index', [
-          'events' => $query->orderBy('id', 'asc')->get(),
+          'events' => $query->orderBy('updated_at', 'desc')->get(),
           'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,

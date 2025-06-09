@@ -45,7 +45,7 @@ class NewsController extends Controller
       $pages = ceil($total / $limit);
 
       return view('admin.news.index', [
-          'news' => $query->orderBy('id', 'asc')->get(),
+          'news' => $query->orderBy('updated_at', 'desc')->get(),
           'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
           'page' => $page,
           'limit' => $limit,
@@ -81,12 +81,18 @@ class NewsController extends Controller
         'title' => 'required',
         'shop_id' => 'required',
       ],['title.required' => 'タイトルは必須です。','shop_id.required' => '店舗は必須です。']);
+      $file_path = "news/{$id}";
+      $file1 = $request->file('file_1');
+      if ( ($file1 == null && $request->path_1 == null) ) {
+        return redirect()->back()->withErrors(['file_1' => '画像は必須です。']);
+      }
 
       $news = News::find($id);
       $news->title = $request->title;
       $news->shop_id = $request->shop_id;
       $news->published_at = $request->published_at;
       $news->published_status = $request->publish_type;
+      $news->thumbnail = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
       $news->contents = $request->news_content;
       $news->save();
 
@@ -110,7 +116,8 @@ class NewsController extends Controller
         $validated = $request->validate([
             'shop_id' => 'required',
             'title' => 'required',
-        ],['title.required' => 'タイトルは必須です。','shop_id.required' => '店舗は必須です。']);
+            'file_1' => 'required',
+        ],['title.required' => 'タイトルは必須です。','shop_id.required' => '店舗は必須です。','file_1.required' => '画像は必須です。']);
         // dd($request);
         $published_status = $request->publish_type;
         // dd($published_status);
@@ -121,6 +128,9 @@ class NewsController extends Controller
             'published_status' => $published_status,
             'contents' => $request->news_content,
         ]);
+        $file_path = "news/{$news->id}";
+        $file1 = $request->file('file_1');
+        $news->thumbnail = $file1 ? $file1->store($file_path, 'public') : null;
         $news->save();
 
         return redirect('/admin/news')->with('success', __('message.admin_news_create_success'));

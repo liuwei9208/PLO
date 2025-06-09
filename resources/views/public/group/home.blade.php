@@ -78,7 +78,9 @@
         <h3 class="event-main-title">{{ $events[0]->title }}</h3>
       </div>
       <div class="event-main-image">
-        <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        <a href="{{ route('public.group.event.detail', ['id' => $events[0]->id]) }}">
+          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        </a>
       </div>
     </div>
 
@@ -88,7 +90,9 @@
           <div class="swiper-slide">
             <div class="event-slide">
               <div class="event-slide-image">
-                <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                </a>
               </div>
               {{-- <div class="event-slide-date">{{ $event->published_at->format('Y.m.d') }}</div>
               <h4 class="event-slide-title">{{ $event->title }}</h4> --}}

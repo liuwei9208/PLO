@@ -12,6 +12,7 @@ class News extends Model
         'published_at',
         'title',
         'contents',
+        'thumbnail',
         'published_status',
     ];
 
