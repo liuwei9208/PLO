@@ -18,7 +18,8 @@ export default defineConfig({
                 'resources/js/group.js',
                 'resources/js/shop.js',
                 'resources/js/shop/profile.js',
-                'resources/js/admin/event.js'
+                'resources/js/admin/event.js',
+                'resources/js/admin/news.js'
             ],
             refresh: true,
         }),
