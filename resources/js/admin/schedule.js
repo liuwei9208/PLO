@@ -46,4 +46,86 @@ document.addEventListener('DOMContentLoaded', function() {
         startSelect.addEventListener('change', updateGridBackground);
         endSelect.addEventListener('change', updateGridBackground);
     });
+
+    // フォームの追加と削除の機能
+    const scheduleForms = document.querySelectorAll('.schedule-forms');
+
+    // 新しいフォームを作成する関数
+    function createNewForm() {
+        const newForm = document.createElement('div');
+        newForm.className = 'schedule-form active';
+        newForm.innerHTML = `
+            <button class="delete-form-btn">×</button>
+            <div class="form-time-selector">
+                <select class="form-start-time">
+                    ${generateTimeOptions()}
+                </select>
+                <span class="form-time-separator">～</span>
+                <select class="form-end-time">
+                    ${generateTimeOptions()}
+                </select>
+            </div>
+            <button class="register-btn">登録</button>
+        `;
+        return newForm;
+    }
+
+    // 追加ボタンを作成する関数
+    function createAddButton() {
+        const addBtn = document.createElement('div');
+        addBtn.className = 'add-form-btn';
+        addBtn.textContent = '＋';
+        return addBtn;
+    }
+
+    // フォームの追加と削除のイベントを設定する関数
+    function setupFormEvents(form) {
+        const deleteBtn = form.querySelector('.delete-form-btn');
+        deleteBtn.addEventListener('click', function() {
+            const addBtn = createAddButton();
+            form.replaceWith(addBtn);
+            setupAddButtonEvents(addBtn);
+        });
+    }
+
+    // 追加ボタンのイベントを設定する関数
+    function setupAddButtonEvents(addBtn) {
+        addBtn.addEventListener('click', function() {
+            const newForm = createNewForm();
+            this.replaceWith(newForm);
+            setupFormEvents(newForm);
+        });
+    }
+
+    scheduleForms.forEach(scheduleForm => {
+        // 既存の追加ボタンにイベントを設定
+        const addButtons = scheduleForm.querySelectorAll('.add-form-btn');
+        addButtons.forEach(addButton => {
+            setupAddButtonEvents(addButton);
+        });
+
+        // 既存のフォームの削除ボタンにイベントを設定
+        const deleteButtons = scheduleForm.querySelectorAll('.delete-form-btn');
+        deleteButtons.forEach(deleteButton => {
+            const form = deleteButton.closest('.schedule-form');
+            deleteButton.addEventListener('click', function() {
+                const addBtn = createAddButton();
+                form.replaceWith(addBtn);
+                setupAddButtonEvents(addBtn);
+            });
+        });
+    });
+
+    // 時間オプションを生成する関数
+    function generateTimeOptions() {
+        let options = '';
+        for (let hour = 8; hour <= 24; hour++) {
+            for (let min = 0; min < 60; min += 30) {
+                if (hour === 24 && min === 30) continue;
+                const timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+                options += `<option value="${timeStr}">${timeStr}</option>`;
+            }
+        }
+        return options;
+    }
 });

@@ -160,6 +160,9 @@
                     </div>
                     <!-- 空の追加ボックス -->
                     <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
                 </div>
             </div>
         </div>
