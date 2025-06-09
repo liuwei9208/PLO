@@ -231,6 +231,15 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
+                    サムネイル
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
                    配信設定
                   </p>
                 </div>
@@ -268,6 +277,11 @@
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $new->title }}
                     </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center" style="width: 100px;">
+                    <img src="{{ asset('storage/' . $new->thumbnail) }}" alt="サムネイル" class="w-auto">
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
