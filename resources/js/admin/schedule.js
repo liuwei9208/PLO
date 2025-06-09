@@ -128,4 +128,109 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return options;
     }
+
+    // 日付ナビゲーション機能
+    const scheduleDate = document.querySelector('.schedule-date');
+    const prevWeekBtn = document.querySelector('.prev-week-btn');
+    const nextWeekBtn = document.querySelector('.next-week-btn');
+    const dateTabs = document.querySelector('.date-tabs');
+    
+    // 現在の日付を設定（テスト用：6/9）
+    let currentDate = new Date();
+    currentDate.setMonth(5); // 6月（0から始まるため5）
+    currentDate.setDate(9);
+    let currentWeekStart = getWeekStart(currentDate);
+
+    // 週の開始日を取得する関数
+    function getWeekStart(date) {
+        const day = date.getDay();
+        const diff = date.getDate() - day;
+        return new Date(date.setDate(diff));
+    }
+
+    // 日付をフォーマットする関数
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1;
+        const day = date.getDate();
+        const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+        const weekday = weekdays[date.getDay()];
+        return `${year}年${month}月${day}日(${weekday})`;
+    }
+
+    // 先週ボタンの無効化状態を更新する関数
+    function updatePrevWeekButtonState() {
+        const today = new Date();
+        today.setMonth(5); // 6月（0から始まるため5）
+        today.setDate(9);
+        const todayWeekStart = getWeekStart(today);
+        
+        if (currentWeekStart.getTime() === todayWeekStart.getTime()) {
+            prevWeekBtn.classList.add('disabled');
+        } else {
+            prevWeekBtn.classList.remove('disabled');
+        }
+    }
+
+    // 日付タブを生成する関数
+    function generateDateTabs(startDate) {
+        dateTabs.innerHTML = '';
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+            const weekday = weekdays[date.getDay()];
+            
+            const tab = document.createElement('div');
+            tab.className = 'date-tab';
+            if (i === 0) {
+                tab.classList.add('active');
+                tab.innerHTML = `${month}/${day}(${weekday})<div class="active-indicator"></div>`;
+            } else {
+                tab.textContent = `${month}/${day}(${weekday})`;
+            }
+            
+            tab.addEventListener('click', () => {
+                // アクティブなタブを更新
+                document.querySelectorAll('.date-tab').forEach(t => {
+                    t.classList.remove('active');
+                    t.innerHTML = t.textContent;
+                });
+                tab.classList.add('active');
+                tab.innerHTML = `${month}/${day}(${weekday})<div class="active-indicator"></div>`;
+                
+                // スケジュール日付を更新
+                scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
+            });
+            
+            dateTabs.appendChild(tab);
+        }
+    }
+
+    // 初期表示
+    generateDateTabs(currentWeekStart);
+    scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
+    updatePrevWeekButtonState();
+
+    // 先週ボタンのクリックイベント
+    prevWeekBtn.addEventListener('click', () => {
+        if (prevWeekBtn.classList.contains('disabled')) {
+            return;
+        }
+        
+        currentWeekStart.setDate(currentWeekStart.getDate() - 7);
+        generateDateTabs(currentWeekStart);
+        scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
+        updatePrevWeekButtonState();
+    });
+
+    // 翌週ボタンのクリックイベント
+    nextWeekBtn.addEventListener('click', () => {
+        currentWeekStart.setDate(currentWeekStart.getDate() + 7);
+        generateDateTabs(currentWeekStart);
+        scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
+        updatePrevWeekButtonState();
+    });
 });
