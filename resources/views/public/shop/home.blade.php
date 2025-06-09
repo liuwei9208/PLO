@@ -85,7 +85,7 @@
   </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner">
+  <div class="banner content-wrapper">
     {{-- <div class="banner-title">
       <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
       <h2 class="banner-title-ja">相互リンク</h2>
