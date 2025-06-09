@@ -14,12 +14,14 @@ export default defineConfig({
                 'resources/scss/group/_pickup.scss',
                 'resources/scss/group/_pickup_top.scss',
                 'resources/scss/group/_eventview.scss',
+                'resources/scss/admin/schedule.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
                 'resources/js/shop/profile.js',
                 'resources/js/admin/event.js',
                 'resources/js/admin/news.js'
+                'resources/js/admin/schedule.js'
             ],
             refresh: true,
         }),
