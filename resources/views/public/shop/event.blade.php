@@ -1,7 +1,7 @@
-<x-public-group-layout>
+<x-public-shop-layout :shop="$shop">
 
-  <!-- Main Visual -->
-  <x-public.group.mv />
+
+
 
   <!-- Event List -->
   <section class="event">
@@ -26,7 +26,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-shop-layout>
 @once
   @vite(['resources/scss/group/_eventview.scss'])
 @endonce

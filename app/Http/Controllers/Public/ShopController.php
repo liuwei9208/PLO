@@ -98,4 +98,20 @@ class ShopController extends Controller
             'rankings' => $rankings,
         ]);
     }
+    
+    public function showEvent(Request $request, string $shop): View
+    {
+        $events = Event::where('published_status', 1)
+            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })  
+            ->orderBy('published_at', 'desc')
+            ->get();
+        return view('public.shop.event', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'events' => $events,
+        ]);
+    }
 }

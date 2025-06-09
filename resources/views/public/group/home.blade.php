@@ -2,9 +2,26 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-
-
-
+  @if($news->count() > 0)
+  <section class="plo_news content-wrapper">
+    <div class="section-title">
+      <img src="{{ asset('assets/img/plo_news.png') }}" alt="PLO News">
+      <h2 class="section-title-ja">新着情報</h2>
+    </div>
+    <div class="plo_news-list">
+      @foreach($news as $news)
+        <div class="plo_news-item">
+          {{-- <div class="plo_news-item-title">
+            {{ $news->title }}
+          </div>
+          <div class="plo_news-item-content">
+            {{ $news->contents }}
+          </div> --}}
+        </div>
+      @endforeach
+    </div>
+  </section>
+  @endif
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
@@ -140,7 +157,7 @@
 
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner">
+  <div class="banner content-wrapper">
     <div class="banner-title">
       <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
       <h2 class="banner-title-ja">相互リンク</h2>

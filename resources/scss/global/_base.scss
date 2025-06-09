@@ -38,3 +38,14 @@ a {
     }
   }
 }
+
+.content-wrapper {
+  max-width: 1260px;
+  margin: 0 auto;
+  @media #{media-query(md)} {
+    width: calc(100% - 20px);
+  }
+  @media #{media-query(lg)} {
+    width: calc(100% - 40px);
+  }
+}

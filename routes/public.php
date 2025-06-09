@@ -37,6 +37,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('/', [ShopController::class, 'showHome'])->name('home');
         Route::get('cast/{id}', [ShopController::class, 'showCastProfile'])->name('cast.profile');
         Route::get('ranking', [ShopController::class, 'showRanking'])->name('ranking');
+        Route::get('event', [ShopController::class, 'showEvent'])->name('event');
     });
 });
 
