@@ -197,7 +197,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [NewsController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [NewsController::class, 'update']);
         Route::delete('{id}', [NewsController::class, 'destroy']);
-
+    });
     Route::prefix('schedule')->name('schedule.')->group(function () {
         Route::get('/', [ScheduleController::class, 'index'])->name('index');
     });
