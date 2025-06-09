@@ -7,16 +7,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 現在の日付を設定（テスト用：6/9）
     let currentDate = new Date();
-    currentDate.setMonth(5); // 6月（0から始まるため5）
-    currentDate.setDate(9);
+    console.log({currentDate});
+    // currentDate.setMonth(5); // 6月（0から始まるため5）
+    // currentDate.setDate(9);
     let currentWeekStart = getWeekStart(currentDate);
-
+    console.log({currentWeekStart});
     // 週の開始日を取得する関数
     function getWeekStart(date) {
-        const day = date.getDay();
-        const diff = date.getDate() - day;
+        // const day = date.getDay();
+        // console.log({day});
+        // const diff = date.getDate() - day;
+        // console.log('date: ', date.getDate());
+        // console.log({diff});
         const weekStart = new Date(date);
-        weekStart.setDate(diff);
+        // weekStart.setDate(diff);
         return weekStart;
     }
 
@@ -33,14 +37,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // 先週ボタンの無効化状態を更新する関数
     function updatePrevWeekButtonState() {
         const today = new Date();
-        today.setMonth(5); // 6月（0から始まるため5）
-        today.setDate(9);
+        // today.setMonth(5); // 6月（0から始まるため5）
+        // today.setDate(9);
         const todayWeekStart = getWeekStart(today);
-        
-        if (currentWeekStart.getTime() === todayWeekStart.getTime()) {
-            prevWeekBtn.classList.add('disabled');
+        console.log({todayWeekStart});
+        console.log({currentWeekStart});
+        console.log(currentWeekStart.getDate());
+        console.log(todayWeekStart.getDate());
+        if (currentWeekStart.getMonth() === todayWeekStart.getMonth() && currentWeekStart.getDate() === todayWeekStart.getDate()) {
+            prevWeekBtn.classList.add('week-btn-disabled');
         } else {
-            prevWeekBtn.classList.remove('disabled');
+            prevWeekBtn.classList.remove('week-btn-disabled');
         }
     }
 
@@ -88,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 先週ボタンのクリックイベント
     prevWeekBtn.addEventListener('click', () => {
-        if (prevWeekBtn.classList.contains('disabled')) {
+        if (prevWeekBtn.classList.contains('week-btn-disabled')) {
             return;
         }
         
