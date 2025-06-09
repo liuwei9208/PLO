@@ -39,17 +39,24 @@
   <div class="evnet">
     <h2 class="event-title">Event</h2>
     <div class="event-main">
-      <picture>
+      <div class="event-main-image">
+        <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $events[0]->id]) }}">
+          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        </a>
+      </div>
+      {{-- <picture>
         <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/event-store-sm.png') }}">
         <img src="{{ asset('assets/img/shop/event-store.png') }}" alt="Event">
-      </picture>
+      </picture> --}}
       <div class="event-slider swiper">
         <div class="swiper-wrapper">
-          @foreach ($events as $event)
+          @foreach ($events->skip(1) as $event)
             <div class="swiper-slide">
               <div class="event-slide">
                 <div class="event-slide-image">
-                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                  <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $event->id]) }}">
+                    <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                  </a>
                 </div>
               </div>
             </div>
