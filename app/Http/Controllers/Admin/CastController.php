@@ -76,12 +76,14 @@ class CastController extends Controller
      */
     public function create(Request $request): View
     {
+        $questions = Question::where('is_public', true)->orderBy('id', 'asc')->get();
         return view('admin.cast.create', [
             'shop' => $request->user()->shops->first() ?? null,
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
             'personalities' => Personality::all(),
             'styles' => Style::all(),
+            'questions' => $questions,
         ]);
     }
 
@@ -139,6 +141,26 @@ class CastController extends Controller
         $cast->gallery_9 = $file9 ? $file9->store($file_path, 'public') : null;
         $cast->gallery_10 = $file10 ? $file10->store($file_path, 'public') : null;
         $cast->save();
+
+        $questions = $request->input('question', []);
+        
+        foreach ($questions as $index => $question_id) {
+            if (is_numeric($question_id)) {
+                Qa::create([
+                    'cast_id' => $cast->id,
+                    'question_id' => $question_id,
+                    'answer' => $request->input('a'.($index + 1)),
+                    'rank' => $index + 1,
+                ]);
+            }else if ( $question_id === null ) {
+                Qa::create([
+                    'cast_id' => $cast->id,
+                    'question_id' => null,
+                    'answer' => $request->input('a'.($index + 1)),
+                    'rank' => $index + 1,
+                ]);
+            }
+        }
 
         return redirect('/admin/cast');
     }
