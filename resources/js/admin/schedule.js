@@ -123,6 +123,71 @@ document.addEventListener('DOMContentLoaded', function() {
     const startTimeSelects = document.querySelectorAll('.start-time');
     const endTimeSelects = document.querySelectorAll('.end-time');
 
+    // アクティブなフォームの時間選択を監視する関数
+    function watchActiveFormTimeSelection() {
+        const activeForm = document.querySelector('.schedule-form.active');
+        if (activeForm) {
+            const formStartTime = activeForm.querySelector('.form-start-time');
+            const formEndTime = activeForm.querySelector('.form-end-time');
+            const gridCells = document.querySelectorAll('.grid-cells')[0];
+
+            // 時間を分に変換する関数
+            function timeToMinutes(timeStr) {
+                const [hours, minutes] = timeStr.split(':').map(Number);
+                return hours * 60 + minutes;
+            }
+
+            // グリッドセルの背景色を更新する関数
+            function updateGridBackground() {
+                const startTime = formStartTime.value;
+                const endTime = formEndTime.value;
+                
+                // 選択された時間を分に変換
+                const startMinutes = timeToMinutes(startTime);
+                const endMinutes = timeToMinutes(endTime);
+                
+                // グリッドセルを取得
+                const cells = gridCells.querySelectorAll('.grid-cell');
+                
+                // 出勤時間の背景色を更新
+                const startTimeSelect = document.querySelector('.start-time');
+                const endTimeSelect = document.querySelector('.end-time');
+                
+                if (startTimeSelect && endTimeSelect) {
+                    const workStartMinutes = timeToMinutes(startTimeSelect.value);
+                    const workEndMinutes = timeToMinutes(endTimeSelect.value);
+                    
+                    cells.forEach((cell, index) => {
+                        const cellStartMinutes = 8 * 60 + index * 30;
+                        const cellEndMinutes = cellStartMinutes + 30;
+                        
+                        if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+                            cell.style.backgroundColor = 'red';
+                        }
+                    });
+                }
+                
+                // フォームの時間範囲の背景色を更新
+                cells.forEach((cell, index) => {
+                    const cellStartMinutes = 8 * 60 + index * 30;
+                    const cellEndMinutes = cellStartMinutes + 30;
+                    
+                    if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+                        // 既存の背景色を保持したまま、新しい背景色を設定
+                        const currentColor = cell.style.backgroundColor;
+                        if (currentColor === 'red') {
+                            cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                        }
+                    }
+                });
+            }
+
+            // 時間選択の変更を監視
+            formStartTime.addEventListener('change', updateGridBackground);
+            formEndTime.addEventListener('change', updateGridBackground);
+        }
+    }
+
     // 時間選択の変更を監視
     startTimeSelects.forEach((startSelect, index) => {
         const endSelect = endTimeSelects[index];
@@ -153,13 +218,16 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 選択された時間範囲のセルの背景色を変更
             cells.forEach((cell, index) => {
-                const cellStartMinutes = 8 * 60 + index * 30; // 8時から30分間隔で計算
+                const cellStartMinutes = 8 * 60 + index * 30;
                 const cellEndMinutes = cellStartMinutes + 30;
                 
-                if (cellStartMinutes >= startMinutes && cellEndMinutes <= endMinutes) {
+                if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
                     cell.style.backgroundColor = 'red';
                 }
             });
+
+            // アクティブなフォームの時間選択を監視
+            watchActiveFormTimeSelection();
         }
 
         // 時間選択の変更を監視
@@ -169,6 +237,81 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // フォームの追加と削除の機能
     const scheduleForms = document.querySelectorAll('.schedule-forms');
+
+    // フォームの追加と削除のイベントを設定する関数
+    function setupFormEvents(form) {
+        const deleteBtn = form.querySelector('.delete-form-btn');
+        const startTimeSelect = form.querySelector('.form-start-time');
+        const endTimeSelect = form.querySelector('.form-end-time');
+        const gridCells = document.querySelectorAll('.grid-cells')[0];
+
+        // 時間を分に変換する関数
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+
+        // グリッドセルの背景色を更新する関数
+        function updateGridBackground() {
+            const startTime = startTimeSelect.value;
+            const endTime = endTimeSelect.value;
+            
+            // 選択された時間を分に変換
+            const startMinutes = timeToMinutes(startTime);
+            const endMinutes = timeToMinutes(endTime);
+            
+            // グリッドセルを取得
+            const cells = gridCells.querySelectorAll('.grid-cell');
+            
+            // 出勤時間の背景色を更新
+            const startTimeSelect = document.querySelector('.start-time');
+            const endTimeSelect = document.querySelector('.end-time');
+            
+            if (startTimeSelect && endTimeSelect) {
+                const workStartMinutes = timeToMinutes(startTimeSelect.value);
+                const workEndMinutes = timeToMinutes(endTimeSelect.value);
+                
+                cells.forEach((cell, index) => {
+                    const cellStartMinutes = 8 * 60 + index * 30;
+                    const cellEndMinutes = cellStartMinutes + 30;
+                    
+                    if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+                        cell.style.backgroundColor = 'red';
+                    }
+                });
+            }
+            
+            // フォームの時間範囲の背景色を更新
+            cells.forEach((cell, index) => {
+                const cellStartMinutes = 8 * 60 + index * 30;
+                const cellEndMinutes = cellStartMinutes + 30;
+                
+                if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+                    // 既存の背景色を保持したまま、新しい背景色を設定
+                    const currentColor = cell.style.backgroundColor;
+                    if (currentColor === 'red') {
+                        cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                    }
+                }
+            });
+        }
+
+        // 時間選択の変更を監視
+        startTimeSelect.addEventListener('change', updateGridBackground);
+        endTimeSelect.addEventListener('change', updateGridBackground);
+
+        deleteBtn.addEventListener('click', function() {
+            // フォーム削除時に背景色をリセット
+            const cells = gridCells.querySelectorAll('.grid-cell');
+            cells.forEach(cell => {
+                cell.style.backgroundColor = '#eee';
+            });
+            
+            const addBtn = createAddButton();
+            form.replaceWith(addBtn);
+            setupAddButtonEvents(addBtn);
+        });
+    }
 
     // 新しいフォームを作成する関数
     function createNewForm() {
@@ -196,16 +339,6 @@ document.addEventListener('DOMContentLoaded', function() {
         addBtn.className = 'add-form-btn';
         addBtn.textContent = '＋';
         return addBtn;
-    }
-
-    // フォームの追加と削除のイベントを設定する関数
-    function setupFormEvents(form) {
-        const deleteBtn = form.querySelector('.delete-form-btn');
-        deleteBtn.addEventListener('click', function() {
-            const addBtn = createAddButton();
-            form.replaceWith(addBtn);
-            setupAddButtonEvents(addBtn);
-        });
     }
 
     // 追加ボタンのイベントを設定する関数
