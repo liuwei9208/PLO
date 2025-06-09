@@ -20,6 +20,7 @@ export default defineConfig({
                 'resources/js/shop.js',
                 'resources/js/shop/profile.js',
                 'resources/js/admin/event.js',
+                'resources/js/admin/news.js'
                 'resources/js/admin/schedule.js'
             ],
             refresh: true,
