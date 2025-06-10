@@ -127,14 +127,12 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePrevWeekButtonState();
     });
 
-    // 時間選択の要素を取得
-    const startTimeSelects = document.querySelectorAll('.start-time');
-    const endTimeSelects = document.querySelectorAll('.end-time');
-
-    // 時間選択の変更を監視
-    startTimeSelects.forEach((startSelect, index) => {
-        const endSelect = endTimeSelects[index];
-        const gridCells = document.querySelectorAll('.grid-cells')[index];
+    // 各キャストセクションの処理
+    document.querySelectorAll('.schedule-cast-section').forEach(section => {
+        // 時間選択の要素を取得
+        const startTimeSelect = section.querySelector('.start-time');
+        const endTimeSelect = section.querySelector('.end-time');
+        const gridCells = section.querySelector('.grid-cells');
 
         // 時間を分に変換する関数
         function timeToMinutes(timeStr) {
@@ -144,8 +142,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // グリッドセルの背景色を更新する関数
         function updateGridBackground() {
-            const startTime = startSelect.value;
-            const endTime = endSelect.value;
+            const startTime = startTimeSelect.value;
+            const endTime = endTimeSelect.value;
             
             // 選択された時間を分に変換
             const startMinutes = timeToMinutes(startTime);
@@ -170,7 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             // 次に登録済みのフォームの時間範囲を表示
-            const registeredForms = document.querySelectorAll('.schedule-form.registered');
+            const registeredForms = section.querySelectorAll('.schedule-form.registered');
             registeredForms.forEach(form => {
                 const formStartTime = form.querySelector('.form-start-time').value;
                 const formEndTime = form.querySelector('.form-end-time').value;
@@ -193,162 +191,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // 時間選択の変更を監視
-        startSelect.addEventListener('change', updateGridBackground);
-        endSelect.addEventListener('change', updateGridBackground);
-    });
-
-    // フォームの追加と削除の機能
-    const scheduleForms = document.querySelectorAll('.schedule-forms');
-
-    // フォームの追加と削除のイベントを設定する関数
-    function setupFormEvents(form) {
-        const deleteBtn = form.querySelector('.delete-form-btn');
-        const startTimeSelect = form.querySelector('.form-start-time');
-        const endTimeSelect = form.querySelector('.form-end-time');
-        const registerBtn = form.querySelector('.register-btn');
-        const gridCells = document.querySelectorAll('.grid-cells')[0];
-
-        // 時間を分に変換する関数
-        function timeToMinutes(timeStr) {
-            const [hours, minutes] = timeStr.split(':').map(Number);
-            return hours * 60 + minutes;
-        }
-
-        // グリッドセルの背景色を更新する関数
-        function updateGridBackground() {
-            const startTime = startTimeSelect.value;
-            const endTime = endTimeSelect.value;
-            
-            // 選択された時間を分に変換
-            const startMinutes = timeToMinutes(startTime);
-            const endMinutes = timeToMinutes(endTime);
-            
-            // グリッドセルを取得
-            const cells = gridCells.querySelectorAll('.grid-cell');
-            
-            // すべてのセルの背景色をリセット
-            cells.forEach(cell => {
-                cell.style.backgroundColor = '#eee';
-            });
-            
-            // 出勤時間の背景色を更新
-            const workStartTime = document.querySelector('.start-time').value;
-            const workEndTime = document.querySelector('.end-time').value;
-            const workStartMinutes = timeToMinutes(workStartTime);
-            const workEndMinutes = timeToMinutes(workEndTime);
-            
-            cells.forEach((cell, index) => {
-                const cellStartMinutes = 8 * 60 + index * 30;
-                const cellEndMinutes = cellStartMinutes + 30;
-                
-                if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
-                    cell.style.backgroundColor = 'red';
-                }
-            });
-            
-            // 登録済みのフォームの時間範囲を表示
-            const registeredForms = document.querySelectorAll('.schedule-form.registered');
-            registeredForms.forEach(registeredForm => {
-                const formStartTime = registeredForm.querySelector('.form-start-time').value;
-                const formEndTime = registeredForm.querySelector('.form-end-time').value;
-                
-                const formStartMinutes = timeToMinutes(formStartTime);
-                const formEndMinutes = timeToMinutes(formEndTime);
-                
-                cells.forEach((cell, index) => {
-                    const cellStartMinutes = 8 * 60 + index * 30;
-                    const cellEndMinutes = cellStartMinutes + 30;
-                    
-                    if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
-                        const currentColor = cell.style.backgroundColor;
-                        if (currentColor === 'red') {
-                            cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
-                        }
-                    }
-                });
-            });
-        }
-
-        // 時間選択の変更を監視
         startTimeSelect.addEventListener('change', updateGridBackground);
         endTimeSelect.addEventListener('change', updateGridBackground);
 
-        // 登録ボタンのクリックイベント
-        registerBtn.addEventListener('click', function() {
-            const startTime = startTimeSelect.value;
-            const endTime = endTimeSelect.value;
-            
-            // 選択された時間を分に変換
-            const startMinutes = timeToMinutes(startTime);
-            const endMinutes = timeToMinutes(endTime);
-            
-            // グリッドセルを取得
-            const cells = gridCells.querySelectorAll('.grid-cell');
-            
-            // すべてのセルの背景色をリセット
-            cells.forEach(cell => {
-                cell.style.backgroundColor = '#eee';
-            });
-            
-            // 1. まず出勤時間の背景色を更新
-            const workStartTime = document.querySelector('.start-time').value;
-            const workEndTime = document.querySelector('.end-time').value;
-            const workStartMinutes = timeToMinutes(workStartTime);
-            const workEndMinutes = timeToMinutes(workEndTime);
-            
-            cells.forEach((cell, index) => {
-                const cellStartMinutes = 8 * 60 + index * 30;
-                const cellEndMinutes = cellStartMinutes + 30;
-                
-                if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
-                    cell.style.backgroundColor = 'red';
-                }
-            });
-            
-            // 2. クリックしたフォームの時間範囲の背景色を更新
-            cells.forEach((cell, index) => {
-                const cellStartMinutes = 8 * 60 + index * 30;
-                const cellEndMinutes = cellStartMinutes + 30;
-                
-                if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
-                    const currentColor = cell.style.backgroundColor;
-                    if (currentColor === 'red') {
-                        cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
-                    }
-                }
-            });
+        // フォームの追加と削除の機能
+        const scheduleForms = section.querySelector('.schedule-forms');
 
-            // 3. 登録済みのフォームの時間範囲を表示
-            const registeredForms = document.querySelectorAll('.schedule-form.registered');
-            registeredForms.forEach(registeredForm => {
-                const formStartTime = registeredForm.querySelector('.form-start-time').value;
-                const formEndTime = registeredForm.querySelector('.form-end-time').value;
-                
-                const formStartMinutes = timeToMinutes(formStartTime);
-                const formEndMinutes = timeToMinutes(formEndTime);
-                
-                cells.forEach((cell, index) => {
-                    const cellStartMinutes = 8 * 60 + index * 30;
-                    const cellEndMinutes = cellStartMinutes + 30;
-                    
-                    if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
-                        const currentColor = cell.style.backgroundColor;
-                        if (currentColor === 'red') {
-                            cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
-                        }
-                    }
-                });
-            });
+        // フォームの追加と削除のイベントを設定する関数
+        function setupFormEvents(form) {
+            const deleteBtn = form.querySelector('.delete-form-btn');
+            const startTimeSelect = form.querySelector('.form-start-time');
+            const endTimeSelect = form.querySelector('.form-end-time');
+            const registerBtn = form.querySelector('.register-btn');
 
-            // 登録済み状態に変更
-            registerBtn.textContent = '登録済';
-            registerBtn.classList.add('registered');
-            form.classList.add('registered');
-        });
+            // 時間を分に変換する関数
+            function timeToMinutes(timeStr) {
+                const [hours, minutes] = timeStr.split(':').map(Number);
+                return hours * 60 + minutes;
+            }
 
-        deleteBtn.addEventListener('click', function() {
-            // フォームが登録済みの場合のみ時間グリッドを更新
-            if (form.classList.contains('registered')) {
+            // グリッドセルの背景色を更新する関数
+            function updateGridBackground() {
+                const startTime = startTimeSelect.value;
+                const endTime = endTimeSelect.value;
+                
+                // 選択された時間を分に変換
+                const startMinutes = timeToMinutes(startTime);
+                const endMinutes = timeToMinutes(endTime);
+                
                 // グリッドセルを取得
                 const cells = gridCells.querySelectorAll('.grid-cell');
                 
@@ -358,8 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // 出勤時間の背景色を更新
-                const workStartTime = document.querySelector('.start-time').value;
-                const workEndTime = document.querySelector('.end-time').value;
+                const workStartTime = section.querySelector('.start-time').value;
+                const workEndTime = section.querySelector('.end-time').value;
                 const workStartMinutes = timeToMinutes(workStartTime);
                 const workEndMinutes = timeToMinutes(workEndTime);
                 
@@ -373,11 +243,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 
                 // 登録済みのフォームの時間範囲を表示
-                const registeredForms = document.querySelectorAll('.schedule-form.registered');
+                const registeredForms = section.querySelectorAll('.schedule-form.registered');
                 registeredForms.forEach(registeredForm => {
-                    // 削除対象のフォームは除外
-                    if (registeredForm === form) return;
-                    
                     const formStartTime = registeredForm.querySelector('.form-start-time').value;
                     const formEndTime = registeredForm.querySelector('.form-end-time').value;
                     
@@ -397,67 +264,191 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 });
             }
-            
-            // フォームを削除して追加ボタンに置き換え
-            const addBtn = createAddButton();
-            form.replaceWith(addBtn);
-            setupAddButtonEvents(addBtn);
-        });
-    }
 
-    // 新しいフォームを作成する関数
-    function createNewForm() {
-        const newForm = document.createElement('div');
-        newForm.className = 'schedule-form active';
-        newForm.innerHTML = `
-            <button class="delete-form-btn">×</button>
-            <div class="form-time-selector">
-                <select class="form-start-time">
-                    ${generateTimeOptions()}
-                </select>
-                <span class="form-time-separator">～</span>
-                <select class="form-end-time">
-                    ${generateTimeOptions()}
-                </select>
-            </div>
-            <button class="register-btn">登録</button>
-        `;
-        return newForm;
-    }
+            // 時間選択の変更を監視
+            startTimeSelect.addEventListener('change', updateGridBackground);
+            endTimeSelect.addEventListener('change', updateGridBackground);
 
-    // 追加ボタンを作成する関数
-    function createAddButton() {
-        const addBtn = document.createElement('div');
-        addBtn.className = 'add-form-btn';
-        addBtn.textContent = '＋';
-        return addBtn;
-    }
+            // 登録ボタンのクリックイベント
+            registerBtn.addEventListener('click', function() {
+                const startTime = startTimeSelect.value;
+                const endTime = endTimeSelect.value;
+                
+                // 選択された時間を分に変換
+                const startMinutes = timeToMinutes(startTime);
+                const endMinutes = timeToMinutes(endTime);
+                
+                // グリッドセルを取得
+                const cells = gridCells.querySelectorAll('.grid-cell');
+                
+                // すべてのセルの背景色をリセット
+                cells.forEach(cell => {
+                    cell.style.backgroundColor = '#eee';
+                });
+                
+                // 1. まず出勤時間の背景色を更新
+                const workStartTime = section.querySelector('.start-time').value;
+                const workEndTime = section.querySelector('.end-time').value;
+                const workStartMinutes = timeToMinutes(workStartTime);
+                const workEndMinutes = timeToMinutes(workEndTime);
+                
+                cells.forEach((cell, index) => {
+                    const cellStartMinutes = 8 * 60 + index * 30;
+                    const cellEndMinutes = cellStartMinutes + 30;
+                    
+                    if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+                        cell.style.backgroundColor = 'red';
+                    }
+                });
+                
+                // 2. クリックしたフォームの時間範囲の背景色を更新
+                cells.forEach((cell, index) => {
+                    const cellStartMinutes = 8 * 60 + index * 30;
+                    const cellEndMinutes = cellStartMinutes + 30;
+                    
+                    if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+                        const currentColor = cell.style.backgroundColor;
+                        if (currentColor === 'red') {
+                            cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                        }
+                    }
+                });
 
-    // 追加ボタンのイベントを設定する関数
-    function setupAddButtonEvents(addBtn) {
-        addBtn.addEventListener('click', function() {
-            const newForm = createNewForm();
-            this.replaceWith(newForm);
-            setupFormEvents(newForm);
-        });
-    }
+                // 3. 登録済みのフォームの時間範囲を表示
+                const registeredForms = section.querySelectorAll('.schedule-form.registered');
+                registeredForms.forEach(registeredForm => {
+                    const formStartTime = registeredForm.querySelector('.form-start-time').value;
+                    const formEndTime = registeredForm.querySelector('.form-end-time').value;
+                    
+                    const formStartMinutes = timeToMinutes(formStartTime);
+                    const formEndMinutes = timeToMinutes(formEndTime);
+                    
+                    cells.forEach((cell, index) => {
+                        const cellStartMinutes = 8 * 60 + index * 30;
+                        const cellEndMinutes = cellStartMinutes + 30;
+                        
+                        if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+                            const currentColor = cell.style.backgroundColor;
+                            if (currentColor === 'red') {
+                                cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                            }
+                        }
+                    });
+                });
 
-    scheduleForms.forEach(scheduleForm => {
+                // 登録済み状態に変更
+                registerBtn.textContent = '登録済';
+                registerBtn.classList.add('registered');
+                form.classList.add('registered');
+            });
+
+            deleteBtn.addEventListener('click', function() {
+                // フォームが登録済みの場合のみ時間グリッドを更新
+                if (form.classList.contains('registered')) {
+                    // グリッドセルを取得
+                    const cells = gridCells.querySelectorAll('.grid-cell');
+                    
+                    // すべてのセルの背景色をリセット
+                    cells.forEach(cell => {
+                        cell.style.backgroundColor = '#eee';
+                    });
+                    
+                    // 出勤時間の背景色を更新
+                    const workStartTime = section.querySelector('.start-time').value;
+                    const workEndTime = section.querySelector('.end-time').value;
+                    const workStartMinutes = timeToMinutes(workStartTime);
+                    const workEndMinutes = timeToMinutes(workEndTime);
+                    
+                    cells.forEach((cell, index) => {
+                        const cellStartMinutes = 8 * 60 + index * 30;
+                        const cellEndMinutes = cellStartMinutes + 30;
+                        
+                        if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+                            cell.style.backgroundColor = 'red';
+                        }
+                    });
+                    
+                    // 登録済みのフォームの時間範囲を表示
+                    const registeredForms = section.querySelectorAll('.schedule-form.registered');
+                    registeredForms.forEach(registeredForm => {
+                        // 削除対象のフォームは除外
+                        if (registeredForm === form) return;
+                        
+                        const formStartTime = registeredForm.querySelector('.form-start-time').value;
+                        const formEndTime = registeredForm.querySelector('.form-end-time').value;
+                        
+                        const formStartMinutes = timeToMinutes(formStartTime);
+                        const formEndMinutes = timeToMinutes(formEndTime);
+                        
+                        cells.forEach((cell, index) => {
+                            const cellStartMinutes = 8 * 60 + index * 30;
+                            const cellEndMinutes = cellStartMinutes + 30;
+                            
+                            if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+                                const currentColor = cell.style.backgroundColor;
+                                if (currentColor === 'red') {
+                                    cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                                }
+                            }
+                        });
+                    });
+                }
+                
+                // フォームを削除して追加ボタンに置き換え
+                const addBtn = createAddButton();
+                form.replaceWith(addBtn);
+                setupAddButtonEvents(addBtn);
+            });
+        }
+
+        // 新しいフォームを作成する関数
+        function createNewForm() {
+            const newForm = document.createElement('div');
+            newForm.className = 'schedule-form active';
+            newForm.innerHTML = `
+                <button class="delete-form-btn">×</button>
+                <div class="form-time-selector">
+                    <select class="form-start-time">
+                        ${generateTimeOptions()}
+                    </select>
+                    <span class="form-time-separator">～</span>
+                    <select class="form-end-time">
+                        ${generateTimeOptions()}
+                    </select>
+                </div>
+                <button class="register-btn">登録</button>
+            `;
+            return newForm;
+        }
+
+        // 追加ボタンを作成する関数
+        function createAddButton() {
+            const addBtn = document.createElement('div');
+            addBtn.className = 'add-form-btn';
+            addBtn.textContent = '＋';
+            return addBtn;
+        }
+
+        // 追加ボタンのイベントを設定する関数
+        function setupAddButtonEvents(addBtn) {
+            addBtn.addEventListener('click', function() {
+                const newForm = createNewForm();
+                this.replaceWith(newForm);
+                setupFormEvents(newForm);
+            });
+        }
+
         // 既存の追加ボタンにイベントを設定
-        const addButtons = scheduleForm.querySelectorAll('.add-form-btn');
+        const addButtons = scheduleForms.querySelectorAll('.add-form-btn');
         addButtons.forEach(addButton => {
             setupAddButtonEvents(addButton);
         });
 
         // 既存のフォームの削除ボタンにイベントを設定
-        const deleteButtons = scheduleForm.querySelectorAll('.delete-form-btn');
+        const deleteButtons = scheduleForms.querySelectorAll('.delete-form-btn');
         deleteButtons.forEach(deleteButton => {
             const form = deleteButton.closest('.schedule-form');
-            deleteButton.addEventListener('click', function() {
-                const addBtn = createAddButton();
-                form.replaceWith(addBtn);
-                setupAddButtonEvents(addBtn);
-            });
+            setupFormEvents(form);
         });
     });
 
