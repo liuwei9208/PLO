@@ -133,4 +133,11 @@ class ShopController extends Controller
             'event' => $event,
         ]);
     }   
+
+    public function showAbout(Request $request, string $shop): View
+    {
+        return view('public.shop.about', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 }
