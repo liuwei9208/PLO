@@ -40,6 +40,7 @@
         <div class="about-content-map-title">
           所在地マップ
         </div>
+        @if($shop->address1!="")
         <div class="about-content-map-content">
           <iframe
             style="border:0"
@@ -49,6 +50,7 @@
             src="https://www.google.com/maps?q={{ $shop->address1." ".$shop->address2 }}&output=embed">
           </iframe>
         </div>
+        @endif
       </div>
     </div>
   </section>
