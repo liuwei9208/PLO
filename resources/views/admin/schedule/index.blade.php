@@ -32,7 +32,7 @@
             <div class="schedule-row">
                 <!-- キャスト情報（上段） -->
                 <div class="cast-info">
-                    <img class="cast-image" src="https://randomuser.me/api/portraits/women/1.jpg" alt="キャスト写真">
+                    <img class="cast-image" src="https://randomuser.me/api/portraits/women/20.jpg" alt="キャスト写真">
                     <div class="cast-name">山咲　花</div>
                 </div>
                 <!-- 出勤予定エリア（上段） -->
