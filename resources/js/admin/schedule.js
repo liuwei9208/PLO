@@ -134,11 +134,92 @@ document.addEventListener('DOMContentLoaded', function() {
         const endTimeSelect = section.querySelector('.end-time');
         const gridCells = section.querySelector('.grid-cells');
 
+        // 時間グリッドのドラッグ機能
+        let isDragging = false;
+        let startCellIndex = -1;
+        let endCellIndex = -1;
+
+        // セルのインデックスを取得する関数
+        function getCellIndex(cell) {
+            return Array.from(gridCells.querySelectorAll('.grid-cell')).indexOf(cell);
+        }
+
         // 時間を分に変換する関数
         function timeToMinutes(timeStr) {
             const [hours, minutes] = timeStr.split(':').map(Number);
             return hours * 60 + minutes;
         }
+
+        // 分を時間文字列に変換する関数
+        function minutesToTimeString(minutes) {
+            const hours = Math.floor(minutes / 60);
+            const mins = minutes % 60;
+            return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+        }
+
+        // 選択範囲の時間を更新する関数
+        function updateSelectedTime() {
+            if (startCellIndex === -1 || endCellIndex === -1) return;
+
+            const startMinutes = 8 * 60 + Math.min(startCellIndex, endCellIndex) * 30;
+            const endMinutes = 8 * 60 + (Math.max(startCellIndex, endCellIndex) + 1) * 30;
+
+            const startTimeStr = minutesToTimeString(startMinutes);
+            const endTimeStr = minutesToTimeString(endMinutes);
+
+            // 開始時間と終了時間のセレクトボックスを更新
+            startTimeSelect.value = startTimeStr;
+            endTimeSelect.value = endTimeStr;
+
+            // グリッドの背景色を更新
+            updateGridBackground();
+        }
+
+        // セルの背景色を更新する関数
+        function updateCellsBackground() {
+            gridCells.querySelectorAll('.grid-cell').forEach((cell, index) => {
+                if (startCellIndex === -1 || endCellIndex === -1) {
+                    cell.style.backgroundColor = '#eee';
+                    return;
+                }
+
+                const minIndex = Math.min(startCellIndex, endCellIndex);
+                const maxIndex = Math.max(startCellIndex, endCellIndex);
+
+                if (index >= minIndex && index <= maxIndex) {
+                    cell.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+                } else {
+                    cell.style.backgroundColor = '#eee';
+                }
+            });
+        }
+
+        // マウスイベントの設定
+        gridCells.querySelectorAll('.grid-cell').forEach(cell => {
+            cell.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startCellIndex = getCellIndex(cell);
+                endCellIndex = startCellIndex;
+                updateCellsBackground();
+            });
+
+            cell.addEventListener('mouseover', (e) => {
+                if (isDragging) {
+                    endCellIndex = getCellIndex(e.target);
+                    updateCellsBackground();
+                }
+            });
+        });
+
+        // マウスアップ時の処理
+        document.addEventListener('mouseup', () => {
+            if (isDragging) {
+                isDragging = false;
+                updateSelectedTime();
+                startCellIndex = -1;
+                endCellIndex = -1;
+            }
+        });
 
         // グリッドセルの背景色を更新する関数
         function updateGridBackground() {
