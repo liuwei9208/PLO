@@ -24,7 +24,9 @@
                 </div>
                 <div class="info-item">
                     <div class="info-label --{{ $shop->slug }}">営業時間</div>
+                    @if($shop->open_start && $shop->open_end)
                     <div class="info-value">{{ $shop->open_start->format('H:i')."〜".$shop->open_end->format('H:i') }}</div>
+                    @endif
                 </div>
                 <div class="info-item">
                     <div class="info-label --{{ $shop->slug }}">店舗情報</div>
