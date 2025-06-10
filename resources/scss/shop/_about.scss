@@ -105,7 +105,7 @@
                 .info-item {
                     display: flex;
                     border: 1px solid #e5e5e5;
-                    margin-bottom: 15px;
+                    // margin-bottom: 15px;
 
                     &:last-child {
                         margin-bottom: 0;
@@ -113,11 +113,11 @@
 
                     @media #{media-query(md)} {
                         flex-direction: column;
-                        margin-bottom: 12px;
+                        // margin-bottom: 12px;
                     }
 
                     @media #{media-query(sm)} {
-                        margin-bottom: 10px;
+                        // margin-bottom: 10px;
                     }
                 }
 
