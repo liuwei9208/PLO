@@ -16,6 +16,10 @@
         width: 100%;
         margin: 0 auto;
         padding: 0 20px;
+
+        @media #{media-query(md)} {
+            padding: 0 15px;
+        }
     }
 
     .about-title {
@@ -51,7 +55,13 @@
 
         @media #{media-query(md)} {
             font-size: $title-font-size-md;
-            margin-bottom: 30px;
+            margin: 30px 0;
+            padding: 10px 0;
+        }
+
+        @media #{media-query(sm)} {
+            font-size: 20px;
+            margin: 20px 0;
         }
     }
 
@@ -62,7 +72,11 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 
         @media #{media-query(md)} {
-            padding: 20px;
+            padding: 25px;
+        }
+
+        @media #{media-query(sm)} {
+            padding: 15px;
         }
 
         &-title {
@@ -79,22 +93,31 @@
                 padding-bottom: 10px;
             }
 
+            @media #{media-query(sm)} {
+                font-size: 18px;
+                margin-bottom: 15px;
+                padding-bottom: 8px;
+            }
         }
 
         &-text {
             .shop-info {
                 .info-item {
                     display: flex;
-                    // margin-bottom: 25px;
-                    // line-height: 1.6;
                     border: 1px solid #e5e5e5;
-                    @media #{media-query(md)} {
-                        flex-direction: column;
-                        // margin-bottom: 20px;
-                    }
+                    margin-bottom: 15px;
 
                     &:last-child {
                         margin-bottom: 0;
+                    }
+
+                    @media #{media-query(md)} {
+                        flex-direction: column;
+                        margin-bottom: 12px;
+                    }
+
+                    @media #{media-query(sm)} {
+                        margin-bottom: 10px;
                     }
                 }
 
@@ -103,10 +126,10 @@
                     font-weight: bold;
                     color: $white;
                     flex-shrink: 0;
-                    padding: 8px 12px;
-                    // border-radius: 4px;
+                    padding: 12px;
                     text-align: center;
                     align-content: center;
+
                     &.--pussycat {
                         background-color: $shop-color-pussycat;
                     }
@@ -134,17 +157,29 @@
                     @media #{media-query(md)} {
                         width: 100%;
                         margin-bottom: 5px;
+                        padding: 8px;
+                    }
+
+                    @media #{media-query(sm)} {
+                        padding: 6px;
                     }
                 }
 
                 .info-value {
                     flex: 1;
                     color: #333;
-                    padding-left: 20px;
+                    padding: 12px 20px;
                     align-content: center;
+                    line-height: 1.5;
+
                     @media #{media-query(md)} {
                         width: 100%;
-                        padding-left: 0;
+                        padding: 8px 12px;
+                    }
+
+                    @media #{media-query(sm)} {
+                        padding: 6px 10px;
+                        font-size: 14px;
                     }
                 }
             }
@@ -161,6 +196,11 @@
                 @media #{media-query(md)} {
                     font-size: 18px;
                     margin-bottom: 15px;
+                }
+
+                @media #{media-query(sm)} {
+                    font-size: 16px;
+                    margin-bottom: 12px;
                 }
             }
 
@@ -179,6 +219,10 @@
 
                 @media #{media-query(md)} {
                     height: 300px;
+                }
+
+                @media #{media-query(sm)} {
+                    height: 250px;
                 }
             }
         }
