@@ -24,11 +24,11 @@
                 </div>
                 <div class="info-item">
                     <div class="info-label --{{ $shop->slug }}">営業時間</div>
-                    <div class="info-value">{{ $shop->open }}</div>
+                    <div class="info-value">{{ $shop->open_start->format('H:i')."〜".$shop->open_end->format('H:i') }}</div>
                 </div>
                 <div class="info-item">
                     <div class="info-label --{{ $shop->slug }}">店舗情報</div>
-                    <div class="info-value">{{ $shop->information }}</div>
+                    <div class="info-value">{{ $shop->memo }}</div>
                 </div>
             </div>
         </div>

@@ -25,6 +25,7 @@ export default defineConfig({
                 'resources/js/admin/event.js',
                 'resources/js/admin/news.js',
                 'resources/js/admin/schedule.js',
+                'resources/js/admin/shopmaster.js',
             ],
             refresh: true,
         }),

@@ -54,7 +54,9 @@ class ShopController extends Controller
         $shop->map = $request->map;
         $shop->folder = $request->folder;
         $shop->video_folder = $request->video_folder;
-
+        $shop->open_start = $request->open_start;
+        $shop->open_end = $request->open_end;
+        $shop->memo = $request->memo;
         $shop->save();
 
         return redirect('/admin/shop/' . $shop->id);
