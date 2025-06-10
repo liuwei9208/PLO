@@ -1,3 +1,9 @@
+let page = 1;
+let limit = 30;
+let skip = 0;
+let pages = 0;
+let total = 0;
+
 document.addEventListener('DOMContentLoaded', function() {
     // 日付ナビゲーション機能
     const scheduleDate = document.querySelector('.schedule-date');
@@ -10,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log({currentDate});
     // currentDate.setMonth(5); // 6月（0から始まるため5）
     // currentDate.setDate(9);
+
     let currentWeekStart = getWeekStart(currentDate);
     console.log({currentWeekStart});
     // 週の開始日を取得する関数
@@ -98,6 +105,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 初期表示
     generateDateTabs(currentWeekStart);
+    console.log(currentWeekStart);
+    
+    getCastsSchedule(currentDate.toDateString(), page, limit, skip, pages, total);
     scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
     updatePrevWeekButtonState();
 
@@ -546,3 +556,45 @@ document.addEventListener('DOMContentLoaded', function() {
         return options;
     }
 });
+
+/*
+* キャストの出勤・予約を取得する関数
+* @param {string} date - 日付
+* @param {int} page - ページ番号
+* @param {int} limit - ページあたりの件数
+* @param {int} skip - スキップする件数
+* @param {int} pages - ページ数
+* @param {int} total - 総件数
+*/
+async function getCastsSchedule(date, page, limit, skip, pages, total) {
+    console.log(date);
+    console.log(page);
+    console.log(limit);
+    console.log(skip);
+    console.log(pages);
+    console.log(total);
+    try{
+        const response = await fetch(`/admin/schedule`,{
+            method: 'PSOT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            },
+            body: JSON.stringify({
+                date: date,
+                page: page,
+                limit: limit,
+                skip: skip,
+                pages: pages,
+                total: total,
+            }),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        console.log(result);
+    } catch (error) {
+        console.error('エーラーが発生しました。:', error);
+    }
+}
