@@ -26,6 +26,7 @@
             <div class="cast-column">キャスト</div>
             <div class="schedule-column">出勤予定</div>
         </div>
+        <!-- キャストセクション：各キャストの情報とスケジュールを管理する単位 -->
         <div class="schedule-cast-section">
             <!-- 上段：キャスト情報＋出勤予定エリア -->
             <div class="schedule-row">
@@ -123,6 +124,7 @@
                 </div>
             </div>
         </div>
+        <!-- キャストセクション：各キャストの情報とスケジュールを管理する単位 -->
         <div class="schedule-cast-section">
             <!-- 上段：キャスト情報＋出勤予定エリア -->
             <div class="schedule-row">
