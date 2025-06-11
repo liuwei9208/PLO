@@ -58,7 +58,7 @@
                     </div>
                 @endcan
 
-                <div class="mr-2">
+                {{-- <div class="mr-2">
                     <div class="relative z-20 bg-transparent">
                     <select
                         name="public"
@@ -92,7 +92,7 @@
                         </svg>
                     </span>
                     </div>
-                </div>
+                </div> --}}
 
                 <div class="ml-2">
                     <button type="submit" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600">
@@ -164,108 +164,7 @@
             <div class="schedule-column">出勤予定</div>
         </div>
         <div class="schedule-casts">
-        {{-- @foreach ($casts as $cast) --}}
-            <!-- キャストセクション：各キャストの情報とスケジュールを管理する単位 -->
-            <div class="schedule-cast-section">
-                <!-- 上段：キャスト情報＋出勤予定エリア -->
-                <div class="schedule-row">
-                    <!-- キャスト情報（上段） -->
-                    <div class="cast-info">
-                        {{-- <img class="cast-image" src="{{ asset('storage/'.$cast->gallery_1) }}" alt="キャスト写真">
-                        <div class="cast-name">{{$cast->name}}</div> --}}
-                        <img class="cast-image" src="https://placehold.jp/100x100.png" alt="キャスト写真">
-                        <div class="cast-name">キャスト名</div>
-                    </div>
-                    <!-- 出勤予定エリア（上段） -->
-                    <div class="schedule-area">
-                        <!-- 出勤時間選択（時間軸の上） -->
-                        <div class="time-selector">
-                            <select class="start-time">
-                                @for ($hour = 8; $hour <= 24; $hour++)
-                                    @for ($min = 0; $min < 60; $min += 30)
-                                        @php
-                                            if ($hour == 24 && $min == 30) {
-                                                continue;
-                                            }
-                                            $timeStr = sprintf('%02d:%02d', $hour, $min);
-                                        @endphp
-                                        <option value="{{ $timeStr }}">{{ $timeStr }}</option>
-                                    @endfor
-                                @endfor
-                            </select>
-                            <span class="time-separator">-</span>
-                            <select class="end-time">
-                                @for ($hour = 8; $hour <= 24; $hour++)
-                                    @for ($min = 0; $min < 60; $min += 30)
-                                        @php
-                                            if ($hour == 24 && $min == 30) {
-                                                continue;
-                                            }
-                                            $timeStr = sprintf('%02d:%02d', $hour, $min);
-                                        @endphp
-                                        <option value="{{ $timeStr }}">{{ $timeStr }}</option>
-                                    @endfor
-                                @endfor
-                            </select>
-                            <select class="visibility-status">
-                                <option>公開</option>
-                                <option>非公開</option>
-                            </select>
-                        </div>
-                        <!-- 時間軸 -->
-                        <div class="time-axis">
-                            <div class="time-axis-spacer"></div>
-                            <div class="time-axis-labels">
-                                @for ($h = 8; $h <= 23; $h++)
-                                    <div class="time-label">
-                                        {{$h}}時
-                                    </div>
-                                @endfor
-                            </div>
-                        </div>
-                        <!-- 時間グリッド -->
-                        <div class="time-grid">
-                            <div class="grid-spacer"></div>
-                            <div class="grid-cells">
-                                @for ($i = 0; $i < 32; $i++)
-                                    @php
-                                        $hour = 8 + intdiv($i, 2);
-                                        $minute = $i % 2 === 0 ? '00' : '30';
-                                        $isHour = $i % 2 === 0;
-                                        $border = $isHour ? '1px solid #ccc' : '2px solid #000';
-                                    @endphp
-                                    @if ($isHour)
-                                        <div class="grid-cell half-hour-cell"></div>
-                                    @else
-                                        <div class="grid-cell hour-cell"></div>
-                                    @endif
-                                @endfor
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 下段：予約情報＋出勤予定フォーム -->
-                <div class="schedule-row">
-                    <!-- 予約情報（下段） -->
-                    <div class="reservation-info">
-                        <div class="reservation-title">予約情報</div>
-                        <div class="reservation-content">（ここに予約情報を表示）</div>
-                    </div>
-                    <!-- 出勤予定フォーム（下段） -->
-                    <div class="schedule-form-area">
-                        <div class="schedule-forms">
-                            <!-- 空の追加ボックス -->
-                            <div class="add-form-btn">＋</div>
-                            <div class="add-form-btn">＋</div>
-                            <div class="add-form-btn">＋</div>
-                            <div class="add-form-btn">＋</div>
-                            <div class="add-form-btn">＋</div>
-                            <div class="add-form-btn">＋</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {{-- @endforeach --}}
+ 
         </div>
     </div>
     <!-- Pagination -->

@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 let page = 1;
 let limit = 30;
 let skip = 0;
@@ -1156,64 +1158,51 @@ function formatTimeTotime(time) {
 * @param {int} total - 総件数
 */
 async function getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total) {
-    console.log(date);
-    console.log(page);
-    console.log(limit);
-    console.log(skip);
-    console.log(pages);
-    console.log(total);
-    console.log(document.querySelector('meta[name="csrf-token"]').content);
-    try{
-        // const response = await fetch(`/admin/schedule/casts?date=${date}&page=${page}&limit=${limit}&skip=${skip}&pages=${pages}&total=${total}`,{
-        //     method: 'GET',
-        //     headers: {
-        //         'Content-Type': 'application/json',
-        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-        //     },
-        //     body: JSON.stringify({
-        //         date: date,
-        //         page: page,
-        //         limit: limit,
-        //         skip: skip,
-        //         pages: pages,
-        //         total: total,
-        //     }),
-        // });
-        const response = await fetch(`/admin/schedule/`,{
-            method: 'POST',
+    try {
+        console.log('リクエストパラメータ:', {
+            castName,
+            shop,
+            is_public,
+            date,
+            page,
+            limit,
+            skip,
+            pages,
+            total
+        });
+
+        const response = await axios.post('/api/schedule', {
+            castName: castName,
+            shop: shop,
+            public: is_public,
+            date: date,
+            page: page,
+            limit: limit,
+            skip: skip,
+            pages: pages,
+            total: total,
+        }, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json', 
-            },
-            body: JSON.stringify({
-                castName: castName,
-                shop: shop,
-                public: is_public,
-                date: date,
-                page: page,
-                limit: limit,
-                skip: skip,
-                pages: pages,
-                total: total,
-            }),
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
         });
-        if (!response.ok) {
-            // return;
-            throw new Error('Network response was not ok');
-        }
-        const result = await response.json();
-        if (result.status === 'success') {
-            console.log(result);
-            const casts = result.casts;
-            const attendances = result.attendances;
-            const reservations = result.reservations;
-            page = result.page;
-            limit = result.limit;
-            skip = result.skip;
-            pages = result.pages;
-            total = result.total;
-            date = result.date;
+
+        console.log('サーバーレスポンス:', response.data);
+
+        if (response.data.status === 'success') {
+            console.log('取得成功:', response.data);
+            const casts = response.data.casts;
+            const attendances = response.data.attendances;
+            const reservations = response.data.reservations;
+            page = response.data.page;
+            limit = response.data.limit;
+            skip = response.data.skip;
+            pages = response.data.pages;
+            total = response.data.total;
+            date = response.data.date;
 
             const imgUrl = window.location.origin + '/storage/';
             document.querySelector('.schedule-casts').innerHTML = casts.map(cast => {
@@ -1334,7 +1323,7 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
             let paginationHTML = '';
             paginationHTML += `<div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">`;
             if ( page > 1 ) {
-                paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${page - 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+                paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800" data-date="${date}" data-page="${page - 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
                 <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
                 </svg></button>`;
             }else{
@@ -1375,11 +1364,24 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
             await generateScheduleCasts();
             await reDrawScheduleCasts();
             // window.scrollTo({top:0, behavior: 'smooth'});
+        } else {
+            throw new Error(response.data.message || 'データの取得に失敗しました');
         }
-        console.log(result);
-        // return result;
     } catch (error) {
-        console.error('エーラーが発生しました。:', error);
+        console.error('エラーが発生しました:', error);
+        if (error.response) {
+            // サーバーからのエラーレスポンス
+            console.error('エラーレスポンス:', error.response.data);
+            alert('データの取得中にエラーが発生しました: ' + (error.response.data.message || error.message));
+        } else if (error.request) {
+            // リクエストは送信されたがレスポンスがない
+            console.error('リクエストエラー:', error.request);
+            alert('サーバーからの応答がありません。ネットワーク接続を確認してください。');
+        } else {
+            // リクエストの設定中にエラーが発生
+            console.error('リクエスト設定エラー:', error.message);
+            alert('リクエストの処理中にエラーが発生しました: ' + error.message);
+        }
     }
 }
 
@@ -1422,62 +1424,49 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
             date
         });
 
-        const response = await fetch('/admin/schedule/updateattendance', {
-            method: 'POST',
+        const response = await axios.post('/api/schedule/updateattendance', {
+            date: date,
+            cast_id: cast_id,
+            attendance_id: attendance_id,
+            startTime: startTime,
+            endTime: endTime,
+            attendance_public: attendance_public,
+        }, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
-            },
-            body: JSON.stringify({
-                date: date,
-                cast_id: cast_id,
-                attendance_id: attendance_id,
-                startTime: startTime,
-                endTime: endTime,
-                attendance_public: attendance_public,
-            }),
+                'X-Requested-With': 'XMLHttpRequest'
+            }
         });
 
-        // レスポンスの内容を確認
-        const responseText = await response.text();
-        console.log('サーバーレスポンス:', responseText);
+        console.log('サーバーレスポンス:', response.data);
 
-        // レスポンスがJSONかどうかを確認
-        let result;
-        try {
-            result = JSON.parse(responseText);
-        } catch (e) {
-            console.error('JSONパースエラー:', e);
-            throw new Error('サーバーからの応答が不正なJSON形式です');
-        }
-
-        if (result.status === 'success') {
-            console.log('更新成功:', result);
-            return result.attendance_id;
+        if (response.data.status === 'success') {
+            console.log('更新成功:', response.data);
+            return response.data.attendance_id;
         } else {
-            throw new Error(result.message || '更新に失敗しました');
+            throw new Error(response.data.message || '更新に失敗しました');
         }
     } catch (error) {
         console.error('エラーが発生しました:', error);
-        alert('更新中にエラーが発生しました: ' + error.message);
+        if (error.response) {
+            console.error('エラーレスポンス:', error.response.data);
+            alert('更新中にエラーが発生しました: ' + (error.response.data.message || error.message));
+        } else if (error.request) {
+            console.error('リクエストエラー:', error.request);
+            alert('サーバーからの応答がありません。ネットワーク接続を確認してください。');
+        } else {
+            console.error('リクエスト設定エラー:', error.message);
+            alert('リクエストの処理中にエラーが発生しました: ' + error.message);
+        }
         throw error;
     }
 }
 
 async function updateReservationTime(cast_id, attendance_id, startTime_working, endTime_working, startTime_form, endTime_form, attendance_public, date) {
-    console.log(cast_id);
-    console.log(attendance_id);
-    // console.log(startTime);
-    // console.log(endTime);
-    const response = await fetch(`/admin/schedule/updatereservation`,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-            'Accept': 'application/json', 
-        },
-        body: JSON.stringify({
+    try {
+        const response = await axios.post('/api/schedule/updatereservation', {
             date: date,
             cast_id: cast_id,
             attendance_id: attendance_id,
@@ -1486,43 +1475,71 @@ async function updateReservationTime(cast_id, attendance_id, startTime_working, 
             startTime_form: startTime_form,
             endTime_form: endTime_form,
             attendance_public: attendance_public,
-        }),
-    });
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const result = await response.json();
-    if (result.status === 'success') {
-        console.log(result);
-        return result.reservation_id;
-    }else if (result.status === 'error'){
-        console.log(result);
-        alert(result.message);
-        return null;
-    }else{
-        throw new Error('Network response was not ok');
-    }
-}
-async function deleteReservationTime(reservation_id){
-        const response = await fetch(`/admin/schedule/deletereservation`,{
-            method: 'POST',
+        }, {
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-                'Accept': 'application/json', 
-            },
-            body: JSON.stringify({
-                reservation_id: reservation_id,
-            }),
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
         });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+
+        if (response.data.status === 'success') {
+            console.log('予約更新成功:', response.data);
+            return response.data.reservation_id;
+        } else if (response.data.status === 'error') {
+            console.log('予約更新エラー:', response.data);
+            alert(response.data.message);
+            return null;
+        } else {
+            throw new Error('予約の更新に失敗しました');
         }
-        const result = await response.json();
-        if (result.status === 'success') {
-            console.log(result);
-            return ;
-        }else{
-            throw new Error('Network response was not ok');
+    } catch (error) {
+        console.error('エラーが発生しました:', error);
+        if (error.response) {
+            console.error('エラーレスポンス:', error.response.data);
+            alert('予約の更新中にエラーが発生しました: ' + (error.response.data.message || error.message));
+        } else if (error.request) {
+            console.error('リクエストエラー:', error.request);
+            alert('サーバーからの応答がありません。ネットワーク接続を確認してください。');
+        } else {
+            console.error('リクエスト設定エラー:', error.message);
+            alert('リクエストの処理中にエラーが発生しました: ' + error.message);
         }
+        throw error;
+    }
+}
+async function deleteReservationTime(reservation_id) {
+    try {
+        const response = await axios.post('/api/schedule/deletereservation', {
+            reservation_id: reservation_id,
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        if (response.data.status === 'success') {
+            console.log('予約削除成功:', response.data);
+            return;
+        } else {
+            throw new Error('予約の削除に失敗しました');
+        }
+    } catch (error) {
+        console.error('エラーが発生しました:', error);
+        if (error.response) {
+            console.error('エラーレスポンス:', error.response.data);
+            alert('予約の削除中にエラーが発生しました: ' + (error.response.data.message || error.message));
+        } else if (error.request) {
+            console.error('リクエストエラー:', error.request);
+            alert('サーバーからの応答がありません。ネットワーク接続を確認してください。');
+        } else {
+            console.error('リクエスト設定エラー:', error.message);
+            alert('リクエストの処理中にエラーが発生しました: ' + error.message);
+        }
+        throw error;
+    }
 }

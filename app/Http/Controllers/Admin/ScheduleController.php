@@ -22,115 +22,121 @@ class ScheduleController extends Controller
     const DEFAULT_LIMIT = 30;
     public function index(Request $request): View
     {
-        $query = Cast::where('is_public', true);
+        // $query = Cast::where('is_public', true);
 
-        $total = $query->count();
+        // $total = $query->count();
 
-        $page = $request->query('page') ? (int) $request->query('page') : 1;
-        $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
-        $skip = ($page - 1) * $limit;
-        $pages = ceil($total / $limit);
-        $casts = $query->skip($skip)
-            ->take($limit)
-            ->orderBy('created_at', 'desc')
-            ->orderBy('id', 'desc')
-            ->get();
-        $day = $request->query('day') ? (int) $request->query('day') : Carbon::today()->toDateString();
-        $public = $request->input('public') ? (int) $request->input('public') : true;
-        $attendances = Attendance::where('is_public', $public)
-        ->whereRaw('DATE(start_datetime) <= ?', [$day])
-        ->whereRaw('DATE(end_datetime) >= ?', [$day])
-        ->get();
+        // $page = $request->query('page') ? (int) $request->query('page') : 1;
+        // $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
+        // $skip = ($page - 1) * $limit;
+        // $pages = ceil($total / $limit);
+        // $casts = $query->skip($skip)
+        //     ->take($limit)
+        //     ->orderBy('created_at', 'desc')
+        //     ->orderBy('id', 'desc')
+        //     ->get();
+        // $day = $request->query('day') ? (int) $request->query('day') : Carbon::today()->toDateString();
+        // $public = $request->input('public') ? (int) $request->input('public') : true;
+        // $attendances = Attendance::where('is_public', $public)
+        // ->whereRaw('DATE(start_datetime) <= ?', [$day])
+        // ->whereRaw('DATE(end_datetime) >= ?', [$day])
+        // ->get();
 
-        $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
-        ->get();
+        // $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
+        // ->get();
         // dd(compact('casts', 'attendances', 'reservations'));
         return view('admin.schedule.index',[
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
-            'casts' => $casts,
-            'attendances' => $attendances,
-            'reservations' => $reservations,
-            'page' => $page,
-            'limit' => $limit,
-            'skip' => $skip,
-            'pages' => $pages,
+            // 'casts' => $casts,
+            // 'attendances' => $attendances,
+            // 'reservations' => $reservations,
+            // 'page' => $page,
+            // 'limit' => $limit,
+            // 'skip' => $skip,
+            // 'pages' => $pages,
         ]);
     }
     public function showCastsSchedule(Request $request): JsonResponse
     {
-        Log::info($request->all());
-        if ( !$request->expectsJson() ){
-            abort(404);
-        }
-        // $date = $request->input('date');
-        // $page = $request->input('page');
-        // $limit = $request->input('limit');
-        // $skip = $request->input('skip');
-        // $pages = $request->input('pages');
-        // $total = $request->input('total');
-        // dd(compact('date', 'page', 'limit', 'skip', 'pages', 'total'));
-        // dd($request);
-        Log::info($request->all());
-        $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
+        try {
+            Log::info('リクエストデータ:', $request->all());
 
-        $query = Cast::where('is_public', true);
-        if ( $request->input('castName') ){
-            $query->where('name', 'like', '%' . $request->input('castName') . '%');
-        }
-        if ( $request->input('shop') ){
-            $shop = $request->input('shop');
-            if ( $shop != ""){
-                $query->whereHas('shop', function ($query) use ($shop) {
-                    $query->where('slug', $shop);
-                });
-    
+            if (!$request->expectsJson()) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'JSONリクエストが必要です'
+                ], 400);
             }
-        }
-       
-        // if ( $request->input('is_public') ){
-        //     $is_public = $request->input('is_public');
-        //     if ( $is_public != ""){
-        //         // $query->where('is_public', $is_public);
-        //         $query->leftJoin('attendances', 'casts.id', '=', 'attendances.cast_id')
-        //         ->where('attendances.is_public',intval($is_public))
-        //         ->whereRaw('DATE(attendances.start_datetime) <= ?', [$date])
-        //         ->whereRaw('DATE(attendances.end_datetime) >= ?', [$date]);
-        //     }
-        // }
-        $total = $query->count();
-        $page = $request->input('page') ? (int) $request->input('page') : 1;
-        $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
-        $skip = ($page - 1) * $limit;
-        $pages = ceil($total / $limit);
-        $casts = $query->skip($skip)
-            ->take($limit)
-            ->orderBy('created_at', 'desc')
-            ->orderBy('id', 'desc')
-            ->get();
-        // Log::info($request->input('date'));
-        // Log::info($date);
-        // $attendances = Attendance::where('is_public', true)
-        $attendances = Attendance::whereRaw('DATE(start_datetime) <= ?', [$date])
-        ->whereRaw('DATE(end_datetime) >= ?', [$date])
-        ->get();
 
-        $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
-        ->get();
-        Log::info($casts);
-        Log::info($attendances);
-        Log::info($reservations);
-        return response()->json([
-            'casts' => $casts,
-            'attendances' => $attendances,
-            'reservations' => $reservations,
-            'page' => $page,
-            'limit' => $limit,
-            'skip' => $skip,
-            'pages' => $pages,
-            'total' => $total,
-            'date' => $date,
-            'status' => 'success',
-        ]);
+            $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
+            $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
+
+            $query = Cast::query();
+            if ($request->input('castName')) {
+                $query->where('name', 'like', '%' . $request->input('castName') . '%');
+            }
+            if ($request->input('shop')) {
+                $shop = $request->input('shop');
+                if ($shop != "") {
+                    $query->whereHas('shop', function ($query) use ($shop) {
+                        $query->where('slug', $shop);
+                    });
+                }
+            }
+
+            $total = $query->count();
+            $page = $request->input('page') ? (int) $request->input('page') : 1;
+            $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
+            $skip = ($page - 1) * $limit;
+            $pages = ceil($total / $limit);
+
+            $casts = $query->skip($skip)
+                ->take($limit)
+                ->orderBy('created_at', 'desc')
+                ->orderBy('id', 'desc')
+                ->get();
+
+            $attendances = Attendance::where('is_public', $is_public)
+                ->whereRaw('DATE(start_datetime) <= ?', [$date])
+                ->whereRaw('DATE(end_datetime) >= ?', [$date])
+                ->get();
+
+            $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
+                ->get();
+
+            Log::info('レスポンスデータ:', [
+                'casts_count' => $casts->count(),
+                'attendances_count' => $attendances->count(),
+                'reservations_count' => $reservations->count(),
+                'is_public' => $is_public,
+                'date' => $date
+            ]);
+
+            return response()->json([
+                'status' => 'success',
+                'casts' => $casts,
+                'attendances' => $attendances,
+                'reservations' => $reservations,
+                'page' => $page,
+                'limit' => $limit,
+                'skip' => $skip,
+                'pages' => $pages,
+                'total' => $total,
+                'date' => $date
+            ]);
+
+        } catch (\Exception $e) {
+            Log::error('スケジュール取得エラー:', [
+                'message' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'request_data' => $request->all()
+            ]);
+
+            return response()->json([
+                'status' => 'error',
+                'message' => 'データの取得中にエラーが発生しました: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     public function updateAttendanceTime(Request $request): JsonResponse
