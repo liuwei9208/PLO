@@ -69,7 +69,7 @@ class ScheduleController extends Controller
         // $total = $request->input('total');
         // dd(compact('date', 'page', 'limit', 'skip', 'pages', 'total'));
         // dd($request);
-
+        Log::info($request->all());
         $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
 
         $query = Cast::where('is_public', true);
