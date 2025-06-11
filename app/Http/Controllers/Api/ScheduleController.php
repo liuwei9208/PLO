@@ -39,7 +39,7 @@ class ScheduleController extends Controller
             $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
-            $query = Cast::where('is_public',1)->where();
+            $query = Cast::where('is_public',1);
             if ($request->input('castName')) {
                 Log::Info("castName");
                 $query->where('name', 'like', '%' . $request->input('castName') . '%');
