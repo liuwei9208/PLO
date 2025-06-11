@@ -1,15 +1,18 @@
 <?php
 
 use App\Http\Controllers\Public\TouchVipDiaryController;
-use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Api\ScheduleController;
 use Illuminate\Support\Facades\Route;
+// use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 
 Route::get('/diary/{cast_id}', [TouchVipDiaryController::class, 'get']);
 
 // スケジュール関連のAPIルート
-Route::prefix('schedule')->group(function () {
+Route::middleware('auth:sanctum')->prefix('schedule')->group(function () {
     Route::post('/', [ScheduleController::class, 'showCastsSchedule']);
     Route::post('/updateattendance', [ScheduleController::class, 'updateAttendanceTime']);
     Route::post('/updatereservation', [ScheduleController::class, 'updateReservationTime']);
     Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
 });
+
+Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);

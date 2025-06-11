@@ -28,7 +28,7 @@
                 </div>
 
                 <!-- Shop filter -->
-                @can('edit other shops diaries')
+                @role('admin')
                     <div class="mr-2">
                     <div class="relative z-20 bg-transparent">
                         <select
@@ -56,7 +56,7 @@
                         </span>
                     </div>
                     </div>
-                @endcan
+                @endrole
 
                 {{-- <div class="mr-2">
                     <div class="relative z-20 bg-transparent">
@@ -227,6 +227,10 @@
         </div> --}}
     </div>
 </x-admin-layout>
+<script>
+    window.apiToken = "{{ $token }}"
+    console.log(window.apiToken)
+</script>
 @once
     @vite(['resources/js/admin/schedule.js','resources/scss/admin/schedule.scss'])
 @endonce

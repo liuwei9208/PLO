@@ -9,6 +9,8 @@ let shop = '';
 let is_public = '';
 let castName = '';
 let selectedDate = '';
+
+console.log(window.apiToken);
 // 時間オプションを生成する関数
 function generateTimeOptions(strTime) {
     let options = '';
@@ -1186,7 +1188,8 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': 'Bearer ' + window.apiToken
             }
         });
 
@@ -1358,11 +1361,12 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
                 const total = e.target.dataset.total;
                 // window.scrollTo({top:0, behavior: 'smooth'});
                 getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total);
-
+                
                 });
             });
             await generateScheduleCasts();
             await reDrawScheduleCasts();
+            document.documentElement.scrollTop = 0;
             // window.scrollTo({top:0, behavior: 'smooth'});
         } else {
             throw new Error(response.data.message || 'データの取得に失敗しました');
@@ -1389,8 +1393,8 @@ document.querySelector('#search_form').addEventListener('submit', async function
     e.preventDefault();
     console.log('submit');
     console.log(e.target);
-    shop = e.target.shop.value;
-    is_public = e.target.public.value;
+    shop = e.target.shop? e.target.shop.value : '';
+    // is_public = e.target.public.value;
     castName = e.target.cast.value;
     page = 1;
     await getCastsSchedule(castName,shop,is_public,selectedDate, page, limit, skip, pages, total);
@@ -1436,7 +1440,8 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': 'Bearer ' + window.apiToken
             }
         });
 
@@ -1480,7 +1485,8 @@ async function updateReservationTime(cast_id, attendance_id, startTime_working, 
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': 'Bearer ' + window.apiToken
             }
         });
 
@@ -1518,7 +1524,8 @@ async function deleteReservationTime(reservation_id) {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': 'Bearer ' + window.apiToken
             }
         });
 
