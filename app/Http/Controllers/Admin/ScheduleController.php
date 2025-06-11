@@ -115,7 +115,9 @@ class ScheduleController extends Controller
 
         $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
         ->get();
-
+        Log::info($casts);
+        Log::info($attendances);
+        Log::info($reservations);
         return response()->json([
             'casts' => $casts,
             'attendances' => $attendances,
