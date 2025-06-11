@@ -58,6 +58,7 @@ class ScheduleController extends Controller
     }
     public function showCastsSchedule(Request $request): JsonResponse
     {
+        Log::info($request->all());
         if ( !$request->expectsJson() ){
             abort(404);
         }
