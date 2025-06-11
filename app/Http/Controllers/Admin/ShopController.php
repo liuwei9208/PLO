@@ -7,6 +7,7 @@ use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Carbon\Carbon;
 
 class ShopController extends Controller
 {
@@ -25,8 +26,9 @@ class ShopController extends Controller
      */
     public function show(string $id): View
     {
+        $shop = Shop::find($id);
         return view('admin.shop.detail', [
-            'shop' => Shop::find($id),
+            'shop' => $shop,
         ]);
     }
 
@@ -51,8 +53,8 @@ class ShopController extends Controller
         $shop->address2 = $request->address2;
         $shop->tel = $request->tel;
         $shop->email = $request->email;
-        $shop->map = $request->map;
-        $shop->folder = $request->folder;
+        // $shop->map = $request->map;
+        // $shop->folder = $request->folder;
         $shop->video_folder = $request->video_folder;
         $shop->open_start = $request->open_start;
         $shop->open_end = $request->open_end;
