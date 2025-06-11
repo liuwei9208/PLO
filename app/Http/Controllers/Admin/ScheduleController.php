@@ -69,6 +69,9 @@ class ScheduleController extends Controller
         // $total = $request->input('total');
         // dd(compact('date', 'page', 'limit', 'skip', 'pages', 'total'));
         // dd($request);
+
+        $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
+
         $query = Cast::where('is_public', true);
         if ( $request->input('castName') ){
             $query->where('name', 'like', '%' . $request->input('castName') . '%');
@@ -82,7 +85,17 @@ class ScheduleController extends Controller
     
             }
         }
-
+       
+        // if ( $request->input('is_public') ){
+        //     $is_public = $request->input('is_public');
+        //     if ( $is_public != ""){
+        //         // $query->where('is_public', $is_public);
+        //         $query->leftJoin('attendances', 'casts.id', '=', 'attendances.cast_id')
+        //         ->where('attendances.is_public',intval($is_public))
+        //         ->whereRaw('DATE(attendances.start_datetime) <= ?', [$date])
+        //         ->whereRaw('DATE(attendances.end_datetime) >= ?', [$date]);
+        //     }
+        // }
         $total = $query->count();
         $page = $request->input('page') ? (int) $request->input('page') : 1;
         $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
@@ -93,11 +106,10 @@ class ScheduleController extends Controller
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
             ->get();
-        $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
         // Log::info($request->input('date'));
         // Log::info($date);
-        $attendances = Attendance::where('is_public', true)
-        ->whereRaw('DATE(start_datetime) <= ?', [$date])
+        // $attendances = Attendance::where('is_public', true)
+        $attendances = Attendance::whereRaw('DATE(start_datetime) <= ?', [$date])
         ->whereRaw('DATE(end_datetime) >= ?', [$date])
         ->get();
 

@@ -1295,8 +1295,8 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
                                     ${generateTimeOptions(attendanceEndTime)}
                                 </select>
                                 <select class="visibility-status" id="is_public">
-                                    <option value="1" ${attendance && attendance.is_public === 1 ? 'selected' : ''}>公開</option>
-                                    <option value="0" ${attendance && attendance.is_public === 0 ? 'selected' : ''}>非公開</option>
+                                    <option value="1" ${attendance && attendance.is_public == '1' ? 'selected' : ''}>公開</option>
+                                    <option value="0" ${attendance && attendance.is_public == '0' ? 'selected' : ''}>非公開</option>
                                 </select>
                             </div>
                             <div class="time-axis">
