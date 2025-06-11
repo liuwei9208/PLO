@@ -55,7 +55,7 @@ class ShopController extends Controller
         $shop->email = $request->email;
         // $shop->map = $request->map;
         // $shop->folder = $request->folder;
-        $shop->video_folder = $request->video_folder;
+        // $shop->video_folder = $request->video_folder;
         $shop->open_start = $request->open_start;
         $shop->open_end = $request->open_end;
         $shop->memo = $request->memo;
