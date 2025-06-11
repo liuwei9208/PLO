@@ -8,6 +8,7 @@
     <title>{{ config('app.name', 'PLOグループ') }}</title>
 
     <link rel="icon" href="favicon.ico">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('tailadmin/build/style.css') }}">
     <script defer src="{{ asset('tailadmin/build/bundle.js') }}"></script>
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])

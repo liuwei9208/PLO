@@ -60,4 +60,9 @@ class Cast extends Model
     {
         return $this->belongsToMany(Style::class);
     }
+
+    public function attendances()
+    {
+        return $this->hasMany(Attendance::class);
+    }
 }
