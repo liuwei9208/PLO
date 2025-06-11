@@ -1,67 +1,27 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cast;
-use App\Models\Option;
-use App\Models\Personality;
 use App\Models\Shop;
-use App\Models\Style;
-use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
-use App\Models\Attendance;
 use App\Models\Reservation;
+use App\Models\Attendance;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class ScheduleController extends Controller
 {
-    const DEFAULT_LIMIT = 30;
-    public function index(Request $request): View
+    private const DEFAULT_LIMIT = 30;
+
+    public function index()
     {
-        // $query = Cast::where('is_public', true);
-        // Log::Info(Auth::user()->name);
-        // $total = $query->count();
-
-        // $page = $request->query('page') ? (int) $request->query('page') : 1;
-        // $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
-        // $skip = ($page - 1) * $limit;
-        // $pages = ceil($total / $limit);
-        // $casts = $query->skip($skip)
-        //     ->take($limit)
-        //     ->orderBy('created_at', 'desc')
-        //     ->orderBy('id', 'desc')
-        //     ->get();
-        // $day = $request->query('day') ? (int) $request->query('day') : Carbon::today()->toDateString();
-        // $public = $request->input('public') ? (int) $request->input('public') : true;
-        // $attendances = Attendance::where('is_public', $public)
-        // ->whereRaw('DATE(start_datetime) <= ?', [$day])
-        // ->whereRaw('DATE(end_datetime) >= ?', [$day])
-        // ->get();
-
-        // $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
-        // ->get();
-        // dd(compact('casts', 'attendances', 'reservations'));
-        // dd($token);
-        $token =Auth::user()->createToken('schedule')->plainTextToken;
-        return view('admin.schedule.index',[
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
-            'token'=> $token,
-            // 'token' => $token,
-            // 'casts' => $casts,
-            // 'attendances' => $attendances,
-            // 'reservations' => $reservations,
-            // 'page' => $page,
-            // 'limit' => $limit,
-            // 'skip' => $skip,
-            // 'pages' => $pages,
-        ]);
+        return view('admin.schedule.index');
     }
+
     public function showCastsSchedule(Request $request): JsonResponse
     {
         try {
@@ -74,73 +34,76 @@ class ScheduleController extends Controller
                 ], 400);
             }
 
-            $user = auth()->user();
-            Log::info($user);
+            $user = Auth::user();
+            Log::info($user->email);
             $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
-            $query = Cast::query();
+            $query = Cast::where('is_public',1)->where();
             if ($request->input('castName')) {
+                Log::Info("castName");
                 $query->where('name', 'like', '%' . $request->input('castName') . '%');
             }
-            if ($request->input('shop')) {
-                $shop = $request->input('shop');
-                if ($shop != "") {
-                    $query->whereHas('shop', function ($query) use ($shop) {
-                        $query->where('slug', $shop);
-                    });
+            // if ($request->input('shop')) {
+            //     $shop = $request->input('shop');
+            //     if ($shop != "") {
+            //         $query->whereHas('shop', function ($query) use ($shop) {
+            //             $query->where('slug', $shop);
+            //         });
+            //     }
+            // }
+
+            if ($user->hasRole('admin')) {
+                Log::Info('admin');
+                if ($request->input('shop')) {
+                    $shop = $request->input('shop');
+                    if ($shop != "") {
+                        $query->whereHas('shop', function ($query) use ($shop) {
+                            $query->where('slug', $shop);
+                        });
+                    }
+                }
+            } else if ($user->hasRole('shop')) {
+                switch ($user->email) {
+                    case 'shizuku@plo-group.jp':
+                        Log::Info('shizuku');
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'shizuku');
+                        });
+                        break;
+                    case 'miyabi@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'miyabi');
+                        });
+                        break;
+                    case 'yosuke@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'yosuke');
+                        });
+                        break;
+                    case 'pussycat@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'pussycat');
+                        });
+                        break;
+                    case 'en@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'maki');
+                        });
+                        break;
+                    case 'shiroganeze@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'shiroganeze');
+                        });
+                        break;
+                    case 'lovestory@plo-group.jp':
+                        $query->whereHas('shop', function ($query) {
+                            $query->where('slug', 'lovestory');
+                        });
+                        break;
                 }
             }
 
-            // if ($user->hasRole('admin')) {
-            //     if ($request->input('shop')) {
-            //         $shop = $request->input('shop');
-            //         if ($shop != "") {
-            //             $query->whereHas('shop', function ($query) use ($shop) {
-            //                 $query->where('slug', $shop);
-            //             });
-            //         }
-            //     }
-            // }else if ($user->hasRole('shop')) {
-            //     switch ($user->email) {
-            //         case 'shizuku@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'shizuku');
-            //             });
-            //             break;
-            //         case 'miyabi@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'miyabi');
-            //             });
-            //             break;
-            //         case 'yosuke@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'yosuke');
-            //             });
-            //             break;
-            //         case 'pussycat@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'pussycat');
-            //             });
-            //             break;
-            //         case 'en@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'maki');
-            //             });
-            //             break;
-            //         case 'shiroganeze@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'shiroganeze');
-            //             });
-            //             break;
-            //         case 'lovestory@plo-group.jp':
-            //             $query->whereHas('shop', function ($query) {
-            //                 $query->where('slug', 'lovestory');
-            //             });
-            //             break;
-            //         }
-            //     }
-            // }
             $total = $query->count();
             $page = $request->input('page') ? (int) $request->input('page') : 1;
             $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
@@ -179,7 +142,7 @@ class ScheduleController extends Controller
                 'skip' => $skip,
                 'pages' => $pages,
                 'total' => $total,
-                'date' => $date
+                'date' => $date,
             ]);
 
         } catch (\Exception $e) {
