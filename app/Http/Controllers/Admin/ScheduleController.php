@@ -162,4 +162,54 @@ class ScheduleController extends Controller
         }
         return response()->json(['status' => 'success', 'attendance_id' => $attendance->id]);
     }
+    public function updateReservationTime(Request $request): JsonResponse
+    {
+        if ( !$request->expectsJson() ){
+            abort(404);
+        }
+        Log::info($request->all());
+        $date = $request->input('date');
+        // $cast_id = $request->input('cast_id');
+        $attendance_id = $request->input('attendance_id');
+        // $startTime_working = $request->input('startTime_working');
+        // $endTime_working = $request->input('endTime_working');
+        $startTime_form = $request->input('startTime_form');
+        $endTime_form = $request->input('endTime_form');
+        // $attendance_public = $request->input('attendance_public');
+        $start_date = Carbon::createFromDate($date);
+        $end_date = Carbon::createFromDate($date);
+        $startTime = $start_date->setTimeFromTimeString($startTime_form);
+        $endTime = $end_date->setTimeFromTimeString($endTime_form);
+
+        $reservation = Reservation::where('attendance_id', $attendance_id)->where(function($query) use ($startTime,$endTime){
+            $query->where(function ($q) use ($startTime){
+                $q->where('start_time', '<=', $startTime)->where('end_time', '>', $startTime);
+            })->orWhere(function ($q) use ($endTime){
+                $q->where('start_time', '<', $endTime)->where('end_time', '>=', $endTime);
+            });
+        })->get();
+
+        if ($reservation->count() > 0){
+            return response()->json(['status' => 'error', 'message' => 'すでに予約時間が登録されています']);
+        }
+
+        $reservation = new Reservation();
+        // $reservation->cast_id = $cast_id;
+        $reservation->attendance_id = $attendance_id;
+        $reservation->start_time = Carbon::parse($startTime);
+        $reservation->end_time = Carbon::parse($endTime);
+        $reservation->save();
+        return response()->json(['status' => 'success', 'reservation_id' => $reservation->id]);
+    }   
+    public function deleteReservationTime(Request $request): JsonResponse
+    {
+        if ( !$request->expectsJson() ){
+            abort(404);
+        }
+        Log::info($request->all());
+        $reservation_id = $request->input('reservation_id');
+        $reservation = Reservation::find($reservation_id);
+        $reservation->delete();
+        return response()->json(['status' => 'success', 'reservation_id' => $reservation_id]);
+    }
 }

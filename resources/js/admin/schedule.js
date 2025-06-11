@@ -7,7 +7,6 @@ let shop = '';
 let is_public = '';
 let castName = '';
 let selectedDate = '';
-let event_count = 0;
 // 時間オプションを生成する関数
 function generateTimeOptions(strTime) {
     let options = '';
@@ -764,14 +763,16 @@ function generateScheduleCasts() {
             const cast_id = section.querySelector('#cast-id').value;
             const attendance_public = section.querySelector('#is_public').value;
             let attendance_id = section.querySelector('#attendance-id').value;
-
-            if ( event_count == 0){
-                attendance_id = await updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, selectedDate);
-                section.querySelector('#attendance-id').value = attendance_id;
-                event_count++;
-            }else{
-                event_count = 0;
+            const startWorking = timeToMinutes(startTime);
+            const endWorking = timeToMinutes(endTime);
+            if (startWorking > endWorking){
+                alert("出勤時間が不正です");
+                return;
+            }else if (startWorking == endWorking){
+                return;
             }
+            attendance_id = await updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, selectedDate);
+            section.querySelector('#attendance-id').value = attendance_id;
 
             // event.srcElement.addEventListener(event.type, updateGridBackground);
 
@@ -827,6 +828,7 @@ function generateScheduleCasts() {
         endTimeSelect.addEventListener('change', async () => {
             await updateGridBackground();
         });
+        section.querySelector('#is_public').addEventListener('change', updateGridBackground);
 
         // フォームの追加と削除の機能
         const scheduleForms = section.querySelector('.schedule-forms');
@@ -902,16 +904,46 @@ function generateScheduleCasts() {
             // 時間選択の変更を監視
             startTimeSelect.addEventListener('change', updateGridBackground);
             endTimeSelect.addEventListener('change', updateGridBackground);
-
+            section.querySelector('#is_public').addEventListener('change', updateGridBackground);
             // 登録ボタンのクリックイベント
-            registerBtn.addEventListener('click', function() {
+            registerBtn.addEventListener('click', async function() {
                 const startTime = startTimeSelect.value;
                 const endTime = endTimeSelect.value;
                 
                 // 選択された時間を分に変換
                 const startMinutes = timeToMinutes(startTime);
                 const endMinutes = timeToMinutes(endTime);
-                
+
+                const form_startMinutes = timeToMinutes(section.querySelector('.start-time').value);
+                const form_endMinutes = timeToMinutes(section.querySelector('.end-time').value);
+                console.log({startMinutes, endMinutes,form_startMinutes,form_endMinutes});
+                if ( startMinutes < form_startMinutes || endMinutes > form_endMinutes){
+                    alert("出勤時間と予約時間が重複しています");
+                    return;
+                }else if ( startMinutes > endMinutes){
+                    alert("予約時間が不正です");
+                    return;
+                }
+
+                const startTime_working = section.querySelector('.start-time').value;
+                const endTime_working = section.querySelector('.end-time').value;
+                const startTime_form = form.querySelector('.form-start-time').value;
+                const endTime_form = form.querySelector('.form-end-time').value;
+
+                const cast_id = section.querySelector('#cast-id').value;
+                const attendance_public = section.querySelector('#is_public').value;
+                const attendance_id = section.querySelector('#attendance-id').value;
+    
+                let reservation_id = await  updateReservationTime(cast_id, attendance_id, startTime_working, endTime_working, startTime_form, endTime_form , attendance_public, selectedDate);
+                if (reservation_id != null){
+                    form.querySelector('#reservation-id').value = reservation_id;
+                }else{
+                    return;
+                }
+                // const workStartTime = section.querySelector('.start-time').value;
+                // const workEndTime = section.querySelector('.end-time').value;
+                // const workStartMinutes = timeToMinutes(workStartTime);
+                // const workEndMinutes = timeToMinutes(workEndTime);
 
                 // グリッドセルを取得
                 const cells = gridCells.querySelectorAll('.grid-cell');
@@ -945,7 +977,11 @@ function generateScheduleCasts() {
                         const currentColor = cell.style.backgroundColor;
                         if (currentColor === 'red') {
                             cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                        }else{
+                            return;
                         }
+                    }else{
+                        return;
                     }
                 });
 
@@ -975,11 +1011,22 @@ function generateScheduleCasts() {
                 registerBtn.textContent = '登録済';
                 registerBtn.classList.add('registered');
                 form.classList.add('registered');
+
+    
+                // updateAttendanceTime(cast_id, attendance_id, startTime_working, endTime_working, attendance_public, selectedDate);
             });
 
-            deleteBtn.addEventListener('click', function() {
+            deleteBtn.addEventListener('click', async function() {
                 // フォームが登録済みの場合のみ時間グリッドを更新
                 if (form.classList.contains('registered')) {
+                    if (confirm('予約を削除しますか？')){
+                        const reservation_id = form.querySelector('#reservation-id').value;
+                        if (reservation_id != ''){
+                            await deleteReservationTime(reservation_id);
+                        }
+                    }else{
+                        return;
+                    }
                     // グリッドセルを取得
                     const cells = gridCells.querySelectorAll('.grid-cell');
                     
@@ -1042,6 +1089,7 @@ function generateScheduleCasts() {
             newForm.className = 'schedule-form active';
             newForm.innerHTML = `
                 <button class="delete-form-btn">×</button>
+                <input type="hidden" id="reservation-id" class="reservation-id" value="">
                 <div class="form-time-selector">
                     <select class="form-start-time">
                         ${generateTimeOptions()}
@@ -1393,4 +1441,66 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
     }else{
         throw new Error('Network response was not ok');
     }
+}
+
+async function updateReservationTime(cast_id, attendance_id, startTime_working, endTime_working, startTime_form, endTime_form, attendance_public, date) {
+    console.log(cast_id);
+    console.log(attendance_id);
+    // console.log(startTime);
+    // console.log(endTime);
+    const response = await fetch(`/admin/schedule/updatereservation`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json', 
+        },
+        body: JSON.stringify({
+            date: date,
+            cast_id: cast_id,
+            attendance_id: attendance_id,
+            startTime_working: startTime_working,
+            endTime_working: endTime_working,
+            startTime_form: startTime_form,
+            endTime_form: endTime_form,
+            attendance_public: attendance_public,
+        }),
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const result = await response.json();
+    if (result.status === 'success') {
+        console.log(result);
+        return result.reservation_id;
+    }else if (result.status === 'error'){
+        console.log(result);
+        alert(result.message);
+        return null;
+    }else{
+        throw new Error('Network response was not ok');
+    }
+}
+async function deleteReservationTime(reservation_id){
+        const response = await fetch(`/admin/schedule/deletereservation`,{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json', 
+            },
+            body: JSON.stringify({
+                reservation_id: reservation_id,
+            }),
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        if (result.status === 'success') {
+            console.log(result);
+            return ;
+        }else{
+            throw new Error('Network response was not ok');
+        }
 }

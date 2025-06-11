@@ -186,5 +186,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('/', [ScheduleController::class, 'index'])->name('index');
         Route::post('/', [ScheduleController::class, 'showCastsSchedule']);
         Route::post('/updateattendance', [ScheduleController::class, 'updateAttendanceTime']);
+        Route::post('/updatereservation', [ScheduleController::class, 'updateReservationTime']);
+        Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
     });
 });
