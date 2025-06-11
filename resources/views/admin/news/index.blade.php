@@ -1,17 +1,17 @@
 <x-admin-layout>
   <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
 
-    <div x-data="{ pageName: `イベント管理`}">
+    <div x-data="{ pageName: `News管理`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
           x-text="pageName"
         ></h2>
         <a
-          href="{{ url('/admin/event/add') }}"
+          href="{{ url('/admin/news/add') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
-          イベントを追加
+          Newsを追加
         </a>
       </div>
     </div>
@@ -23,7 +23,7 @@
 
     <!-- Search & Limit -->
     <form
-      action="{{ route('admin.event.index') }}"
+      action="{{ route('admin.news.index') }}"
       method="get"
       id="search_form"
       class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
@@ -263,45 +263,45 @@
 
           <!-- table body start -->
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-            @foreach ($events as $event)
+            @foreach ($news as $new)
               <tr>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->shop->name }}
+                      {{ $new->shop->name }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->title }}
+                      {{ $new->title }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center" style="width: 100px;">
-                    <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="サムネイル" class="w-auto">
+                    <img src="{{ asset('storage/' . $new->thumbnail) }}" alt="サムネイル" class="w-auto">
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '予定配信' : ($event->published_status === 3 ? '下書中': '')) }}
+                      {{ $new->published_status === 1 ? '今すぐ配信' : ($new->published_status === 2 ? '予定配信' : ($new->published_status === 3 ? '下書中': '')) }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->published_at ? \Carbon\Carbon::createFromTimeString($event->published_at)->format('Y/m/d H:i') : '' }}
+                      {{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('Y/m/d H:i') : '' }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
-                      href="{{ url('/admin/event/' . $event->id) }}"
+                      href="{{ url('/admin/news/' . $new->id) }}"
                       class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
                     >
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

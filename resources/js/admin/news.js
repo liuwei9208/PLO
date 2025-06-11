@@ -1,3 +1,4 @@
+
 import flatpickr from "flatpickr";
 import { Japanese } from "flatpickr/dist/l10n/ja.js";
 import "flatpickr/dist/flatpickr.min.css";
@@ -86,12 +87,13 @@ document.addEventListener('DOMContentLoaded', function () {
       const scheduleDatetimeRect = scheduleDatetime.getBoundingClientRect();
       calendar.style.zIndex = '1000';
       
+
     }
   });
 
   // TinyMCEの初期化
   tinymce.init({
-    selector: '#event_content',
+    selector: '#news_content',
     license_key: 'gpl',
     plugins: ['link', 'image', 'code', 'lists'],
     toolbar: 'undo redo | fontfamily | bold italic | bullist numlist | link image | code',

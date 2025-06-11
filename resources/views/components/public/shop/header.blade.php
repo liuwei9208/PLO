@@ -25,7 +25,7 @@
       <div class="drawer-nav-lists">
         <ul class="drawer-nav-list">
           <li><a href="{{ route('public.shop.home', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">TOPページ</a></li>
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">イベント</a></li>
+          <li><a href="{{ route('public.shop.event', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">イベント</a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">キャスト一覧</a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">口コミ一覧</a></li>
           @if($shop)
@@ -33,7 +33,7 @@
           @else
             <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">指名ランキング</a></li>
           @endif
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">アクセス情報</a></li>
+          <li><a href="{{ route('public.shop.about', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">アクセス情報</a></li>
         </ul>
         <ul class="drawer-nav-list">
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">最新情報</a></li>

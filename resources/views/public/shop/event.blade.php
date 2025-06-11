@@ -1,7 +1,7 @@
-<x-public-group-layout>
+<x-public-shop-layout :shop="$shop">
 
-  <!-- Main Visual -->
-  <x-public.group.mv />
+
+
 
   <!-- Event List -->
   <section class="event">
@@ -13,7 +13,7 @@
       @foreach ($events as $event)
         <div class="event-list-item">
           <div class="event-list-item-image">
-            <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+            <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $event->id]) }}">
               <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
             </a>
           </div>
@@ -28,7 +28,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-shop-layout>
 @once
   @vite(['resources/scss/group/_eventview.scss'])
 @endonce

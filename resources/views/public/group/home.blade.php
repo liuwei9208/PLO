@@ -2,9 +2,26 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-
-
-
+  @if($news->count() > 0)
+  <section class="plo_news content-wrapper">
+    <div class="section-title">
+      <img src="{{ asset('assets/img/plo_news.png') }}" alt="PLO News">
+      <h2 class="section-title-ja">新着情報</h2>
+    </div>
+    <div class="plo_news-list">
+      @foreach($news as $news)
+        <div class="plo_news-item">
+          {{-- <div class="plo_news-item-title">
+            {{ $news->title }}
+          </div>
+          <div class="plo_news-item-content">
+            {{ $news->contents }}
+          </div> --}}
+        </div>
+      @endforeach
+    </div>
+  </section>
+  @endif
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
@@ -61,7 +78,9 @@
         <h3 class="event-main-title">{{ $events[0]->title }}</h3>
       </div>
       <div class="event-main-image">
-        <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        <a href="{{ route('public.group.event.detail', ['id' => $events[0]->id]) }}">
+          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
+        </a>
       </div>
     </div>
 
@@ -71,7 +90,9 @@
           <div class="swiper-slide">
             <div class="event-slide">
               <div class="event-slide-image">
-                <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                </a>
               </div>
               {{-- <div class="event-slide-date">{{ $event->published_at->format('Y.m.d') }}</div>
               <h4 class="event-slide-title">{{ $event->title }}</h4> --}}
@@ -140,7 +161,7 @@
 
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner">
+  <div class="banner content-wrapper">
     <div class="banner-title">
       <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
       <h2 class="banner-title-ja">相互リンク</h2>

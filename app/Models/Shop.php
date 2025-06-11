@@ -23,6 +23,14 @@ class Shop extends Model
         'map',
         'folder',
         'video_folder',
+        'open_start',
+        'open_end',
+        'memo',
+    ];
+
+    protected $casts = [
+        'open_start' => 'datetime',
+        'open_end' => 'datetime',
     ];
 
     public function banners()

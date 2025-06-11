@@ -2,13 +2,13 @@
   <form
     class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
     method="post"
-    action="{{ url('/admin/event/add') }}"
+    action="{{ url('/admin/news/add') }}"
     enctype="multipart/form-data"
   >
     @method('POST')
     @csrf
 
-    <div x-data="{ pageName: `イベントを追加`}">
+    <div x-data="{ pageName: `Newsを追加`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -240,6 +240,7 @@
       </div>
     </div>
 
+
     <!-- 本文 -->
     <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="px-6 py-5">
@@ -249,11 +250,11 @@
       </div>
       <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
         <textarea
-          name="event_content"
-          id="event_content"
+          name="news_content"
+          id="news_content"
           class="w-full"
           rows="10"
-        >{{ old('event_content') }}</textarea>
+        >{{ old('news_content') }}</textarea>
       </div>
     </div>
 
@@ -272,37 +273,37 @@
 <!-- FlatpickrのCSSを追加 -->
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> --}}
 @once
-  @vite('resources/js/admin/event.js')
+  @vite('resources/js/admin/news.js')
 @endonce
 <!-- 既存のスクリプトを削除 -->
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('input[type=file].event-gallery-input').forEach(input => {
-    const item = input.parentElement
-    const img = item.querySelector('.event-gallery-img')
-    const path = item.querySelector('input[type=hidden]')
-    const removeBtn = item.querySelector('.event-gallery-remove')
-
-    input.addEventListener('change', (e) => {
-      if (e.target.files.length === 0) return ''
-
-      item.classList.add('has-img')
-
-      const imgEl = document.createElement('img')
-      const file = e.target.files[0]
-      const src = URL.createObjectURL(file)
-      imgEl.src = src
-      imgEl.className = 'w-full h-full object-cover'
-      img.appendChild(imgEl)
-
-      removeBtn.addEventListener('click', (e) => {
-        e.preventDefault()
-        input.value = null
-        img.innerHTML = ''
-        item.classList.remove('has-img')
-        URL.revokeObjectURL(src)
-      }, { once: true })
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('input[type=file].event-gallery-input').forEach(input => {
+      const item = input.parentElement
+      const img = item.querySelector('.event-gallery-img')
+      const path = item.querySelector('input[type=hidden]')
+      const removeBtn = item.querySelector('.event-gallery-remove')
+  
+      input.addEventListener('change', (e) => {
+        if (e.target.files.length === 0) return ''
+  
+        item.classList.add('has-img')
+  
+        const imgEl = document.createElement('img')
+        const file = e.target.files[0]
+        const src = URL.createObjectURL(file)
+        imgEl.src = src
+        imgEl.className = 'w-full h-full object-cover'
+        img.appendChild(imgEl)
+  
+        removeBtn.addEventListener('click', (e) => {
+          e.preventDefault()
+          input.value = null
+          img.innerHTML = ''
+          item.classList.remove('has-img')
+          URL.revokeObjectURL(src)
+        }, { once: true })
+      })
     })
   })
-})
-</script>
+  </script>

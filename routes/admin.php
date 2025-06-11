@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\QaController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ScheduleController;
+use App\Http\Controllers\Admin\NewsController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -156,7 +157,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::put('{id}', [QaController::class, 'update']);
         Route::delete('{id}', [QaController::class, 'destroy']);
     });
-        /**
+    /**
      * Event
      *
      * @see \App\Http\Controllers\Admin\EventController
@@ -181,6 +182,21 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [BannerController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [BannerController::class, 'update']);
         Route::delete('{id}', [BannerController::class, 'destroy']);
+    });
+
+
+    /**
+     * News
+     *
+     * @see \App\Http\Controllers\Admin\EventController
+     */
+    Route::prefix('news')->name('news.')->group(function () {
+        Route::get('/', [NewsController::class, 'index'])->name('index');
+        Route::get('add', [NewsController::class, 'create'])->name('create');
+        Route::post('add', [NewsController::class, 'store']);
+        Route::get('{id}', [NewsController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [NewsController::class, 'update']);
+        Route::delete('{id}', [NewsController::class, 'destroy']);
     });
     Route::prefix('schedule')->name('schedule.')->group(function () {
         Route::get('/', [ScheduleController::class, 'index'])->name('index');

@@ -14,6 +14,7 @@ use App\Models\Style;
 use App\Models\Option;
 use App\Models\Event;
 use App\Models\Banner;
+use App\Models\News;
 class GroupController extends Controller
 {
     /**
@@ -32,6 +33,7 @@ class GroupController extends Controller
             ->inRandomOrder()
             ->get();
         $events = Event::where('published_status', 1)
+            ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
             ->orWhere(function($query) {
                 $query->where('published_status', 2)
                     ->where('published_at', '<=', Carbon::now());
@@ -39,12 +41,22 @@ class GroupController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        $news = News::where('published_status', 1)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orderBy('published_at', 'desc')
+            ->get();
+
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
             'events' => $events,
             'banners' => $banners,
+            'news' => $news,
         ]);
     }
 
@@ -64,12 +76,25 @@ class GroupController extends Controller
 
     public function showEvent(Request $request): View
     {
-        $events = Event::where('is_public', 1)->orderBy('published_at', 'desc')->get();
+        $events = Event::where('published_status', 1)
+        ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+        ->orWhere(function($query) {
+            $query->where('published_status', 2)
+                ->where('published_at', '<=', Carbon::now());
+        })
+        ->orderBy('published_at', 'desc')
+        ->get();
         return view('public.group.event', [
             'events' => $events,
         ]);
     }
-
+    public function showEventDetail(Request $request, string $id): View
+    {
+        $event = Event::find($id);
+        return view('public.group.eventDetail', [
+            'event' => $event,
+        ]);
+    }
     public function showSearch(Request $request): View
     {
         $personalities = Personality::where('is_public', true)->get();

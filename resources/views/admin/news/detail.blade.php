@@ -2,13 +2,13 @@
   <form
     class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
     method="post"
-    action="{{ url('/admin/event/' . $event->id) }}"
+    action="{{ url('/admin/news/' . $news->id) }}"
     enctype="multipart/form-data"
   >
     @method('PUT')
     @csrf
 
-    <div x-data="{ pageName: `イベントを編集`}">
+    <div x-data="{ pageName: `Newsを編集`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -50,7 +50,7 @@
                     <option
                       value="{{ $shop->id }}"
                       class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                      @if ($shop->id == $event->shop_id ) selected @endif
+                      @if ($shop->id == $news->shop_id ) selected @endif
                     >
                       {{ $shop->name }}
                     </option>
@@ -108,7 +108,7 @@
             <input
               name="title"
               type="text"
-              value="{{ $event->title }}"
+              value="{{ $news->title }}"
               class="w-full dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11  rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
             >
             @if ($errors->has('title'))
@@ -149,7 +149,7 @@
                 id="publish_now"
                 value="1"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
-                @if (1 == $event->published_status ) @checked(true) @endif
+                @if (1 == $news->published_status ) @checked(true) @endif
               >
               <label for="publish_now" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                 今すぐ配信
@@ -164,7 +164,7 @@
                 id="publish_schedule"
                 value="2" 
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
-                @if (2 == $event->published_status ) @checked(true) @endif
+                @if (2 == $news->published_status ) @checked(true) @endif
               <label for="publish_schedule" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                 予約配信
               </label>
@@ -174,7 +174,7 @@
                 name="published_at"
                 type="text"
                 class="flatpickr-input dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 pl-4 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-                value="{{ $event->published_at ?? date('Y-m-d H:i') }}"
+                value="{{ $news->published_at ?? date('Y-m-d H:i') }}"
                 placeholder="日時を選択"
               >
               <span class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 text-gray-500 dark:text-gray-400">
@@ -192,7 +192,7 @@
                 id="publish_draft"
                 value="3"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
-                @if (3 == $event->published_status ) @checked(true) @endif
+                @if (3 == $news->published_status ) @checked(true) @endif
               <label for="publish_draft" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                 下書き
               </label>
@@ -201,7 +201,6 @@
         </div>
       </div>
     </div>
-
     <!-- サムネイル -->
     <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="px-6 py-5">
@@ -212,7 +211,7 @@
       <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
         <div class="flex gap-6">
           @php
-            $saved = $event->thumbnail;
+            $saved = $news->thumbnail;
           @endphp
           <label
             class="event-gallery-item dropzone flex items-center justify-center hover:border-brand-500! dark:hover:border-brand-500! rounded-xl border border-dashed! border-gray-300! bg-gray-50 p-7 lg:p-10 dark:border-gray-700! dark:bg-gray-900 dz-clickable"
@@ -254,6 +253,7 @@
         </div>
       </div>
     </div>
+
     <!-- 本文 -->
     <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="px-6 py-5">
@@ -263,11 +263,11 @@
       </div>
       <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
         <textarea
-          name="event_content"
-          id="event_content"
+          name="news_content"
+          id="news_content"
           class="w-full"
           rows="10"
-        >{{ $event->contents }}</textarea>
+        >{{ $news->contents }}</textarea>
       </div>
     </div>
     <!-- Buttons -->
@@ -299,7 +299,7 @@
       <div class="flex flex-col px-2 overflow-y-auto modal-content custom-scrollbar">
         <div class="modal-header">
           <h5 class="mb-2 font-semibold text-gray-800 modal-title text-theme-xl dark:text-white/90 lg:text-2xl" id="eventModalLabel">
-            イベントを削除
+            Newsを削除
           </h5>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             本当に削除してよろしいでしょうか？
@@ -309,7 +309,7 @@
           <button type="button" class="btn modal-close-btn bg-danger-subtle text-danger flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto" data-bs-dismiss="modal">
             いいえ
           </button>
-          <form action="{{ url('/admin/event/' . $event->id) }}" method="post">
+          <form action="{{ url('/admin/news/' . $news->id) }}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-primary flex w-full justify-center rounded-lg bg-error-500 px-4 py-2.5 text-sm font-medium text-white sm:w-auto">
@@ -322,50 +322,50 @@
   </div>
 </x-admin-layout>
 @once
-  @vite('resources/js/admin/event.js')
+  @vite('resources/js/admin/news.js')
 @endonce
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('input[type=file].event-gallery-input').forEach(input => {
-    const item = input.parentElement
-    const img = item.querySelector('.event-gallery-img')
-    const path = item.querySelector('input[type=hidden]')
-    const removeBtn = item.querySelector('.event-gallery-remove')
-    if (path.value != '') {
-      // removeBtn.style.display = 'flex'
-      item.classList.add('has-img')
-    }
-    if (item.classList.contains('has-img')) {
-      input.disabled = true
-      removeBtn.addEventListener('click', (e) => {
-        e.preventDefault()
-        img.innerHTML = ''
-        path.value = ''
-        item.classList.remove('has-img')
-        input.disabled = false
-      }, { once: true })
-    }
-
-    input.addEventListener('change', (e) => {
-      if (e.target.files.length === 0) return ''
-
-      item.classList.add('has-img')
-
-      const imgEl = document.createElement('img')
-      const file = e.target.files[0]
-      const src = URL.createObjectURL(file)
-      imgEl.src = src
-      imgEl.className = 'w-full h-full object-cover'
-      img.appendChild(imgEl)
-
-      removeBtn.addEventListener('click', (e) => {
-        e.preventDefault()
-        input.value = null
-        img.innerHTML = ''
-        item.classList.remove('has-img')
-        URL.revokeObjectURL(src)
-      }, { once: true })
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('input[type=file].event-gallery-input').forEach(input => {
+      const item = input.parentElement
+      const img = item.querySelector('.event-gallery-img')
+      const path = item.querySelector('input[type=hidden]')
+      const removeBtn = item.querySelector('.event-gallery-remove')
+      if (path.value != '') {
+        // removeBtn.style.display = 'flex'
+        item.classList.add('has-img')
+      }
+      if (item.classList.contains('has-img')) {
+        input.disabled = true
+        removeBtn.addEventListener('click', (e) => {
+          e.preventDefault()
+          img.innerHTML = ''
+          path.value = ''
+          item.classList.remove('has-img')
+          input.disabled = false
+        }, { once: true })
+      }
+  
+      input.addEventListener('change', (e) => {
+        if (e.target.files.length === 0) return ''
+  
+        item.classList.add('has-img')
+  
+        const imgEl = document.createElement('img')
+        const file = e.target.files[0]
+        const src = URL.createObjectURL(file)
+        imgEl.src = src
+        imgEl.className = 'w-full h-full object-cover'
+        img.appendChild(imgEl)
+  
+        removeBtn.addEventListener('click', (e) => {
+          e.preventDefault()
+          input.value = null
+          img.innerHTML = ''
+          item.classList.remove('has-img')
+          URL.revokeObjectURL(src)
+        }, { once: true })
+      })
     })
   })
-})
-</script>
+  </script>

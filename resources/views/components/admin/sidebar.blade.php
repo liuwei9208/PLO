@@ -391,11 +391,11 @@
                 :class="sidebarToggle ? 'lg:hidden' : ''"
               >
                 {{-- 出勤・即姫管理 --}}
-                出勤管理
+                出勤・予約管理
               </span>
             </a>
           </li>
-          <!-- Booking -->
+          {{-- <!-- Booking -->
           <li>
             <a
               href="{{ url('/admin/booking') }}"
@@ -420,7 +420,7 @@
                 予約管理
               </span>
             </a>
-          </li>
+          </li> --}}
 
           <!-- Member -->
           <li>
