@@ -756,69 +756,71 @@ function generateScheduleCasts() {
 
         // グリッドセルの背景色を更新する関数
         async function updateGridBackground(){
-            // event.srcElement.removeEventListener(event.type, updateGridBackground);
-            const startTime = startTimeSelect.value;
-            const endTime = endTimeSelect.value;
+            try {
+                const startTime = startTimeSelect.value;
+                const endTime = endTimeSelect.value;
 
-            const cast_id = section.querySelector('#cast-id').value;
-            const attendance_public = section.querySelector('#is_public').value;
-            let attendance_id = section.querySelector('#attendance-id').value;
-            const startWorking = timeToMinutes(startTime);
-            const endWorking = timeToMinutes(endTime);
-            if (startWorking > endWorking){
-                alert("出勤時間が不正です");
-                return;
-            }else if (startWorking == endWorking){
-                return;
-            }
-            attendance_id = await updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, selectedDate);
-            section.querySelector('#attendance-id').value = attendance_id;
-
-            // event.srcElement.addEventListener(event.type, updateGridBackground);
-
-            // 選択された時間を分に変換
-            const startMinutes = timeToMinutes(startTime);
-            const endMinutes = timeToMinutes(endTime);
-            
-            // グリッドセルを取得
-            const cells = gridCells.querySelectorAll('.grid-cell');
-            
-            // すべてのセルの背景色をリセット
-            cells.forEach(cell => {
-                cell.style.backgroundColor = '#eee';
-            });
-            
-            // まず出勤時間の背景色を更新
-            cells.forEach((cell, index) => {
-                const cellStartMinutes = 8 * 60 + index * 30;
-                const cellEndMinutes = cellStartMinutes + 30;
-                
-                if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
-                    cell.style.backgroundColor = 'red';
+                const cast_id = section.querySelector('#cast-id').value;
+                const attendance_public = section.querySelector('#is_public').value;
+                let attendance_id = section.querySelector('#attendance-id').value;
+                const startWorking = timeToMinutes(startTime);
+                const endWorking = timeToMinutes(endTime);
+                if (startWorking > endWorking){
+                    alert("出勤時間が不正です");
+                    return;
+                }else if (startWorking == endWorking){
+                    return;
                 }
-            });
+                attendance_id = await updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, selectedDate);
+                section.querySelector('#attendance-id').value = attendance_id;
 
-            // 次に登録済みのフォームの時間範囲を表示
-            const registeredForms = section.querySelectorAll('.schedule-form.registered');
-            registeredForms.forEach(form => {
-                const formStartTime = form.querySelector('.form-start-time').value;
-                const formEndTime = form.querySelector('.form-end-time').value;
+                // 選択された時間を分に変換
+                const startMinutes = timeToMinutes(startTime);
+                const endMinutes = timeToMinutes(endTime);
                 
-                const formStartMinutes = timeToMinutes(formStartTime);
-                const formEndMinutes = timeToMinutes(formEndTime);
+                // グリッドセルを取得
+                const cells = gridCells.querySelectorAll('.grid-cell');
                 
+                // すべてのセルの背景色をリセット
+                cells.forEach(cell => {
+                    cell.style.backgroundColor = '#eee';
+                });
+                
+                // まず出勤時間の背景色を更新
                 cells.forEach((cell, index) => {
                     const cellStartMinutes = 8 * 60 + index * 30;
                     const cellEndMinutes = cellStartMinutes + 30;
                     
-                    if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
-                        const currentColor = cell.style.backgroundColor;
-                        if (currentColor === 'red') {
-                            cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
-                        }
+                    if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+                        cell.style.backgroundColor = 'red';
                     }
                 });
-            });
+
+                // 次に登録済みのフォームの時間範囲を表示
+                const registeredForms = section.querySelectorAll('.schedule-form.registered');
+                registeredForms.forEach(form => {
+                    const formStartTime = form.querySelector('.form-start-time').value;
+                    const formEndTime = form.querySelector('.form-end-time').value;
+                    
+                    const formStartMinutes = timeToMinutes(formStartTime);
+                    const formEndMinutes = timeToMinutes(formEndTime);
+                    
+                    cells.forEach((cell, index) => {
+                        const cellStartMinutes = 8 * 60 + index * 30;
+                        const cellEndMinutes = cellStartMinutes + 30;
+                        
+                        if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+                            const currentColor = cell.style.backgroundColor;
+                            if (currentColor === 'red') {
+                                cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                            }
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('エラーが発生しました:', error);
+                alert('更新中にエラーが発生しました。ページを更新して再度お試しください。');
+            }
         };
 
         // 時間選択の変更を監視
@@ -1409,37 +1411,57 @@ document.querySelector('#search_public').addEventListener('change', function(e){
     console.log(e.target);
 });
 
-async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public,  date) {
-    console.log(cast_id);
-    console.log(attendance_id);
-    console.log(startTime);
-    console.log(endTime);
+async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, date) {
+    try {
+        console.log('更新リクエスト:', {
+            cast_id,
+            attendance_id,
+            startTime,
+            endTime,
+            attendance_public,
+            date
+        });
 
-    const response = await fetch(`/admin/schedule/updateattendance`,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-            'Accept': 'application/json', 
-        },
-        body: JSON.stringify({
-            date: date,
-            cast_id: cast_id,
-            attendance_id: attendance_id,
-            startTime: startTime,
-            endTime: endTime,
-            attendance_public: attendance_public,
-        }),
-    });
-    if (!response.ok) {
-        throw new Error('Network response was not ok');
-    }
-    const result = await response.json();
-    if (result.status === 'success') {
-        console.log(result);
-        return result.attendance_id;
-    }else{
-        throw new Error('Network response was not ok');
+        const response = await fetch('/admin/schedule/updateattendance', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                date: date,
+                cast_id: cast_id,
+                attendance_id: attendance_id,
+                startTime: startTime,
+                endTime: endTime,
+                attendance_public: attendance_public,
+            }),
+        });
+
+        // レスポンスの内容を確認
+        const responseText = await response.text();
+        console.log('サーバーレスポンス:', responseText);
+
+        // レスポンスがJSONかどうかを確認
+        let result;
+        try {
+            result = JSON.parse(responseText);
+        } catch (e) {
+            console.error('JSONパースエラー:', e);
+            throw new Error('サーバーからの応答が不正なJSON形式です');
+        }
+
+        if (result.status === 'success') {
+            console.log('更新成功:', result);
+            return result.attendance_id;
+        } else {
+            throw new Error(result.message || '更新に失敗しました');
+        }
+    } catch (error) {
+        console.error('エラーが発生しました:', error);
+        alert('更新中にエラーが発生しました: ' + error.message);
+        throw error;
     }
 }
 
