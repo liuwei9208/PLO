@@ -3,8 +3,28 @@ let limit = 30;
 let skip = 0;
 let pages = 0;
 let total = 0;
-
-document.addEventListener('DOMContentLoaded', function() {
+let shop = '';
+let is_public = '';
+let castName = '';
+let selectedDate = '';
+let event_count = 0;
+// 時間オプションを生成する関数
+function generateTimeOptions(strTime) {
+    let options = '';
+    for (let hour = 8; hour <= 24; hour++) {
+        for (let min = 0; min < 60; min += 30) {
+            if (hour === 24 && min === 30) continue;
+            const timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+            if (strTime && strTime === timeStr) {
+                options += `<option value="${timeStr}" selected>${timeStr}</option>`;
+            } else {
+                options += `<option value="${timeStr}">${timeStr}</option>`;
+            }
+        }
+    }
+    return options;
+}
+document.addEventListener('DOMContentLoaded', async function() {
     // 日付ナビゲーション機能
     const scheduleDate = document.querySelector('.schedule-date');
     const prevWeekBtn = document.querySelector('.prev-week-btn');
@@ -47,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // today.setMonth(5); // 6月（0から始まるため5）
         // today.setDate(9);
         const todayWeekStart = getWeekStart(today);
-        console.log({todayWeekStart});
-        console.log({currentWeekStart});
-        console.log(currentWeekStart.getDate());
-        console.log(todayWeekStart.getDate());
+        // console.log({todayWeekStart});
+        // console.log({currentWeekStart});
+        // console.log(currentWeekStart.getDate());
+        // console.log(todayWeekStart.getDate());
         if (currentWeekStart.getMonth() === todayWeekStart.getMonth() && currentWeekStart.getDate() === todayWeekStart.getDate()) {
             prevWeekBtn.classList.add('week-btn-disabled');
         } else {
@@ -86,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 tab.textContent = `${month}/${day}(${weekday})`;
             }
             
-            tab.addEventListener('click', () => {
+            tab.addEventListener('click', async () => {
                 // アクティブなタブを更新
                 document.querySelectorAll('.date-tab').forEach(t => {
                     t.classList.remove('active');
@@ -97,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // スケジュール日付を更新
                 scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
+                selectedDate = date.toDateString()
+                await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
+                await generateScheduleCasts();
             });
             
             dateTabs.appendChild(tab);
@@ -106,11 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初期表示
     generateDateTabs(currentWeekStart);
     console.log(currentWeekStart);
-    
-    getCastsSchedule(currentDate.toDateString(), page, limit, skip, pages, total);
+    selectedDate = currentDate.toDateString();
+    await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
     scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
     updatePrevWeekButtonState();
-
+    // await generateScheduleCasts();
     // 先週ボタンのクリックイベント
     prevWeekBtn.addEventListener('click', () => {
         if (prevWeekBtn.classList.contains('week-btn-disabled')) {
@@ -137,6 +160,501 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePrevWeekButtonState();
     });
 
+    // // 各キャストセクションの処理
+    // document.querySelectorAll('.schedule-cast-section').forEach(section => {
+    //     // 時間選択の要素を取得
+    //     const startTimeSelect = section.querySelector('.start-time');
+    //     const endTimeSelect = section.querySelector('.end-time');
+    //     const gridCells = section.querySelector('.grid-cells');
+
+    //     // 時間グリッドのドラッグ機能
+    //     let isDragging = false;
+    //     let startCellIndex = -1;
+    //     let endCellIndex = -1;
+
+    //     // セルのインデックスを取得する関数
+    //     function getCellIndex(cell) {
+    //         return Array.from(gridCells.querySelectorAll('.grid-cell')).indexOf(cell);
+    //     }
+
+    //     // 時間を分に変換する関数
+    //     function timeToMinutes(timeStr) {
+    //         const [hours, minutes] = timeStr.split(':').map(Number);
+    //         return hours * 60 + minutes;
+    //     }
+
+    //     // 分を時間文字列に変換する関数
+    //     function minutesToTimeString(minutes) {
+    //         const hours = Math.floor(minutes / 60);
+    //         const mins = minutes % 60;
+    //         return `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+    //     }
+
+    //     // 選択範囲の時間を更新する関数
+    //     function updateSelectedTime() {
+    //         if (startCellIndex === -1 || endCellIndex === -1) return;
+
+    //         const startMinutes = 8 * 60 + Math.min(startCellIndex, endCellIndex) * 30;
+    //         const endMinutes = 8 * 60 + (Math.max(startCellIndex, endCellIndex) + 1) * 30;
+
+    //         const startTimeStr = minutesToTimeString(startMinutes);
+    //         const endTimeStr = minutesToTimeString(endMinutes);
+
+    //         // 開始時間と終了時間のセレクトボックスを更新
+    //         startTimeSelect.value = startTimeStr;
+    //         endTimeSelect.value = endTimeStr;
+
+    //         // グリッドの背景色を更新
+    //         updateGridBackground();
+    //     }
+
+    //     // セルの背景色を更新する関数
+    //     function updateCellsBackground() {
+    //         gridCells.querySelectorAll('.grid-cell').forEach((cell, index) => {
+    //             if (startCellIndex === -1 || endCellIndex === -1) {
+    //                 cell.style.backgroundColor = '#eee';
+    //                 return;
+    //             }
+
+    //             const minIndex = Math.min(startCellIndex, endCellIndex);
+    //             const maxIndex = Math.max(startCellIndex, endCellIndex);
+
+    //             if (index >= minIndex && index <= maxIndex) {
+    //                 cell.style.backgroundColor = 'rgba(255, 0, 0, 0.3)';
+    //             } else {
+    //                 cell.style.backgroundColor = '#eee';
+    //             }
+    //         });
+    //     }
+
+    //     // マウスイベントの設定
+    //     gridCells.querySelectorAll('.grid-cell').forEach(cell => {
+    //         cell.addEventListener('mousedown', (e) => {
+    //             isDragging = true;
+    //             startCellIndex = getCellIndex(cell);
+    //             endCellIndex = startCellIndex;
+    //             updateCellsBackground();
+    //         });
+
+    //         cell.addEventListener('mouseover', (e) => {
+    //             if (isDragging) {
+    //                 endCellIndex = getCellIndex(e.target);
+    //                 updateCellsBackground();
+    //             }
+    //         });
+    //     });
+
+    //     // マウスアップ時の処理
+    //     document.addEventListener('mouseup', () => {
+    //         if (isDragging) {
+    //             isDragging = false;
+    //             updateSelectedTime();
+    //             startCellIndex = -1;
+    //             endCellIndex = -1;
+    //         }
+    //     });
+
+    //     // グリッドセルの背景色を更新する関数
+    //     function updateGridBackground() {
+    //         const startTime = startTimeSelect.value;
+    //         const endTime = endTimeSelect.value;
+            
+    //         // 選択された時間を分に変換
+    //         const startMinutes = timeToMinutes(startTime);
+    //         const endMinutes = timeToMinutes(endTime);
+            
+    //         // グリッドセルを取得
+    //         const cells = gridCells.querySelectorAll('.grid-cell');
+            
+    //         // すべてのセルの背景色をリセット
+    //         cells.forEach(cell => {
+    //             cell.style.backgroundColor = '#eee';
+    //         });
+            
+    //         // まず出勤時間の背景色を更新
+    //         cells.forEach((cell, index) => {
+    //             const cellStartMinutes = 8 * 60 + index * 30;
+    //             const cellEndMinutes = cellStartMinutes + 30;
+                
+    //             if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+    //                 cell.style.backgroundColor = 'red';
+    //             }
+    //         });
+
+    //         // 次に登録済みのフォームの時間範囲を表示
+    //         const registeredForms = section.querySelectorAll('.schedule-form.registered');
+    //         registeredForms.forEach(form => {
+    //             const formStartTime = form.querySelector('.form-start-time').value;
+    //             const formEndTime = form.querySelector('.form-end-time').value;
+                
+    //             const formStartMinutes = timeToMinutes(formStartTime);
+    //             const formEndMinutes = timeToMinutes(formEndTime);
+                
+    //             cells.forEach((cell, index) => {
+    //                 const cellStartMinutes = 8 * 60 + index * 30;
+    //                 const cellEndMinutes = cellStartMinutes + 30;
+                    
+    //                 if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+    //                     const currentColor = cell.style.backgroundColor;
+    //                     if (currentColor === 'red') {
+    //                         cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+    //                     }
+    //                 }
+    //             });
+    //         });
+    //     }
+
+    //     // 時間選択の変更を監視
+    //     startTimeSelect.addEventListener('change', updateGridBackground);
+    //     endTimeSelect.addEventListener('change', updateGridBackground);
+
+    //     // フォームの追加と削除の機能
+    //     const scheduleForms = section.querySelector('.schedule-forms');
+
+    //     // フォームの追加と削除のイベントを設定する関数
+    //     function setupFormEvents(form) {
+    //         const deleteBtn = form.querySelector('.delete-form-btn');
+    //         const startTimeSelect = form.querySelector('.form-start-time');
+    //         const endTimeSelect = form.querySelector('.form-end-time');
+    //         const registerBtn = form.querySelector('.register-btn');
+
+    //         // 時間を分に変換する関数
+    //         function timeToMinutes(timeStr) {
+    //             const [hours, minutes] = timeStr.split(':').map(Number);
+    //             return hours * 60 + minutes;
+    //         }
+
+    //         // グリッドセルの背景色を更新する関数
+    //         function updateGridBackground() {
+    //             const startTime = startTimeSelect.value;
+    //             const endTime = endTimeSelect.value;
+                
+    //             // 選択された時間を分に変換
+    //             const startMinutes = timeToMinutes(startTime);
+    //             const endMinutes = timeToMinutes(endTime);
+                
+    //             // グリッドセルを取得
+    //             const cells = gridCells.querySelectorAll('.grid-cell');
+                
+    //             // すべてのセルの背景色をリセット
+    //             cells.forEach(cell => {
+    //                 cell.style.backgroundColor = '#eee';
+    //             });
+                
+    //             // 出勤時間の背景色を更新
+    //             const workStartTime = section.querySelector('.start-time').value;
+    //             const workEndTime = section.querySelector('.end-time').value;
+    //             const workStartMinutes = timeToMinutes(workStartTime);
+    //             const workEndMinutes = timeToMinutes(workEndTime);
+                
+    //             cells.forEach((cell, index) => {
+    //                 const cellStartMinutes = 8 * 60 + index * 30;
+    //                 const cellEndMinutes = cellStartMinutes + 30;
+                    
+    //                 if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+    //                     cell.style.backgroundColor = 'red';
+    //                 }
+    //             });
+                
+    //             // 登録済みのフォームの時間範囲を表示
+    //             const registeredForms = section.querySelectorAll('.schedule-form.registered');
+    //             registeredForms.forEach(registeredForm => {
+    //                 const formStartTime = registeredForm.querySelector('.form-start-time').value;
+    //                 const formEndTime = registeredForm.querySelector('.form-end-time').value;
+                    
+    //                 const formStartMinutes = timeToMinutes(formStartTime);
+    //                 const formEndMinutes = timeToMinutes(formEndTime);
+                    
+    //                 cells.forEach((cell, index) => {
+    //                     const cellStartMinutes = 8 * 60 + index * 30;
+    //                     const cellEndMinutes = cellStartMinutes + 30;
+                        
+    //                     if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+    //                         const currentColor = cell.style.backgroundColor;
+    //                         if (currentColor === 'red') {
+    //                             cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+    //                         }
+    //                     }
+    //                 });
+    //             });
+    //         }
+
+    //         // 時間選択の変更を監視
+    //         startTimeSelect.addEventListener('change', updateGridBackground);
+    //         endTimeSelect.addEventListener('change', updateGridBackground);
+
+    //         // 登録ボタンのクリックイベント
+    //         registerBtn.addEventListener('click', function() {
+    //             const startTime = startTimeSelect.value;
+    //             const endTime = endTimeSelect.value;
+                
+    //             // 選択された時間を分に変換
+    //             const startMinutes = timeToMinutes(startTime);
+    //             const endMinutes = timeToMinutes(endTime);
+                
+    //             // グリッドセルを取得
+    //             const cells = gridCells.querySelectorAll('.grid-cell');
+                
+    //             // すべてのセルの背景色をリセット
+    //             cells.forEach(cell => {
+    //                 cell.style.backgroundColor = '#eee';
+    //             });
+                
+    //             // 1. まず出勤時間の背景色を更新
+    //             const workStartTime = section.querySelector('.start-time').value;
+    //             const workEndTime = section.querySelector('.end-time').value;
+    //             const workStartMinutes = timeToMinutes(workStartTime);
+    //             const workEndMinutes = timeToMinutes(workEndTime);
+                
+    //             cells.forEach((cell, index) => {
+    //                 const cellStartMinutes = 8 * 60 + index * 30;
+    //                 const cellEndMinutes = cellStartMinutes + 30;
+                    
+    //                 if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+    //                     cell.style.backgroundColor = 'red';
+    //                 }
+    //             });
+                
+    //             // 2. クリックしたフォームの時間範囲の背景色を更新
+    //             cells.forEach((cell, index) => {
+    //                 const cellStartMinutes = 8 * 60 + index * 30;
+    //                 const cellEndMinutes = cellStartMinutes + 30;
+                    
+    //                 if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+    //                     const currentColor = cell.style.backgroundColor;
+    //                     if (currentColor === 'red') {
+    //                         cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+    //                     }
+    //                 }
+    //             });
+
+    //             // 3. 登録済みのフォームの時間範囲を表示
+    //             const registeredForms = section.querySelectorAll('.schedule-form.registered');
+    //             registeredForms.forEach(registeredForm => {
+    //                 const formStartTime = registeredForm.querySelector('.form-start-time').value;
+    //                 const formEndTime = registeredForm.querySelector('.form-end-time').value;
+                    
+    //                 const formStartMinutes = timeToMinutes(formStartTime);
+    //                 const formEndMinutes = timeToMinutes(formEndTime);
+                    
+    //                 cells.forEach((cell, index) => {
+    //                     const cellStartMinutes = 8 * 60 + index * 30;
+    //                     const cellEndMinutes = cellStartMinutes + 30;
+                        
+    //                     if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+    //                         const currentColor = cell.style.backgroundColor;
+    //                         if (currentColor === 'red') {
+    //                             cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+    //                         }
+    //                     }
+    //                 });
+    //             });
+
+    //             // 登録済み状態に変更
+    //             registerBtn.textContent = '登録済';
+    //             registerBtn.classList.add('registered');
+    //             form.classList.add('registered');
+    //         });
+
+    //         deleteBtn.addEventListener('click', function() {
+    //             // フォームが登録済みの場合のみ時間グリッドを更新
+    //             if (form.classList.contains('registered')) {
+    //                 // グリッドセルを取得
+    //                 const cells = gridCells.querySelectorAll('.grid-cell');
+                    
+    //                 // すべてのセルの背景色をリセット
+    //                 cells.forEach(cell => {
+    //                     cell.style.backgroundColor = '#eee';
+    //                 });
+                    
+    //                 // 出勤時間の背景色を更新
+    //                 const workStartTime = section.querySelector('.start-time').value;
+    //                 const workEndTime = section.querySelector('.end-time').value;
+    //                 const workStartMinutes = timeToMinutes(workStartTime);
+    //                 const workEndMinutes = timeToMinutes(workEndTime);
+                    
+    //                 cells.forEach((cell, index) => {
+    //                     const cellStartMinutes = 8 * 60 + index * 30;
+    //                     const cellEndMinutes = cellStartMinutes + 30;
+                        
+    //                     if (cellStartMinutes < workEndMinutes && cellEndMinutes > workStartMinutes) {
+    //                         cell.style.backgroundColor = 'red';
+    //                     }
+    //                 });
+                    
+    //                 // 登録済みのフォームの時間範囲を表示
+    //                 const registeredForms = section.querySelectorAll('.schedule-form.registered');
+    //                 registeredForms.forEach(registeredForm => {
+    //                     // 削除対象のフォームは除外
+    //                     if (registeredForm === form) return;
+                        
+    //                     const formStartTime = registeredForm.querySelector('.form-start-time').value;
+    //                     const formEndTime = registeredForm.querySelector('.form-end-time').value;
+                        
+    //                     const formStartMinutes = timeToMinutes(formStartTime);
+    //                     const formEndMinutes = timeToMinutes(formEndTime);
+                        
+    //                     cells.forEach((cell, index) => {
+    //                         const cellStartMinutes = 8 * 60 + index * 30;
+    //                         const cellEndMinutes = cellStartMinutes + 30;
+                            
+    //                         if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+    //                             const currentColor = cell.style.backgroundColor;
+    //                             if (currentColor === 'red') {
+    //                                 cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+    //                             }
+    //                         }
+    //                     });
+    //                 });
+    //             }
+                
+    //             // フォームを削除して追加ボタンに置き換え
+    //             const addBtn = createAddButton();
+    //             form.replaceWith(addBtn);
+    //             setupAddButtonEvents(addBtn);
+    //         });
+    //     }
+
+    //     // 新しいフォームを作成する関数
+    //     function createNewForm() {
+    //         const newForm = document.createElement('div');
+    //         newForm.className = 'schedule-form active';
+    //         newForm.innerHTML = `
+    //             <button class="delete-form-btn">×</button>
+    //             <div class="form-time-selector">
+    //                 <select class="form-start-time">
+    //                     ${generateTimeOptions()}
+    //                 </select>
+    //                 <span class="form-time-separator">～</span>
+    //                 <select class="form-end-time">
+    //                     ${generateTimeOptions()}
+    //                 </select>
+    //             </div>
+    //             <button class="register-btn">登録</button>
+    //         `;
+    //         return newForm;
+    //     }
+
+    //     // 追加ボタンを作成する関数
+    //     function createAddButton() {
+    //         const addBtn = document.createElement('div');
+    //         addBtn.className = 'add-form-btn';
+    //         addBtn.textContent = '＋';
+    //         return addBtn;
+    //     }
+
+    //     // 追加ボタンのイベントを設定する関数
+    //     function setupAddButtonEvents(addBtn) {
+    //         addBtn.addEventListener('click', function() {
+    //             const newForm = createNewForm();
+    //             this.replaceWith(newForm);
+    //             setupFormEvents(newForm);
+    //         });
+    //     }
+
+    //     // 既存の追加ボタンにイベントを設定
+    //     const addButtons = scheduleForms.querySelectorAll('.add-form-btn');
+    //     addButtons.forEach(addButton => {
+    //         setupAddButtonEvents(addButton);
+    //     });
+
+    //     // 既存のフォームの削除ボタンにイベントを設定
+    //     const deleteButtons = scheduleForms.querySelectorAll('.delete-form-btn');
+    //     deleteButtons.forEach(deleteButton => {
+    //         const form = deleteButton.closest('.schedule-form');
+    //         setupFormEvents(form);
+    //     });
+    // });
+
+
+});
+
+
+
+// 時間軸のラベルを生成する関数
+function generateTimeAxisLabels() {
+    let labels = '';
+    for (let hour = 8; hour < 24; hour++) {
+        labels += `<div class="time-label">${hour}時</div>`;
+    }
+    return labels;
+}
+
+// 時間グリッドのセルを生成する関数
+function generateTimeGridCells() {
+    let cells = '';
+    for (let i = 0; i < 32; i++) {
+        const hour = 8 + Math.floor(i / 2);
+        const minute = (i % 2 === 0) ? '00' : '30';
+        const isHour = (i % 2 === 0);
+        const border = isHour ? '1px solid #ccc' : '2px solid #000';
+        const cellClass = isHour ? 'half-hour-cell' : 'hour-cell';
+        const cellContent = isHour ? '' : minute;
+        cells += `<div class="grid-cell ${cellClass}"></div>`;
+    }
+    return cells;
+}
+function reDrawScheduleCasts() {
+    document.querySelectorAll('.schedule-cast-section').forEach(section => {
+        const startTimeSelect = section.querySelector('.start-time');
+        const endTimeSelect = section.querySelector('.end-time');
+        const gridCells = section.querySelector('.grid-cells');
+
+        const startTime = startTimeSelect.value;
+        const endTime = endTimeSelect.value;
+
+        // 時間を分に変換する関数
+        function timeToMinutes(timeStr) {
+            const [hours, minutes] = timeStr.split(':').map(Number);
+            return hours * 60 + minutes;
+        }
+        
+        // 選択された時間を分に変換
+        const startMinutes = timeToMinutes(startTime);
+        const endMinutes = timeToMinutes(endTime);
+        
+        // グリッドセルを取得
+        const cells = gridCells.querySelectorAll('.grid-cell');
+        
+        // すべてのセルの背景色をリセット
+        cells.forEach(cell => {
+            cell.style.backgroundColor = '#eee';
+        });
+        
+        // まず出勤時間の背景色を更新
+        cells.forEach((cell, index) => {
+            const cellStartMinutes = 8 * 60 + index * 30;
+            const cellEndMinutes = cellStartMinutes + 30;
+            
+            if (cellStartMinutes < endMinutes && cellEndMinutes > startMinutes) {
+                cell.style.backgroundColor = 'red';
+            }
+        });
+
+        // 次に登録済みのフォームの時間範囲を表示
+        const registeredForms = section.querySelectorAll('.schedule-form.registered');
+        registeredForms.forEach(form => {
+            const formStartTime = form.querySelector('.form-start-time').value;
+            const formEndTime = form.querySelector('.form-end-time').value;
+            
+            const formStartMinutes = timeToMinutes(formStartTime);
+            const formEndMinutes = timeToMinutes(formEndTime);
+            
+            cells.forEach((cell, index) => {
+                const cellStartMinutes = 8 * 60 + index * 30;
+                const cellEndMinutes = cellStartMinutes + 30;
+                
+                if (cellStartMinutes < formEndMinutes && cellEndMinutes > formStartMinutes) {
+                    const currentColor = cell.style.backgroundColor;
+                    if (currentColor === 'red') {
+                        cell.style.backgroundColor = 'rgba(0, 0, 255, 0.3)';
+                    }
+                }
+            });
+        });
+    });
+}
+function generateScheduleCasts() {
     // 各キャストセクションの処理
     document.querySelectorAll('.schedule-cast-section').forEach(section => {
         // 時間選択の要素を取得
@@ -168,7 +686,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // 選択範囲の時間を更新する関数
-        function updateSelectedTime() {
+        async function updateSelectedTime() {
             if (startCellIndex === -1 || endCellIndex === -1) return;
 
             const startMinutes = 8 * 60 + Math.min(startCellIndex, endCellIndex) * 30;
@@ -180,6 +698,8 @@ document.addEventListener('DOMContentLoaded', function() {
             // 開始時間と終了時間のセレクトボックスを更新
             startTimeSelect.value = startTimeStr;
             endTimeSelect.value = endTimeStr;
+            
+            
 
             // グリッドの背景色を更新
             updateGridBackground();
@@ -222,20 +742,39 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // マウスアップ時の処理
-        document.addEventListener('mouseup', () => {
+        gridCells.addEventListener('mouseup', async (event) => {
+            event.stopPropagation();
             if (isDragging) {
+                event.stopPropagation();
                 isDragging = false;
                 updateSelectedTime();
                 startCellIndex = -1;
                 endCellIndex = -1;
+    
+
             }
         });
 
         // グリッドセルの背景色を更新する関数
-        function updateGridBackground() {
+        async function updateGridBackground(){
+            // event.srcElement.removeEventListener(event.type, updateGridBackground);
             const startTime = startTimeSelect.value;
             const endTime = endTimeSelect.value;
-            
+
+            const cast_id = section.querySelector('#cast-id').value;
+            const attendance_public = section.querySelector('#is_public').value;
+            let attendance_id = section.querySelector('#attendance-id').value;
+
+            if ( event_count == 0){
+                attendance_id = await updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, selectedDate);
+                section.querySelector('#attendance-id').value = attendance_id;
+                event_count++;
+            }else{
+                event_count = 0;
+            }
+
+            // event.srcElement.addEventListener(event.type, updateGridBackground);
+
             // 選択された時間を分に変換
             const startMinutes = timeToMinutes(startTime);
             const endMinutes = timeToMinutes(endTime);
@@ -279,11 +818,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             });
-        }
+        };
 
         // 時間選択の変更を監視
-        startTimeSelect.addEventListener('change', updateGridBackground);
-        endTimeSelect.addEventListener('change', updateGridBackground);
+        startTimeSelect.addEventListener('change', async () => {
+            await updateGridBackground();
+        });
+        endTimeSelect.addEventListener('change', async () => {
+            await updateGridBackground();
+        });
 
         // フォームの追加と削除の機能
         const scheduleForms = section.querySelector('.schedule-forms');
@@ -369,6 +912,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const startMinutes = timeToMinutes(startTime);
                 const endMinutes = timeToMinutes(endTime);
                 
+
                 // グリッドセルを取得
                 const cells = gridCells.querySelectorAll('.grid-cell');
                 
@@ -543,20 +1087,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 時間オプションを生成する関数
-    function generateTimeOptions() {
-        let options = '';
-        for (let hour = 8; hour <= 24; hour++) {
-            for (let min = 0; min < 60; min += 30) {
-                if (hour === 24 && min === 30) continue;
-                const timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
-                options += `<option value="${timeStr}">${timeStr}</option>`;
-            }
-        }
-        return options;
-    }
-});
+}
 
+function convertDateTimeToTime(dateTime) {
+    const date = new Date(dateTime);
+    return date.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', hour12: false , hourCycle: 'h23' , separator: ':'});
+}
+function formatTimeTotime(time) {
+    return time.substring(0, 5);
+}
 /*
 * キャストの出勤・予約を取得する関数
 * @param {string} date - 日付
@@ -566,21 +1105,41 @@ document.addEventListener('DOMContentLoaded', function() {
 * @param {int} pages - ページ数
 * @param {int} total - 総件数
 */
-async function getCastsSchedule(date, page, limit, skip, pages, total) {
+async function getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total) {
     console.log(date);
     console.log(page);
     console.log(limit);
     console.log(skip);
     console.log(pages);
     console.log(total);
+    console.log(document.querySelector('meta[name="csrf-token"]').content);
     try{
-        const response = await fetch(`/admin/schedule`,{
-            method: 'PSOT',
+        // const response = await fetch(`/admin/schedule/casts?date=${date}&page=${page}&limit=${limit}&skip=${skip}&pages=${pages}&total=${total}`,{
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+        //     },
+        //     body: JSON.stringify({
+        //         date: date,
+        //         page: page,
+        //         limit: limit,
+        //         skip: skip,
+        //         pages: pages,
+        //         total: total,
+        //     }),
+        // });
+        const response = await fetch(`/admin/schedule/`,{
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json', 
             },
             body: JSON.stringify({
+                castName: castName,
+                shop: shop,
+                public: is_public,
                 date: date,
                 page: page,
                 limit: limit,
@@ -590,11 +1149,248 @@ async function getCastsSchedule(date, page, limit, skip, pages, total) {
             }),
         });
         if (!response.ok) {
+            // return;
             throw new Error('Network response was not ok');
         }
         const result = await response.json();
+        if (result.status === 'success') {
+            console.log(result);
+            const casts = result.casts;
+            const attendances = result.attendances;
+            const reservations = result.reservations;
+            page = result.page;
+            limit = result.limit;
+            skip = result.skip;
+            pages = result.pages;
+            total = result.total;
+            date = result.date;
+
+            const imgUrl = window.location.origin + '/storage/';
+            document.querySelector('.schedule-casts').innerHTML = casts.map(cast => {
+                let attendanceStartTime = '';
+                let attendanceEndTime = '';
+                // console.log(cast);
+                const attendance = attendances.find(attendance => attendance.cast_id === cast.id);
+                // console.log('attendance:', attendance);
+                let reservationHTML = '';
+                if (attendance) {
+                    attendanceStartTime = attendance.start_datetime;
+                    attendanceEndTime = attendance.end_datetime;
+                    attendanceStartTime =convertDateTimeToTime(attendanceStartTime);
+                    attendanceEndTime = convertDateTimeToTime(attendanceEndTime);
+                    
+                    const reservationTimes = reservations.filter(reservation => reservation.attendance_id === attendance.id);
+                    console.log({reservationTimes});
+                    if (reservationTimes.length > 0) {
+                        reservationTimes.forEach(reservation => {
+                            const reservationStartTime = convertDateTimeToTime(reservation.start_time);
+                            const reservationEndTime = convertDateTimeToTime(reservation.end_time);
+                            const newForm = document.createElement('div');
+                            newForm.className = 'schedule-form registered';
+                            newForm.innerHTML = `
+                                <input type="hidden" id="reservation-id" class="reservation-id" value="${reservation.id}">
+                                <button class="delete-form-btn">×</button>
+                                <div class="form-time-selector">
+                                    <select class="form-start-time">
+                                        ${generateTimeOptions(reservationStartTime)}
+                                    </select>
+                                    <span class="form-time-separator">～</span>
+                                    <select class="form-end-time">
+                                        ${generateTimeOptions(reservationEndTime)}
+                                    </select>
+                                </div>
+                                <button class="register-btn registered">登録済</button>
+                            `;
+                
+                            reservationHTML += newForm.outerHTML;
+                        });
+                        for ( var i = 0 ; i < ( 6 - reservationTimes.length ) ; i++ ){
+                            reservationHTML += `<div class="add-form-btn">＋</div>`;
+                        }
+                    }else{
+                        reservationHTML = `
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                        `;
+                    }
+                }else{
+                    reservationHTML = `
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    `;
+
+                }
+                return `
+                <div class="schedule-cast-section">
+                    <div class="schedule-row">
+                        <div class="cast-info">
+                            <img class="cast-image" src="${cast.gallery_1 ? imgUrl + cast.gallery_1 : 'https://placehold.jp/100x130.png'}" alt="${cast.name}">
+                            <div class="cast-name">${cast.name}</div>
+                            <input type="hidden" id="cast-id" class="cast-id" value="${cast.id}">
+                        </div>
+                        <div class="schedule-area">
+                            <div class="time-selector">
+                                ${attendance ? `<input type="hidden" id="attendance-id" class="attendance-id" value="${attendance.id}">` : `<input type="hidden" id="attendance-id" class="attendance-id" value="">`}
+                                <select class="start-time">
+                                    ${generateTimeOptions(attendanceStartTime)}
+                                </select>
+                                <span class="time-separator">-</span>
+                                <select class="end-time">
+                                    ${generateTimeOptions(attendanceEndTime)}
+                                </select>
+                                <select class="visibility-status" id="is_public">
+                                    <option value="1" ${attendance && attendance.is_public === 1 ? 'selected' : ''}>公開</option>
+                                    <option value="0" ${attendance && attendance.is_public === 0 ? 'selected' : ''}>非公開</option>
+                                </select>
+                            </div>
+                            <div class="time-axis">
+                                <div class="time-axis-spacer"></div>
+                                <div class="time-axis-labels">
+                                    ${generateTimeAxisLabels()}
+                                </div>
+                            </div>
+                            <div class="time-grid">
+                                <div class="grid-spacer"></div>
+                                <div class="grid-cells">
+                                    ${generateTimeGridCells()}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="schedule-row">
+                        <div class="reservation-info">
+                            <div class="reservation-title">予約情報</div>
+                            <div class="reservation-content">（ここに予約情報を表示）</div>
+                        </div>
+                        <div class="schedule-form-area">
+                            <div class="schedule-forms">
+                                ${reservationHTML}
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            `;
+            }).join('');
+            // document.querySelector('.schedule-casts').innerHTML = html;
+            let paginationHTML = '';
+            paginationHTML += `<div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">`;
+            if ( page > 1 ) {
+                paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${page - 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                </svg></button>`;
+            }else{
+                paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                </svg></span>`;
+            }
+            for ( var i = 1 ; i <= pages ; i++ ){
+                if ( i === page ){
+                    paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white">${i}</span>`;
+                }else{
+                    paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${i}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}">${i}</button>`;
+                }
+            }
+            if ( page < pages ){
+                paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${page + 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
+                </svg></button>`;
+            }else{
+                paginationHTML += `<span class="flex items-center justify-center w-10 h-10"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+                </svg></span>`;
+            }   
+            document.querySelector('.pagination-container').innerHTML = `<div class="pagination-button">${paginationHTML}</div></div>`;
+            document.querySelectorAll('.pagination').forEach(pagination => {
+                pagination.addEventListener('click', async function(e){
+                e.preventDefault();
+                const date = e.target.dataset.date;
+                const page = e.target.dataset.page;
+                const limit = e.target.dataset.limit;
+                const skip = e.target.dataset.skip;
+                const pages = e.target.dataset.pages;
+                const total = e.target.dataset.total;
+                // window.scrollTo({top:0, behavior: 'smooth'});
+                getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total);
+
+                });
+            });
+            await generateScheduleCasts();
+            await reDrawScheduleCasts();
+            // window.scrollTo({top:0, behavior: 'smooth'});
+        }
         console.log(result);
+        // return result;
     } catch (error) {
         console.error('エーラーが発生しました。:', error);
+    }
+}
+
+document.querySelector('#search_form').addEventListener('submit', async function(e){
+    e.preventDefault();
+    console.log('submit');
+    console.log(e.target);
+    shop = e.target.shop.value;
+    is_public = e.target.public.value;
+    castName = e.target.cast.value;
+    page = 1;
+    await getCastsSchedule(castName,shop,is_public,selectedDate, page, limit, skip, pages, total);
+    await generateScheduleCasts();
+    // const date = e.target.date.value;
+    // const page = e.target.page.value;
+    // const limit = e.target.limit.value;
+    // const skip = e.target.skip.value;
+    // const pages = e.target.pages.value;
+    // const total = e.target.total.value;
+    // await getCastsSchedule(date, page, limit, skip, pages, total);
+});
+document.querySelector('#search_shop').addEventListener('change', function(e){
+    e.preventDefault();
+    console.log(e.target.value);
+});
+
+document.querySelector('#search_public').addEventListener('change', function(e){   
+    e.preventDefault();
+    console.log(e.target);
+});
+
+async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public,  date) {
+    console.log(cast_id);
+    console.log(attendance_id);
+    console.log(startTime);
+    console.log(endTime);
+
+    const response = await fetch(`/admin/schedule/updateattendance`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+            'Accept': 'application/json', 
+        },
+        body: JSON.stringify({
+            date: date,
+            cast_id: cast_id,
+            attendance_id: attendance_id,
+            startTime: startTime,
+            endTime: endTime,
+            attendance_public: attendance_public,
+        }),
+    });
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const result = await response.json();
+    if (result.status === 'success') {
+        console.log(result);
+        return result.attendance_id;
+    }else{
+        throw new Error('Network response was not ok');
     }
 }

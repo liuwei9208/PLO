@@ -1,4 +1,141 @@
 <x-admin-layout>
+    <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+        <form id="search_form" class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+            <!-- Search -->
+            <div
+            class="flex p-5 sm:p-6 dark:border-gray-800"
+            >
+                <!-- Cast filter -->
+                <div class="mr-2 hidden lg:block">
+                    <div class="relative">
+                    <span class="absolute top-1/2 left-4 -translate-y-1/2">
+                        <svg class="fill-gray-500 dark:fill-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M3.04175 9.37363C3.04175 5.87693 5.87711 3.04199 9.37508 3.04199C12.8731 3.04199 15.7084 5.87693 15.7084 9.37363C15.7084 12.8703 12.8731 15.7053 9.37508 15.7053C5.87711 15.7053 3.04175 12.8703 3.04175 9.37363ZM9.37508 1.54199C5.04902 1.54199 1.54175 5.04817 1.54175 9.37363C1.54175 13.6991 5.04902 17.2053 9.37508 17.2053C11.2674 17.2053 13.003 16.5344 14.357 15.4176L17.177 18.238C17.4699 18.5309 17.9448 18.5309 18.2377 18.238C18.5306 17.9451 18.5306 17.4703 18.2377 17.1774L15.418 14.3573C16.5365 13.0033 17.2084 11.2669 17.2084 9.37363C17.2084 5.04817 13.7011 1.54199 9.37508 1.54199Z" fill=""></path>
+                        </svg>
+                    </span>
+                    <input
+                        type="text"
+                        name="cast"
+                        id="search_cast"
+                        placeholder="キャスト名"
+                        value="{{ request()->cast }}"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[300px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
+                    >
+                    {{-- <button type="submit" class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400" >
+                        <span> 検索 </span>
+                    </button> --}}
+                    </div>
+                </div>
+
+                <!-- Shop filter -->
+                @can('edit other shops diaries')
+                    <div class="mr-2">
+                    <div class="relative z-20 bg-transparent">
+                        <select
+                        name="shop"
+                        id="search_shop"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                        >
+                        <option value="" class="text-gray-700 dark:bg-gray-900 dark:text-gray-400">
+                            全ての店舗
+                        </option>
+                        @foreach ($shops as $shop)
+                            <option
+                            value="{{ $shop->slug }}"
+                            class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                            @selected($shop->slug === request()->shop)
+                            >
+                            {{ $shop->name }}
+                            </option>
+                        @endforeach
+                        </select>
+                        <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                        <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        </span>
+                    </div>
+                    </div>
+                @endcan
+
+                <div class="mr-2">
+                    <div class="relative z-20 bg-transparent">
+                    <select
+                        name="public"
+                        id="search_public"
+                        class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                    >
+                        <option
+                        value=""
+                        class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                        >
+                        全て
+                        </option>
+                        <option
+                        value="1"
+                        class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                        @selected(request()->public === '1')
+                        >
+                        公開
+                        </option>
+                        <option
+                        value="0"
+                        class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                        @selected(request()->public === '0')
+                        >
+                        非公開
+                        </option>
+                    </select>
+                    <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                        <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </span>
+                    </div>
+                </div>
+
+                <div class="ml-2">
+                    <button type="submit" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-900 hover:bg-gray-50 hover:border-gray-400 transition-colors duration-200 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-900 dark:hover:bg-gray-700 dark:hover:border-gray-600">
+                      <span>検索</span>
+                    </button>
+                </div>
+    
+            </div>
+            <!-- Limit -->
+            <div
+            id="diary_index_limit_form"
+            class="p-5 sm:p-6 dark:border-gray-800"
+            >
+                <div>
+                    <div class="relative z-20 bg-transparent">
+                        <select
+                            name="limit"
+                            id="search_form_limit"
+                            class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                        >
+                            @foreach ([30, 50] as $limit_option)
+                            <option
+                                value="{{ $limit_option }}"
+                                class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
+                                @selected($limit_option == request()->limit)
+                            >
+                                {{ $limit_option }}件
+                            </option>
+                            @endforeach
+                        </select>
+                        <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
+                            <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4.79175 7.396L10.0001 12.6043L15.2084 7.396" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </form>        {{-- </div> --}}
+    </div>
+
+
+
     <div class="schedule-container">
         <div class="schedule-date">
             {{-- 2025年06月08日(日)の出勤予定 --}}
@@ -26,110 +163,114 @@
             <div class="cast-column">キャスト</div>
             <div class="schedule-column">出勤予定</div>
         </div>
-        @foreach ($casts as $cast)
-        <!-- キャストセクション：各キャストの情報とスケジュールを管理する単位 -->
-        <div class="schedule-cast-section">
-            <!-- 上段：キャスト情報＋出勤予定エリア -->
-            <div class="schedule-row">
-                <!-- キャスト情報（上段） -->
-                <div class="cast-info">
-                    <img class="cast-image" src="{{ asset('storage/'.$cast->gallery_1) }}" alt="キャスト写真">
-                    <div class="cast-name">{{$cast->name}}</div>
-                </div>
-                <!-- 出勤予定エリア（上段） -->
-                <div class="schedule-area">
-                    <!-- 出勤時間選択（時間軸の上） -->
-                    <div class="time-selector">
-                        <select class="start-time">
-                            @for ($hour = 8; $hour <= 24; $hour++)
-                                @for ($min = 0; $min < 60; $min += 30)
-                                    @php
-                                        if ($hour == 24 && $min == 30) {
-                                            continue;
-                                        }
-                                        $timeStr = sprintf('%02d:%02d', $hour, $min);
-                                    @endphp
-                                    <option value="{{ $timeStr }}">{{ $timeStr }}</option>
-                                @endfor
-                            @endfor
-                        </select>
-                        <span class="time-separator">-</span>
-                        <select class="end-time">
-                            @for ($hour = 8; $hour <= 24; $hour++)
-                                @for ($min = 0; $min < 60; $min += 30)
-                                    @php
-                                        if ($hour == 24 && $min == 30) {
-                                            continue;
-                                        }
-                                        $timeStr = sprintf('%02d:%02d', $hour, $min);
-                                    @endphp
-                                    <option value="{{ $timeStr }}">{{ $timeStr }}</option>
-                                @endfor
-                            @endfor
-                        </select>
-                        <select class="visibility-status">
-                            <option>公開</option>
-                            <option>非公開</option>
-                        </select>
+        <div class="schedule-casts">
+        {{-- @foreach ($casts as $cast) --}}
+            <!-- キャストセクション：各キャストの情報とスケジュールを管理する単位 -->
+            <div class="schedule-cast-section">
+                <!-- 上段：キャスト情報＋出勤予定エリア -->
+                <div class="schedule-row">
+                    <!-- キャスト情報（上段） -->
+                    <div class="cast-info">
+                        {{-- <img class="cast-image" src="{{ asset('storage/'.$cast->gallery_1) }}" alt="キャスト写真">
+                        <div class="cast-name">{{$cast->name}}</div> --}}
+                        <img class="cast-image" src="https://placehold.jp/100x100.png" alt="キャスト写真">
+                        <div class="cast-name">キャスト名</div>
                     </div>
-                    <!-- 時間軸 -->
-                    <div class="time-axis">
-                        <div class="time-axis-spacer"></div>
-                        <div class="time-axis-labels">
-                            @for ($h = 8; $h <= 23; $h++)
-                                <div class="time-label">
-                                    {{$h}}時
-                                </div>
-                            @endfor
+                    <!-- 出勤予定エリア（上段） -->
+                    <div class="schedule-area">
+                        <!-- 出勤時間選択（時間軸の上） -->
+                        <div class="time-selector">
+                            <select class="start-time">
+                                @for ($hour = 8; $hour <= 24; $hour++)
+                                    @for ($min = 0; $min < 60; $min += 30)
+                                        @php
+                                            if ($hour == 24 && $min == 30) {
+                                                continue;
+                                            }
+                                            $timeStr = sprintf('%02d:%02d', $hour, $min);
+                                        @endphp
+                                        <option value="{{ $timeStr }}">{{ $timeStr }}</option>
+                                    @endfor
+                                @endfor
+                            </select>
+                            <span class="time-separator">-</span>
+                            <select class="end-time">
+                                @for ($hour = 8; $hour <= 24; $hour++)
+                                    @for ($min = 0; $min < 60; $min += 30)
+                                        @php
+                                            if ($hour == 24 && $min == 30) {
+                                                continue;
+                                            }
+                                            $timeStr = sprintf('%02d:%02d', $hour, $min);
+                                        @endphp
+                                        <option value="{{ $timeStr }}">{{ $timeStr }}</option>
+                                    @endfor
+                                @endfor
+                            </select>
+                            <select class="visibility-status">
+                                <option>公開</option>
+                                <option>非公開</option>
+                            </select>
+                        </div>
+                        <!-- 時間軸 -->
+                        <div class="time-axis">
+                            <div class="time-axis-spacer"></div>
+                            <div class="time-axis-labels">
+                                @for ($h = 8; $h <= 23; $h++)
+                                    <div class="time-label">
+                                        {{$h}}時
+                                    </div>
+                                @endfor
+                            </div>
+                        </div>
+                        <!-- 時間グリッド -->
+                        <div class="time-grid">
+                            <div class="grid-spacer"></div>
+                            <div class="grid-cells">
+                                @for ($i = 0; $i < 32; $i++)
+                                    @php
+                                        $hour = 8 + intdiv($i, 2);
+                                        $minute = $i % 2 === 0 ? '00' : '30';
+                                        $isHour = $i % 2 === 0;
+                                        $border = $isHour ? '1px solid #ccc' : '2px solid #000';
+                                    @endphp
+                                    @if ($isHour)
+                                        <div class="grid-cell half-hour-cell"></div>
+                                    @else
+                                        <div class="grid-cell hour-cell"></div>
+                                    @endif
+                                @endfor
+                            </div>
                         </div>
                     </div>
-                    <!-- 時間グリッド -->
-                    <div class="time-grid">
-                        <div class="grid-spacer"></div>
-                        <div class="grid-cells">
-                            @for ($i = 0; $i < 32; $i++)
-                                @php
-                                    $hour = 8 + intdiv($i, 2);
-                                    $minute = $i % 2 === 0 ? '00' : '30';
-                                    $isHour = $i % 2 === 0;
-                                    $border = $isHour ? '1px solid #ccc' : '2px solid #000';
-                                @endphp
-                                @if ($isHour)
-                                    <div class="grid-cell half-hour-cell"></div>
-                                @else
-                                    <div class="grid-cell hour-cell"></div>
-                                @endif
-                            @endfor
+                </div>
+                <!-- 下段：予約情報＋出勤予定フォーム -->
+                <div class="schedule-row">
+                    <!-- 予約情報（下段） -->
+                    <div class="reservation-info">
+                        <div class="reservation-title">予約情報</div>
+                        <div class="reservation-content">（ここに予約情報を表示）</div>
+                    </div>
+                    <!-- 出勤予定フォーム（下段） -->
+                    <div class="schedule-form-area">
+                        <div class="schedule-forms">
+                            <!-- 空の追加ボックス -->
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- 下段：予約情報＋出勤予定フォーム -->
-            <div class="schedule-row">
-                <!-- 予約情報（下段） -->
-                <div class="reservation-info">
-                    <div class="reservation-title">予約情報</div>
-                    <div class="reservation-content">（ここに予約情報を表示）</div>
-                </div>
-                <!-- 出勤予定フォーム（下段） -->
-                <div class="schedule-form-area">
-                    <div class="schedule-forms">
-                        <!-- 空の追加ボックス -->
-                        <div class="add-form-btn">＋</div>
-                        <div class="add-form-btn">＋</div>
-                        <div class="add-form-btn">＋</div>
-                        <div class="add-form-btn">＋</div>
-                        <div class="add-form-btn">＋</div>
-                        <div class="add-form-btn">＋</div>
-                    </div>
-                </div>
-            </div>
+            {{-- @endforeach --}}
         </div>
-        @endforeach
     </div>
     <!-- Pagination -->
-    <div class="mb-10 flex justify-center">
-        <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+    <div class="mb-10 flex justify-center pagination-container">
+    {{--    <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
             @if ($page > 1)
             <a
                 href="{{ route('admin.schedule.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
@@ -184,7 +325,7 @@
                 </svg>
             </span>
             @endif
-        </div>
+        </div> --}}
     </div>
 </x-admin-layout>
 @once
