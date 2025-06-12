@@ -223,7 +223,7 @@
 </x-public-group-layout>
 
 @once
-  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/_diary_top.scss'])
+  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
