@@ -224,17 +224,17 @@
 
 @once
   @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/_diary_top.scss'])
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const moreButton = document.getElementById('diary_more_button');
-      const shopsList = document.querySelector('.diary-content-bottom-shops');
-      
-      if (moreButton && shopsList) {
-        moreButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          shopsList.style.display = 'flex';
-        });
-      }
-    });
-  </script>
 @endonce
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const moreButton = document.getElementById('diary_more_button');
+  const shopsList = document.querySelector('.diary-content-bottom-shops');
+  
+  if (moreButton && shopsList) {
+    moreButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      shopsList.style.display = 'flex';
+    });
+  }
+});
+</script>
