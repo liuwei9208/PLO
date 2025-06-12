@@ -42,6 +42,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('event/{id}', [ShopController::class, 'showEventDetail'])->name('event.detail');
         Route::get('about', [ShopController::class, 'showAbout'])->name('about');
         Route::get('fee', [ShopController::class, 'showFee'])->name('fee');
+        Route::get('diary', [ShopController::class, 'showDiary'])->name('diary');
     });
 });
 

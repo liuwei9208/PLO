@@ -19,6 +19,7 @@ export default defineConfig({
                 'resources/scss/shop/_eventdetail.scss',
                 'resources/scss/shop/_about.scss',
                 'resources/scss/shop/_fee.scss',
+                'resources/scss/group/_diary_top.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
