@@ -144,13 +144,49 @@
   </section>
 
   <!-- 最新写メ日記 - Photo Diary -->
-  <div class="mock">
+  {{-- <div class="mock">
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-diary-sm.png') }}">
       <img src="{{ asset('assets/img/mock-diary-lg.png') }}" alt="">
     </picture>
+  </div> --}}
+  <div class="diary">
+    <div class="section-title">
+      <h2 class="section-title-lg">PHOTO DIARY</h2>
+      <h3 class="section-title-sm">最新写メ日記</h3>
+    </div>
+    <div class="diary-content content-wrapper">
+      <div class="diary-content-top">
+        <img src="{{ asset('assets/img/group/diary-top-pc.png') }}" alt="" class="pc-only">
+        <img src="{{ asset('assets/img/group/diary-top-sp.png') }}" alt="" class="sp-only">
+      </div>
+      <div class="diary-content-list">
+        @foreach ($diaries as $diary)
+          <div class="diary-content-item">
+            <div class="diary-content-item-image">
+              <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
+              <div class="diary-content-item-title">
+                {{ $diary->subject }}
+              </div>
+            </div>
+            <div class="diary-content-item-name">
+              {{ $diary->name }}
+            </div>
+            <div class="diary-content-item-date">
+              {{ $diary->updated_at->format('y.m.d') }}
+            </div>
+          </div>
+        @endforeach
+      </div>
+      <div class="diary-content-bottom">
+        <img src="{{ asset('assets/img/group/diary-bottom-pc.png') }}" alt="" class="pc-only">
+        <img src="{{ asset('assets/img/group/diary-bottom-sp.png') }}" alt="" class="sp-only">
+        <div class="diary-content-bottom-more">
+          <a href="#" class="diary-content-bottom-more-button">もっと見る</a>
+        </div>
+      </div>
+    </div>
   </div>
-
   <!-- 各お店の最新動画 - Shop Movie -->
   <div class="mock">
     <picture>
@@ -178,5 +214,5 @@
 </x-public-group-layout>
 
 @once
-  @vite(['resources/scss/group/_pickup_top.scss'])
+  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/_diary_top.scss'])
 @endonce

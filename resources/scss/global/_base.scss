@@ -45,7 +45,7 @@ a {
   @media #{media-query(md)} {
     width: calc(100% - 80px);
   }
-  @media #{media-query(lg)} {
+  @media #{media-query(sm)} {
     width: calc(100% - 40px);
   }
 }
