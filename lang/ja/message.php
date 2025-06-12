@@ -13,5 +13,6 @@ return [
     'admin_news_create_success' => 'ニュースを作成しました',
     'admin_news_update_success' => 'ニュースを更新しました',
     'admin_news_delete_success' => 'ニュースを削除しました',
+    'admin_fee_update_success' => '料金システムを更新しました',
 ];
 ?>

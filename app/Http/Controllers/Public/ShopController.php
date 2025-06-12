@@ -140,4 +140,11 @@ class ShopController extends Controller
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
+
+    public function showFee(Request $request, string $shop): View
+    {
+        return view('public.shop.fee', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 }

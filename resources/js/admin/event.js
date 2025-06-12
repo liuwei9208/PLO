@@ -15,13 +15,12 @@ import 'tinymce-i18n/langs6/ja';
 // TinyMCEのスタイル
 import 'tinymce/skins/ui/oxide/skin.min.css';
 import 'tinymce/skins/content/default/content.min.css';
-
 // Flatpickrの初期化
 document.addEventListener('DOMContentLoaded', function () {
   // 配信設定のラジオボタン制御
   const publishTypeRadios = document.querySelectorAll('input[name="publish_type"]');
   const scheduleDatetime = document.getElementById('schedule_datetime');
-  console.log(scheduleDatetime);
+
   function toggleScheduleDatetime(show) {
     scheduleDatetime.style.display = show ? 'block' : 'none';
   }
@@ -37,20 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // 現在時刻を15分単位で取得
-  // const now = new Date();
-  // const minutes = Math.ceil(now.getMinutes() / 15) * 15;
-  // now.setMinutes(minutes);
-
   // published_atの値を取得
   const publishedAtInput = document.querySelector('input[name="published_at"]');
   const publishedAtValue = publishedAtInput.value;
-  console.log({publishedAtValue});
-  // console.log({now});
   const defaultDate = new Date(publishedAtValue);
   const minutes = Math.ceil(defaultDate.getMinutes() / 15) * 15;
   defaultDate.setMinutes(minutes);
-  console.log({defaultDate});
+
   flatpickr(".flatpickr-input", {
     enableTime: true,
     dateFormat: "Y-m-d H:i",
@@ -58,10 +50,8 @@ document.addEventListener('DOMContentLoaded', function () {
     minuteIncrement: 15,
     locale: Japanese,
     minDate: "2024-01-01 00:00",
-    // defaultDate: publishedAtValue || now,
     defaultDate: defaultDate,
     onChange: function(selectedDates, dateStr) {
-      // 15分単位に調整
       const date = selectedDates[0];
       const minutes = date.getMinutes();
       const adjustedMinutes = Math.round(minutes / 15) * 15;
@@ -81,11 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
     appendTo: document.querySelector('#schedule_datetime'),
     onOpen: function(selectedDates, dateStr, instance) {
       const calendar = instance.calendarContainer;
-      const input = instance.input;
-      const inputRect = input.getBoundingClientRect();
-      const scheduleDatetimeRect = scheduleDatetime.getBoundingClientRect();
       calendar.style.zIndex = '1000';
-      
     }
   });
 

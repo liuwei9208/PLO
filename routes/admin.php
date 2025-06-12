@@ -17,7 +17,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\NewsController;
-
+use App\Http\Controllers\Admin\FeeController;
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -204,5 +204,11 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('/updateattendance', [ScheduleController::class, 'updateAttendanceTime']);
         Route::post('/updatereservation', [ScheduleController::class, 'updateReservationTime']);
         Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
+    });
+
+    Route::prefix('fee')->name('fee.')->group(function () {
+        Route::get('/', [FeeController::class, 'index'])->name('index');
+        Route::get('{id}', [FeeController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [FeeController::class, 'update']);
     });
 });
