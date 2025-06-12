@@ -165,6 +165,166 @@
       }
     }
   }
+  &-content-bottom-shops {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    // width: 100%;
+    cursor: pointer;
+    transition: .2s;
+
+    @media #{media-query(sm)} {
+      width: 344px;
+      margin: 40px auto 0;
+    }
+
+    @media #{media-query(md)} {
+      width: 640px;
+      margin: 50px auto 0;
+    }
+
+    @media #{media-query(lg)} {
+      width: 840px;
+      margin: 60px auto 0;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+
+      @media #{media-query(sm)} {
+        width: 80px;
+        height: 34px;
+        margin: 0 3px 6px;
+        border-radius: 17px;
+      }
+
+      @media #{media-query(md)} {
+        width: 150px;
+        height: 70px;
+        margin: 0 5px 15px;
+        border-radius: 35px;
+      }
+
+      @media #{media-query(lg)} {
+        width: 200px;
+        height: 90px;
+        margin: 0 5px 15px;
+        border-radius: 45px;
+      }
+
+      & a {
+        color: #fff;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &:not([data-shop="all"]) {
+        color: #FFF;
+      }
+
+      &[data-shop="all"] {
+        background-color: #FFF;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+          border: 1px solid #707070;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+          border: 2px solid #707070;
+        }
+        @media #{media-query(lg)} {
+          font-size: 19px;
+          border: 2px solid #707070;
+        }
+      }
+
+      &[data-shop="pussycat"] {
+        background-color: $shop-color-pussycat;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 15px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 19px;
+        }
+      }
+
+      &[data-shop="shizuku"] {
+        background-color: $shop-color-shizuku;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="miyabi"] {
+        background-color: $shop-color-miyabi;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="en"] {
+        background-color: $shop-color-en;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="shiroganeze"] {
+        background-color: $shop-color-shiroganeze;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 20px;
+        }
+      }
+
+      &[data-shop="lovestory"] {
+        background-color: $shop-color-lovestory;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
 
 // レスポンシブ対応

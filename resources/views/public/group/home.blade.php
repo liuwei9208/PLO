@@ -182,10 +182,19 @@
         <img src="{{ asset('assets/img/group/diary-bottom-pc.png') }}" alt="" class="pc-only">
         <img src="{{ asset('assets/img/group/diary-bottom-sp.png') }}" alt="" class="sp-only">
         <div class="diary-content-bottom-more">
-          <a href="#" class="diary-content-bottom-more-button">もっと見る</a>
+          <a href="#" class="diary-content-bottom-more-button" id="diary_more_button">もっと見る</a>
         </div>
       </div>
     </div>
+    <ul class="diary-content-bottom-shops ">
+      <a href="{{ route('public.shop.diary', ['shop' => 'pussycat']) }}"><li class="diary-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
+      <a href="{{ route('public.shop.diary', ['shop' => 'shizuku']) }}"><li class="diary-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
+      <a href="{{ route('public.shop.diary', ['shop' => 'miyabi']) }}"><li class="diary-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
+      <a href="{{ route('public.shop.diary', ['shop' => 'en']) }}"><li class="diary-content-bottom-shops-item " data-shop="en">艶</li></a>
+      <a href="{{ route('public.shop.diary', ['shop' => 'shiroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.diary', ['shop' => 'lovestory']) }}"><li class="diary-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
+    </ul>
+
   </div>
   <!-- 各お店の最新動画 - Shop Movie -->
   <div class="mock">
@@ -215,4 +224,17 @@
 
 @once
   @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/_diary_top.scss'])
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const moreButton = document.getElementById('diary_more_button');
+      const shopsList = document.querySelector('.diary-content-bottom-shops');
+      
+      if (moreButton && shopsList) {
+        moreButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          shopsList.style.display = 'flex';
+        });
+      }
+    });
+  </script>
 @endonce
