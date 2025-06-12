@@ -58,9 +58,11 @@ class GroupController extends Controller
                 'diaries.subject',
                 'diaries.updated_at',
                 'casts.name',
+                'diaries.photo',
             ])
             ->limit(9)
-            ->get();        
+            ->get();
+        // dd($diaries);        
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
