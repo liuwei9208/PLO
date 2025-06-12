@@ -1,0 +1,77 @@
+@use '../global/vars' as *;
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
+
+.shop-fee {
+  padding: 48px 0;
+  // background: #fafafa;
+
+  &__title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 32px;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+
+  &__content {
+    // max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      font-size: 2.4rem;
+
+      &-description {
+        font-size: 2.4rem;
+        color: #333;
+        text-align: left;
+      }
+    }
+
+    &-banner {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      
+      img {
+        max-width: 100%;
+        width: 100%;
+        height: auto;
+        // border-radius: 8px;
+        // box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+@media (max-width: 600px) {
+  .shop-fee {
+    padding: 24px 0;
+  }
+  .shop-fee__title {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+  }
+  .shop-fee__content-item {
+    padding: 20px 10px;
+  }
+  .shop-fee__content-banner {
+    gap: 10px;
+  }
+}
+
+
