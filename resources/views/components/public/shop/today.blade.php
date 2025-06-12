@@ -1,5 +1,5 @@
 <a
-  href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop->slug, 'id' => $cast->id]) }}"
+  href="{{ route('public.shop.cast.profile', ['shop' => $cast->slug, 'id' => $cast->id]) }}"
   class="today-item"
 >
   <div class="today-photo">
