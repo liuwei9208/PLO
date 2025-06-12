@@ -6,6 +6,7 @@
     <x-public.shop.phone-link :shop="$shop" />
   </div>
   
+  @if ($todayCasts->count() > 0)
   <!-- Today Schedule -->
   <div class="today">
     <h2 class="today-title">
@@ -17,7 +18,7 @@
       @endforeach
     </div>
   </div>
- 
+  @endif
   {{-- <!-- Mock -->
   <div class="mock mock">
     <picture>
