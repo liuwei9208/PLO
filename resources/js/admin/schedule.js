@@ -923,7 +923,11 @@ function generateScheduleCasts() {
                 const form_startMinutes = timeToMinutes(section.querySelector('.start-time').value);
                 const form_endMinutes = timeToMinutes(section.querySelector('.end-time').value);
                 console.log({startMinutes, endMinutes,form_startMinutes,form_endMinutes});
-                if ( startMinutes < form_startMinutes || endMinutes > form_endMinutes){
+                if (form_startMinutes == form_endMinutes){
+                    alert("出勤時間を選択してください。");
+                    return;
+                }
+                else if ( startMinutes < form_startMinutes || endMinutes > form_endMinutes){
                     alert("出勤時間と予約時間が重複しています");
                     return;
                 }else if ( startMinutes > endMinutes){
