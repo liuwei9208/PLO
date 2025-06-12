@@ -8,7 +8,7 @@
   <div class="today-status">
     <span class="today-status-label">出勤中</span>
     <span class="today-status-separator">　|　</span>
-    <span class="today-status-time">00:00-00:00</span>
+    <span class="today-status-time">{{ date('H:i', strtotime($cast->start_datetime)) }} - {{ date('H:i', strtotime($cast->end_datetime)) }}</span>
   </div>
   <div class="today-profile">
     <span class="today-profile-name">

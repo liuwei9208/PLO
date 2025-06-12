@@ -1366,7 +1366,11 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
             });
             await generateScheduleCasts();
             await reDrawScheduleCasts();
-            document.documentElement.scrollTop = 0;
+            window.addEventListener('scroll-top', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              });
+           
+
             // window.scrollTo({top:0, behavior: 'smooth'});
         } else {
             throw new Error(response.data.message || 'データの取得に失敗しました');

@@ -14,6 +14,8 @@ use App\Models\Event;
 use App\Models\Banner;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
+
 class ShopController extends Controller
 {
     /**
@@ -29,9 +31,20 @@ class ShopController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        Log::info("todayCasts");
+
+        $todayCasts = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+            ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+            ->where('casts.is_public', 1)
+            ->where('shops.slug', 'like', $shop)
+            ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+            ->select('casts.*', 'shops.*', 'attendances.*') // 必要に応じて明示的に
+            ->get();
+        Log::info($todayCasts);
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
-            'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
+            // 'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
+            'todayCasts' => $todayCasts,
             'events' => $events,
             'banners' => $banners,
         ]);
