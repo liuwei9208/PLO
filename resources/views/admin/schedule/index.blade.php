@@ -229,7 +229,6 @@
 </x-admin-layout>
 <script>
     window.apiToken = "{{ $token }}"
-    console.log(window.apiToken)
 </script>
 @once
     @vite(['resources/js/admin/schedule.js','resources/scss/admin/schedule.scss'])
