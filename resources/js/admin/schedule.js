@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
                 selectedDate = date.toDateString()
                 await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
-                await generateScheduleCasts();
+                // await generateScheduleCasts();
             });
             
             dateTabs.appendChild(tab);

@@ -9,56 +9,74 @@
       <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule">
       <h2 class="schedule-title-ja">出勤情報</h2>
     </div>
-    <div class="schedule-week">
+    <div class="schedule-week content-wrapper">
       @foreach ($days as $day)
         <div class="schedule-week-day">
           <button class="schedule-week-day-date" value="{{ $day['date'] }}">{{ $day['weekDay'] }}</button>
         </div>
       @endforeach
     </div>
-    <div class="schedule-shop-list">
+    <div class="schedule-shop-list content-wrapper">
       <div class="schedule-shop-list-title">
         店舗名
       </div>
       <div class="schedule-shop-list-items">
       @foreach ($shops as $shop)
-        <div class="schedule-shop-list-item">
+        <div class="schedule-shop-list-item --{{$shop->slug}}">
           <button class="schedule-shop-list-item-button" value="{{ $shop->id }}">{{ $shop->name }}</button>
         </div>
       @endforeach
       </div>
     </div>
-    <div class="schedule-person-info-list">
+    <div class="schedule-person-info-list content-wrapper">
       @foreach ($casts as $cast)
       <div class="schedule-person-info-list-item">
-        <a href="{{ route('public.group.cast.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}">
+        <a href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->cast_id]) }}">
           <div class="schedule-person-info-photo">
-            <img src="{{ asset('assets/img/group/schedule/person.svg') }}" alt="Person">
+            <img src="{{ asset('storage/'.$cast->gallery_1) }}" alt="{{$cast->cast_name}}">
           </div>
           <div class="schedule-person-info-items">
-            <div class="schedule-person-info-shop-working">
-              店舗名　出勤時間
+            <div class="schedule-person-info-shop-working --{{$cast->shop_slug}}">
+              {{ $cast->shop_name."　　".$cast->start_datetime." - ".$cast->end_datetime}}
             </div>
-            <div class="schedule-person-info-name">
-              名前
+            <div class="schedule-person-info-name --{{$cast->shop_slug}}">
+              {{ $cast->cast_name }}
             </div>
-            <div class="schedule-person-info-property">
-              プロパティ
+            <div class="schedule-person-info-property --{{$cast->shop_slug}}">
+              {{ $cast->age."歳/T.".$cast->height." B.".$cast->bust." W.".$cast->waist." H.".$cast->hip }}
             </div>
             <div class="schedule-person-info-message">
-              メッセージ
+              {{ $cast->appeal_point }}
             </div>
           </div>
         </a>
       </div>
       @endforeach
     </div>
+
+    <!-- Pagination -->
+    <div class="schedule-pagination content-wrapper">
+      <nav aria-label="Page navigation">
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
   </section>
 
 </x-public-group-layout>
-<script>
-  const token = '{{ $token }}';
-</script>
 @once
   @vite(['resources/scss/group/_showschedule.scss', 'resources/js/group/showschedule.js'])
 @endonce

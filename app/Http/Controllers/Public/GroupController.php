@@ -18,7 +18,7 @@ use App\Models\News;
 use App\Models\Attendance;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 class GroupController extends Controller
 {
     /**
@@ -86,12 +86,35 @@ class GroupController extends Controller
         }
         Log::info($days);
         // $attendances = Attendance::whereIn('date', $days)->get();
-        $token =Auth::user()->createToken('schedule')->plainTextToken;
-
+        // $token =Auth::user()->createToken('schedule')->plainTextToken;
+        $casts = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('casts.is_public', 1)
+        ->where('attendances.is_public', 1)
+        ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+        ->selectRaw("
+            attendances.id as attendance_id,
+            DATE_FORMAT(attendances.start_datetime, '%y:%m:%d') as start_datetime,
+            DATE_FORMAT(attendances.end_datetime, '%y:%m:%d') as end_datetime,
+            casts.name as cast_name,
+            casts.id as cast_id,
+            casts.shop_id as shop_id,
+            casts.gallery_1 as gallery_1,
+            casts.age as age,
+            casts.height as height,
+            casts.bust as bust,
+            casts.waist as waist,
+            casts.hip as hip,
+            casts.appeal_point as personality,
+            shops.name as shop_name,
+            shops.slug as shop_slug
+            ") // 必要に応じて
+        ->get();
+        // dd($casts);
         return view('public.group.schedule', [
             'days' => $days,
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
-            'token' => $token,
+            'casts' => $casts,
         ]);
     }
 
