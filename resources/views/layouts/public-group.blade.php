@@ -11,7 +11,7 @@
     <title>{{ config('app.name', 'PLOグループ') }}</title>
 
     <link rel="icon" href="favicon.ico">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
     @vite(['resources/scss/group.scss', 'resources/js/group.js'])
     <!-- Swiper CSS -->

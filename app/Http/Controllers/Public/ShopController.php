@@ -38,7 +38,20 @@ class ShopController extends Controller
             ->where('casts.is_public', 1)
             ->where('shops.slug', 'like', $shop)
             ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
-            ->select('casts.*', 'shops.*', 'attendances.*') // 必要に応じて明示的に
+            ->select([
+                'casts.id as id',
+                'casts.name as name', 
+                'casts.age as age', 
+                'casts.height as height', 
+                'casts.bust as bust', 
+                'casts.waist as waist', 
+                'casts.hip as hip', 
+                'casts.gallery_1 as gallery_1', 
+                'attendances.start_datetime as start_datetime', 
+                'attendances.end_datetime as end_datetime',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+                ]) // 必要に応じて明示的に
             ->get();
         Log::info($todayCasts);
             
