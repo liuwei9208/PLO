@@ -29,6 +29,7 @@ export default defineConfig({
                 'resources/js/admin/schedule.js',
                 'resources/js/admin/shopmaster.js',
                 'resources/js/admin/fee.js',
+                'resources/js/shop/newGirls.js',
             ],
             refresh: true,
         }),

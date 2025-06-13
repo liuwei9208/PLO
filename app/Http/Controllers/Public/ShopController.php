@@ -41,12 +41,32 @@ class ShopController extends Controller
             ->select('casts.*', 'shops.*', 'attendances.*') // 必要に応じて明示的に
             ->get();
         Log::info($todayCasts);
+            
+        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->select([
+                'diaries.subject',
+                'diaries.updated_at',
+                'casts.name',
+                'diaries.photo',
+            ])
+            ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
+            ->get();
+        
+        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('created_at', 'desc')->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        ->get();
+        // dd($diaries);
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             // 'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
             'todayCasts' => $todayCasts,
             'events' => $events,
             'banners' => $banners,
+            'diaries' => $diaries,
+            'new_girls' => $new_girls,
         ]);
     }
 
