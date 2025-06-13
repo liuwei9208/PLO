@@ -36,6 +36,59 @@
     </h2>
     <div class="new-girls-list"></div>
   </div>
+
+  <div class="news-diary content-wrapper">
+    <div class="news">
+      <div class="news-header">
+        <div class="news-header-title">
+          <h2 class="news-title">
+            News
+          </h2>
+        </div>
+        <div class="news-header-button">
+          <a href="" class="news-header-button-link">
+            一覧を見る
+          </a>
+        </div>
+      </div>
+      <div class="news-body">
+      </div>
+    </div>
+    <div class="diary-top">
+      <div class="diary-top-header">
+        <div class="diary-top-header-title">
+          <h2 class="diary-top-title">
+            Photo Diary
+          </h2>
+        </div>
+        <div class="diary-top-header-button">
+          <a href="" class="diary-top-header-button-link">
+            もっと見る
+          </a>
+        </div>
+      </div>
+      <div class="diary-top-body">
+        <div class="diary-top-items">
+          @foreach ($diaries as $diary)
+            <div class="diary-top-item">
+              <div class="diary-top-item-image">
+                <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
+                <div class="diary-top-item-title">
+                  {{ $diary->subject }}
+                </div>
+              </div>
+              <div class="diary-top-item-name">
+                {{ $diary->name }}
+              </div>
+              <div class="diary-top-item-date">
+                {{ $diary->updated_at->format('y.m.d') }}
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
   @if ($events->count() > 0)
   <div class="evnet">
     <h2 class="event-title">Event</h2>
