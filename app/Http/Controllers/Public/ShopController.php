@@ -55,6 +55,9 @@ class ShopController extends Controller
             ])
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
             ->get();
+        
+        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('created_at', 'desc')->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        ->get();
         // dd($diaries);
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
@@ -63,6 +66,7 @@ class ShopController extends Controller
             'events' => $events,
             'banners' => $banners,
             'diaries' => $diaries,
+            'new_girls' => $new_girls,
         ]);
     }
 

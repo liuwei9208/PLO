@@ -27,7 +27,7 @@
     </picture>
   </div> --}}
   <!-- New Girls -->
-  <div class="new-girls mock mock">
+  {{-- <div class="new-girls mock mock">
     <h2 class="new-girls-title">
       <picture>
         <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/newgirls-sm.png') }}">
@@ -35,8 +35,61 @@
       </picture>
     </h2>
     <div class="new-girls-list"></div>
-  </div>
+  </div> --}}
+  <div class="new-girls content-wrapper">
+    <div class="new-girls-header">
+      <div class="new-girls-header-title">
+        New Girls
+      </div>
+      <div class="new-girls-header-button">
+        <a href="" class="new-girls-header-button-link">
+          一覧を見る
+        </a>
+      </div>
+    </div>
+    <div class="new-girls-list">
+      @foreach ($new_girls as $new_girl)
+        <div class="new-girls-item">
+          <div class="new-girls-item-image">
+            <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+            <div class="new-girls-item-image-overlay">
+              {{ $new_girl->created_at->format('y:m:d')."入店" }}
+            </div>
+          </div>
+          <div class="new-girls-item-name">
+            {{ $new_girl->name."(".$new_girl->age.")" }}
+          </div>
+          <div class="new-girls-item-property">
+            {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
+          </div>
+        </div>
+      @endforeach
+    </div>
+    <div class="new-girls-sp-slider">
+      <div class="news-girls-slider swiper">
+        <div class="swiper-wrapper">
+          @foreach($new_girls as $new_girl)
+            <div class="swiper-slide">
+              <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+            </div>
+          @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="new-girls-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </div>
+        <div class="new-girls-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </div>
+      </div>
+    </div>
 
+    <div class="new-girls-footer-button">
+      <a href="" class="new-girls-header-button-link">
+        一覧を見る
+      </a>
+    </div>
+</div>
   <div class="news-diary content-wrapper">
     <div class="news">
       <div class="news-header">
@@ -237,3 +290,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 @endpush
+@once
+  @vite('resources/js/shop/newGirls.js')
+@endonce
