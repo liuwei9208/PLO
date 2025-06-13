@@ -6,30 +6,36 @@
   <!-- schedule List -->
   <section class="schedule">
     <div class="schedule-title">
-      <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule">
+      {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
       <h2 class="schedule-title-ja">出勤情報</h2>
     </div>
     <div class="schedule-week content-wrapper">
-      @foreach ($days as $day)
+      <div class="schedule-week-day">
+        <button class="schedule-week-day-date active" value="{{ $days[0]['date'] }} " id = "weekDay" data-weekday="{{ $days[0]['weekDay'] }}">{{ $days[0]['weekDay'] }}</button>
+      </div>
+      @for ($i = 1; $i < count($days); $i++)
         <div class="schedule-week-day">
-          <button class="schedule-week-day-date" value="{{ $day['date'] }}">{{ $day['weekDay'] }}</button>
+          <button class="schedule-week-day-date" value="{{ $days[$i]['date'] }} " id = "weekDay" data-weekday="{{ $days[$i]['weekDay'] }}">{{ $days[$i]['weekDay'] }}</button>
         </div>
-      @endforeach
+      @endfor
     </div>
     <div class="schedule-shop-list content-wrapper">
       <div class="schedule-shop-list-title">
-        店舗名
+        {{-- {{ $days[0]['weekDay'] ."出勤女性"}} --}}
       </div>
       <div class="schedule-shop-list-items">
+        <div class="schedule-shop-list-item --all">
+          <button class="schedule-shop-list-item-button active" value="" id="shopID">All</button>
+        </div>
       @foreach ($shops as $shop)
         <div class="schedule-shop-list-item --{{$shop->slug}}">
-          <button class="schedule-shop-list-item-button" value="{{ $shop->id }}">{{ $shop->name }}</button>
+          <button class="schedule-shop-list-item-button" value="{{ $shop->id }}" id="shopID">{{ $shop->name }}</button>
         </div>
       @endforeach
       </div>
     </div>
     <div class="schedule-person-info-list content-wrapper">
-      @foreach ($casts as $cast)
+      {{-- @foreach ($casts as $cast)
       <div class="schedule-person-info-list-item">
         <a href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->cast_id]) }}">
           <div class="schedule-person-info-photo">
@@ -51,7 +57,7 @@
           </div>
         </a>
       </div>
-      @endforeach
+      @endforeach --}}
     </div>
 
     <!-- Pagination -->
@@ -77,6 +83,9 @@
   </section>
 
 </x-public-group-layout>
+<script>
+  let date = "{{ $days[0]['date'] }}";
+</script>
 @once
   @vite(['resources/scss/group/_showschedule.scss', 'resources/js/group/showschedule.js'])
 @endonce
