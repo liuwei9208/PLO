@@ -53,22 +53,33 @@ class ShopController extends Controller
                 'shops.name as shop_name',
                 ]) // 必要に応じて明示的に
             ->get();
-        // $today = Carbon::today()->toDateString(); // '2025-06-10'
-
-        // $todayCasts = Cast::with(['shop', 'attendances' => function ($query) use ($today) {
-        //         $query->whereDate('start_datetime', $today);
-        //     }])
-        //     ->where('is_public', 1)
-        //     ->whereHas('shop', function ($query) use ($shop) {
-        //         $query->where('slug', 'like', $shop);
-        //     })
-        //     ->get();
+        Log::info($todayCasts);
+            
+        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->select([
+                'diaries.subject',
+                'diaries.updated_at',
+                'casts.name',
+                'diaries.photo',
+            ])
+            ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
+            ->get();
+        
+        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('created_at', 'desc')->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        ->get();
+        // dd($diaries);
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             // 'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
             'todayCasts' => $todayCasts,
             'events' => $events,
             'banners' => $banners,
+            'diaries' => $diaries,
+            'new_girls' => $new_girls,
         ]);
     }
 

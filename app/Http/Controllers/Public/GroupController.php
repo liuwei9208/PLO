@@ -19,6 +19,8 @@ use App\Models\Attendance;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Diary;
+
 class GroupController extends Controller
 {
     /**
@@ -53,7 +55,19 @@ class GroupController extends Controller
             })
             ->orderBy('published_at', 'desc')
             ->get();
-
+        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->select([
+                'diaries.subject',
+                'diaries.updated_at',
+                'casts.name',
+                'diaries.photo',
+            ])
+            ->limit(9)
+            ->get();
+        // dd($diaries);        
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
@@ -61,6 +75,7 @@ class GroupController extends Controller
             'events' => $events,
             'banners' => $banners,
             'news' => $news,
+            'diaries' => $diaries,
         ]);
     }
 

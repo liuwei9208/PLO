@@ -1,0 +1,394 @@
+@use '../global/vars' as *;
+@use '../mixins/text';
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
+
+.pc-only {
+  display: block;
+}
+
+.sp-only {
+  display: none;
+}
+
+@media #{media-query(sm)} {
+  .pc-only {
+    display: none;
+  }
+
+  .sp-only {
+    display: block;
+  }
+}
+
+.diary {
+  padding: 48px 0;
+  background: #fafafa;
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 32px;
+
+    &-lg {
+      font-size: 2.4rem;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    &-sm {
+      font-size: 1.6rem;
+      color: #666;
+    }
+  }
+
+  &-content {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @media #{media-query(md)} {
+      width: calc(100% - 80px);
+    }
+
+    @media #{media-query(lg)} {
+      width: calc(100% - 40px);
+    }
+
+    &-top {
+      margin-bottom: 32px;
+      
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    &-item {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      &:hover {
+        transform: translateY(-4px);
+      }
+
+      &-image {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        flex-direction: column;
+        border-radius: 25px;
+        background: #fff;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 25px;
+        }
+      }
+
+      &-title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 12px 16px;
+        text-align: center;
+        z-index: 1;
+        border-radius: 0 0 25px 25px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      &-name {
+        font-size: 1.2rem;
+        color: #666;
+        padding: 16px 16px 4px;
+        text-align: center;
+      }
+
+      &-date {
+        font-size: 1.1rem;
+        color: #999;
+        padding: 0 16px 16px;
+        text-align: center;
+      }
+    }
+
+    &-bottom {
+      position: relative;
+      margin-bottom: 32px;
+
+      img {
+        width: 100%;
+        height: auto;
+      }
+
+      &-more {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        &-button {
+          display: inline-block;
+          padding: 12px 48px;
+          background: #000;
+          border-radius: 24px;
+          color: #fff;
+          font-size: 1.4rem;
+          font-weight: bold;
+          text-decoration: none;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: #333;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+  &-content-bottom-shops {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    // width: 100%;
+    cursor: pointer;
+    transition: .2s;
+
+    @media #{media-query(sm)} {
+      width: 344px;
+      margin: 40px auto 0;
+    }
+
+    @media #{media-query(md)} {
+      width: 640px;
+      margin: 50px auto 0;
+    }
+
+    @media #{media-query(lg)} {
+      width: 840px;
+      margin: 60px auto 0;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: .2s;
+
+      @media #{media-query(sm)} {
+        width: 80px;
+        height: 34px;
+        margin: 0 3px 6px;
+        border-radius: 17px;
+      }
+
+      @media #{media-query(md)} {
+        width: 150px;
+        height: 70px;
+        margin: 0 5px 15px;
+        border-radius: 35px;
+      }
+
+      @media #{media-query(lg)} {
+        width: 200px;
+        height: 90px;
+        margin: 0 5px 15px;
+        border-radius: 45px;
+      }
+
+      & a {
+        color: #fff;
+      }
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &:not([data-shop="all"]) {
+        color: #FFF;
+      }
+
+      &[data-shop="all"] {
+        background-color: #FFF;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+          border: 1px solid #707070;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+          border: 2px solid #707070;
+        }
+        @media #{media-query(lg)} {
+          font-size: 19px;
+          border: 2px solid #707070;
+        }
+      }
+
+      &[data-shop="pussycat"] {
+        background-color: $shop-color-pussycat;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 15px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 19px;
+        }
+      }
+
+      &[data-shop="shizuku"] {
+        background-color: $shop-color-shizuku;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="miyabi"] {
+        background-color: $shop-color-miyabi;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="en"] {
+        background-color: $shop-color-en;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
+      }
+
+      &[data-shop="shiroganeze"] {
+        background-color: $shop-color-shiroganeze;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 20px;
+        }
+      }
+
+      &[data-shop="lovestory"] {
+        background-color: $shop-color-lovestory;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+// レスポンシブ対応
+@media #{media-query(sm)} {
+  .diary {
+    padding: 32px 0;
+
+    .section-title {
+      margin-bottom: 24px;
+
+      &-lg {
+        font-size: 2rem;
+      }
+
+      &-sm {
+        font-size: 1.4rem;
+      }
+    }
+
+    &-content {
+      padding: 0 12px;
+
+      &-top {
+        margin-bottom: 24px;
+      }
+
+      &-list {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
+      }
+
+      &-item {
+        &-image {
+          aspect-ratio: 1;
+        }
+
+        &-title {
+          font-size: 1.2rem;
+          padding: 8px 12px;
+        }
+
+        &-name {
+          font-size: 1.1rem;
+          padding: 12px 12px 4px;
+        }
+
+        &-date {
+          font-size: 1rem;
+          padding: 0 12px 12px;
+        }
+      }
+
+      &-bottom {
+        margin-bottom: 24px;
+
+        &-more {
+          &-button {
+            padding: 10px 36px;
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}
