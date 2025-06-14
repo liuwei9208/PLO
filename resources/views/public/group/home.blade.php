@@ -111,6 +111,7 @@
   </div>
   @endif
   <!-- 新人情報 - New Face -->
+  @if($newfaces_this_week->count() > 0)
   <section class="newface">
     <div class="section-title">
       <span class="section-title-en">
@@ -135,6 +136,7 @@
         @endforeach
       </div>
     </div>
+    @endif
     <div class="newface-list is-hidden">
       @foreach ($newfaces_this_month as $cast)
         <x-public.group.newface :cast="$cast" />
