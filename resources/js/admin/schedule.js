@@ -773,7 +773,7 @@ function generateScheduleCasts() {
                 const startWorking = timeToMinutes(startTime);
                 const endWorking = timeToMinutes(endTime);
                 if (startWorking > endWorking){
-                    alert("出勤時間が不正です");
+                    // alert("出勤時間が不正です");
                     return;
                 }else if (startWorking == endWorking){
                     return;
