@@ -89,7 +89,7 @@ function drawCastsSchedule(casts){
     const castItem = document.createElement('div');
     castItem.classList.add('schedule-person-info-list-item');
     castItem.innerHTML = `
-    <a href="${window.location.origin}/public/${cast.shop_slug}/cast/${cast.cast_id}">
+    <a href="${window.location.origin}/${cast.shop_slug}/cast/${cast.cast_id}">
       <div class="schedule-person-info-photo">
         <img src="${window.location.origin}/storage/${cast.gallery_1}" alt="${cast.cast_name}">
       </div>
