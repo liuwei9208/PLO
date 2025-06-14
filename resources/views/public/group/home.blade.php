@@ -136,7 +136,6 @@
         @endforeach
       </div>
     </div>
-    @endif
     <div class="newface-list is-hidden">
       @foreach ($newfaces_this_month as $cast)
         <x-public.group.newface :cast="$cast" />
@@ -144,7 +143,7 @@
     </div>
     <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button">もっと見る</a>
   </section>
-
+@endif
   <!-- 最新写メ日記 - Photo Diary -->
   {{-- <div class="mock">
     <picture>
