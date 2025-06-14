@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
                 selectedDate = date.toDateString()
                 await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
-                // await generateScheduleCasts();
+                await generateScheduleCasts();
+                await generateScheduleCastsPagination(page, limit, skip, pages, total,selectedDate);
             });
             
             dateTabs.appendChild(tab);
@@ -134,6 +135,8 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.log(currentWeekStart);
     selectedDate = currentDate.toDateString();
     await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
+    await generateScheduleCasts();
+    await generateScheduleCastsPagination(page, limit, skip, pages, total,selectedDate);
     scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
     updatePrevWeekButtonState();
     // await generateScheduleCasts();
@@ -1163,30 +1166,30 @@ function formatTimeTotime(time) {
 * @param {int} pages - ページ数
 * @param {int} total - 総件数
 */
-async function getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total) {
+async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit_l, skip_l, pages_l, total_l) {
     try {
         console.log('リクエストパラメータ:', {
             castName,
             shop,
             is_public,
-            date,
-            page,
-            limit,
-            skip,
-            pages,
-            total
+            date_l,
+            page_l,
+            limit_l,
+            skip_l,
+            pages_l,
+            total_l
         });
 
         const response = await axios.post('/api/schedule', {
             castName: castName,
             shop: shop,
             public: is_public,
-            date: date,
-            page: page,
-            limit: limit,
-            skip: skip,
-            pages: pages,
-            total: total,
+            date: date_l,
+            page: page_l,
+            limit: limit_l,
+            skip: skip_l,
+            pages: pages_l,
+            total: total_l,
         }, {
             headers: {
                 'Content-Type': 'application/json',
@@ -1209,7 +1212,7 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
             skip = response.data.skip;
             pages = response.data.pages;
             total = response.data.total;
-            date = response.data.date;
+            selectedDate = response.data.date;
 
             const imgUrl = window.location.origin + '/storage/';
             document.querySelector('.schedule-casts').innerHTML = casts.map(cast => {
@@ -1327,54 +1330,54 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
             `;
             }).join('');
             // document.querySelector('.schedule-casts').innerHTML = html;
-            let paginationHTML = '';
-            paginationHTML += `<div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">`;
-            if ( page > 1 ) {
-                paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800" data-date="${date}" data-page="${page - 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-                </svg></button>`;
-            }else{
-                paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
-                <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
-                </svg></span>`;
-            }
-            for ( var i = 1 ; i <= pages ; i++ ){
-                if ( i === page ){
-                    paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white">${i}</span>`;
-                }else{
-                    paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${i}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}">${i}</button>`;
-                }
-            }
-            if ( page < pages ){
-                paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${page + 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
-                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
-                </svg></button>`;
-            }else{
-                paginationHTML += `<span class="flex items-center justify-center w-10 h-10"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
-                </svg></span>`;
-            }   
-            document.querySelector('.pagination-container').innerHTML = `<div class="pagination-button">${paginationHTML}</div></div>`;
-            document.querySelectorAll('.pagination').forEach(pagination => {
-                pagination.addEventListener('click', async function(e){
-                e.preventDefault();
-                const date = e.target.dataset.date;
-                const page = e.target.dataset.page;
-                const limit = e.target.dataset.limit;
-                const skip = e.target.dataset.skip;
-                const pages = e.target.dataset.pages;
-                const total = e.target.dataset.total;
-                // window.scrollTo({top:0, behavior: 'smooth'});
-                getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total);
+            // let paginationHTML = '';
+            // paginationHTML += `<div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">`;
+            // if ( page > 1 ) {
+            //     paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800" data-date="${date}" data-page="${page - 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+            //     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            //     </svg></button>`;
+            // }else{
+            //     paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+            //     <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            //     </svg></span>`;
+            // }
+            // for ( var i = 1 ; i <= pages ; i++ ){
+            //     if ( i === page ){
+            //         paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white">${i}</span>`;
+            //     }else{
+            //         paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${i}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}">${i}</button>`;
+            //     }
+            // }
+            // if ( page < pages ){
+            //     paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date}" data-page="${page + 1}" data-limit="${limit}" data-skip="${skip}" data-pages="${pages}" data-total="${total}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+            //     <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
+            //     </svg></button>`;
+            // }else{
+            //     paginationHTML += `<span class="flex items-center justify-center w-10 h-10"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+            //     </svg></span>`;
+            // }   
+            // document.querySelector('.pagination-container').innerHTML = `<div class="pagination-button">${paginationHTML}</div></div>`;
+            // document.querySelectorAll('.pagination').forEach(pagination => {
+            //     pagination.addEventListener('click', async function(e){
+            //     e.preventDefault();
+            //     const date = e.target.dataset.date;
+            //     const page = e.target.dataset.page;
+            //     const limit = e.target.dataset.limit;
+            //     const skip = e.target.dataset.skip;
+            //     const pages = e.target.dataset.pages;
+            //     const total = e.target.dataset.total;
+            //     // window.scrollTo({top:0, behavior: 'smooth'});
+            //     getCastsSchedule(castName, shop, is_public, date, page, limit, skip, pages, total);
                 
-                });
-            });
-            await generateScheduleCasts();
+            //     });
+            // });
+            // await generateScheduleCasts();
             await reDrawScheduleCasts();
-            window.addEventListener('scroll-top', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              });
+            // window.addEventListener('scroll-top', () => {
+            //     window.scrollTo({ top: 0, behavior: 'smooth' });
+            //   });
            
-
+            return {page, limit, skip, pages, total,selectedDate};
             // window.scrollTo({top:0, behavior: 'smooth'});
         } else {
             throw new Error(response.data.message || 'データの取得に失敗しました');
@@ -1397,6 +1400,52 @@ async function getCastsSchedule(castName, shop, is_public, date, page, limit, sk
     }
 }
 
+function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total_l,date_l){
+    let paginationHTML = '';
+    paginationHTML += `<div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">`;
+    if ( page_l > 1 ) {
+        paginationHTML += `<button  class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800" data-date="${date_l}" data-page="${page_l - 1}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg></button>`;
+    }else{
+        paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+        </svg></span>`;
+    }
+    console.log({pages_l});
+    for ( var i = 1 ; i <= pages_l ; i++ ){
+        if ( i === page_l ){
+            paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white">${i}</span>`;
+        }else{
+            paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${i}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}">${i}</button>`;
+        }
+    }
+    if ( page_l < pages_l ){
+        paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${page_l + 1}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
+        </svg></button>`;
+    }else{
+        paginationHTML += `<span class="flex items-center justify-center w-10 h-10"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+        </svg></span>`;
+    }   
+    document.querySelector('.pagination-container').innerHTML = `<div class="pagination-button">${paginationHTML}</div></div>`;
+    document.querySelectorAll('.pagination').forEach(pagination => {
+        pagination.addEventListener('click', async function(e){
+        e.preventDefault();
+        selectedDate = e.target.dataset.date;
+        page = e.target.dataset.page;
+        limit = e.target.dataset.limit;
+        skip = e.target.dataset.skip;
+        pages = e.target.dataset.pages;
+        total = e.target.dataset.total;
+        // window.scrollTo({top:0, behavior: 'smooth'});
+        await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
+        await generateScheduleCasts();
+        });
+    });
+
+}
+
 document.querySelector('#search_form').addEventListener('submit', async function(e){
     e.preventDefault();
     console.log('submit');
@@ -1407,6 +1456,9 @@ document.querySelector('#search_form').addEventListener('submit', async function
     page = 1;
     await getCastsSchedule(castName,shop,is_public,selectedDate, page, limit, skip, pages, total);
     await generateScheduleCasts();
+    console.log({pages});
+    await generateScheduleCastsPagination(page, limit, skip, pages, total,selectedDate);
+    // await generateScheduleCasts();
     // const date = e.target.date.value;
     // const page = e.target.page.value;
     // const limit = e.target.limit.value;
@@ -1420,10 +1472,10 @@ document.querySelector('#search_shop').addEventListener('change', function(e){
     console.log(e.target.value);
 });
 
-document.querySelector('#search_public').addEventListener('change', function(e){   
-    e.preventDefault();
-    console.log(e.target);
-});
+// document.querySelector('#search_public').addEventListener('change', function(e){   
+//     e.preventDefault();
+//     console.log(e.target);
+// });
 
 async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, attendance_public, date) {
     try {
