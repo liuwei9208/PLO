@@ -69,7 +69,9 @@ class ShopController extends Controller
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
             ->get();
         
-        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('created_at', 'desc')->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('created_at', '>=', Carbon::now()->subWeek(2))
+        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
         ->get();
         // dd($diaries);
         return view('public.shop.home', [
