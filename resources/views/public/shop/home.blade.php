@@ -36,6 +36,7 @@
     </h2>
     <div class="new-girls-list"></div>
   </div> --}}
+  @if ($new_girls->count() > 0)
   <div class="new-girls content-wrapper">
     <div class="new-girls-header">
       <div class="new-girls-header-title">
@@ -89,7 +90,8 @@
         一覧を見る
       </a>
     </div>
-</div>
+  </div>
+  @endif
   <div class="news-diary content-wrapper">
     <div class="news">
       <div class="news-header">
