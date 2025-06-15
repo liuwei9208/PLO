@@ -187,14 +187,64 @@
   </div>
   @endif
 
-  <div class="castlist mock mock">
+  <div class="castlist content-wrapper">
+    <div class="castlist-header">
+      <div class="castlist-header-title">
+        <h2 class="castlist-title">
+          Cast List
+        </h2>
+        <div class="castlist-header-button">
+          <a href="#" class="castlist-header-button-link">
+            一覧を見る
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="castlist-body">
+      <div class="castlist-body-items">
+        <div class="castlist-body-items-slider swiper">
+          <div class="swiper-wrapper">
+            @foreach ($castlist as $cast)
+            <div class="swiper-slide">
+              <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}">
+                <div class="castlist-body-items-time">
+                  <div class="castlist-slide-image">
+                    <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
+                    <div class="castlist-body-item-name">
+                      {{ $cast->name }}
+                    </div>
+                  </div>
+                  <div class="castlist-body-item-property">
+                    {{ "T:" . $cast->height." B:".$cast->bust." W:".$cast->waist." H:".$cast->hip }}
+                  </div>
+                  <div class="castlist-body-item-appeal">
+                    {{ $cast->appeal_point }}
+                  </div>
+                </div>
+              </a>
+            </div>
+            @endforeach
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="castlist-body-footer">
+        <div class="castlist-body-footer-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </div>
+        <div class="castlist-body-footer-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  {{-- <div class="castlist mock mock">
     <h2 class="castlist-title">
       <picture>
         <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/castlist-sm.png') }}">
         <img src="{{ asset('assets/img/shop/castlist.png') }}" alt="Castlist">
       </picture>
     </h2>
-  </div>
+  </div> --}}
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
   <div class="banner content-wrapper">
@@ -296,5 +346,5 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 @endpush
 @once
-  @vite('resources/js/shop/newGirls.js')
+  @vite(['resources/js/shop/newGirls.js', 'resources/js/shop/castlist_top.js', 'resources/scss/shop/castlist_top.scss'])
 @endonce
