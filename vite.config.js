@@ -25,6 +25,7 @@ export default defineConfig({
                 'resources/scss/shop/newcomer.scss',
                 'resources/scss/shop/newface.scss',
                 'resources/scss/shop/castlist_top.scss',
+                'resources/scss/group/pagination.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

@@ -264,7 +264,7 @@ class GroupController extends Controller
                     $query->orWhere('casts.name', 'like', "%$name%");
                 }
             });
-        } else if ($name_match == 'exact') {
+        } else if ($name_match == 'full') {
             $query->where(function($query) use ($nameArray) {
                 foreach ($nameArray as $name) {
                     $query->Where('casts.name', 'like', "%$name%");
