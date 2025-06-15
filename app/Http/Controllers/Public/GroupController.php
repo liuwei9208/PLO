@@ -274,118 +274,115 @@ class GroupController extends Controller
         // dd($query->get());
         switch ($height) {
             case '150':
-                $query->where('height', '<=', 150);
+                $query->where('casts.height', '<=', 150);
                 break;
             case '155':
-                $query->where('height', '<=', 155)
-                ->where('height', '>', 150);
+                $query->where('casts.height', '<=', 155)
+                ->where('casts.height', '>', 150);
                 break;
             case '160':
-                $query->where('height', '<=', 160)
-                ->where('height', '>', 155);
+                $query->where('casts.height', '<=', 160)
+                ->where('casts.height', '>', 155);
                 break;
             case '165':
-                $query->where('height', '<=', 165)
-                ->where('height', '>', 160);
+                $query->where('casts.height', '<=', 165)
+                ->where('casts.height', '>', 160);
                 break;
             case '170':
-                $query->where('height', '<=', 170);
-                break;
-            case '175':
-                $query->where('height', '<=', 175);
+                $query->where('casts.height', '>=', 170);
                 break;
             default:
                 break;
         }
         switch ($age) {
             case '18':
-                $query->where('age', '=', 18);
+                $query->where('casts.age', '=', 18);
                 break;
             case '19':
-                $query->where('age', '=', 19);
+                $query->where('casts.age', '=', 19);
                 break;
             case '20':
-                $query->where('age', '=', 20);
+                $query->where('casts.age', '=', 20);
                 break;
             case '21':
-                $query->where('age', '=', 21);
+                $query->where('casts.age', '=', 21);
                 break;
             case '22':
-                $query->where('age', '=', 22);
+                $query->where('casts.age', '=', 22);
                 break;
             case '23':
-                $query->where('age', '=', 23);
+                $query->where('casts.age', '=', 23);
                 break;
             case '24':
-                $query->where('age', '=', 24);
+                $query->where('casts.age', '=', 24);
                 break;
             case '25':
-                $query->where('age', '=', 25);
+                $query->where('casts.age', '=', 25);
                 break;
             case '26':
-                $query->where('age', '=', 26);
+                $query->where('casts.age', '=', 26);
                 break;
             case '27':
-                $query->where('age', '=', 27);
+                $query->where('casts.age', '=', 27);
                 break;
             case '28':
-                $query->where('age', '=', 28);
+                $query->where('casts.age', '=', 28);
                 break;
             case '29':
-                $query->where('age', '=', 29);
+                $query->where('casts.age', '=', 29);
                 break;
             case '30':
-                $query->where('age', '>=', 30);
+                $query->where('casts.age', '>=', 30);
                 break;
             default:
                 break;
         }
-
+        // dd($bust);
         switch ($bust) {
             case 'A':
-                $query->where('bust', '=', 'A');
+                $query->where('casts.bra_size', '=', 'A');
                 break;
             case 'B':
-                $query->where('bust', '=', 'B');
+                $query->where('casts.bra_size', '=', 'B');
                 break;
             case 'C':
-                $query->where('bust', '=', 'C');
+                $query->where('casts.bra_size', '=', 'C');
                 break;
             case 'D':
-                $query->where('bust', '=', 'D');
+                $query->where('casts.bra_size', '=', 'D');
                 break;
             case 'E':
-                $query->where('bust', '=', 'E');
+                $query->where('casts.bra_size', '=', 'E');
                 break;
             case 'F':   
-                $query->where('bust', '=', 'F');
+                $query->where('casts.bra_size', '=', 'F');
                 break;
             case 'G':
-                $query->where('bust', '=', 'G');
+                $query->where('casts.bra_size', '=', 'G');
                 break;
             case 'H':   
-                $query->where('bust', '=', 'H');
+                $query->where('casts.bra_size', '=', 'H');
                 break;
             case 'I':
-                $query->where('bust', '=', 'I');
+                $query->where('casts.bra_size', '=', 'I');
                 break;
             case 'J':
-                $query->where('bust', '=', 'J');
+                $query->where('casts.bra_size', '=', 'J');
                 break;
             default:
                 break;
         }
 
         if ($personalities != -1) {
-            $query->where('cast_personalities.personality_id', $personalities);
+            $query->where('cast_personality.personality_id', $personalities);
         }
-
+        // dd($personalities);
         if ($styles != -1) {
-            $query->where('cast_styles.style_id', $styles);
+            $query->where('cast_style.style_id', $styles);
         }
 
         if ($options != -1) {
-            $query->where('cast_options.option_id', $options);
+            $query->where('cast_option.option_id', $options);
         }
         $query->groupBy('casts.id');
         $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');
