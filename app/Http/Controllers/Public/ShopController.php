@@ -73,6 +73,10 @@ class ShopController extends Controller
         ->where('created_at', '>=', Carbon::now()->subWeek(2))
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
         ->get();
+        $new_girls_month = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('created_at', '>=', Carbon::now()->subMonth(1))
+        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        ->get();
         // dd($diaries);
         return view('public.shop.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
@@ -82,6 +86,7 @@ class ShopController extends Controller
             'banners' => $banners,
             'diaries' => $diaries,
             'new_girls' => $new_girls,
+            'new_girls_month' => $new_girls_month,
         ]);
     }
 

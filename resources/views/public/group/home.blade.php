@@ -111,14 +111,16 @@
   </div>
   @endif
   <!-- 新人情報 - New Face -->
-  @if($newfaces_this_week->count() > 0)
   <section class="newface">
+    @if($newfaces_this_month->count() > 0)
     <div class="section-title">
       <span class="section-title-en">
         <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
       </span>
       <h2 class="section-title-ja">新人情報</h2>
     </div>
+    @endif
+    @if($newfaces_this_week->count() > 0)
     <div class="newface-slide">
       <div class="newface-slide-nav">
         <button class="newface-slide-prev">
@@ -136,14 +138,16 @@
         @endforeach
       </div>
     </div>
+    @endif
     <div class="newface-list is-hidden">
       @foreach ($newfaces_this_month as $cast)
         <x-public.group.newface :cast="$cast" />
       @endforeach
     </div>
+    @if($newfaces_this_month->count() > 0)
     <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button">もっと見る</a>
+    @endif
   </section>
-@endif
   <!-- 最新写メ日記 - Photo Diary -->
   {{-- <div class="mock">
     <picture>

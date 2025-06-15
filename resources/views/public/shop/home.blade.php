@@ -36,8 +36,8 @@
     </h2>
     <div class="new-girls-list"></div>
   </div> --}}
-  @if ($new_girls->count() > 0)
   <div class="new-girls content-wrapper">
+    @if($new_girls_month->count() > 0)
     <div class="new-girls-header">
       <div class="new-girls-header-title">
         New Girls
@@ -48,6 +48,8 @@
         </a>
       </div>
     </div>
+    @endif
+    @if ($new_girls->count() > 0)
     <div class="new-girls-list">
       @foreach ($new_girls as $new_girl)
         <div class="new-girls-item">
@@ -84,14 +86,15 @@
         </div>
       </div>
     </div>
-
+    @endif
+    @if($new_girls_month->count() > 0)
     <div class="new-girls-footer-button">
       <a href="" class="new-girls-header-button-link">
         一覧を見る
       </a>
     </div>
+    @endif
   </div>
-  @endif
   <div class="news-diary content-wrapper">
     <div class="news">
       <div class="news-header">
