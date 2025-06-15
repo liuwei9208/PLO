@@ -72,5 +72,5 @@
   let date = "{{ $days[0]['date'] }}";
 </script>
 @once
-  @vite(['resources/scss/group/_showschedule.scss'])
+  @vite(['resources/scss/group/_showschedule.scss','resources/scss/group/pagination.scss'])
 @endonce
