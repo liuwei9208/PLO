@@ -8,13 +8,28 @@ let total = 0;
 let shopID = '';
 
 document.addEventListener('DOMContentLoaded', async function() {
-  await getCastsSchedule(date, page, limit, skip, pages, total);
-  drawPagination(page, pages);
-  document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
+  // const searchResultForm = document.querySelector('form[name="searchResultForm"]');
+  // searchResultForm.addEventListener('submit', async (e) => {
+  //   e.preventDefault();
+  //   console.log(e.target.date.value);
+  //   const formData = new FormData(searchResultForm);
+  //   const date = formData.get('date');
+  //   const shopID = formData.get('shop_id'); 
+  //   const activeDate = document.querySelector('.schedule-week-day-date').value;
+  //   console.log(date, shopID, activeDate);
+  //   // e.target.submit();
+  //   // return searchResultForm;
+  // });
+  
+
+  // await getCastsSchedule(date, page, limit, skip, pages, total);
+  // drawPagination(page, pages);
+  // document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
   
   // 曜日ボタンのイベントリスナー
   document.querySelectorAll('.schedule-week-day-date').forEach(button => {
     button.addEventListener('click', async (e) => {
+      e.preventDefault();
       // アクティブ状態の切り替え
       document.querySelectorAll('.schedule-week-day-date').forEach(btn => {
         btn.classList.remove('active');
@@ -22,15 +37,23 @@ document.addEventListener('DOMContentLoaded', async function() {
       e.target.classList.add('active');
       
       date = e.target.value;
-      await getCastsSchedule(date, page, limit, skip, pages, total);
-      drawPagination(page, pages);
-      document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
+      document.querySelector('input[name="selectedDate"]').value = date;
+      console.log(document.querySelector('input[name="selectedDate"]').value);
+
+      document.querySelector('form[name="searchResultForm"]').submit();
+      // await getCastsSchedule(date, page, limit, skip, pages, total);
+      // drawPagination(page, pages);
+      // document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
+      // this.submit();
+      // e.target.submit();
     });
   });
   
   // 店舗ボタンのイベントリスナー
   document.querySelectorAll('.schedule-shop-list-item-button').forEach(button => {
+
     button.addEventListener('click', async (e) => {
+      e.preventDefault();
       // アクティブ状態の切り替え
       document.querySelectorAll('.schedule-shop-list-item-button').forEach(btn => {
         btn.classList.remove('active');
@@ -38,8 +61,11 @@ document.addEventListener('DOMContentLoaded', async function() {
       e.target.classList.add('active');
       
       shopID = e.target.value;
-      await getCastsSchedule(date, page, limit, skip, pages, total);
-      drawPagination(page, pages);
+      document.querySelector('input[name="selectedShopID"]').value = shopID;
+      console.log(document.querySelector('input[name="selectedShopID"]').value);
+      document.querySelector('form[name="searchResultForm"]').submit();
+      // await getCastsSchedule(date, page, limit, skip, pages, total);
+      // drawPagination(page, pages);
     });
   });
 });
