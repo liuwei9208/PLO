@@ -54,7 +54,8 @@
     </div>
     <div class="working-container">
       <div class="schedule-container">
-        <div class="schedule-today-status {{ $attendance_today->count() > 0 ? $reservation->count() > 0 ? 'end' : 'working' : 'off' }}">
+        <div class="schedule-today-status {{ $attendance_today->count() > 0 ? $reservation->count() > 0 ? 'end' : 'worked' : 'off' }}">
+        {{-- <div class="schedule-today-status worked"> --}}
           <div class="schedule-today-status__title">Today<br>Schedule</div>
           @if($attendance_today->count() > 0)
             @if ($reservation->count() > 0)
