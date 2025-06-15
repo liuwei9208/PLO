@@ -5,12 +5,11 @@ let limit = 12;
 let skip = 0;
 let pages = 0;
 let total = 0;
-let shopID = '';
 
 document.addEventListener('DOMContentLoaded', async function() {
   await getCastsSchedule(date, page, limit, skip, pages, total);
   drawPagination(page, pages);
-  document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
+  // document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
   
   // 曜日ボタンのイベントリスナー
   document.querySelectorAll('.schedule-week-day-date').forEach(button => {
@@ -24,29 +23,29 @@ document.addEventListener('DOMContentLoaded', async function() {
       date = e.target.value;
       await getCastsSchedule(date, page, limit, skip, pages, total);
       drawPagination(page, pages);
-      document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
+      // document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
     });
   });
   
-  // 店舗ボタンのイベントリスナー
-  document.querySelectorAll('.schedule-shop-list-item-button').forEach(button => {
-    button.addEventListener('click', async (e) => {
-      // アクティブ状態の切り替え
-      document.querySelectorAll('.schedule-shop-list-item-button').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      e.target.classList.add('active');
+//   // 店舗ボタンのイベントリスナー
+//   document.querySelectorAll('.schedule-shop-list-item-button').forEach(button => {
+//     button.addEventListener('click', async (e) => {
+//       // アクティブ状態の切り替え
+//       document.querySelectorAll('.schedule-shop-list-item-button').forEach(btn => {
+//         btn.classList.remove('active');
+//       });
+//       e.target.classList.add('active');
       
-      shopID = e.target.value;
-      await getCastsSchedule(date, page, limit, skip, pages, total);
-      drawPagination(page, pages);
-    });
-  });
+//       shopID = e.target.value;
+//       await getCastsSchedule(date, page, limit, skip, pages, total);
+//       drawPagination(page, pages);
+//     });
+//   });
+// });
 });
-
 async function getCastsSchedule(date, page, limit, skip, pages, total) {
     try {
-        const response = await axios.post(`/api/casts-schedule`, {
+        const response = await axios.post(`/api/casts-schedule-shop`, {
             date: date,
             page: page,
             limit: limit,
@@ -72,7 +71,6 @@ async function getCastsSchedule(date, page, limit, skip, pages, total) {
           pages = response.data.pages;
           total = response.data.total;
           date = response.data.date;
-          shopID = response.data.shopID;
 
           drawCastsSchedule(casts);
         }

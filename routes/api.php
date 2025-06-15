@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/diary/{cast_id}', [TouchVipDiaryController::class, 'get']);
 
 Route::post('/casts-schedule', [ScheduleController::class, 'getCastsSchedule']);
+Route::post('/casts-schedule-shop', [ScheduleController::class, 'getCastsScheduleShop']);
 // スケジュール関連のAPIルート
 Route::middleware('auth:sanctum')->prefix('schedule')->group(function () {
     Route::post('/', [ScheduleController::class, 'showCastsSchedule']);
