@@ -1,7 +1,7 @@
-<x-public-group-layout>
+<x-public-shop-layout>
 
   <!-- Main Visual -->
-  <x-public.group.mv />
+  <x-public.shop.mv :shop="$shop" />
 
   <!-- schedule List -->
   <section class="schedule">
@@ -67,7 +67,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-shop-layout>
 <script>
   let date = "{{ $days[0]['date'] }}";
   let shopID = "{{ $shop->id }}";
