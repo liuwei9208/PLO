@@ -242,6 +242,8 @@ class GroupController extends Controller
         $query->leftjoin('cast_option', 'casts.id', '=', 'cast_option.cast_id');
         $query->leftjoin('cast_personality', 'casts.id', '=', 'cast_personality.cast_id');
         $query->leftjoin('cast_style', 'casts.id', '=', 'cast_style.cast_id');
+        $query->leftjoin('shops', 'casts.shop_id', '=', 'shops.id');
+
         if ($status == 'working') {
             $query->leftjoin('attendances', 'casts.id', '=', 'attendances.cast_id')
             ->where('attendances.is_public', 1)
@@ -259,7 +261,7 @@ class GroupController extends Controller
         if ($name_match == 'partial') {
             $query->where(function($query) use ($nameArray) {
                 foreach ($nameArray as $name) {
-                    $query->orWhere('name', 'like', "%$name%");
+                    $query->orWhere('casts.name', 'like', "%$name%");
                 }
             });
         } else if ($name_match == 'exact') {
@@ -386,13 +388,29 @@ class GroupController extends Controller
             $query->where('cast_options.option_id', $options);
         }
         $query->groupBy('casts.id');
+        $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');
         // dd($query->get());
         $search_result = $query->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 9 : 12)
         ->onEachSide(0)
         ->withPath('search-result');
-        dd($search_result);
+        // dd($search_result);
+
+
+        Carbon::setLocale('ja');
+        $today = Carbon::now()->format('Y-m-d');
+        $days = array();
+        $weekDay = Carbon::now()->format('m/d').'('.Carbon::now()->getTranslatedMinDayName().')';
+        $days[0] = ['date'=>$today,'weekDay'=>$weekDay];
+        for ($i = 1; $i < 7; $i++) {
+            $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
+            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay] ;
+        }
+
         return view('public.group.searchResult', [
             'search_result' => $search_result,
+            'days' => $days,
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
         ]);
     }
 }

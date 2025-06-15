@@ -37,6 +37,7 @@ export default defineConfig({
                 'resources/js/group/showschedule.js',
                 'resources/js/shop/newGirls.js',
                 'resources/js/shop/showschedule.js',
+                'resources/js/group/searchResult.js',
                 'resources/js/shop/castlist_top.js',
             ],
             refresh: true,
