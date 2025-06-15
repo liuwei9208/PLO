@@ -4,8 +4,8 @@
       <ul class="footer-nav-list">
         <li><a href="{{ url('#')}}">HOME</a></li>
         <li><a href="{{ url('#')}}">最新情報</a></li>
-        <li><a href="{{ url('#')}}">料金システム</a></li>
-        <li><a href="{{ url('#')}}">キャスト一覧</a></li>
+        <li><a href="{{ route('public.shop.fee', $shop->slug) }}">料金システム</a></li>
+        <li><a href="{{ route('public.shop.castlist', $shop->slug) }}">キャスト一覧</a></li>
         <li><a href="{{ url('shop')}}">店舗一覧</a></li>
         <li><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/')}}">求人情報</a></li>
         <li><a href="{{ url('/privacy-policy') }}">個人情報保護方針</a></li>

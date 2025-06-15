@@ -38,7 +38,7 @@
     </main>
 
     <!-- Footer -->
-    <x-public.shop.footer />
+    <x-public.shop.footer :shop="$shop" />
 
 
     {{-- {!! $scripts ?? '' !!} --}}
