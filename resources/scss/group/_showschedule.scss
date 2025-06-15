@@ -93,7 +93,13 @@
           color: $white;
         }
       }
-
+      &.--all {
+        .schedule-shop-list-item-button {
+          background: $shop-color-all;
+          color: $black;
+          border-color: $black;
+        }
+      }
       &.--pussycat {
         .schedule-shop-list-item-button {
           background: $shop-color-pussycat;
