@@ -22,6 +22,8 @@ export default defineConfig({
                 'resources/scss/group/_showschedule.scss',
                 'resources/scss/group/diary_top.scss',
                 'resources/scss/shop/_showschedule.scss',
+                'resources/scss/shop/newcomer.scss',
+                'resources/scss/shop/newface.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

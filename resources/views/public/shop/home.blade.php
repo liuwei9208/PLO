@@ -43,7 +43,7 @@
         New Girls
       </div>
       <div class="new-girls-header-button">
-        <a href="" class="new-girls-header-button-link">
+        <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link">
           一覧を見る
         </a>
       </div>
@@ -89,7 +89,7 @@
     @endif
     @if($new_girls_month->count() > 0)
     <div class="new-girls-footer-button">
-      <a href="" class="new-girls-header-button-link">
+      <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link">
         一覧を見る
       </a>
     </div>

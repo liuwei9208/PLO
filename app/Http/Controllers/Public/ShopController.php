@@ -218,4 +218,37 @@ class ShopController extends Controller
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
+
+    public function showNewcomer(Request $request, string $shop): View
+    {
+        // $newcomers = Cast::leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        //         ->where('shops.slug', '!=', 'touchvip')
+        //         ->where('shops.slug', '!=', 'headquarter')
+        //         ->where('casts.is_public', 1)
+        //         ->where('casts.created_at', '>=', Carbon::now()->subMonth(1))
+        //         ->inRandomOrder()
+        //         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+        //         ->onEachSide(0)
+        //         ->withPath('newcomer')
+        //         ->selectRaw('casts.*',
+        //         'shops.name as shop_name',
+        //         'shops.slug as shop_slug',
+        //         'shops.id as shop_id'
+        //         );
+                
+        //  dd($newcomers);   
+        $cast_query = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id);
+        $newcomers = $cast_query
+            ->where('created_at', '>=', Carbon::now()->subMonth(1))
+            ->where('is_public', 1)
+            ->inRandomOrder()
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->withPath('newcomer');
+    
+        return view('public.shop.newcomer', [
+            'newcomers' => $newcomers,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 }
