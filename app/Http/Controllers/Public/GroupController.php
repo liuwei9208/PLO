@@ -164,6 +164,7 @@ class GroupController extends Controller
             'personalities' => $personalities,
             'styles' => $styles,
             'options' => $options,
+    
         ]);
     }
 
@@ -232,6 +233,8 @@ class GroupController extends Controller
             $height = $request->input('height');
             $bust = $request->input('bust');
             $status = $request->input('status');
+            $shop_id = $request->input('selectedShopID') ?? "";
+            $date = $request->input('selectedDate') ?? "";
         }else if ($request->isMethod('get')){
             $names = $request->query('name');
             $name_match =$request->query('name_match');
@@ -242,7 +245,12 @@ class GroupController extends Controller
             $height = $request->query('height');
             $bust = $request->query('bust');
             $status = $request->query('status');
+            $shop_id = $request->query('selectedShopID') ?? "";
+            $date = $request->query('selectedDate') ?? "";
+
+            // dd($names, $name_match, $personalities, $styles, $options, $age, $height, $bust, $status);
         }
+        // dd($date);
         /*
         $page = $request->input('page');
         $limit = $request->input('limit');
@@ -259,9 +267,14 @@ class GroupController extends Controller
 
         if ($status == 'working') {
             $query->leftjoin('attendances', 'casts.id', '=', 'attendances.cast_id')
-            ->where('attendances.is_public', 1)
-            ->whereDate('attendances.start_datetime', '<=', Carbon::now())
-            ->whereDate('attendances.end_datetime', '>=', Carbon::now());
+            ->where('attendances.is_public', 1);
+            if ( $date != ""){
+                $query->whereDate('attendances.start_datetime', '<=', $date)
+                ->whereDate('attendances.end_datetime', '>=', $date);
+            }else{
+                $query->whereDate('attendances.start_datetime', '<=', Carbon::now())
+                ->whereDate('attendances.end_datetime', '>=', Carbon::now());
+            }
         } 
 
         $query->where('casts.is_public', 1);
@@ -386,21 +399,44 @@ class GroupController extends Controller
                 break;
         }
 
-        if ($personalities != -1) {
+        if ($personalities != -1 && $personalities != "" && $personalities != null ) {
+            dd($personalities);
             $query->where('cast_personality.personality_id', $personalities);
         }
         // dd($personalities);
-        if ($styles != -1) {
+        if ($styles != -1 && $styles != "" && $styles != null) {
             $query->where('cast_style.style_id', $styles);
         }
 
-        if ($options != -1) {
+        if ($options != -1 && $options != "" && $options != null) {
             $query->where('cast_option.option_id', $options);
         }
+
+        if ($shop_id != "") {
+            $query->where('casts.shop_id','=', $shop_id);
+        }
+        // dd($shop_id,$options,$styles);
+        // if ($date != null || $date != "") {
+        //     $query->whereDate('attendances.start_datetime', '=', $date);
+        // }  
+        // dd($shop_id, $date);
         $query->groupBy('casts.id');
         $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');
-        // dd($query->get());
+        // dd($query->toSql());
         $search_result = $query->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 9 : 12)
+        ->appends([
+            'names' => $names,
+            'name_match' => $name_match,
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
+            'age' => $age,
+            'height' => $height,
+            'bust' => $bust,
+            'status' => $status,
+            'selectedShopID' => $shop_id,
+            'selectedDate' => $date,
+        ])
         ->onEachSide(0)
         ->withPath('searchResult');
         // dd($search_result);
@@ -412,9 +448,9 @@ class GroupController extends Controller
         $weekDay = Carbon::now()->format('m/d').'('.Carbon::now()->getTranslatedMinDayName().')';
         $days[0] = ['date'=>$today,'weekDay'=>$weekDay];
         for ($i = 1; $i < 7; $i++) {
-            $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            $date_tmp = Carbon::now()->addDays($i)->format('Y-m-d');
             $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
-            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay] ;
+            $days[$i] = ['date'=>$date_tmp,'weekDay'=>$weekDay] ;
         }
 
         return view('public.group.searchResult', [
@@ -428,6 +464,10 @@ class GroupController extends Controller
             'options' => $options,
             'age' => $age,
             'height' => $height,
+            'bust' => $bust,
+            'status' => $status,
+            'selectedShopID' => $shop_id,
+            'selectedDate' => $date,
         ]);
     }
 }
