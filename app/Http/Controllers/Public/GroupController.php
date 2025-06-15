@@ -219,4 +219,180 @@ class GroupController extends Controller
             'newcomers' => $newcomers,
         ]);
     }
+
+    public function searchResult(Request $request): View
+    {
+        $names = $request->input('name');
+        $name_match =$request->input('name_match');
+        $personalities = $request->input('personality');
+        $styles = $request->input('style');
+        $options = $request->input('option');
+        $age = $request->input('age');
+        $height = $request->input('height');
+        $bust = $request->input('bust');
+        $status = $request->input('status');
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $skip = $request->input('skip');
+        $pages = $request->input('pages');
+        $total = $request->input('total');
+
+        $query = Cast::query();
+
+        $query->leftjoin('cast_option', 'casts.id', '=', 'cast_option.cast_id');
+        $query->leftjoin('cast_personality', 'casts.id', '=', 'cast_personality.cast_id');
+        $query->leftjoin('cast_style', 'casts.id', '=', 'cast_style.cast_id');
+        if ($status == 'working') {
+            $query->leftjoin('attendances', 'casts.id', '=', 'attendances.cast_id')
+            ->where('attendances.is_public', 1)
+            ->whereDate('attendances.start_datetime', '<=', Carbon::now())
+            ->whereDate('attendances.end_datetime', '>=', Carbon::now());
+        } 
+
+        $query->where('casts.is_public', 1);
+        // 名前を空白文字で分割
+        // $nameArray = preg_split('/[\s　]+/', $names, -1, PREG_SPLIT_NO_EMPTY);
+        $names = mb_convert_kana($names, 's');
+        $nameArray = explode(' ', $names);
+        $nameArray = array_filter($nameArray, 'strlen');
+
+        if ($name_match == 'partial') {
+            $query->where(function($query) use ($nameArray) {
+                foreach ($nameArray as $name) {
+                    $query->orWhere('name', 'like', "%$name%");
+                }
+            });
+        } else if ($name_match == 'exact') {
+            $query->where(function($query) use ($nameArray) {
+                foreach ($nameArray as $name) {
+                    $query->Where('casts.name', 'like', "%$name%");
+                }
+            });
+        }
+        // dd($query->get());
+        switch ($height) {
+            case '150':
+                $query->where('height', '<=', 150);
+                break;
+            case '155':
+                $query->where('height', '<=', 155)
+                ->where('height', '>', 150);
+                break;
+            case '160':
+                $query->where('height', '<=', 160)
+                ->where('height', '>', 155);
+                break;
+            case '165':
+                $query->where('height', '<=', 165)
+                ->where('height', '>', 160);
+                break;
+            case '170':
+                $query->where('height', '<=', 170);
+                break;
+            case '175':
+                $query->where('height', '<=', 175);
+                break;
+            default:
+                break;
+        }
+        switch ($age) {
+            case '18':
+                $query->where('age', '=', 18);
+                break;
+            case '19':
+                $query->where('age', '=', 19);
+                break;
+            case '20':
+                $query->where('age', '=', 20);
+                break;
+            case '21':
+                $query->where('age', '=', 21);
+                break;
+            case '22':
+                $query->where('age', '=', 22);
+                break;
+            case '23':
+                $query->where('age', '=', 23);
+                break;
+            case '24':
+                $query->where('age', '=', 24);
+                break;
+            case '25':
+                $query->where('age', '=', 25);
+                break;
+            case '26':
+                $query->where('age', '=', 26);
+                break;
+            case '27':
+                $query->where('age', '=', 27);
+                break;
+            case '28':
+                $query->where('age', '=', 28);
+                break;
+            case '29':
+                $query->where('age', '=', 29);
+                break;
+            case '30':
+                $query->where('age', '>=', 30);
+                break;
+            default:
+                break;
+        }
+
+        switch ($bust) {
+            case 'A':
+                $query->where('bust', '=', 'A');
+                break;
+            case 'B':
+                $query->where('bust', '=', 'B');
+                break;
+            case 'C':
+                $query->where('bust', '=', 'C');
+                break;
+            case 'D':
+                $query->where('bust', '=', 'D');
+                break;
+            case 'E':
+                $query->where('bust', '=', 'E');
+                break;
+            case 'F':   
+                $query->where('bust', '=', 'F');
+                break;
+            case 'G':
+                $query->where('bust', '=', 'G');
+                break;
+            case 'H':   
+                $query->where('bust', '=', 'H');
+                break;
+            case 'I':
+                $query->where('bust', '=', 'I');
+                break;
+            case 'J':
+                $query->where('bust', '=', 'J');
+                break;
+            default:
+                break;
+        }
+
+        if ($personalities != -1) {
+            $query->where('cast_personalities.personality_id', $personalities);
+        }
+
+        if ($styles != -1) {
+            $query->where('cast_styles.style_id', $styles);
+        }
+
+        if ($options != -1) {
+            $query->where('cast_options.option_id', $options);
+        }
+        $query->groupBy('casts.id');
+        // dd($query->get());
+        $search_result = $query->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 9 : 12)
+        ->onEachSide(0)
+        ->withPath('search-result');
+        dd($search_result);
+        return view('public.group.searchResult', [
+            'search_result' => $search_result,
+        ]);
+    }
 }
