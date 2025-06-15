@@ -194,7 +194,7 @@
           Cast List
         </h2>
         <div class="castlist-header-button">
-          <a href="#" class="castlist-header-button-link">
+          <a href="{{ route('public.shop.castlist', ['shop' => $shop->slug]) }}" class="castlist-header-button-link">
             一覧を見る
           </a>
         </div>
