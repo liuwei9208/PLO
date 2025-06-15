@@ -135,8 +135,8 @@ class ShopController extends Controller
 
         $attendances = Attendance::where('attendances.cast_id', $cast->id)
         ->where('attendances.is_public', 1)
-        ->where('attendances.start_datetime', '<=', Carbon::now()->subWeek(1))
-        ->where('attendances.end_datetime', '>=', Carbon::now()->subWeek(1))
+        ->whereDate('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        ->orWhereDate('attendances.end_datetime', '>=', Carbon::now()->addWeek(1)->toDateString())
         ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
             DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
             DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
@@ -144,8 +144,10 @@ class ShopController extends Controller
         ->get();
         $attendance_today = Attendance::where('attendances.cast_id', $cast->id)
         ->where('attendances.is_public', 1)
-        ->where('attendances.start_datetime', '<=', Carbon::now()->toDateTimeString())
-        ->where('attendances.end_datetime', '>=', Carbon::now()->toDateTimeString())
+        ->whereDate('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        ->whereDate('attendances.end_datetime', '>=', Carbon::now()->toDateString())
+        // ->where('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        // ->where('attendances.end_datetime', '>=', Carbon::now()->toDateString())
         ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
             DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
             DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
