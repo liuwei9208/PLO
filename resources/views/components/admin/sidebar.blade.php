@@ -55,7 +55,7 @@
                 class="menu-item-text"
                 :class="sidebarToggle ? 'lg:hidden' : ''"
               >
-                お知らせ管理
+                News管理
               </span>
             </a>
           </li>
