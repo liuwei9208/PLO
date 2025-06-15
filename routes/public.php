@@ -43,6 +43,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('about', [ShopController::class, 'showAbout'])->name('about');
         Route::get('fee', [ShopController::class, 'showFee'])->name('fee');
         Route::get('diary', [ShopController::class, 'showDiary'])->name('diary');
+        Route::get('schedule', [ShopController::class, 'showSchedule'])->name('schedule');
     });
 });
 

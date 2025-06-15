@@ -307,4 +307,56 @@ class ScheduleController extends Controller
 
         return response()->json(['status' => 'success', 'casts' => $casts, 'page' => $page, 'limit' => $limit, 'skip' => $skip, 'pages' => $pages, 'total' => $total, 'date' => $date, 'shopID' => $shopID]);
     }
+
+    public function getCastsScheduleShop(Request $request): JsonResponse
+    {
+        Log::info($request->all());
+
+        $date = $request->input('date');
+        $shopID = $request->input('shopID');
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $skip = $request->input('skip');
+        $pages = $request->input('pages');
+        $total = $request->input('total');
+
+
+        $query = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('casts.is_public', 1)
+        ->where('attendances.is_public', 1)
+        ->whereRaw('DATE(attendances.start_datetime) = ?', [$date]);
+
+        $query->where('casts.shop_id', $shopID);
+
+        $total = $query->count();
+        $page = $request->input('page') ? (int) $request->input('page') : 1;
+        $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
+        $skip = ($page - 1) * $limit;
+        $pages = ceil($total / $limit);
+
+        $casts = $query->selectRaw("
+            attendances.id as attendance_id,
+            DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_datetime,
+            DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_datetime,
+            casts.name as cast_name,
+            casts.id as cast_id,
+            casts.shop_id as shop_id,
+            casts.gallery_1 as gallery_1,
+            casts.age as age,
+            casts.height as height,
+            casts.bust as bust,
+            casts.waist as waist,
+            casts.hip as hip,
+            casts.appeal_point as appeal_point,
+            shops.name as shop_name,
+            shops.slug as shop_slug
+            ") // 必要に応じて
+        ->skip($skip)
+        ->take($limit)
+        ->get();
+
+
+        return response()->json(['status' => 'success', 'casts' => $casts, 'page' => $page, 'limit' => $limit, 'skip' => $skip, 'pages' => $pages, 'total' => $total, 'date' => $date ]);
+    }
 }

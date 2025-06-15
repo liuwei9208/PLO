@@ -195,4 +195,22 @@ class ShopController extends Controller
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
+
+    public function showSchedule(Request $request, string $shop): View
+    {
+        Carbon::setLocale('ja');
+        $today = Carbon::now()->format('Y-m-d');
+        $days = array();
+        $weekDay = Carbon::now()->format('m/d').'('.Carbon::now()->getTranslatedMinDayName().')';
+        $days[0] = ['date'=>$today,'weekDay'=>$weekDay];
+        for ($i = 1; $i < 7; $i++) {
+            $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
+            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay] ;
+        }
+        return view('public.shop.schedule', [
+            'days' => $days,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 }
