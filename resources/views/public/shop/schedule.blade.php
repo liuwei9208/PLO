@@ -71,6 +71,8 @@
 <script>
   let date = "{{ $days[0]['date'] }}";
   let shopID = "{{ $shop->id }}";
+
+
 </script>
 @once
   @vite(['resources/scss/shop/_showschedule.scss', 'resources/js/shop/showschedule.js'])
