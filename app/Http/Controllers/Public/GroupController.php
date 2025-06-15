@@ -428,6 +428,9 @@ class GroupController extends Controller
         $query->groupBy('casts.id');
         $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');
         // dd($query->toSql());
+        if ( $date == ""){
+            $date = Carbon::now()->format('Y-m-d');
+        }
         $search_result = $query->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 9 : 12)
         ->appends([
             'names' => $names,
