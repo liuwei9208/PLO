@@ -2,7 +2,7 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-  @if($news->count() > 0)
+  {{-- @if($news->count() > 0)
   <section class="plo_news content-wrapper">
     <div class="section-title">
       <img src="{{ asset('assets/img/plo_news.png') }}" alt="PLO News">
@@ -11,17 +11,17 @@
     <div class="plo_news-list">
       @foreach($news as $news)
         <div class="plo_news-item">
-          {{-- <div class="plo_news-item-title">
+          <div class="plo_news-item-title">
             {{ $news->title }}
           </div>
           <div class="plo_news-item-content">
             {{ $news->contents }}
-          </div> --}}
+          </div>
         </div>
       @endforeach
     </div>
   </section>
-  @endif
+  @endif --}}
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
