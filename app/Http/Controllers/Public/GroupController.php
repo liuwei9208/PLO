@@ -415,6 +415,11 @@ class GroupController extends Controller
         if ($shop_id != "") {
             $query->where('casts.shop_id','=', $shop_id);
         }
+
+        $shops = Shop::where('slug', 'touchvip')->orWhere('slug', 'headquarter')->orderBy('rank', 'asc')->get();
+        foreach ($shops as $shop) {
+            $query->whereNot('casts.shop_id', $shop->id);
+        }
         // dd($shop_id,$options,$styles);
         // if ($date != null || $date != "") {
         //     $query->whereDate('attendances.start_datetime', '=', $date);
