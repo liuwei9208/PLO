@@ -146,6 +146,10 @@ class ShopController extends Controller
         ->where('attendances.is_public', 1)
         ->where('attendances.start_datetime', '<=', Carbon::now()->toDateTimeString())
         ->where('attendances.end_datetime', '>=', Carbon::now()->toDateTimeString())
+        ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
+            DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
+            DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
+            DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_time")
         ->get();
         $reservations = Reservation::leftJoin('attendances', 'reservations.attendance_id', '=', 'attendances.id')
         ->where('attendances.cast_id', $cast->id)
@@ -158,25 +162,27 @@ class ShopController extends Controller
         Carbon::setLocale('ja');
         $today = Carbon::now()->format('Y-m-d');
         $days = array();
-        $weekDay = Carbon::now()->format('m/d').'('.Carbon::now()->getTranslatedMinDayName().')';
+        $weekDay = Carbon::now()->format('m/d');
+        $minDay = Carbon::now()->getTranslatedMinDayName();
         $status = 'お休み';
         foreach ($attendances as $attendance) {
             if ($attendance->start_date == $today) {
-                $status = '出勤中';
+                $status = $attendance->start_time . '~' . $attendance->end_time;
             }
         }
 
-        $days[0] = ['date'=>$today,'weekDay'=>$weekDay, 'status'=>$status];
+        $days[0] = ['date'=>$today,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay];
         for ($i = 1; $i < 7; $i++) {
             $date = Carbon::now()->addDays($i)->format('Y-m-d');
-            $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
+            $weekDay = Carbon::now()->addDays($i)->format('m/d');
+            $minDay = Carbon::now()->addDays($i)->getTranslatedMinDayName();
             $status = 'お休み';
             foreach ($attendances as $attendance) {
                 if ($attendance->start_date == $date) {
-                    $status = '出勤中';
+                    $status =   '出勤中';
                 }
             }
-            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay, 'status'=>$status] ;
+            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay] ;
         }
         // dd($days);
         // dd($attendances);

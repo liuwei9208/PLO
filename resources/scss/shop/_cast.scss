@@ -625,17 +625,17 @@
     }
 
     &__item {
-      flex: 0 0 200px;
+      flex: 0 0 90px;
       display: flex;
       flex-direction: column;
       padding: 15px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background-color: #fff;
 
       @media #{media-query(sm)} {
         flex: none;
         width: 100%;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
       }
 
       &__date {
@@ -814,15 +814,15 @@
     }
   }
   &__item {
-    background: #fff;
-    border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    padding: 15px 10px;
-    min-width: 110px;
+    //min-width: 110px;
     text-align: center;
     @media #{media-query(sm)} {
       min-width: 0;
       width: 100%;
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      padding: 15px 10px;
     }
     &__date {
       font-size: 18px;

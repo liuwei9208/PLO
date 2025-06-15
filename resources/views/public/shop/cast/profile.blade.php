@@ -73,7 +73,7 @@
           <div class="schedule-week__items">
             @foreach($days as $day)
               <div class="schedule-week__item">
-                <div class="schedule-week__item__date">{{ $day['weekDay'] }}</div>
+                <div class="schedule-week__item__date">{{ $day['weekDay'] }}<br>({{ $day['minDay'] }})</div>
                 <div class="schedule-week__item__status">{{ $day['status'] }}</div>
               </div>
             @endforeach
