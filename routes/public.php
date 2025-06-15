@@ -45,6 +45,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('diary', [ShopController::class, 'showDiary'])->name('diary');
         Route::get('schedule', [ShopController::class, 'showSchedule'])->name('schedule');
         Route::get('newcomer', [ShopController::class, 'showNewcomer'])->name('newcomer');
+        Route::get('castlist', [ShopController::class, 'showCastlist'])->name('castlist');
     });
 });
 

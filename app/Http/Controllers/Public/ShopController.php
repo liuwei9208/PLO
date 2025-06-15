@@ -257,4 +257,17 @@ class ShopController extends Controller
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
+
+    public function showCastlist(Request $request, string $shop): View
+    {
+        $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->inRandomOrder()
+        ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->withPath('castlist');
+        return view('public.shop.castlist', [
+            'castlist' => $castlist,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 }
