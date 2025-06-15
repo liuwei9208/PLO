@@ -112,7 +112,7 @@
   @endif
   <!-- 新人情報 - New Face -->
   <section class="newface">
-    @if($new_girls_month->count() > 0)
+    @if($newfaces_this_month->count() > 0)
     <div class="section-title">
       <span class="section-title-en">
         <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
