@@ -12,10 +12,10 @@ document.addEventListener('DOMContentLoaded', async function() {
   // document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
   
   // 曜日ボタンのイベントリスナー
-  document.querySelectorAll('.schedule-week-day-date').forEach(button => {
+  document.querySelectorAll('.schedule-weeks-day-date').forEach(button => {
     button.addEventListener('click', async (e) => {
       // アクティブ状態の切り替え
-      document.querySelectorAll('.schedule-week-day-date').forEach(btn => {
+      document.querySelectorAll('.schedule-weeks-day-date').forEach(btn => {
         btn.classList.remove('active');
       });
       e.target.classList.add('active');

@@ -1,4 +1,4 @@
-<x-public-shop-layout>
+<x-public-shop-layout :shop="$shop">
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
@@ -9,13 +9,13 @@
       {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
       <h2 class="schedule-title-ja">出勤情報</h2>
     </div>
-    <div class="schedule-week content-wrapper">
-      <div class="schedule-week-day">
-        <button class="schedule-week-day-date active" value="{{ $days[0]['date'] }} " id = "weekDay" data-weekday="{{ $days[0]['weekDay'] }}">{{ $days[0]['weekDay'] }}</button>
+    <div class="schedule-weeks content-wrapper">
+      <div class="schedule-weeks-day">
+        <button class="schedule-weeks-day-date active" value="{{ $days[0]['date'] }} " id = "weekDay" data-weekday="{{ $days[0]['weekDay'] }}">{{ $days[0]['weekDay'] }}</button>
       </div>
       @for ($i = 1; $i < count($days); $i++)
-        <div class="schedule-week-day">
-          <button class="schedule-week-day-date" value="{{ $days[$i]['date'] }} " id = "weekDay" data-weekday="{{ $days[$i]['weekDay'] }}">{{ $days[$i]['weekDay'] }}</button>
+        <div class="schedule-weeks-day">
+          <button class="schedule-weeks-day-date" value="{{ $days[$i]['date'] }} " id = "weekDay" data-weekday="{{ $days[$i]['weekDay'] }}">{{ $days[$i]['weekDay'] }}</button>
         </div>
       @endfor
     </div>
