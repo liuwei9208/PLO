@@ -2,7 +2,13 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-
+  <input type="hidden" id="names" value="{{ $names }}">
+  <input type="hidden" id="name_match" value="{{ $name_match }}">
+  <input type="hidden" id="personalities" value="{{ $personalities }}">
+  <input type="hidden" id="styles" value="{{ $styles }}">
+  <input type="hidden" id="options" value="{{ $options }}">
+  <input type="hidden" id="age" value="{{ $age }}">
+  <input type="hidden" id="height" value="{{ $height }}">
   <!-- schedule List -->
   <section class="schedule">
     <div class="schedule-title">

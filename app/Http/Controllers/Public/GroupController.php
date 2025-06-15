@@ -222,21 +222,34 @@ class GroupController extends Controller
 
     public function searchResult(Request $request): View
     {
-        $names = $request->input('name');
-        $name_match =$request->input('name_match');
-        $personalities = $request->input('personality');
-        $styles = $request->input('style');
-        $options = $request->input('option');
-        $age = $request->input('age');
-        $height = $request->input('height');
-        $bust = $request->input('bust');
-        $status = $request->input('status');
+        if ($request->isMethod('post')) {
+            $names = $request->input('name');
+            $name_match =$request->input('name_match');
+            $personalities = $request->input('personality');
+            $styles = $request->input('style');
+            $options = $request->input('option');
+            $age = $request->input('age');
+            $height = $request->input('height');
+            $bust = $request->input('bust');
+            $status = $request->input('status');
+        }else if ($request->isMethod('get')){
+            $names = $request->query('name');
+            $name_match =$request->query('name_match');
+            $personalities = $request->query('personality');
+            $styles = $request->query('style');
+            $options = $request->query('option');
+            $age = $request->query('age');
+            $height = $request->query('height');
+            $bust = $request->query('bust');
+            $status = $request->query('status');
+        }
+        /*
         $page = $request->input('page');
         $limit = $request->input('limit');
         $skip = $request->input('skip');
         $pages = $request->input('pages');
         $total = $request->input('total');
-
+        */
         $query = Cast::query();
 
         $query->leftjoin('cast_option', 'casts.id', '=', 'cast_option.cast_id');
@@ -254,8 +267,8 @@ class GroupController extends Controller
         $query->where('casts.is_public', 1);
         // 名前を空白文字で分割
         // $nameArray = preg_split('/[\s　]+/', $names, -1, PREG_SPLIT_NO_EMPTY);
-        $names = mb_convert_kana($names, 's');
-        $nameArray = explode(' ', $names);
+        $namess = mb_convert_kana($names, 's');
+        $nameArray = explode(' ', $namess);
         $nameArray = array_filter($nameArray, 'strlen');
 
         if ($name_match == 'partial') {
@@ -389,7 +402,7 @@ class GroupController extends Controller
         // dd($query->get());
         $search_result = $query->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 9 : 12)
         ->onEachSide(0)
-        ->withPath('search-result');
+        ->withPath('searchResult');
         // dd($search_result);
 
 
@@ -408,6 +421,13 @@ class GroupController extends Controller
             'search_result' => $search_result,
             'days' => $days,
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
+            'names' => $names,
+            'name_match' => $name_match,
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
+            'age' => $age,
+            'height' => $height,
         ]);
     }
 }
