@@ -53,10 +53,34 @@
       <h2 class="working-title__title">Schedule</h2>
     </div>
     <div class="working-container">
-      <picture>
-        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/working-sm.png') }}">
-        <img src="{{ asset('assets/img/shop/working.png') }}" alt="Schedule" class="working-image">
-      </picture>
+      <div class="schedule-container">
+        <div class="schedule-today-status {{ $attendance_today->count() > 0 ? $reservation->count() > 0 ? 'end' : 'worked' : 'off' }}">
+        {{-- <div class="schedule-today-status worked"> --}}
+          <div class="schedule-today-status__title">Today<br>Schedule</div>
+          @if($attendance_today->count() > 0)
+            @if ($reservation->count() > 0)
+              <div class="schedule-today-status__status">受付終了</div>
+            @else
+              <div class="schedule-today-status__status">出勤中</div>
+            @endif
+          @else
+            <div class="schedule-today-status__status">お休み</div>
+          @endif
+        </div>
+        <div class="schedule-week">
+          <div class="schedule-week__title_container">
+            <div class="schedule-week__title">Weekly Schedule</div>
+          </div>
+          <div class="schedule-week__items">
+            @foreach($days as $day)
+              <div class="schedule-week__item">
+                <div class="schedule-week__item__date">{{ $day['weekDay'] }}<br>({{ $day['minDay'] }})</div>
+                <div class="schedule-week__item__status">{{ $day['status'] }}</div>
+              </div>
+            @endforeach
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

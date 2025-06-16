@@ -131,6 +131,62 @@ class ShopController extends Controller
             $options[] = $option->name;
         }
         $options = implode(', ', $options);
+
+        $attendances = Attendance::where('attendances.cast_id', $cast->id)
+        ->where('attendances.is_public', 1)
+        ->whereDate('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        ->orWhereDate('attendances.end_datetime', '>=', Carbon::now()->addWeek(1)->toDateString())
+        ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
+            DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
+            DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
+            DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_time")
+        ->get();
+        $attendance_today = Attendance::where('attendances.cast_id', $cast->id)
+        ->where('attendances.is_public', 1)
+        ->whereDate('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        ->whereDate('attendances.end_datetime', '>=', Carbon::now()->toDateString())
+        // ->where('attendances.start_datetime', '<=', Carbon::now()->toDateString())
+        // ->where('attendances.end_datetime', '>=', Carbon::now()->toDateString())
+        ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
+            DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
+            DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
+            DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_time")
+        ->get();
+        $reservations = Reservation::leftJoin('attendances', 'reservations.attendance_id', '=', 'attendances.id')
+        ->where('attendances.cast_id', $cast->id)
+        ->where('reservations.start_time', '<=', Carbon::now()->toDateTimeString())
+        ->where('reservations.end_time', '>=', Carbon::now()->toDateTimeString())
+        ->select('reservations.*', 'attendances.id as attendance_id')
+        ->get();
+        // dd($reservations);
+
+        Carbon::setLocale('ja');
+        $today = Carbon::now()->format('Y-m-d');
+        $days = array();
+        $weekDay = Carbon::now()->format('m/d');
+        $minDay = Carbon::now()->getTranslatedMinDayName();
+        $status = 'お休み';
+        foreach ($attendances as $attendance) {
+            if ($attendance->start_date == $today) {
+                $status = $attendance->start_time . '~' . $attendance->end_time;
+            }
+        }
+
+        $days[0] = ['date'=>$today,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay];
+        for ($i = 1; $i < 7; $i++) {
+            $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            $weekDay = Carbon::now()->addDays($i)->format('m/d');
+            $minDay = Carbon::now()->addDays($i)->getTranslatedMinDayName();
+            $status = 'お休み';
+            foreach ($attendances as $attendance) {
+                if ($attendance->start_date == $date) {
+                    $status =   '出勤中';
+                }
+            }
+            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay] ;
+        }
+        // dd($days);
+        // dd($attendances);
         return view('public.shop.cast.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
@@ -140,6 +196,10 @@ class ShopController extends Controller
             'personalities' => $personalities,
             'styles' => $styles,
             'options' => $options,
+            'attendances' => $attendances,
+            'attendance_today' => $attendance_today,
+            'reservation' => $reservations,
+            'days' => $days,
         ]);
     }
 

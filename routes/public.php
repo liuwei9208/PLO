@@ -21,7 +21,8 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('event/{id}', [GroupController::class, 'showEventDetail'])->name('event.detail');
         Route::get('search', [GroupController::class, 'showSearch'])->name('search');
         Route::post('search', [GroupController::class, 'searchResult']);
-        Route::get('searchResult', [GroupController::class, 'searchResult']);
+        Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
+        Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
         Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
