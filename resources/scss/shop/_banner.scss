@@ -68,17 +68,19 @@
     gap: 20px;
     // max-width: 1260px;
     margin: 0 auto;
-    margin: 0 80px;
+    margin: 0 4rem;
     @media #{media-query(md)} {
       gap: 30px;
+      margin: 0 auto;
     }
 
     @media #{media-query(lg)} {
       gap: 40px;
     }
-    @media #{media-query(lg)} {
+    @media #{media-query(sm)} {
       gap: 20px;
       // width: calc(100% - 40px);
+      margin: 0 20px;
     }
 
     a {
