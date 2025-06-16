@@ -14,7 +14,6 @@ use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Attendance;
 use App\Models\Reservation;
-
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -331,6 +330,39 @@ class ShopController extends Controller
         return view('public.shop.castlist', [
             'castlist' => $castlist,
             'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
+
+    public function showDiaryDetail(Request $request, string $shop, string $id, string $cast_name): View
+    {
+        // dd($id, $cast_name);
+        $diarys = Diary::where('cast_id', $id)->where('is_public', 1)
+        // ->whereDate('created_at', '=', Carbon::now())
+        ->orderBy('created_at', 'desc')->get();
+        $working = Attendance::where('cast_id', $id)->where('is_public', 1)
+        ->whereDate('start_datetime', '<=', Carbon::now())
+        ->whereDate('end_datetime', '>=', Carbon::now())
+        ->count();
+        // dd($working);
+        $reservation = 0;
+        if ($working > 0) {
+            $workID = Attendance::where('cast_id', $id)->where('is_public', 1)
+            ->whereDate('start_datetime', '<=', Carbon::now())
+            ->whereDate('end_datetime', '>=', Carbon::now())
+            ->first()->id;
+            $reservation = Reservation::where('attendance_id', $workID)
+            ->count();
+        } else {
+            $reservation = 0;
+        }
+        return view('public.shop.diarydetail', [
+            'diarys' => $diarys,
+            'cast_name' => $cast_name,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'working' => $working,
+            'reservation' => $reservation,
+            'castId' => $id,
+            'date' => Carbon::now()->format('Y-m-d'),
         ]);
     }
 }

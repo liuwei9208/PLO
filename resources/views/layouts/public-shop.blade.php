@@ -18,6 +18,8 @@
     @vite(['resources/scss/shop.scss', 'resources/js/shop.js'])
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet"> --}}
+
     {{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
     <!-- Styles -->
     {{-- @if (Request::routeIs('public.shop.home'))

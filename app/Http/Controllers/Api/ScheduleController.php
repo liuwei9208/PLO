@@ -12,7 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\Diary;
 class ScheduleController extends Controller
 {
     private const DEFAULT_LIMIT = 30;
@@ -358,5 +358,67 @@ class ScheduleController extends Controller
 
 
         return response()->json(['status' => 'success', 'casts' => $casts, 'page' => $page, 'limit' => $limit, 'skip' => $skip, 'pages' => $pages, 'total' => $total, 'date' => $date ]);
+    }
+
+    public function getDiaryDetail(Request $request): JsonResponse
+    {
+        Log::info($request->all());
+        $date = $request->input('date');
+        $cast_id = $request->input('cast_id');
+        $shop_id = $request->input('shop_id');
+        $page = $request->input('page');
+        $limit = $request->input('limit');
+        $skip = $request->input('skip');
+        $pages = $request->input('pages');
+        $total = $request->input('total');
+
+        $query = Diary::where('cast_id', $cast_id)->where('is_public', 1)
+        // ->whereDate('created_at', '=', Carbon::now())
+        ->whereDate('created_at', '=', $date);
+
+        $total = $query->count();
+        $page = $request->input('page') ? (int) $request->input('page') : 1;
+        $limit = $request->input('limit');
+        $skip = ($page - 1) * $limit;
+        $pages = ceil($total / $limit);
+
+        $diarys = $query->skip($skip)
+            ->take($limit)
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->selectRaw("
+                DATE_FORMAT(created_at, '%Y-%m-%d %H:%i') as created_datetime,
+                subject,
+                photo,
+                body
+            ")
+            ->get();
+        // dd($diarys);
+        $total_diarys = Diary::where('cast_id', $cast_id)->where('is_public', 1)->whereNull('deleted_at')
+        ->selectRaw("
+            DATE_FORMAT(created_at, '%Y-%m-%d') as total_date
+        ")
+        ->groupBy('total_date')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        $working = Attendance::where('cast_id', $cast_id)->where('is_public', 1)
+        ->whereDate('start_datetime', '<=', $date)
+        ->whereDate('end_datetime', '>=', $date)
+        ->count();
+        // dd($working);
+        $reservation = 0;
+        if ($working > 0) {
+            $workID = Attendance::where('cast_id', $cast_id)->where('is_public', 1)
+            ->whereDate('start_datetime', '<=', Carbon::now())
+            ->whereDate('end_datetime', '>=', Carbon::now())
+            ->first()->id;
+            $reservation = Reservation::where('attendance_id', $workID)
+            ->count();
+        } else {
+            $reservation = 0;
+        }
+
+        return response()->json(['status' => 'success', 'diarys' => $diarys, 'working' => $working, 'reservation' => $reservation, 'page' => $page, 'limit' => $limit, 'skip' => $skip, 'pages' => $pages, 'total' => $total, 'date' => $date, 'cast_id' => $cast_id, 'shop_id' => $shop_id, 'total_diarys' => $total_diarys]);
     }
 }

@@ -65,6 +65,7 @@ class GroupController extends Controller
                 'diaries.updated_at',
                 'casts.name',
                 'diaries.photo',
+                'casts.id as cast_id',
             ])
             ->limit(9)
             ->get();
