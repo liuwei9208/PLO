@@ -9,8 +9,9 @@
   @if ($todayCasts->count() > 0)
   <!-- Today Schedule -->
   <div class="today">
-    <h2 class="today-title">
-      <img src="{{ asset('assets/img/shop/' . $shop->slug . '/today/title.svg') }}" alt="Today Schedule">
+    <h2 class="today-title title-font">
+      {{-- <img src="{{ asset('assets/img/shop/' . $shop->slug . '/today/title.svg') }}" alt="Today Schedule"> --}}
+      Today Schedule
     </h2>
     <div class="today-list">
       @foreach ($todayCasts as $cast)
@@ -39,11 +40,11 @@
   <div class="new-girls content-wrapper">
     @if($new_girls_month->count() > 0)
     <div class="new-girls-header">
-      <div class="new-girls-header-title">
+      <div class="new-girls-header-title title-font">
         New Girls
       </div>
       <div class="new-girls-header-button">
-        <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link">
+        <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link content-font">
           一覧を見る
         </a>
       </div>
@@ -89,7 +90,7 @@
     @endif
     @if($new_girls_month->count() > 0)
     <div class="new-girls-footer-button">
-      <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link">
+      <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link content-font">
         一覧を見る
       </a>
     </div>
@@ -99,12 +100,12 @@
     <div class="news">
       <div class="news-header">
         <div class="news-header-title">
-          <h2 class="news-title">
+          <h2 class="news-title title-font">
             News
           </h2>
         </div>
         <div class="news-header-button">
-          <a href="" class="news-header-button-link">
+          <a href="" class="news-header-button-link content-font">
             一覧を見る
           </a>
         </div>
@@ -115,12 +116,12 @@
     <div class="diary-top">
       <div class="diary-top-header">
         <div class="diary-top-header-title">
-          <h2 class="diary-top-title">
+          <h2 class="diary-top-title title-font">
             Photo Diary
           </h2>
         </div>
         <div class="diary-top-header-button">
-          <a href="" class="diary-top-header-button-link">
+          <a href="" class="diary-top-header-button-link content-font">
             もっと見る
           </a>
         </div>
@@ -149,7 +150,7 @@
   </div>
   @if ($events->count() > 0)
   <div class="evnet">
-    <h2 class="event-title">Event</h2>
+    <h2 class="event-title title-font">Event</h2>
     <div class="event-main">
       <div class="event-main-image">
         <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $events[0]->id]) }}">
@@ -190,11 +191,11 @@
   <div class="castlist content-wrapper">
     <div class="castlist-header">
       <div class="castlist-header-title">
-        <h2 class="castlist-title">
+        <h2 class="castlist-title title-font">
           Cast List
         </h2>
         <div class="castlist-header-button">
-          <a href="{{ route('public.shop.castlist', ['shop' => $shop->slug]) }}" class="castlist-header-button-link">
+          <a href="{{ route('public.shop.castlist', ['shop' => $shop->slug]) }}" class="castlist-header-button-link content-font">
             一覧を見る
           </a>
         </div>
