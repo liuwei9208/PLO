@@ -49,3 +49,57 @@ a {
     width: calc(100% - 40px);
   }
 }
+.title-font {
+  font-family: $title-font-family;
+  font-size: $title-font-size;
+  font-weight: $title-font-weight;
+  font-style: $title-font-style;
+  @media #{media-query(sm)} {
+    font-family: $title-font-family-sm;
+    font-size: $title-font-size-sm;
+    font-weight: $title-font-weight-sm;
+    font-style: $title-font-style-sm;
+  }
+  @media #{media-query(md)} {
+    font-family: $title-font-family-md;
+    font-size: $title-font-size-md;
+    font-weight: $title-font-weight-md;
+    font-style: $title-font-style-md;
+  }
+  @media #{media-query(lg)} {
+    font-family: $title-font-family-lg;
+    font-size: $title-font-size-lg;
+    font-weight: $title-font-weight-lg;
+    font-style: $title-font-style-lg;
+  }
+}
+.content-font {
+  font-family: $content-font-family;
+  font-size: $content-font-size;
+  font-weight: $content-font-weight;
+  font-style: $content-font-style;
+  @media #{media-query(sm)} {
+    font-family: $content-font-family-sm;
+    font-size: $content-font-size-sm;
+    font-weight: $content-font-weight-sm;
+    font-style: $content-font-style-sm;
+  }
+  @media #{media-query(sm)} {
+    font-family: $content-font-family-sm;
+    font-size: $content-font-size-sm;
+    font-weight: $content-font-weight-sm;
+    font-style: $content-font-style-sm;
+  }
+  @media #{media-query(md)} {
+    font-family: $content-font-family-md;
+    font-size: $content-font-size-md;
+    font-weight: $content-font-weight-md;
+    font-style: $content-font-style-md;
+  }
+  @media #{media-query(lg)} {
+    font-family: $content-font-family-lg;
+    font-size: $content-font-size-lg;
+    font-weight: $content-font-weight-lg;
+    font-style: $content-font-style-lg;
+  }
+}

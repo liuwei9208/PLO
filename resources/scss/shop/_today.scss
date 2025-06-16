@@ -18,14 +18,18 @@
 
   .today-title {
     margin: 0 auto;
+    text-align: center;
     @media #{media-query(sm)} {
-      width: 315px;
+      // width: 315px;
+      // font-size: $title-font-size-sm;
     }
     @media #{media-query(md)} {
-      width: 520px;
+      // width: 520px;
+      // font-size: $title-font-size-md;
     }
     @media #{media-query(lg)} {
-      width: 742px;
+      // width: 742px;
+      // font-size: $title-font-size-lg;
     }
 
     img {
