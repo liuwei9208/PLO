@@ -169,7 +169,7 @@
         @foreach ($diaries as $diary)
           <div class="diary-content-item">
             <div class="diary-content-item-image">
-              <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
+              <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->cast_id }}">
               <div class="diary-content-item-title">
                 {{ $diary->subject }}
               </div>

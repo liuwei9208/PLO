@@ -33,7 +33,7 @@
   <div class="diary">
     <div class="diary-title">
       <h2 class="diary-title__title">Photo Diary</h2>
-      <a href="#" class="diary-title__link">もっと見る</a>
+      <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $cast->id,'cast_name' => $cast->name]) }}" class="diary-title__link">もっと見る</a>
     </div>
     <div class="diary-item">
       @foreach($diarys as $diary)
