@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Pickup extends Model
 {
+    protected $connection = 'mysql';
     /**
      * The attributes that are mass assignable.
      *

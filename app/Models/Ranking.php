@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ranking extends Model
 {
+    protected $connection = 'mysql';
     use HasFactory;
 
     /**

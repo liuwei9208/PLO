@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Cast extends Model
 {
+    protected $connection = 'mysql';
     /**
      * The attributes that are mass assignable.
      *

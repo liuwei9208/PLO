@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class News extends Model
 {
-    //
+    protected $connection = 'mysql';
     protected $fillable = [
         'shop_id',
         'published_at',

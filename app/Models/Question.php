@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-    //
+    protected $connection = 'mysql';
     protected $fillable = [
         'question',
         'is_public',

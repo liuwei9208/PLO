@@ -11,6 +11,7 @@ class Shop extends Model
      *
      * @var array<int, string>
      */
+    protected $connection = 'mysql';
     protected $fillable = [
         'slug',
         'url',
