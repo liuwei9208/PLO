@@ -18,6 +18,9 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\FeeController;
+use App\Http\Controllers\Admin\MemberController;
+
+
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
@@ -57,6 +60,19 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::delete('{id}', [CastController::class, 'destroy']);
     });
 
+    /**
+     * Member
+     *
+     * @see \App\Http\Controllers\Admin\CastController
+     */
+    Route::prefix('member')->name('member.')->group(function () {
+        Route::get('/', [MemberController::class, 'index'])->name('index');
+        Route::get('add', [MemberController::class, 'create'])->name('create');
+        Route::post('add', [MemberController::class, 'store']);
+        Route::get('{id}', [MemberController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [MemberController::class, 'update']);
+        Route::delete('{id}', [MemberController::class, 'destroy']);
+    });
     /**
      * Pickup
      *
