@@ -101,14 +101,14 @@ class VisitController extends Controller{
             $model->whereDate(env('MEMBER_DB_DATABASE').'.histories.created_at', '=', $request->query('created_at'));
         }
     }
-    if ($request->input('cast')) {
-        $model->where(function ($query) use ($request) {
-            $query->whereHas('cast', function ($query) use ($request) {
-                $query->where(env('DB_DATABASE').'.casts.name', 'like', '%' . $request->input('cast') . '%');
-            });
-            $query->orWhere(env('MEMBER_DB_DATABASE').'.histories.cast_name', 'like', '%' . $request->input('cast') . '%');
-        });
-    }
+    // if ($request->input('cast')) {
+    //     $model->where(function ($query) use ($request) {
+    //         $query->whereHas('cast', function ($query) use ($request) {
+    //             $query->where(env('MEMBER_DB_DATABASE').'.casts.name', 'like', '%' . $request->input('cast') . '%');
+    //         });
+    //         $query->orWhere(env('MEMBER_DB_DATABASE').'.histories.cast_name', 'like', '%' . $request->input('cast') . '%');
+    //     });
+    // }
 
     $total = $model->count();
 
