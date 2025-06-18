@@ -121,7 +121,7 @@
           </h2>
         </div>
         <div class="diary-top-header-button">
-          <a href="" class="diary-top-header-button-link content-font">
+          <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug]) }}" class="diary-top-header-button-link content-font">
             もっと見る
           </a>
         </div>

@@ -194,12 +194,12 @@
       </div>
     </div>
     <ul class="diary-content-bottom-shops ">
-      <a href="{{ route('public.shop.diary', ['shop' => 'pussycat']) }}"><li class="diary-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
-      <a href="{{ route('public.shop.diary', ['shop' => 'shizuku']) }}"><li class="diary-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
-      <a href="{{ route('public.shop.diary', ['shop' => 'miyabi']) }}"><li class="diary-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
-      <a href="{{ route('public.shop.diary', ['shop' => 'en']) }}"><li class="diary-content-bottom-shops-item " data-shop="en">艶</li></a>
-      <a href="{{ route('public.shop.diary', ['shop' => 'shiroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
-      <a href="{{ route('public.shop.diary', ['shop' => 'lovestory']) }}"><li class="diary-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'pussycat']) }}"><li class="diary-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'shizuku']) }}"><li class="diary-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'miyabi']) }}"><li class="diary-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'en']) }}"><li class="diary-content-bottom-shops-item " data-shop="en">艶</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'shiroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'lovestory']) }}"><li class="diary-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
     </ul>
 
   </div>
