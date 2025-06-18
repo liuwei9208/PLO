@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qa extends Model
 {
-    //
+    protected $connection = 'mysql';
     protected $fillable = [
         'cast_id',
         'question_id',

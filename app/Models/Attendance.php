@@ -7,6 +7,7 @@ use App\Models\Reservation;
 
 class Attendance extends Model
 {
+    protected $connection = 'mysql';
     protected $fillable = [
         'cast_id',
         'start_datetime',

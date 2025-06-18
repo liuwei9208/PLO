@@ -11,6 +11,7 @@ class Style extends Model
      *
      * @var array<int, string>
      */
+    protected $connection = 'mysql';
     protected $fillable = [
         'name',
         'description',

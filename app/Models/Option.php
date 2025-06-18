@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Option extends Model
 {
+    protected $connection = 'mysql';
     /**
      * The attributes that are mass assignable.
      *

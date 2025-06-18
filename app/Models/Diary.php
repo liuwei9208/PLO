@@ -11,6 +11,7 @@ class Diary extends Model
 {
     use SoftDeletes;
 
+    protected $connection = 'mysql';
     /**
      * The attributes that are mass assignable.
      *

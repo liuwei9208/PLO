@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banner extends Model
 {
-    //
+    protected $connection = 'mysql';
     protected $fillable = [
         'title',
         'link_url',

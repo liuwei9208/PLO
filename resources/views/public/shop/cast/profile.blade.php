@@ -44,7 +44,7 @@
       @endforeach
     </div>
     <div class="diary-item__more">
-      <a href="#" class="diary-item__more__link">もっと見る</a>
+      <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $cast->id,'cast_name' => $cast->name]) }}" class="diary-item__more__link">もっと見る</a>
     </div>
   </div>
 
