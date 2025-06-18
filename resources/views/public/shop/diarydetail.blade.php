@@ -5,13 +5,18 @@ script<x-public-shop-layout :shop="$shop">
 
   <section class="diary">
     <div class="diary-container">
-      <h2 class="diary-title">Photo Diary</h2>
+      <h2 class="diary-title title-font ">Photo Diary</h2>
     </div>
     <div class="diary-header content-wrapper">
       <div class="diary-header-title">
-        <h2 class="diary-title">{{ $diary->cast_name }}</h2>
+        <h2 class="diary-title ">{{ $diary->cast_name }}</h2>
       </div>
       <div class="diary-header-content">
+        <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $diary->cast_id]) }}" class="diary-header-content-link sp-only">
+          <div class="diary-header-content-link-profile">
+            プロフィール　＞
+          </div>
+        </a>
         <div class="diary-header-content-working">
           <p class="diary-header-content-working-text">
           @if ($working > 0)
@@ -29,11 +34,11 @@ script<x-public-shop-layout :shop="$shop">
       </div>
       <div class="diary-body">
         <div class="diary-body-left">
-          <div class="diary-body-left-profile">
-            <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $diary->cast_id]) }}" class="diary-body-profile-link">
+          <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $diary->cast_id]) }}" class="diary-body-left-profile pc-only">
+            <div class="diary-body-left-profile-link">
               プロフィール　＞
-            </a>
-          </div>
+            </div>
+          </a>
           <div class="diary-body-left-calendar">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
             </div>
@@ -62,7 +67,7 @@ script<x-public-shop-layout :shop="$shop">
           <div class="diary-body-right-pagination">
             <div class="diary-body-right-pagination-prev">
               @if ($prev)
-                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $prev->id]) }}">戻る</a>
+                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $prev->id]) }}">< 戻る</a>
               @else
                 <span class="pagination-placeholder"></span>
               @endif
@@ -72,7 +77,7 @@ script<x-public-shop-layout :shop="$shop">
             </div>
             <div class="diary-body-right-pagination-next">
               @if ($next)
-                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $next->id]) }}">次へ</a>
+                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $next->id]) }}">次へ ></a>
               @else
                 <span class="pagination-placeholder"></span>
               @endif
