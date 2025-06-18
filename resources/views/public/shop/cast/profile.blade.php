@@ -29,7 +29,7 @@
       </div>
     </div>
   @endif
-
+  @if(count($diarys) > 0)
   <div class="diary">
     <div class="diary-title">
       <h2 class="diary-title__title">Photo Diary</h2>
@@ -49,7 +49,7 @@
       <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'cast_id' => $cast->id]) }}" class="diary-item__more__link">もっと見る</a>
     </div>
   </div>
-
+  @endif
   <div class="working">
     <div class="working-title">
       <h2 class="working-title__title">Schedule</h2>
