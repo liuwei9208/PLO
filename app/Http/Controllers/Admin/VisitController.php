@@ -63,7 +63,7 @@ class VisitController extends Controller{
                 // )                
                 ->orderBy(env('MEMBER_DB_DATABASE').'.histories.created_at','desc');
     // dd($model->limit(100)->get());
-    $model->whereIn(env('MEMBER_DB_DATABASE').'.histories.name', ['来店', 'PT有効期限切れ']);
+    $model->whereIn(env('MEMBER_DB_DATABASE').'.histories.name', ["来店", "PT有効期限切れ"]);
 
     if ( $request->has('shop') && $request->query('shop') !== null) {
         if ($request->query('shop') !== '') {
