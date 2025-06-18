@@ -393,8 +393,8 @@ class ShopController extends Controller
         //         ->where('diaries.is_public', 1)
         //         ->select('diaries.*', 'casts.name as cast_name')
         //         ->first();
-        $prev = Diary::where('cast_id', $diary->cast_id)->where('created_at', '>', $diary->created_at)->orderBy('id', 'desc')->first();
-        $next = Diary::where('cast_id', $diary->cast_id)->where('created_at', '<', $diary->created_at)->orderBy('id', 'asc')->first();
+        $prev = Diary::where('cast_id', $diary->cast_id)->where('created_at', '>', $diary->created_at)->orderBy('created_at', 'asc')->first();
+        $next = Diary::where('cast_id', $diary->cast_id)->where('created_at', '<', $diary->created_at)->orderBy('created_at', 'desc')->first();
         $diarys = Diary::where('cast_id', $diary->cast_id)->where('is_public', 1)
         ->selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as date, id")
         ->get();
