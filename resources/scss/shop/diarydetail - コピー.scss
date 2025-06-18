@@ -129,7 +129,7 @@
             height: 80%;
             img {
               width: 100%;
-              height: 100%;
+              height: auto;
               border-radius: 4px;
               display: inline-block;
               object-fit: cover;
@@ -148,8 +148,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-top: 1px solid #ccc;
-        padding-top: 20px;
+        
         &-prev {
           flex: 1;
           text-align: left;
@@ -168,13 +167,6 @@
               background-color: #e9ecef;
               border-color: #adb5bd;
             }
-          }
-          
-          .pagination-placeholder {
-            display: inline-block;
-            width: 80px;
-            height: 42px;
-            visibility: hidden;
           }
         }
         
@@ -217,13 +209,6 @@
               background-color: #e9ecef;
               border-color: #adb5bd;
             }
-          }
-          
-          .pagination-placeholder {
-            display: inline-block;
-            width: 80px;
-            height: 42px;
-            visibility: hidden;
           }
         }
         
@@ -379,20 +364,20 @@
           &-list,
           &-next {
             a {
-              padding: 6px 12px;
-              font-size: 12px;
+              padding: 8px 16px;
+              font-size: 14px;
             }
           }
 
           .pagination {
             .page-item {
-              margin: 0 2px;
+              margin: 0 3px;
 
               .page-link {
-                width: 30px;
-                height: 30px;
-                line-height: 30px;
-                font-size: 12px;
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                font-size: 14px;
               }
             }
           }

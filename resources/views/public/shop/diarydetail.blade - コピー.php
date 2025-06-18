@@ -9,15 +9,19 @@ script<x-public-shop-layout :shop="$shop">
     </div>
     <div class="diary-header content-wrapper">
       <div class="diary-header-title">
-        <h2 class="diary-title">{{ $diary->cast_name }}</h2>
+        <h2 class="diary-title">{{ $cast_name }}</h2>
       </div>
       <div class="diary-header-content">
         <div class="diary-header-content-working">
           <p class="diary-header-content-working-text">
           @if ($working > 0)
-            <span class="diary-header-content-working-text-working">本日出勤中</span>
+            @if ($reservation > 0)
+              <span class="diary-header-content-working-text-reservation">予約中</span>
+            @else
+              <span class="diary-header-content-working-text-working">出勤中</span>
+            @endif
           @else
-            <span class="diary-header-content-working-text-not-working">本日お休み</span>
+            <span class="diary-header-content-working-text-not-working">お休み</span>
           @endif
           </p>
         </div>
@@ -30,7 +34,7 @@ script<x-public-shop-layout :shop="$shop">
       <div class="diary-body">
         <div class="diary-body-left">
           <div class="diary-body-left-profile">
-            <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $diary->cast_id]) }}" class="diary-body-profile-link">
+            <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $castId]) }}" class="diary-body-profile-link">
               プロフィール　＞
             </a>
           </div>
@@ -42,7 +46,7 @@ script<x-public-shop-layout :shop="$shop">
         </div>
         <div class="diary-body-right">
           <div class="diary-body-right-content">
-          {{-- @foreach ($diarys as $diary) --}}
+          {{-- @foreach ($diarys as $diary)
           <div class="diary-body-right-content-wrapper">
             <div class="diary-body-right-content-wrapper-title">
               {{ $diary->subject }}
@@ -57,26 +61,27 @@ script<x-public-shop-layout :shop="$shop">
               {!! $diary->body !!}
             </div>
           </div>
-          {{-- @endforeach --}}
+          @endforeach --}}
           </div>
           <div class="diary-body-right-pagination">
-            <div class="diary-body-right-pagination-prev">
-              @if ($prev)
-                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $prev->id]) }}">戻る</a>
-              @else
-                <span class="pagination-placeholder"></span>
-              @endif
-            </div>
-            <div class="diary-body-right-pagination-list">
-              <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'shop_id' => $shop->id, 'cast_id' => $diary->cast_id]) }}">一覧へ</a>
-            </div>
-            <div class="diary-body-right-pagination-next">
-              @if ($next)
-                <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $next->id]) }}">次へ</a>
-              @else
-                <span class="pagination-placeholder"></span>
-              @endif
-            </div>
+            {{-- <nav aria-label="Page navigation">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link" href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav> --}}
+                                
           </div>
         </div>
       </div>
@@ -85,14 +90,10 @@ script<x-public-shop-layout :shop="$shop">
 
 </x-public-shop-layout>
 <script>
-  let cast_id = "{{ $diary->cast_id }}";
+  let cast_id = "{{ $castId }}";
   let shop_id = "{{ $shop->id }}";
-  let shop_slug = "{{ $shop->slug }}";
   let date = "{{ $date }}";
-  let diary_id = "{{ $diary->id }}";
-  let diarys = {!! json_encode($diarys) !!};
 </script>
 @once
   @vite(['resources/scss/shop/diarydetail.scss','resources/js/shop/diarydetail.js'])
-  {{-- @vite(['resources/scss/shop/diarydetail.scss']) --}}
 @endonce

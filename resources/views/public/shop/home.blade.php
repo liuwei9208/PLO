@@ -130,18 +130,20 @@
         <div class="diary-top-items">
           @foreach ($diaries as $diary)
             <div class="diary-top-item">
-              <div class="diary-top-item-image">
-                <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
-                <div class="diary-top-item-title">
-                  {{ $diary->subject }}
+              <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $diary->id]) }}">
+                <div class="diary-top-item-image">
+                  <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
+                  <div class="diary-top-item-title">
+                    {{ $diary->subject }}
+                  </div>
                 </div>
-              </div>
-              <div class="diary-top-item-name">
-                {{ $diary->name }}
-              </div>
-              <div class="diary-top-item-date">
-                {{ $diary->updated_at->format('y.m.d') }}
-              </div>
+                <div class="diary-top-item-name">
+                  {{ $diary->name }}
+                </div>
+                <div class="diary-top-item-date">
+                  {{ $diary->updated_at->format('y.m.d') }}
+                </div>
+              </a>
             </div>
           @endforeach
         </div>

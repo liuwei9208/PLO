@@ -56,21 +56,22 @@ class ShopController extends Controller
                 ]) // 必要に応じて明示的に
             ->get();
         Log::info($todayCasts);
-            
+        $shop_id = Shop::where('slug', $shop)->first()->id;
+        // dd($shop_id);
         $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->where('diaries.is_public', 1)
             ->where('casts.is_public', 1)
-            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
-            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->where('casts.shop_id', $shop_id)
             ->select([
                 'diaries.subject',
-                'diaries.updated_at',
+                'diaries.created_at',
                 'casts.name',
+                'casts.shop_id',
                 'diaries.photo',
             ])
+            ->orderBy('diaries.created_at', 'desc') // ここを明示
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
             ->get();
-        
         $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('created_at', '>=', Carbon::now()->subWeek(2))
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
@@ -333,7 +334,7 @@ class ShopController extends Controller
         ]);
     }
 
-    public function showDiaryDetail(Request $request, string $shop, string $id, string $cast_name): View
+    public function showDiaryDetail_old(Request $request, string $shop, string $id, string $cast_name): View
     {
         // dd($id, $cast_name);
         $diarys = Diary::where('cast_id', $id)->where('is_public', 1)
@@ -363,6 +364,54 @@ class ShopController extends Controller
             'reservation' => $reservation,
             'castId' => $id,
             'date' => Carbon::now()->format('Y-m-d'),
+        ]);
+    }
+    public function showDiaryDetail(Request $request, string $shop, string $id, string $date = null): View
+    {
+        // dd($id, $cast_name);
+        $diary = null;
+        if ($date) {
+            $date = Carbon::parse($date)->format('Y-m-d');
+            $cast = Diary::where('id', $id)->first();
+            $diary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->whereDate('diaries.created_at', $date)
+            ->where('diaries.is_public', 1)
+            ->where('diaries.cast_id', $cast->cast_id)
+            ->select('diaries.*', 'casts.name as cast_name')
+            ->first();
+        } else {
+            $date = Carbon::now()->format('Y-m-d');
+            $diary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.id', $id)
+            ->where('diaries.is_public', 1)
+            ->select('diaries.*', 'casts.name as cast_name')
+            ->first();
+        }
+        // $diary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        //         ->where('diaries.id', $id)
+        //         ->where('diaries.is_public', 1)
+        //         ->select('diaries.*', 'casts.name as cast_name')
+        //         ->first();
+        $prev = Diary::where('cast_id', $diary->cast_id)->where('created_at', '>', $diary->created_at)->orderBy('id', 'desc')->first();
+        $next = Diary::where('cast_id', $diary->cast_id)->where('created_at', '<', $diary->created_at)->orderBy('id', 'asc')->first();
+        $diarys = Diary::where('cast_id', $diary->cast_id)->where('is_public', 1)
+        ->selectRaw("DATE_FORMAT(created_at, '%Y-%m-%d') as date, id")
+        ->get();
+        // ->whereDate('created_at', '=', Carbon::now())
+        $working = Attendance::where('cast_id', $id)->where('is_public', 1)
+        ->whereDate('start_datetime', '<=', Carbon::now())
+        ->whereDate('end_datetime', '>=', Carbon::now())
+        ->count();
+
+        // dd($working);
+        return view('public.shop.diarydetail', [
+            'diary' => $diary,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'working' => $working,
+            'date' => Carbon::now()->format('Y-m-d'),
+            'prev' => $prev,
+            'next' => $next,
+            'diarys' => $diarys,
         ]);
     }
 }
