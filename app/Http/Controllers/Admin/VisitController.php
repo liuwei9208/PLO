@@ -27,7 +27,7 @@ class VisitController extends Controller{
 
     // ])->orderBy('created_at', 'desc');
   //
-    $model = History::query()
+    $model = DB::table(env('MEMBER_DB_DATABASE').'.histories')
                 ->leftJoin(env('MEMBER_DB_DATABASE').'.users', env('MEMBER_DB_DATABASE').'.histories.user_id', '=', env('MEMBER_DB_DATABASE').'.users.id')
                 ->leftJoin(env('DB_DATABASE').'.casts', env('MEMBER_DB_DATABASE').'.histories.cast_id', '=', env('DB_DATABASE').'.casts.id')
                 ->leftJoin(env('DB_DATABASE').'.shops', env('MEMBER_DB_DATABASE').'.histories.shop_id', '=', env('DB_DATABASE').'.shops.id')
