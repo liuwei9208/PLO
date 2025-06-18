@@ -19,7 +19,7 @@ use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\FeeController;
 use App\Http\Controllers\Admin\MemberController;
-
+use App\Http\Controllers\Admin\VisitController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -72,6 +72,19 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [MemberController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [MemberController::class, 'update']);
         Route::delete('{id}', [MemberController::class, 'destroy']);
+    });
+    /**
+     * Visit
+     *
+     * @see \App\Http\Controllers\Admin\CastController
+     */
+    Route::prefix('visit')->name('visit.')->group(function () {
+        Route::get('/', [VisitController::class, 'index'])->name('index');
+        Route::get('add', [VisitController::class, 'create'])->name('create');
+        Route::post('add', [VisitController::class, 'store']);
+        Route::get('{id}', [VisitController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [VisitController::class, 'update']);
+        Route::delete('{id}', [VisitController::class, 'destroy']);
     });
     /**
      * Pickup
