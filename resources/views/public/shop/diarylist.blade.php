@@ -20,7 +20,7 @@ script<x-public-shop-layout :shop="$shop">
           <div class="diary-body-right-content">
           @foreach ($diarys as $diary)
           <div class="diary-body-right-content-wrapper">
-            <div class="diary-body-right-content-wrapper-name">
+            <div class="diary-body-right-content-wrapper-name --{{ $shop->slug }}">
               {{ $diary->shop_name.'　　　'.$diary->cast_name }}
             </div>
             <div class="diary-body-right-content-wrapper-title">

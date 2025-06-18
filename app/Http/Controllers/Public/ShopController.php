@@ -436,12 +436,16 @@ class ShopController extends Controller
         
         if ($request->has('cast_id')) {
             $cast_id = $request->cast_id;
-            $query->where('diaries.cast_id', $cast_id);
-            $query_date->where('diaries.cast_id', $cast_id);
+            if ($cast_id != '') {
+                $query->where('diaries.cast_id', $cast_id);
+                $query_date->where('diaries.cast_id', $cast_id);
+            }
         }
         if ($request->has('date')) {
             $date = $request->date;
-            $query->whereDate('diaries.created_at', $date);
+            if ($date != '') {
+                $query->whereDate('diaries.created_at', $date);
+            }
         }
         $diarys = $query->orderBy('diaries.created_at', 'desc')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
