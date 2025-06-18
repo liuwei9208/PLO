@@ -73,7 +73,7 @@ script<x-public-shop-layout :shop="$shop">
               @endif
             </div>
             <div class="diary-body-right-pagination-list">
-              <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'shop_id' => $shop->id, 'cast_id' => $diary->cast_id]) }}">一覧へ</a>
+              <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'cast_id' => $diary->cast_id]) }}">一覧へ</a>
             </div>
             <div class="diary-body-right-pagination-next">
               @if ($next)

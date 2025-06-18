@@ -378,6 +378,8 @@ class ShopController extends Controller
             ->whereDate('diaries.created_at', $date)
             ->where('diaries.is_public', 1)
             ->where('diaries.cast_id', $cast->cast_id)
+            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where('casts.is_public', 1)
             ->select('diaries.*', 'casts.name as cast_name')
             ->first();
         } else {
@@ -385,6 +387,8 @@ class ShopController extends Controller
             $diary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->where('diaries.id', $id)
             ->where('diaries.is_public', 1)
+            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where('casts.is_public', 1)
             ->select('diaries.*', 'casts.name as cast_name')
             ->first();
         }
@@ -413,6 +417,50 @@ class ShopController extends Controller
             'prev' => $prev,
             'next' => $next,
             'diarys' => $diarys,
+        ]);
+    }
+
+    public function showDiaryList(Request $request, string $shop): View
+    {
+        $query = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('diaries.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->select('diaries.*', 'casts.name as cast_name', 'casts.id as cast_id', 'shops.name as shop_name', 'shops.slug as shop_slug');
+
+        $query_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('diaries.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
+        
+        if ($request->has('cast_id')) {
+            $cast_id = $request->cast_id;
+            $query->where('diaries.cast_id', $cast_id);
+            $query_date->where('diaries.cast_id', $cast_id);
+        }
+        if ($request->has('date')) {
+            $date = $request->date;
+            $query->whereDate('diaries.created_at', $date);
+        }
+        $diarys = $query->orderBy('diaries.created_at', 'desc')
+        ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+        ->onEachSide(0)
+        ->appends([
+            'cast_id' => $request->cast_id ?? '',
+            'date' => $request->date ?? '',
+        ])
+        ->withPath('diarylist');
+
+        $diarys_date = $query_date->groupBy('date')
+        ->get();
+
+        return view('public.shop.diarylist', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'diarys' => $diarys,
+            'diarys_date' => $diarys_date,
+            'cast_id' => $request->cast_id ?? '',
+            'date' => $request->date ?? '',
         ]);
     }
 }
