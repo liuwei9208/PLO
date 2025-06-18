@@ -35,7 +35,31 @@ document.addEventListener('DOMContentLoaded', async function () {
       // setupPaginationListeners();
       // setWorking();
     },
-    // events: [
+    // windowResize: function(view) {
+    //   let width = window.innerWidth;
+  
+    //   if (width < 768) {
+    //     calendar.setOption('headerToolbar', {
+    //       left: 'prev',
+    //       center: 'title',
+    //       right: 'next'
+    //     });
+    //   } else {
+    //     calendar.setOption('headerToolbar', {
+    //       left: 'prev',
+    //       center: 'title',
+    //       right: 'next'
+    //       // right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    //     });
+    //   }
+    // },
+    headerToolbar: {
+      // left: 'prev,next today',
+      left: 'prev',
+      center: 'title',
+      right: 'next'
+      // right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    }    // events: [
     //   { title: 'イベント1', start: '2025-06-20', color: 'red', display: 'background' },
     //   { title: 'イベント2', start: '2025-06-25', color: 'blue' },
     // ]
