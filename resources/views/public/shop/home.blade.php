@@ -141,7 +141,7 @@
                   {{ $diary->name }}
                 </div>
                 <div class="diary-top-item-date">
-                  {{ $diary->updated_at->format('y.m.d') }}
+                  {{ $diary->created_at->format('y.m.d') }}
                 </div>
               </a>
             </div>
