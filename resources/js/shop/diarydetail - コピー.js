@@ -24,52 +24,47 @@ document.addEventListener('DOMContentLoaded', async function () {
     selectable: true,
     dateClick: async function(info){
       console.log(info.dateStr);
-      for (let i = 0; i < diarys.length; i++) {
-        if (diarys[i].date == info.dateStr) {
-          window.location.href = `/${shop_slug}/diarydetail/${diarys[i].id}/${info.dateStr}`;
-        }
-      }
-      // window.location.href = `/${shop_slug}/diarydetail/${diary_id}/${info.dateStr}`;
-      // await setDate(info.dateStr);
-      // await drawPagination(page, pages);
-      // setupPaginationListeners();
-      // setWorking();
+      await setDate(info.dateStr);
+      await drawPagination(page, pages);
+      setupPaginationListeners();
+      setWorking();
     },
     // events: [
     //   { title: 'イベント1', start: '2025-06-20', color: 'red', display: 'background' },
     //   { title: 'イベント2', start: '2025-06-25', color: 'blue' },
     // ]
   });
-  console.log({diarys});
-  for (let i = 0; i < diarys.length; i++) {
-    console.log(diarys[i].date);
-    calendar.addEvent({
-      start: diarys[i].date,
-      color: 'red',
-      display: 'background'
-    });
-  }
-
   calendar.render();
-  // await setDate(date);
-  // await drawPagination(page, pages);
-  // setupPaginationListeners();
-  // setWorking();
+
+  await setDate(date);
+  await drawPagination(page, pages);
+  setupPaginationListeners();
+  setWorking();
 });
 function setWorking(){
   let working_html = '';
   if (working > 0) {
-    working_html = `<span class="diary-header-content-working-text-working">出勤中</span>`;
+    if (reservation > 0) {
+      working_html = `<span class="diary-header-content-working-text-reservation">予約中</span>`;
+    } else {
+      working_html = `<span class="diary-header-content-working-text-working">出勤中</span>`;
+    }
   } else {
     working_html = `<span class="diary-header-content-working-text-not-working">お休み</span>`;
   }
   document.querySelector('.diary-header-content-working-text').innerHTML=working_html;
 }
-async function setDate(date_l,diary_id_l){
+async function setDate(date_l){
   try{
     const response = await axios.post(`/api/diary-detail`,{
       date: date_l,
-      diary_id: diary_id_l
+      page: page,
+      limit: limit,
+      skip: skip,
+      pages: pages,
+      total: total,
+      cast_id: cast_id,
+      shop_id: shop_id
       },
       {
           headers: {

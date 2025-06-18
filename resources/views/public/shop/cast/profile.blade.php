@@ -38,8 +38,10 @@
     <div class="diary-item">
       @foreach($diarys as $diary)
         <div class="diary-item__content">
-          <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
-          <div class="diary-item__subject">{{ $diary->subject }}</div>
+          <a href="{{ route('public.shop.diarydetail', ['shop' => $shop->slug, 'id' => $diary->id]) }}">
+            <img src="{{ asset('storage/diary/' . $diary->photo) }}" alt="{{ $diary->subject }}">
+            <div class="diary-item__subject">{{ $diary->subject }}</div>
+          </a>
         </div>
       @endforeach
     </div>

@@ -57,15 +57,20 @@ class GroupController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
         $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
             ->where('diaries.is_public', 1)
             ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
             ->orderBy('diaries.updated_at', 'desc') // ここを明示
             ->select([
+                'diaries.id',
                 'diaries.subject',
                 'diaries.updated_at',
                 'casts.name',
                 'diaries.photo',
                 'casts.id as cast_id',
+                'shops.slug as shop_slug',
             ])
             ->limit(9)
             ->get();
