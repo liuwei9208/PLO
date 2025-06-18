@@ -92,7 +92,7 @@ class VisitController extends Controller{
             // });
             // dd($namess);
             // $model->where(env('DB_DATABASE').'.casts.name', 'like', "%$namess%");
-            $model->whereRaw('`' . env('DB_DATABASE') . '`.`casts`.`name` like ?', ['%'.$namess.'%']);
+            $model->whereRaw('`' . env('DB_DATABASE') . '`.`casts`.`name` LIKE ?', ["%{$namess}%"]);
             // dd($model->get());
         }
     }
