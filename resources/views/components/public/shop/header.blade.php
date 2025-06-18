@@ -38,7 +38,7 @@
         <ul class="drawer-nav-list">
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">News情報</a></li>
           <li><a href="{{ route('public.shop.fee',$shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">料金システム</a></li>
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">写メ日記一覧
+          <li><a href="{{ route('public.shop.diarylist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">写メ日記一覧
           </a></li>
           <li><a href="{{ route('public.shop.schedule', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">出勤情報
           </a></li>
