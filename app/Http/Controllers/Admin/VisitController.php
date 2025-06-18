@@ -27,7 +27,31 @@ class VisitController extends Controller{
 
     // ])->orderBy('created_at', 'desc');
   //
-    $model = DB::table(env('MEMBER_DB_DATABASE').'.histories')
+  $results = DB::select('SELECT DATE_FORMAT('.env("MEMBER_DB_DATABASE").'.histories.created_at, "%Y-%m-%d %H:%i:%s") as created_at,
+  '.env("MEMBER_DB_DATABASE").'.users.name as user_name,
+  '.env("MEMBER_DB_DATABASE").'.histories.id as id,
+  '.env("MEMBER_DB_DATABASE").'.histories.shop_id as shop_id,
+  '.env("MEMBER_DB_DATABASE").'.users.id as user_id,
+  '.env("MEMBER_DB_DATABASE").'.histories.office_id as office_id,
+  '.env("MEMBER_DB_DATABASE").'.histories.name as name,
+  '.'`'.env("DB_DATABASE").'`.shops.name as shop_name,
+  '.'`'.env("DB_DATABASE").'`.casts.name as casts_name,
+  '.env("MEMBER_DB_DATABASE").'.histories.call_name as call_name,
+  '.env("MEMBER_DB_DATABASE").'.courses.name as course_name,
+  '.env("MEMBER_DB_DATABASE").'.histories.extension_name as extension_name,
+  '.env("MEMBER_DB_DATABASE").'.histories.price as price,
+  '.env("MEMBER_DB_DATABASE").'.users.comment as user_comment
+  FROM '.env("MEMBER_DB_DATABASE").'.histories
+  LEFT JOIN '.env("MEMBER_DB_DATABASE").'.users ON '.env("MEMBER_DB_DATABASE").'.histories.user_id = '.env("MEMBER_DB_DATABASE").'.users.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.shops ON '.env("MEMBER_DB_DATABASE").'.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.casts ON '.env("MEMBER_DB_DATABASE").'.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
+  LEFT JOIN '.env("MEMBER_DB_DATABASE").'.courses ON '.env("MEMBER_DB_DATABASE").'.histories.course_id = '.env("MEMBER_DB_DATABASE").'.courses.id
+  WHERE '.env("MEMBER_DB_DATABASE").'.histories.name IN ("来店", "PT有効期限切れ")
+  ORDER BY '.env("MEMBER_DB_DATABASE").'.histories.created_at DESC LIMIT 100');
+  dd($results);
+
+
+  $model = DB::table(env('MEMBER_DB_DATABASE').'.histories')
                 ->leftJoin(env('MEMBER_DB_DATABASE').'.users', env('MEMBER_DB_DATABASE').'.histories.user_id', '=', env('MEMBER_DB_DATABASE').'.users.id')
                 ->leftJoin(env('DB_DATABASE').'.casts', env('MEMBER_DB_DATABASE').'.histories.cast_id', '=', env('DB_DATABASE').'.casts.id')
                 ->leftJoin(env('DB_DATABASE').'.shops', env('MEMBER_DB_DATABASE').'.histories.shop_id', '=', env('DB_DATABASE').'.shops.id')
