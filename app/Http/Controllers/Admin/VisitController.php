@@ -64,8 +64,14 @@ class VisitController extends Controller{
                 ->orderBy(env('MEMBER_DB_DATABASE').'.histories.created_at','desc');
     // dd($model->limit(100)->get());
     // $model->whereIn(env('MEMBER_DB_DATABASE').'.histories.name', ['"来店"', '"PT有効期限切れ"']);
-    $model->where(env('MEMBER_DB_DATABASE').'.histories.name','=' ,'来店');
-    $model->where(env('MEMBER_DB_DATABASE').'.histories.name','=' ,'PT有効期限切れ');
+    $member_db = env('MEMBER_DB_DATABASE');
+    $model->where(function($query) {
+        $query->orWhereRaw('`' . env('MEMBER_DB_DATABASE') . '`.`histories`.`name` = ?', ['来店']);
+        $query->orWhereRaw('`' . env('MEMBER_DB_DATABASE') . '`.`histories`.`name` = ?', ['PT有効期限切れ']);
+    });
+    // $model->whereRaw('`' . env('MEMBER_DB_DATABASE') . '`.`histories`.`name` = ?', ['来店']);
+    // $model->orWhereRaw('`' . env('MEMBER_DB_DATABASE') . '`.`histories`.`name` = ?', ['PT有効期限切れ']);
+    // $model->where(env('MEMBER_DB_DATABASE').'.histories.name',"=" ,"PT有効期限切れ");
 
     if ( $request->has('shop') && $request->query('shop') !== null) {
         if ($request->query('shop') !== '') {
@@ -85,7 +91,8 @@ class VisitController extends Controller{
             //     }
             // });
             // dd($namess);
-            $model->where(env('DB_DATABASE').'.casts.name', 'like', "%$namess%");
+            // $model->where(env('DB_DATABASE').'.casts.name', 'like', "%$namess%");
+            $model->whereRaw('`' . env('DB_DATABASE') . '`.`casts`.`name` LIKE ?', ["%{$namess}%"]);
             // dd($model->get());
         }
     }
