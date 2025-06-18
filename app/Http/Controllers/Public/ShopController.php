@@ -63,6 +63,7 @@ class ShopController extends Controller
             ->where('casts.is_public', 1)
             ->where('casts.shop_id', $shop_id)
             ->select([
+                'diaries.id',
                 'diaries.subject',
                 'diaries.created_at',
                 'casts.name',
