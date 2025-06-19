@@ -27,6 +27,7 @@
       <div
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
+      @role('admin')
       <div class="mr-2">
         <div class="relative z-20 bg-transparent">
           <select
@@ -54,7 +55,7 @@
           </span>
         </div>
       </div>
-
+      @endrole
       <div class="mr-2">
         <div class="relative">
           <input

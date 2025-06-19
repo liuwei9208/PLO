@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\History;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\HistoryResource;
+use Illuminate\Support\Facades\Auth;
 
 class VisitController extends Controller{
     const DEFAULT_LIMIT = 30;
@@ -88,6 +89,30 @@ class VisitController extends Controller{
             $sql_total .= ' AND DATE(`'.env('MEMBER_DB_DATABASE').'`.histories.created_at) = "'.$request->query('created_at').'"';
         }
     }
+    // dd(Auth::user()->email);
+    if (Auth::user()->hasRole('shop')) {
+        if (Auth::user()->email === "shizuku@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 2';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 2';
+        }else if (Auth::user()->email === "miyabi@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 3';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 3';
+        }else if (Auth::user()->email === "pussycat@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 4';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 4';
+        }else if (Auth::user()->email === "en@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 5';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 5';
+        }else if (Auth::user()->email === "shiroganeze@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 6';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 6';
+        }else if (Auth::user()->email === "lovestory@plo-group.jp") {
+            $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 7';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 7';
+        }
+    }
+
+
 
     $sql .= ' ORDER BY `'.env('MEMBER_DB_DATABASE').'`.histories.created_at DESC';
     $page = $request->query('page') ? (int) $request->query('page') : 1;
