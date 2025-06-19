@@ -27,6 +27,14 @@ class VisitController extends Controller{
 
     // ])->orderBy('created_at', 'desc');
   //
+  $sql_total = 'SELECT COUNT(*) as total 
+  FROM `'.env("MEMBER_DB_DATABASE").'`.histories
+  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.users ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("MEMBER_DB_DATABASE").'`.users.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
+  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
+  WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
+
   $sql = 'SELECT DATE_FORMAT(`'.env("MEMBER_DB_DATABASE").'`.histories.created_at, "%Y-%m-%d %H:%i:%s") as created_at,
   `'.env("MEMBER_DB_DATABASE").'`.users.name as user_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.id as id,
@@ -52,6 +60,7 @@ class VisitController extends Controller{
     if ( $request->has('shop') && $request->query('shop') !== null) {
         if ($request->query('shop') !== '') {
         $sql .= ' AND `'.env('MEMBER_DB_DATABASE').'`.histories.shop_id = '.$request->query('shop');
+        $sql_total .= ' AND `'.env('MEMBER_DB_DATABASE').'`.histories.shop_id = '.$request->query('shop');
         }
     }
     if ( $request->has('cast_name') && $request->query('cast_name') !== null) {
@@ -69,14 +78,17 @@ class VisitController extends Controller{
             // dd($namess);
             // $model->where(env('DB_DATABASE').'.casts.name', 'like', "%$namess%");
             $sql .= ' AND `'.env('DB_DATABASE').'`.`casts`.`name` LIKE "%'.$namess.'%"';
+            $sql_total .= ' AND `'.env('DB_DATABASE').'`.`casts`.`name` LIKE "%'.$namess.'%"';
             // dd($model->get());
         }
     }
     if ( $request->has('created_at') && $request->query('created_at') !== null) {
         if ($request->query('created_at') !== '') {
             $sql .= ' AND DATE(`'.env('MEMBER_DB_DATABASE').'`.histories.created_at) = "'.$request->query('created_at').'"';
+            $sql_total .= ' AND DATE(`'.env('MEMBER_DB_DATABASE').'`.histories.created_at) = "'.$request->query('created_at').'"';
         }
     }
+
     $sql .= ' ORDER BY `'.env('MEMBER_DB_DATABASE').'`.histories.created_at DESC';
     $page = $request->query('page') ? (int) $request->query('page') : 1;
     $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
@@ -86,7 +98,8 @@ class VisitController extends Controller{
     // dd($sql);
     $results = DB::select($sql);
     // dd($results);
-    $total = count($results);
+    $total = DB::select($sql_total);
+    $total = $total[0]->total;
 
     $pages = ceil($total / $limit);
 
