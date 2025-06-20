@@ -30,6 +30,7 @@ export default defineConfig({
                 'resources/scss/shop/diarylist.scss',
                 'resources/scss/shop/newslist.scss',
                 'resources/scss/shop/newsdetail.scss',
+                'resources/scss/group/newstop.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

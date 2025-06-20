@@ -1,0 +1,419 @@
+@use '../global/vars' as *;
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
+
+.plo_news {
+  padding: 40px 20px;
+  
+  @media #{media-query(sm)} {
+    padding: 30px 15px;
+  }
+
+  &-title {
+    text-align: center;
+    margin-bottom: 30px;
+
+    @media #{media-query(sm)} {
+      margin-bottom: 25px;
+    }
+
+    &-en {
+      // font-size: $title-font-size-lg;
+      // font-weight: $title-font-weight-lg;
+      color: #000;
+      margin-bottom: 10px;
+
+      @media #{media-query(sm)} {
+        // font-size: $title-font-size-sm;
+        // font-weight: $title-font-weight-sm;
+      }
+    }
+
+    &-ja {
+      // font-size: 1.2rem;
+      color: #000;
+      margin: 3rem 0;
+      font-size: 2.2rem;
+
+      @media #{media-query(sm)} {
+        // font-size: 1rem;
+        font-size: 1.2rem;
+        margin: 1.5rem 0;
+      }
+    }
+  }
+
+  &-shops {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 40px;
+    list-style: none;
+    padding: 0;
+    
+    @media #{media-query(sm)} {
+      gap: 10px;
+      margin-bottom: 30px;
+    }
+
+    a {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #f5f5f5;
+      color: #333;
+      text-decoration: none;
+      border-radius: 50px;
+      // font-size: 0.9rem;
+      transition: all 0.3s ease;
+      border: 1px solid #ddd;
+      width: 240px;
+      text-align: center;
+      line-height: 2.2;
+
+      @media #{media-query(sm)} {
+        padding: 6px 12px;
+        // font-size: 0.8rem;
+        width: 80px;
+        height: 50px;
+        border-radius: 50px;
+        line-height: 1.1;
+        align-content: center;
+      }
+
+      &:hover,
+      &.active {
+        background-color: #333;
+        color: #fff;
+        border-color: #333;
+      }
+
+      &.--all {
+        background-color: #fff;
+        color: #000;
+        border-color: #333;
+      }
+      &.--headquarter {
+        background-color: $shop-color-headquarter;
+        color: #fff;
+        border-color: $shop-color-headquarter;
+      }
+      &.--pussycat {
+        background-color: $shop-color-pussycat;
+        color: #fff;
+        border-color: $shop-color-pussycat;
+      }
+      &.--shizuku {   
+        background-color: $shop-color-shizuku;
+        color: #fff;
+        border-color: $shop-color-shizuku;
+      }
+      &.--miyabi {
+        background-color: $shop-color-miyabi;
+        color: #fff;
+        border-color: $shop-color-miyabi;
+      }
+      &.--en {
+        background-color: $shop-color-en;
+        color: #fff;
+        border-color: $shop-color-en; 
+      }
+      &.--shiroganeze {
+        background-color: $shop-color-shiroganeze;
+        color: #fff;
+        border-color: $shop-color-shiroganeze;
+      } 
+      &.--lovestory {
+        background-color: $shop-color-lovestory;
+        color: #fff;
+        border-color: $shop-color-lovestory;
+      } 
+    }
+  }
+
+  // PC用のニュースリスト
+  &-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+
+    @media #{media-query(sm)} {
+      display: none;
+    }
+
+    &-item {
+      // border: 1px solid #ddd;
+      border-radius: 24px;
+      // overflow: hidden;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transform: translateY(-2px);
+      }
+
+      &-image {
+        width: 100%;
+        height: 70%;
+        border-radius: 24px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      &-date {
+        padding: 10px 15px 5px;
+        font-size: 1.1rem;
+        color: #cfaf77;
+      }
+
+      &-title {
+        padding: 0 15px ;
+        // font-size: 1.1rem;
+        // font-weight: bold;
+        color: #fff;
+        line-height: 1.8;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-radius: 24px;
+        &.--headquarter {
+          background-color: $shop-color-headquarter;
+        }
+        &.--pussycat {
+          background-color: $shop-color-pussycat;
+        }
+        &.--shizuku {
+          background-color: $shop-color-shizuku;
+        }
+        &.--miyabi {
+          background-color: $shop-color-miyabi;
+        }
+        &.--en {
+          background-color: $shop-color-en;
+        }
+        &.--shiroganeze {
+          background-color: $shop-color-shiroganeze;
+        }
+        &.--lovestory {
+          background-color: $shop-color-lovestory;
+        }
+      }
+
+      &-content {
+        padding: 0 15px;
+        margin: 10px 0;
+        // font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  // SP用のニュースリスト
+  &-items {
+    display: none;
+
+    @media #{media-query(sm)} {
+      display: block;
+    }
+
+    &-top {
+      margin-bottom: 30px;
+      // border: 1px solid #ddd;
+      border-radius: 20px;
+      // overflow: hidden;
+
+      &-image {
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        border-radius: 20px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &-title {
+        padding: 15px 15px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+
+        &-date {
+          font-size: 0.9rem;
+          color: #cfaf77;
+          white-space: nowrap;
+        }
+
+        &-text {
+          font-size: 1.1rem;
+          font-weight: bold;
+          color: #fff;
+          line-height: 1.4;
+          text-align: right;
+          border-radius: 20px;
+          // width: 100%;
+          padding: 10px 15px;
+
+          &.--headquarter {
+            background-color: $shop-color-headquarter;
+          }
+          &.--pussycat {
+            background-color: $shop-color-pussycat;
+          }
+          &.--shizuku { 
+            background-color: $shop-color-shizuku;
+          }
+          &.--miyabi {
+            background-color: $shop-color-miyabi;
+          }
+          &.--en {  
+            background-color: $shop-color-en;
+          }
+          &.--shiroganeze {
+            background-color: $shop-color-shiroganeze;
+          }
+          &.--lovestory { 
+            background-color: $shop-color-lovestory;
+          }
+        }
+      }
+
+      &-content {
+        padding: 0 15px 15px;
+        font-size: 0.9rem;
+        color: #000;
+        line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    
+    &-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 30px;
+
+      @media #{media-query(sm)} {
+        gap: 20px 15px;
+        margin-top: 25px;
+      }
+
+      &-item {
+        // border: 1px solid #ddd;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        background-color: #fff;
+        height: 250px;
+
+        &:hover {
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+          transform: translateY(-2px);
+        }
+
+        &-image {
+          width: 100%;
+          height: 140px;
+          overflow: hidden;
+          border-radius: 12px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        &-date {
+          padding: 8px 12px 4px;
+          font-size: 0.8rem;
+          color: #cfaf77;
+        }
+
+        &-title {
+          padding: 0 12px 8px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          color: #333;
+          line-height: 1.3;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        &-content {
+          padding: 0 12px 12px;
+          font-size: 0.8rem;
+          color: #666;
+          line-height: 1.4;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 5rem;
+        }
+      }
+    }
+  }
+
+  &-more {
+    text-align: center;
+    margin-top: 40px;
+
+    @media #{media-query(sm)} {
+      margin-top: 30px;
+    }
+
+    &-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-size: $title-font-size-lg;
+      // font-weight: bold;
+      transition: all 0.3s ease;
+      border: 2px solid #333;
+
+      @media #{media-query(sm)} {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+      }
+
+      &:hover {
+        background-color: #fff;
+        color: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+}
