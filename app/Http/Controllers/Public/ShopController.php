@@ -476,4 +476,28 @@ class ShopController extends Controller
             'date' => $request->date ?? '',
         ]);
     }
+
+    public function showNewsList(Request $request, string $shop): View
+    {
+        $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('published_status', 1)
+        ->orderBy('published_at', 'desc')
+        ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+        ->onEachSide(0)
+        ->withPath('newslist');
+
+        return view('public.shop.newslist', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'news' => $news,
+        ]);
+    }
+
+    public function showNewsDetail(Request $request, string $shop, string $id): View
+    {
+        $news = News::find($id);
+        return view('public.shop.newsdetail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'news' => $news,
+        ]);
+    }
 }
