@@ -503,6 +503,7 @@ class ShopController extends Controller
     public function showNewsDetail(Request $request, string $shop, string $id): View
     {
         $news = News::find($id);
+        // dd($news,$id);
         return view('public.shop.newsdetail', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'news' => $news,

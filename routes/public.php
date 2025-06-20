@@ -27,7 +27,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
-        Route::get('newslist', [GroupController::class, 'showNewsList'])->name('newslist');
+        Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
     });
 

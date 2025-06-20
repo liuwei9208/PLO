@@ -30,6 +30,11 @@
     <div class="plo_news-list pc-only">
       @foreach($news as $news_item)
         <div class="plo_news-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
           <div class="plo_news-list-item-image">
             <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
           </div>
@@ -42,11 +47,17 @@
           <div class="plo_news-list-item-content content-font">
             {!! $news_item->contents !!}
           </div>
+          </a>
         </div>
       @endforeach
     </div>
     <div class="plo_news-items sp-only">
       <div class="plo_news-items-top">
+        @if($news_item->slug == 'headquarter')
+        <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+        @else
+        <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+        @endif
         <div class="plo_news-items-top-image">
           <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="{{ $news[0]->title }}">
         </div>
@@ -61,10 +72,16 @@
         <div class="plo_news-items-top-content">
           {!! $news[0]->contents !!}
         </div>
+        </a>
       </div>
       <div class="plo_news-items-list">
       @foreach($news->skip(1) as $news_item)
         <div class="plo_news-items-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
           <div class="plo_news-items-list-item-image">
             <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
           </div>
@@ -77,6 +94,7 @@
           <div class="plo_news-items-list-item-content">
             {!! $news_item->contents !!}
           </div>
+          </a>
         </div>
       @endforeach
       </div>
