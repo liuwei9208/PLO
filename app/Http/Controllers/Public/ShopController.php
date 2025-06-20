@@ -89,6 +89,10 @@ class ShopController extends Controller
 
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('published_status', 1)
+        ->orWhere(function($query) {
+            $query->where('published_status', 2)
+                  ->where('published_at', '<=', now());
+        })
         ->inRandomOrder()
         ->limit(4)
         ->orderBy('published_at', 'desc')
@@ -481,6 +485,10 @@ class ShopController extends Controller
     {
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('published_status', 1)
+        ->orWhere(function($query) {
+            $query->where('published_status', 2)
+                  ->where('published_at', '<=', now());
+        })
         ->orderBy('published_at', 'desc')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
         ->onEachSide(0)
