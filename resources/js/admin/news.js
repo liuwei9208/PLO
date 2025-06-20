@@ -17,6 +17,9 @@ import 'tinymce-i18n/langs6/ja';
 import 'tinymce/skins/ui/oxide/skin.min.css';
 import 'tinymce/skins/content/default/content.min.css';
 
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { FontFamily, FontSize, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
+
 // Flatpickrの初期化
 document.addEventListener('DOMContentLoaded', function () {
   // 配信設定のラジオボタン制御
@@ -91,6 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  /*
   // TinyMCEの初期化
   tinymce.init({
     selector: '#news_content',
@@ -124,6 +128,65 @@ document.addEventListener('DOMContentLoaded', function () {
     skin_url: '/js/tinymce/skins/ui/oxide',
     content_css: '/js/tinymce/skins/content/default/content.min.css'
   });
-
+  */
+ /*
+  const editorEl = document.getElementById('news_content');
+  if (editorEl) {
+    ClassicEditor.create(editorEl, {
+      // plugins: [
+      //   FontFamily,
+      //   FontSize,
+      //   FontColor,
+      //   FontBackgroundColor,
+      // ],
+      toolbar: [
+        'heading', '|',
+        'fontFamily', 'fontSize', '|',
+        'fontColor', 'fontBackgroundColor', '|',
+        'bold', 'italic', 'underline', '|',
+        'link', 'bulletedList', 'numberedList','blockQuote', '|',
+        'insertTable', '|',
+        'imageUpload', '|',
+        'alignment', '|',
+        'outdent', 'indent', '|',
+        'horizontalLine', '|',
+        'codeBlock', '|',
+        'mediaEmbed', '|',
+        'undo', 'redo'
+      ],
+      fontFamily: {
+        options: [
+          'default',
+          'Arial, Helvetica, sans-serif',
+          'Courier New, Courier, monospace',
+          'Georgia, serif',
+          'Tahoma, Geneva, sans-serif',
+          'Times New Roman, Times, serif',
+          'Verdana, Geneva, sans-serif'
+        ],
+        supportAllValues: true
+      },
+      fontSize: {
+        options: [9, 11, 13, 'default', 17, 19, 21]
+      },
+      fontColor: {
+        colors: [
+          { color: '#000000', label: 'Black' },
+          { color: '#F00', label: 'Red' },
+          { color: '#0F0', label: 'Green' }
+        ]
+      },
+      fontBackgroundColor: {
+        colors: [
+          { color: '#FFFF00', label: 'Yellow' },
+          { color: '#FFA500', label: 'Orange' }
+        ]
+      }
+    })
+    .catch(error => {
+      console.error('Error initializing CKEditor:', error);
+    });
+  }
+  */
 });
 

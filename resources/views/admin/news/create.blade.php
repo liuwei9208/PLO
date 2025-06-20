@@ -272,6 +272,19 @@
 
 <!-- FlatpickrのCSSを追加 -->
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/super-build/ckeditor.js"></script>
+<script>
+  ClassicEditor
+    .create(document.querySelector('#editor'), {
+      toolbar: ['fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic'],
+      fontSize: {
+        options: [9, 11, 13, 'default', 17, 19, 21]
+      },
+    })
+    .catch(error => {
+      console.error(error);
+    });
+</script>
 @once
   @vite('resources/js/admin/news.js')
 @endonce
