@@ -138,6 +138,23 @@
         </div>
       </div>
       <div class="news-body">
+        <div class="news-body-items">
+          @foreach ($news as $news)
+            <div class="news-body-item">
+              <a href="#">
+                <div class="news-body-item-image">
+                  <img src="{{ asset('storage/' . $news->thumbnail) }}" alt="{{ $news->title }}">
+                </div>
+                <div class="news-body-item-published">
+                  {{ $news->published_at ? \Carbon\Carbon::createFromTimeString($news->published_at)->format('y.m.d') : '' }}
+                </div>
+                <div class="news-body-item-contents">
+                  {{ $news->contents }}
+                </div>
+              </a>
+            </div>
+          @endforeach 
+        </div>
       </div>
     </div>
     <div class="diary-top">

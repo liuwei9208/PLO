@@ -17,8 +17,9 @@ import 'tinymce-i18n/langs6/ja';
 import 'tinymce/skins/ui/oxide/skin.min.css';
 import 'tinymce/skins/content/default/content.min.css';
 
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { FontFamily, FontSize, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+// import { FontFamily, FontSize, FontColor, FontBackgroundColor } from '@ckeditor/ckeditor5-font';
+// import ClassicEditor from '@binay7587/ckeditor5-full-free';
 
 // Flatpickrの初期化
 document.addEventListener('DOMContentLoaded', function () {
@@ -182,6 +183,9 @@ document.addEventListener('DOMContentLoaded', function () {
           { color: '#FFA500', label: 'Orange' }
         ]
       }
+    })
+    .then(editor => { 
+      console.log(editor);
     })
     .catch(error => {
       console.error('Error initializing CKEditor:', error);

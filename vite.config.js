@@ -54,9 +54,9 @@ export default defineConfig({
             ],
           }),
     ],
-    resolv:{
-        alias:{
-            '@ckeditor':path.resolve(__dirname,'node_modules/@ckeditor'),
-        },
-    },
+    // resolve:{
+    //     alias:{
+    //         '@ckeditor':path.resolve(__dirname,'node_modules/@ckeditor'),
+    //     },
+    // },
 });

@@ -272,11 +272,38 @@
 
 <!-- FlatpickrのCSSを追加 -->
 {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"> --}}
-<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/super-build/ckeditor.js"></script>
+@push('head')
+{{-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css" />
+<script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.umd.js"></script>
+<!-- Add if you use premium features. -->
+<link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/43.0.0/ckeditor5-premium-features.css" />
+<script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5-premium-features.umd.js"></script> --}}
+@endpush
+{{-- <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/super-build/ckeditor.js"></script> --}}
+{{-- <script src="
+https://cdn.jsdelivr.net/npm/ckeditor5-full-free-plugin@23.1.2/build/ckeditor.min.js
+"></script> --}}
+<script src="{{ asset('js/ckeditor.js') }}"></script>
+{{-- <script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script> --}}
+<script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/translations/ja.js"></script>
+
 <script>
   ClassicEditor
-    .create(document.querySelector('#editor'), {
-      toolbar: ['fontSize', 'fontColor', 'fontBackgroundColor', '|', 'bold', 'italic'],
+  .create(document.querySelector('#news_content'), {
+      language: 'ja',
+      toolbar: [
+        'heading','fontFamily','fontSize', 'fontColor', 'fontBackgroundColor', '|', 
+        'bold', 'italic', 'underline', 'strikethrough', '|', 'superscript', 'subscript', '|',
+        'link', 'bulletedList', 'numberedList','blockQuote', '|',
+        'insertTable', '|',
+        'imageUpload', '|',
+        'alignment', '|',
+        'outdent', 'indent', '|',
+        'horizontalLine', '|',
+        'codeBlock', '|',
+        'mediaEmbed', '|',
+        'undo', 'redo'
+      ],
       fontSize: {
         options: [9, 11, 13, 'default', 17, 19, 21]
       },
