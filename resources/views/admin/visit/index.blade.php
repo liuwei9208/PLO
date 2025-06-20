@@ -387,7 +387,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
-                      href="{{ url('/admin/visit/' . $data->id) }}"
+                      href="{{ url('/admin/member/' . $data->user_id) }}"
                       class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
                     >
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{ asset('tailadmin/build/style.css') }}">
     <script defer src="{{ asset('tailadmin/build/bundle.js') }}"></script>
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
+    @stack('head')
   </head>
 
   <body

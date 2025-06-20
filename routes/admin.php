@@ -70,7 +70,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('add', [MemberController::class, 'create'])->name('create');
         Route::post('add', [MemberController::class, 'store']);
         Route::get('{id}', [MemberController::class, 'show'])->where('id', '[0-9]+')->name('detail');
-        Route::put('{id}', [MemberController::class, 'update']);
+        // Route::put('{id}', [MemberController::class, 'update']);
         Route::delete('{id}', [MemberController::class, 'destroy']);
     });
     /**
