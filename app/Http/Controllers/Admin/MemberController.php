@@ -6,7 +6,12 @@ use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-
+use App\Models\Point;
+use App\Models\History;
+use App\Models\Shop;
+use Carbon\Carbon;
+use App\Models\Cast;
+use Illuminate\Support\Facades\Auth;
 class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
@@ -52,6 +57,95 @@ class MemberController extends Controller{
         'pages' => $pages,
     ]);
 
+  }
+
+  public function show(Request $request, int $id): View{
+    $member = Member::find($id);
+    $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+                  ->where('type', 3)
+                  ->sum('point');
+    // 来店履歴の仮データ
+    $dummyHistories = [
+      [
+        'id' => 1,
+        'created_at' => '2025-06-05',
+        'shop_name' => '雫',
+        'casts_name' => '',
+        'course_name' => '',
+        'price' => 0,
+        'point_pay' => 500,
+        'point_use' => 1500,
+        'memo' => '編集'
+      ],
+      [
+        'id' => 2,
+        'created_at' => '2025-05-24',
+        'shop_name' => '雫',
+        'casts_name' => '',
+        'course_name' => '',
+        'price' => 0,
+        'point_pay' => 1000,
+        'point_use' => 2000,
+        'memo' => '編集'
+      ],
+      [
+        'id' => 3,
+        'created_at' => '2024-12-26',
+        'shop_name' => 'シロガネーゼ',
+        'casts_name' => '',
+        'course_name' => '',
+        'price' => 0,
+        'point_pay' => 3000,
+        'point_use' => 0,
+        'memo' => '編集'
+      ]
+    ];
+    $histories = History::where('user_id', $id)
+                  ->whereIn('name', ['来店', 'PT有効期限切れ'])
+                  ->orderBy('created_at', 'desc')
+                  ->orderBy('id', 'desc');
+    $total = $histories->count();
+
+    $page = $request->query('page') ? (int) $request->query('page') : 1;
+    $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
+    $skip = ($page - 1) * $limit;
+    $pages = ceil($total / $limit);
+              
+    $histories = $histories->skip($skip)
+                  ->take($limit)
+                  ->get();
+    if ($histories) {
+      $histories = $histories->map(function ($history) {
+        $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+        $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
+        $history->point_pay = Point::where('history_id', $history->id)->where('type', 3)->sum('point') ?? 0;
+        $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
+        return $history;
+      });
+    }
+    $user = Auth::user();
+    $token = $user->createToken('api-token')->plainTextToken;
+    return view('admin.member.detail', [
+      'member' => $member,
+      'today_point' => $today_point,
+      'dummyHistories' => $dummyHistories,
+      'histories' => $histories,
+      'page' => $page,
+      'limit' => $limit,
+      'skip' => $skip,
+      'total' => $total,
+      'pages' => $pages,
+      'token' => $token,
+    ]);
+  }
+
+  public function update(Request $request, int $id): RedirectResponse{
+    dd($request->all());
+    $history = History::find($id);
+    $history->update($request->input('course'), $request->input('price'));
+    $point = Point::where('history_id', $id)->where('type', 3)->sum('point');
+    $point->update($request->input('point'), $request->input('point_use'));
+    return redirect()->route('admin.member.detail', ['id' => $id]);
   }
   /*
    const enum pref:string {
