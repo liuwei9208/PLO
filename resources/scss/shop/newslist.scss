@@ -57,9 +57,12 @@
 
     &-image {
       width: 100%;
-      // aspect-ratio: 16/9;
       height: 70%;
       overflow: hidden;
+
+      @media #{media-query(sm)} {
+        height: 150px;
+      }
 
       img {
         width: 100%;
