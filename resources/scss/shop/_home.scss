@@ -272,6 +272,70 @@
     flex: 1;
     border-radius: 25px;
     border: 1px solid #000;
+
+    .news-body {
+      padding: 0 20px 20px;
+      @media #{media-query(sm)} {
+        padding: 0 10px 40px;
+      }
+      &-items {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    
+        @media (max-width: 767px) {
+          gap: 15px;
+          padding: 0 10px 15px;
+        }
+      }
+    
+      &-item {
+        @media #{media-query(sm)} {
+          height: 100%;
+          margin-bottom: 20px;
+        }
+        &-image {
+          width: 100%;
+          height: 70%;
+          // aspect-ratio: 16/9;
+          overflow: hidden;
+          border-radius: 8px;
+          margin-bottom: 10px;
+    
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+    
+        &-published {
+          font-size: 1rem;
+          color: #000;
+          margin-bottom: 8px;
+          border-bottom: 1px dotted #000;
+          @media #{media-query(sm)} {
+            border-bottom: none;
+          }
+        }
+    
+        &-contents {
+          font-size: 1rem;
+          line-height: 1.5;
+          color: #333;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          height: 3em;
+          @media #{media-query(sm)} {
+            -webkit-line-clamp: 3;
+            height: 4em;
+          }
+        }
+      }
+    }
   }
 
   .news-header, .diary-top-header {
@@ -314,6 +378,8 @@
       }
     }
   }
+
+  
 
   .diary-top-items {
     display: grid;
@@ -703,5 +769,54 @@
     right: 0;
   }
 }
+
+// .news-body {
+//   padding: 0 20px 20px;
+
+//   &-items {
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+//     gap: 20px;
+
+//     @media (max-width: 767px) {
+//       gap: 15px;
+//       padding: 0 10px 15px;
+//     }
+//   }
+
+//   &-item {
+//     &-image {
+//       width: 100%;
+//       // aspect-ratio: 16/9;
+//       height: 100%;
+//       overflow: hidden;
+//       border-radius: 8px;
+//       margin-bottom: 10px;
+
+//       img {
+//         width: 100%;
+//         height: 100%;
+//         object-fit: cover;
+//       }
+//     }
+
+//     &-published {
+//       font-size: 0.9rem;
+//       color: #666;
+//       margin-bottom: 8px;
+//     }
+
+//     &-contents {
+//       font-size: 1rem;
+//       line-height: 1.5;
+//       color: #333;
+//       display: -webkit-box;
+//       -webkit-line-clamp: 3;
+//       -webkit-box-orient: vertical;
+//       overflow: hidden;
+//       text-overflow: ellipsis;
+//     }
+//   }
+// }
 
 

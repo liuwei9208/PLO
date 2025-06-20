@@ -17,6 +17,7 @@ use App\Models\Reservation;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
+use App\Models\News;
 
 class ShopController extends Controller
 {
@@ -85,6 +86,13 @@ class ShopController extends Controller
         $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->inRandomOrder()
         ->get();
+
+        $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('published_status', 1)
+        ->inRandomOrder()
+        ->limit(4)
+        ->orderBy('published_at', 'desc')
+        ->get();
         // dd($castlist);
         // dd($diaries);
         return view('public.shop.home', [
@@ -97,6 +105,7 @@ class ShopController extends Controller
             'new_girls' => $new_girls,
             'new_girls_month' => $new_girls_month,
             'castlist' => $castlist,
+            'news' => $news,
         ]);
     }
 
@@ -465,6 +474,30 @@ class ShopController extends Controller
             'diarys_date' => $diarys_date,
             'cast_id' => $request->cast_id ?? '',
             'date' => $request->date ?? '',
+        ]);
+    }
+
+    public function showNewsList(Request $request, string $shop): View
+    {
+        $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('published_status', 1)
+        ->orderBy('published_at', 'desc')
+        ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+        ->onEachSide(0)
+        ->withPath('newslist');
+
+        return view('public.shop.newslist', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'news' => $news,
+        ]);
+    }
+
+    public function showNewsDetail(Request $request, string $shop, string $id): View
+    {
+        $news = News::find($id);
+        return view('public.shop.newsdetail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'news' => $news,
         ]);
     }
 }

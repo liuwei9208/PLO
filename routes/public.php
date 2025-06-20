@@ -50,6 +50,8 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('schedule', [ShopController::class, 'showSchedule'])->name('schedule');
         Route::get('newcomer', [ShopController::class, 'showNewcomer'])->name('newcomer');
         Route::get('castlist', [ShopController::class, 'showCastlist'])->name('castlist');
+        Route::get('newslist', [ShopController::class, 'showNewsList'])->name('newslist');
+        Route::get('newsdetail/{id}', [ShopController::class, 'showNewsDetail'])->name('newsdetail');
     });
 });
 

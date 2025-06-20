@@ -132,12 +132,29 @@
           </h2>
         </div>
         <div class="news-header-button">
-          <a href="" class="news-header-button-link content-font">
+          <a href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}" class="news-header-button-link content-font">
             一覧を見る
           </a>
         </div>
       </div>
       <div class="news-body">
+        <div class="news-body-items">
+          @foreach ($news as $new)
+            <div class="news-body-item">
+              <a href="{{ route('public.shop.newsdetail', ['shop' => $shop->slug, 'id' => $new->id]) }}">
+                <div class="news-body-item-image">
+                  <img src="{{ asset('storage/' . $new->thumbnail) }}" alt="{{ $new->title }}">
+                </div>
+                <div class="news-body-item-published">
+                  {{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y.m.d') : '' }}
+                </div>
+                <div class="news-body-item-contents">
+                  {{ $new->contents }}
+                </div>
+              </a>
+            </div>
+          @endforeach 
+        </div>
       </div>
     </div>
     <div class="diary-top">
