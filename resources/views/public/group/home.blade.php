@@ -8,15 +8,17 @@
       <div class="plo_news-title-en title-font">
         PLO NEWS
       </div>
-      <h2 class="plo_news-title-ja">新着情報</h2>
+      <h2 class="plo_news-title-ja title-font-sm">新着情報</h2>
     </div>
     <ul class="plo_news-shops">
-      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.group.newslist',['shop' => 'all']) }}">ALL</a>
+      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.group.newslist',['shop' => 'all']) }}">
+        ALL
+      </a>
       @foreach($shops as $shop)
         @if($shop->slug == 'headquarter')
-          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">{{ $shop->name }}</a>
+          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">headquarters</span><span class="shop-name">{{ $shop->name }}</span></span></a>
         @else
-          <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}">{{ $shop->name }}</a>
+          <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">{{$shop->slug}}</span><span class="shop-name">{{ $shop->name }}</span></span></a>
         @endif
       @endforeach
       {{-- <a class="plo_news-shop --headquarter" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">本部</a>
@@ -107,19 +109,60 @@
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
-      <span class="section-title-en">
-        <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl">
+      <span class="pickup-title title-font">
+        PICKUP GIRL
+        {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
-      <h2 class="section-title-ja">ピックアップ</h2>
+      <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
     </div>
-    <ul class="pickup-shops">
-      <li class="pickup-shop" data-shop="all">ALL</li>
-      <li class="pickup-shop" data-shop="pussycat">プッシー<br class="sm">キャット</li>
-      <li class="pickup-shop" data-shop="shizuku">雫</li>
-      <li class="pickup-shop" data-shop="miyabi">雅</li>
-      <li class="pickup-shop" data-shop="en">艶</li>
-      <li class="pickup-shop" data-shop="shiroganeze">シロガネーゼ</li>
-      <li class="pickup-shop" data-shop="lovestory">ラブストーリー</li>
+    <ul class="pickup-shops content-wrapper">
+      <li class="pickup-shop" data-shop="all">
+        <span class="shop-text">
+          <span class="shop-name">ALL</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="pussycat">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">pussycat</span>
+          <span class="shop-name">プッシー<br class="sm">キャット</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shizuku">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shizuku</span>
+          <span class="shop-name">雫</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="miyabi">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">miyabi</span>
+          <span class.shop-name>雅</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="en">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">en</span>
+          <span class="shop-name">艶</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shiroganeze">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shiroganeze</span>
+          <span class="shop-name">シロガネーゼ</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="lovestory">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">lovestory</span>
+          <span class="shop-name">ラブストーリー</span>
+        </span>
+      </li>
     </ul>
     <div class="pickup-list">
       @foreach ($pickups as $pickup)

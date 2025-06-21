@@ -16,31 +16,51 @@ $shops: (
 
 .pickup {
   width: 100%;
-  @media #{media-query(sm)} {
-    padding: 50px 0 70px;
-  }
-  @media #{media-query(md)} {
-    padding: 90px 0 80px;
-  }
-  @media #{media-query(lg)} {
-    padding: 120px 0 90px;
-  }
+  // @media #{media-query(sm)} {
+  //   padding: 50px 0 70px;
+  // }
+  // @media #{media-query(md)} {
+  //   padding: 90px 0 80px;
+  // }
+  // @media #{media-query(lg)} {
+  //   padding: 120px 0 90px;
+  // }
 
+  .pickup-title {
+    margin: 50px auto 0px;
+    @media #{media-query(sm)} {
+      margin: 20px auto 0;
+      // font-size: 10px;
+    }
+  }
+  .pcikup-title-sm {
+    margin: 40px auto;
+    @media #{media-query(sm)} {
+      margin: 20px auto;
+      // font-size: 10px;
+    }
+    // @media #{media-query(md)} {
+    //   font-size: 28px;
+    // }
+    // @media #{media-query(lg)} {
+    //   font-size: 36px;
+    // }
+  }
   .pickup-shops {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     @media #{media-query(sm)} {
-      width: 344px;
-      margin: 40px auto 0;
+      // width: 344px;
+      // margin: 40px auto 0;
     }
     @media #{media-query(md)} {
-      width: 640px;
-      margin: 50px auto 0;
+      // width: 640px;
+      // margin: 50px auto 0;
     }
     @media #{media-query(lg)} {
-      width: 840px;
-      margin: 60px auto 0;
+      // width: 840px;
+      // margin: 60px auto 0;
     }
 
     .pickup-shop {
@@ -51,20 +71,21 @@ $shops: (
       text-align: center;
       cursor: pointer;
       transition: .2s;
+      position: relative;
       @media #{media-query(sm)} {
-        width: 80px;
-        height: 34px;
+        width: 110px;
+        height: 45px;
         margin: 0 3px 6px;
-        border-radius: 17px;
+        border-radius: 22px;
       }
       @media #{media-query(md)} {
-        width: 150px;
-        height: 70px;
-        margin: 0 5px 15px;
-        border-radius: 35px;
+        // width: 150px;
+        // height: 70px;
+        // margin: 0 5px 15px;
+        // border-radius: 35px;
       }
       @media #{media-query(lg)} {
-        width: 200px;
+        width: 250px;
         height: 90px;
         margin: 0 5px 15px;
         border-radius: 45px;
@@ -74,6 +95,37 @@ $shops: (
       }
       &:hover {
         opacity: .8;
+      }
+
+      img {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%) scaleX(-1);
+        height: 2em;
+        width: auto;
+        @media #{media-query(sm)} {
+          height: 1em;
+        }
+      }
+
+      .shop-text {
+        font-family: $font-gothic-min;
+        font-size: 20px;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.1;
+        width: 100%;
+        text-align: center;
+        @media #{media-query(sm)} {
+          font-size: 10px;
+        }
+      }
+
+      .shop-slug {
+        // font-size: 0.7em;
+        text-transform: uppercase;
+        font-weight: 500;
       }
 
       &:not([data-shop="all"]) {
@@ -176,24 +228,24 @@ $shops: (
       text-align: center;
       cursor: pointer;
       transition: .2s;
-      @media #{media-query(sm)} {
-        width: 80px;
-        height: 34px;
-        margin: 0 3px 6px;
-        border-radius: 17px;
-      }
-      @media #{media-query(md)} {
-        width: 150px;
-        height: 70px;
-        margin: 0 5px 15px;
-        border-radius: 35px;
-      }
-      @media #{media-query(lg)} {
-        width: 200px;
-        height: 90px;
-        margin: 0 5px 15px;
-        border-radius: 45px;
-      }
+      // @media #{media-query(sm)} {
+      //   width: 80px;
+      //   height: 34px;
+      //   margin: 0 3px 6px;
+      //   border-radius: 17px;
+      // }
+      // @media #{media-query(md)} {
+      //   width: 150px;
+      //   height: 70px;
+      //   margin: 0 5px 15px;
+      //   border-radius: 35px;
+      // }
+      // @media #{media-query(lg)} {
+      //   width: 250px;
+      //   height: 90px;
+      //   margin: 0 5px 15px;
+      //   border-radius: 45px;
+      // }
 
       &:hover {
         opacity: .8;
