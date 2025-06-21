@@ -147,6 +147,10 @@ class MemberController extends Controller{
     $point->update($request->input('point'), $request->input('point_use'));
     return redirect()->route('admin.member.detail', ['id' => $id]);
   }
+
+  public function qrcodeRead(): View{
+    return view('admin.member.qrcode');
+  }
   /*
    const enum pref:string {
     case "1" = "北海道";
