@@ -2,26 +2,108 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-  {{-- @if($news->count() > 0)
+  @if($news->count() > 0)
   <section class="plo_news content-wrapper">
-    <div class="section-title">
-      <img src="{{ asset('assets/img/plo_news.png') }}" alt="PLO News">
-      <h2 class="section-title-ja">新着情報</h2>
+    <div class="plo_news-title">
+      <div class="plo_news-title-en title-font">
+        PLO NEWS
+      </div>
+      <h2 class="plo_news-title-ja">新着情報</h2>
     </div>
-    <div class="plo_news-list">
-      @foreach($news as $news)
-        <div class="plo_news-item">
-          <div class="plo_news-item-title">
-            {{ $news->title }}
+    <ul class="plo_news-shops">
+      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.group.newslist',['shop' => 'all']) }}">ALL</a>
+      @foreach($shops as $shop)
+        @if($shop->slug == 'headquarter')
+          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">{{ $shop->name }}</a>
+        @else
+          <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}">{{ $shop->name }}</a>
+        @endif
+      @endforeach
+      {{-- <a class="plo_news-shop --headquarter" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">本部</a>
+      <a class="plo_news-shop --pussycat" href="{{ route('public.shop.newslist', ['shop' => 'pussycat']) }}">プッシー<br class="sm">キャット</a>
+      <a class="plo_news-shop --shizuku" href="{{ route('public.shop.newslist', ['shop' => 'shizuku']) }}">雫</a>
+      <a class="plo_news-shop --miyabi" href="{{ route('public.shop.newslist', ['shop' => 'miyabi']) }}">雅</a>
+      <a class="plo_news-shop --en" href="{{ route('public.shop.newslist', ['shop' => 'en']) }}">艶</a>
+      <a class="plo_news-shop --shiroganeze" href="{{ route('public.shop.newslist', ['shop' => 'shiroganeze']) }}">シロガネーゼ</a>
+      <a class="plo_news-shop --lovestory" href="{{ route('public.shop.newslist', ['shop' => 'lovestory']) }}">ラブストーリー</a> --}}
+    </ul>
+    <div class="plo_news-list pc-only">
+      @foreach($news as $news_item)
+        <div class="plo_news-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
+          <div class="plo_news-list-item-image">
+            <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
           </div>
-          <div class="plo_news-item-content">
-            {{ $news->contents }}
+          <div class="plo_news-list-item-date">
+            {{ $news_item->published_at? \Carbon\Carbon::createFromTimeString($news_item->published_at)->format('y.m.d') : '' }}
           </div>
+          <div class="plo_news-list-item-title --{{ $news_item->slug }} content-font">
+            {{ $news_item->title }}
+          </div>
+          <div class="plo_news-list-item-content content-font">
+            {!! $news_item->contents !!}
+          </div>
+          </a>
         </div>
       @endforeach
     </div>
+    <div class="plo_news-items sp-only">
+      <div class="plo_news-items-top">
+        @if($news_item->slug == 'headquarter')
+        <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+        @else
+        <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+        @endif
+        <div class="plo_news-items-top-image">
+          <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="{{ $news[0]->title }}">
+        </div>
+        <div class="plo_news-items-top-title">
+          <div class="plo_news-items-top-title-date">
+            {{ $news[0]->published_at? \Carbon\Carbon::createFromTimeString($news[0]->published_at)->format('y.m.d') : '' }}
+          </div>
+          <div class="plo_news-items-top-title-text --{{ $news[0]->slug }}">
+            {{ $news[0]->title }}
+          </div>
+        </div>
+        <div class="plo_news-items-top-content">
+          {!! $news[0]->contents !!}
+        </div>
+        </a>
+      </div>
+      <div class="plo_news-items-list">
+      @foreach($news->skip(1) as $news_item)
+        <div class="plo_news-items-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
+          <div class="plo_news-items-list-item-image">
+            <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
+          </div>
+          <div class="plo_news-items-list-item-date">
+            {{ $news_item->published_at? \Carbon\Carbon::createFromTimeString($news_item->published_at)->format('y.m.d') : '' }}
+          </div>
+          <div class="plo_news-items-list-item-title --{{ $news_item->slug }}">
+            {{ $news_item->title }}
+          </div>
+          <div class="plo_news-items-list-item-content">
+            {!! $news_item->contents !!}
+          </div>
+          </a>
+        </div>
+      @endforeach
+      </div>
+    </div>
+    <div class="plo_news-more ">
+      <a href="{{ route('public.group.newslist', ['shop' => 'all']) }}" class="plo_news-more-button">もっと見る</a>
+    </div>
   </section>
-  @endif --}}
+  @endif
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
@@ -230,7 +312,7 @@
 </x-public-group-layout>
 
 @once
-  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss'])
+  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss','resources/scss/group/newstop.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
