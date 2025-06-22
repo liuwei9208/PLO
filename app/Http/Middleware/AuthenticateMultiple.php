@@ -18,17 +18,14 @@ class AuthenticateMultiple
     {
         // dd(session('user_type'));
         // 両方のガードで認証チェック
-        if (!Auth::guard('web')->check() || !Auth::guard('member')->check()) {
+        if (!Auth::guard('web')->check() && !Auth::guard('member')->check()) {
             // 認証されていない場合、リダイレクト
             if ($request->expectsJson()) {
                 return response()->json(['message' => 'Unauthenticated.'], 401);
             }
                 // dd(session('user_type'));
-            return $next($request);
-        }else{
             return redirect('/login');
         }
-
         return $next($request);
     }
 } 
