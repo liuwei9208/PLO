@@ -27,6 +27,7 @@
       <div
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
+        @role('shop')
         <div class="mr-2">
           {{-- <button type="button" @click.prevent="qrModalOpen = true" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
             <span>会員QRコード読取</span>
@@ -35,6 +36,7 @@
             <span>会員QRコード読取</span>
           </a>
         </div>
+        @endrole
       <!-- NickName filter -->
         <div class="mr-2 hidden lg:block">
           <div class="relative">

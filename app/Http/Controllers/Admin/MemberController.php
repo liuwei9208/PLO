@@ -12,6 +12,7 @@ use App\Models\Shop;
 use Carbon\Carbon;
 use App\Models\Cast;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
@@ -175,7 +176,7 @@ class MemberController extends Controller{
       // ]);
     }
     if ( !$member ) {
-      return redirect()->route('admin.member.qrcode')->with('error', '会員が見つかりません');
+      return redirect()->route('admin.member.qrcode')->with('error', '会員を見つかりません');
     }
     $histories = null;
     if ( $member ) {
@@ -196,9 +197,24 @@ class MemberController extends Controller{
         });
       }
     }
+    $manager = Auth::user();
+    if ( !$manager->hasRole('shop') ) {
+      return redirect()->route('admin.member.index')->with('error', '管理権限がありません。');
+    }
+
+    $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $manager->id)->get();
+    if ( count($shop_user) == 0 ) {
+      return redirect()->route('admin.member.index')->with('error', '管理権限がありません。');
+    }
+    // $shop = Shop::where('id',$shop_user[0]->shop_id)->first();
+    $casts = Cast::where('shop_id',$shop_user[0]->shop_id)->where('is_public', 1)
+    ->orderBy('name', 'asc')
+    ->get();
+    
     return view('admin.member.qrresult', [
       'member' => $member,
       'histories' => $histories,
+      'casts' => $casts,
     ]);
   }
   /*

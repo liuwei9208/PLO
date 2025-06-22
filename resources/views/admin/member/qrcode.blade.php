@@ -11,7 +11,16 @@
       <div class="flex justify-between items-center p-4 border-b">
         <h3 class="text-lg font-semibold">QRコード読取</h3>
       </div>
-      
+      @error('error')
+          <div style="padding: 1rem; background-color: rgb(254 226 226); border: 1px solid rgb(248 113 113); color: rgb(185 28 28); border-radius: 0.5rem; margin-bottom: 1rem;">
+            {{ $message }}
+        </div>
+      @enderror
+      @if (session('error'))
+        <div style="padding: 1rem; background-color: rgb(254 226 226); border: 1px solid rgb(248 113 113); color: rgb(185 28 28); border-radius: 0.5rem; margin-bottom: 1rem;">
+          {{ session('error') }}
+        </div>
+      @endif
       <div class="p-6 flex-grow flex flex-col items-center justify-center" style="min-height: 600px;">
         <div style="width: 80%;">
         <form action="{{ route('admin.member.qrresult') }}" method="get">
