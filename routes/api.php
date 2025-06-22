@@ -4,9 +4,11 @@ use App\Http\Controllers\Public\TouchVipDiaryController;
 use App\Http\Controllers\Api\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
+use App\Http\Controllers\Api\QRCodeController;
 // use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 
 Route::get('/diary/{cast_id}', [TouchVipDiaryController::class, 'get']);
+Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
 
 Route::post('/casts-schedule', [ScheduleController::class, 'getCastsSchedule']);
 Route::post('/casts-schedule-shop', [ScheduleController::class, 'getCastsScheduleShop']);

@@ -22,12 +22,20 @@
       id="search_form"
       class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
     >
-
+    {{-- <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;">保存</button> --}}
       <!-- Search -->
       <div
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
-        <!-- NickName filter -->
+        <div class="mr-2">
+          {{-- <button type="button" @click.prevent="qrModalOpen = true" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
+            <span>会員QRコード読取</span>
+          </button> --}}
+          <a href="{{ route('admin.member.qrcode') }}" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
+            <span>会員QRコード読取</span>
+          </a>
+        </div>
+      <!-- NickName filter -->
         <div class="mr-2 hidden lg:block">
           <div class="relative">
             <span class="absolute top-1/2 left-4 -translate-y-1/2">

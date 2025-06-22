@@ -3,7 +3,7 @@
     <img src="{{ asset('assets/img/group/header/logo.png') }}" alt="">
   </a>
   <div class="header-user md lg">
-    <a href="">
+    <a href="{{ route('login') }}">
       <span>LOGIN</span>
     </a>
     <a href="">
