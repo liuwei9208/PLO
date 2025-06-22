@@ -6,7 +6,12 @@ use App\Http\Controllers\Public\TouchVipDiaryController;
 use App\Http\Middleware\PublicAvailable;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Middleware\AuthenticateMultiple;
+use App\Http\Controllers\QRCodeController;
+// Route::middleware([AuthenticateMultiple::class])->group(function () {
 
+
+// }
 // Route::middleware('guest')->group(function () {
 //     Route::get('login', [AuthenticatedSessionController::class, 'frontLogin'])
 //         ->name('login');
@@ -14,8 +19,14 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 //     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 // });
 
-Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
+// Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
 
+Route::middleware([AuthenticateMultiple::class])->name('public.')->group(function () {
+    // Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
+    // Route::get('/qrcode/{memberId}', function ($memberId) {
+    //     dd($memberId);
+    //     return view('public.qrcode', ['memberId' => $memberId]);
+    // });
     /**
      * Group routes
      *
@@ -35,6 +46,7 @@ Route::middleware([PublicAvailable::class])->name('public.')->group(function () 
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
+        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
     });
 
     /**

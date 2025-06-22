@@ -43,8 +43,16 @@ class AuthenticatedSessionController extends Controller
         $request->authenticateMultiple();
 
         $request->session()->regenerate();
-
-        return redirect()->intended(route('admin.home', absolute: false));
+        // dd($request->isAdmin());
+        if ($this->isAdmin()) {
+            // dd('admin');
+            return redirect('/admin');
+            // return redirect()->intended(route('admin.home', absolute: false));
+        } else {
+            // dd(session('user_type'));
+            // return redirect()->intended(route('public.group.home', absolute: false));
+            return redirect('/mypage');
+        }
     }
     /**
      * Destroy an authenticated session.
