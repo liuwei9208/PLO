@@ -156,12 +156,12 @@ class MemberController extends Controller{
     return view('admin.member.qrcode');
   }
 
-  public function qrResult(Request $request): View{
+  public function qrResult(Request $request){
 
     $member = null;
     if ( $request->has('search') && $request->query('search') !== null) {
       $search = $request->query('search');
-      $member = Member::where('id', $search)->orWhere('tel', $search)->firstOrFail();
+      $member = Member::where('id', $search)->orWhere('tel', $search)->first();
       // return view('admin.member.qrresult', [
       //   'member' => $member,
       // ]);
@@ -169,10 +169,13 @@ class MemberController extends Controller{
 
     if ( $request->has('qr') && $request->query('qr') !== null) {
       $qr = $request->query('qr');
-      $member = Member::where('id', $qr)->firstOrFail();
+      $member = Member::where('id', $qr)->first();
       // return view('admin.member.qrresult', [
       //   'member' => $member,
       // ]);
+    }
+    if ( !$member || count($member) == 0 ) {
+      return redirect()->route('admin.member.qrcode')->with('error', '会員が見つかりません');
     }
     $histories = null;
     if ( $member ) {
