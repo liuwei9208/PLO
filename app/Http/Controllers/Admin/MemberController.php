@@ -184,7 +184,7 @@ class MemberController extends Controller{
         $member->pay = 0;
       }
       // $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
-      $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->where('created_at', '>=', $maxDate)->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
+      $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
       if ( $histories ) {
         $histories = $histories->map(function ($history) {
           $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
