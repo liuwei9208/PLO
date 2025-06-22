@@ -38,17 +38,97 @@ class AuthenticatedSessionController extends Controller
         return view('auth.frontlogin');
     }
 
+    public function frontStore(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticateMultiple();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended(route('admin.home', absolute: false));
+    }
     /**
      * Destroy an authenticated session.
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // 現在のユーザータイプを取得
+        $userType = session('user_type');
+        
+        // 両方のガードからログアウト
         Auth::guard('web')->logout();
+        Auth::guard('member')->logout();
 
+        // セッションからユーザータイプを削除
+        $request->session()->forget('user_type');
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect('/admin/login');
+        // ユーザータイプに応じてリダイレクト先を決定
+        if ($userType === 'member') {
+            return redirect('/login');
+        } else {
+            return redirect('/admin/login');
+        }
+    }
+
+    /**
+     * Get the currently authenticated user from any guard.
+     *
+     * @return \Illuminate\Contracts\Auth\Authenticatable|null
+     */
+    public function getCurrentUser()
+    {
+        // まずwebガードで認証されているかチェック
+        if (Auth::guard('web')->check()) {
+            return Auth::guard('web')->user();
+        }
+        
+        // 次にmemberガードで認証されているかチェック
+        if (Auth::guard('member')->check()) {
+            return Auth::guard('member')->user();
+        }
+        
+        return null;
+    }
+
+    /**
+     * Get the current user type.
+     *
+     * @return string|null
+     */
+    public function getCurrentUserType(): ?string
+    {
+        return session('user_type');
+    }
+
+    /**
+     * Check if the current user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->getCurrentUserType() === 'admin';
+    }
+
+    /**
+     * Check if the current user is a member.
+     *
+     * @return bool
+     */
+    public function isMember(): bool
+    {
+        return $this->getCurrentUserType() === 'member';
+    }
+
+    /**
+     * Logout from all guards and redirect appropriately.
+     *
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function logoutAll(Request $request): RedirectResponse
+    {
+        return $this->destroy($request);
     }
 }
