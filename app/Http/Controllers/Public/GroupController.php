@@ -20,7 +20,8 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Diary;
-
+use App\Models\Point;
+use App\Models\History;
 class GroupController extends Controller
 {
     /**
@@ -491,6 +492,38 @@ class GroupController extends Controller
             'selectedShopID' => $shop_id,
             'selectedDate' => $date,
         ]);
+    }
+    public function showMypage(Request $request): View
+    {
+        $member = Auth::guard('member')->user();
+        $pay = 0;
+        $histories = [];
+        if ($member) {
+            $maxDate = Point::where('user_id', $member->id)->where('type', 3)->max('created_at');
+            // dd($maxDate);
+            if ($maxDate){
+              $pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
+            }else{
+              $pay = 0;
+            }
+            // $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
+            $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
+            if ( $histories ) {
+              $histories = $histories->map(function ($history) {
+                $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+                $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
+                $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
+                return $history;
+              });
+            }
+            return view('public.mypage', [
+                'histories' => $histories,
+                'member' => $member,
+                'pay' => $pay,
+            ]);
+        } else {
+            return view('public.home');
+        }
     }
     public function showNewsList(Request $request, string $shop): View
     {

@@ -318,6 +318,7 @@
                   </p>
                 </div>
               </th>
+              @role('admin')
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
@@ -325,6 +326,7 @@
                   </p>
                 </div>
               </th>
+              @endrole
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
@@ -379,6 +381,7 @@
                     </p>
                   </div>
                 </td>
+                @role('admin')
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <button
@@ -393,6 +396,7 @@
                     </button>
                   </div>
                 </td>
+                @endrole
               </tr>
             @endforeach
           </tbody>

@@ -1,5 +1,5 @@
 <x-admin-layout>
-  <div x-data="{ qrModalOpen: false, memberDetailModalOpen: false }" class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+  <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
 
     <div x-data="{ pageName: `会員管理`}">
       {{-- <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
@@ -28,9 +28,12 @@
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
         <div class="mr-2">
-          <button type="button" @click.prevent="qrModalOpen = true" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
+          {{-- <button type="button" @click.prevent="qrModalOpen = true" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
             <span>会員QRコード読取</span>
-          </button>
+          </button> --}}
+          <a href="{{ route('admin.member.qrcode') }}" class="relative z-20 bg-transparent inline-flex items-center justify-center w-40 h-11 rounded-lg border px-4 py-2 text-sm font-medium  transition-colors duration-200 bg-blue-600 text-white  hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer;">
+            <span>会員QRコード読取</span>
+          </a>
         </div>
       <!-- NickName filter -->
         <div class="mr-2 hidden lg:block">
@@ -479,167 +482,6 @@
             </svg>
           </span>
         @endif
-      </div>
-    </div>
-
-    <!-- QR Code Modal -->
-    <div
-      x-show="qrModalOpen"
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="transition ease-in duration-200"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      style="display: none;inset: 0; z-index: 50;background-color: rgba(0, 0, 0, 0.5);"
-      @keydown.escape.window="qrModalOpen = false"
-    >
-      <div @click.away="qrModalOpen = false" class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col" style="width: 1024px; height: 768px;">
-        <div class="flex justify-between items-center p-4 border-b">
-          <h3 class="text-lg font-semibold">QRコード読取</h3>
-          <button @click="qrModalOpen = false" class="text-gray-500 hover:text-gray-700">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-          </button>
-        </div>
-        <div class="p-6 flex-grow flex flex-col items-center justify-center">
-             <div style="width: 80%;">
-                  <div class="flex items-center w-full mb-4">
-                      <input type="text" placeholder="会員番号、携帯番号で検索" class="border border-gray-500 p-2 flex-grow" style="width: 80%;">
-                      <button type="button" @click="qrModalOpen = false; memberDetailModalOpen = true" class="p-2 border border-gray-500 ml-5 flex-shrink-0" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px; margin-left: 20px;">検索</button>
-                  </div>
-                  <div class="flex justify-center items-center border-2 border-gray-400 mt-4 w-full" style="height: 400px;">
-                      <p class="text-2xl text-gray-500">QRコードを読み込んでください</p>
-                  </div>
-             </div>
-        </div>
-        <div class="p-4 border-t flex justify-end bg-gray-50">
-          <button @click="qrModalOpen = false" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400">閉じる</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Member Detail Modal -->
-    <div
-      x-show="memberDetailModalOpen"
-      x-transition:enter="transition ease-out duration-300"
-      x-transition:enter-start="opacity-0"
-      x-transition:enter-end="opacity-100"
-      x-transition:leave="transition ease-in duration-200"
-      x-transition:leave-start="opacity-100"
-      x-transition:leave-end="opacity-0"
-      class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
-      style="display: none;inset: 0; z-index: 50;background-color: rgba(0, 0, 0, 0.5);"
-    >
-      <div class="bg-white rounded-lg shadow-xl overflow-auto" style="width: 1024px; height: 768px;">
-        <div class="p-4">
-          <div class="flex gap-4">
-            <!-- Left side -->
-            <div class="w-2/3" style="width: 70%;">
-              <!-- Member Info -->
-              <table class="w-full border-collapse border-t border-l border-gray-400">
-                <tbody>
-                  <tr>
-                    <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員番号</th>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">ニックネーム</th>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">携帯番号</th>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員名</th>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">現在のポイント</th>
-                    <td class="p-1 border-b border-r border-gray-400" colspan="3"></td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <!-- Visit History -->
-              <div class="mt-4 border border-gray-400 border-b-0" style="margin-top: 40px;">
-                <table class="w-full text-sm text-center">
-                  <thead class="bg-gray-100">
-                    <tr>
-                      <th class="p-1 w-[120px] border-b border-r border-gray-400">来店日</th>
-                      <th class="p-1 w-[120px] border-b border-r border-gray-400">キャスト名</th>
-                      <th class="p-1 border-b border-r border-gray-400">コース</th>
-                      <th class="p-1 w-[80px] border-b border-r border-gray-400">延長</th>
-                      <th class="p-1 w-[80px] border-b border-r border-gray-400">料金</th>
-                      <th class="p-1 w-[100px] border-b border-r border-gray-400">利用ポイント</th>
-                      <th class="p-1 border-b border-r border-gray-400">会員メモ</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td class="p-1 border-b border-r border-gray-400 h-8">2025-06-18</td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400 text-right pr-2">1000</td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                    </tr>
-                    @for ($i = 0; $i < 14; $i++)
-                    <tr>
-                      <td class="p-1 border-b border-r border-gray-400 h-8"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                      <td class="p-1 border-b border-r border-gray-400"></td>
-                    </tr>
-                    @endfor
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- Right side -->
-            <div class="w-1/3" style="width: 30%;">
-              <div class="text-right mb-2 font-semibold">2025年6月19日</div>
-              <table class="w-full text-sm border-collapse border border-gray-400">
-                <tbody>
-                  <tr>
-                    <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">利用ポイント</th>
-                    <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">取得ポイント</th>
-                    <td class="p-1 border-b border-gray-400"><input type="text" value="500" class="p-1 border border-gray-400 text-right w-full"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
-                    <td class="p-1 border-b border-gray-400"><input type="text" value="500" class="p-1 border border-gray-400 text-right w-full"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">キャスト名</th>
-                    <td class="p-1 border-b border-gray-400"><select class="p-1 border border-gray-400 w-full bg-white"><option></option></select></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
-                    <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full"></td>
-                  </tr>
-                  <tr>
-                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">延長</th>
-                    <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full"></td>
-                  </tr>
-                  <tr>
-                    <th class.="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left" style="width: 100px;">メモ</th>
-                  </tr>
-                  <tr>
-                    <td class="p-1"><textarea class="p-1 border border-gray-400 w-full" style="width: 300%; height: 100px;"></textarea></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-          <div class="mt-4 flex justify-end gap-4">
-            <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;">保存</button>
-            <button @click="memberDetailModalOpen = false" class="px-6 py-2 bg-gray-300 rounded hover:bg-gray-400" style="border-radius: 0.375rem;width: 100px;">閉じる</button>
-          </div>
-        </div>
       </div>
     </div>
 

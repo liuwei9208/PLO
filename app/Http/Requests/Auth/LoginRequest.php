@@ -50,8 +50,34 @@ class LoginRequest extends FormRequest
         }
 
         RateLimiter::clear($this->throttleKey());
+    }
 
+    public function authenticateMultiple(): void
+    {
+        $this->ensureIsNotRateLimited();
 
+        // まずUserモデルで認証を試行
+        if (Auth::guard('web')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+            RateLimiter::clear($this->throttleKey());
+            // セッションにユーザータイプを保存
+            session(['user_type' => 'admin']);
+            return;
+        }
+
+        // User認証が失敗した場合、Memberモデルで認証を試行
+        if (Auth::guard('member')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
+            RateLimiter::clear($this->throttleKey());
+            // セッションにユーザータイプを保存
+            session(['user_type' => 'member']);
+            return;
+        }
+
+        // 両方の認証が失敗した場合
+        RateLimiter::hit($this->throttleKey());
+
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
     }
 
     /**
@@ -83,5 +109,35 @@ class LoginRequest extends FormRequest
     public function throttleKey(): string
     {
         return Str::transliterate(Str::lower($this->string('email')).'|'.$this->ip());
+    }
+
+    /**
+     * Get the authenticated user type.
+     *
+     * @return string|null
+     */
+    public function getAuthenticatedUserType(): ?string
+    {
+        return session('user_type');
+    }
+
+    /**
+     * Check if the authenticated user is an admin.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->getAuthenticatedUserType() === 'admin';
+    }
+
+    /**
+     * Check if the authenticated user is a member.
+     *
+     * @return bool
+     */
+    public function isMember(): bool
+    {
+        return $this->getAuthenticatedUserType() === 'member';
     }
 }
