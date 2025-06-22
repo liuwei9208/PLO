@@ -3,28 +3,18 @@
     <img src="{{ asset('assets/img/group/header/logo.png') }}" alt="">
   </a>
   <div class="header-user md lg">
-    @if (Auth::guard('web')->check())
-      <a href="{{ route('admin.home') }}">
-        <span>管理画面</span>
-      </a>
-    @elseif (Auth::guard('member')->check())
-      <a href="{{ route('public.group.mypage') }}">
-        <span>マイページ</span>
+    @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+      <a href="{{ route('logoutAll') }}">
+        <span>ログアウト</span>
       </a>
     @else
     <a href="{{ route('login') }}">
       <span>LOGIN</span>
     </a>
     @endif
-    @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-    <a href="{{ route('logoutAll') }}">
-      <span>ログアウト</span>
-    </a>
-    @else
-    <a href="{{ route('login') }}">
+    <a href="#">
       <span>SIGN UP</span>
     </a>
-    @endif
   </div>
   <button class="drawer-toggle" id="drawer-toggle">
     <i class="drawer-toggle-bar"></i>
