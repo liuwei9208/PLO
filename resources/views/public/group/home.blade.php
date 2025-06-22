@@ -232,10 +232,11 @@
   <section class="newface">
     @if($newfaces_this_month->count() > 0)
     <div class="section-title">
-      <span class="section-title-en">
-        <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
+      <span class="section-title-en title-font">
+        {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
+        NEW FACE
       </span>
-      <h2 class="section-title-ja title-font">新人情報</h2>
+      <h2 class="newface-title-sm title-font-sm">新人情報</h2>
     </div>
     @endif
     @if($newfaces_this_week->count() > 0)

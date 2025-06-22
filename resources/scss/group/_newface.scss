@@ -18,6 +18,13 @@
     padding: 135px 0 150px;
   }
 
+  .newface-title-sm {
+    margin: 60px auto;
+    @media #{media-query(sm)} {
+      margin: 20px auto;
+    }
+  }
+
   .newface-slide {
     overflow: hidden;
     @media #{media-query(sm)} {
