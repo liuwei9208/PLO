@@ -44,6 +44,17 @@
           </a></li>
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
           </a></li>
+          @if(Auth::guard('member')->check())
+          <li><a href="{{ route('public.shop.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
+          </a></li>
+          @endif
+          @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+          <li><a href="{{ route('logoutAll') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">ログアウト
+          </a></li>
+          @else
+          <li><a href="{{ route('login') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">ログイン
+          </a></li>
+          @endif
         </ul>
       </div>
       <div class="drawer-nav-bottom">

@@ -21,8 +21,9 @@ use App\Http\Controllers\QRCodeController;
 
 // Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
 
-Route::middleware([AuthenticateMultiple::class])->name('public.')->group(function () {
-    // Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
+// Route::middleware([AuthenticateMultiple::class])->name('public.')->group(function () {
+Route::name('public.')->group(function () {
+        // Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
     // Route::get('/qrcode/{memberId}', function ($memberId) {
     //     dd($memberId);
     //     return view('public.qrcode', ['memberId' => $memberId]);
