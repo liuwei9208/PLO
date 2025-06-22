@@ -156,7 +156,7 @@ class MemberController extends Controller{
     return view('admin.member.qrcode');
   }
 
-  public function qrResult(Request $request): View{
+  public function qrResult(Request $request){
 
     $member = null;
     if ( $request->has('search') && $request->query('search') !== null) {
