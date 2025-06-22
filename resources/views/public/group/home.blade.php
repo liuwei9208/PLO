@@ -2,7 +2,7 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-  @if($news->count() > 0)
+  {{-- @if($news->count() > 0)
   <section class="plo_news content-wrapper">
     <div class="plo_news-title">
       <div class="plo_news-title-en title-font">
@@ -21,13 +21,6 @@
           <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">{{$shop->slug}}</span><span class="shop-name">{{ $shop->name }}</span></span></a>
         @endif
       @endforeach
-      {{-- <a class="plo_news-shop --headquarter" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">本部</a>
-      <a class="plo_news-shop --pussycat" href="{{ route('public.shop.newslist', ['shop' => 'pussycat']) }}">プッシー<br class="sm">キャット</a>
-      <a class="plo_news-shop --shizuku" href="{{ route('public.shop.newslist', ['shop' => 'shizuku']) }}">雫</a>
-      <a class="plo_news-shop --miyabi" href="{{ route('public.shop.newslist', ['shop' => 'miyabi']) }}">雅</a>
-      <a class="plo_news-shop --en" href="{{ route('public.shop.newslist', ['shop' => 'en']) }}">艶</a>
-      <a class="plo_news-shop --shiroganeze" href="{{ route('public.shop.newslist', ['shop' => 'shiroganeze']) }}">シロガネーゼ</a>
-      <a class="plo_news-shop --lovestory" href="{{ route('public.shop.newslist', ['shop' => 'lovestory']) }}">ラブストーリー</a> --}}
     </ul>
     <div class="plo_news-list pc-only">
       @foreach($news as $news_item)
@@ -105,7 +98,7 @@
       <a href="{{ route('public.group.newslist', ['shop' => 'all']) }}" class="plo_news-more-button">もっと見る</a>
     </div>
   </section>
-  @endif
+  @endif --}}
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
