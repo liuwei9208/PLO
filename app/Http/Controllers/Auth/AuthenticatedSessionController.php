@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
         // dd($request->isAdmin());
         if ($this->isAdmin()) {
             // dd('admin');
-            return redirect('/admin');
+            return redirect('/');
             // return redirect()->intended(route('admin.home', absolute: false));
         } else {
             // dd(session('user_type'));
