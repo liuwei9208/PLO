@@ -158,7 +158,15 @@ class MemberController extends Controller{
   }
 
   public function qrResult(Request $request){
-
+    $manager = Auth::guard('web')->user();
+    if ( !$manager ) {
+      return redirect()->route('admin.member.index')->with('error', '管理権限がありません。');
+    }
+    $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $manager->id)->get();
+    if ( count($shop_user) == 0 ) {
+      return redirect()->route('admin.member.index')->with('error', '管理権限がありません。');
+    }
+    $shop_id = $shop_user[0]->shop_id;
     $member = null;
     if ( $request->has('search') && $request->query('search') !== null) {
       $search = $request->query('search');
@@ -197,7 +205,6 @@ class MemberController extends Controller{
         });
       }
     }
-    $manager = Auth::user();
     if ( !$manager->hasRole('shop') ) {
       return redirect()->route('admin.member.index')->with('error', '管理権限がありません。');
     }
