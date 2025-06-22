@@ -156,8 +156,47 @@ class MemberController extends Controller{
     return view('admin.member.qrcode');
   }
 
-  public function qrResult(): View{
-    return view('admin.member.qrresult');
+  public function qrResult(Request $request): View{
+
+    $member = null;
+    if ( $request->has('search') && $request->query('search') !== null) {
+      $search = $request->query('search');
+      $member = Member::where('id', $search)->orWhere('tel', $search)->firstOrFail();
+      // return view('admin.member.qrresult', [
+      //   'member' => $member,
+      // ]);
+    }
+
+    if ( $request->has('qr') && $request->query('qr') !== null) {
+      $qr = $request->query('qr');
+      $member = Member::where('id', $qr)->firstOrFail();
+      // return view('admin.member.qrresult', [
+      //   'member' => $member,
+      // ]);
+    }
+    $histories = null;
+    if ( $member ) {
+      $maxDate = Point::where('user_id', $member->id)->where('type', 3)->max('created_at');
+      // dd($maxDate);
+      if ($maxDate){
+        $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
+      }else{
+        $member->pay = 0;
+      }
+      // $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
+      $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->where('created_at', '>=', $maxDate)->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
+      if ( $histories ) {
+        $histories = $histories->map(function ($history) {
+          $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+          $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
+          return $history;
+        });
+      }
+    }
+    return view('admin.member.qrresult', [
+      'member' => $member,
+      'histories' => $histories,
+    ]);
   }
   /*
    const enum pref:string {

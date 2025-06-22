@@ -16,6 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+        // dd('create');
         return view('auth.login');
     }
 
@@ -29,6 +30,12 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(route('admin.home', absolute: false));
+    }
+
+    public function frontLogin(): View
+    {
+        // dd('frontLogin');
+        return view('auth.frontlogin');
     }
 
     /**

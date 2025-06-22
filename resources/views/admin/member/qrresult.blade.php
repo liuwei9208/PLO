@@ -17,19 +17,19 @@
               <tbody>
                 <tr>
                   <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員番号</th>
-                  <td class="p-1 border-b border-r border-gray-400"></td>
+                  <td class="p-1 border-b border-r border-gray-400">{{ $member->id }}</td>
                   <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">ニックネーム</th>
-                  <td class="p-1 border-b border-r border-gray-400"></td>
+                  <td class="p-1 border-b border-r border-gray-400">{{ $member->name }}</td>
                 </tr>
                 <tr>
                   <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">携帯番号</th>
-                  <td class="p-1 border-b border-r border-gray-400"></td>
+                  <td class="p-1 border-b border-r border-gray-400">{{ $member->tel }}</td>
                   <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員名</th>
-                  <td class="p-1 border-b border-r border-gray-400"></td>
+                  <td class="p-1 border-b border-r border-gray-400">{{ $member->subname }}</td>
                 </tr>
                 <tr>
                   <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">現在のポイント</th>
-                  <td class="p-1 border-b border-r border-gray-400" colspan="3"></td>
+                  <td class="p-1 border-b border-r border-gray-400" colspan="3">{{ $member->pay }}</td>
                 </tr>
               </tbody>
             </table>
@@ -49,16 +49,18 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach( $histories as $history)
                   <tr>
-                    <td class="p-1 border-b border-r border-gray-400 h-8">2025-06-18</td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">1000</td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
+                    <td class="p-1 border-b border-r border-gray-400 h-8">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->extension_name }}</td>
+                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ $history->price }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->point_use }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->memo }}</td>
                   </tr>
-                  @for ($i = 0; $i < 14; $i++)
+                  @endforeach
+                  {{-- @for ($i = 0; $i < 14; $i++)
                   <tr>
                     <td class="p-1 border-b border-r border-gray-400 h-8"></td>
                     <td class="p-1 border-b border-r border-gray-400"></td>
@@ -68,7 +70,7 @@
                     <td class="p-1 border-b border-r border-gray-400"></td>
                     <td class="p-1 border-b border-r border-gray-400"></td>
                   </tr>
-                  @endfor
+                  @endfor --}}
                 </tbody>
               </table>
             </div>

@@ -14,11 +14,13 @@
       
       <div class="p-6 flex-grow flex flex-col items-center justify-center" style="min-height: 600px;">
         <div style="width: 80%;">
-          <div class="flex items-center w-full mb-4">
-            <input type="text" placeholder="会員番号、携帯番号で検索" class="border border-gray-500 p-2 flex-grow" style="width: 80%;">
-            <a href="{{ route('admin.member.qrresult') }}" class="p-2 border border-gray-500 ml-5 flex-shrink-0 text-center" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px; margin-left: 20px; display: inline-block; text-decoration: none;">検索</a>
+        <form action="{{ route('admin.member.qrresult') }}" method="get">
+            <div class="flex items-center w-full mb-4">
+            <input type="text" name="search" placeholder="会員番号、携帯番号で検索" class="border border-gray-500 p-2 flex-grow" style="width: 80%;">
+            <button type="submit" class="p-2 border border-gray-500 ml-5 flex-shrink-0 text-center" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px; margin-left: 20px; display: inline-block; text-decoration: none;">検索</button>
           </div>
-          <div class="flex justify-center items-center border-2 border-gray-400 mt-4 w-full" style="height: 400px;">
+        </form>
+        <div class="flex justify-center items-center border-2 border-gray-400 mt-4 w-full" style="height: 400px;">
             <p class="text-2xl text-gray-500">QRコードを読み込んでください</p>
           </div>
         </div>

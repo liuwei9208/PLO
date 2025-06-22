@@ -5,6 +5,14 @@ use App\Http\Controllers\Public\ShopController;
 use App\Http\Controllers\Public\TouchVipDiaryController;
 use App\Http\Middleware\PublicAvailable;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+
+// Route::middleware('guest')->group(function () {
+//     Route::get('login', [AuthenticatedSessionController::class, 'frontLogin'])
+//         ->name('login');
+
+//     Route::post('login', [AuthenticatedSessionController::class, 'store']);
+// });
 
 Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
 

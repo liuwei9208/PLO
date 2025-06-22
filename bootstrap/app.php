@@ -21,12 +21,18 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->redirectGuestsTo(function (Request $request) {
             if ($request->routeIs('admin.*')) {
                 return route('admin.login');
+            }else{
+                return route('login');
             }
+            // return '/';
         });
         $middleware->redirectUsersTo(function (Request $request) {
             if ($request->routeIs('admin.login')) {
                 return route('admin.home');
+            }else{
+                return route('login');
             }
+            // return '/';
         });
     })
     ->withExceptions(function (Exceptions $exceptions) {
