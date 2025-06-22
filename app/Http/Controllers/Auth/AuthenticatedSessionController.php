@@ -50,7 +50,7 @@ class AuthenticatedSessionController extends Controller
         } else {
             // dd(session('user_type'));
             // return redirect()->intended(route('public.group.home', absolute: false));
-            return redirect('/mypage');
+            return redirect('/');
         }
     }
     /**

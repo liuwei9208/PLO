@@ -2,6 +2,9 @@
   <div class="p-4 mx-auto max-w-7xl md:p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
       <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">会員詳細</h2>
+      <a href="{{ route('public.group.home') }}" id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 text-center">
+        グループTOPへ
+      </a>
       <button id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg  bg-blue-600 text-white  hover:bg-blue-700">
         QRコード表示
       </button>

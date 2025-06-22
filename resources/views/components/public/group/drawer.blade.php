@@ -37,6 +37,12 @@
         <span class="drawer-nav-en">CONTACT</span>
         <a href="mailto:mail@example.com" target="_blank" class="drawer-nav-ja">お問い合わせ</a>
       </li>
+      @if (Auth::guard('member')->check())
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">MYPAGE</span>
+        <a href="{{ route('public.group.mypage') }}" class="drawer-nav-ja">マイページ</a>
+      </li>
+      @endif
     </ul>
   </nav>
   <div class="drawer-img md lg">
