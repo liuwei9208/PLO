@@ -18,8 +18,29 @@
   </div>
   @if(request()->routeIs('public.group.home'))
   <div class="mv-member">
-    <img src="{{ asset('assets/img/group/mv/member-sm.png') }}" alt="" class="sp-only">
-    <img src="{{ asset('assets/img/group/mv/member-lg.png') }}" alt="" class="pc-only">
+    <div class="pc-only mv-member-pc">
+      <div class="mv-member-pc-login">
+        @if(!Auth::guard('member')->check() && !Auth::guard('web')->check())
+        <a href="{{ route('login') }}">
+          <img src="{{ asset('assets/img/group/mv/login-lg.png') }}" alt="">
+        </a>
+        @else
+          <img src="{{ asset('assets/img/group/mv/login-lg.png') }}" alt="">
+        @endif
+      </div>
+      <div class="mv-member-pc-post">
+        <img src="{{ asset('assets/img/group/mv/post-lg.png') }}" alt="">
+      </div>
+    </div>
+    <div class="sp-only mv-member-sp">
+      @if(!Auth::guard('member')->check() && !Auth::guard('web')->check())
+      <a href="{{ route('login') }}">
+      <img src="{{ asset('assets/img/group/mv/login-sm.png') }}" alt="">
+      </a>
+      @else
+        <img src="{{ asset('assets/img/group/mv/login-sm.png') }}" alt="">
+      @endif
+    </div>
     <picture class="review-image sp-only">
       <img src="{{ asset('assets/img/group/mv/review-sm.png') }}" alt="">
     </picture>
