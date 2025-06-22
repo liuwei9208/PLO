@@ -16,7 +16,7 @@ class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
   public function index(Request $request): View{
-    
+    // dd(bcrypt('test0610'));
     $query = Member::query();
 
     if ($request->has('nickname') && $request->query('nickname') !== null) {
@@ -60,10 +60,14 @@ class MemberController extends Controller{
   }
 
   public function show(Request $request, int $id): View{
+    
+    
+    
     $member = Member::find($id);
     $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
                   ->where('type', 3)
                   ->sum('point');
+
     // 来店履歴の仮データ
     $dummyHistories = [
       [
@@ -150,6 +154,10 @@ class MemberController extends Controller{
 
   public function qrcodeRead(): View{
     return view('admin.member.qrcode');
+  }
+
+  public function qrResult(): View{
+    return view('admin.member.qrresult');
   }
   /*
    const enum pref:string {

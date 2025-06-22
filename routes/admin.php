@@ -73,6 +73,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         // Route::put('{id}', [MemberController::class, 'update']);
         Route::delete('{id}', [MemberController::class, 'destroy']);
         Route::get('qrcode', [MemberController::class, 'qrcodeRead'])->name('qrcode');
+        Route::get('qrresult', [MemberController::class, 'qrResult'])->name('qrresult');
     });
     /**
      * Visit
