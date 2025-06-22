@@ -30,6 +30,9 @@
   </head>
   <body class="">
 
+    <!-- 年齢確認モーダル -->
+    <x-age-verification-modal />
+
     <!-- Header -->
     <x-public.group.header />
 

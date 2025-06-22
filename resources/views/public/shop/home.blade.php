@@ -54,18 +54,25 @@
     <div class="new-girls-list">
       @foreach ($new_girls as $new_girl)
         <div class="new-girls-item">
-          <div class="new-girls-item-image">
-            <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
-            <div class="new-girls-item-image-overlay">
-              {{ $new_girl->created_at->format('y:m:d')."入店" }}
+          <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}">
+            <div class="new-girls-item-image">
+              <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+              <div class="new-girls-item-image-overlay">
+                <div class="new-girls-item-image-overlay-text">
+                  {{ $new_girl->created_at->format('Y:m:d')."入店" }}
+                </div>
+                <div class="new-girls-item-image-overlay-name">
+                  {{ $new_girl->name."(".$new_girl->age.")" }}
+                </div>
+                <div class="new-girls-item-image-overlay-property">
+                  {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
+                </div>
+                <div class="new-girls-item-image-overlay-appeal">
+                  {{ $new_girl->appeal_point }}
+                </div>
+              </div>
             </div>
-          </div>
-          <div class="new-girls-item-name">
-            {{ $new_girl->name."(".$new_girl->age.")" }}
-          </div>
-          <div class="new-girls-item-property">
-            {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
-          </div>
+          </a>
         </div>
       @endforeach
     </div>
@@ -74,7 +81,27 @@
         <div class="swiper-wrapper">
           @foreach($new_girls as $new_girl)
             <div class="swiper-slide">
-              <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+              <div class="new-girls-item new-girls-item-wrapper">
+                <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}">
+                  <div class="new-girls-item-image">
+                    <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+                    <div class="new-girls-item-image-overlay">
+                      <div class="new-girls-item-image-overlay-text">
+                        {{ $new_girl->created_at->format('Y:m:d')."入店" }}
+                      </div>
+                      <div class="new-girls-item-image-overlay-name">
+                        {{ $new_girl->name."(".$new_girl->age.")" }}
+                      </div>
+                      <div class="new-girls-item-image-overlay-property">
+                        {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
+                      </div>
+                      <div class="new-girls-item-image-overlay-appeal">
+                        {{ $new_girl->appeal_point }}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
           @endforeach
         </div>
@@ -105,12 +132,29 @@
           </h2>
         </div>
         <div class="news-header-button">
-          <a href="" class="news-header-button-link content-font">
+          <a href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}" class="news-header-button-link content-font">
             一覧を見る
           </a>
         </div>
       </div>
       <div class="news-body">
+        <div class="news-body-items">
+          @foreach ($news as $new)
+            <div class="news-body-item">
+              <a href="{{ route('public.shop.newsdetail', ['shop' => $shop->slug, 'id' => $new->id]) }}">
+                <div class="news-body-item-image">
+                  <img src="{{ asset('storage/' . $new->thumbnail) }}" alt="{{ $new->title }}">
+                </div>
+                <div class="news-body-item-published">
+                  {{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y.m.d') : '' }}
+                </div>
+                <div class="news-body-item-contents">
+                  {!! $new->contents !!}
+                </div>
+              </a>
+            </div>
+          @endforeach 
+        </div>
       </div>
     </div>
     <div class="diary-top">

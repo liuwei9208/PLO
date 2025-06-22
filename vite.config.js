@@ -28,6 +28,11 @@ export default defineConfig({
                 'resources/scss/group/pagination.scss',
                 'resources/scss/shop/diarydetail.scss',
                 'resources/scss/shop/diarylist.scss',
+                'resources/scss/shop/newslist.scss',
+                'resources/scss/shop/newsdetail.scss',
+                'resources/scss/group/newstop.scss',
+                'resources/scss/group/newslist.scss',
+                'resources/scss/group/newsdetail.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
@@ -54,4 +59,9 @@ export default defineConfig({
             ],
           }),
     ],
+    // resolve:{
+    //     alias:{
+    //         '@ckeditor':path.resolve(__dirname,'node_modules/@ckeditor'),
+    //     },
+    // },
 });

@@ -50,13 +50,18 @@ class GroupController extends Controller
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
 
-        $news = News::where('published_status', 1)
-            ->orWhere(function($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', Carbon::now());
-            })
-            ->orderBy('published_at', 'desc')
-            ->get();
+        $news = News::leftJoin('shops', 'news.shop_id', '=', 'shops.id')
+        ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+        ->where('published_status', 1)
+        ->orWhere(function($query) {
+            $query->where('published_status', 2)
+                  ->where('published_at', '<=', Carbon::now());
+        })
+        ->inRandomOrder()
+        ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 7 : 9)
+        ->orderBy('published_at', 'desc')
+        ->get();
+
         $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
             ->where('diaries.is_public', 1)
@@ -75,6 +80,7 @@ class GroupController extends Controller
             ])
             ->limit(9)
             ->get();
+        $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
         // dd($diaries);        
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
@@ -84,6 +90,8 @@ class GroupController extends Controller
             'banners' => $banners,
             'news' => $news,
             'diaries' => $diaries,
+            'shops' => $shops,
+            'news' => $news,
         ]);
     }
 
@@ -516,5 +524,46 @@ class GroupController extends Controller
         } else {
             return view('public.home');
         }
+    }
+    public function showNewsList(Request $request, string $shop): View
+    {
+        if($shop == 'all'){
+            $news = News::leftJoin('shops', 'news.shop_id', '=', 'shops.id')
+            ->whereNot('shops.slug', 'touchvip')
+            ->where('published_status', 1)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->select('news.*', 'shops.slug as shop_slug', 'shops.id as shop_id')
+            ->orderBy('published_at', 'desc')
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->withPath('newslist');
+        }else{
+            $news = News::leftJoin('shops', 'news.shop_id', '=', 'shops.id')
+            ->where('shops.slug', $shop)
+            ->where('published_status', 1)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->select('news.*', 'shops.slug as shop_slug', 'shops.id as shop_id')
+            ->orderBy('published_at', 'desc')
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->withPath('newslist');
+        }
+        // dd($news);
+        return view('public.group.newslist', [
+            'news' => $news,
+        ]);
+    }
+    public function showNewsDetail(Request $request, string $shop, string $id): View
+    {
+        $news = News::find($id);
+        return view('public.group.newsdetail', [
+            'news' => $news,
+        ]);
     }
 }

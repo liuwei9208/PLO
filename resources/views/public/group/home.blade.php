@@ -2,42 +2,167 @@
 
   <!-- Main Visual -->
   <x-public.group.mv />
-  {{-- @if($news->count() > 0)
+  @if($news->count() > 0)
   <section class="plo_news content-wrapper">
-    <div class="section-title">
-      <img src="{{ asset('assets/img/plo_news.png') }}" alt="PLO News">
-      <h2 class="section-title-ja">新着情報</h2>
+    <div class="plo_news-title">
+      <div class="plo_news-title-en title-font">
+        PLO NEWS
+      </div>
+      <h2 class="plo_news-title-ja title-font-sm">新着情報</h2>
     </div>
-    <div class="plo_news-list">
-      @foreach($news as $news)
-        <div class="plo_news-item">
-          <div class="plo_news-item-title">
-            {{ $news->title }}
+    <ul class="plo_news-shops">
+      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.group.newslist',['shop' => 'all']) }}">
+        ALL
+      </a>
+      @foreach($shops as $shop)
+        @if($shop->slug == 'headquarter')
+          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">headquarters</span><span class="shop-name">{{ $shop->name }}</span></span></a>
+        @else
+          <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">{{$shop->slug}}</span><span class="shop-name">{{ $shop->name }}</span></span></a>
+        @endif
+      @endforeach
+      {{-- <a class="plo_news-shop --headquarter" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}">本部</a>
+      <a class="plo_news-shop --pussycat" href="{{ route('public.shop.newslist', ['shop' => 'pussycat']) }}">プッシー<br class="sm">キャット</a>
+      <a class="plo_news-shop --shizuku" href="{{ route('public.shop.newslist', ['shop' => 'shizuku']) }}">雫</a>
+      <a class="plo_news-shop --miyabi" href="{{ route('public.shop.newslist', ['shop' => 'miyabi']) }}">雅</a>
+      <a class="plo_news-shop --en" href="{{ route('public.shop.newslist', ['shop' => 'en']) }}">艶</a>
+      <a class="plo_news-shop --shiroganeze" href="{{ route('public.shop.newslist', ['shop' => 'shiroganeze']) }}">シロガネーゼ</a>
+      <a class="plo_news-shop --lovestory" href="{{ route('public.shop.newslist', ['shop' => 'lovestory']) }}">ラブストーリー</a> --}}
+    </ul>
+    <div class="plo_news-list pc-only">
+      @foreach($news as $news_item)
+        <div class="plo_news-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
+          <div class="plo_news-list-item-image">
+            <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
           </div>
-          <div class="plo_news-item-content">
-            {{ $news->contents }}
+          <div class="plo_news-list-item-date">
+            {{ $news_item->published_at? \Carbon\Carbon::createFromTimeString($news_item->published_at)->format('y.m.d') : '' }}
           </div>
+          <div class="plo_news-list-item-title --{{ $news_item->slug }} content-font">
+            {{ $news_item->title }}
+          </div>
+          <div class="plo_news-list-item-content content-font">
+            {!! $news_item->contents !!}
+          </div>
+          </a>
         </div>
       @endforeach
     </div>
+    <div class="plo_news-items sp-only">
+      <div class="plo_news-items-top">
+        @if($news_item->slug == 'headquarter')
+        <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+        @else
+        <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+        @endif
+        <div class="plo_news-items-top-image">
+          <img src="{{ asset('storage/' . $news[0]->thumbnail) }}" alt="{{ $news[0]->title }}">
+        </div>
+        <div class="plo_news-items-top-title">
+          <div class="plo_news-items-top-title-date">
+            {{ $news[0]->published_at? \Carbon\Carbon::createFromTimeString($news[0]->published_at)->format('y.m.d') : '' }}
+          </div>
+          <div class="plo_news-items-top-title-text --{{ $news[0]->slug }}">
+            {{ $news[0]->title }}
+          </div>
+        </div>
+        <div class="plo_news-items-top-content">
+          {!! $news[0]->contents !!}
+        </div>
+        </a>
+      </div>
+      <div class="plo_news-items-list">
+      @foreach($news->skip(1) as $news_item)
+        <div class="plo_news-items-list-item">
+          @if($news_item->slug == 'headquarter')
+          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          @else
+          <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
+          @endif
+          <div class="plo_news-items-list-item-image">
+            <img src="{{ asset('storage/' . $news_item->thumbnail) }}" alt="{{ $news_item->title }}">
+          </div>
+          <div class="plo_news-items-list-item-date">
+            {{ $news_item->published_at? \Carbon\Carbon::createFromTimeString($news_item->published_at)->format('y.m.d') : '' }}
+          </div>
+          <div class="plo_news-items-list-item-title --{{ $news_item->slug }}">
+            {{ $news_item->title }}
+          </div>
+          <div class="plo_news-items-list-item-content">
+            {!! $news_item->contents !!}
+          </div>
+          </a>
+        </div>
+      @endforeach
+      </div>
+    </div>
+    <div class="plo_news-more ">
+      <a href="{{ route('public.group.newslist', ['shop' => 'all']) }}" class="plo_news-more-button">もっと見る</a>
+    </div>
   </section>
-  @endif --}}
+  @endif
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
-      <span class="section-title-en">
-        <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl">
+      <span class="pickup-title title-font">
+        PICKUP GIRL
+        {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
-      <h2 class="section-title-ja">ピックアップ</h2>
+      <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
     </div>
-    <ul class="pickup-shops">
-      <li class="pickup-shop" data-shop="all">ALL</li>
-      <li class="pickup-shop" data-shop="pussycat">プッシー<br class="sm">キャット</li>
-      <li class="pickup-shop" data-shop="shizuku">雫</li>
-      <li class="pickup-shop" data-shop="miyabi">雅</li>
-      <li class="pickup-shop" data-shop="en">艶</li>
-      <li class="pickup-shop" data-shop="shiroganeze">シロガネーゼ</li>
-      <li class="pickup-shop" data-shop="lovestory">ラブストーリー</li>
+    <ul class="pickup-shops content-wrapper">
+      <li class="pickup-shop" data-shop="all">
+        <span class="shop-text">
+          <span class="shop-name">ALL</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="pussycat">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">pussycat</span>
+          <span class="shop-name">プッシー<br class="sm">キャット</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shizuku">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shizuku</span>
+          <span class="shop-name">雫</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="miyabi">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">miyabi</span>
+          <span class.shop-name>雅</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="en">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">en</span>
+          <span class="shop-name">艶</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shiroganeze">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shiroganeze</span>
+          <span class="shop-name">シロガネーゼ</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="lovestory">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">lovestory</span>
+          <span class="shop-name">ラブストーリー</span>
+        </span>
+      </li>
     </ul>
     <div class="pickup-list">
       @foreach ($pickups as $pickup)
@@ -230,7 +355,7 @@
 </x-public-group-layout>
 
 @once
-  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss'])
+  @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss','resources/scss/group/newstop.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {

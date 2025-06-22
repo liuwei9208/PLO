@@ -5,7 +5,7 @@
 
   <!-- 女の子検索 -->
   <section class="girl-search">
-    <h2 class="girl-search__title">女の子検索</h2>
+    <h2 class="girl-search__title title-font">女の子検索</h2>
     <form action="{{ url('/search') }}" method="POST" class="girl-search__form">
       @csrf
       <div class="girl-search__row girl-search__row--name">
