@@ -8,17 +8,23 @@
         <span>管理画面</span>
       </a>
     @elseif (Auth::guard('member')->check())
-      <a href="{{ route('logout') }}">
-        <span>ログアウト</span>
+      <a href="{{ route('public.group.mypage') }}">
+        <span>マイページ</span>
       </a>
     @else
     <a href="{{ route('login') }}">
       <span>LOGIN</span>
     </a>
     @endif
-    <a href="">
+    @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+    <a href="{{ route('logoutAll') }}">
+      <span>ログアウト</span>
+    </a>
+    @else
+    <a href="{{ route('login') }}">
       <span>SIGN UP</span>
     </a>
+    @endif
   </div>
   <button class="drawer-toggle" id="drawer-toggle">
     <i class="drawer-toggle-bar"></i>
