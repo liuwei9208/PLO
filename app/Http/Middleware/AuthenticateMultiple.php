@@ -28,7 +28,7 @@ class AuthenticateMultiple
                 // return redirect('/mypage');
                 return $next($request);
             } else if (session('user_type') === 'admin') {
-                dd('admin');
+                // dd('admin');
                 return redirect('/admin');
             }else{
               return redirect('/login');
