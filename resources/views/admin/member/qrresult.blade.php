@@ -86,15 +86,21 @@
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">取得ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="500" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="500" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">キャスト名</th>
-                  <td class="p-1 border-b border-gray-400"><select class="p-1 border border-gray-400 w-full bg-white"><option></option></select></td>
+                  <td class="p-1 border-b border-gray-400">
+                    <select class="p-1 border border-gray-400 w-full bg-white">
+                      @foreach( $casts as $cast )
+                      <option value="{{ $cast->id }}">{{ $cast->name }}</option>
+                      @endforeach
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
