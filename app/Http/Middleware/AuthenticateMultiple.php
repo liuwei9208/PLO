@@ -23,16 +23,10 @@ class AuthenticateMultiple
             if ($request->expectsJson()) {
                 return response()->json(['message' => 'Unauthenticated.'], 401);
             }
-            // dd(session('user_type'));
-            if (session('user_type') === 'member') {
-                // return redirect('/mypage');
-                return $next($request);
-            } else if (session('user_type') === 'admin') {
-                // dd('admin');
-                return $next($request);
-            }else{
-              return redirect('/login');
-            }
+                // dd(session('user_type'));
+            return $next($request);
+        }else{
+            return redirect('/login');
         }
 
         return $next($request);
