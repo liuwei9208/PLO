@@ -43,6 +43,12 @@
         <a href="{{ route('public.group.mypage') }}" class="drawer-nav-ja">マイページ</a>
       </li>
       @endif
+      @if(Auth::guard('web')->check() || Auth::guard('member')->check())
+      <li class="drawer-nav-item">
+        <span class="drawer-nav-en">LOGOUT</span>
+        <a href="{{ route('logoutAll') }}" class="drawer-nav-ja">ログアウト</a>
+      </li>
+      @endif
     </ul>
   </nav>
   <div class="drawer-img md lg">
