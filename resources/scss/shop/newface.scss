@@ -218,7 +218,8 @@
        width: 100%;
        overflow: hidden;
        @media #{media-query(sm)} {
-         height: 430px;
+         height: 230px;
+        // height: 70%;
          border-radius: 30px;
          margin: 16px 0 0;
        }

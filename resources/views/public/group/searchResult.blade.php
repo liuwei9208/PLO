@@ -6,7 +6,11 @@
   <section class="schedule">
     <div class="schedule-title">
       {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
-      <h2 class="schedule-title-ja">出勤情報</h2>
+      @if ( $status == 'working')
+      <h2 class="schedule-title-ja title-font">出勤情報</h2>
+      @else
+      <h2 class="schedule-title-ja title-font">在籍情報</h2>
+      @endif
     </div>
     <form name="searchResultForm" action="{{ route('public.group.searchResult.post') }}" method="post">
       @csrf
@@ -22,7 +26,7 @@
       <input type="hidden" name="selectedShopID" value="{{ $selectedShopID }}">
       <input type="hidden" name="selectedDate" value="{{ $selectedDate }}">
       
-
+    @if ( $status == 'working')
     <div class="schedule-week content-wrapper">
       <div class="schedule-week-day">
         <button type="submit" name="date" class="schedule-week-day-date {{ $days[0]['date'] == $selectedDate ? 'active' : '' }}" value="{{ $days[0]['date'] }} " id = "weekDay" data-weekday="{{ $days[0]['weekDay'] }}">{{ $days[0]['weekDay'] }}</button>
@@ -33,6 +37,7 @@
         </div>
       @endfor
     </div>
+    @endif
     <div class="schedule-shop-list content-wrapper">
       <div class="schedule-shop-list-title">
         {{-- {{ $days[0]['weekDay'] ."出勤女性"}} --}}
