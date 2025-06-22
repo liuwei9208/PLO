@@ -181,7 +181,7 @@
         </a>
       @endforeach
     </div>
-    <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button">もっと見る</a>
+    <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
   </section>
 
   <!-- 新着情報 - PLO News -->
@@ -264,7 +264,7 @@
       @endforeach
     </div>
     @if($newfaces_this_month->count() > 0)
-    <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button">もっと見る</a>
+    <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button more-button-title">もっと見る</a>
     @endif
   </section>
   <!-- 最新写メ日記 - Photo Diary -->
@@ -308,7 +308,7 @@
         <img src="{{ asset('assets/img/group/diary-bottom-pc.png') }}" alt="" class="pc-only">
         <img src="{{ asset('assets/img/group/diary-bottom-sp.png') }}" alt="" class="sp-only">
         <div class="diary-content-bottom-more">
-          <a href="#" class="diary-content-bottom-more-button" id="diary_more_button">もっと見る</a>
+          <a href="#" class="diary-content-bottom-more-button more-button-title" id="diary_more_button">もっと見る</a>
         </div>
       </div>
     </div>
