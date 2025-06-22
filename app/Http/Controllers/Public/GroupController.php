@@ -493,7 +493,7 @@ class GroupController extends Controller
             'selectedDate' => $date,
         ]);
     }
-    public function showMypage(Request $request): View
+    public function showMypage(Request $request)
     {
         $member = Auth::guard('member')->user();
         $pay = 0;
@@ -522,7 +522,7 @@ class GroupController extends Controller
                 'pay' => $pay,
             ]);
         } else {
-            return view('public.group.home');
+            return redirect('/');
         }
     }
     public function showNewsList(Request $request, string $shop): View
