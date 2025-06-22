@@ -115,7 +115,25 @@
     .pc-only {
       display: block;
       @media #{media-query(sm)} {
-        display: none;
+        display: none !important;
+      }
+    }
+
+    .mv-member-pc {
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      align-items: center;
+      
+      .mv-member-pc-login,
+      .mv-member-pc-post {
+        flex: 1;
+        // max-width: 300px;
+        
+        img {
+          width: 100%;
+          height: auto;
+        }
       }
     }
 
