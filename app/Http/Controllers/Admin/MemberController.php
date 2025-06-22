@@ -174,7 +174,7 @@ class MemberController extends Controller{
       //   'member' => $member,
       // ]);
     }
-    if ( !$member || count($member) == 0 ) {
+    if ( !$member ) {
       return redirect()->route('admin.member.qrcode')->with('error', '会員が見つかりません');
     }
     $histories = null;
