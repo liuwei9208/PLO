@@ -82,6 +82,15 @@ a {
     font-size: 28px;
   }
 }
+.more-button-title {
+  font-size: 26px;
+  font-family: $font-gothic-min;
+  font-weight: 900;
+  font-style: normal;
+  @media #{media-query(sm)} {
+    font-size: 22px;
+  }
+}
 .content-font {
   font-family: $content-font-family;
   font-size: $content-font-size;
