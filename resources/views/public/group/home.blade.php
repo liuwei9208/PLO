@@ -188,7 +188,7 @@
   @if($events->count() > 0)
   <div class="mock mock-1">
     <div class="section-title">
-      <h2 class="section-title-news">Event</h2>
+      <h2 class="section-title-news title-font">Event</h2>
     </div>
     <div class="event-main">
       <div class="event-main-content">
@@ -232,10 +232,11 @@
   <section class="newface">
     @if($newfaces_this_month->count() > 0)
     <div class="section-title">
-      <span class="section-title-en">
-        <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
+      <span class="section-title-en title-font">
+        {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
+        NEW FACE
       </span>
-      <h2 class="section-title-ja">新人情報</h2>
+      <h2 class="newface-title-sm title-font-sm">新人情報</h2>
     </div>
     @endif
     @if($newfaces_this_week->count() > 0)
@@ -275,8 +276,8 @@
   </div> --}}
   <div class="diary">
     <div class="section-title">
-      <h2 class="section-title-lg">PHOTO DIARY</h2>
-      <h3 class="section-title-sm">最新写メ日記</h3>
+      <h2 class="section-title-lg title-font">PHOTO DIARY</h2>
+      <h3 class="section-title-sm title-font-sm">最新写メ日記</h3>
     </div>
     <div class="diary-content content-wrapper">
       <div class="diary-content-top">
@@ -333,8 +334,11 @@
   @if ($banners->count() > 0)
   <div class="banner content-wrapper">
     <div class="banner-title">
-      <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
-      <h2 class="banner-title-ja">相互リンク</h2>
+      <span class="banner-title-en title-font">
+        LINK
+      </span>
+      {{-- <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク"> --}}
+      <h2 class="banner-title-ja title-font-sm">相互リンク</h2>
     </div>
     <div class="banner-list">
     @foreach ($banners as $banner)
