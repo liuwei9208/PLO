@@ -522,7 +522,7 @@ class GroupController extends Controller
                 'pay' => $pay,
             ]);
         } else {
-            return view('public.home');
+            return view('public.group.home');
         }
     }
     public function showNewsList(Request $request, string $shop): View
