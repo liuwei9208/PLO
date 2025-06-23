@@ -9,7 +9,10 @@ Require valid-user
     </IfModule>
 
     RewriteEngine On
-
+    <If "%{REQUEST_URI} =~ m|^/api/|">
+        Satisfy any
+        Allow from all
+    </If>
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
