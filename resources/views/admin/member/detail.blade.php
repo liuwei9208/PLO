@@ -468,11 +468,11 @@
                     </div>
                     <div>
                       <label for="point" class="block text-sm font-medium text-gray-700">ポイント</label>
-                      <input type="number" name="point" id="point" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <input type="number" name="point" id="point"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     <div>
                       <label for="point_use" class="block text-sm font-medium text-gray-700">利用ポイント</label>
-                      <input type="number" name="point_use" id="point_use" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <input type="number" name="point_use" id="point_use"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                   </div>
                   <div class="mt-5 flex justify-end gap-3">
