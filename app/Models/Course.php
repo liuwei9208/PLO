@@ -11,7 +11,7 @@ class Course extends Model
     //
     //
     use SoftDeletes;
-    use SortableTrait;
+    // use SortableTrait;
 
     protected $connection = 'member_mysql';
     protected $table = 'courses';

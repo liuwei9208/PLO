@@ -17,7 +17,7 @@
               <tbody>
                 <tr>
                   <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員番号</th>
-                  <td class="p-1 border-b border-r border-gray-400">{{ $member->id }}</td>
+                  <td class="p-1 border-b border-r border-gray-400" id="member_id">{{ $member->id }}</td>
                   <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">ニックネーム</th>
                   <td class="p-1 border-b border-r border-gray-400">{{ $member->name }}</td>
                 </tr>
@@ -82,20 +82,21 @@
               <tbody>
                 <tr>
                   <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">利用ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full" name="point_use" id="point_use"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">取得ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="text" name="point" id="point" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input name="price" id="price" type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">キャスト名</th>
                   <td class="p-1 border-b border-gray-400">
-                    <select class="p-1 border border-gray-400 w-full bg-white">
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="cast" id="cast">
+                      <option value=""></option>
                       @foreach( $casts as $cast )
                       <option value="{{ $cast->id }}">{{ $cast->name }}</option>
                       @endforeach
@@ -104,27 +105,83 @@
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full"></td>
+                  <td class="p-1 border-b border-gray-400">
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="course" id="course">
+                      <option value=""></option>
+                      @foreach( $courses as $course )
+                      <option value="{{ $course->name }}">{{ $course->name }}</option>
+                      @endforeach
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">延長</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full" name="extension_name" id="extension_name"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left" style="width: 100px;">メモ</th>
                 </tr>
                 <tr>
-                  <td class="p-1" colspan="2"><textarea class="p-1 border border-gray-400 w-full" style="width: 100%; height: 100px;"></textarea></td>
+                  <td class="p-1" colspan="2"><textarea class="p-1 border border-gray-400 w-full" style="width: 100%; height: 100px;" name="memo" id="memo"></textarea></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
         <div class="mt-4 flex justify-end gap-4">
-          <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;">保存</button>
+          <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;" onclick="saveInfo(event)">保存</button>
           <a href="{{ route('admin.member.qrcode') }}" class="px-6 py-2 bg-gray-300 rounded hover:bg-gray-400 text-center" style="border-radius: 0.375rem; width: 100px; display: inline-block; text-decoration: none; color: inherit;">戻る</a>
         </div>
       </div>
     </div>
   </div>
 </x-admin-layout>
+<script>
+  const token = '{{ $token }}';
+  const member_id = '{{ $member->id }}';
+  async function saveInfo(event){
+    event.preventDefault();
+    const point_use = document.getElementById('point_use').value;
+    const point = document.getElementById('point').value;
+    const price = document.getElementById('price').value;
+    const cast = document.getElementById('cast').value;
+    const course = document.getElementById('course').value;
+    const extension_name = document.getElementById('extension_name').value;
+    const memo = document.getElementById('memo').value;
+    // const member_id = document.getElementById('member_id').value;
+
+    const formData = {
+      point_use: point_use,
+      point: point,
+      price: price,
+      cast: cast,
+      course: course,
+      extension_name: extension_name,
+      memo: memo,
+      member_id: member_id
+    };
+
+    try{
+      const response = await fetch(`/api/member/qrupdate`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(formData)
+      });
+      if (response.ok){
+        window.location.reload();
+      }else{
+        console.error('更新に失敗しました');
+        alert('更新に失敗しました');
+      }
+    }catch(error){
+      console.error('エラーが発生しました:', error);
+      alert('エラーが発生しました');
+    }
+  }
+</script>
