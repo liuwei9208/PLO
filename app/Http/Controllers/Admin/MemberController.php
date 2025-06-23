@@ -13,6 +13,8 @@ use Carbon\Carbon;
 use App\Models\Cast;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Course;
+use App\Models\Extension;
 class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
@@ -217,11 +219,18 @@ class MemberController extends Controller{
     $casts = Cast::where('shop_id',$shop_user[0]->shop_id)->where('is_public', 1)
     ->orderBy('name', 'asc')
     ->get();
-    
+    $courses = Course::groupBy('name')->get();
+    // $extension = Extension::groupBy('name')->get();
+    $user = Auth::user();
+    $token = $user->createToken('api-token')->plainTextToken;
+
     return view('admin.member.qrresult', [
       'member' => $member,
       'histories' => $histories,
       'casts' => $casts,
+      'courses' => $courses,
+      // 'extension' => $extension,
+      'token' => $token,
     ]);
   }
   /*

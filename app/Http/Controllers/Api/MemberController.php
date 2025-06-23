@@ -23,16 +23,19 @@ class MemberController extends Controller
     {
       // dd($request->all());
       Log::info($request->all());
+      $price = is_numeric($request->input('price')) ? $request->input('price') : 0;
+      $point = is_numeric($request->input('point')) ? $request->input('point') : 0;
+      $point_use = is_numeric($request->input('point_use')) ? $request->input('point_use') : 0;
       $history = History::find($request->input('id'));
       $history->course_name = $request->input('course_name') ?? '';
-      $history->price = $request->input('price') ?? 0;
+      $history->price = $price;
       $point = Point::where('history_id', $request->input('id'))->where('type', 3)->first();
       Point::insert([
           'user_id' => $history->user_id,
           'history_id' => $request->input('id'),
           'office_id' => $history->office_id,
           'type' => 3,
-          'point' => $request->input('point') ?? 0,
+          'point' => $point,
           'created_at' => now(),
           'updated_at' => now(),
         ]);
@@ -41,7 +44,7 @@ class MemberController extends Controller
         'history_id' => $request->input('id'),
         'office_id' => $history->office_id,
         'type' => 5,
-        'point' => $request->input('point_use') ?? 0,
+        'point' => $point_use,
         'created_at' => now(),
         'updated_at' => now(),
       ]);
@@ -60,5 +63,56 @@ class MemberController extends Controller
         'message' => '更新しました'
       ]);
 
+    }
+
+    public function qrupdate(Request $request): JsonResponse
+    {
+      // dd($request->input('extension_name'));
+      // $history = History::where('user_id', $request->input('member_id'))->max('created_at');
+      // if (!$history) {
+        $history = new History();
+        $history->user_id = $request->input('member_id');
+        $history->name = '来店';
+        $history->office_id = 0;
+        $history->shop_id = 0;
+        $history->cast_id = $request->input('cast') ?? 0;
+        $history->course_name = $request->input('course') ?? '';
+        $history->price = is_numeric($request->input('price')) ? $request->input('price') : 0;
+        $history->extension_name = $request->input('extension_name') ?? '';
+        $history->memo = $request->input('memo') ?? '';
+        // $history->created_at = $history;
+        $history->save();
+        // dd($history);
+      // }else{
+      //   $history = History::where('user_id', $request->input('member_id'))->where('created_at', $history)->first();
+      //   $history->course_name = $request->input('course') ?? '';
+      //   $history->price = $request->input('price') ?? 0;
+      //   $history->cast_id = $request->input('cast') ?? 0;
+      //   $history->extension_name = $request->input('extension_name') ?? '';
+      //   $history->memo = $request->input('memo') ?? '';
+      //   $history->save();
+  
+      // }
+      Point::insert([
+        'user_id' => $history->user_id,
+        'history_id' => $history->id,
+        'office_id' => $history->office_id,
+        'type' => 3,
+        'point' => is_numeric($request->input('point')) ? $request->input('point') : 0,
+        'created_at' => now(),
+        'updated_at' => now(),
+      ]);
+      Point::insert([
+        'user_id' => $history->user_id,
+        'history_id' => $history->id,
+        'office_id' => $history->office_id,
+        'type' => 5,
+        'point' => is_numeric($request->input('point_use')) ? $request->input('point_use') : 0,
+        'created_at' => now(),
+        'updated_at' => now(),
+      ]);
+      return response()->json([
+        'message' => '更新しました'
+      ]);
     }
 }

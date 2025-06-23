@@ -23,5 +23,6 @@ Route::middleware('auth:sanctum')->prefix('schedule')->group(function () {
 
 Route::middleware('auth:sanctum')->prefix('member')->group(function () {
     Route::post('/update', [MemberController::class, 'update']);
+    Route::post('/qrupdate', [MemberController::class, 'qrupdate']);
 });
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
