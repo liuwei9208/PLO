@@ -145,7 +145,7 @@ class MemberController extends Controller{
   }
 
   public function update(Request $request, int $id): RedirectResponse{
-    dd($request->all());
+    //dd($request->all());
     $history = History::find($id);
     $history->update($request->input('course'), $request->input('price'));
     $point = Point::where('history_id', $id)->where('type', 3)->sum('point');
