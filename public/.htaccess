@@ -1,7 +1,9 @@
+
 AuthType Basic
 AuthName "Restricted Area"
 AuthUserFile "E:/xampp-8.2.12/htdocs/issues-14/PLO/.htpasswd"
 Require valid-user
+
 
 <IfModule mod_rewrite.c>
     <IfModule mod_negotiation.c>
@@ -9,10 +11,6 @@ Require valid-user
     </IfModule>
 
     RewriteEngine On
-    <If "%{REQUEST_URI} =~ m|^/api/|">
-        Satisfy any
-        Allow from all
-    </If>
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

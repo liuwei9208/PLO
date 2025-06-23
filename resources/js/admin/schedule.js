@@ -1196,8 +1196,9 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': 'Bearer ' + window.apiToken
-            }
+                // 'Authorization': 'Bearer ' + window.apiToken
+            },
+            credentials: 'include'
         });
 
         console.log('サーバーレスポンス:', response.data);
@@ -1501,8 +1502,9 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': 'Bearer ' + window.apiToken
-            }
+                // 'Authorization': 'Bearer ' + window.apiToken
+            },
+            credentials: 'include'
         });
 
         console.log('サーバーレスポンス:', response.data);
@@ -1546,8 +1548,9 @@ async function updateReservationTime(cast_id, attendance_id, startTime_working, 
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': 'Bearer ' + window.apiToken
-            }
+                //   'Bearer ' + window.apiToken
+            },
+            credentials: 'include'
         });
 
         if (response.data.status === 'success') {
@@ -1585,8 +1588,9 @@ async function deleteReservationTime(reservation_id) {
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': 'Bearer ' + window.apiToken
-            }
+                // 'Authorization': 'Bearer ' + window.apiToken
+            },
+            credentials: 'include'
         });
 
         if (response.data.status === 'success') {
