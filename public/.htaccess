@@ -1,7 +1,8 @@
+SetEnvIf Request_URI '/api' valid-url
 
 AuthType Basic
 AuthName "Restricted Area"
-AuthUserFile "E:/xampp-8.2.12/htdocs/issues-14/PLO/.htpasswd"
+AuthUserFile "E:/xampp-8.2.4/htdocs/issue14/PLO/.htpasswd"
 Require valid-user
 
 
