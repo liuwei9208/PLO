@@ -103,7 +103,7 @@
   <section class="pickup">
     <div class="section-title">
       <span class="pickup-title title-font">
-        PICKUP GIRL
+        <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
         {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
       <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
@@ -355,7 +355,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/_newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/_banner.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -425,6 +425,31 @@ document.addEventListener('DOMContentLoaded', function() {
         isOpen = false;
       }
     });
+  }
+
+  // Pickup title color animation
+  const pickupTitle = document.querySelector('.pickup-title');
+  if (pickupTitle) {
+    const characters = pickupTitle.querySelectorAll('span');
+    const colors = ['#DC53D7', '#4068fb', '#FF8C71', '#FFC557', '#009162', '#FF5AA2'];
+    let colorIndex = 0;
+
+    function changeColors() {
+      characters.forEach((char, index) => {
+        const delay = index * 100; // 100ms delay between each character
+        setTimeout(() => {
+          char.style.color = colors[colorIndex];
+        }, delay);
+      });
+
+      colorIndex = (colorIndex + 1) % colors.length;
+    }
+
+    // Change colors every 2 seconds
+    setInterval(changeColors, 2000);
+
+    // Initial color change
+    changeColors();
   }
 });
 </script>
