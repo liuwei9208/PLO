@@ -22,12 +22,10 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\VisitController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
-    Route::middleware('web')->group(function () {
-         Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+    Route::get('login', [AuthenticatedSessionController::class, 'create'])
+            ->name('login');
 
-        Route::post('login', [AuthenticatedSessionController::class, 'store']);
-    });
+    Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });
 
 Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')->group(function () {

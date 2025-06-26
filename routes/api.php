@@ -15,7 +15,7 @@ Route::post('/casts-schedule', [ScheduleController::class, 'getCastsSchedule']);
 Route::post('/casts-schedule-shop', [ScheduleController::class, 'getCastsScheduleShop']);
 Route::post('/diary-detail', [ScheduleController::class, 'getDiaryDetail']);
 // スケジュール関連のAPIルート
-Route::middleware(['auth:sanctum', 'web'])->prefix('schedule')->group(function () {
+Route::middleware(['auth:sanctum'])->prefix('schedule')->group(function () {
     // Route::prefix('schedule')->group(function () {
     Route::post('/', [ScheduleController::class, 'showCastsSchedule']);
     Route::post('/updateattendance', [ScheduleController::class, 'updateAttendanceTime']);
@@ -23,8 +23,8 @@ Route::middleware(['auth:sanctum', 'web'])->prefix('schedule')->group(function (
     Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
 });
 
-// Route::middleware('auth:sanctum')->prefix('member')->group(function () {
-Route::prefix('member')->group(function () {
+Route::middleware('auth:sanctum')->prefix('member')->group(function () {
+// Route::prefix('member')->group(function () {
     Route::post('/update', [MemberController::class, 'update']);
     Route::post('/qrupdate', [MemberController::class, 'qrupdate']);
 });
