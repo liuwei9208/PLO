@@ -287,7 +287,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '予定配信' : ($event->published_status === 3 ? '下書中': '')) }}
+                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '予定配信' : ($event->published_status === 3 ? '非公開': ($event->published_status === 4 ? '配信済み': ''))) }}
                     </p>
                   </div>
                 </td>

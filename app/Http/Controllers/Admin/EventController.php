@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\Shop;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -17,15 +19,22 @@ class EventController extends Controller
      */
     public function index(Request $request): View
     {
-      $query = Event::query();
-      if ( $request->has('shop') && $request->query('shop') !== null) {
-        $shop = $request->query('shop');
-        $query -> whereHas('shop', function ($query) use ($shop) {
-            $query->where('slug', $shop);
-        });
+        $this->setPostEnd();
+        $user = Auth::guard('web')->user();
+        $query = Event::query();
+        if ( $user->hasRole('admin') ) {
+            if ( $request->has('shop') && $request->query('shop') !== null) {
+                $shop = $request->query('shop');
+                $query -> whereHas('shop', function ($query) use ($shop) {
+                    $query->where('slug', $shop);
+                });
 
-      }
-
+            }
+        }else if ( $user->hasRole('shop') ) {
+            $shop = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->get();
+            $shop_id = $shop->pluck('shop_id');
+            $query->whereIn('shop_id', $shop_id);
+        }
       // if ($request->has('public') && $request->query('public') !== null) {
       //   $query->where('is_public', $request->query('public') ? true : false);
       // }
@@ -53,7 +62,13 @@ class EventController extends Controller
           'pages' => $pages,
       ]);
     }
+    public function setPostEnd()
+    {
+        $event = Event::whereIn('published_status', [1, 2])
+        ->where('published_at', '<', now())
+        ->update(['published_status' => 4]);
 
+    }
     /**
      * Display the specified event.
      */
@@ -61,9 +76,17 @@ class EventController extends Controller
     {
       // $event = Event::findOrFail($id);
       // dd($event);
+        $user = Auth::guard('web')->user();
+        $shop_id = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->get();
+        if ( count($shop_id) > 0 ) {
+            $shop = Shop::where('id','=' ,$shop_id[0]->shop_id)->orderBy('rank', 'asc')->first();
+        }else{
+            $shop = null;
+        }
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
+            'shop' => $shop,
         ]);
     }
 
@@ -103,8 +126,17 @@ class EventController extends Controller
      */
     public function create(Request $request): View
     {
+        $user = Auth::guard('web')->user();
+        $shop_id = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->get();
+        if ( count($shop_id) > 0 ) {
+            $shop = Shop::where('id','=' ,$shop_id[0]->shop_id)->orderBy('rank', 'asc')->first();
+        }else{
+            $shop = null;
+        }
+        // dd($shop->name);
         return view('admin.event.create', [
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
+            'shop' => $shop,
         ]);
     }
     /**
