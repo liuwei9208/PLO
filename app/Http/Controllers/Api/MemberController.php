@@ -24,30 +24,61 @@ class MemberController extends Controller
       // dd($request->all());
       Log::info($request->all());
       $price = is_numeric($request->input('price')) ? $request->input('price') : 0;
-      $point = is_numeric($request->input('point')) ? $request->input('point') : 0;
-      $point_use = is_numeric($request->input('point_use')) ? $request->input('point_use') : 0;
+      $point_value = is_numeric($request->input('point')) ? $request->input('point') : 0;
+      $point_use_value = is_numeric($request->input('point_use')) ? $request->input('point_use') : 0;
       $history = History::find($request->input('id'));
       $history->course_name = $request->input('course_name') ?? '';
       $history->price = $price;
       $point = Point::where('history_id', $request->input('id'))->where('type', 3)->first();
-      Point::insert([
+      $point_use = Point::where('history_id', $request->input('id'))->where('type', 5)->first();
+      Log::info($point);
+      if ( $point ){
+        Point::where('id',$point->id)->update(['point' => $point_value]);
+      }else{
+        Point::insert([
           'user_id' => $history->user_id,
           'history_id' => $request->input('id'),
           'office_id' => $history->office_id,
+          'shop_id' => $history->shop_id,
           'type' => 3,
-          'point' => $point,
+          'point' => $point_value,
           'created_at' => now(),
           'updated_at' => now(),
         ]);
-      Point::insert([
-        'user_id' => $history->user_id,
-        'history_id' => $request->input('id'),
-        'office_id' => $history->office_id,
-        'type' => 5,
-        'point' => $point_use,
-        'created_at' => now(),
-        'updated_at' => now(),
-      ]);
+      }
+      Log::info($point_use);
+      if ($point_use){
+        Point::where('id',$point_use->id)->update(['point' => $point_use_value]);
+      }else{
+        Point::insert([
+          'user_id' => $history->user_id,
+          'history_id' => $request->input('id'),
+          'office_id' => $history->office_id,
+          'shop_id' => $history->shop_id,
+          'type' => 5,
+          'point' => $point_use_value,
+          'created_at' => now(),
+          'updated_at' => now(),
+        ]);
+      }
+    //   Point::insert([
+    //       'user_id' => $history->user_id,
+    //       'history_id' => $request->input('id'),
+    //       'office_id' => $history->office_id,
+    //       'type' => 3,
+    //       'point' => $point,
+    //       'created_at' => now(),
+    //       'updated_at' => now(),
+    //     ]);
+    //   Point::insert([
+    //     'user_id' => $history->user_id,
+    //     'history_id' => $request->input('id'),
+    //     'office_id' => $history->office_id,
+    //     'type' => 5,
+    //     'point' => $point_use,
+    //     'created_at' => now(),
+    //     'updated_at' => now(),
+    //   ]);
       // $point->point = $request->input('point') ?? 0;
       // $point->point_use = $request->input('point_use') ?? 0;
       // $point->save();
@@ -91,7 +122,7 @@ class MemberController extends Controller
       //   $history->extension_name = $request->input('extension_name') ?? '';
       //   $history->memo = $request->input('memo') ?? '';
       //   $history->save();
-  
+
       // }
       Point::insert([
         'user_id' => $history->user_id,

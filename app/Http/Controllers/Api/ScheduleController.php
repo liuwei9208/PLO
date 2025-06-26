@@ -35,7 +35,7 @@ class ScheduleController extends Controller
             }
 
             $user = Auth::user();
-            // Log::info($user->email);
+            Log::info($user);
             $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
@@ -52,7 +52,7 @@ class ScheduleController extends Controller
             //         });
             //     }
             // }
-            dd($user->hasRole('admin'));
+            // dd($user->hasRole('admin'));
             if ($user->hasRole('admin')) {
                 // Log::Info('admin');
                 if ($request->input('shop')) {

@@ -49,7 +49,7 @@ class MemberController extends Controller{
         ->take($limit)
         ->orderBy('created_at', 'desc')
         ->orderBy('id', 'desc')
-        ->get();    
+        ->get();
 
     return view('admin.member.index', [
         'members' => $members,
@@ -63,9 +63,7 @@ class MemberController extends Controller{
   }
 
   public function show(Request $request, int $id): View{
-    
-    
-    
+
     $member = Member::find($id);
     $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
                   ->where('type', 3)
@@ -117,7 +115,7 @@ class MemberController extends Controller{
     $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
     $skip = ($page - 1) * $limit;
     $pages = ceil($total / $limit);
-              
+
     $histories = $histories->skip($skip)
                   ->take($limit)
                   ->get();
@@ -147,11 +145,15 @@ class MemberController extends Controller{
   }
 
   public function update(Request $request, int $id): RedirectResponse{
-    //dd($request->all());
     $history = History::find($id);
     $history->update($request->input('course'), $request->input('price'));
     $point = Point::where('history_id', $id)->where('type', 3)->sum('point');
-    $point->update($request->input('point'), $request->input('point_use'));
+    $point_use = Point::where('history_id', $id)->where('type', 5)->sum('point');
+    Log::info($id);
+    Log::info($point);
+    Log::info($point_use);
+    $point->update(['point' => $request->input('point')]);
+    $point_use->update(['point' => $request->input('point_use')]);
     return redirect()->route('admin.member.detail', ['id' => $id]);
   }
 

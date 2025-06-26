@@ -1179,7 +1179,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
             pages_l,
             total_l
         });
-
+        await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/schedule', {
             castName: castName,
             shop: shop,
@@ -1198,7 +1198,8 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
                 'X-Requested-With': 'XMLHttpRequest',
                 // 'Authorization': 'Bearer ' + window.apiToken
             },
-            credentials: 'include'
+            // credentials: 'include'
+            withCredentials: true
         });
 
         console.log('サーバーレスポンス:', response.data);
@@ -1488,7 +1489,7 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
             attendance_public,
             date
         });
-
+        await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/schedule/updateattendance', {
             date: date,
             cast_id: cast_id,
@@ -1504,7 +1505,8 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
                 'X-Requested-With': 'XMLHttpRequest',
                 // 'Authorization': 'Bearer ' + window.apiToken
             },
-            credentials: 'include'
+            // credentials: 'include'
+            withCredentials: true
         });
 
         console.log('サーバーレスポンス:', response.data);
@@ -1533,6 +1535,7 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
 
 async function updateReservationTime(cast_id, attendance_id, startTime_working, endTime_working, startTime_form, endTime_form, attendance_public, date) {
     try {
+        await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/schedule/updatereservation', {
             date: date,
             cast_id: cast_id,
@@ -1550,7 +1553,8 @@ async function updateReservationTime(cast_id, attendance_id, startTime_working, 
                 'X-Requested-With': 'XMLHttpRequest',
                 // 'Authorization': 'Bearer ' + window.apiToken
             },
-            credentials: 'include'
+            // credentials: 'include'
+            withCredentials: true
         });
 
         if (response.data.status === 'success') {
@@ -1580,6 +1584,7 @@ async function updateReservationTime(cast_id, attendance_id, startTime_working, 
 }
 async function deleteReservationTime(reservation_id) {
     try {
+        await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/schedule/deletereservation', {
             reservation_id: reservation_id,
         }, {
@@ -1590,7 +1595,8 @@ async function deleteReservationTime(reservation_id) {
                 'X-Requested-With': 'XMLHttpRequest',
                 // 'Authorization': 'Bearer ' + window.apiToken
             },
-            credentials: 'include'
+            // credentials: 'include'
+            withCredentials: true
         });
 
         if (response.data.status === 'success') {
