@@ -81,7 +81,7 @@ class GroupController extends Controller
             ->limit(9)
             ->get();
         $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
-        // dd($diaries);        
+        // dd($diaries);
         return view('public.group.home', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
@@ -94,7 +94,73 @@ class GroupController extends Controller
             'news' => $news,
         ]);
     }
+    public function showFront(Request $request): View
+    {
+        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
+        $newfaces_this_week = $cast_query
+            ->where('created_at', '>=', Carbon::now()->subWeek(2))
+            ->inRandomOrder()
+            ->get();
+        // dd($newfaces_this_week);
+        $newfaces_this_month = $cast_query
+            ->where('created_at', '>=', Carbon::now()->subMonth(1))
+            // ->where('created_at', '>=', Carbon::now()->subDays(30))
+            ->inRandomOrder()
+            ->get();
+        $events = Event::where('published_status', 1)
+            ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orderBy('published_at', 'desc')
+            ->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
 
+        $news = News::leftJoin('shops', 'news.shop_id', '=', 'shops.id')
+        ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+        ->where('published_status', 1)
+        ->orWhere(function($query) {
+            $query->where('published_status', 2)
+                  ->where('published_at', '<=', Carbon::now());
+        })
+        ->inRandomOrder()
+        ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 7 : 9)
+        ->orderBy('published_at', 'desc')
+        ->get();
+
+        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
+            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->select([
+                'diaries.id',
+                'diaries.subject',
+                'diaries.updated_at',
+                'casts.name',
+                'diaries.photo',
+                'casts.id as cast_id',
+                'shops.slug as shop_slug',
+            ])
+            ->limit(9)
+            ->get();
+        $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
+        // dd($diaries);
+        return view('public.group.front', [
+            'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
+            'newfaces_this_week' => $newfaces_this_week,
+            'newfaces_this_month' => $newfaces_this_month,
+            'events' => $events,
+            'banners' => $banners,
+            'news' => $news,
+            'diaries' => $diaries,
+            'shops' => $shops,
+            'news' => $news,
+        ]);
+    }
     public function showShop(Request $request): View
     {
         return view('public.group.shop', [
@@ -179,7 +245,7 @@ class GroupController extends Controller
             'personalities' => $personalities,
             'styles' => $styles,
             'options' => $options,
-    
+
         ]);
     }
 
@@ -220,8 +286,8 @@ class GroupController extends Controller
         //         'shops.slug as shop_slug',
         //         'shops.id as shop_id'
         //         );
-                
-        //  dd($newcomers);   
+
+        //  dd($newcomers);
         $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->orWhere('slug', 'headquarter')->first()->id);
         $newcomers = $cast_query
             ->where('created_at', '>=', Carbon::now()->subMonth(1))
@@ -290,7 +356,7 @@ class GroupController extends Controller
                 $query->whereDate('attendances.start_datetime', '<=', Carbon::now())
                 ->whereDate('attendances.end_datetime', '>=', Carbon::now());
             }
-        } 
+        }
 
         $query->where('casts.is_public', 1);
         // 名前を空白文字で分割
@@ -395,13 +461,13 @@ class GroupController extends Controller
             case 'E':
                 $query->where('casts.bra_size', '=', 'E');
                 break;
-            case 'F':   
+            case 'F':
                 $query->where('casts.bra_size', '=', 'F');
                 break;
             case 'G':
                 $query->where('casts.bra_size', '=', 'G');
                 break;
-            case 'H':   
+            case 'H':
                 $query->where('casts.bra_size', '=', 'H');
                 break;
             case 'I':
@@ -438,7 +504,7 @@ class GroupController extends Controller
         // dd($shop_id,$options,$styles);
         // if ($date != null || $date != "") {
         //     $query->whereDate('attendances.start_datetime', '=', $date);
-        // }  
+        // }
         // dd($shop_id, $date);
         $query->groupBy('casts.id');
         $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');

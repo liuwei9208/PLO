@@ -6,7 +6,7 @@
       <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}">
     </picture>
   </div>
-  
+
   {{-- <div class="mv-text">
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/text-sm.png') }}">
@@ -16,7 +16,7 @@
   <div class="mv-scroll md lg">
     <img src="{{ asset('assets/img/group/mv/scroll.svg') }}" alt="">
   </div>
-  @if(request()->routeIs('public.group.home'))
+  {{-- @if(request()->routeIs('public.group.home'))
   <div class="mv-member">
     <div class="pc-only mv-member-pc">
       <div class="mv-member-pc-login">
@@ -45,5 +45,5 @@
       <img src="{{ asset('assets/img/group/mv/review-sm.png') }}" alt="">
     </picture>
   </div>
-  @endif
+  @endif --}}
 </div>
