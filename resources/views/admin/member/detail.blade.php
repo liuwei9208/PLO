@@ -13,7 +13,7 @@
         // const history = window.dummyHistories.find(h => h.id === historyId);
         // if (history) {
           window.currentEditId = historyId;
-          
+
           // フォームに値を設定
           document.getElementById('createDate').value = created_at || '';
           document.getElementById('shop_name').value = shop_name || '';
@@ -22,7 +22,7 @@
           document.getElementById('price').value = price || 0;
           document.getElementById('point').value = point_pay || 0;
           document.getElementById('point_use').value = point_use || 0;
-          
+
           // モーダルを表示
           document.getElementById('editModal').classList.remove('hidden');
         // }
@@ -37,7 +37,7 @@
       // フォーム送信処理
       window.handleFormSubmit = async function(e) {
         e.preventDefault();
-        
+
         if (!window.currentEditId) {
           console.error('編集IDが設定されていません');
           return;
@@ -59,10 +59,10 @@
               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
               'Accept': 'application/json',
               'X-Requested-With': 'XMLHttpRequest',
-              // 'Authorization': `Bearer ${token}`
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify(formData),
-            credentials: 'include'
+            // credentials: 'include'
           });
           console.log(response);
           if (response.ok) {
@@ -418,7 +418,7 @@
             前へ
           </a>
         @endif
-        
+
         @for ($i = max(1, $page - 2); $i <= min($pages, $page + 2); $i++)
           <a href="{{ request()->fullUrlWithQuery(['page' => $i]) }}" class="flex items-center justify-center rounded-lg border {{ $i === $page ? 'border-blue-500 bg-blue-50 text-blue-600 dark:border-blue-500 dark:bg-blue-500/[0.1] dark:text-blue-500' : 'border-gray-300 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]' }} px-3 py-2 text-sm font-medium">
             {{ $i }}
