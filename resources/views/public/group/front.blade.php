@@ -102,7 +102,7 @@
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
-      <span class="pickup-title title-font">
+      <span class="pickup-title title-font front-title">
         <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
         {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
@@ -157,13 +157,13 @@
         </span>
       </li>
     </ul>
-    <div class="pickup-list">
+    <div class="pickup-list content-wrapper">
       @foreach ($pickups as $pickup)
         <a
           href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
           class="pickup-item --{{ $pickup->cast->shop->slug }}"
         >
-          <div class="pickup-photo">
+          <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
             <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
           </div>
           <span class="pickup-shop">
@@ -172,10 +172,10 @@
           <span class="pickup-name">
             {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
           </span>
-          <span class="pickup-size">
+          <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
             B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
           </span>
-          <span class="pickup-intro">
+          <span class="pickup-intro --{{ $pickup->cast->shop->slug }}">
             {{ $pickup->cast->appeal_point }}
           </span>
         </a>
@@ -232,15 +232,15 @@
   <section class="newface">
     @if($newfaces_this_month->count() > 0)
     <div class="section-title">
-      <span class="section-title-en title-font">
+      <span class="section-title-en title-font front-title">
         {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
-        NEW FACE
+        <span>N</span><span>E</span><span>W</span><span> </span><span>F</span><span>A</span><span>C</span><span>E</span>
       </span>
       <h2 class="newface-title-sm title-font-sm">新人情報</h2>
     </div>
     @endif
     @if($newfaces_this_week->count() > 0)
-    <div class="newface-slide">
+    <div class="newface-slide content-wrapper">
       <div class="newface-slide-nav">
         <button class="newface-slide-prev">
           <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
@@ -276,7 +276,9 @@
   </div> --}}
   <div class="diary">
     <div class="section-title">
-      <h2 class="section-title-lg title-font">PHOTO DIARY</h2>
+      <h2 class="section-title-lg title-font front-title">
+        <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span><span> </span><span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
+      </h2>
       <h3 class="section-title-sm title-font-sm">最新写メ日記</h3>
     </div>
     <div class="diary-content content-wrapper">
@@ -323,19 +325,19 @@
 
   </div>
   <!-- 各お店の最新動画 - Shop Movie -->
-  <div class="mock">
+  {{-- <div class="mock">
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-movie-sm.png') }}">
       <img src="{{ asset('assets/img/mock-movie-lg.png') }}" alt="">
     </picture>
-  </div>
+  </div> --}}
 
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
   <div class="banner content-wrapper">
     <div class="banner-title">
-      <span class="banner-title-en title-font">
-        LINK
+      <span class="banner-title-en title-font front-title">
+        <span>L</span><span>I</span><span>N</span><span>K</span>
       </span>
       {{-- <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク"> --}}
       <h2 class="banner-title-ja title-font-sm">相互リンク</h2>
@@ -355,7 +357,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/_newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/_banner.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {

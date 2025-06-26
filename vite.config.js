@@ -36,6 +36,8 @@ export default defineConfig({
                 'resources/scss/groupbase.scss',
                 'resources/scss/group/front.scss',
                 'resources/scss/group/pickup_top_fron.scss',
+                'resources/scss/group/newface.scss',
+                'resources/scss/group/banner.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

@@ -19,7 +19,7 @@
 
 // Pickup title animation
 
-.pickup-title {
+.front-title {
   display: inline-block;
 
   // Split each character into spans for individual animation
@@ -152,10 +152,10 @@
          border-radius: 22px;
        }
        @media #{media-query(md)} {
-         // width: 150px;
-         // height: 70px;
-         // margin: 0 5px 15px;
-         // border-radius: 35px;
+         width: 240px;
+         height: 70px;
+         margin: 0 5px 15px;
+         border-radius: 35px;
        }
        @media #{media-query(lg)} {
          width: 250px;
@@ -481,19 +481,19 @@
      @media #{media-query(sm)} {
        grid-template-columns: repeat(2, 1fr);
        gap: 15px;
-       width: calc(100% - 56px);
+      //  width: calc(100% - 56px);
        margin: 30px auto 0;
      }
      @media #{media-query(md)} {
        grid-template-columns: repeat(3, 1fr);
        gap: 40px;
-       width: 720px;
+      //  width: 720px;
        margin: 50px auto 0;
      }
      @media #{media-query(lg)} {
        grid-template-columns: repeat(3, 1fr);
        gap: 54px;
-       width: 1260px;
+      //  width: 1260px;
        margin: 50px auto 0;
      }
 
@@ -502,7 +502,7 @@
        flex-direction: column;
        transition: .2s;
        width: 100%;
-
+      //  border: 1px solid #000;
        @media #{media-query(sm)} {
          max-width: 384px;
          margin: 0 auto;
@@ -512,6 +512,9 @@
            width: 100%;
            max-width: 384px;
            margin: 0 auto;
+           & .pickup-photo {
+            height: 440px;
+           }
          }
 
          &:not(:first-child) {
@@ -546,12 +549,13 @@
          border-radius: 30px;
          @media #{media-query(sm)} {
            aspect-ratio: 1 / 1;
+           height: 210px;
          }
          @media #{media-query(md)} {
-           height: 375px;
+           height: 420px;
          }
          @media #{media-query(lg)} {
-           height: 425px;
+           height: 510px;
          }
 
          img {
@@ -565,6 +569,25 @@
        &:hover .pickup-photo {
          img {
            transform: scale(1.04);
+           filter: brightness(0.8) contrast(1.2) saturate(1.2);
+         }
+         &.--pussycat {
+          border: 5px solid $shop-color-pussycat;
+         }
+         &.--shizuku {
+          border: 5px solid $shop-color-shizuku;
+         }
+         &.--miyabi {
+          border: 5px solid $shop-color-miyabi;
+         }
+         &.--en {
+          border: 5px solid $shop-color-en;
+         }
+         &.--shiroganeze {
+          border: 5px solid $shop-color-shiroganeze;
+         }
+         &.--lovestory {
+          border: 5px solid $shop-color-lovestory;
          }
        }
 
@@ -573,29 +596,30 @@
          align-items: center;
          justify-content: center;
          color: #FFF;
-         font-weight: 700;
+        //  font-weight: 700;
+         font-family: $font-gothic-min;
          @media #{media-query(sm)} {
            width: 100%;
            height: 30px;
-           margin: 12px 0 0;
+           margin: 12px 0;
            border-radius: 15px;
            font-size: 14px;
          }
          @media #{media-query(md)} {
            height: 36px;
-           margin: 18px 10px 0;
+           margin: 18px 0;
            padding: 0 18px;
            border-radius: 18px;
            font-size: 16px;
-           width: 100%;
+           width: 70%;
          }
          @media #{media-query(lg)} {
            height: 42px;
-           margin: 22px 10px 0;
+           margin: 22px 0;
            padding: 0 24px;
            border-radius: 21px;
            font-size: 19px;
-           width: 100%;
+           width: 60%;
          }
        }
 
@@ -639,86 +663,165 @@
 
        .pickup-name {
          display: block;
-         font-weight: 700;
+        //  font-weight: 700;
          letter-spacing: .1em;
          text-align: center;
+         font-weight: bold;
          @media #{media-query(sm)} {
-           margin: 26px 0 0;
-           font-size: 20px;
+          //  margin: 26px 0 0;
+           font-size: 14px;
          }
          @media #{media-query(md)} {
-           margin: 30px 0 0;
-           font-size: 30px;
+          //  margin: 30px 0 0;
+           font-size: 18px;
          }
          @media #{media-query(lg)} {
-           margin: 35px 0 0;
-           font-size: 35px;
+          //  margin: 0 0;
+           font-size: 21px;
          }
 
          small {
            font-size: 80%;
-           font-weight: 500;
+          //  font-weight: 500;
          }
        }
-
+       &:hover .pickup-size {
+        &.--pussycat {
+          color: $shop-color-pussycat;
+        }
+        &.--shizuku {
+          color: $shop-color-shizuku;
+        }
+        &.--miyabi {
+          color: $shop-color-miyabi;
+        }
+        &.--en {
+          color: $shop-color-en;
+        }
+        &.--shiroganeze {
+          color: $shop-color-shiroganeze;
+        }
+        &.--lovestory {
+          color: $shop-color-lovestory;
+        }
+       }
        .pickup-size {
          display: block;
          text-align: center;
          @media #{media-query(sm)} {
-           font-size: 16px;
-           margin: 24px 0 0;
+           font-size: 13px;
+           margin: 8px 0;
          }
          @media #{media-query(md)} {
            font-size: 16px;
-           margin: 24px 0 0;
+           margin: 10px 0;
          }
          @media #{media-query(lg)} {
            font-size: 18px;
-           margin: 28px 0 0;
+           margin: 10px 0 ;
          }
        }
-
+       &:hover .pickup-intro {
+        &.--pussycat {
+          color: $shop-color-pussycat;
+        }
+        &.--shizuku {
+          color: $shop-color-shizuku;
+        }
+        &.--miyabi {
+          color: $shop-color-miyabi;
+        }
+        &.--en {
+          color: $shop-color-en;
+        }
+        &.--shiroganeze {
+          color: $shop-color-shiroganeze;
+        }
+        &.--lovestory {
+          color: $shop-color-lovestory;
+        }
+       }
        .pickup-intro {
          width: 100%;
          @include text.multiline-ellipsis(2);
          @media #{media-query(sm)} {
-           margin: 8px 0 0;
-           font-size: 15px;
+           margin: 0 0 8px ;
+           font-size: 13px;
            line-height: 26px;
            height: 52px;
          }
          @media #{media-query(md)} {
-           margin: 14px 0 0;
-           padding: 0 10px;
+           margin: 0 0 14px ;
+          //  padding: 0 10px;
            font-size: 18px;
            line-height: 30px;
            height: 60px;
          }
          @media #{media-query(lg)} {
-           margin: 15px 0 0;
-           padding: 0 10px;
-           font-size: 20px;
+           margin: 0 0 15px;
+          //  padding: 0 10px;
+           font-size: 18px;
            line-height: 34px;
            height: 68px;
          }
        }
      }
    }
-
+   /*
    .pickup-more {
+     text-align: center;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+
      @media #{media-query(sm)} {
-       margin: 60px auto 0;
+       margin: 20px auto 0;
+       width: 200px;
+       height: 50px;
+       border-radius: 30px;
      }
      @media #{media-query(md)} {
-       margin: 60px auto 0;
+       margin: 40px auto 0;
+       width: 300px;
+       height: 70px;
+       border-radius: 35px;
      }
      @media #{media-query(lg)} {
        margin: 60px auto 0;
+       width: 400px;
+       height: 90px;
+       border-radius: 45px;
      }
    }
+   */
  }
 
+.more-button {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  @media #{media-query(sm)} {
+    margin: 20px auto 0;
+    width: 200px;
+    height: 50px;
+    border-radius: 30px;
+  }
+  @media #{media-query(md)} {
+    margin: 40px auto 0;
+    width: 300px;
+    height: 70px;
+    border-radius: 35px;
+  }
+  @media #{media-query(lg)} {
+    margin: 60px auto 0;
+    width: 400px;
+    height: 90px;
+    border-radius: 45px;
+  }
+}
+/*
  .pagination {
    display: flex;
    justify-content: center;
@@ -796,3 +899,4 @@
      }
    }
  }
+*/

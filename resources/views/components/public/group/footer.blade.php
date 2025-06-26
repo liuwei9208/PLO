@@ -1,9 +1,9 @@
-<div class="mock">
+{{-- <div class="mock">
   <picture>
     <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-footer-sm.png') }}">
     <img src="{{ asset('assets/img/mock-footer-lg.png') }}" alt="">
   </picture>
-</div>
+</div> --}}
 
 <footer class="footer" id="footer">
   <nav class="footer__nav">

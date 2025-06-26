@@ -4,6 +4,109 @@
 @use '../global/base';
 @use '../global/utils';
 
+// Keyframe animations for diary items
+@keyframes diaryFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes diaryPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes diaryShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes diarySlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Keyframe animations for shop items
+@keyframes shopFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes shopPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes shopShimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes shopBounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  40% {
+    transform: translateY(-15px) scale(1.1);
+  }
+  60% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+@keyframes shopRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(2deg);
+  }
+  75% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes shopGlow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
+
 .pc-only {
   display: block;
 }
@@ -24,45 +127,51 @@
 
 .diary {
   padding: 48px 0;
-  background: #fafafa;
+  // background: #fafafa;
 
   .section-title {
     text-align: center;
-    margin-bottom: 32px;
+    // margin-bottom: 32px;
 
     &-lg {
       // font-size: 2.4rem;
       // font-weight: bold;
       letter-spacing: 0.1em;
-      margin-bottom: 8px;
+      // margin-bottom: 8px;
     }
 
     &-sm {
       // font-size: 1.6rem;
       // color: #666;
-      margin: 60px auto;
+      // margin: 60px auto;
       @media #{media-query(sm)} {
         margin: 20px auto;
+      }
+      @media #{media-query(md)} {
+        margin: 40px auto;
+      }
+      @media #{media-query(lg)} {
+        margin: 40px auto;
       }
     }
   }
 
   &-content {
-    width: 100%;
+    // width: 100%;
     margin: 0 auto;
     padding: 0 16px;
 
     @media #{media-query(md)} {
-      width: calc(100% - 80px);
+      // width: calc(100% - 80px);
     }
 
     @media #{media-query(lg)} {
-      width: calc(100% - 40px);
+      // width: calc(100% - 40px);
     }
 
     &-top {
       margin-bottom: 32px;
-      
+
       img {
         width: 100%;
         height: auto;
@@ -80,9 +189,66 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      animation: diarySlideIn 0.8s ease-out;
+      position: relative;
+
+      // Add staggered animation delay for list items
+      &:nth-child(1) { animation-delay: 0.1s; }
+      &:nth-child(2) { animation-delay: 0.2s; }
+      &:nth-child(3) { animation-delay: 0.3s; }
+      &:nth-child(4) { animation-delay: 0.4s; }
+      &:nth-child(5) { animation-delay: 0.5s; }
+      &:nth-child(6) { animation-delay: 0.6s; }
+
+      // Subtle floating animation on idle state
+      &:not(:hover) {
+        animation: diaryFloat 5s ease-in-out infinite;
+
+        &:nth-child(even) {
+          animation-delay: -2.5s;
+        }
+      }
 
       &:hover {
-        transform: translateY(-4px);
+        transform: translateY(-12px) scale(1.05);
+        // box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.1);
+        animation: none; // Stop floating animation on hover
+
+        .diary-content-item-image {
+          img {
+            transform: scale(1.12);
+          }
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: diaryShimmer 1.2s ease-in-out;
+            border-radius: 25px;
+          }
+        }
+
+        .diary-content-item-title {
+          transform: translateY(-3px);
+          background: rgba(0, 0, 0, 0.85);
+          animation: diaryPulse 1s ease-in-out infinite;
+        }
+
+        .diary-content-item-name {
+          transform: translateY(-2px);
+          color: #333;
+        }
+
+        .diary-content-item-date {
+          transform: translateY(-1px);
+          opacity: 0.8;
+        }
       }
 
       &-image {
@@ -94,17 +260,19 @@
         flex-direction: column;
         border-radius: 25px;
         background: #fff;
+        overflow: hidden;
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           border-radius: 25px;
+          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         @media #{media-query(sm)} {
           height: 70%;
         }
-        
+
       }
 
       &-title {
@@ -114,8 +282,9 @@
         right: 0;
         background: rgba(0, 0, 0, 0.7);
         color: #fff;
-        font-size: 1.4rem;
-        font-weight: bold;
+        font-family: $font-gothic-min;
+        // font-size: 1.4rem;
+        // font-weight: bold;
         padding: 12px 16px;
         text-align: center;
         z-index: 1;
@@ -123,20 +292,52 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        @media #{media-query(sm)} {
+          font-size: 14px;
+        }
+        @media #{media-query(md)} {
+          font-size: 24px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 34px;
+        }
       }
 
       &-name {
-        font-size: 1.2rem;
-        color: #666;
+        // font-size: 1.2rem;
+        font-family: $font-gothic-min;
+        color: #000;
         padding: 16px 16px 4px;
         text-align: center;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        @media #{media-query(sm)} {
+          font-size: 14px;
+        }
+        @media #{media-query(md)} {
+          font-size: 24px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 34px;
+        }
       }
 
       &-date {
-        font-size: 1.1rem;
-        color: #999;
-        padding: 0 16px 16px;
+        // font-size: 1.1rem;
+        color: #000;
+        padding: 16px 0;
         text-align: center;
+        font-family: $font-gothic-min;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        @media #{media-query(sm)} {
+          font-size: 9px;
+        }
+        @media #{media-query(md)} {
+          font-size: 15px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 22px;
+        }
       }
     }
 
@@ -177,8 +378,10 @@
             padding: 12px 48px;
           }
           &:hover {
-            background: #333;
+            background: #777;
             color: #fff;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
           }
         }
       }
@@ -214,7 +417,18 @@
       font-weight: 700;
       text-align: center;
       cursor: pointer;
-      transition: .2s;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      animation: shopFloat 3s ease-in-out infinite;
+
+      // Add staggered animation delay for shop items
+      &:nth-child(1) { animation-delay: 0s; }
+      &:nth-child(2) { animation-delay: -0.5s; }
+      &:nth-child(3) { animation-delay: -1s; }
+      &:nth-child(4) { animation-delay: -1.5s; }
+      &:nth-child(5) { animation-delay: -2s; }
+      &:nth-child(6) { animation-delay: -2.5s; }
 
       @media #{media-query(sm)} {
         width: 80px;
@@ -239,10 +453,41 @@
 
       & a {
         color: #fff;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
 
       &:hover {
-        opacity: .8;
+        transform: translateY(-15px) scale(1.2);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3), 0 10px 25px rgba(0, 0, 0, 0.2);
+        animation: shopBounce 1s ease-in-out, shopRotate 0.8s ease-in-out;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+          animation: shopShimmer 0.8s ease-in-out;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+          animation: shopGlow 1.5s ease-in-out infinite;
+        }
+
+        & a {
+          transform: scale(1.1);
+          text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.5);
+          font-weight: 900;
+        }
       }
 
       &:not([data-shop="all"]) {
@@ -263,6 +508,13 @@
           font-size: 19px;
           border: 2px solid #707070;
         }
+
+        &:hover {
+          background: linear-gradient(135deg, #ffffff, #f0f0f0, #e0e0e0);
+          border-color: #000;
+          border-width: 3px;
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
+        }
       }
 
       &[data-shop="pussycat"] {
@@ -275,6 +527,11 @@
         }
         @media #{media-query(lg)} {
           font-size: 19px;
+        }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-pussycat, 20%), lighten($shop-color-pussycat, 10%), $shop-color-pussycat);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
 
@@ -289,6 +546,11 @@
         @media #{media-query(lg)} {
           font-size: 22px;
         }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-shizuku, 20%), lighten($shop-color-shizuku, 10%), $shop-color-shizuku);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
+        }
       }
 
       &[data-shop="miyabi"] {
@@ -301,6 +563,11 @@
         }
         @media #{media-query(lg)} {
           font-size: 22px;
+        }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-miyabi, 20%), lighten($shop-color-miyabi, 10%), $shop-color-miyabi);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
 
@@ -315,6 +582,11 @@
         @media #{media-query(lg)} {
           font-size: 22px;
         }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-en, 20%), lighten($shop-color-en, 10%), $shop-color-en);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
+        }
       }
 
       &[data-shop="shiroganeze"] {
@@ -327,6 +599,11 @@
         }
         @media #{media-query(lg)} {
           font-size: 20px;
+        }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-shiroganeze, 20%), lighten($shop-color-shiroganeze, 10%), $shop-color-shiroganeze);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
 
@@ -341,6 +618,11 @@
         @media #{media-query(lg)} {
           font-size: 20px;
         }
+
+        &:hover {
+          background: linear-gradient(135deg, lighten($shop-color-lovestory, 20%), lighten($shop-color-lovestory, 10%), $shop-color-lovestory);
+          animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
+        }
       }
     }
   }
@@ -352,14 +634,14 @@
     padding: 32px 0;
 
     .section-title {
-      margin-bottom: 24px;
+      // margin-bottom: 24px;
 
       &-lg {
-        font-size: 2rem;
+        // font-size: 2rem;
       }
 
       &-sm {
-        font-size: 1.4rem;
+        // font-size: 1.4rem;
       }
     }
 
@@ -383,18 +665,18 @@
         }
 
         &-title {
-          font-size: 1.2rem;
+          // font-size: 1.2rem;
           padding: 8px 12px;
         }
 
         &-name {
-          font-size: 1.1rem;
+          // font-size: 1.1rem;
           padding: 12px 12px 4px;
         }
 
         &-date {
-          font-size: 1rem;
-          padding: 0 12px 12px;
+          // font-size: 1rem;
+          padding: 8px 0;
         }
       }
 
