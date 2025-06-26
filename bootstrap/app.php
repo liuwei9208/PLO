@@ -23,6 +23,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->group('web', [
             EnsureFrontendRequestsAreStateful::class,
         ]);
+		/*
         $middleware->redirectGuestsTo(function (Request $request) {
             if ($request->routeIs('admin.*')) {
                 return route('admin.login');
@@ -31,6 +32,7 @@ return Application::configure(basePath: dirname(__DIR__))
             }
             // return '/';
         });
+		*/
         $middleware->redirectUsersTo(function (Request $request) {
             if ($request->routeIs('admin.login')) {
                 return route('admin.home');

@@ -8,6 +8,7 @@ use App\Models\Cast;
 use App\Models\Diary;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class TouchVipDiaryController extends Controller
 {
@@ -91,12 +92,12 @@ class TouchVipDiaryController extends Controller
      * Getting the diaries API for WordPress site.
      */
     public function get(string $cast_id) {
+		Log::Info('wordpress');
         $diaries = Diary::where('cast_id', $cast_id)
             ->where('is_public', true)
             ->take(4)
             ->orderBy('created_at', 'desc')
             ->get();
-
         return response()->json(
             DiaryResource::collection($diaries), 200
         );
