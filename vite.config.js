@@ -33,6 +33,8 @@ export default defineConfig({
                 'resources/scss/group/newstop.scss',
                 'resources/scss/group/newslist.scss',
                 'resources/scss/group/newsdetail.scss',
+                'resources/scss/groupbase.scss',
+                'resources/scss/group/front.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
