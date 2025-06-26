@@ -35,7 +35,7 @@ class ScheduleController extends Controller
             }
 
             $user = Auth::user();
-            Log::info($user->email);
+            Log::info($user);
             $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
@@ -52,9 +52,9 @@ class ScheduleController extends Controller
             //         });
             //     }
             // }
-
+            // dd($user->hasRole('admin'));
             if ($user->hasRole('admin')) {
-                Log::Info('admin');
+                // Log::Info('admin');
                 if ($request->input('shop')) {
                     $shop = $request->input('shop');
                     if ($shop != "") {
@@ -66,7 +66,7 @@ class ScheduleController extends Controller
             } else if ($user->hasRole('shop')) {
                 switch ($user->email) {
                     case 'shizuku@plo-group.jp':
-                        Log::Info('shizuku');
+                        // Log::Info('shizuku');
                         $query->whereHas('shop', function ($query) {
                             $query->where('slug', 'shizuku');
                         });
@@ -241,7 +241,7 @@ class ScheduleController extends Controller
         $reservation->end_time = Carbon::parse($endTime);
         $reservation->save();
         return response()->json(['status' => 'success', 'reservation_id' => $reservation->id]);
-    }   
+    }
     public function deleteReservationTime(Request $request): JsonResponse
     {
         if ( !$request->expectsJson() ){

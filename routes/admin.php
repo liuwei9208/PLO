@@ -23,7 +23,7 @@ use App\Http\Controllers\Admin\VisitController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-        ->name('login');
+            ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 });

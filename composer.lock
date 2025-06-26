@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e541f1000e77f38086f15973d53c10a2",
+    "content-hash": "18cc03a3b6c8ea3760c9f316203f8dea",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3709,6 +3709,63 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "rutorika/sortable",
+            "version": "9.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/boxfrommars/rutorika-sortable.git",
+                "reference": "e8673bc671977f07b9c2b8aaec952f7394df55d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/boxfrommars/rutorika-sortable/zipball/e8673bc671977f07b9c2b8aaec952f7394df55d2",
+                "reference": "e8673bc671977f07b9c2b8aaec952f7394df55d2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^8.0|^9.0|^10.0|^11.0|^12.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~5|~6",
+                "phpunit/phpunit": "~8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Rutorika\\Sortable": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dmitry Groza",
+                    "email": "boxfrommars@gmail.com"
+                }
+            ],
+            "description": "Adds sortable behavior and ordering to Laravel Eloquent models. Grouping and many to many supported.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "laravel4",
+                "laravel5",
+                "order",
+                "orderable",
+                "ordering",
+                "sort",
+                "sortable",
+                "sorting"
+            ],
+            "support": {
+                "issues": "https://github.com/boxfrommars/rutorika-sortable/issues",
+                "source": "https://github.com/boxfrommars/rutorika-sortable/tree/9.3.0"
+            },
+            "time": "2025-04-10T14:47:07+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -10299,12 +10356,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

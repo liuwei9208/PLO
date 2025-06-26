@@ -8,7 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-
+use Illuminate\Support\MessageBag;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        return view('auth.login',['errors' => new MessageBag()]);
     }
 
     /**
@@ -60,7 +60,7 @@ class AuthenticatedSessionController extends Controller
     {
         // 現在のユーザータイプを取得
         $userType = session('user_type');
-        
+
         // 両方のガードからログアウト
         Auth::guard('web')->logout();
         Auth::guard('member')->logout();
@@ -89,12 +89,12 @@ class AuthenticatedSessionController extends Controller
         if (Auth::guard('web')->check()) {
             return Auth::guard('web')->user();
         }
-        
+
         // 次にmemberガードで認証されているかチェック
         if (Auth::guard('member')->check()) {
             return Auth::guard('member')->user();
         }
-        
+
         return null;
     }
 
