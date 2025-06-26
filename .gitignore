@@ -24,4 +24,3 @@ yarn-error.log
 /.zed
 yarn.lock
 /public/assets/
-/public/.htaccess
