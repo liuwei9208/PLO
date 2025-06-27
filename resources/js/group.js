@@ -11,12 +11,12 @@ import Drawer from './group/Drawer'
 const scroll = new Scroll()
 
 /** Header */
-const header = new Header()
+// const header = new Header()
 
 /** Drawer */
 const drawer = new Drawer({ scroll: scroll })
 
-  
+
 
 new Swiper('.newface-slide', {
   modules: [ Autoplay, Navigation ],
@@ -55,7 +55,7 @@ if (pickupShops.length > 0) {
     button.addEventListener('click', () => {
       const selectedShop = button.dataset.shop
       const pickupItems = document.querySelectorAll('.pickup-item')
-      
+
       // すべてのボタンからアクティブクラスを削除
       pickupShops.forEach(btn => btn.classList.remove('is-active'))
       // クリックされたボタンにアクティブクラスを追加
@@ -89,6 +89,7 @@ if (newfaceMore) {
 // イベントスライダーの初期化
 const initEventSlider = () => {
   const eventSlider = new Swiper('.event-slider', {
+// new Swiper('.event-slider', {
       modules: [Navigation, Pagination, Autoplay],
       slidesPerView: 'auto',
       spaceBetween: 20,
@@ -117,8 +118,14 @@ const initEventSlider = () => {
               slidesPerView: 3,
               spaceBetween: 30,
               centeredSlides: false,
-          }
+          },
+          // 1366: {
+          //   slidesPerView: 3,
+          //   spaceBetween: 45,
+          // }
+
       }
+
   });
 };
 

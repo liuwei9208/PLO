@@ -102,7 +102,7 @@
   <!-- ピックアップ - Pickup Girl -->
   <section class="pickup">
     <div class="section-title">
-      <span class="pickup-title title-font">
+      <span class="pickup-title title-font front-title">
         <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
         {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
@@ -157,13 +157,13 @@
         </span>
       </li>
     </ul>
-    <div class="pickup-list">
+    <div class="pickup-list content-wrapper">
       @foreach ($pickups as $pickup)
         <a
           href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
           class="pickup-item --{{ $pickup->cast->shop->slug }}"
         >
-          <div class="pickup-photo">
+          <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
             <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
           </div>
           <span class="pickup-shop">
@@ -172,10 +172,10 @@
           <span class="pickup-name">
             {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
           </span>
-          <span class="pickup-size">
+          <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
             B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
           </span>
-          <span class="pickup-intro">
+          <span class="pickup-intro --{{ $pickup->cast->shop->slug }}">
             {{ $pickup->cast->appeal_point }}
           </span>
         </a>
@@ -186,9 +186,12 @@
 
   <!-- 新着情報 - PLO News -->
   @if($events->count() > 0)
-  <div class="mock mock-1">
+  <div class="event-1">
     <div class="section-title">
-      <h2 class="section-title-news title-font">Event</h2>
+      <h2 class="section-title-news title-font front-title">
+        <span>E</span><span>V</span><span>E</span><span>N</span><span>T</span>
+      </h2>
+      <h3 class="section-title-news title-font-sm">イベント</h3>
     </div>
     <div class="event-main">
       <div class="event-main-content">
@@ -202,7 +205,7 @@
       </div>
     </div>
 
-    <div class="event-slider swiper">
+    <div class="event-slider swiper content-wrapper">
       <div class="swiper-wrapper">
         @foreach($events->skip(1) as $event)
           <div class="swiper-slide">
@@ -232,15 +235,15 @@
   <section class="newface">
     @if($newfaces_this_month->count() > 0)
     <div class="section-title">
-      <span class="section-title-en title-font">
+      <span class="section-title-en title-font front-title">
         {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
-        NEW FACE
+        <span>N</span><span>E</span><span>W</span><span> </span><span>F</span><span>A</span><span>C</span><span>E</span>
       </span>
       <h2 class="newface-title-sm title-font-sm">新人情報</h2>
     </div>
     @endif
     @if($newfaces_this_week->count() > 0)
-    <div class="newface-slide">
+    <div class="newface-slide content-wrapper">
       <div class="newface-slide-nav">
         <button class="newface-slide-prev">
           <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
@@ -276,7 +279,9 @@
   </div> --}}
   <div class="diary">
     <div class="section-title">
-      <h2 class="section-title-lg title-font">PHOTO DIARY</h2>
+      <h2 class="section-title-lg title-font front-title">
+        <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span><span> </span><span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
+      </h2>
       <h3 class="section-title-sm title-font-sm">最新写メ日記</h3>
     </div>
     <div class="diary-content content-wrapper">
@@ -323,19 +328,93 @@
 
   </div>
   <!-- 各お店の最新動画 - Shop Movie -->
-  <div class="mock">
+  {{-- <div class="mock">
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/mock-movie-sm.png') }}">
       <img src="{{ asset('assets/img/mock-movie-lg.png') }}" alt="">
     </picture>
+  </div> --}}
+  <div class="movie">
+    <div class="movie-title">
+      <h2 class="movie-title-en title-font front-title">
+        <span>S</span><span>H</span><span>O</span><span>P</span><span> </span><span>M</span><span>O</span><span>V</span><span>I</span><span>E</span>
+      </h2>
+      <h3 class="movie-title-ja title-font-sm">各お店の最新動画</h3>
+    </div>
+    <div class="movie-list content-wrapper">
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --pussycat sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie1.png') }}" alt="movie-1">
+          </div>
+          <div class="movie-list-item-shop --pussycat pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --shizuku sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie2.png') }}" alt="movie-2">
+          </div>
+          <div class="movie-list-item-shop --shizuku pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --miyabi sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie3.png') }}" alt="movie-3">
+          </div>
+          <div class="movie-list-item-shop --miyabi pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --en sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie1.png') }}" alt="movie-4">
+          </div>
+          <div class="movie-list-item-shop --en pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+    </div>
+    <a href="#"  class="movie-more more-button more-button-title">もっと見る</a>
   </div>
-
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
   <div class="banner content-wrapper">
     <div class="banner-title">
-      <span class="banner-title-en title-font">
-        LINK
+      <span class="banner-title-en title-font front-title">
+        <span>L</span><span>I</span><span>N</span><span>K</span>
       </span>
       {{-- <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク"> --}}
       <h2 class="banner-title-ja title-font-sm">相互リンク</h2>
@@ -349,13 +428,30 @@
     </div>
   </div>
   @endif
+
+  {{-- <div class="law">
+    <div class="law-content content-wrapper pc-only">
+      <p>当グループは、風俗関連営業等の規制及び業務の適正化等に関する法律</p>
+      <p>(第27条第2項、第33条第2項)の規定を取得しておりますので安心してお遊び頂けます。</p>
+      <p>このサイトにはアダルトコンテンツが含まれています。</p>
+      <p>18歳未満の方の閲覧は固くお断りいたします。</p>
+    </div>
+    <div class="law-content content-wrapper sp-only">
+      <p>当グループは、風俗関連営業等の規制及び</p><p>業務の適正化等に関する法律</p>
+      <p>(第27条第2項、第33条第2項)の規定</p><p>を取得しておりますので</p><p>安心してお遊び頂けます。</p>
+      <p>このサイトには</p><p>アダルトコンテンツが含まれています。</p>
+      <p>18歳未満の方の閲覧は固くお断りいたします。</p>
+    </div>
+
+  </div> --}}
+
 </x-public-front-layout>
 
 <!-- Drawer Component -->
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/_newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/_banner.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -371,85 +467,85 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Drawer functionality
-  const drawerToggle = document.getElementById('drawer-toggle');
-  const drawer = document.getElementById('drawer');
+  // const drawerToggle = document.getElementById('drawer-toggle');
+  // const drawer = document.getElementById('drawer');
 
-  if (drawerToggle && drawer) {
-    let isOpen = false;
+  // if (drawerToggle && drawer) {
+  //   let isOpen = false;
 
-    drawerToggle.addEventListener('click', function(e) {
-      e.preventDefault();
+  //   drawerToggle.addEventListener('click', function(e) {
+  //     e.preventDefault();
 
-      if (isOpen) {
-        // Close drawer
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      } else {
-        // Open drawer
-        drawer.style.right = '0';
-        drawerToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        isOpen = true;
-      }
-    });
+  //     if (isOpen) {
+  //       // Close drawer
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     } else {
+  //       // Open drawer
+  //       drawer.style.right = '0';
+  //       drawerToggle.classList.add('active');
+  //       document.body.style.overflow = 'hidden';
+  //       isOpen = true;
+  //     }
+  //   });
 
-    // Close drawer when clicking on a link
-    const drawerLinks = drawer.querySelectorAll('a');
-    drawerLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      });
-    });
+  //   // Close drawer when clicking on a link
+  //   const drawerLinks = drawer.querySelectorAll('a');
+  //   drawerLinks.forEach(link => {
+  //     link.addEventListener('click', function() {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     });
+  //   });
 
-    // Close drawer when clicking outside
-    drawer.addEventListener('click', function(e) {
-      if (e.target === drawer) {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      }
-    });
+  //   // Close drawer when clicking outside
+  //   drawer.addEventListener('click', function(e) {
+  //     if (e.target === drawer) {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     }
+  //   });
 
-    // Close drawer on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && isOpen) {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      }
-    });
-  }
+  //   // Close drawer on escape key
+  //   document.addEventListener('keydown', function(e) {
+  //     if (e.key === 'Escape' && isOpen) {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     }
+  //   });
+  // }
 
-  // Pickup title color animation
-  const pickupTitle = document.querySelector('.pickup-title');
-  if (pickupTitle) {
-    const characters = pickupTitle.querySelectorAll('span');
-    const colors = ['#DC53D7', '#4068fb', '#FF8C71', '#FFC557', '#009162', '#FF5AA2'];
-    let colorIndex = 0;
+  // // Pickup title color animation
+  // const pickupTitle = document.querySelector('.pickup-title');
+  // if (pickupTitle) {
+  //   const characters = pickupTitle.querySelectorAll('span');
+  //   const colors = ['#DC53D7', '#4068fb', '#FF8C71', '#FFC557', '#009162', '#FF5AA2'];
+  //   let colorIndex = 0;
 
-    function changeColors() {
-      characters.forEach((char, index) => {
-        const delay = index * 100; // 100ms delay between each character
-        setTimeout(() => {
-          char.style.color = colors[colorIndex];
-        }, delay);
-      });
+  //   function changeColors() {
+  //     characters.forEach((char, index) => {
+  //       const delay = index * 100; // 100ms delay between each character
+  //       setTimeout(() => {
+  //         char.style.color = colors[colorIndex];
+  //       }, delay);
+  //     });
 
-      colorIndex = (colorIndex + 1) % colors.length;
-    }
+  //     colorIndex = (colorIndex + 1) % colors.length;
+  //   }
 
-    // Change colors every 2 seconds
-    setInterval(changeColors, 2000);
+  //   // Change colors every 2 seconds
+  //   setInterval(changeColors, 2000);
 
-    // Initial color change
-    changeColors();
-  }
+  //   // Initial color change
+  //   changeColors();
+  // }
 });
 </script>

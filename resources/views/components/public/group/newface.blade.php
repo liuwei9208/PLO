@@ -5,16 +5,19 @@
   <span class="newface-date">
     {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }}
   </span>
-  <div class="newface-photo">
+  <div class="newface-photo --{{ $cast->shop->slug }}">
     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
   </div>
-  <span class="newface-name">
+  {{-- <span class="newface-name">
     {{ $cast->name }} <small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
+  </span> --}}
+  <span class="newface-name">
+    {{ $cast->name }}
   </span>
-  <span class="newface-size">
+  {{-- <span class="newface-size">
     B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
-  </span>
-  <p class="newface-intro">
+  </span> --}}
+  <p class="newface-intro --{{ $cast->shop->slug }}">
     {{ $cast->appeal_point }}
   </p>
 </a>

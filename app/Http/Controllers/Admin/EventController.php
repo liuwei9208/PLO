@@ -65,7 +65,7 @@ class EventController extends Controller
     public function setPostEnd()
     {
         $event = Event::whereIn('published_status', [1, 2])
-        ->where('published_at', '<', now())
+        ->whereDate('published_at', '<', now()->format('Y-m-d'))
         ->update(['published_status' => 4]);
 
     }

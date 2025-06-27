@@ -85,10 +85,13 @@ a {
 .more-button-title {
   font-size: 26px;
   font-family: $font-gothic-min;
-  font-weight: 900;
+  // font-weight: 400;
   font-style: normal;
   @media #{media-query(sm)} {
     font-size: 22px;
+  }
+  @media #{media-query(md)} {
+    font-size: 24px;
   }
 }
 .content-font {
@@ -119,5 +122,30 @@ a {
     font-size: $content-font-size-lg;
     font-weight: $content-font-weight-lg;
     font-style: $content-font-style-lg;
+  }
+}
+
+.sp-only {
+  // display: block;
+  @media #{media-query(sm)} {
+    display: block;
+  }
+  @media #{media-query(md)} {
+    display: none !important;
+  }
+  @media #{media-query(lg)} {
+    display: none !important;
+  }
+}
+.pc-only {
+  // display: block;
+  @media #{media-query(sm)} {
+    display: none !important;
+  }
+  @media #{media-query(md)} {
+    display: block;
+  }
+  @media #{media-query(lg)} {
+    display: block;
   }
 }

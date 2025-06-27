@@ -82,7 +82,7 @@ class GroupController extends Controller
             ->get();
         $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
         // dd($diaries);
-        return view('public.group.home', [
+        return view('public.group.front', [
             'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
