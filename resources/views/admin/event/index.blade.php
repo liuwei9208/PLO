@@ -78,21 +78,21 @@
                 class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                 @selected(1 === request()->publish_type)
               >
-              今すぐ配信
+              配信済
               </option>
               <option
-                value="2"
+                value="5"
                 class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                 @selected(2 === request()->publish_type)
               >
-                予定配信
+              未配信
               </option>
               <option
                 value="3"
                 class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                 @selected(3 === request()->publish_type)
               >
-                下書き
+              下書中
               </option>
             </select>
             <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">
@@ -287,7 +287,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '予定配信' : ($event->published_status === 3 ? '非公開': ($event->published_status === 4 ? '配信済み': ''))) }}
+                      {{ $event->published_status === 1 ? '今すぐ配信' : ($event->published_status === 2 ? '未配信' : ($event->published_status === 3 ? '下書中': ($event->published_status === 4 ? '配信済み': ''))) }}
                     </p>
                   </div>
                 </td>
