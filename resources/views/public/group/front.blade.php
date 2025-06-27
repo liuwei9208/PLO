@@ -451,7 +451,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss','resources/scss/group/_footer.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
