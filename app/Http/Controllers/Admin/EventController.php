@@ -39,7 +39,13 @@ class EventController extends Controller
       //   $query->where('is_public', $request->query('public') ? true : false);
       // }
       if ( $request->has('publish_type') && $request->query('publish_type') !== null) {
-        $query->where('published_status', $request->query('publish_type'));
+        if ( $request->query('publish_type') == "1" ) {
+          $query->where('published_status', $request->query('publish_type'));
+        }else if ( $request->query('publish_type') == "5" ) {
+          $query->where('published_status', 2);
+        }else if ( $request->query('publish_type') == "3" ) {
+          $query->where('published_status', $request->query('publish_type'));
+        }
       }
       if ( $request->has('published_at') && $request->query('published_at') !== null) {
         $query->where('published_at', $request->query('published_at'));
