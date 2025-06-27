@@ -9,9 +9,49 @@
       window.currentEditId = null;
 
       // モーダルを開く関数（グローバルスコープに公開）
-      window.openEditModal = function(historyId, point_pay, point_use, price, course_name, shop_name, casts_name, created_at) {
+      window.openEditModal = async function(historyId, point_pay, point_use, price, course_name, shop_id, shop_name, casts_name, created_at) {
         // const history = window.dummyHistories.find(h => h.id === historyId);
         // if (history) {
+            try {
+            const response = await fetch(`/api/member/getValues`, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': `Bearer ${token}`
+              },
+              body: JSON.stringify({
+                shop_id: shop_id
+              }),
+              // credentials: 'include'
+            });
+            // console.log(response.data.courses);
+            if (response.ok) {
+              console.log(response);
+              const data = await response.json();
+              console.log(data.courses);
+              console.log(data.casts);
+              let course = '<option value="">選択してください</option>';
+              let cast = '<option value="">選択してください</option>';
+              if (data.courses.length > 0) {
+                course += data.courses.map(course => `<option value="${course.id}">${course.name}</option>`).join('');
+              }
+              if (data.casts.length > 0) {
+                cast += data.casts.map(cast => `<option value="${cast.id}">${cast.name}</option>`).join('');
+              }
+              document.getElementById('course').innerHTML = course;
+              document.getElementById('cast_name').innerHTML = cast;
+            } else {
+              console.error('更新に失敗しました');
+              alert('更新に失敗しました');
+            }
+          } catch (error) {
+            console.error('エラーが発生しました:', error);
+            alert('エラーが発生しました');
+          }
+
           window.currentEditId = historyId;
 
           // フォームに値を設定
@@ -45,6 +85,7 @@
 
         const formData = {
           id: window.currentEditId,
+          cast_id: document.getElementById('cast_name').value,
           course: document.getElementById('course').value,
           price: parseInt(document.getElementById('price').value) || 0,
           point: parseInt(document.getElementById('point').value) || 0,
@@ -357,7 +398,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->course_name }}
+                      {{ $history->course_name_table }}
                     </p>
                   </div>
                 </td>
@@ -387,7 +428,7 @@
                   <div class="flex items-center">
                     <button
                       type="button"
-                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price }}, '{{ $history->course_name }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
+                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price }}, '{{ $history->course_name }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
                       class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]"
                     >
                       <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -448,7 +489,7 @@
                 <form id="editForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
                   <div class="space-y-3">
                     <div>
-                      <label for="createDate" class="block text-sm font-medium text-gray-700">コース</label>
+                      <label for="createDate" class="block text-sm font-medium text-gray-700">店舗日</label>
                       <input type="text" name="createDate" id="createDate" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     </div>
                     <div>
@@ -457,11 +498,18 @@
                     </div>
                     <div>
                       <label for="cast_name" class="block text-sm font-medium text-gray-700">キャスト名</label>
-                      <input type="text" name="cast_name" id="cast_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <select name="cast_name" id="cast_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <option value="">選択してください</option>
+                      </select>
+
+                      {{-- <input type="text" name="cast_name" id="cast_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
                     </div>
                     <div>
                       <label for="course" class="block text-sm font-medium text-gray-700">コース</label>
-                      <input type="text" name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <select name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                        <option value="">選択してください</option>
+                      </select>
+                      {{-- <input type="text" name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
                     </div>
                     <div>
                       <label for="price" class="block text-sm font-medium text-gray-700">料金</label>
