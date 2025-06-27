@@ -92,7 +92,7 @@
                 class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
                 @selected(3 === request()->publish_type)
               >
-                非公開
+                下書き
               </option>
             </select>
             <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-500 dark:text-gray-400">

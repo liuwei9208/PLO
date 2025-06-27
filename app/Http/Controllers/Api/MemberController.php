@@ -15,7 +15,7 @@ use App\Models\Diary;
 use App\Models\Member;
 use App\Models\Point;
 use App\Models\History;
-
+use App\Models\Course;
 
 class MemberController extends Controller
 {
@@ -27,7 +27,8 @@ class MemberController extends Controller
       $point_value = is_numeric($request->input('point')) ? $request->input('point') : 0;
       $point_use_value = is_numeric($request->input('point_use')) ? $request->input('point_use') : 0;
       $history = History::find($request->input('id'));
-      $history->course_name = $request->input('course_name') ?? '';
+      $history->course_id = $request->input('course') ?? '';
+      $history->cast_id = $request->input('cast_id') ?? '';
       $history->price = $price;
       $point = Point::where('history_id', $request->input('id'))->where('type', 3)->first();
       $point_use = Point::where('history_id', $request->input('id'))->where('type', 5)->first();
@@ -145,5 +146,14 @@ class MemberController extends Controller
       return response()->json([
         'message' => '更新しました'
       ]);
+    }
+    public function getValues(Request $request){
+        $shop_id = $request->input('shop_id');
+        $courses = Course::where('shop_id', $shop_id)->get();
+        $casts = Cast::where('shop_id', $shop_id)->where('is_public', 1)->get();
+        return response()->json([
+          'courses' => $courses,
+          'casts' => $casts,
+        ]);
     }
 }

@@ -122,6 +122,7 @@ class MemberController extends Controller{
     if ($histories) {
       $histories = $histories->map(function ($history) {
         $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+        $history->course_name_table = Course::where('id', $history->course_id)->first()->name ?? '';
         $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
         $history->point_pay = Point::where('history_id', $history->id)->where('type', 3)->sum('point') ?? 0;
         $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
@@ -130,6 +131,8 @@ class MemberController extends Controller{
     }
     $user = Auth::user();
     $token = $user->createToken('api-token')->plainTextToken;
+
+    // $courses = Course::where('shop_id', $member->shop_id)->get();
     return view('admin.member.detail', [
       'member' => $member,
       'today_point' => $today_point,
@@ -235,6 +238,7 @@ class MemberController extends Controller{
       'token' => $token,
     ]);
   }
+
   /*
    const enum pref:string {
     case "1" = "北海道";
