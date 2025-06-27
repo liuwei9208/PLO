@@ -230,6 +230,9 @@
       </button>
     </div>
   </div>
+  @else
+  <div class="blank-space">
+  </div>
   @endif
   <!-- 新人情報 - New Face -->
   <section class="newface">
@@ -237,7 +240,7 @@
     <div class="section-title">
       <span class="section-title-en title-font front-title">
         {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
-        <span>N</span><span>E</span><span>W</span><span> </span><span>F</span><span>A</span><span>C</span><span>E</span>
+        <span>N</span><span>E</span><span>W</span> <span>F</span><span>A</span><span>C</span><span>E</span>
       </span>
       <h2 class="newface-title-sm title-font-sm">新人情報</h2>
     </div>
@@ -280,7 +283,7 @@
   <div class="diary">
     <div class="section-title">
       <h2 class="section-title-lg title-font front-title">
-        <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span><span> </span><span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
+        <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span> <span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
       </h2>
       <h3 class="section-title-sm title-font-sm">最新写メ日記</h3>
     </div>
@@ -337,7 +340,7 @@
   <div class="movie">
     <div class="movie-title">
       <h2 class="movie-title-en title-font front-title">
-        <span>S</span><span>H</span><span>O</span><span>P</span><span> </span><span>M</span><span>O</span><span>V</span><span>I</span><span>E</span>
+        <span>S</span><span>H</span><span>O</span><span>P</span> <span>M</span><span>O</span><span>V</span><span>I</span><span>E</span>
       </h2>
       <h3 class="movie-title-ja title-font-sm">各お店の最新動画</h3>
     </div>
