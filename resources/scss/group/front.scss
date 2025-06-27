@@ -34,8 +34,18 @@
   .mv-scroll {
     position: absolute;
     bottom: 0rem;
-    right: 0rem;
+    right: 24px;
     z-index: 10;
+    opacity: 0.9;
+    @media #{media-query(sm)} {
+      right: 16px;
+    }
+    @media #{media-query(md)} {
+      right: 16px;
+    }
+    @media #{media-query(lg)} {
+      right: 24px;
+    }
 
     img {
       width: 40px;
@@ -61,10 +71,10 @@
 // Responsive breakpoints for MV
 @media #{media-query(sm)} {
   .mv {
+    padding: 2rem 1rem;
     .mv-main {
       // height: 100vh;
       border-radius: 24px;
-      margin: 2rem 1rem;
     }
 
     .mv-scroll {
@@ -80,10 +90,10 @@
 
 @media #{media-query(md)} {
   .mv {
+    padding: 2rem 1rem;
     .mv-main {
       // height: 100vh;
       border-radius: 24px;
-      margin: 2rem 1rem;
     }
 
     .mv-scroll {
@@ -91,7 +101,7 @@
       // right: 2rem;
 
       img {
-        width: 40px;
+        width: 60px;
       }
     }
   }
@@ -99,10 +109,10 @@
 
 @media #{media-query(lg)} {
   .mv {
+    padding: 2rem 1.5rem;
     .mv-main {
       // height: 100vh;
       border-radius: 50px;
-      margin: 2rem 1.5rem;
     }
 
     .mv-scroll {

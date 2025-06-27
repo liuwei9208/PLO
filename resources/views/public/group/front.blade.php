@@ -331,7 +331,81 @@
       <img src="{{ asset('assets/img/mock-movie-lg.png') }}" alt="">
     </picture>
   </div> --}}
-
+  <div class="movie">
+    <div class="movie-title">
+      <h2 class="movie-title-en title-font front-title">
+        <span>S</span><span>H</span><span>O</span><span>P</span><span> </span><span>M</span><span>O</span><span>V</span><span>I</span><span>E</span>
+      </h2>
+      <h3 class="movie-title-ja title-font-sm">各お店の最新動画</h3>
+    </div>
+    <div class="movie-list content-wrapper">
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --pussycat sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie1.png') }}" alt="movie-1">
+          </div>
+          <div class="movie-list-item-shop --pussycat pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --shizuku sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie2.png') }}" alt="movie-2">
+          </div>
+          <div class="movie-list-item-shop --shizuku pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --miyabi sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie3.png') }}" alt="movie-3">
+          </div>
+          <div class="movie-list-item-shop --miyabi pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+      <div class="movie-list-item">
+        <a href="#" target="_blank">
+          <div class="movie-list-item-shop --en sp-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-movie">
+            <img src="{{ asset('assets/img/group/movie1.png') }}" alt="movie-4">
+          </div>
+          <div class="movie-list-item-shop --en pc-only">
+            店舗名
+          </div>
+          <div class="movie-list-item-content">
+            テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+          </div>
+        </a>
+      </div>
+    </div>
+    <a href="#"  class="movie-more more-button more-button-title">もっと見る</a>
+  </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
   <div class="banner content-wrapper">
@@ -351,13 +425,30 @@
     </div>
   </div>
   @endif
+
+  <div class="law">
+    <div class="law-content content-wrapper pc-only">
+      <p>当グループは、風俗関連営業等の規制及び業務の適正化等に関する法律</p>
+      <p>(第27条第2項、第33条第2項)の規定を取得しておりますので安心してお遊び頂けます。</p>
+      <p>このサイトにはアダルトコンテンツが含まれています。</p>
+      <p>18歳未満の方の閲覧は固くお断りいたします。</p>
+    </div>
+    <div class="law-content content-wrapper sp-only">
+      <p>当グループは、風俗関連営業等の規制及び</p><p>業務の適正化等に関する法律</p>
+      <p>(第27条第2項、第33条第2項)の規定</p><p>を取得しておりますので</p><p>安心してお遊び頂けます。</p>
+      <p>このサイトには</p><p>アダルトコンテンツが含まれています。</p>
+      <p>18歳未満の方の閲覧は固くお断りいたします。</p>
+    </div>
+
+  </div>
+
 </x-public-front-layout>
 
 <!-- Drawer Component -->
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss','resources/scss/group/_footer.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {

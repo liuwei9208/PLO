@@ -1,0 +1,238 @@
+@use '../global/vars' as *;
+@use '../mixins/text';
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
+
+.movie {
+  width: 100%;
+  background-image: url('/assets/img/group/movie-pc.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+
+  @media #{media-query(sm)} {
+    background-image: url('/assets/img/group/movie-pc.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 40px 0;
+  }
+
+  @media #{media-query(md)} {
+    background-image: url('/assets/img/group/movie-pc.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0 ;
+  }
+
+  @media #{media-query(lg)} {
+    background-image: url('/assets/img/group/movie-pc.svg');
+    background-size: cover;
+    background-position: center;
+    padding: 80px 0;
+  }
+
+  .movie-title {
+    text-align: center;
+    // padding: 60px 0 40px;
+
+    @media #{media-query(sm)} {
+      // padding: 40px 0 30px;
+    }
+
+    @media #{media-query(md)} {
+      // padding: 50px 0 35px;
+    }
+
+    @media #{media-query(lg)} {
+      // padding: 80px 0 60px;
+    }
+
+    &-en {
+      letter-spacing: 0.1em;
+      // margin-bottom: 20px;
+
+      @media #{media-query(sm)} {
+        // margin-bottom: 15px;
+      }
+
+      @media #{media-query(md)} {
+        // margin-bottom: 18px;
+      }
+
+      @media #{media-query(lg)} {
+        // margin-bottom: 25px;
+      }
+    }
+
+    &-ja {
+      color: #fff;
+      @media #{media-query(sm)} {
+        margin: 20px auto;
+      }
+
+      @media #{media-query(md)} {
+        margin: 40px auto;
+      }
+
+      @media #{media-query(lg)} {
+        margin: 40px auto;
+      }
+    }
+  }
+
+  .movie-list {
+    display: grid;
+    gap: 30px;
+    // padding: 0 20px 60px;
+
+    @media #{media-query(sm)} {
+      grid-template-columns: 1fr;
+      gap: 20px;
+      // padding: 0 15px 40px;
+    }
+
+    @media #{media-query(md)} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+      // padding: 0 20px 50px;
+    }
+
+    @media #{media-query(lg)} {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      // padding: 0 30px 80px;
+    }
+
+    &-item {
+      // background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+      }
+
+      &-movie {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+
+        @media #{media-query(sm)} {
+          height: 200px;
+        }
+
+        @media #{media-query(md)} {
+          height: 250px;
+        }
+
+        @media #{media-query(lg)} {
+          height: 300px;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &-shop {
+        display: flex;
+        // padding: 15px 20px 10px;
+        font-family: $font-gothic-min;
+        // font-weight: 700;
+        font-size: 18px;
+        border-radius: 24px;
+        color: #fff;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        @media #{media-query(sm)} {
+          font-size: 19px;
+          padding: 12px 15px 8px;
+          margin: 10px 0;
+        }
+
+        @media #{media-query(md)} {
+          font-size: 23px;
+          padding: 15px 20px 10px;
+          margin: 20px 0;
+        }
+
+        @media #{media-query(lg)} {
+          font-size: 27px;
+          // padding: 20px 0;
+          height: 60px;
+          margin: 20px 0;
+        }
+
+        &.--pussycat {
+          background-color: $shop-color-pussycat;
+        }
+
+        &.--shizuku {
+          background-color: $shop-color-shizuku;
+        }
+
+        &.--miyabi {
+          background-color: $shop-color-miyabi;
+        }
+
+        &.--en {
+          background-color: $shop-color-en;
+        }
+
+        &.--shiroganeze {
+          background-color: $shop-color-shiroganeze;
+        }
+
+        &.--lovestory {
+          background-color: $shop-color-lovestory;
+        }
+      }
+
+      &-content {
+        // padding: 0 20px 20px;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #fff;
+
+        @media #{media-query(sm)} {
+          font-size: 18px;
+          // padding: 0 15px 15px;
+          @include text.multiline-ellipsis(3);
+          margin: 10px 0;
+        }
+
+        @media #{media-query(md)} {
+          font-size: 21px;
+          // padding: 0 20px 20px;
+          @include text.multiline-ellipsis(2);
+        }
+
+        @media #{media-query(lg)} {
+          font-size: 24px;
+          // padding: 0 25px 25px;
+          @include text.multiline-ellipsis(2);
+        }
+      }
+    }
+  }
+  .movie-more {
+    color: #000;
+    background-color: #fff;
+    &:hover {
+      background-color: #ccc;
+      color: #000;
+    }
+  }
+}
+
