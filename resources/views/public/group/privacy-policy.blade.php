@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -90,4 +90,4 @@
       メール：info@plo-group.jp
     </p>
   </div>
-</x-public-group-layout>
+</x-public-front-layout>

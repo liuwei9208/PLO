@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -28,7 +28,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-front-layout>
 @once
   @vite(['resources/scss/group/_eventview.scss'])
 @endonce

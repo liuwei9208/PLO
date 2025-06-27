@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -24,15 +24,17 @@
       </div>
     </section>
 
-</x-public-group-layout>
-
+</x-public-front-layout>
+{{-- @once
+  @vite(['resources/scss/group/_newcomer.scss'])
+@endonce --}}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const items = document.querySelectorAll('.newcomer-item');
   const prevBtn = document.querySelector('.newcomer-pagination__prev');
   const nextBtn = document.querySelector('.newcomer-pagination__next');
   const numbersContainer = document.querySelector('.newcomer-pagination__numbers');
-  
+
   const isMobile = window.innerWidth <= 767;
   const itemsPerPage = isMobile ? 6 : 9;
   const totalPages = Math.ceil(items.length / itemsPerPage);

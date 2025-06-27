@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -21,8 +21,8 @@
     今後も、より良い情報の提供と皆様にとってより良いWEBサイトで在りますよう今一度各コンテンツのあり方につきましてご覧頂ければと思います。
 
     なお、各コンテンツや当サイトに関するご意見・ご質問はメールにて承ります。
-    
+
     お気軽にご利用下さい。
   </p>
 </div>
-</x-public-group-layout>
+</x-public-front-layout>

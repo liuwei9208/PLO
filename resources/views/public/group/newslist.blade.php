@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <section class="news-list">
     <div class="news-list-title">
@@ -6,7 +6,7 @@
     </div>
     <div class="news-list-items content-wrapper">
       @foreach ($news as $new)
-        <div class="news-list-item"> 
+        <div class="news-list-item">
           @if($new->shop_slug == 'headquarter')
             <a href="{{ route('public.group.newsdetail', ['id' => $new->id]) }}">
           @else
@@ -33,7 +33,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-front-layout>
 @once
   @vite('resources/scss/group/newslist.scss')
 @endonce
