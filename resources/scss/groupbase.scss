@@ -4,6 +4,7 @@
 @use 'global/utils';
 @use 'group/_footer.scss';
 @use 'group/_headerfront.scss';
+@use 'group/law.scss';
 
 html.wf-loading body {
   visibility: hidden; /* 読み込み中は隠す */

@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -132,4 +132,7 @@
     </form>
   </section>
   <!-- ここまで検索フォーム -->
-</x-public-group-layout>
+</x-public-front-layout>
+@once
+  @vite(['resources/scss/group/_search.scss'])
+@endonce

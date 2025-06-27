@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <section class="news-detail content-wrapper">
     <div class="news-detail-header">
@@ -20,7 +20,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-front-layout>
 @once
   @vite('resources/scss/group/newsdetail.scss')
 @endonce

@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -51,7 +51,7 @@
 
   </div>
 </section>
-</x-public-group-layout>
+</x-public-front-layout>
 @once
   @vite(['resources/scss/group/_pickup.scss'])
 @endonce
@@ -64,7 +64,7 @@ document.querySelectorAll('.pickup-shop-detail').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelector('.pickup-list-detail').dataset.shop = button.dataset.shop
     document.querySelector('.pickup-list-detail').classList.add('--expanded')
-    
+
     // ページネーションの表示制御
     const pagination = document.querySelector('.pagination')
     if (pagination) {
@@ -95,7 +95,7 @@ function initializePagination() {
     if (!paginationContainer) return
 
     let html = '<ul class="pagination">'
-    
+
     // 前へボタン
     html += `
       <li class="pagination-item ${currentPage === 1 ? 'disabled' : ''}">
@@ -212,7 +212,7 @@ function initializePagination() {
 document.addEventListener('DOMContentLoaded', () => {
   const pickupList = document.querySelector('.pickup-list-detail')
   const pagination = document.querySelector('.pagination')
-  
+
   if (pickupList && pagination) {
     if (pickupList.dataset.shop === 'all') {
       pagination.style.display = 'flex'

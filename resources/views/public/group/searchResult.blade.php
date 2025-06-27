@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -25,7 +25,7 @@
       <input type="hidden" name="status" value="{{ $status }}">
       <input type="hidden" name="selectedShopID" value="{{ $selectedShopID }}">
       <input type="hidden" name="selectedDate" value="{{ $selectedDate }}">
-      
+
     @if ( $status == 'working')
     <div class="schedule-week content-wrapper">
       <div class="schedule-week-day">
@@ -98,7 +98,7 @@
 
   </section>
 
-</x-public-group-layout>
+</x-public-front-layout>
 <script>
   let date = "{{ $days[0]['date'] }}";
 </script>
