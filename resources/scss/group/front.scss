@@ -704,3 +704,15 @@
     transition: transform 0.6s ease;
   }
 }
+
+.blank-space {
+  @media #{media-query(sm)} {
+    height: 40px;
+  }
+  @media #{media-query(md)} {
+    height: 60px;
+  }
+  @media #{media-query(lg)} {
+    height: 80px;
+  }
+}
