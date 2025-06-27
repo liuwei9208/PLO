@@ -429,7 +429,7 @@
   </div>
   @endif
 
-  <div class="law">
+  {{-- <div class="law">
     <div class="law-content content-wrapper pc-only">
       <p>当グループは、風俗関連営業等の規制及び業務の適正化等に関する法律</p>
       <p>(第27条第2項、第33条第2項)の規定を取得しておりますので安心してお遊び頂けます。</p>
@@ -443,7 +443,7 @@
       <p>18歳未満の方の閲覧は固くお断りいたします。</p>
     </div>
 
-  </div>
+  </div> --}}
 
 </x-public-front-layout>
 

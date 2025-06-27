@@ -651,14 +651,17 @@
 .main {
   @media #{media-query(sm)} {
     margin-top: 70px; // Space for header-logo (60px) + padding (10px) on small screens
+    padding-bottom: 100px; // Space for fixed search-girl
   }
 
   @media #{media-query(md)} {
     margin-top: 0; // No margin needed on medium and larger screens
+    padding-bottom: 100px; // Space for fixed search-girl
   }
 
   @media #{media-query(lg)} {
     margin-top: 0; // No margin needed on large screens
+    padding-bottom: 100px; // Space for fixed search-girl
   }
 }
 
