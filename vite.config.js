@@ -40,6 +40,7 @@ export default defineConfig({
                 'resources/scss/group/banner.scss',
                 'resources/scss/group/movie.scss',
                 'resources/scss/group/law.scss',
+                'resources/scss/group/event.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

@@ -186,9 +186,12 @@
 
   <!-- 新着情報 - PLO News -->
   @if($events->count() > 0)
-  <div class="mock mock-1">
+  <div class="event-1">
     <div class="section-title">
-      <h2 class="section-title-news title-font">Event</h2>
+      <h2 class="section-title-news title-font front-title">
+        <span>E</span><span>V</span><span>E</span><span>N</span><span>T</span>
+      </h2>
+      <h3 class="section-title-news title-font-sm">イベント</h3>
     </div>
     <div class="event-main">
       <div class="event-main-content">
@@ -202,7 +205,7 @@
       </div>
     </div>
 
-    <div class="event-slider swiper">
+    <div class="event-slider swiper content-wrapper">
       <div class="swiper-wrapper">
         @foreach($events->skip(1) as $event)
           <div class="swiper-slide">
@@ -448,7 +451,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/_new.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss','resources/scss/group/_footer.scss'])
+  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss','resources/scss/group/law.scss','resources/scss/group/_footer.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -464,85 +467,85 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Drawer functionality
-  const drawerToggle = document.getElementById('drawer-toggle');
-  const drawer = document.getElementById('drawer');
+  // const drawerToggle = document.getElementById('drawer-toggle');
+  // const drawer = document.getElementById('drawer');
 
-  if (drawerToggle && drawer) {
-    let isOpen = false;
+  // if (drawerToggle && drawer) {
+  //   let isOpen = false;
 
-    drawerToggle.addEventListener('click', function(e) {
-      e.preventDefault();
+  //   drawerToggle.addEventListener('click', function(e) {
+  //     e.preventDefault();
 
-      if (isOpen) {
-        // Close drawer
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      } else {
-        // Open drawer
-        drawer.style.right = '0';
-        drawerToggle.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        isOpen = true;
-      }
-    });
+  //     if (isOpen) {
+  //       // Close drawer
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     } else {
+  //       // Open drawer
+  //       drawer.style.right = '0';
+  //       drawerToggle.classList.add('active');
+  //       document.body.style.overflow = 'hidden';
+  //       isOpen = true;
+  //     }
+  //   });
 
-    // Close drawer when clicking on a link
-    const drawerLinks = drawer.querySelectorAll('a');
-    drawerLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      });
-    });
+  //   // Close drawer when clicking on a link
+  //   const drawerLinks = drawer.querySelectorAll('a');
+  //   drawerLinks.forEach(link => {
+  //     link.addEventListener('click', function() {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     });
+  //   });
 
-    // Close drawer when clicking outside
-    drawer.addEventListener('click', function(e) {
-      if (e.target === drawer) {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      }
-    });
+  //   // Close drawer when clicking outside
+  //   drawer.addEventListener('click', function(e) {
+  //     if (e.target === drawer) {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     }
+  //   });
 
-    // Close drawer on escape key
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && isOpen) {
-        drawer.style.right = '-100%';
-        drawerToggle.classList.remove('active');
-        document.body.style.overflow = '';
-        isOpen = false;
-      }
-    });
-  }
+  //   // Close drawer on escape key
+  //   document.addEventListener('keydown', function(e) {
+  //     if (e.key === 'Escape' && isOpen) {
+  //       drawer.style.right = '-100%';
+  //       drawerToggle.classList.remove('active');
+  //       document.body.style.overflow = '';
+  //       isOpen = false;
+  //     }
+  //   });
+  // }
 
-  // Pickup title color animation
-  const pickupTitle = document.querySelector('.pickup-title');
-  if (pickupTitle) {
-    const characters = pickupTitle.querySelectorAll('span');
-    const colors = ['#DC53D7', '#4068fb', '#FF8C71', '#FFC557', '#009162', '#FF5AA2'];
-    let colorIndex = 0;
+  // // Pickup title color animation
+  // const pickupTitle = document.querySelector('.pickup-title');
+  // if (pickupTitle) {
+  //   const characters = pickupTitle.querySelectorAll('span');
+  //   const colors = ['#DC53D7', '#4068fb', '#FF8C71', '#FFC557', '#009162', '#FF5AA2'];
+  //   let colorIndex = 0;
 
-    function changeColors() {
-      characters.forEach((char, index) => {
-        const delay = index * 100; // 100ms delay between each character
-        setTimeout(() => {
-          char.style.color = colors[colorIndex];
-        }, delay);
-      });
+  //   function changeColors() {
+  //     characters.forEach((char, index) => {
+  //       const delay = index * 100; // 100ms delay between each character
+  //       setTimeout(() => {
+  //         char.style.color = colors[colorIndex];
+  //       }, delay);
+  //     });
 
-      colorIndex = (colorIndex + 1) % colors.length;
-    }
+  //     colorIndex = (colorIndex + 1) % colors.length;
+  //   }
 
-    // Change colors every 2 seconds
-    setInterval(changeColors, 2000);
+  //   // Change colors every 2 seconds
+  //   setInterval(changeColors, 2000);
 
-    // Initial color change
-    changeColors();
-  }
+  //   // Initial color change
+  //   changeColors();
+  // }
 });
 </script>
