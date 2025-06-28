@@ -118,7 +118,12 @@ class EventController extends Controller
       $event = Event::find($id);
       $event->title = $request->title;
       $event->shop_id = $request->shop_id;
-      $event->published_at = $request->published_at;
+      if ( $request->publish_type == 1 ) {
+        $event->published_at = now();
+      }else {
+        $event->published_at = $request->published_at;
+      }
+    //   $event->published_at = $request->published_at;
       $event->published_status = $request->publish_type;
       $event->thumbnail = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
       $event->contents = $request->event_content;

@@ -36,13 +36,20 @@
               let course = '<option value="">選択してください</option>';
               let cast = '<option value="">選択してください</option>';
               if (data.courses.length > 0) {
-                course += data.courses.map(course => `<option value="${course.id}">${course.name}</option>`).join('');
+                course += data.courses.map((course) =>{
+                  console.log(course.name);
+                  console.log(course_name);
+                  console.log(course_name);
+                  console.log(casts_name);
+                  return `<option value="${course.id}" ${course.name === course_name ? 'selected' : ''}>${course.name}</option>`;
+                }).join('');
               }
               if (data.casts.length > 0) {
-                cast += data.casts.map(cast => `<option value="${cast.id}">${cast.name}</option>`).join('');
+                cast += data.casts.map(cast => `<option value="${cast.id}" ${cast.name === casts_name ? 'selected' : ''}>${cast.name}</option>`).join('');
               }
               document.getElementById('course').innerHTML = course;
               document.getElementById('cast_name').innerHTML = cast;
+              // 値の設定は削除（selected属性で制御するため）
             } else {
               console.error('更新に失敗しました');
               alert('更新に失敗しました');
@@ -54,7 +61,7 @@
 
           window.currentEditId = historyId;
 
-          // フォームに値を設定
+          // フォームに値を設定（select以外）
           document.getElementById('createDate').value = created_at || '';
           document.getElementById('shop_name').value = shop_name || '';
           document.getElementById('cast_name').value = casts_name || '';
@@ -428,7 +435,7 @@
                   <div class="flex items-center">
                     <button
                       type="button"
-                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price }}, '{{ $history->course_name }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
+                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price }}, '{{ $history->course_name_table }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
                       class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]"
                     >
                       <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -498,18 +505,17 @@
                     </div>
                     <div>
                       <label for="cast_name" class="block text-sm font-medium text-gray-700">キャスト名</label>
-                      <select name="cast_name" id="cast_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <input type="text" name="cast_name" id="cast_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      {{-- <select readonly name="cast_name" id="cast_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         <option value="">選択してください</option>
-                      </select>
-
-                      {{-- <input type="text" name="cast_name" id="cast_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
+                      </select> --}}
                     </div>
                     <div>
                       <label for="course" class="block text-sm font-medium text-gray-700">コース</label>
-                      <select name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      <input type="text" name="course" id="course" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                      {{-- <select name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         <option value="">選択してください</option>
-                      </select>
-                      {{-- <input type="text" name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"> --}}
+                      </select> --}}
                     </div>
                     <div>
                       <label for="price" class="block text-sm font-medium text-gray-700">料金</label>
