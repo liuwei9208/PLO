@@ -16,7 +16,7 @@ use App\Models\Member;
 use App\Models\Point;
 use App\Models\History;
 use App\Models\Course;
-
+use Illuminate\Support\Facades\DB;
 class MemberController extends Controller
 {
     public function update(Request $request): JsonResponse
@@ -27,8 +27,8 @@ class MemberController extends Controller
       $point_value = is_numeric($request->input('point')) ? $request->input('point') : 0;
       $point_use_value = is_numeric($request->input('point_use')) ? $request->input('point_use') : 0;
       $history = History::find($request->input('id'));
-      $history->course_id = $request->input('course') ?? '';
-      $history->cast_id = $request->input('cast_id') ?? '';
+    //   $history->course_id = $request->input('course') ?? '';
+    //   $history->cast_id = $request->input('cast_id') ?? '';
       $history->price = $price;
       $point = Point::where('history_id', $request->input('id'))->where('type', 3)->first();
       $point_use = Point::where('history_id', $request->input('id'))->where('type', 5)->first();
@@ -102,13 +102,17 @@ class MemberController extends Controller
       // dd($request->input('extension_name'));
       // $history = History::where('user_id', $request->input('member_id'))->max('created_at');
       // if (!$history) {
+        $shop_manager = Auth::user();
+
+        $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $shop_manager->id)->get();
+        $shop_id = $shop_user[0]->shop_id;
         $history = new History();
         $history->user_id = $request->input('member_id');
         $history->name = '来店';
-        $history->office_id = 0;
-        $history->shop_id = 0;
-        $history->cast_id = $request->input('cast') ?? 0;
-        $history->course_name = $request->input('course') ?? '';
+        $history->office_id = 1;
+        $history->shop_id = $shop_id;
+        $history->cast_id = $request->input('cast') ?: 'null';
+        $history->course_id = $request->input('course') ?: 'null';
         $history->price = is_numeric($request->input('price')) ? $request->input('price') : 0;
         $history->extension_name = $request->input('extension_name') ?? '';
         $history->memo = $request->input('memo') ?? '';
@@ -129,6 +133,7 @@ class MemberController extends Controller
         'user_id' => $history->user_id,
         'history_id' => $history->id,
         'office_id' => $history->office_id,
+        'shop_id' => $shop_id,
         'type' => 3,
         'point' => is_numeric($request->input('point')) ? $request->input('point') : 0,
         'created_at' => now(),
@@ -138,6 +143,7 @@ class MemberController extends Controller
         'user_id' => $history->user_id,
         'history_id' => $history->id,
         'office_id' => $history->office_id,
+        'shop_id' => $shop_id,
         'type' => 5,
         'point' => is_numeric($request->input('point_use')) ? $request->input('point_use') : 0,
         'created_at' => now(),

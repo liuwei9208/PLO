@@ -208,6 +208,7 @@ class MemberController extends Controller{
         $histories = $histories->map(function ($history) {
           $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
           $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
+          $history->course_name_table = Course::where('id', $history->course_id)->first()->name ?? '';
           return $history;
         });
       }

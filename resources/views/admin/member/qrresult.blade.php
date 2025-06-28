@@ -53,7 +53,7 @@
                   <tr>
                     <td class="p-1 border-b border-r border-gray-400 h-8">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name_table }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->extension_name }}</td>
                     <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ $history->price }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->point_use }}</td>
@@ -77,20 +77,20 @@
           </div>
           <!-- Right side -->
           <div class="w-1/3" style="width: 30%;">
-            <div class="text-right mb-2 font-semibold">2025年6月19日</div>
+            <div class="text-right mb-2 font-semibold">{{ \Carbon\Carbon::now()->format('Y年m月d日') }}</div>
             <table class="w-full text-sm border-collapse border border-gray-400">
               <tbody>
                 <tr>
                   <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">利用ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" value="0" class="p-1 border border-gray-400 text-right w-full" name="point_use" id="point_use"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="number" value="0" class="p-1 border border-gray-400 text-right w-full" name="point_use" id="point_use"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">取得ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" name="point" id="point" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="number" name="point" id="point" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
-                  <td class="p-1 border-b border-gray-400"><input name="price" id="price" type="text" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input name="price" id="price" type="number" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">キャスト名</th>
@@ -109,7 +109,7 @@
                     <select class="p-1 border border-gray-400 w-full bg-white" name="course" id="course">
                       <option value=""></option>
                       @foreach( $courses as $course )
-                      <option value="{{ $course->name }}">{{ $course->name }}</option>
+                      <option value="{{ $course->id }}">{{ $course->name }}</option>
                       @endforeach
                     </select>
                   </td>
