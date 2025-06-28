@@ -46,8 +46,10 @@ export default class Drawer {
     this.$base.classList.add('--shown')
 
     // Transform toggle
-    this.$toggle.classList.add('--hider');
-    this.$toggle.classList.remove('--shower');
+    // this.$toggle.classList.add('--hider');
+    // this.$toggle.classList.remove('--shower');
+    this.$toggle.classList.add('active');
+    // this.$toggle.classList.remove('--shower');
 
     // Disable scroll
     this.scroll.disable()
@@ -67,8 +69,9 @@ export default class Drawer {
     this.$base.classList.remove('--shown')
 
     // Transform toggle
-    this.$toggle.classList.add('--shower');
-    this.$toggle.classList.remove('--hider');
+    // this.$toggle.classList.add('--shower');
+    // this.$toggle.classList.remove('--hider');
+    this.$toggle.classList.remove('active');
 
     // Enable scroll
     this.scroll.enable()

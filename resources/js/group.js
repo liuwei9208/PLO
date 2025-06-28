@@ -87,7 +87,7 @@ if (newfaceMore) {
 }
 
 // イベントスライダーの初期化
-const initEventSlider = () => {
+// const initEventSlider = () => {
   const eventSlider = new Swiper('.event-slider', {
 // new Swiper('.event-slider', {
       modules: [Navigation, Pagination, Autoplay],
@@ -127,9 +127,9 @@ const initEventSlider = () => {
       }
 
   });
-};
+// };
 
 // DOMContentLoadedイベントで初期化
 document.addEventListener('DOMContentLoaded', () => {
-  initEventSlider();
+  // initEventSlider();
 });

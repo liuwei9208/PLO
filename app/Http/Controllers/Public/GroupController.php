@@ -165,7 +165,7 @@ class GroupController extends Controller
     {
         return view('public.group.shop', [
             'pickups' => Pickup::inRandomOrder()->get(),
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
         ]);
     }
 

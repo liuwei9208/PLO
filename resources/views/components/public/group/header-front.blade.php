@@ -19,7 +19,10 @@
 
 </header>
 <button class="drawer-toggle" id="drawer-toggle">
-  <i class="drawer-toggle-bar"></i>
-  <i class="drawer-toggle-bar"></i>
-  <i class="drawer-toggle-bar"></i>
+  <div class="drawer-toggle-bars">
+    <span class="drawer-toggle-bar"></span>
+    <span class="drawer-toggle-bar"></span>
+    <span class="drawer-toggle-bar"></span>
+  </div>
+  <span class="drawer-toggle-menu rainbow-text">MENU</span>
 </button>
