@@ -19,57 +19,57 @@
 
 // Pickup title animation
 
-.front-title {
-  display: inline-block;
+// .front-title {
+//   display: inline-block;
 
-  // Split each character into spans for individual animation
-  span {
-    display: inline-block;
-    animation: colorChange 3s infinite;
+//   // Split each character into spans for individual animation
+//   span {
+//     display: inline-block;
+//     animation: colorChange 3s infinite;
 
-    // Stagger the animation for each character
-    @for $i from 1 through 10 {
-      &:nth-child(#{$i}) {
-        animation-delay: #{$i * 0.2}s;
-      }
-    }
-  }
-}
+//     // Stagger the animation for each character
+//     @for $i from 1 through 10 {
+//       &:nth-child(#{$i}) {
+//         animation-delay: #{$i * 0.2}s;
+//       }
+//     }
+//   }
+// }
 
 
-// Color change animation
-@keyframes colorChange {
-  0%, 100% {
-    color: #000;
-  }
-  10% {
-    color: #DC53D7; // pussycat
-  }
-  20% {
-    color: #4068fb; // shizuku
-  }
-  30% {
-    color: #FF8C71; // miyabi
-  }
-  40% {
-    color: #FFC557; // en
-  }
-  50% {
-    color: #009162; // shiroganeze
-  }
-  60% {
-    color: #FF5AA2; // lovestory
-  }
-  70% {
-    color: #DC53D7; // back to pussycat
-  }
-  80% {
-    color: #4068fb; // back to shizuku
-  }
-  90% {
-    color: #FF8C71; // back to miyabi
-  }
-}
+// // Color change animation
+// @keyframes colorChange {
+//   0%, 100% {
+//     color: #000;
+//   }
+//   10% {
+//     color: #DC53D7; // pussycat
+//   }
+//   20% {
+//     color: #4068fb; // shizuku
+//   }
+//   30% {
+//     color: #FF8C71; // miyabi
+//   }
+//   40% {
+//     color: #FFC557; // en
+//   }
+//   50% {
+//     color: #009162; // shiroganeze
+//   }
+//   60% {
+//     color: #FF5AA2; // lovestory
+//   }
+//   70% {
+//     color: #DC53D7; // back to pussycat
+//   }
+//   80% {
+//     color: #4068fb; // back to shizuku
+//   }
+//   90% {
+//     color: #FF8C71; // back to miyabi
+//   }
+// }
 
  .pickup {
    width: 100%;
