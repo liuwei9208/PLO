@@ -5,6 +5,8 @@
 @use '../global/utils';
 
 .footer {
+  max-width: 1500px;
+  margin: 0 auto;
   background-color: #000;
   padding: 40px 0;
   color: #fff;
@@ -37,7 +39,7 @@
           opacity: 0.8;
         }
         @media #{media-query(sm)} {
-          font-size: 20px;
+          font-size: 16px;
           margin: 0 30px;
 
         }
@@ -174,6 +176,7 @@
     width: 215px;
     border-top-left-radius: 24px;
     font-size: 28px;
+    right: 315px;
   }
   &:hover {
     animation: searchGirlBounce 0.8s ease-in-out, searchGirlGlow 1.5s ease-in-out infinite;
@@ -248,7 +251,9 @@
     bottom: 70px;
     right: 15px;
   }
-
+  @media #{media-query(lg)} {
+    right: 315px;
+  }
   a {
     display: flex;
     align-items: center;

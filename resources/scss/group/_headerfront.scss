@@ -302,7 +302,7 @@
     width: 70px;
     height: 70px;
     top: 43px;
-    right: 25px
+    right: 315px
   }
   .drawer-toggle-bars {
     display: flex;
@@ -718,7 +718,7 @@
     .header-user {
       &.md,
       &.lg {
-        margin-right: 130px;
+        margin-right: 360px;
         margin-top: 24px; // More space for larger drawer-toggle
       }
     }
@@ -755,13 +755,15 @@
   }
 
   @media #{media-query(md)} {
-    margin-top: 0; // No margin needed on medium and larger screens
+    // margin-top: 0; // No margin needed on medium and larger screens
     // padding-bottom: 100px; // Space for fixed search-girl
   }
 
   @media #{media-query(lg)} {
     // margin: 0 70px; // No margin needed on large screens
     // padding-bottom: 100px; // Space for fixed search-girl
+    max-width: 1500px;
+    margin: 0 auto;
   }
 }
 
