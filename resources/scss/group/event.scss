@@ -1,5 +1,8 @@
 @use '../global/vars' as *;
 @use '../mixins/text';
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
 
 .section-title {
   text-align: center;
@@ -314,6 +317,9 @@
       font-size: 34px;
       // color: #666;
       margin-bottom: 0;
+      @media #{media-query(lg)} {
+        width: 180px;
+      }
     }
 
     &-title {
@@ -321,6 +327,7 @@
       // font-weight: bold;
       line-height: 1.4;
       margin-bottom: 0;
+      @include text.multiline-ellipsis(1);
     }
 
     &-image {
