@@ -176,6 +176,7 @@
     width: 215px;
     border-top-left-radius: 24px;
     font-size: 28px;
+    right: 315px;
   }
   &:hover {
     animation: searchGirlBounce 0.8s ease-in-out, searchGirlGlow 1.5s ease-in-out infinite;
@@ -250,7 +251,9 @@
     bottom: 70px;
     right: 15px;
   }
-
+  @media #{media-query(lg)} {
+    right: 315px;
+  }
   a {
     display: flex;
     align-items: center;
