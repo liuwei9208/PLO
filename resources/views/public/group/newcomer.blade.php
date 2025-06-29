@@ -7,27 +7,27 @@
     <!-- 新人情報 - New Face -->
     <section class="newface">
       <div class="section-title">
-        <span class="section-title-en">
-          <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
+        <span class="section-title-en title-font front-title">
+          <span>N</span><span>E</span><span>W</span> <span>C</span><span>O</span><span>M</span><span>E</span><span>R</span>
         </span>
-        <h2 class="section-title-ja">新人情報</h2>
+        <h2 class="section-title-ja title-font-sm">新人情報</h2>
       </div>
-      <div class="newcomer-list">
+      <div class="newcomer-list content-wrapper">
         @foreach ($newcomers as $cast)
           <div class="newcomer-item">
             <x-public.group.newface :cast="$cast" />
           </div>
         @endforeach
       </div>
-      <div class="newcomer-pagination">
+      <div class="newcomer-pagination content-wrapper">
         {{ $newcomers->links('pagination::bootstrap-4') }}
       </div>
     </section>
 
 </x-public-front-layout>
-{{-- @once
-  @vite(['resources/scss/group/_newcomer.scss'])
-@endonce --}}
+@once
+  @vite(['resources/scss/group/_newcomer.scss','resources/scss/group/newfacelist.scss'])
+@endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const items = document.querySelectorAll('.newcomer-item');

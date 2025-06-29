@@ -1,14 +1,28 @@
 @use '../global/vars' as *;
 @use '../mixins/text';
-
+.section-title {
+  text-align: center;
+  &-ja{
+    @media #{media-query(sm)} {
+      margin: 20px auto;
+    }
+    @media #{media-query(md)} {
+      margin: 40px auto;
+    }
+    @media #{media-query(lg)} {
+      margin: 40px auto;
+    }
+  }
+}
 .newcomer {
+
   &-list {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    // max-width: 1200px;
+    // margin: 40px auto;
+    // padding: 0 20px;
 
     @media #{media-query(sm)} {
       gap: 20px;
