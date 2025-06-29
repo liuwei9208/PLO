@@ -25,7 +25,7 @@
     {{-- <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700" style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;">保存</button> --}}
       <!-- Search -->
       <div
-        class="flex p-5 sm:p-6 dark:border-gray-800"
+        class="flex p-5 sm:p-6 dark:border-gray-800 w-full"
       >
         @role('shop')
         <div class="mr-2">
@@ -38,7 +38,7 @@
         </div>
         @endrole
       <!-- NickName filter -->
-        <div class="mr-2 hidden lg:block">
+        <div class="mr-2 hidden lg:block" style="width: 40%;">
           <div class="relative">
             <span class="absolute top-1/2 left-4 -translate-y-1/2">
               <svg class="fill-gray-500 dark:fill-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -49,9 +49,9 @@
               type="text"
               name="nickname"
               id="search_form_nickname"
-              placeholder="ニックネーム"
+              placeholder="会員ID、ニックネーム、携帯番号"
               value="{{ request()->nickname }}"
-              class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[300px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
+              class="w-full xl:w-[700px] dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11  rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden  dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
             >
             <button type="submit" class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
               <span> 検索 </span>
@@ -60,7 +60,7 @@
         </div>
 
         <!-- email filter -->
-        <div class="mr-2 hidden lg:block">
+        {{-- <div class="mr-2 hidden lg:block">
           <div class="relative">
             <span class="absolute top-1/2 left-4 -translate-y-1/2">
               <svg class="fill-gray-500 dark:fill-gray-400" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@
               <span> 検索 </span>
             </button>
           </div>
-        </div>
+        </div> --}}
       </div>
 
       <!-- Limit -->
@@ -160,6 +160,10 @@
               </th>
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
@@ -194,7 +198,7 @@
                   </p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              {{-- <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
@@ -202,7 +206,7 @@
                   会員予備
                   </p>
                 </div>
-              </th>
+              </th> --}}
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
@@ -212,7 +216,7 @@
                   </p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              {{-- <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
@@ -229,7 +233,7 @@
                   生年月日
                   </p>
                 </div>
-              </th>
+              </th> --}}
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
@@ -239,10 +243,10 @@
                   </p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              {{-- <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                 </div>
-              </th>
+              </th> --}}
             </tr>
           </thead>
           <!-- table header end -->
@@ -256,6 +260,19 @@
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $member->id }}
                     </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center justify-end">
+                    <a
+                      href="{{ url('/admin/member/' . $member->id) }}"
+                      class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
+                    >
+                      <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0911 2.78206C14.2125 1.90338 12.7878 1.90338 11.9092 2.78206L4.57524 10.116C4.26682 10.4244 4.0547 10.8158 3.96468 11.2426L3.31231 14.3352C3.25997 14.5833 3.33653 14.841 3.51583 15.0203C3.69512 15.1996 3.95286 15.2761 4.20096 15.2238L7.29355 14.5714C7.72031 14.4814 8.11172 14.2693 8.42013 13.9609L15.7541 6.62695C16.6327 5.74827 16.6327 4.32365 15.7541 3.44497L15.0911 2.78206ZM12.9698 3.84272C13.2627 3.54982 13.7376 3.54982 14.0305 3.84272L14.6934 4.50563C14.9863 4.79852 14.9863 5.2734 14.6934 5.56629L14.044 6.21573L12.3204 4.49215L12.9698 3.84272ZM11.2597 5.55281L5.6359 11.1766C5.53309 11.2794 5.46238 11.4099 5.43238 11.5522L5.01758 13.5185L6.98394 13.1037C7.1262 13.0737 7.25666 13.003 7.35947 12.9002L12.9833 7.27639L11.2597 5.55281Z" fill=""></path>
+                      </svg>
+                      詳細
+                    </a>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
@@ -286,13 +303,13 @@
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                {{-- <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $member->commentbr }}
                     </p>
                   </div>
-                </td>
+                </td> --}}
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
@@ -352,7 +369,7 @@
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                {{-- <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $member->address }}
@@ -365,7 +382,7 @@
                       {{ $member->birth}}
                     </p>
                   </div>
-                </td>
+                </td> --}}
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
@@ -373,7 +390,7 @@
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                {{-- <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
                       href="{{ url('/admin/member/' . $member->id) }}"
@@ -385,7 +402,7 @@
                       詳細
                     </a>
                   </div>
-                </td>
+                </td> --}}
               </tr>
             @endforeach
           </tbody>
