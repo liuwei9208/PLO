@@ -24,18 +24,19 @@ class MemberController extends Controller{
 
     if ($request->has('nickname') && $request->query('nickname') !== null) {
         $name = '%' . $request->query('nickname') . '%';
-        $query->where('name', 'like', $name);
+        $id = $request->query('nickname');
+        $query->where('name', 'like', $name)->orWhere('tel', 'like', $name)->orWhere('id', '=', $id);
     }
 
-    if ($request->has('mail') && $request->query('mail') !== null) {
-        $email = '%' . $request->query('mail') . '%';
-        $query->where('email', 'like', $email);
-    }
+    // if ($request->has('mail') && $request->query('mail') !== null) {
+    //     $email = '%' . $request->query('mail') . '%';
+    //     $query->where('email', 'like', $email);
+    // }
 
-    if ($request->has('tel') && $request->query('tel') !== null) {
-        $tel = '%' . $request->query('tel') . '%';
-        $query->where('tel', 'like', $tel);
-    }
+    // if ($request->has('tel') && $request->query('tel') !== null) {
+    //     $tel = '%' . $request->query('tel') . '%';
+    //     $query->where('tel', 'like', $tel);
+    // }
 
     $total = $query->count();
 
