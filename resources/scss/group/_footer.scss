@@ -5,6 +5,8 @@
 @use '../global/utils';
 
 .footer {
+  max-width: 1500px;
+  margin: 0 auto;
   background-color: #000;
   padding: 40px 0;
   color: #fff;
@@ -37,7 +39,7 @@
           opacity: 0.8;
         }
         @media #{media-query(sm)} {
-          font-size: 20px;
+          font-size: 16px;
           margin: 0 30px;
 
         }
