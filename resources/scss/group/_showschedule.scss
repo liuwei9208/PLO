@@ -986,3 +986,15 @@
     }
   }
 }
+
+.search-result-pagination {
+  @media #{media-query(sm)} {
+    margin: 20px auto;
+  }
+  @media #{media-query(md)} {
+    margin: 40px auto;
+  }
+  @media #{media-query(lg)} {
+    margin: 40px auto;
+  }
+}
