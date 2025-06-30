@@ -7,9 +7,9 @@
     <div class="schedule-title">
       {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
       @if ( $status == 'working')
-      <h2 class="schedule-title-ja title-font">出勤情報</h2>
+      <h2 class="schedule-title-ja title-font-sm">出勤情報</h2>
       @else
-      <h2 class="schedule-title-ja title-font">在籍情報</h2>
+      <h2 class="schedule-title-ja title-font-sm">在籍情報</h2>
       @endif
     </div>
     <form name="searchResultForm" action="{{ route('public.group.searchResult.post') }}" method="post">
@@ -44,11 +44,22 @@
       </div>
       <div class="schedule-shop-list-items">
         <div class="schedule-shop-list-item --all">
-          <button type="submit" name="shop_id" class="schedule-shop-list-item-button {{ $selectedShopID == "" ? 'active' : '' }}" value="" id="shopID">All</button>
+          <button type="submit" name="shop_id" class="schedule-shop-list-item-button {{ $selectedShopID == "" ? 'active' : '' }}" value="" id="shopID">
+            <span class="shop-text">
+              <span class="shop-name">ALL</span>
+            </span>
+
+          </button>
         </div>
       @foreach ($shops as $shop)
         <div class="schedule-shop-list-item --{{$shop->slug}}">
-          <button type="submit" name="shop_id" class="schedule-shop-list-item-button {{ $selectedShopID == $shop->id ? 'active' : '' }}" value="{{ $shop->id }}" id="shopID">{{ $shop->name }}</button>
+          <button type="submit" name="shop_id" class="schedule-shop-list-item-button {{ $selectedShopID == $shop->id ? 'active' : '' }}" value="{{ $shop->id }}" id="shopID">
+            <img src="{{ asset('assets/img/search.png') }}" alt="search">
+            <span class="shop-text">
+              <span class="shop-slug">{{ $shop->slug }}</span>
+              <span class="shop-name">{{ $shop->name }}</span>
+            </span>
+          </button>
         </div>
       @endforeach
       </div>
@@ -69,7 +80,7 @@
       @foreach ($search_result as $cast)
       <div class="schedule-person-info-list-item">
         <a href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->id]) }}">
-          <div class="schedule-person-info-photo">
+          <div class="schedule-person-info-photo --{{$cast->shop_slug}}">
             <img src="{{ asset('storage/'.$cast->gallery_1) }}" alt="{{$cast->name}}">
           </div>
           <div class="schedule-person-info-items">
@@ -82,7 +93,7 @@
             <div class="schedule-person-info-property --{{$cast->shop_slug}}">
               {{ $cast->age."歳/T.".$cast->height." B.".$cast->bust." W.".$cast->waist." H.".$cast->hip }}
             </div>
-            <div class="schedule-person-info-message">
+            <div class="schedule-person-info-message --{{$cast->shop_slug}}">
               {{ $cast->appeal_point }}
             </div>
           </div>
@@ -92,7 +103,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="search-result-pagination">
+    <div class="search-result-pagination" >
       {{ $search_result->links('pagination::bootstrap-4') }}
     </div>
 
