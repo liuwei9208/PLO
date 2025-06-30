@@ -376,23 +376,26 @@
 
      .newface-photo {
        width: 100%;
-       height: 70%;
+      //  height: 70%;
        overflow: hidden;
        position: relative;
        @media #{media-query(sm)} {
          // height: 70%;
          border-radius: 30px;
          margin: 16px 0 0;
+         height: 344px;
        }
        @media #{media-query(md)} {
          // height: 490px;
          border-radius: 30px;
          margin: 20px 0 0;
+         height: 729px;
        }
        @media #{media-query(lg)} {
          // height: 555px;
          border-radius: 30px;
          margin: 24px 0 0;
+         height: 518px;
        }
 
        img {
