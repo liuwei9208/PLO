@@ -43,6 +43,7 @@ export default defineConfig({
                 'resources/scss/group/_search.scss',
                 'resources/scss/group/_newcomer.scss',
                 'resources/scss/group/newfacelist.scss',
+                'resources/scss/group/privacy.scss',
                 // 'resources/scss/group/law.scss',
                 'resources/scss/group/event.scss',
                 'resources/js/admin.js',

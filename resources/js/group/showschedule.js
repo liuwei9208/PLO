@@ -8,10 +8,13 @@ let total = 0;
 let shopID = '';
 
 document.addEventListener('DOMContentLoaded', async function() {
+  // 初期状態でALLボタンをアクティブにする
+  document.querySelector('.schedule-shop-list-item-button').classList.add('active');
+
   await getCastsSchedule(date, page, limit, skip, pages, total);
   drawPagination(page, pages);
   document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
-  
+
   // 曜日ボタンのイベントリスナー
   document.querySelectorAll('.schedule-week-day-date').forEach(button => {
     button.addEventListener('click', async (e) => {
@@ -20,14 +23,16 @@ document.addEventListener('DOMContentLoaded', async function() {
         btn.classList.remove('active');
       });
       e.target.classList.add('active');
-      
+
       date = e.target.value;
+      page = 1; // 曜日変更時は1ページ目に戻る
+      skip = 0;
       await getCastsSchedule(date, page, limit, skip, pages, total);
       drawPagination(page, pages);
       document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
     });
   });
-  
+
   // 店舗ボタンのイベントリスナー
   document.querySelectorAll('.schedule-shop-list-item-button').forEach(button => {
     button.addEventListener('click', async (e) => {
@@ -35,24 +40,34 @@ document.addEventListener('DOMContentLoaded', async function() {
       document.querySelectorAll('.schedule-shop-list-item-button').forEach(btn => {
         btn.classList.remove('active');
       });
-      e.target.classList.add('active');
-      
-      shopID = e.target.value;
+      e.currentTarget.classList.add('active');
+
+      shopID = e.currentTarget.value;
+      page = 1; // 店舗変更時は1ページ目に戻る
+      skip = 0;
+      console.log(e.currentTarget.value);
+      // console.log({shopID});
       await getCastsSchedule(date, page, limit, skip, pages, total);
       drawPagination(page, pages);
     });
   });
 });
 
-async function getCastsSchedule(date, page, limit, skip, pages, total) {
+async function getCastsSchedule(date, page_tmp, limit_tmp, skip_tmp, pages_tmp, total_tmp) {
+    const isMobile = /iPhone|Android.*Mobile|Windows Phone|webOS|BlackBerry/i.test(navigator.userAgent);
+    if (isMobile){
+      limit = 6;
+    }else{
+      limit = 12;
+    }
     try {
         const response = await axios.post(`/api/casts-schedule`, {
             date: date,
-            page: page,
-            limit: limit,
-            skip: skip,
-            pages: pages,
-            total: total,
+            page: page_tmp,
+            limit: limit_tmp,
+            skip: skip_tmp,
+            pages: pages_tmp,
+            total: total_tmp,
             shopID: shopID
         },
         {
@@ -90,12 +105,17 @@ function drawCastsSchedule(casts){
     castItem.classList.add('schedule-person-info-list-item');
     castItem.innerHTML = `
     <a href="${window.location.origin}/${cast.shop_slug}/cast/${cast.cast_id}">
-      <div class="schedule-person-info-photo">
+      <div class="schedule-person-info-photo --${cast.shop_slug}">
         <img src="${window.location.origin}/storage/${cast.gallery_1}" alt="${cast.cast_name}">
       </div>
       <div class="schedule-person-info-items">
         <div class="schedule-person-info-shop-working --${cast.shop_slug}">
-          ${cast.shop_name} ${cast.start_datetime} - ${cast.end_datetime}
+          <div class="schedule-person-info-shop-working-shopname">
+            ${cast.shop_name}
+          </div>
+          <div class="schedule-person-info-shop-working-time">
+            ${cast.start_datetime} - ${cast.end_datetime}
+          </div>
         </div>
         <div class="schedule-person-info-name --${cast.shop_slug}">
           ${cast.cast_name}
@@ -103,7 +123,7 @@ function drawCastsSchedule(casts){
         <div class="schedule-person-info-property --${cast.shop_slug}">
           ${cast.age}歳/T.${cast.height} B.${cast.bust} W.${cast.waist} H.${cast.hip}
         </div>
-        <div class="schedule-person-info-message">
+        <div class="schedule-person-info-message --${cast.shop_slug}">
           ${cast.appeal_point == null ? '' : cast.appeal_point}
         </div>
       </div>
@@ -115,6 +135,8 @@ function drawCastsSchedule(casts){
 
 function drawPagination(currentPage, totalPages) {
   const pagination = document.querySelector('.schedule-pagination');
+  console.log({totalPages});
+  console.log({currentPage});
   if (totalPages > 1) {
     let paginationHTML = `
       <nav aria-label="Page navigation">
@@ -199,10 +221,11 @@ function setupPaginationListeners() {
     link.addEventListener('click', async (e) => {
       e.preventDefault();
       const newPage = parseInt(e.target.closest('.page-link').dataset.page);
-      if (!isNaN(newPage) && newPage !== page) {
+      if (!isNaN(newPage) && newPage !== page && newPage >= 1 && newPage <= pages) {
         page = newPage;
         skip = (page - 1) * limit;
         await getCastsSchedule(date, page, limit, skip, pages, total);
+        drawPagination(page, pages);
       }
     });
   });
