@@ -93,19 +93,17 @@ const thumbsSwiper = new Swiper('.event-pagination', {
   slideToClickedSlide: true,
   spaceBetween: 4,
   watchSlidesProgress: true,
-  // navigation: {
-  //   nextEl: '.pagination-next',
-  //   prevEl: '.pagination-prev',
-  // },
+  loop: true,
+  loopedSlides: 4,
   breakpoints: {
     320: {
-      slidesPerView: 5,
+      slidesPerView: 3,
     },
     768: {
-      slidesPerView: 7,
+      slidesPerView: 4,
     },
     1024: {
-      slidesPerView: 9,
+      slidesPerView: 4,
     }
   }
 });
@@ -117,6 +115,7 @@ const eventSlider = new Swiper('.event-slider', {
   spaceBetween: 20,
   centeredSlides: true,
   loop: true,
+  loopedSlides: 4,
   speed: 1000,
   autoplay: {
     delay: 3000,
@@ -125,6 +124,7 @@ const eventSlider = new Swiper('.event-slider', {
   },
   thumbs: {
     swiper: thumbsSwiper,
+    multipleActiveThumbs: false,
   },
   navigation: {
     nextEl: '.event-slide-next',
@@ -137,34 +137,45 @@ const eventSlider = new Swiper('.event-slider', {
     },
     768: {
       slidesPerView: 1,
-      spaceBetween: 30,
+      spaceBetween: 60,
       centeredSlides: false,
     },
   },
   on: {
+    init: function () {
+      this.emit('slideChange');
+    },
     slideChange: function () {
-      // Sync thumbnail swiper
-      const activeIndex = this.realIndex;
-      thumbsSwiper.slideTo(activeIndex);
+      const realIndex = this.realIndex;
 
-      // Update active state of thumbnails
-      const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
-      thumbnails.forEach((thumb, index) => {
-        if (index === activeIndex) {
-          thumb.classList.add('swiper-pagination-bullet-active');
-        } else {
+      // サムネイルスライダーを同期
+      if (thumbsSwiper.slides) {
+        thumbsSwiper.slideToLoop(realIndex, 0);
+
+        // すべてのサムネイルからアクティブクラスを削除
+        const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
+        thumbnails.forEach(thumb => {
           thumb.classList.remove('swiper-pagination-bullet-active');
-        }
-      });
+        });
+
+        // 現在のインデックスに対応するサムネイルにアクティブクラスを追加
+        const activeSlides = document.querySelectorAll(`.event-pagination .swiper-slide[data-swiper-slide-index="${realIndex}"] .event-slide-image`);
+        activeSlides.forEach(slide => {
+          slide.classList.add('swiper-pagination-bullet-active');
+        });
+      }
     }
   }
 });
 
 // Sync thumbnail clicks with main slider
-thumbsSwiper.on('click', function (swiper, event) {
-  const clickedIndex = swiper.clickedIndex;
-  if (typeof clickedIndex !== 'undefined') {
-    eventSlider.slideTo(clickedIndex);
+thumbsSwiper.on('click', function (swiper) {
+  const clickedSlide = swiper.clickedSlide;
+  if (clickedSlide) {
+    const slideIndex = parseInt(clickedSlide.getAttribute('data-swiper-slide-index'));
+    if (!isNaN(slideIndex)) {
+      eventSlider.slideToLoop(slideIndex);
+    }
   }
 });
 

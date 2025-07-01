@@ -219,19 +219,13 @@
       <div class="event-pagination">
         <div class="swiper-wrapper">
           @foreach($events as $event)
-            <div class="swiper-slide">
+            <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
               <div class="event-slide-image">
                 <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
               </div>
             </div>
           @endforeach
         </div>
-        {{-- <button class="pagination-prev">
-          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
-        </button>
-        <button class="pagination-next">
-          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-        </button> --}}
       </div>
       <button class="event-slide-prev">
         <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
@@ -240,40 +234,6 @@
         <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
       </button>
     </div>
-    {{-- <div class="event-main">
-      <div class="event-main-content">
-        <div class="event-main-date">{{ $events[0]->published_at->format('y.m.d')."  |  " }}</div>
-        <h3 class="event-main-title">{{ $events[0]->title }}</h3>
-      </div>
-      <div class="event-main-image">
-        <a href="{{ route('public.group.event.detail', ['id' => $events[0]->id]) }}">
-          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
-        </a>
-      </div>
-    </div> --}}
-
-    {{-- <div class="event-slider swiper content-wrapper">
-      <div class="swiper-wrapper">
-        @foreach($events->skip(1) as $event)
-          <div class="swiper-slide">
-            <div class="event-slide">
-              <div class="event-slide-image">
-                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
-                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
-                </a>
-              </div>
-            </div>
-          </div>
-        @endforeach
-      </div>
-      <div class="swiper-pagination"></div>
-      <button class="event-slide-prev">
-        <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
-      </button>
-      <button class="event-slide-next">
-        <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-      </button>
-    </div> --}}
   </div>
   @else
   <div class="blank-space">

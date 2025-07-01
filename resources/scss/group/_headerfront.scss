@@ -211,14 +211,15 @@
   // Header user section - only visible on medium and large screens
   .header-user {
     display: none;
-    // border: 1px solid $black;
-    border-radius: 24px;
+    // border: 1px dashed #333;
+    border-radius: 60px;
     background-color: rgba(255, 255, 255, 0.9);
     &.md,
     &.lg {
       display: flex;
       gap: 1.5rem;
       align-items: center;
+      height: 80px;
       // margin-right: 70px; // Space for drawer-toggle
     }
 
@@ -235,6 +236,13 @@
       font-family: $font-gothic-min;
       font-size: 28px;
       border-radius: 24px;
+      text-align: center;
+      font-family: $font-gothic-min;
+      &:not(:last-child) {
+        border-right: 1px dashed #333;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
       position: relative;
       overflow: hidden;
 
@@ -255,13 +263,23 @@
           background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
           animation: headerShimmer 1s ease-in-out;
         }
-
+        small {
+          transform: scale(1.1);
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+          color: #fff;
+        }
         span {
           transform: scale(1.1);
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
       }
-
+      small {
+        display: block;
+        // font-size: 0.6rem;
+        // font-weight: 400;
+        // letter-spacing: 0.1em;
+        color: #000;
+      }
       span {
         // font-size: 0.85rem;
         letter-spacing: 0.5px;
@@ -307,7 +325,7 @@
     width: 70px;
     height: 70px;
     top: 43px;
-    right: 315px
+    right: 20px
   }
   .drawer-toggle-bars {
     display: flex;
@@ -687,8 +705,8 @@
   .header-user {
     &.md,
     &.lg {
-      margin-right: 100px;
-      margin-top: 15px; // More space for larger drawer-toggle
+      margin-right: 65px;
+      margin-top: 6px; // More space for larger drawer-toggle
     }
   }
 
@@ -723,8 +741,8 @@
     .header-user {
       &.md,
       &.lg {
-        margin-right: 360px;
-        margin-top: 24px; // More space for larger drawer-toggle
+        margin-right: 65px;
+        margin-top: 6px; // More space for larger drawer-toggle
       }
     }
   }
