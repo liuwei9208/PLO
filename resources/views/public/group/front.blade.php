@@ -100,12 +100,17 @@
   </section>
   @endif --}}
   <!-- ピックアップ - Pickup Girl -->
-  <section class="pickup">
-    <div class="section-title">
+  <section class="pickup-top" style="background-color: #fff;">
+    <div class="section-title" >
       <span class="pickup-title title-font front-title">
         <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
         {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
       </span>
+      {{-- <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2> --}}
+    </div>
+  </section>
+  <section class="pickup">
+    <div class="section-title">
       <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
     </div>
     <ul class="pickup-shops content-wrapper">
@@ -193,35 +198,35 @@
       </h2>
       <h3 class="section-title-news title-font-sm">イベント</h3>
     </div>
-    <div class="event-main">
-      <div class="event-main-content">
-        <div class="event-main-date">{{ $events[0]->published_at->format('y.m.d')."  |  " }}</div>
-        <h3 class="event-main-title">{{ $events[0]->title }}</h3>
-      </div>
-      <div class="event-main-image">
-        <a href="{{ route('public.group.event.detail', ['id' => $events[0]->id]) }}">
-          <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
-        </a>
-      </div>
-    </div>
-
     <div class="event-slider swiper content-wrapper">
       <div class="swiper-wrapper">
-        @foreach($events->skip(1) as $event)
+        @foreach($events as $event)
           <div class="swiper-slide">
-            <div class="event-slide">
-              <div class="event-slide-image">
+            <div class="event-main">
+              <div class="event-main-content">
+                <div class="event-main-date">{{ $event->published_at->format('y.m.d')."  |  " }}</div>
+                <h3 class="event-main-title">{{ $event->title }}</h3>
+              </div>
+              <div class="event-main-image">
                 <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
                   <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
                 </a>
               </div>
-              {{-- <div class="event-slide-date">{{ $event->published_at->format('Y.m.d') }}</div>
-              <h4 class="event-slide-title">{{ $event->title }}</h4> --}}
             </div>
           </div>
         @endforeach
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="event-pagination">
+        <div class="swiper-wrapper">
+          @foreach($events as $event)
+            <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
+              <div class="event-slide-image">
+                <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
       <button class="event-slide-prev">
         <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
       </button>
@@ -280,7 +285,7 @@
       <img src="{{ asset('assets/img/mock-diary-lg.png') }}" alt="">
     </picture>
   </div> --}}
-  <div class="diary">
+  <div class="diary" style="background-color: #fff;">
     <div class="section-title">
       <h2 class="section-title-lg title-font front-title">
         <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span> <span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
@@ -414,7 +419,7 @@
   </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner content-wrapper">
+  <div class="banner" style="background-color: #fff;">
     <div class="banner-title">
       <span class="banner-title-en title-font front-title">
         <span>L</span><span>I</span><span>N</span><span>K</span>
@@ -422,7 +427,7 @@
       {{-- <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク"> --}}
       <h2 class="banner-title-ja title-font-sm">相互リンク</h2>
     </div>
-    <div class="banner-list">
+    <div class="banner-list content-wrapper">
     @foreach ($banners as $banner)
       <a href="{{ $banner->link_url }}" target="_blank">
         <img src="{{ asset('storage/' . $banner->thumbnail) }}" alt="{{ $banner->title }}">

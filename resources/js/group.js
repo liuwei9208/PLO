@@ -78,58 +78,117 @@ if (pickupShops.length > 0) {
 
 /** 新人情報の「もっと見る」ボタン */
 const newfaceMore = document.querySelector('.newface-more')
-if (newfaceMore) {
-  newfaceMore.addEventListener('click', function() {
-    document.querySelector('.newface-slide').classList.add('is-hidden')
-    document.querySelector('.newface-list').classList.remove('is-hidden')
-    document.querySelector('.newface-more').classList.add('is-hidden')
-  })
-}
+// if (newfaceMore) {
+//   newfaceMore.addEventListener('click', function() {
+//     document.querySelector('.newface-slide').classList.add('is-hidden')
+//     document.querySelector('.newface-list').classList.remove('is-hidden')
+//     document.querySelector('.newface-more').classList.add('is-hidden')
+//   })
+// }
 
-// イベントスライダーの初期化
-// const initEventSlider = () => {
-  const eventSlider = new Swiper('.event-slider', {
-// new Swiper('.event-slider', {
-      modules: [Navigation, Pagination, Autoplay],
-      slidesPerView: 'auto',
+// Create thumbnail swiper for pagination
+const thumbsSwiper = new Swiper('.event-pagination', {
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  slideToClickedSlide: true,
+  spaceBetween: 4,
+  watchSlidesProgress: true,
+  loop: true,
+  loopedSlides: 4,
+  breakpoints: {
+    320: {
+      slidesPerView: 3,
+    },
+    768: {
+      slidesPerView: 4,
+    },
+    1024: {
+      slidesPerView: 4,
+    }
+  }
+});
+
+// Main event slider
+const eventSlider = new Swiper('.event-slider', {
+  modules: [Navigation, Pagination, Autoplay],
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  loopedSlides: 4,
+  speed: 1000,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    reverseDirection: false,
+  },
+  thumbs: {
+    swiper: thumbsSwiper,
+    multipleActiveThumbs: false,
+  },
+  navigation: {
+    nextEl: '.event-slide-next',
+    prevEl: '.event-slide-prev',
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
       spaceBetween: 20,
-      centeredSlides: true,
-      loop: true,
-      speed: 1000,
-      autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-          reverseDirection: false,
-      },
-      pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-      },
-      navigation: {
-          nextEl: '.event-slide-next',
-          prevEl: '.event-slide-prev',
-      },
-      breakpoints: {
-          320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          768: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-              centeredSlides: false,
-          },
-          // 1366: {
-          //   slidesPerView: 3,
-          //   spaceBetween: 45,
-          // }
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 60,
+      centeredSlides: false,
+    },
+  },
+  on: {
+    init: function () {
+      this.emit('slideChange');
+    },
+    slideChange: function () {
+      const realIndex = this.realIndex;
 
+      // サムネイルスライダーを同期
+      if (thumbsSwiper.slides) {
+        thumbsSwiper.slideToLoop(realIndex, 0);
+
+        // すべてのサムネイルからアクティブクラスを削除
+        const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
+        thumbnails.forEach(thumb => {
+          thumb.classList.remove('swiper-pagination-bullet-active');
+        });
+
+        // 現在のインデックスに対応するサムネイルにアクティブクラスを追加
+        const activeSlides = document.querySelectorAll(`.event-pagination .swiper-slide[data-swiper-slide-index="${realIndex}"] .event-slide-image`);
+        activeSlides.forEach(slide => {
+          slide.classList.add('swiper-pagination-bullet-active');
+        });
       }
+    }
+  }
+});
 
-  });
-// };
+// Sync thumbnail clicks with main slider
+thumbsSwiper.on('click', function (swiper) {
+  const clickedSlide = swiper.clickedSlide;
+  if (clickedSlide) {
+    const slideIndex = parseInt(clickedSlide.getAttribute('data-swiper-slide-index'));
+    if (!isNaN(slideIndex)) {
+      eventSlider.slideToLoop(slideIndex);
+    }
+  }
+});
 
 // DOMContentLoadedイベントで初期化
 document.addEventListener('DOMContentLoaded', () => {
-  // initEventSlider();
+  const mv = document.querySelector('.mv');
+  if (mv) {
+    console.log({mv});
+    console.log(mv.offsetHeight);
+    console.log(mv.clientHeight);
+    const main = document.querySelector('.main');
+    if (main) {
+      main.style.marginTop = `${mv.offsetHeight}px`;
+    }
+  }
 });

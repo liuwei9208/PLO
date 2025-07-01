@@ -5,7 +5,7 @@
 @use '../global/utils';
 
 .footer {
-  max-width: 1500px;
+  // max-width: 1500px;
   margin: 0 auto;
   background-color: #000;
   padding: 40px 0;
@@ -176,7 +176,7 @@
     width: 215px;
     border-top-left-radius: 24px;
     font-size: 28px;
-    right: 315px;
+    right: 0px;
   }
   &:hover {
     animation: searchGirlBounce 0.8s ease-in-out, searchGirlGlow 1.5s ease-in-out infinite;
@@ -252,7 +252,7 @@
     right: 15px;
   }
   @media #{media-query(lg)} {
-    right: 315px;
+    right: 15px;
   }
   a {
     display: flex;

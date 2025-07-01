@@ -5,15 +5,18 @@
   <div class="header-user md lg">
     @if (Auth::guard('member')->check() || Auth::guard('web')->check())
       <a href="{{ route('logoutAll') }}">
+        <small>LOGOUT</small>
         <span>ログアウト</span>
       </a>
     @else
     <a href="{{ route('login') }}">
-      <span>LOGIN</span>
+      <small>LOGIN</small>
+      <span>ログイン</span>
     </a>
     @endif
     <a href="#">
-      <span>SIGN UP</span>
+      <small>SIGN UP</small>
+      <span>新規登録</span>
     </a>
   </div>
 

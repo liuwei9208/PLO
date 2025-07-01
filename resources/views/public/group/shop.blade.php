@@ -110,7 +110,7 @@
               <div class="shop-group-item-intro-time">
                 {{ $shop->intro }}
               </div> --}}
-              <div class="shop-group-item-intro-memo">
+              <div class="shop-group-item-intro-memo --{{ $shop->slug }}">
                 {{-- ※電話受付予約（当日8:30） --}}
                 {{ $shop->memo }}
               </div>

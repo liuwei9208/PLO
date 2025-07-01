@@ -40,8 +40,12 @@ a {
 }
 
 .content-wrapper {
-  width: 1260px;
+  // width: 1260px;
   margin: 0 auto;
+  padding: 3%;
+  @media #{media-query(lg)} {
+    width: 94%;
+  }
   @media #{media-query(md)} {
     width: calc(100% - 80px);
   }
@@ -49,6 +53,7 @@ a {
     width: calc(100% - 40px);
   }
 }
+
 .title-font {
   font-family: $font-gothic-min;
   font-size: $title-font-size;

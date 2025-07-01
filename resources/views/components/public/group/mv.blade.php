@@ -12,11 +12,23 @@
       <img src="{{ asset('assets/img/group/mv/shop-list.jpg') }}" alt="">
       <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/shop-list.jpg') }}">
     </picture>
+    @elseif(request()->routeIs('public.group.schedule'))
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/working.jpg') }}">
+      <img src="{{ asset('assets/img/group/mv/working.jpg') }}" alt="">
+      <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/working.jpg') }}">
+    </picture>
+    @elseif(request()->routeIs('public.group.event'))
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/event.jpg') }}">
+      <img src="{{ asset('assets/img/group/mv/event.jpg') }}" alt="">
+      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
+    </picture>
     @else
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.jpg') }}">
       <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
-      <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}">
+      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
     </picture>
     @endif
   </div>
