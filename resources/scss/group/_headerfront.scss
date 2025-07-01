@@ -47,8 +47,12 @@
 // MV Main styles
 .mv {
   position: relative;
-  z-index: 1;
+  // position: fixed;
+  // top: 0;
+  // left: 203px;
+  // z-index: -1;
   width: 100%;
+  // max-width: 1500px;
   // 画像やテキストが中央に来る場合はflex等で調整
 
   .mv-main {

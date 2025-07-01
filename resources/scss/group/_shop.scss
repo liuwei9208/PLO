@@ -162,7 +162,7 @@
   // max-width: 1200px;
   // padding: 0 1rem;
   box-sizing: border-box;
-  border: 1px solid #f00;
+  border: 3px solid #cba86b;
   border-radius: 24px;
   // margin: 1.5rem auto;
   @media #{media-query(sm)} {
@@ -298,7 +298,7 @@
     }
     .shop-group-item-text {
       font-size: 0.98rem;
-      color: #444;
+      color: #000;
       margin-bottom: 1.1rem;
       line-height: 1.7;
       @media #{media-query(sm)} {
@@ -316,7 +316,7 @@
       border-radius: 24px;
       margin-top: auto;
       font-size: 0.98rem;
-      color: #fff;
+      color: #000;
       padding: 20px 20px;
       @media #{media-query(sm)} {
         font-size: 0.92rem;
@@ -361,7 +361,7 @@
       }
       .shop-group-item-intro-memo {
         // font-size: 0.85em;
-        color: #fff;
+        color: #000;
       }
       &.--pussycat {
         background-color: rgba($shop-color-pussycat, 0.5);
