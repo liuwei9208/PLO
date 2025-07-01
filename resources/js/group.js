@@ -78,58 +78,106 @@ if (pickupShops.length > 0) {
 
 /** 新人情報の「もっと見る」ボタン */
 const newfaceMore = document.querySelector('.newface-more')
-if (newfaceMore) {
-  newfaceMore.addEventListener('click', function() {
-    document.querySelector('.newface-slide').classList.add('is-hidden')
-    document.querySelector('.newface-list').classList.remove('is-hidden')
-    document.querySelector('.newface-more').classList.add('is-hidden')
-  })
-}
+// if (newfaceMore) {
+//   newfaceMore.addEventListener('click', function() {
+//     document.querySelector('.newface-slide').classList.add('is-hidden')
+//     document.querySelector('.newface-list').classList.remove('is-hidden')
+//     document.querySelector('.newface-more').classList.add('is-hidden')
+//   })
+// }
 
-// イベントスライダーの初期化
-// const initEventSlider = () => {
-  const eventSlider = new Swiper('.event-slider', {
-// new Swiper('.event-slider', {
-      modules: [Navigation, Pagination, Autoplay],
-      slidesPerView: 'auto',
+// Create thumbnail swiper for pagination
+const thumbsSwiper = new Swiper('.event-pagination', {
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  slideToClickedSlide: true,
+  spaceBetween: 4,
+  watchSlidesProgress: true,
+  // navigation: {
+  //   nextEl: '.pagination-next',
+  //   prevEl: '.pagination-prev',
+  // },
+  breakpoints: {
+    320: {
+      slidesPerView: 5,
+    },
+    768: {
+      slidesPerView: 7,
+    },
+    1024: {
+      slidesPerView: 9,
+    }
+  }
+});
+
+// Main event slider
+const eventSlider = new Swiper('.event-slider', {
+  modules: [Navigation, Pagination, Autoplay],
+  slidesPerView: 'auto',
+  spaceBetween: 20,
+  centeredSlides: true,
+  loop: true,
+  speed: 1000,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+    reverseDirection: false,
+  },
+  thumbs: {
+    swiper: thumbsSwiper,
+  },
+  navigation: {
+    nextEl: '.event-slide-next',
+    prevEl: '.event-slide-prev',
+  },
+  breakpoints: {
+    320: {
+      slidesPerView: 1,
       spaceBetween: 20,
-      centeredSlides: true,
-      loop: true,
-      speed: 1000,
-      autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-          reverseDirection: false,
-      },
-      pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-      },
-      navigation: {
-          nextEl: '.event-slide-next',
-          prevEl: '.event-slide-prev',
-      },
-      breakpoints: {
-          320: {
-              slidesPerView: 1,
-              spaceBetween: 20,
-          },
-          768: {
-              slidesPerView: 3,
-              spaceBetween: 30,
-              centeredSlides: false,
-          },
-          // 1366: {
-          //   slidesPerView: 3,
-          //   spaceBetween: 45,
-          // }
+    },
+    768: {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      centeredSlides: false,
+    },
+  },
+  on: {
+    slideChange: function () {
+      // Sync thumbnail swiper
+      const activeIndex = this.realIndex;
+      thumbsSwiper.slideTo(activeIndex);
 
-      }
+      // Update active state of thumbnails
+      const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
+      thumbnails.forEach((thumb, index) => {
+        if (index === activeIndex) {
+          thumb.classList.add('swiper-pagination-bullet-active');
+        } else {
+          thumb.classList.remove('swiper-pagination-bullet-active');
+        }
+      });
+    }
+  }
+});
 
-  });
-// };
+// Sync thumbnail clicks with main slider
+thumbsSwiper.on('click', function (swiper, event) {
+  const clickedIndex = swiper.clickedIndex;
+  if (typeof clickedIndex !== 'undefined') {
+    eventSlider.slideTo(clickedIndex);
+  }
+});
 
 // DOMContentLoadedイベントで初期化
 document.addEventListener('DOMContentLoaded', () => {
-  // initEventSlider();
+  const mv = document.querySelector('.mv');
+  if (mv) {
+    console.log({mv});
+    console.log(mv.offsetHeight);
+    console.log(mv.clientHeight);
+    const main = document.querySelector('.main');
+    if (main) {
+      main.style.marginTop = `${mv.offsetHeight}px`;
+    }
+  }
 });

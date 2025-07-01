@@ -19,13 +19,13 @@
 
   &-1 {
     @media #{media-query(sm)} {
-      margin: 20px auto 0;
+      padding: 20px 0;
     }
     @media #{media-query(md)} {
-      margin: 40px auto 0;
+      padding: 40px 0;
     }
     @media #{media-query(lg)} {
-      margin: 60px auto 0;
+      padding: 60px 0;
     }
     width: 100%;
     height: auto;
@@ -33,7 +33,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-image: url('/assets/img/group/event/bg-news.svg');
-    padding: 40px 20px;
+    // padding: 40px 20px;
     overflow: hidden;
     @media #{media-query(sm)} {
       background-image: url('/assets/img/group/event/bg-news-sp.svg') !important;
@@ -293,6 +293,92 @@
       }
     }
       */
+  }
+
+  &-pagination {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 20px;
+    padding: 0 40px;
+
+    .swiper-wrapper {
+      display: flex;
+      transition: transform 0.3s ease;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .event-slide-image {
+      width: 100px;
+      height: 66px;
+      flex-shrink: 0;
+      margin: 0 4px;
+      border-radius: 4px;
+      overflow: hidden;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: all 0.3s ease;
+      transform: scale(0.95);
+
+      @media #{media-query(sm)} {
+        width: 60px;
+        height: 40px;
+        margin: 0 2px;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &.swiper-pagination-bullet-active {
+        opacity: 1;
+        transform: scale(1);
+        border: 2px solid #fff;
+      }
+    }
+
+    .pagination-prev,
+    .pagination-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 30px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      padding: 0;
+
+      img {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+      }
+
+      &:hover {
+        background: #fff;
+      }
+    }
+
+    .pagination-prev {
+      left: 5px;
+    }
+
+    .pagination-next {
+      right: 5px;
+    }
   }
 }
 

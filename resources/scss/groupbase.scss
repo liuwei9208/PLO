@@ -6,12 +6,40 @@
 @use 'group/_headerfront.scss';
 @use 'group/law.scss';
 
+// Body fade-in animation
+@keyframes fadeInBody {
+  0% {
+    opacity: 0;
+    // transform: translateY(20px);
+  }
+  50% {
+    opacity: 0.5;
+    // transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    // transform: translateY(0);
+  }
+}
+
+body {
+  opacity: 0;
+  animation: fadeInBody 2.5s ease-out forwards;
+  animation-delay: 2.5s; // Wait a bit before starting the animation
+}
+
 html.wf-loading body {
-  visibility: hidden; /* 読み込み中は隠す */
+  visibility: hidden;
+  // animation: none; // Disable animation while fonts are loading
 }
 
 html.wf-inactive body {
-  font-family: "Noto Sans JP", sans-serif; /* 読み込み失敗時のフォールバック */
+  font-family: "Noto Sans JP", sans-serif;
+  // animation: fadeInBody 1.5s ease-out forwards; // Re-enable animation after font load fails
+}
+
+html.wf-active body {
+  // animation: fadeInBody 1.5s ease-out forwards; // Enable animation after fonts load successfully
 }
 
 .front-title {

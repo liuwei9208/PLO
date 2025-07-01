@@ -7,15 +7,18 @@
   // margin-top: 40px;
 
   @media #{media-query(sm)} {
-    margin: 40px auto !important;
+    // margin: 40px auto !important;
+    padding: 40px 0;
   }
 
   @media #{media-query(md)} {
-    margin: 60px auto !important;
+    // margin: 60px auto !important;
+    padding: 60px 0;
   }
 
   @media #{media-query(lg)} {
-    margin: 80px auto !important;
+    // margin: 80px auto !important;
+    padding: 80px 0;
   }
 
   .banner-title {
