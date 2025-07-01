@@ -111,7 +111,8 @@
                 {{ $shop->intro }}
               </div> --}}
               <div class="shop-group-item-intro-memo">
-                ※電話受付予約（当日8:30）
+                {{-- ※電話受付予約（当日8:30） --}}
+                {{ $shop->memo }}
               </div>
             </div>
           </div>
