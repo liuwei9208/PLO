@@ -475,6 +475,7 @@
 
   .drawer-nav {
     overflow: auto;
+    font-family: $font-gothic-min;
     @media #{media-query(sm)} {
       width: 100%;
       height: 100%;
