@@ -4,7 +4,7 @@
     <img src="{{ asset('assets/img/mock-footer-lg.png') }}" alt="">
   </picture>
 </div> --}}
-<div class="law">
+{{-- <div class="law">
   <div class="law-content content-wrapper pc-only">
     <p>当グループは、風俗関連営業等の規制及び業務の適正化等に関する法律</p>
     <p>(第27条第2項、第33条第2項)の規定を取得しておりますので安心してお遊び頂けます。</p>
@@ -18,6 +18,79 @@
     <p>18歳未満の方の閲覧は固くお断りいたします。</p>
   </div>
 
+</div> --}}
+<div class="shopintro">
+  <div class="shopintro-logo">
+    <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="logo">
+  </div>
+  <div class="shopintro-contents content-wrapper">
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/shizuku-logo.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        上品な空間、時を忘れる美貌とおもてなしが魅力のヘルス
+      </div>
+    </div>
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/miyabi-logo.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        雅は、すすきの屈指の人妻・痴女が左籍するヘルス
+      </div>
+    </div>
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/pussycat-logo.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        女の子を見て選べる唯一無ニのエンターテイメントヘルス
+      </div>
+    </div>
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/en-logo-r.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        若妻、人妻、淫乱妻など大人にエロさ嗌れる人妻ヘルス店
+      </div>
+    </div>
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        容姿端麗なオトナ女性による丁寧な本格マッサージ店
+      </div>
+    </div>
+    <div class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/logo/lovestory-logo.png') }}" alt="logo">
+        </div>
+        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
+      </div>
+      <div class="shopintro-contents-item-text">
+        アナタ色のエッチな女の子に育てられる育成型ヘルス
+      </div>
+    </div>
+  </div>
 </div>
 <div class="scroll-top">
   <a href="#top" id="scroll-top-btn">
