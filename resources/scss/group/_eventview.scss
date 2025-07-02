@@ -7,6 +7,15 @@
 .event {
   // padding: 60px 20px;
   background-color: #f8f9fa;
+  @media #{media-query(sm)} {
+    padding: 20px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 40px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 40px 0;
+  }
 
   @media (max-width: 767px) {
     // padding: 40px 15px;
@@ -35,7 +44,7 @@
     }
     &-en {
       @media #{media-query(sm)} {
-        font-size: 16px;
+        // font-size: 16px;
       }
     }
     img {

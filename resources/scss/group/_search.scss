@@ -7,7 +7,16 @@
   // margin: 40px auto 32px auto;
   // // max-width: 900px;
   // box-shadow: 0 4px 24px rgba(0,0,0,0.12);
-
+  background-color: #fff;
+  @media #{media-query(sm)} {
+    padding: 20px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 40px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 40px 0;
+  }
   &__title {
     text-align: center;
     &-ja {

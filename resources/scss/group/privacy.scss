@@ -5,6 +5,16 @@
 @use '../mixins/text';
 
 .privacy-policy {
+  background-color: #fff;
+  @media #{media-query(sm)} {
+    padding: 20px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 40px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 40px 0;
+  }
   &-title {
     margin: 0 auto;
     text-align: center;
