@@ -49,15 +49,15 @@
    background-color: #F8F5F5;
    @media #{media-query(sm)} {
      padding: 20px 0;
-     margin: 0 0 10px;
+    //  margin: 0 0 10px;
    }
    @media #{media-query(md)} {
      padding: 40px 0;
-     margin: 0 0 20px;
+    //  margin: 0 0 20px;
    }
    @media #{media-query(lg)} {
      padding: 60px 0;
-     margin: 0 0 30px ;
+    //  margin: 0 0 30px ;
    }
    .section-title {
     text-align: center;
@@ -224,10 +224,20 @@
        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
        font-family: $font-gothic-min;
        @media #{media-query(sm)} {
-        height: 30px;
+        height: auto;
         margin: 12px 0;
         border-radius: 15px;
         font-size: 14px;
+        padding: 8px;
+        flex-direction: column;
+        gap: 4px;
+
+        .newface-date-shop {
+          font-size: 16px;
+        }
+        .newface-date-date {
+          font-size: 14px;
+        }
       }
        @media #{media-query(md)} {
         height: 36px;
@@ -236,6 +246,8 @@
         border-radius: 18px;
         font-size: 16px;
         width: 100%;
+        flex-direction: row;
+        gap: 8px;
       }
        @media #{media-query(lg)} {
         height: 42px;
@@ -243,6 +255,8 @@
         padding: 0 24px;
         border-radius: 21px;
         font-size: 19px;
+        flex-direction: row;
+        gap: 10px;
       }
      }
      &.is-pussycat .newface-date {
@@ -272,23 +286,23 @@
        @media #{media-query(sm)} {
          // height: 70%;
          border-radius: 30px;
-         height: 223px;
+        //  height: 223px;
          margin: 16px 0 0;
        }
        @media #{media-query(md)} {
-         height: 415px;
+        //  height: 415px;
          border-radius: 30px;
          margin: 20px 0 0;
        }
        @media #{media-query(lg)} {
-         height: 533px;
+        //  height: 533px;
          border-radius: 30px;
          margin: 24px 0 0;
        }
 
        img {
          width: 100%;
-         height: 100%;
+         height: auto;
          object-fit: cover;
          object-position: center center;
          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
