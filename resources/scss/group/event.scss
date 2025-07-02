@@ -57,7 +57,7 @@
           }
 
           &-image {
-            height: 250px;
+            // height: 250px;
           }
         }
 
@@ -121,7 +121,7 @@
           }
 
           &-image {
-            height: 450px;
+            // height: 450px;
           }
         }
 
@@ -421,7 +421,7 @@
 
     &-image {
       width: 100%;
-      height: 450px;
+      height: 100%;
       overflow: hidden;
       border-radius: 8px;
 
@@ -475,8 +475,8 @@
 
     &-prev,
     &-next {
-      width: 40px;
-      height: 40px;
+      width: 60px;
+      height: 60px;
       background: rgba(255, 255, 255, 0.9);
       border-radius: 50%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -493,11 +493,18 @@
       padding: 0;
 
       img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        @media #{media-query(sm)} {
+          width: 40px;
+          height: 40px;
+        }
+      }
+      @media #{media-query(sm)} {
         width: 40px;
         height: 40px;
-        object-fit: contain;
       }
-
       &:hover {
         background: #fff;
       }

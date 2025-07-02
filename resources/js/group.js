@@ -97,7 +97,7 @@ const thumbsSwiper = new Swiper('.event-pagination', {
   loopedSlides: 4,
   breakpoints: {
     320: {
-      slidesPerView: 3,
+      slidesPerView: 4,
     },
     768: {
       slidesPerView: 4,
