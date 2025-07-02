@@ -22,9 +22,14 @@
             <div class="newface-photo --{{ $cast->shop->slug }}">
               <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
             </div>
-            <span class="newface-date">
-              {{ $cast->shop->name }} {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }}
-            </span>
+            <div class="newface-date">
+              <div class="newface-date-shop">
+                  {{ $cast->shop->name }}
+              </div>
+              <div class="newface-date-date">
+                {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }}
+              </div>
+            </div>
             {{-- <span class="newface-name">
               {{ $cast->name }} <small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
             </span> --}}
