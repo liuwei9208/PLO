@@ -13,7 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Question;
 use App\Models\Qa;
-
+use Illuminate\Support\Facades\Auth;
 class CastController extends Controller
 {
     const DEFAULT_LIMIT = 30;
@@ -71,6 +71,17 @@ class CastController extends Controller
         ]);
     }
 
+    /**
+     * Display a listing of the cast.
+     */
+    public function sortindex(Request $request): View
+    {
+        $token = Auth::user()->createToken('schedule')->plainTextToken;
+        return view('admin.cast.sortindex', [
+            'token' => $token,
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank')->get(),
+        ]);
+    }
     /**
      * Create a cast.
      */
@@ -143,7 +154,7 @@ class CastController extends Controller
         $cast->save();
 
         $questions = $request->input('question', []);
-        
+
         foreach ($questions as $index => $question_id) {
             if (is_numeric($question_id)) {
                 Qa::create([

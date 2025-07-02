@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\ScheduleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\QRCodeController;
+use App\Http\Controllers\Api\CastController;
 // use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 use Illuminate\Support\Facades\Log;
 
@@ -28,5 +29,11 @@ Route::middleware('auth:sanctum')->prefix('member')->group(function () {
     Route::post('/update', [MemberController::class, 'update']);
     Route::post('/qrupdate', [MemberController::class, 'qrupdate']);
     Route::post('/getValues', [MemberController::class, 'getValues']);
+});
+
+Route::middleware(['auth:sanctum'])->prefix('cast')->group(function () {
+    // Route::prefix('schedule')->group(function () {
+    Route::post('/sorted', [CastController::class, 'getSortedCast']);
+    Route::post('/updateranking', [CastController::class, 'updateRanking']);
 });
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);
