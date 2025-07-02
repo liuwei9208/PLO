@@ -93,14 +93,14 @@ class CastController extends Controller
 
     public function updateRanking(Request $request): JsonResponse
     {
-
+        
         if (!$request->expectsJson()) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'JSONリクエストが必要です'
             ], 400);
         }
-
+        
         $rankingData = $request->input("allCastRanking");
         Log::info('リクエストデータ:', $rankingData);
 
@@ -120,3 +120,4 @@ class CastController extends Controller
 
         return response()->json(['status' => 'success']);
     }
+}

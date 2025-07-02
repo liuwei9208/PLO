@@ -1,4 +1,4 @@
-mport axios from 'axios'
+import axios from 'axios'
 
 let shop = '';
 let is_public = '';
@@ -326,7 +326,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
                             return
                         }
                         if (dstCardNo > cards.length - 1) {
-                            dstCardNo = cards.length - 1;
+                            dstCardNo = cards.length - 1; 
                         }
                         // Remove the card from its current position
                         container.removeChild(card);
@@ -350,7 +350,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
                                 rank: idx + 1
                             });
                         });
-
+                        
                         const response = await updateCastRanking(allCastRanking);
 
                         console.log("1111", response.status)
@@ -389,3 +389,4 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
         }
     }
 }
+
