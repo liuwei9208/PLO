@@ -97,7 +97,7 @@ const thumbsSwiper = new Swiper('.event-pagination', {
   loopedSlides: 4,
   breakpoints: {
     320: {
-      slidesPerView: 3,
+      slidesPerView: 4,
     },
     768: {
       slidesPerView: 4,
@@ -178,6 +178,25 @@ thumbsSwiper.on('click', function (swiper) {
     }
   }
 });
+
+// Add Intersection Observer for event-slider animation
+const eventSliderElement = document.querySelector('.event-slider');
+if (eventSliderElement) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        // Stop observing after animation is triggered
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.2, // Trigger when 20% of the element is visible
+    rootMargin: '0px' // No margin
+  });
+
+  observer.observe(eventSliderElement);
+}
 
 // DOMContentLoadedイベントで初期化
 document.addEventListener('DOMContentLoaded', () => {
