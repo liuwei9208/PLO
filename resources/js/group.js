@@ -186,9 +186,16 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log({mv});
     console.log(mv.offsetHeight);
     console.log(mv.clientHeight);
+    let logo_height = 0;
+    const logo = document.querySelector('.header-logo');
+    if (logo) {
+      logo_height = logo.offsetHeight;
+    }
+    console.log({logo_height});
+    console.log(logo.clientHeight);
     const main = document.querySelector('.main');
     if (main) {
-      main.style.marginTop = `${mv.offsetHeight}px`;
+      main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
     }
   }
 });
