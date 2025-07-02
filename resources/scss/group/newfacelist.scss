@@ -49,15 +49,15 @@
    background-color: #F8F5F5;
    @media #{media-query(sm)} {
      padding: 20px 0;
-     margin: 0 0 10px;
+    //  margin: 0 0 10px;
    }
    @media #{media-query(md)} {
      padding: 40px 0;
-     margin: 0 0 20px;
+    //  margin: 0 0 20px;
    }
    @media #{media-query(lg)} {
      padding: 60px 0;
-     margin: 0 0 30px ;
+    //  margin: 0 0 30px ;
    }
    .section-title {
     text-align: center;
@@ -272,23 +272,23 @@
        @media #{media-query(sm)} {
          // height: 70%;
          border-radius: 30px;
-         height: 223px;
+        //  height: 223px;
          margin: 16px 0 0;
        }
        @media #{media-query(md)} {
-         height: 415px;
+        //  height: 415px;
          border-radius: 30px;
          margin: 20px 0 0;
        }
        @media #{media-query(lg)} {
-         height: 533px;
+        //  height: 533px;
          border-radius: 30px;
          margin: 24px 0 0;
        }
 
        img {
          width: 100%;
-         height: 100%;
+         height: auto;
          object-fit: cover;
          object-position: center center;
          transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
