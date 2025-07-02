@@ -5,13 +5,17 @@
 @use '../mixins/text';
 .shop {
   width: 100%;
+  background-color: #fff;
   @media #{media-query(sm)} {
     // padding: 50px 0 70px;
+    padding: 20px 0;
   }
   @media #{media-query(md)} {
     // padding: 90px 0 80px;
+    padding: 40px 0;
   }
   @media #{media-query(lg)} {
+    padding: 40px 0;
     // padding: 120px 0 90px;
   }
 
@@ -202,9 +206,13 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
-    margin: 40px 40px;
-    @media #{media-query(md)}, #{media-query(lg)} {
+    // margin: 40px 40px;
+    @media #{media-query(md)} {
       grid-template-columns: 1fr 1fr;
+      gap: 2.5rem 2rem;
+    }
+    @media #{media-query(lg)} {
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 2.5rem 2rem;
     }
   }
@@ -283,7 +291,7 @@
       img {
         // max-width: 120px;
         width: 100%;
-        height: auto;
+        height: 100%;
         display: block;
         margin: 0 auto;
       }
@@ -291,10 +299,10 @@
         height: 150px;
       }
       @media #{media-query(md)} {
-        height: 200px;
+        height: 120px;
       }
       @media #{media-query(lg)} {
-        height: 300px;
+        height: 170px;
       }
     }
     .shop-group-item-text {
@@ -302,14 +310,20 @@
       color: #000;
       margin-bottom: 1.1rem;
       line-height: 1.7;
+      // background-color: #f8f7f6;
+      &-content {
+        padding: 20px;
+        background-color: #f8f7f6;
+        border-radius: 18px;
+      }
       @media #{media-query(sm)} {
         font-size: 0.92rem;
       }
       @media #{media-query(md)} {
-        height: 235px;
+        height: 278px;
       }
       @media #{media-query(lg)} {
-        height: 160px;
+        height: 220px;
       }
     }
     .shop-group-item-intro {
@@ -319,6 +333,7 @@
       font-size: 0.98rem;
       color: #fff;
       padding: 20px 20px;
+      font-family: $font-gothic-min;
       @media #{media-query(sm)} {
         font-size: 0.92rem;
       }
@@ -333,6 +348,7 @@
        // font-size: 0.95em;
         line-height: 1.5;
         margin-bottom: 0.5rem;
+        color: #000;
         .shop-group-item-intro-table-td-label {
           @media #{media-query(sm)} {
             width:40%;
@@ -342,6 +358,24 @@
           }
           @media #{media-query(lg)} {
             width: 30%;
+          }
+          &.--pussycat {
+            color: $shop-color-pussycat;
+          }
+          &.--shizuku {
+            color: $shop-color-shizuku;
+          }
+          &.--miyabi {
+            color: $shop-color-miyabi;
+          }
+          &.--en {
+            color: $shop-color-en;
+          }
+          &.--shiroganeze {
+            color: $shop-color-shiroganeze;
+          }
+          &.--lovestory {
+            color: $shop-color-lovestory;
           }
         }
         .shop-group-item-intro-table-tr-address {
@@ -368,23 +402,29 @@
         }
       }
       &.--pussycat {
-        background-color: rgba($shop-color-pussycat, 0.5);
+        // background-color: rgba($shop-color-pussycat, 0.5);
+        border: 2px solid $shop-color-pussycat;
       }
       &.--shizuku {
-        background-color: rgba($shop-color-shizuku, 0.5);
+        // background-color: rgba($shop-color-shizuku, 0.5);
+        border: 2px solid $shop-color-shizuku;
       }
       &.--miyabi {
-        background-color: rgba($shop-color-miyabi, 0.5);
+        // background-color: rgba($shop-color-miyabi, 0.5);
+        border: 2px solid $shop-color-miyabi;
       }
       &.--en {
-        background-color: rgba($shop-color-en, 0.5);
+        // background-color: rgba($shop-color-en, 0.5);
+        border: 2px solid $shop-color-en;
         color: #000;
       }
       &.--shiroganeze {
-        background-color: rgba($shop-color-shiroganeze, 0.5);
+        // background-color: rgba($shop-color-shiroganeze, 0.5);
+        border: 2px solid $shop-color-shiroganeze;
       }
       &.--lovestory {
-        background-color: rgba($shop-color-lovestory, 0.5);
+        // background-color: rgba($shop-color-lovestory, 0.5);
+        border: 2px solid $shop-color-lovestory;
       }
     }
   }
