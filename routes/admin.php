@@ -53,6 +53,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
      */
     Route::prefix('cast')->name('cast.')->group(function () {
         Route::get('/', [CastController::class, 'index'])->name('index');
+        Route::get('/sort', [CastController::class, 'sortindex'])->name('sortindex');
         Route::get('add', [CastController::class, 'create'])->name('create');
         Route::post('add', [CastController::class, 'store']);
         Route::get('{id}', [CastController::class, 'show'])->where('id', '[0-9]+')->name('detail');

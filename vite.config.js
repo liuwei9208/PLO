@@ -62,6 +62,7 @@ export default defineConfig({
                 'resources/js/shop/castlist_top.js',
                 'resources/js/shop/diarydetail.js',
                 'resources/js/shop/diarylist.js',
+                'resources/js/admin/sortcast.js',
             ],
             refresh: true,
         }),
