@@ -5,28 +5,68 @@
 @use '../global/utils';
 
 .footer {
+  // max-width: 1500px;
+  margin: 0 auto;
   background-color: #000;
   padding: 40px 0;
   color: #fff;
-  font-family: $font-gothic-min;
+  // font-family: $font-gothic-min;
+
+  &__nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    // max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media #{media-query(sm)} {
+      // flex-direction: column;
+      // align-items: center;
+      // gap: 30px;
+    }
+  }
 
   &__nav {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 30px;
     margin-bottom: 40px;
+
     @media #{media-query(sm)} {
-      gap: 20px;
+      gap: 10px;
+      // width: 100%;
+      // gap: 20px;
       flex-direction: column;
+      text-align: left;
     }
+
     @media #{media-query(md)} {
       gap: 20px;
     }
+
     @media #{media-query(lg)} {
       gap: 30px;
     }
+
     &-item {
+      &:not(:last-child) {
+        border-right: 1px solid #fff;
+      }
+      @media #{media-query(sm)} {
+        border-right: none !important;
+      }
+      @media #{media-query(md)} {
+        &:not(:last-child) {
+          padding-right: 20px;
+        }
+      }
+      @media #{media-query(lg)} {
+        &:not(:last-child) {
+          padding-right: 30px;
+        }
+      }
       a {
         color: #fff;
         text-decoration: none;
@@ -37,17 +77,32 @@
           opacity: 0.8;
         }
         @media #{media-query(sm)} {
-          font-size: 20px;
+          font-size: 12px;
           margin: 0 30px;
 
         }
         @media #{media-query(md)} {
-          font-size: 20px;
+          font-size: 14px;
         }
         @media #{media-query(lg)} {
-          font-size: 21px;
+          font-size: 16px;
         }
       }
+    }
+  }
+
+  &__nav_logo {
+    width: 25%;
+    text-align: right;
+
+    @media #{media-query(sm)} {
+      width: 200px;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
     }
   }
 
@@ -57,6 +112,8 @@
     // font-weight: bold;
     color: #fff;
     margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
     @media #{media-query(sm)} {
       font-size: 13px;
     }
@@ -174,6 +231,7 @@
     width: 215px;
     border-top-left-radius: 24px;
     font-size: 28px;
+    right: 0px;
   }
   &:hover {
     animation: searchGirlBounce 0.8s ease-in-out, searchGirlGlow 1.5s ease-in-out infinite;
@@ -248,7 +306,9 @@
     bottom: 70px;
     right: 15px;
   }
-
+  @media #{media-query(lg)} {
+    right: 15px;
+  }
   a {
     display: flex;
     align-items: center;

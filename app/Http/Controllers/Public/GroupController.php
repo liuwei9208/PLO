@@ -167,7 +167,7 @@ class GroupController extends Controller
     {
         return view('public.group.shop', [
             'pickups' => Pickup::inRandomOrder()->get(),
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
+            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
         ]);
     }
 
@@ -290,7 +290,8 @@ class GroupController extends Controller
         //         );
 
         //  dd($newcomers);
-        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->orWhere('slug', 'headquarter')->first()->id);
+        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+        ->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
         $newcomers = $cast_query
             ->where('created_at', '>=', Carbon::now()->subMonth(1))
             ->where('is_public', 1)

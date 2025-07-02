@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -7,28 +7,69 @@
  <!-- ピックアップ - Pickup Girl -->
  <section class="pickup">
   <div class="section-title">
-    <span class="section-title-en">
-      <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl">
+    <span class="section-title-en title-font front-title">
+      <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
+      {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
     </span>
-    <h2 class="section-title-ja">ピックアップ</h2>
+    <h2 class="section-title-ja title-font-sm">ピックアップ</h2>
   </div>
-  <ul class="pickup-shops">
+  <ul class="pickup-shops content-wrapper">
     <div class="pickup-shop-button" >
-      <li class="pickup-shop-detail" data-shop="all">ALL</li>
-      <li class="pickup-shop-detail" data-shop="pussycat">プッシー<br class="sm">キャット</li>
-      <li class="pickup-shop-detail" data-shop="shizuku">雫</li>
-      <li class="pickup-shop-detail" data-shop="miyabi">雅</li>
-      <li class="pickup-shop-detail" data-shop="en">艶</li>
-      <li class="pickup-shop-detail" data-shop="shiroganeze">シロガネーゼ</li>
-      <li class="pickup-shop-detail" data-shop="lovestory">ラブストーリー</li>
+      <li class="pickup-shop-detail" data-shop="all">
+        <span class="shop-text">
+          <span class="shop-name">ALL</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="pussycat">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">pussycat</span>
+          <span class="shop-name">プッシー<br class="sm">キャット</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="shizuku">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shizuku</span>
+          <span class="shop-name">雫</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="miyabi">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">miyabi</span>
+          <span class.shop-name>雅</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="en">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">en</span>
+          <span class="shop-name">艶</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="shiroganeze">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">shiroganeze</span>
+          <span class="shop-name">シロガネーゼ</span>
+        </span>
+      </li>
+      <li class="pickup-shop-detail" data-shop="lovestory">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          <span class="shop-slug">lovestory</span>
+          <span class="shop-name">ラブストーリー</span>
+        </span>
+      </li>
     </div>
-    <div class="pickup-list-detail " data-shop="all">
+
+    <div class="pickup-list-detail content-wrapper" data-shop="all">
     @foreach ($pickups as $pickup)
     <a
     href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
-    class="pickup-item --{{ $pickup->cast->shop->slug }}"
-  >
-    <div class="pickup-photo">
+    class="pickup-item --{{ $pickup->cast->shop->slug }} ">
+    <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
       <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
     </div>
     <span class="pickup-shop">
@@ -37,21 +78,22 @@
     <span class="pickup-name">
       {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
     </span>
-    <span class="pickup-size">
+    <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
       B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
     </span>
-    <span class="pickup-intro">
+    <span class="pickup-intro --{{ $pickup->cast->shop->slug }}">
       {{ $pickup->cast->appeal_point }}
     </span>
   </a>
     @endforeach
+  </ul>
   </div>
   {{-- <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button">もっと見る</a> --}}
-  <div class="pagination">
+  <div class="pagination content-wrapper">
 
   </div>
 </section>
-</x-public-group-layout>
+</x-public-front-layout>
 @once
   @vite(['resources/scss/group/_pickup.scss'])
 @endonce
@@ -64,7 +106,7 @@ document.querySelectorAll('.pickup-shop-detail').forEach(button => {
   button.addEventListener('click', () => {
     document.querySelector('.pickup-list-detail').dataset.shop = button.dataset.shop
     document.querySelector('.pickup-list-detail').classList.add('--expanded')
-    
+
     // ページネーションの表示制御
     const pagination = document.querySelector('.pagination')
     if (pagination) {
@@ -95,7 +137,7 @@ function initializePagination() {
     if (!paginationContainer) return
 
     let html = '<ul class="pagination">'
-    
+
     // 前へボタン
     html += `
       <li class="pagination-item ${currentPage === 1 ? 'disabled' : ''}">
@@ -212,7 +254,7 @@ function initializePagination() {
 document.addEventListener('DOMContentLoaded', () => {
   const pickupList = document.querySelector('.pickup-list-detail')
   const pagination = document.querySelector('.pagination')
-  
+
   if (pickupList && pagination) {
     if (pickupList.dataset.shop === 'all') {
       pagination.style.display = 'flex'

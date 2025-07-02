@@ -83,15 +83,25 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <footer class="footer" id="footer">
-  <nav class="footer__nav">
-    <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">HOME</a></div>
-    <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
-    <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">求人情報</a></div>
-    <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div>
-  </nav>
-  <div class="footer__nav">
-    <div class="footer__nav-item"><a href="{{ route('public.group.personal-policy') }}">個人情報保護方針</a></div>
+  <div class="footer__nav-wrapper content-wrapper">
+    <nav class="footer__nav">
+      <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント一覧</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.search') }}">女の子検索</a></div>
+      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">求人情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div>
+      <div class="footer__nav-item"><a href="#">お問い合わせ</a></div>
+      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div> --}}
+    </nav>
+    <div class="footer__nav_logo">
+      <img src="{{ asset('assets/img/group/header/plo-logo-w.png') }}" alt="logo">
+    </div>
   </div>
+  {{-- <div class="footer__nav">
+    <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div>
+  </div> --}}
   <div class="footer__copyright">
     Copyright © PLO Group All Rights Reserved.
   </div>

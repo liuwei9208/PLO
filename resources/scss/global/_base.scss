@@ -40,8 +40,12 @@ a {
 }
 
 .content-wrapper {
-  width: 1260px;
+  // width: 1260px;
   margin: 0 auto;
+  padding: 3%;
+  @media #{media-query(lg)} {
+    width: 94%;
+  }
   @media #{media-query(md)} {
     width: calc(100% - 80px);
   }
@@ -49,31 +53,33 @@ a {
     width: calc(100% - 40px);
   }
 }
+
 .title-font {
-  font-family: $font-midashi-min;
+  font-family: $font-gothic-min;
   font-size: $title-font-size;
   font-weight: $title-font-weight;
   font-style: $title-font-style;
   @media #{media-query(sm)} {
-    font-family: $font-midashi-min;
+    font-family: $font-gothic-min;
     font-size: $title-font-size-sm;
     font-weight: $title-font-weight-sm;
     font-style: $title-font-style-sm;
   }
   @media #{media-query(md)} {
-    font-family: $font-midashi-min;
+    font-family: $font-gothic-min;
     font-size: $title-font-size-md;
     font-weight: $title-font-weight-md;
     font-style: $title-font-style-md;
   }
   @media #{media-query(lg)} {
-    font-family: $font-midashi-min;
+    font-family: $font-gothic-min;
     font-size: $title-font-size-lg;
     font-weight: $title-font-weight-lg;
     font-style: $title-font-style-lg;
   }
 }
 .title-font-sm {
+  font-family: $font-gothic-min;
   font-size: 36px;
   @media #{media-query(sm)} {
     font-size: 20px;

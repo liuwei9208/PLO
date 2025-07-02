@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -6,8 +6,10 @@
   <!-- schedule List -->
   <section class="schedule">
     <div class="schedule-title">
-      {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
-      <h2 class="schedule-title-ja">出勤情報</h2>
+      <span class="section-title-en title-font front-title">
+        <span>S</span><span>C</span><span>H</span><span>E</span><span>D</span><span>U</span><span>L</span><span>E</span>
+      </span>
+      <h2 class="schedule-title-ja title-font-sm">出勤情報</h2>
     </div>
     <div class="schedule-week content-wrapper">
       <div class="schedule-week-day">
@@ -20,16 +22,26 @@
       @endfor
     </div>
     <div class="schedule-shop-list content-wrapper">
-      <div class="schedule-shop-list-title">
+      <div class="schedule-shop-list-title title-font-sm">
         {{-- {{ $days[0]['weekDay'] ."出勤女性"}} --}}
       </div>
       <div class="schedule-shop-list-items">
         <div class="schedule-shop-list-item --all">
-          <button class="schedule-shop-list-item-button active" value="" id="shopID">All</button>
+          <button class="schedule-shop-list-item-button active" value="" id="shopID">
+            <span class="shop-text">
+              <span class="shop-name">ALL</span>
+            </span>
+          </button>
         </div>
       @foreach ($shops as $shop)
         <div class="schedule-shop-list-item --{{$shop->slug}}">
-          <button class="schedule-shop-list-item-button" value="{{ $shop->id }}" id="shopID">{{ $shop->name }}</button>
+          <button class="schedule-shop-list-item-button" value="{{ $shop->id }}" id="shopID">
+            <img src="{{ asset('assets/img/search.png') }}" alt="search">
+            <span class="shop-text">
+              <span class="shop-slug">{{ $shop->slug }}</span>
+              <span class="shop-name">{{ $shop->name }}</span>
+            </span>
+          </button>
         </div>
       @endforeach
       </div>
@@ -82,7 +94,7 @@
     </div>
   </section>
 
-</x-public-group-layout>
+</x-public-front-layout>
 <script>
   let date = "{{ $days[0]['date'] }}";
 </script>

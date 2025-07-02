@@ -1,12 +1,17 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
 
   <!-- 女の子検索 -->
   <section class="girl-search">
-    <h2 class="girl-search__title title-font">女の子検索</h2>
-    <form action="{{ url('/search') }}" method="POST" class="girl-search__form">
+    <div class="girl-search__title">
+      <h2 class="girl-search__title-en title-font front-title" >
+        <span>G</span><span>I</span><span>R</span><span>L</span> <span>S</span><span>E</span><span>A</span><span>R</span><span>C</span><span>H</span>
+      </h2>
+      <h3 class="girl-search__title-ja title-font-sm">女の子検索</h3>
+    </div>
+    <form action="{{ url('/search') }}" method="POST" class="girl-search__form content-wrapper">
       @csrf
       <div class="girl-search__row girl-search__row--name">
         <label class="girl-search__label--name">
@@ -132,4 +137,7 @@
     </form>
   </section>
   <!-- ここまで検索フォーム -->
-</x-public-group-layout>
+</x-public-front-layout>
+@once
+  @vite(['resources/scss/group/_search.scss'])
+@endonce

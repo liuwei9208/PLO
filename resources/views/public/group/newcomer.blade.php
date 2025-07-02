@@ -1,4 +1,4 @@
-<x-public-group-layout>
+<x-public-front-layout>
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -7,32 +7,60 @@
     <!-- 新人情報 - New Face -->
     <section class="newface">
       <div class="section-title">
-        <span class="section-title-en">
-          <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face">
+        <span class="section-title-en title-font front-title">
+          <span>N</span><span>E</span><span>W</span> <span>C</span><span>O</span><span>M</span><span>E</span><span>R</span>
         </span>
-        <h2 class="section-title-ja">新人情報</h2>
+        <h2 class="section-title-ja title-font-sm">新人情報</h2>
       </div>
-      <div class="newcomer-list">
+      <div class="newcomer-list content-wrapper">
         @foreach ($newcomers as $cast)
           <div class="newcomer-item">
-            <x-public.group.newface :cast="$cast" />
+            <a
+            href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop->slug, 'id' => $cast->id]) }}"
+            class="newface-item is-{{ $cast->shop->slug }}"
+          >
+            <div class="newface-photo --{{ $cast->shop->slug }}">
+              <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
+            </div>
+            <span class="newface-date">
+              {{ $cast->shop->name }} {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }}
+            </span>
+            {{-- <span class="newface-name">
+              {{ $cast->name }} <small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
+            </span> --}}
+            <span class="newface-name">
+              {{ $cast->name }}<small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
+            </span>
+            <span class="newface-size --{{ $cast->shop->slug }}">
+              B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
+            </span>
+            {{-- <span class="newface-size">
+              B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
+            </span> --}}
+            <p class="newface-intro --{{ $cast->shop->slug }}">
+              {{ $cast->appeal_point }}
+            </p>
+          </a>
+
           </div>
         @endforeach
       </div>
-      <div class="newcomer-pagination">
+      <div class="newcomer-pagination content-wrapper">
         {{ $newcomers->links('pagination::bootstrap-4') }}
       </div>
     </section>
 
-</x-public-group-layout>
-
+</x-public-front-layout>
+@once
+  @vite(['resources/scss/group/_newcomer.scss','resources/scss/group/newfacelist.scss'])
+@endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const items = document.querySelectorAll('.newcomer-item');
   const prevBtn = document.querySelector('.newcomer-pagination__prev');
   const nextBtn = document.querySelector('.newcomer-pagination__next');
   const numbersContainer = document.querySelector('.newcomer-pagination__numbers');
-  
+
   const isMobile = window.innerWidth <= 767;
   const itemsPerPage = isMobile ? 6 : 9;
   const totalPages = Math.ceil(items.length / itemsPerPage);
