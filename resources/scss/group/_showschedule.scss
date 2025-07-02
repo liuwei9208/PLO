@@ -6,6 +6,16 @@
 
 .schedule {
   // padding: 40px 0;
+  background-color: #fff;
+  @media #{media-query(sm)} {
+    padding: 20px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 40px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 40px 0;
+  }
 
   &-title {
     text-align: center;
@@ -100,7 +110,7 @@
       display: flex;
       flex-wrap: wrap;
       // gap: 10px;
-      justify-content: center;
+      justify-content: space-around;
       // padding: 0 50px;
     }
 
