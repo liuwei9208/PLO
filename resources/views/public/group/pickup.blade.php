@@ -106,12 +106,21 @@ document.addEventListener('DOMContentLoaded', function() {
   const perPage = window.innerWidth < 768 ? 7 : 9;
   let currentPage = 1;
   let totalPages = Math.ceil(pickupItems.length / perPage);
+  const isMobile = window.innerWidth < 768;
 
   // 初期表示
   if (document.querySelector('.pickup-list-detail').dataset.shop === 'all') {
     showAllItems();
     initializePagination();
   }
+
+  // リサイズ時の処理
+  window.addEventListener('resize', () => {
+    const newIsMobile = window.innerWidth < 768;
+    if (newIsMobile !== isMobile) {
+      location.reload();
+    }
+  });
 
   // 店舗ボタンクリックイベント
   shopButtons.forEach(button => {
@@ -148,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let isFirst = true;
     pickupItems.forEach(item => {
       if (item.classList.contains(`--${shop}`)) {
-        if (isFirst) {
+        if (isFirst && isMobile) {
           item.style.display = 'flex';
           item.style.gridColumn = '1 / -1';
           isFirst = false;
@@ -170,7 +179,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     pickupItems.forEach((item, index) => {
       if (index >= start && index < end) {
-        if (index === start) {
+        if (index === start && isMobile) {
           item.style.display = 'flex';
           item.style.gridColumn = '1 / -1';
         } else {
