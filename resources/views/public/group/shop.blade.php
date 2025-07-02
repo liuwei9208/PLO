@@ -8,7 +8,7 @@
   <section class="shop">
     <div class="section-title">
       <span class="section-title-en front-title title-font">
-        <span>S</span><span>T</span><span>O</span><span>R</span><span>E</span> <span>L</span><span>I</span><span>S</span><span>T</span>
+        <span>S</span><span>H</span><span>O</span><span>P</span> <span>L</span><span>I</span><span>S</span><span>T</span>
       </span>
       <h2 class="section-title-ja title-font-sm">店舗一覧</h2>
     </div>
