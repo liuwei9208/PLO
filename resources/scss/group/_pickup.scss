@@ -438,19 +438,16 @@
       @media #{media-query(sm)} {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
-      //  width: calc(100% - 56px);
         margin: 30px auto 0;
       }
       @media #{media-query(md)} {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
-      //  width: 720px;
         margin: 50px auto 0;
       }
       @media #{media-query(lg)} {
         grid-template-columns: repeat(3, 1fr);
         gap: 54px;
-      //  width: 1260px;
         margin: 50px auto 0;
       }
 
@@ -459,32 +456,37 @@
         flex-direction: column;
         transition: .2s;
         width: 100%;
-       //  border: 1px solid #000;
+
         @media #{media-query(sm)} {
-          // max-width: 384px;
           margin: 0 auto;
 
-          &:first-child(1) {
+          &:not([style*="display: none"]):first-of-type {
             grid-column: 1 / -1;
             width: 100%;
-            // max-width: 384px;
             margin: 0 auto;
-            & .pickup-photo {
-            //  height: 440px;
-            }
           }
 
-          &:not(:first-child) {
+          &:not(:first-of-type) {
             width: 100%;
-            // max-width: 160px;
           }
 
-          &:nth-child(odd):not(:first-child) {
+          &:nth-child(odd):not(:first-of-type) {
             margin-left: auto;
           }
 
-          &:nth-child(even):not(:first-child) {
+          &:nth-child(even):not(:first-of-type) {
             margin-right: auto;
+          }
+        }
+
+        // 店舗別表示の場合のスタイル
+        @each $shop in $shops {
+          &.--#{$shop}:not([style*="display: none"]):first-of-type {
+            @media #{media-query(sm)} {
+              grid-column: 1 / -1;
+              width: 100%;
+              margin: 0 auto;
+            }
           }
         }
 

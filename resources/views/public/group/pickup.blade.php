@@ -99,45 +99,105 @@
 @endonce
 <script>
 /** 詳細ピックアップの「店舗名」ボタン */
-document.querySelectorAll('.pickup-shop-detail').forEach(button => {
+document.addEventListener('DOMContentLoaded', function() {
+  const shopButtons = document.querySelectorAll('.pickup-shop-detail');
+  const pickupItems = document.querySelectorAll('.pickup-item');
+  const pagination = document.querySelector('.pagination');
+  const perPage = window.innerWidth < 768 ? 7 : 9;
+  let currentPage = 1;
+  let totalPages = Math.ceil(pickupItems.length / perPage);
+
+  // 初期表示
   if (document.querySelector('.pickup-list-detail').dataset.shop === 'all') {
-    initializePagination()
+    showAllItems();
+    initializePagination();
   }
-  button.addEventListener('click', () => {
-    document.querySelector('.pickup-list-detail').dataset.shop = button.dataset.shop
-    document.querySelector('.pickup-list-detail').classList.add('--expanded')
 
-    // ページネーションの表示制御
-    const pagination = document.querySelector('.pagination')
-    if (pagination) {
-      if (button.dataset.shop === 'all') {
-        pagination.style.display = 'flex'
-        initializePagination()
+  // 店舗ボタンクリックイベント
+  shopButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedShop = button.dataset.shop;
+
+      // ボタンのアクティブ状態を更新
+      shopButtons.forEach(btn => btn.classList.remove('is-active'));
+      button.classList.add('is-active');
+
+      if (selectedShop === 'all') {
+        showAllItems();
+        initializePagination();
       } else {
-        pagination.style.display = 'none'
-        // すべてのアイテムのdisplayプロパティを削除
-        document.querySelectorAll('.pickup-item').forEach(item => {
-          item.style.removeProperty('display')
-          // item.dataset.display = 'hide'
-        })
+        showShopItems(selectedShop);
       }
+    });
+  });
+
+  // 全アイテム表示（ページネーション用）
+  function showAllItems() {
+    if (pagination) {
+      pagination.style.display = 'flex';
     }
-  })
-})
-/** ピックアップのページネーション機能 */
-function initializePagination() {
-  const items = document.querySelectorAll('.pickup-item')
-  const perPage = window.innerWidth < 768 ? 7 : 9 // モバイル: 7件、PC: 9件
-  const totalItems = items.length
-  const totalPages = Math.ceil(totalItems / perPage)
-  let currentPage = 1
+    showPage(1);
+  }
 
-  // ページネーションのHTMLを生成
+  // 店舗別アイテム表示
+  function showShopItems(shop) {
+    if (pagination) {
+      pagination.style.display = 'none';
+    }
+
+    let isFirst = true;
+    pickupItems.forEach(item => {
+      if (item.classList.contains(`--${shop}`)) {
+        if (isFirst) {
+          item.style.display = 'flex';
+          item.style.gridColumn = '1 / -1';
+          isFirst = false;
+        } else {
+          item.style.display = 'flex';
+          item.style.gridColumn = 'auto';
+        }
+      } else {
+        item.style.display = 'none';
+        item.style.gridColumn = 'auto';
+      }
+    });
+  }
+
+  // ページネーション機能
+  function showPage(page) {
+    const start = (page - 1) * perPage;
+    const end = start + perPage;
+
+    pickupItems.forEach((item, index) => {
+      if (index >= start && index < end) {
+        if (index === start) {
+          item.style.display = 'flex';
+          item.style.gridColumn = '1 / -1';
+        } else {
+          item.style.display = 'flex';
+          item.style.gridColumn = 'auto';
+        }
+      } else {
+        item.style.display = 'none';
+        item.style.gridColumn = 'auto';
+      }
+    });
+
+    currentPage = page;
+    renderPagination();
+  }
+
+  function initializePagination() {
+    currentPage = 1;
+    totalPages = Math.ceil(pickupItems.length / perPage);
+    showPage(1);
+    renderPagination();
+  }
+
   function renderPagination() {
-    const paginationContainer = document.querySelector('.pagination')
-    if (!paginationContainer) return
+    if (!pagination) return;
 
-    let html = '<ul class="pagination">'
+    let html = '<ul class="pagination">';
 
     // 前へボタン
     html += `
@@ -148,24 +208,24 @@ function initializePagination() {
           </svg>
         </a>
       </li>
-    `
+    `;
 
     // ページ番号
-    let startPage = Math.max(1, currentPage - 1)
-    let endPage = Math.min(totalPages, currentPage + 1)
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, currentPage + 1);
 
     if (startPage > 1) {
       html += `
         <li class="pagination-item">
           <a class="page-link" href="#" data-page="1">1</a>
         </li>
-      `
+      `;
       if (startPage > 2) {
         html += `
           <li class="pagination-item disabled">
             <span class="page-link">...</span>
           </li>
-        `
+        `;
       }
     }
 
@@ -174,7 +234,7 @@ function initializePagination() {
         <li class="pagination-item ${i === currentPage ? 'active' : ''}">
           <a class="page-link" href="#" data-page="${i}">${i}</a>
         </li>
-      `
+      `;
     }
 
     if (endPage < totalPages) {
@@ -183,13 +243,13 @@ function initializePagination() {
           <li class="pagination-item disabled">
             <span class="page-link">...</span>
           </li>
-        `
+        `;
       }
       html += `
         <li class="pagination-item">
           <a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a>
         </li>
-      `
+      `;
     }
 
     // 次へボタン
@@ -201,79 +261,27 @@ function initializePagination() {
           </svg>
         </a>
       </li>
-    `
+    `;
 
-    html += '</ul>'
-    paginationContainer.innerHTML = html
+    html += '</ul>';
+    pagination.innerHTML = html;
+
+    // ページネーションのクリックイベント
+    const paginationLinks = pagination.querySelectorAll('.page-link');
+    paginationLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageData = link.dataset.page;
+
+        if (pageData === 'prev' && currentPage > 1) {
+          showPage(currentPage - 1);
+        } else if (pageData === 'next' && currentPage < totalPages) {
+          showPage(currentPage + 1);
+        } else if (!isNaN(pageData)) {
+          showPage(parseInt(pageData));
+        }
+      });
+    });
   }
-
-  // ページの表示を切り替え
-  function showPage(page) {
-    const start = (page - 1) * perPage
-    const end = start + perPage
-
-    items.forEach((item, index) => {
-      if (index >= start && index < end) {
-        item.style.display = 'block'
-        item.dataset.display = 'show'
-      } else {
-        item.style.display = 'none'
-        item.dataset.display = 'hide'
-      }
-    })
-
-    currentPage = page
-    renderPagination()
-  }
-
-  // イベントリスナーを設定
-  function bindEvents() {
-    const paginationContainer = document.querySelector('.pagination')
-    if (!paginationContainer) return
-
-    paginationContainer.addEventListener('click', (e) => {
-      e.preventDefault()
-      const target = e.target.closest('.page-link')
-      if (!target) return
-
-      const page = target.dataset.page
-      if (page === 'prev' && currentPage > 1) {
-        showPage(currentPage - 1)
-      } else if (page === 'next' && currentPage < totalPages) {
-        showPage(currentPage + 1)
-      } else if (!isNaN(page)) {
-        showPage(parseInt(page))
-      }
-    })
-  }
-
-  // 初期表示
-  showPage(1)
-  renderPagination()
-  bindEvents()
-}
-
-// 初期表示時のページネーション制御
-document.addEventListener('DOMContentLoaded', () => {
-  const pickupList = document.querySelector('.pickup-list-detail')
-  const pagination = document.querySelector('.pagination')
-
-  if (pickupList && pagination) {
-    if (pickupList.dataset.shop === 'all') {
-      pagination.style.display = 'flex'
-      // document.querySelectorAll('.pickup-item').forEach(item => {
-      //   item.style.display = 'block'
-      // })
-      initializePagination()
-    } else {
-      pagination.style.display = 'none'
-      // すべてのアイテムのdisplayプロパティを削除
-      document.querySelectorAll('.pickup-item').forEach(item => {
-        item.style.removeProperty('display')
-        // item.dataset.display = 'hide'
-      })
-    }
-  }
-})
-
+});
 </script>
