@@ -2,7 +2,6 @@ import axios from 'axios'
 
 let shop = '';
 let is_public = '';
-let castName = '';
 let selectedDate = '';
 let dragSrcEl;
 
@@ -12,7 +11,7 @@ if (document.querySelector('#search_form_shop')) {
     document.querySelector('#search_form_shop').addEventListener('change', async (e) => {
         e.preventDefault();
         shop = e.target.value;
-        await getCastsSchedule(castName,shop,is_public,selectedDate);
+        await getCastsSchedule(shop,is_public,selectedDate);
     });
 }
 
@@ -27,19 +26,19 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // 現在の日付を設定（テスト用：6/9）
     let currentDate = new Date();
-    console.log({currentDate});
-
     let currentWeekStart = getWeekStart(currentDate);
-    console.log({currentWeekStart});
+
+    // 初期表示
+    generateDateTabs(currentWeekStart);
+    console.log(currentWeekStart);
+    selectedDate = currentDate.toDateString();
+    await getCastsSchedule(shop, is_public, selectedDate);
+    scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
+    updatePrevWeekButtonState();
+
     // 週の開始日を取得する関数
     function getWeekStart(date) {
-        // const day = date.getDay();
-        // console.log({day});
-        // const diff = date.getDate() - day;
-        // console.log('date: ', date.getDate());
-        // console.log({diff});
         const weekStart = new Date(date);
-        // weekStart.setDate(diff);
         return weekStart;
     }
 
@@ -104,20 +103,13 @@ document.addEventListener('DOMContentLoaded', async function() {
                 // スケジュール日付を更新
                 scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
                 selectedDate = date.toDateString()
-                await getCastsSchedule(castName, shop, is_public, selectedDate);
+                await getCastsSchedule(shop, is_public, selectedDate);
             });
 
             dateTabs.appendChild(tab);
         }
     }
 
-    // 初期表示
-    generateDateTabs(currentWeekStart);
-    console.log(currentWeekStart);
-    selectedDate = currentDate.toDateString();
-    await getCastsSchedule(castName, shop, is_public, selectedDate);
-    scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
-    updatePrevWeekButtonState();
     // 先週ボタンのクリックイベント
     prevWeekBtn.addEventListener('click', async () => {
         if (prevWeekBtn.classList.contains('week-btn-disabled')) {
@@ -133,7 +125,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         updatePrevWeekButtonState();
 
         selectedDate = currentWeekStart.toDateString();
-        await getCastsSchedule(castName, shop, is_public, selectedDate);
+        await getCastsSchedule(shop, is_public, selectedDate);
     });
 
     // 翌週ボタンのクリックイベント
@@ -148,7 +140,21 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         // 追加: 翌週ボタンでリストをリフレッシュ
         selectedDate = currentWeekStart.toDateString();
-        await getCastsSchedule(castName, shop, is_public, selectedDate);
+        await getCastsSchedule(shop, is_public, selectedDate);
+    });
+
+    const container = document.querySelector('.sort-cast-container');
+    container.addEventListener('dragover', (e) => e.preventDefault());
+    container.addEventListener('drop', async (e) => {
+        e.preventDefault();
+        if (!dragSrcEl) return;
+        
+        const isDroppedOnCard = e.target.closest('.cast-card');
+        
+        if (!isDroppedOnCard) {
+            container.appendChild(dragSrcEl);
+            const response = await updateCastRanking();
+        }
     });
 });
 
@@ -157,8 +163,16 @@ function convertDateTimeToTime(dateTime) {
     return date.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', hour12: false , hourCycle: 'h23' , separator: ':'});
 }
 
-async function updateCastRanking(allCastRanking) {
+async function updateCastRanking() {
     try {
+        const allCastRanking = [];
+        document.querySelectorAll('.cast-card').forEach((card, index) => {
+            allCastRanking.push({
+                id: card.dataset.id,
+                rank: index + 1
+            })
+        })
+
         // await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/cast/updateranking', {
             allCastRanking
@@ -178,6 +192,9 @@ async function updateCastRanking(allCastRanking) {
 
         if (response.data.status === 'success') {
             console.log('更新成功:', response.data);
+            document.querySelectorAll('.cast-card').forEach((card, index) => {
+                card.querySelector("input").value = index + 1
+            })
             return response.data;
         } else {
             throw new Error(response.data.message || '更新に失敗しました');
@@ -202,17 +219,15 @@ async function updateCastRanking(allCastRanking) {
 * キャストの出勤・予約を取得する関数
 * @param {string} date - 日付
 */
-async function getCastsSchedule(castName, shop, is_public, date_l) {
+async function getCastsSchedule(shop, is_public, date_l) {
     try {
         console.log('リクエストパラメータ:', {
-            castName,
             shop,
             is_public,
             date_l,
         });
         // await axios.get('/sanctum/csrf-cookie', { withCredentials: true });
         const response = await axios.post('/api/cast/sorted', {
-            castName: castName,
             shop: shop,
             public: is_public,
             date: date_l,
@@ -242,7 +257,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
                 return `
                     <div class="cast-card" draggable="true" data-id="${cast.id}" data-rank="${cast.rank ? cast.rank : index + 1}">
                         <div class="cast-rank">
-                            <input name=${cast.name} type="number" value=${cast.rank ? cast.rank : index + 1} />
+                            <input draggable="false" name=${cast.name} type="number" value=${cast.rank ? cast.rank : index + 1} />
                         </div>
                         <div class="cast-info">
                             <div class="cast-avatar">
@@ -258,13 +273,59 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
             }).join('');
 
             document.querySelectorAll('.cast-card').forEach(card => {
+                const rankInput = card.querySelector("input");
+                rankInput.addEventListener('change', async (e) => {
+                    let dstCardNo = parseInt(e.target.value, 10) - 1;
+                    const container = card.parentElement;
+                    const cards = Array.from(container.querySelectorAll('.cast-card'));
+                    const currentIdx = cards.indexOf(card);
+
+                    if (dstCardNo >= 0) {
+                        if (dstCardNo == currentIdx) {
+                            return
+                        }
+                        if (dstCardNo > cards.length - 1) {
+                            dstCardNo = cards.length - 1; 
+                        }
+                        // Remove the card from its current position
+                        container.removeChild(card);
+                        // Insert the card at the new position
+                        if (dstCardNo > cards.length - 1) {
+                            container.appendChild(card);
+                        } else {
+                            if (dstCardNo > currentIdx) {
+                                container.insertBefore(card, cards[dstCardNo + 1]);
+                            } else {
+                                container.insertBefore(card, cards[dstCardNo]);
+                            }
+                        }
+                        
+                        const response = await updateCastRanking();
+                    } else {
+                        rankInput.value = parseInt(card.dataset.rank);
+                        return
+                    }
+                })
+                rankInput.addEventListener('mousedown', (e) => {
+                    e.stopPropagation();
+                });
+                rankInput.addEventListener('dragstart', (e) => {
+                    e.preventDefault();
+                });
+
                 card.addEventListener('dragstart', (e) => {
-                    dragSrcEl = e.target;
-                    e.target.classList.add('dragging');
+                    const { clientX, clientY } = e;
+                    const el = document.elementFromPoint(clientX, clientY);
+                    if (el && el.tagName === 'INPUT') {
+                        e.preventDefault();
+                        return;
+                    }
+                    dragSrcEl = e.target.closest(".cast-card");
+                    dragSrcEl.classList.add('dragging');
                 });
 
                 card.addEventListener('dragend', (e) => {
-                    e.target.classList.remove('dragging');
+                    e.target.closest(".cast-card").classList.remove('dragging');
                 });
 
                 card.addEventListener('dragover', (e) => {
@@ -286,89 +347,21 @@ async function getCastsSchedule(castName, shop, is_public, date_l) {
                                 parent.insertBefore(dragSrcEl, dragDstEl);
                             }
                         } else {
-                            dragDstEl.parentNode.insertBefore(dragSrcEl, dragDstEl);
-                        }
-
-                        const allCastRanking = [];
-                        document.querySelectorAll('.cast-card').forEach((card, index) => {
-                            allCastRanking.push({
-                                id: card.dataset.id,
-                                rank: index + 1
-                            })
-                        })
-
-                        const response = await updateCastRanking(allCastRanking);
-
-                        if (response.status === 'success') {
-                            document.querySelectorAll('.cast-card').forEach((card, index) => {
-                                card.querySelector("input").value = index + 1
-                            })
-                        } else {
-                            temp = dragSrcEl.dataset.id;
-                            dragSrcEl.dataset.id = dragDstEl.dataset.id;
-                            dragDstEl.dataset.id = temp;
-
-                            throw new Error(response.message || '更新に失敗しました');
-                        }
-                    }
-                });
-
-                const rankInput = card.querySelector("input");
-                rankInput.addEventListener('change', async (e) => {
-                    let dstCardNo = parseInt(e.target.value, 10) - 1;
-                    const container = card.parentElement;
-                    const cards = Array.from(container.querySelectorAll('.cast-card'));
-                    const currentIdx = cards.indexOf(card);
-                    console.log("111", dstCardNo, currentIdx, cards.length)
-
-                    if (dstCardNo >= 0) {
-                        if (dstCardNo == currentIdx) {
-                            return
-                        }
-                        if (dstCardNo > cards.length - 1) {
-                            dstCardNo = cards.length - 1; 
-                        }
-                        // Remove the card from its current position
-                        container.removeChild(card);
-                        // Insert the card at the new position
-                        if (dstCardNo > cards.length - 1) {
-                            container.appendChild(card);
-                        } else {
-                            if (dstCardNo > currentIdx) {
-                                container.insertBefore(card, cards[dstCardNo + 1]);
+                            if (dragDstEl.nextSibling) {
+                                dragDstEl.parentNode.insertBefore(dragSrcEl, dragDstEl.nextSibling);
                             } else {
-                                container.insertBefore(card, cards[dstCardNo]);
+                                dragDstEl.parentNode.appendChild(dragSrcEl);
                             }
                         }
 
-                        // Update all ranks and send to server
-                        const allCastRanking = [];
-                        container.querySelectorAll('.cast-card').forEach((c, idx) => {
-                            c.querySelector("input").value = idx + 1;
-                            allCastRanking.push({
-                                id: c.dataset.id,
-                                rank: idx + 1
-                            });
-                        });
-                        
-                        const response = await updateCastRanking(allCastRanking);
-
-                        console.log("1111", response.status)
-                        if (response.status === 'success') {
-                            document.querySelectorAll('.cast-card').forEach((card, index) => {
-                                card.querySelector("input").value = index + 1
-                            })
-                        } else {
-                            throw new Error(response.message || '更新に失敗しました');
-                        }
-                    } else {
-                        rankInput.value = parseInt(card.dataset.rank);
-                        return
+                        const response = await updateCastRanking();
                     }
-                })
+                });
             });
 
-            return {selectedDate};
+            document.querySelectorAll('.cast-card').forEach((card, index) => {
+                card.querySelector("input").value = index + 1
+            })
         } else {
             throw new Error(response.data.message || 'データの取得に失敗しました');
         }
