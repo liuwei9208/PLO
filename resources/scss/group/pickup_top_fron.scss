@@ -71,9 +71,14 @@
 //   }
 // }
 .pickup-top {
-  background-color: #fff;
+  // background-color: #fff;
+  background: linear-gradient(to top, #f8f7f6 0%, #f8f7f6 35%, transparent 35%, transparent 100%);
   .section-title {
     text-align: center;
+  }
+  padding-top: 40px;
+  @media #{media-query(sm)} {
+    padding-top: 20px;
   }
 }
  .pickup {
