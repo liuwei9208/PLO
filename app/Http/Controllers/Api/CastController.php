@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\Diary;
 
 class CastController extends Controller
@@ -41,8 +42,6 @@ class CastController extends Controller
             $shop = $request->input('shop');
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
-            $query = Cast::where('is_public', 1);
-
             if ($user->hasRole('admin')) {
                 $shopId = $shop;
             } else if ($user->hasRole('shop')) {
@@ -57,9 +56,10 @@ class CastController extends Controller
                     ->where('casts.is_public', 1)
                     ->join('attendances', 'casts.id', '=', 'attendances.cast_id')
                     ->select('casts.*', 'attendances.start_datetime', 'attendances.end_datetime')
+                    ->where('attendances.is_public', 1)
                     ->whereRaw('DATE(start_datetime) <= ?', [$date])
                     ->whereRaw('DATE(end_datetime) >= ?', [$date])
-                    ->orderBy('rank')
+                    ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                     ->get();
 
                 Log::info('レスポンスデータ:', [
