@@ -64,11 +64,11 @@
       </li>
     </div>
 
-    <div class="pickup-list-detail content-wrapper" data-shop="all">
+    <div class="pickup-list-detail " data-shop="all" >
     @foreach ($pickups as $pickup)
     <a
     href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
-    class="pickup-item --{{ $pickup->cast->shop->slug }} ">
+    class="pickup-item --{{ $pickup->cast->shop->slug }}" data-display="show">
     <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
       <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
     </div>
@@ -118,6 +118,7 @@ document.querySelectorAll('.pickup-shop-detail').forEach(button => {
         // すべてのアイテムのdisplayプロパティを削除
         document.querySelectorAll('.pickup-item').forEach(item => {
           item.style.removeProperty('display')
+          // item.dataset.display = 'hide'
         })
       }
     }
@@ -214,8 +215,10 @@ function initializePagination() {
     items.forEach((item, index) => {
       if (index >= start && index < end) {
         item.style.display = 'block'
+        item.dataset.display = 'show'
       } else {
         item.style.display = 'none'
+        item.dataset.display = 'hide'
       }
     })
 
@@ -267,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // すべてのアイテムのdisplayプロパティを削除
       document.querySelectorAll('.pickup-item').forEach(item => {
         item.style.removeProperty('display')
+        // item.dataset.display = 'hide'
       })
     }
   }

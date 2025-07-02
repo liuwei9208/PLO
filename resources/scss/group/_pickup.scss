@@ -18,14 +18,18 @@
 
  .pickup {
   //  width: 100%;
+  background-color: #fff;
    @media #{media-query(sm)} {
     //  padding: 50px 0 70px;
+    padding: 20px 0;
    }
    @media #{media-query(md)} {
     //  padding: 90px 0 80px;
+    padding: 40px 0;
    }
    @media #{media-query(lg)} {
     //  padding: 120px 0 90px;
+    padding: 40px 0;
    }
    .section-title {
     text-align: center;
@@ -60,7 +64,7 @@
     .pickup-shop-button{
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-around;
       // @media #{media-query(sm)} {
       //     width: 344px;
       //     margin: 40px auto 0;
@@ -457,22 +461,22 @@
         width: 100%;
        //  border: 1px solid #000;
         @media #{media-query(sm)} {
-          max-width: 384px;
+          // max-width: 384px;
           margin: 0 auto;
 
-          &:first-child {
+          &:first-child(1) {
             grid-column: 1 / -1;
             width: 100%;
-            max-width: 384px;
+            // max-width: 384px;
             margin: 0 auto;
             & .pickup-photo {
-             height: 440px;
+            //  height: 440px;
             }
           }
 
           &:not(:first-child) {
             width: 100%;
-            max-width: 160px;
+            // max-width: 160px;
           }
 
           &:nth-child(odd):not(:first-child) {
@@ -501,19 +505,22 @@
           overflow: hidden;
           border-radius: 30px;
           @media #{media-query(sm)} {
-            aspect-ratio: 1 / 1;
-            height: 210px;
+            // aspect-ratio: 1 / 1;
+            // height: 210px;
+            // height: 100%;
           }
           @media #{media-query(md)} {
-            height: 360px;
+            // height: 360px;
+            // height: 100%;
           }
           @media #{media-query(lg)} {
-            height: 510px;
+            // height: 510px;
+            // height: 100%;
           }
 
           img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
             object-position: center center;
             transition: .25s;
