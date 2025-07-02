@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\Shop;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
@@ -71,7 +72,9 @@ class EventController extends Controller
     public function setPostEnd()
     {
         $event = Event::whereIn('published_status', [1, 2])
-        ->whereDate('published_at', '<', now()->format('Y-m-d'))
+        // ->whereDate('published_at', '<', now()->format('Y-m-d H:i:s'))
+        // ->where('published_at', '<=', now()->format('Y-m-d H:i:s'))
+        ->where('published_at', '<=', Carbon::now())
         ->update(['published_status' => 4]);
 
     }

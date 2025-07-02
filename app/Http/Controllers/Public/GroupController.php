@@ -46,6 +46,8 @@ class GroupController extends Controller
                 $query->where('published_status', 2)
                     ->where('published_at', '<=', Carbon::now());
             })
+            ->orWhere('published_status',4)
+            ->where('published_at', '>=', Carbon::now()->subMonth(1))
             ->orderBy('published_at', 'desc')
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id',Shop::where('slug', 'headquarter')->first()->id)->orderBy('updated_at', 'desc')->get();
