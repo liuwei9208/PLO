@@ -339,13 +339,20 @@ class ShopController extends Controller
     {
         // $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         // ->inRandomOrder()
+    //     DB::table('casts')
+    // ->where('shop_id', 2)
+    // ->where('is_public', 1)
+    // ->orderByRaw('IF(rank IS NULL, 1, 0), rank ASC')
+    // ->limit(9)
+    // ->offset(0)
+    // ->get();
         $castlist = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('is_public', 1)
-        ->orderByRaw('rank IS NULL, rank ASC')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
-            ->withPath('castlist');
-        return view('public.shop.castlist', [
+            ->withPath('castlist')
+            ->orderByRaw('rank IS NULL, rank ASC');
+            return view('public.shop.castlist', [
             'castlist' => $castlist,
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
