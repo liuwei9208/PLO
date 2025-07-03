@@ -20,128 +20,9 @@ console.log(window.apiToken);
 document.addEventListener('DOMContentLoaded', async function() {
     // 日付ナビゲーション機能
     const scheduleDate = document.querySelector('.schedule-date');
-    const prevWeekBtn = document.querySelector('.prev-week-btn');
-    const nextWeekBtn = document.querySelector('.next-week-btn');
-    const dateTabs = document.querySelector('.date-tabs');
-
-    // 現在の日付を設定（テスト用：6/9）
-    let currentDate = new Date();
-    let currentWeekStart = getWeekStart(currentDate);
 
     // 初期表示
-    generateDateTabs(currentWeekStart);
-    console.log(currentWeekStart);
-    selectedDate = currentDate.toDateString();
     await getCastsSchedule(shop, is_public, selectedDate);
-    scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
-    updatePrevWeekButtonState();
-
-    // 週の開始日を取得する関数
-    function getWeekStart(date) {
-        const weekStart = new Date(date);
-        return weekStart;
-    }
-
-    // 日付をフォーマットする関数
-    function formatDate(date) {
-        const year = date.getFullYear();
-        const month = date.getMonth() + 1;
-        const day = date.getDate();
-        const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-        const weekday = weekdays[date.getDay()];
-        return `${year}年${month}月${day}日(${weekday})`;
-    }
-
-    // 先週ボタンの無効化状態を更新する関数
-    function updatePrevWeekButtonState() {
-        const today = new Date();
-        const todayWeekStart = getWeekStart(today);
-        if (currentWeekStart.getMonth() === todayWeekStart.getMonth() && currentWeekStart.getDate() === todayWeekStart.getDate()) {
-            prevWeekBtn.classList.add('week-btn-disabled');
-        } else {
-            prevWeekBtn.classList.remove('week-btn-disabled');
-        }
-    }
-
-    // 日付タブを生成する関数
-    function generateDateTabs(startDate) {
-        dateTabs.innerHTML = '';
-        for (let i = 0; i < 7; i++) {
-            const date = new Date(startDate);
-            date.setDate(startDate.getDate() + i);
-            const month = date.getMonth() + 1;
-            const day = date.getDate();
-            const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
-            const weekday = weekdays[date.getDay()];
-
-            const tab = document.createElement('div');
-            tab.className = 'date-tab';
-
-            // 土曜日と日曜日のクラスを追加
-            if (date.getDay() === 0) { // 日曜日
-                tab.classList.add('sunday');
-            } else if (date.getDay() === 6) { // 土曜日
-                tab.classList.add('saturday');
-            }
-
-            if (i === 0) {
-                tab.classList.add('active');
-                tab.innerHTML = `${month}/${day}(${weekday})<div class="active-indicator"></div>`;
-            } else {
-                tab.textContent = `${month}/${day}(${weekday})`;
-            }
-
-            tab.addEventListener('click', async () => {
-                // アクティブなタブを更新
-                document.querySelectorAll('.date-tab').forEach(t => {
-                    t.classList.remove('active');
-                    t.innerHTML = t.textContent;
-                });
-                tab.classList.add('active');
-                tab.innerHTML = `${month}/${day}(${weekday})<div class="active-indicator"></div>`;
-
-                // スケジュール日付を更新
-                scheduleDate.textContent = `${formatDate(date)}の出勤予定`;
-                selectedDate = date.toDateString()
-                await getCastsSchedule(shop, is_public, selectedDate);
-            });
-
-            dateTabs.appendChild(tab);
-        }
-    }
-
-    // 先週ボタンのクリックイベント
-    prevWeekBtn.addEventListener('click', async () => {
-        if (prevWeekBtn.classList.contains('week-btn-disabled')) {
-            return;
-        }
-
-        const newWeekStart = new Date(currentWeekStart);
-        newWeekStart.setDate(currentWeekStart.getDate() - 7);
-        currentWeekStart = newWeekStart;
-
-        generateDateTabs(currentWeekStart);
-        scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
-        updatePrevWeekButtonState();
-
-        selectedDate = currentWeekStart.toDateString();
-        await getCastsSchedule(shop, is_public, selectedDate);
-    });
-
-    // 翌週ボタンのクリックイベント
-    nextWeekBtn.addEventListener('click', async () => {
-        const newWeekStart = new Date(currentWeekStart);
-        newWeekStart.setDate(currentWeekStart.getDate() + 7);
-        currentWeekStart = newWeekStart;
-
-        generateDateTabs(currentWeekStart);
-        scheduleDate.textContent = `${formatDate(currentWeekStart)}の出勤予定`;
-        updatePrevWeekButtonState();
-
-        // 追加: 翌週ボタンでリストをリフレッシュ
-        selectedDate = currentWeekStart.toDateString();
-        await getCastsSchedule(shop, is_public, selectedDate);
-    });
 
     const container = document.querySelector('.sort-cast-container');
     container.addEventListener('dragover', (e) => e.preventDefault());
@@ -251,21 +132,24 @@ async function getCastsSchedule(shop, is_public, date_l) {
 
             const imgUrl = window.location.origin + '/storage/';
             document.querySelector('.sort-cast-container').innerHTML = casts.map((cast, index) => {
-                let attendanceStartTime = convertDateTimeToTime(cast.start_datetime);
-                let attendanceEndTime = convertDateTimeToTime(cast.end_datetime);
-
                 return `
                     <div class="cast-card" draggable="true" data-id="${cast.id}" data-rank="${cast.rank ? cast.rank : index + 1}">
                         <div class="cast-rank">
                             <input draggable="false" name=${cast.name} type="number" value=${cast.rank ? cast.rank : index + 1} />
+                            <a href="/admin/cast/${cast.id}?redirect=/admin/cast/sort" class="btn-edit">
+                                <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15.0911 2.78206C14.2125 1.90338 12.7878 1.90338 11.9092 2.78206L4.57524 10.116C4.26682 10.4244 4.0547 10.8158 3.96468 11.2426L3.31231 14.3352C3.25997 14.5833 3.33653 14.841 3.51583 15.0203C3.69512 15.1996 3.95286 15.2761 4.20096 15.2238L7.29355 14.5714C7.72031 14.4814 8.11172 14.2693 8.42013 13.9609L15.7541 6.62695C16.6327 5.74827 16.6327 4.32365 15.7541 3.44497L15.0911 2.78206ZM12.9698 3.84272C13.2627 3.54982 13.7376 3.54982 14.0305 3.84272L14.6934 4.50563C14.9863 4.79852 14.9863 5.2734 14.6934 5.56629L14.044 6.21573L12.3204 4.49215L12.9698 3.84272ZM11.2597 5.55281L5.6359 11.1766C5.53309 11.2794 5.46238 11.4099 5.43238 11.5522L5.01758 13.5185L6.98394 13.1037C7.1262 13.0737 7.25666 13.003 7.35947 12.9002L12.9833 7.27639L11.2597 5.55281Z" fill=""></path>
+                                </svg>
+                                詳細
+                            </a>
                         </div>
                         <div class="cast-info">
                             <div class="cast-avatar">
                                 <img src=${imgUrl + cast.gallery_1} />
                             </div>
                             <div class="cast-detail">
-                                ${cast.name}<br>
-                                ${attendanceStartTime} - ${attendanceEndTime}
+                                <p class="cast-name">${cast.name}</p>
+                                <p class="cast-joined-at">${cast.joined_at}</p>
                             </div>
                         </div>
                     </div>
@@ -348,7 +232,11 @@ async function getCastsSchedule(shop, is_public, date_l) {
                             }
                         } else {
                             if (dragDstEl.nextSibling) {
-                                dragDstEl.parentNode.insertBefore(dragSrcEl, dragDstEl.nextSibling);
+                                if (dragSrcEl.compareDocumentPosition(dragDstEl) & Node.DOCUMENT_POSITION_FOLLOWING) {
+                                    dragDstEl.parentNode.insertBefore(dragSrcEl, dragDstEl.nextSibling);
+                                } else {
+                                    dragDstEl.parentNode.insertBefore(dragSrcEl, dragDstEl);
+                                }
                             } else {
                                 dragDstEl.parentNode.appendChild(dragSrcEl);
                             }

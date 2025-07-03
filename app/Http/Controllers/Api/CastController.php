@@ -54,11 +54,6 @@ class CastController extends Controller
             if ($shopId) {
                 $casts = Cast::where('casts.shop_id', $shopId)
                     ->where('casts.is_public', 1)
-                    ->join('attendances', 'casts.id', '=', 'attendances.cast_id')
-                    ->select('casts.*', 'attendances.start_datetime', 'attendances.end_datetime')
-                    ->where('attendances.is_public', 1)
-                    ->whereRaw('DATE(start_datetime) <= ?', [$date])
-                    ->whereRaw('DATE(end_datetime) >= ?', [$date])
                     ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                     ->get();
 

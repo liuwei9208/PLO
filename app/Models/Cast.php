@@ -23,6 +23,7 @@ class Cast extends Model
         'bra_size',
         'bust',
         'waist',
+        'rank',
         'hip',
         'appeal_point',
         'manager_comment',
