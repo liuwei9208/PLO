@@ -339,15 +339,9 @@ class ShopController extends Controller
     {
         // $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         // ->inRandomOrder()
-        $castlist = Cast::rightJoin('attendances', 'casts.id', '=', 'attendances.cast_id')
-        ->where('attendances.is_public', 1)
-        ->whereDate('attendances.start_datetime', '=', Carbon::now()->toDateString())
-        ->whereDate('attendances.end_datetime', '=', Carbon::now()->toDateString())
-        ->where('casts.is_public', 1)
-        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
-        ->whereNotNull('casts.rank')
-        ->orderBy('casts.rank', 'asc')
-        ->select('casts.*', 'attendances.*')
+        $castlist = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('is_public', 1)
+        ->orderByRaw('ISNULL(rank),rank ASC')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
             ->withPath('castlist');
