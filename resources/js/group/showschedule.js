@@ -209,9 +209,11 @@ function drawPagination(currentPage, totalPages) {
     `;
 
     pagination.innerHTML = paginationHTML;
+    pagination.style.display = 'block';
     setupPaginationListeners();
   } else {
     pagination.innerHTML = '';
+    pagination.style.display = 'none';
   }
 }
 
