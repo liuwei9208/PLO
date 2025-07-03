@@ -131,27 +131,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Show/hide scroll-top button based on scroll position
   window.addEventListener('scroll', function() {
-    const scrollTopBtn = document.querySelector('.scroll-top');
-    if (scrollTopBtn) {
+    const scrollTopBtn_1 = document.querySelector('.scroll-top');
+    if (scrollTopBtn_1) {
       if (window.pageYOffset > 300) {
-        scrollTopBtn.style.opacity = '1';
-        scrollTopBtn.style.visibility = 'visible';
-        scrollTopBtn.style.transform = 'translateY(0)';
+        scrollTopBtn_1.style.opacity = '1';
+        scrollTopBtn_1.style.visibility = 'visible';
+        scrollTopBtn_1.style.transform = 'translateY(0)';
       } else {
-        scrollTopBtn.style.opacity = '0';
-        scrollTopBtn.style.visibility = 'hidden';
-        scrollTopBtn.style.transform = 'translateY(20px)';
+        scrollTopBtn_1.style.opacity = '0';
+        scrollTopBtn_1.style.visibility = 'hidden';
+        scrollTopBtn_1.style.transform = 'translateY(20px)';
       }
     }
   });
 
   // Initialize scroll-top button state
-  const scrollTopBtn = document.querySelector('.scroll-top');
-  if (scrollTopBtn) {
-    scrollTopBtn.style.opacity = '0';
-    scrollTopBtn.style.visibility = 'hidden';
-    scrollTopBtn.style.transform = 'translateY(20px)';
-    scrollTopBtn.style.transition = 'all 0.3s ease';
+  const scrollTopBtn_2 = document.querySelector('.scroll-top');
+  if (scrollTopBtn_2) {
+    scrollTopBtn_2.style.opacity = '0';
+    scrollTopBtn_2.style.visibility = 'hidden';
+    scrollTopBtn_2.style.transform = 'translateY(20px)';
+    scrollTopBtn_2.style.transition = 'all 0.3s ease';
   }
 });
 </script>

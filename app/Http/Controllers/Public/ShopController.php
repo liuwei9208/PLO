@@ -43,14 +43,14 @@ class ShopController extends Controller
             ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
             ->select([
                 'casts.id as id',
-                'casts.name as name', 
-                'casts.age as age', 
-                'casts.height as height', 
-                'casts.bust as bust', 
-                'casts.waist as waist', 
-                'casts.hip as hip', 
-                'casts.gallery_1 as gallery_1', 
-                'attendances.start_datetime as start_datetime', 
+                'casts.name as name',
+                'casts.age as age',
+                'casts.height as height',
+                'casts.bust as bust',
+                'casts.waist as waist',
+                'casts.hip as hip',
+                'casts.gallery_1 as gallery_1',
+                'attendances.start_datetime as start_datetime',
                 'attendances.end_datetime as end_datetime',
                 'shops.slug as shop_slug',
                 'shops.name as shop_name',
@@ -125,7 +125,7 @@ class ShopController extends Controller
                     $gallerys[$gallery_index] = $cast['gallery_'. ($i + 1)];
                     $gallery_index++;
                 }
-                
+
             }
         }
         // $diarys = Diary::where('cast_id', $cast->id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
@@ -234,7 +234,7 @@ class ShopController extends Controller
             'rankings' => $rankings,
         ]);
     }
-    
+
     public function showEvent(Request $request, string $shop): View
     {
         // $events = Event::where('published_status', 1)
@@ -242,7 +242,7 @@ class ShopController extends Controller
         //     ->orWhere(function($query) {
         //         $query->where('published_status', 2)
         //             ->where('published_at', '<=', Carbon::now());
-        //     })  
+        //     })
         //     ->orderBy('published_at', 'desc')
         //     ->get();
         $events = Event::where('shop_id', Shop::where('slug', $shop)->first()->id)
@@ -268,7 +268,7 @@ class ShopController extends Controller
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'event' => $event,
         ]);
-    }   
+    }
 
     public function showAbout(Request $request, string $shop): View
     {
@@ -318,8 +318,8 @@ class ShopController extends Controller
         //         'shops.slug as shop_slug',
         //         'shops.id as shop_id'
         //         );
-                
-        //  dd($newcomers);   
+
+        //  dd($newcomers);
         $cast_query = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id);
         $newcomers = $cast_query
             ->where('created_at', '>=', Carbon::now()->subMonth(1))
@@ -328,7 +328,7 @@ class ShopController extends Controller
             ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
             ->withPath('newcomer');
-    
+
         return view('public.shop.newcomer', [
             'newcomers' => $newcomers,
             'shop' => Shop::where('slug', $shop)->get()->first(),
@@ -337,8 +337,17 @@ class ShopController extends Controller
 
     public function showCastlist(Request $request, string $shop): View
     {
-        $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->inRandomOrder()
+        // $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        // ->inRandomOrder()
+        $castlist = Cast::rightJoin('attendances', 'casts.id', '=', 'attendances.cast_id')
+        ->where('attendances.is_public', 1)
+        ->whereDate('attendances.start_datetime', '=', Carbon::now()->toDateString())
+        ->whereDate('attendances.end_datetime', '=', Carbon::now()->toDateString())
+        ->where('casts.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->whereNotNull('casts.rank')
+        ->orderBy('casts.rank', 'asc')
+        ->select('casts.*', 'attendances.*')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
             ->withPath('castlist');
@@ -446,7 +455,7 @@ class ShopController extends Controller
         ->where('diaries.is_public', 1)
         ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
         ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
-        
+
         if ($request->has('cast_id')) {
             $cast_id = $request->cast_id;
             if ($cast_id != '') {
