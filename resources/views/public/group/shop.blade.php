@@ -57,7 +57,7 @@
                 @break
               @case('en')
                 <div class="shop-group-item-logo">
-                  <img src="{{ asset('assets/img/logo/en-logo.png') }}" alt="en">
+                  <img src="{{ asset('assets/img/logo/en-logo-r.png') }}" alt="en">
                 </div>
                 <div class="shop-group-item-text">
                   <div class="shop-group-item-text-content">
