@@ -44,6 +44,7 @@ export default defineConfig({
                 'resources/scss/group/_newcomer.scss',
                 'resources/scss/group/newfacelist.scss',
                 'resources/scss/group/privacy.scss',
+                'resources/scss/global/age.scss',
                 // 'resources/scss/group/law.scss',
                 'resources/scss/group/event.scss',
                 'resources/scss/admin/sortcast.scss',
