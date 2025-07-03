@@ -7,6 +7,12 @@
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
           x-text="pageName"
         ></h2>
+        <a
+          href="{{ url('/admin/cast/add?redirect=/admin/cast/sort') }}"
+          class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
+        >
+          キャストを追加
+        </a>
       </div>
     </div>
 
@@ -44,28 +50,6 @@
       </div>
     </div>
     @endrole
-
-    <div class="schedule-container">
-        <div class="schedule-date">
-            {{-- 2025年06月08日(日)の出勤予定 --}}
-        </div>
-        <div class="schedule-navigation">
-            <button class="prev-week-btn">先週</button>
-            <div class="date-tabs">
-                {{-- <div class="date-tab active">
-                    06/08(日)
-                    <div class="active-indicator"></div>
-                </div>
-                <div class="date-tab">06/09(月)</div>
-                <div class="date-tab">06/10(火)</div>
-                <div class="date-tab">06/11(水)</div>
-                <div class="date-tab">06/12(木)</div>
-                <div class="date-tab">06/13(金)</div>
-                <div class="date-tab">06/14(土)</div> --}}
-            </div>
-            <button class="next-week-btn">翌週</button>
-        </div>
-    </div>
 
     <div class="sort-cast-container">
     </div>
