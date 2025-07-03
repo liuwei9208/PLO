@@ -341,7 +341,7 @@ class ShopController extends Controller
         // ->inRandomOrder()
         $castlist = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('is_public', 1)
-        ->orderByRaw('ISNULL(rank),rank ASC')
+        ->orderByRaw('rank IS NULL, rank ASC')
         ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
             ->withPath('castlist');
