@@ -92,7 +92,7 @@
 .age-verification-btn {
   padding: 16px 32px;
   /* border: none; */
-  border-radius: 100px;
+  border-radius: 30px;
   font-size: 18px;
   font-weight: bold;
   cursor: pointer;
@@ -101,7 +101,7 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   width: 140px;
-  height: 140px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,7 +137,7 @@
   .age-verification-content {
       padding: 30px 20px;
       margin: 15px;
-      border-radius: 20px;
+      // border-radius: 20px;
   }
   .age-verification-header {
     width: 100%;
@@ -164,7 +164,7 @@
       /* width: 100%; */
       padding: 14px 24px;
       font-size: 16px;
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 60px;
   }
 }
