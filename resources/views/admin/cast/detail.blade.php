@@ -7,7 +7,9 @@
   >
     @method('PUT')
     @csrf
-
+    @if(request()->has('redirect'))
+      <input type="hidden" name="redirect" value="{{ request()->get('redirect') }}">
+    @endif
     <div x-data="{ pageName: `キャストを編集`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2

@@ -103,6 +103,9 @@ class CastController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if ($request->filled('redirect')) {
+            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
+        }
         $validated = $request->validate([
             'cast_name' => 'required',
             'shop_id' => 'required',
@@ -200,6 +203,9 @@ class CastController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
+        if ($request->filled('redirect')) {
+            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
+        }
         $validated = $request->validate([
             'cast_name' => 'required',
             'shop_id' => 'required',
