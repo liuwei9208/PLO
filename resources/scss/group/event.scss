@@ -301,7 +301,9 @@
     overflow: hidden;
     margin-top: 20px;
     padding: 0 40px;
-
+    @media #{media-query(sm)} {
+      margin-top: 0px;
+    }
     .swiper-wrapper {
       display: flex;
       transition: transform 0.3s ease;
@@ -604,7 +606,9 @@
     margin-top: 20px;
     position: relative;
     bottom: 0;
-
+    @media #{media-query(sm)} {
+      margin-top: 0px;
+    }
     &-bullet {
       width: 8px;
       height: 8px;
