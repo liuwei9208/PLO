@@ -19,7 +19,7 @@ class DiaryService
         $cast = Cast::leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
             ->where('casts.id', $cast_id)
             ->first();
-        Log::info('cast', [$cast]);
+        // Log::info('cast', [$cast]);
 
         // if (!$cast || !$cast->diary_email_to || !$cast->diary_email_password) {
         if (!$cast || !$cast->diary_email_to) {
@@ -27,7 +27,7 @@ class DiaryService
         }
 
         $messages = self::getMessages($cast);
-        Log::info('messages', [$messages]);
+        // Log::info('messages', [$messages]);
         foreach ($messages as $message) {
             if (self::isStored($cast_id, $message)) {
                 continue;
