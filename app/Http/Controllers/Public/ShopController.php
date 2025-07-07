@@ -146,11 +146,10 @@ class ShopController extends Controller
             $options[] = $option->name;
         }
         $options = implode(', ', $options);
-
         $attendances = Attendance::where('attendances.cast_id', $cast->id)
         ->where('attendances.is_public', 1)
-        ->whereDate('attendances.start_datetime', '<=', Carbon::now()->toDateString())
-        ->orWhereDate('attendances.end_datetime', '>=', Carbon::now()->addWeek(1)->toDateString())
+        ->whereDate('attendances.start_datetime', '>=', Carbon::now()->toDateString())
+        ->WhereDate('attendances.end_datetime', '<=', Carbon::now()->addWeek(1)->toDateString())
         ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%Y-%m-%d') as start_date,
             DATE_FORMAT(attendances.end_datetime, '%Y-%m-%d') as end_date,
             DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
@@ -195,7 +194,8 @@ class ShopController extends Controller
             $status = 'お休み';
             foreach ($attendances as $attendance) {
                 if ($attendance->start_date == $date) {
-                    $status =   '出勤中';
+                    // $status =   '出勤中';
+                    $status = $attendance->start_time . '~' . $attendance->end_time;
                 }
             }
             $days[$i] = ['date'=>$date,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay] ;

@@ -112,6 +112,16 @@
       // gap: 10px;
       justify-content: space-around;
       // padding: 0 50px;
+      @media #{media-query(sm)} {
+        justify-content: space-between;
+        gap: 8px 0;
+      }
+    }
+
+    &-item.--all {
+      @media #{media-query(sm)} {
+        width: 100%;
+      }
     }
 
     &-item {
@@ -125,7 +135,7 @@
       position: relative;
       color: #fff;
       @media #{media-query(sm)} {
-        width: 130px;
+        width: 140px;
         height: 45px;
         margin: 0 3px 6px;
         border-radius: 22px;
@@ -151,8 +161,10 @@
 
       &-button {
         @media #{media-query(sm)} {
-          width: 130px;
+          width: 100px;
           height: 45px;
+          padding: 6px 0;
+          font-size: 14px;
           // margin: 0 3px 6px;
           // border-radius: 22px;
         }
@@ -927,19 +939,7 @@
       }
     }
 
-    &-shop-list {
-      &-items {
-        gap: 8px;
-      }
-
-      &-item {
-        &-button {
-          width: 100px;
-          padding: 6px 0;
-          font-size: 14px;
-        }
-      }
-    }
+    
   }
 }
 

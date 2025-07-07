@@ -65,10 +65,12 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-around;
-      // @media #{media-query(sm)} {
-      //     width: 344px;
-      //     margin: 40px auto 0;
-      // }
+      @media #{media-query(sm)} {
+        justify-content: space-between;
+        gap: 8px 0;
+        // width: 344px;
+        // margin: 40px auto 0;
+      }
       // @media #{media-query(md)} {
       //   width: 640px;
       //   margin: 50px auto 0;
@@ -87,7 +89,7 @@
         transition: .2s;
         position: relative;
         @media #{media-query(sm)} {
-          width: 110px;
+          width: 140px;
           height: 45px;
           margin: 0 3px 6px;
           border-radius: 22px;
@@ -297,6 +299,11 @@
         //   margin: 0 5px 15px;
         //   border-radius: 45px;
         // }
+      }
+      .pickup-shop-detail:first-child{
+        @media #{media-query(sm)} {
+          width: 100%;
+        }
       }
      }
     //  & a {
