@@ -223,12 +223,20 @@
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
+                    @if ($diary->cast->shop->slug === 'touchvip')
+                      <a
+                        href="{{ route('touchvip.diary.detail', ['slug' => $diary->slug]) }}"
+                        target="_blank"
+                        class="text-gray-500 text-theme-sm dark:text-gray-400 underline"
+                      >
+                    @else
                     <a
                       {{-- href="{{ url($diary->cast->shop->slug . '/diary/' . $diary->slug) }}" --}}
                       href="{{ route('public.shop.diarydetail', ['shop' => $diary->cast->shop->slug, 'id' => $diary->id]) }}"
                       target="_blank"
                       class="text-gray-500 text-theme-sm dark:text-gray-400 underline"
                     >
+                    @endif
                       {{ $diary->subject }}
                     </a>
                   </div>
