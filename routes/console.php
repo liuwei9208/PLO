@@ -9,11 +9,11 @@ use Illuminate\Support\Facades\Schedule;
  */
 $casts = Cast::all();
 foreach ($casts as $cast) {
-    // if ($cast->id == 258) {
+    if ($cast->id == 258) {
         Schedule::command(FetchDiariesCommand::class, [$cast->id])
             ->everyMinute()
             ->withoutOverlapping();
-    // }
+    }
 }
 
 Schedule::command('backup:clean')->daily()->at('04:00');
