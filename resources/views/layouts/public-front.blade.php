@@ -42,6 +42,7 @@
     <!-- Main -->
     <main class="main" id="main">
       {{ $slot }}
+      <x-public.group.shopintro />
     </main>
 
     <!-- Footer -->
