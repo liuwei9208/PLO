@@ -24,7 +24,7 @@ class DiaryService
         }
 
         $messages = self::getMessages($cast);
-        // Log::info('messages', [$messages]);
+        Log::info('messages', [$messages]);
         foreach ($messages as $message) {
             if (self::isStored($cast_id, $message)) {
                 continue;
