@@ -19,7 +19,7 @@
   </div>
 
 </div> --}}
-<div class="shopintro">
+{{-- <div class="shopintro">
   <div class="shopintro-logo">
     <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="logo">
   </div>
@@ -91,7 +91,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 <div class="scroll-top">
   <a href="#top" id="scroll-top-btn">
     <span class="scroll-top-arrow">↑</span>
