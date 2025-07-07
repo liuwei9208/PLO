@@ -16,13 +16,14 @@ class DiaryService
     public static function fetch(string $cast_id)
     {
         $cast = Cast::find($cast_id);
+        Log::info('cast', [$cast]);
 
         if (!$cast || !$cast->diary_email_to || !$cast->diary_email_password) {
             return self::FETCH_RESULT_FAILED;
         }
 
         $messages = self::getMessages($cast);
-
+        Log::info('messages', [$messages]);
         foreach ($messages as $message) {
             if (self::isStored($cast_id, $message)) {
                 continue;
