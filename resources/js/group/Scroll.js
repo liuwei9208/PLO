@@ -60,7 +60,7 @@ export default class Scroll {
 
     // restore scroll amount
     window.scrollTo(0, this.scrollYSaved)
-
+    // window.scrollTo(0, 0)
     // change state
     this.disabled = false
   }
