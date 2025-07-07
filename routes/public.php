@@ -58,7 +58,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
      *
      * @see \App\Http\Controllers\Public\ShopController
      */
-    $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
+    $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory', 'touchvip'];
     // $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
     Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
         Route::get('/', [ShopController::class, 'showHome'])->name('home');
