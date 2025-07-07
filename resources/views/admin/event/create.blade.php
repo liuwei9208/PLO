@@ -1,6 +1,6 @@
 <x-admin-layout>
   <form
-    class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
+    class="p-4 mx-auto max-w-full md:p-6"
     method="post"
     action="{{ url('/admin/event/add') }}"
     enctype="multipart/form-data"
@@ -138,7 +138,7 @@
           <div class="flex items-center">
             <input
               type="radio"
-              name="publish_type" 
+              name="publish_type"
               id="publish_now"
               value="1"
               class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
@@ -155,7 +155,7 @@
               type="radio"
               name="publish_type"
               id="publish_schedule"
-              value="2" 
+              value="2"
               class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
             >
             <label for="publish_schedule" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
@@ -194,7 +194,7 @@
       </div>
       </div>
     </div>
-    
+
     <!-- サムネイル -->
     <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="px-6 py-5">

@@ -1,5 +1,5 @@
 <x-admin-layout>
-    <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+    <div class="p-4 mx-auto max-w-full md:p-6">
         <form id="search_form" class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
             <!-- Search -->
             <div
@@ -99,7 +99,7 @@
                       <span>検索</span>
                     </button>
                 </div>
-    
+
             </div>
             <!-- Limit -->
             <div
@@ -164,7 +164,7 @@
             <div class="schedule-column">出勤予定</div>
         </div>
         <div class="schedule-casts">
- 
+
         </div>
     </div>
     <!-- Pagination -->
@@ -188,7 +188,7 @@
                 </svg>
             </span>
             @endif
-    
+
             @for ($i = 1; $i <= $pages; $i++)
             @if ($i === $page)
                 <span
@@ -205,7 +205,7 @@
                 </a>
             @endif
             @endfor
-    
+
             @if ($page < $pages)
             <a
                 href="{{ route('admin.schedule.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
