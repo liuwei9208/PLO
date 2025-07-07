@@ -16,10 +16,13 @@ class DiaryService
 
     public static function fetch(string $cast_id)
     {
-        $cast = Cast::find($cast_id);
+        $cast = Cast::leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('casts.id', $cast_id)
+            ->first();
         // Log::info('cast', [$cast]);
 
-        if (!$cast || !$cast->diary_email_to || !$cast->diary_email_password) {
+        // if (!$cast || !$cast->diary_email_to || !$cast->diary_email_password) {
+        if (!$cast || !$cast->diary_email_to) {
             return self::FETCH_RESULT_FAILED;
         }
 
@@ -37,10 +40,35 @@ class DiaryService
 
     private static function getMessages(Cast $cast): MessageCollection
     {
+        $mail_password = "";
+        switch ($cast->slug) {
+            case "touchvip":
+                $mail_password = env('MAIL_TOUCHVIP');
+                break;
+            case "shizuku":
+                $mail_password = env('MAIL_SHIZUKU');
+                break;
+            case "miyabi":
+                $mail_password = env('MAIL_MIYABI');
+                break;
+            case "pussycat":
+                $mail_password = env('MAIL_PUSSYCAT');
+                break;
+            case "en":
+                $mail_password = env('MAIL_EN');
+                break;
+            case "shiroganeze":
+                $mail_password = env('MAIL_SHIROGANEZE');
+                break;
+            case "lovestory":
+                $mail_password = env('MAIL_LOVESTORY');
+                break;
+        }
         $mailbox = new Mailbox([
             'port' => 993,
             'username' => $cast->diary_email_to,
-            'password' => $cast->diary_email_password,
+            // 'password' => $cast->diary_email_password,
+            'password' => $mail_password,
             'encryption' => 'ssl',
             'host' => env('MAIL_HOST'),
         ]);
