@@ -11,12 +11,22 @@
   {{-- <span class="newface-name">
     {{ $cast->name }} <small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
   </span> --}}
-  <span class="newface-name">
+  <div class="newface-shop ">
+    {{ $cast->shop->name }}
+  </div>
+  {{-- <span class="newface-name">
     {{ $cast->name }}
-  </span>
+  </span> --}}
   {{-- <span class="newface-size">
     B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
   </span> --}}
+  <span class="newface-name">
+    {{ $cast->name }}<small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
+  </span>
+  <span class="newface-size --{{ $cast->shop->slug }}">
+    B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
+  </span>
+
   <p class="newface-intro --{{ $cast->shop->slug }}">
     {{ $cast->appeal_point }}
   </p>
