@@ -53,6 +53,7 @@ export default class Drawer {
 
     // Disable scroll
     this.scroll.disable()
+    // window.location.reload();
 
     // Change state
     this.shown = true
@@ -75,7 +76,7 @@ export default class Drawer {
 
     // Enable scroll
     this.scroll.enable()
-
+    window.location.reload();
     // Change state
     this.shown = false
   }
