@@ -1,6 +1,6 @@
 <x-admin-layout>
   <form
-    class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
+    class="p-4 mx-auto max-w-full md:p-6"
     method="post"
     action="{{ url('/admin/banner/' . $banner->id) }}"
     enctype="multipart/form-data"
@@ -139,7 +139,7 @@
       <div class="px-6 py-5">
         <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
           サムネイル<span class="text-error-500">*</span>
-        </h3>        
+        </h3>
         @if ($errors->has('file_1'))
           <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('file_1') }}</p>
         @endif

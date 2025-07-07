@@ -1,6 +1,6 @@
 <x-admin-layout>
   <form
-    class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
+    class="p-4 mx-auto max-w-full md:p-6"
     method="post"
     action="{{ url('/admin/shop/' . $shop->id) }}"
   >
@@ -122,7 +122,7 @@
             class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 w-full  rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
           >{{ $shop->memo }}</textarea>
         </div>
-        
+
         <!-- Email -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">

@@ -1,6 +1,6 @@
 <x-admin-layout>
   <form
-    class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6"
+    class="p-4 mx-auto max-w-full md:p-6"
     method="post"
     action="{{ url('/admin/event/' . $event->id) }}"
     enctype="multipart/form-data"
@@ -23,7 +23,7 @@
         </div>
       </div>
     @endif
-    
+
     <!-- Name, Shop, Profile -->
     <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="p-4 sm:p-6">
@@ -145,7 +145,7 @@
             <div class="flex items-center">
               <input
                 type="radio"
-                name="publish_type" 
+                name="publish_type"
                 id="publish_now"
                 value="1"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
@@ -155,14 +155,14 @@
                 今すぐ配信
               </label>
             </div>
-  
+
             <!-- 予約配信 -->
             <div class="flex items-center">
               <input
                 type="radio"
                 name="publish_type"
                 id="publish_schedule"
-                value="2" 
+                value="2"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
                 @if (2 == $event->published_status ) @checked(true) @endif
               <label for="publish_schedule" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
@@ -183,7 +183,7 @@
                 </svg>
               </span>
             </div>
-  
+
             <!-- 下書き -->
             <div class="flex items-center">
               <input

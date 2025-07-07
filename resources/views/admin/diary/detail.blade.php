@@ -1,5 +1,5 @@
 <x-admin-layout>
-  <div class="p-4 mx-auto max-w-(--breakpoint-2xl) md:p-6">
+  <div class="p-4 mx-auto max-w-full md:p-6">
 
     <!-- Page Name -->
     <div x-data="{ pageName: `写メ日記管理`}">
