@@ -10,23 +10,51 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Termwind\Components\Raw;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class RankingController extends Controller
 {
     public function index(Request $request): View
     {
+        $user = Auth::guard('web')->user();
+        $query = Ranking::query();
+        $shop_id = 0;
+        if ($user->hasRole('admin')) {
+            if ($request->has('shop')) {
+                $shop_id = Shop::where('slug', $request->shop)->first()->id;
+                $query->where('shop_id', Shop::where('slug', $request->shop)->first()->id);
+            }else{
+                $shop_id = Shop::where('slug', 'shizuku')->first()->id;
+                $query->where('shop_id', Shop::where('slug', 'shizuku')->first()->id);
+            }
+        }else{
+            $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->first();
+            $shop_id = $shop_user->shop_id;
+            $query->where('shop_id', $shop_id);
+        }
         $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get();
-        return view('admin.ranking.index', [
+        // return view('admin.ranking.index', [
+        //     'shops' => $shops,
+        // ]);
+
+        return view('admin.ranking.detail', [
             'shops' => $shops,
+            'shop' => Shop::findOrFail($shop_id),
+            'casts' => Cast::where('shop_id', $shop_id)->where('is_public', 1)->get(),
+            'rankings' => $query->get(),
         ]);
+
     }
 
     public function show(Request $request, string $id): View
     {
+        $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get();
         return view('admin.ranking.detail', [
             'shop' => Shop::findOrFail($id),
             'casts' => Cast::where('shop_id', $id)->where('is_public', 1)->get(),
             'rankings' => Ranking::where('shop_id', $id)->get(),
+            'shops' => $shops,
         ]);
     }
 

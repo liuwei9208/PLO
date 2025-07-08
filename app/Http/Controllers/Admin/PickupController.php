@@ -40,7 +40,7 @@ class PickupController extends Controller
 
         return view('admin.pickup.detail', [
             'shop' => Shop::findOrFail($shop_id),
-            'casts' => Cast::where('shop_id', $shop_id)->get(),
+            'casts' => Cast::where('shop_id', $shop_id)->where('is_public', 1)->get(),
             'pickups' => $query->get(),
             'shops' => $shops,
         ]);
@@ -64,7 +64,7 @@ class PickupController extends Controller
         $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get();
         return view('admin.pickup.detail', [
             'shop' => Shop::findOrFail($id),
-            'casts' => Cast::where('shop_id', $id)->get(),
+            'casts' => Cast::where('shop_id', $id)->where('is_public', 1)->get(),
             'pickups' => Pickup::where('shop_id', $id)->get(),
             'shops' => $shops,
         ]);
