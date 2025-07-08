@@ -130,13 +130,22 @@
             <!-- Dropdown Menu Start -->
             <div class="overflow-hidden transform translate block" :class="(selected === 'Casts') ? 'block' :'hidden'">
               <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'" class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
-                <li>
+                {{-- <li>
                   <a
                     href="{{ url('/admin/cast') }}"
                     class="menu-dropdown-item group"
                     :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                   >
                     店舗キャスト管理
+                  </a>
+                </li> --}}
+                <li>
+                  <a
+                    href="{{ url('/admin/cast/sort') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'cast-sort' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    店舗キャスト並び替え管理
                   </a>
                 </li>
 
@@ -150,15 +159,6 @@
                   </a>
                 </li>
 
-                <li>
-                  <a
-                    href="{{ url('/admin/cast/sort') }}"
-                    class="menu-dropdown-item group"
-                    :class="page === 'cast-sort' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
-                  >
-                    並び替え
-                  </a>
-                </li>
               </ul>
             </div>
             <!-- Dropdown Menu End -->
@@ -207,7 +207,7 @@
                     class="menu-dropdown-item group"
                     :class="page === 'cast-sort' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                   >
-                    並び替え
+                    店舗キャスト並び替え管理
                   </a>
                 </li>
               </ul>
