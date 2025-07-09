@@ -75,6 +75,7 @@ export default defineConfig({
             ],
           }),
     ],
+    assetsInclude: ['**/*.ttf', '**/*.otf', '**/*.ttc'],
     // resolve:{
     //     alias:{
     //         '@ckeditor':path.resolve(__dirname,'node_modules/@ckeditor'),
