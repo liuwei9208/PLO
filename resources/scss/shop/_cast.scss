@@ -14,7 +14,7 @@
   @media #{media-query(md)} {
   }
   @media #{media-query(lg)} {
-    padding: 200px 0 0;
+    padding: 80px 0 0;
   }
 
   .title-label1 {
@@ -87,7 +87,7 @@
     color: #fff;
     padding: 15px 0;
     border-radius: 4px;
-
+    font-family: $font-midashi-min;
     @media #{media-query(sm)} {
       font-size: 24px;
       margin-bottom: 30px;
@@ -162,7 +162,7 @@
     padding: 10px 0;
     text-align: center;
     border-radius: 25px 25px 0 0;
-
+    font-family: $font-midashi-min;
     @media #{media-query(sm)} {
       font-size: 20px;
       // margin-bottom: 15px;
@@ -321,7 +321,7 @@
       color: #000;
       padding: 15px 30px;
       display: inline-block;
-
+      font-family: $font-midashi-min;
       @media #{media-query(sm)} {
         font-size: 24px;
         padding: 12px 20px;
@@ -446,7 +446,7 @@
       color: #000;
       padding: 15px 30px;
       display: inline-block;
-
+      font-family: $font-midashi-min;
       @media #{media-query(sm)} {
         font-size: 24px;
         padding: 12px 20px;
@@ -515,7 +515,7 @@
       color: #000;
       padding: 15px 30px;
       display: inline-block;
-
+      font-family: $font-midashi-min;
       @media #{media-query(sm)} {
         font-size: 24px;
         padding: 12px 20px;
@@ -556,8 +556,8 @@
 
       @media #{media-query(sm)} {
         font-size: 24px;
-        padding: 12px 20px;
-        margin-top: 5px;
+        // padding: 12px 20px;
+        // margin-top: 5px;
       }
     }
 
@@ -568,7 +568,7 @@
 
       @media #{media-query(sm)} {
         font-size: 20px;
-        margin-bottom: 20px;
+        // margin-bottom: 20px;
       }
     }
   }
@@ -687,6 +687,7 @@
       color: #000;
       padding: 15px 30px;
       display: inline-block;
+      font-family: $font-midashi-min;
 
       @media #{media-query(sm)} {
         font-size: 24px;
@@ -746,6 +747,7 @@
   @media #{media-query(sm)} {
     flex: none;
     width: 100%;
+    flex-direction: row;
     // padding: 30px 10px;
   }
   &__title {
@@ -753,15 +755,17 @@
     font-weight: bold;
     //margin-bottom: 30px;
     line-height: 1.2;
+    font-family: $font-midashi-min;
     @media #{media-query(sm)} {
       font-size: 22px;
-      margin-bottom: 15px;
+      // margin-bottom: 15px;
     }
   }
   &__status {
     font-size: 56px;
-    font-weight: bold;
+    // font-weight: bold;
     letter-spacing: 0.1em;
+    font-family: $font-gothic;
     @media #{media-query(sm)} {
       font-size: 32px;
     }
@@ -772,7 +776,7 @@
   &.worked {
     background-color: #0000ff;
   }
-  &.off { 
+  &.off {
     // background-color: #ccc;
     background-color: #ff0000;
   }
@@ -805,6 +809,7 @@
     font-size: 38px;
     font-weight: bold;
     color: #222;
+    font-family: $font-midashi-min;
     @media #{media-query(sm)} {
       font-size: 22px;
     }
