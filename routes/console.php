@@ -11,7 +11,7 @@ $casts = Cast::all();
 foreach ($casts as $cast) {
     // if ($cast->id == 258) {
         Schedule::command(FetchDiariesCommand::class, [$cast->id])
-            ->everyMinute()
+            ->everyTenMinutes()
             ->withoutOverlapping();
     // }
 }
