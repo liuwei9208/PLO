@@ -27,21 +27,22 @@ body {
   opacity: 0;
   animation: fadeInBody 2.5s ease-out forwards;
   animation-delay: 2.5s; // Wait a bit before starting the animation
+  font-family: $font-gothic;
 }
 
-html.wf-loading body {
-  visibility: hidden;
-  // animation: none; // Disable animation while fonts are loading
-}
+// html.wf-loading body {
+//   visibility: hidden;
+//   // animation: none; // Disable animation while fonts are loading
+// }
 
-html.wf-inactive body {
-  font-family: "Noto Sans JP", sans-serif;
-  // animation: fadeInBody 1.5s ease-out forwards; // Re-enable animation after font load fails
-}
+// html.wf-inactive body {
+//   font-family: "Noto Sans JP", sans-serif;
+//   // animation: fadeInBody 1.5s ease-out forwards; // Re-enable animation after font load fails
+// }
 
-html.wf-active body {
-  // animation: fadeInBody 1.5s ease-out forwards; // Enable animation after fonts load successfully
-}
+// html.wf-active body {
+//   // animation: fadeInBody 1.5s ease-out forwards; // Enable animation after fonts load successfully
+// }
 
 .front-title {
   display: inline-block;

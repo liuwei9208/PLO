@@ -32,7 +32,33 @@ $shop-color-headquarter: #8B4513;
 
 $border-color: #cba86b;
 
+@font-face {
+  font-family: 'toppan-bunkyu-gothic-pr6n';
+  src: url('../../fonts/ToppanBunkyuGothicPr6N.ttc') format('truetype');
+  // font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'toppan-bunkyu-mincho-pr6n';
+  src: url('../../fonts/ToppanBunkyuMinchoPr6N-Regular.otf') format('opentype');
+  // font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'toppan-bunkyu-midashi-go-std';
+  src: url('../../fonts/ToppanBunkyuMidashiGothicStdN-ExtraBold.otf') format('opentype');
+  // font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'toppan-bunkyu-midashi-min-st';
+  src: url('../../fonts/ToppanBunkyuMidashiMinchoStdN-ExtraBold.otf') format('opentype');
+  // font-weight: normal;
+  font-style: normal;
+}
+
 $font-gothic: "toppan-bunkyu-gothic-pr6n", serif;
+$font-mincho: "toppan-bunkyu-mincho-pr6n", serif;
 $font-gothic-min: "toppan-bunkyu-midashi-go-std", sans-serif;
 $font-midashi-min: "toppan-bunkyu-midashi-min-st", sans-serif;
 
