@@ -48,6 +48,7 @@ export default defineConfig({
                 // 'resources/scss/group/law.scss',
                 'resources/scss/group/event.scss',
                 'resources/scss/admin/sortcast.scss',
+                'resources/scss/admin/casts.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
