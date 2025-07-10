@@ -8,15 +8,32 @@ use App\Models\Option;
 use App\Models\Personality;
 use App\Models\Shop;
 use App\Models\Style;
+use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use App\Models\Question;
 use App\Models\Qa;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Log;
+use FFMpeg;
+
 class CastController extends Controller
 {
     const DEFAULT_LIMIT = 30;
+
+    protected static $ffmpeg;
+
+    public function __construct()
+    {
+        if (!self::$ffmpeg) {
+            self::$ffmpeg = \FFMpeg\FFMpeg::create([
+                'ffmpeg.binaries'  => env('FFMPEG_BINARIES', 'C:/ffmpeg/bin/ffmpeg.exe'),
+                'ffprobe.binaries' => env('FFPROBE_BINARIES', 'C:/ffmpeg/bin/ffprobe.exe'),
+            ]);
+        }
+    }
 
     /**
      * Display a listing of the cast.
@@ -103,9 +120,6 @@ class CastController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        if ($request->filled('redirect')) {
-            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
-        }
         $validated = $request->validate([
             'cast_name' => 'required',
             'shop_id' => 'required',
@@ -154,6 +168,48 @@ class CastController extends Controller
         $cast->gallery_8 = $file8 ? $file8->store($file_path, 'public') : null;
         $cast->gallery_9 = $file9 ? $file9->store($file_path, 'public') : null;
         $cast->gallery_10 = $file10 ? $file10->store($file_path, 'public') : null;
+
+        if ($request->hasFile("video_1")) {
+            $video1 = $request->file('video_1');
+            $path = Storage::disk('dropbox')->putFile(Shop::find($cast->shop_id)->slug, $video1);
+
+            $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
+
+            $video = self::$ffmpeg->open($video1->getPathname());
+            $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(0.5));
+            $thumbnailPath = 'thumbnail/' . uniqid() . '.jpg';
+            $frame->save(storage_path('app/public/' . $thumbnailPath));
+
+            $videoModel = Video::create([
+                'cast_id' => $cast->id,
+                'video_url' => $videoPath,
+                'thumb_url' => $thumbnailPath,
+            ]);
+            $cast->video1_id = $videoModel->id;
+        }
+        if ($request->hasFile("video_2")) {
+            $video2 = $request->file('video_2');
+            $path = Storage::disk('dropbox')->putFile(Shop::find($cast->shop_id)->slug, $video2);
+
+            $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
+
+            $video = self::$ffmpeg->open($video2->getPathname());
+            $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(0.5));
+            $thumbnailPath = 'thumbnail/' . uniqid() . '.jpg';
+            $frame->save(storage_path('app/public/' . $thumbnailPath));
+
+            $videoModel = Video::create([
+                'cast_id' => $cast->id,
+                'video_url' => $videoPath,
+                'thumb_url' => $thumbnailPath,
+            ]);
+            $cast->video2_id = $videoModel->id;
+        }
+
         $cast->save();
 
         $questions = $request->input('question', []);
@@ -176,6 +232,9 @@ class CastController extends Controller
             }
         }
 
+        if ($request->filled('redirect')) {
+            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
+        }
         return redirect('/admin/cast');
     }
 
@@ -185,9 +244,20 @@ class CastController extends Controller
     public function show(Request $request, string $id): View
     {
         $qas = Qa::where('cast_id', $id)->with('question')->orderBy('rank', 'asc')->get();
+        $cast = Cast::find($id);
+        if ($cast->video1_id) {
+            $video1 = Video::find($cast->video1_id);
+            $cast["video_1"] = $video1->video_url;
+            $cast["video_thumb_1"] = $video1->thumb_url;
+        }
+        if ($cast->video2_id) {
+            $video2 = Video::find($cast->video2_id);
+            $cast["video_2"] = $video2->video_url;
+            $cast["video_thumb_2"] = $video2->thumb_url;
+        }
         // dd(Cast::find($id));
         return view('admin.cast.detail', [
-            'cast' => Cast::find($id),
+            'cast' => $cast,
             'shop' => $request->user()->shops->first() ?? null,
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
@@ -203,9 +273,6 @@ class CastController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        if ($request->filled('redirect')) {
-            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
-        }
         $validated = $request->validate([
             'cast_name' => 'required',
             'shop_id' => 'required',
@@ -275,6 +342,89 @@ class CastController extends Controller
         $cast->gallery_8 = $file8 ? $file8->store($file_path, 'public') : $request->path_8;
         $cast->gallery_9 = $file9 ? $file9->store($file_path, 'public') : $request->path_9;
         $cast->gallery_10 = $file10 ? $file10->store($file_path, 'public') : $request->path_10;
+
+        $shop_slug = Shop::find($cast->shop_id)->slug;
+        if (!$request->old_video_1) {
+            // remove the original video from DB and Dropbox
+            if ($cast->video1_id) {
+                $video = Video::find($cast->video1_id);
+                if ($video) {
+                    // Delete from Dropbox
+                    if ($video->video_url) {
+                        // Extract Dropbox path from URL if needed
+                        $dropboxPath = $shop_slug . '/' . basename(parse_url($video->video_url, PHP_URL_PATH));
+                        Storage::disk('dropbox')->delete($dropboxPath);
+                    }
+                    // Delete thumbnail from local storage
+                    if ($video->thumb_url && file_exists(storage_path('app/public/' . $video->thumb_url))) {
+                        @unlink(storage_path('app/public/' . $video->thumb_url));
+                    }
+                    $video->delete();
+                }
+                $cast->video1_id = null;
+            }
+        }
+        if ($request->hasFile("video_1")) {
+            $video1 = $request->file('video_1');
+            $path = Storage::disk('dropbox')->putFile($shop_slug, $video1);
+
+            $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
+
+            $video = self::$ffmpeg->open($video1->getPathname());
+            $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(0.5));
+            $thumbnailPath = 'thumbnail/' . uniqid() . '.jpg';
+            $frame->save(storage_path('app/public/' . $thumbnailPath));
+
+            $videoModel = Video::create([
+                'cast_id' => $cast->id,
+                'video_url' => $videoPath,
+                'thumb_url' => $thumbnailPath,
+            ]);
+            $cast->video1_id = $videoModel->id;
+        }
+        if (!$request->old_video_2) {
+            // remove the original video from DB and Dropbox
+            if ($cast->video2_id) {
+                $video = Video::find($cast->video2_id);
+                if ($video) {
+                    // Delete from Dropbox
+                    if ($video->video_url) {
+                        // Extract Dropbox path from URL if needed
+                        $dropboxPath = $shop_slug . '/' . basename(parse_url($video->video_url, PHP_URL_PATH));
+                        Storage::disk('dropbox')->delete($dropboxPath);
+                    }
+                    // Delete thumbnail from local storage
+                    if ($video->thumb_url && file_exists(storage_path('app/public/' . $video->thumb_url))) {
+                        @unlink(storage_path('app/public/' . $video->thumb_url));
+                    }
+                    $video->delete();
+                }
+                $cast->video2_id = null;
+            }
+        }
+        if ($request->hasFile("video_2")) {
+            $video2 = $request->file('video_2');
+            $path = Storage::disk('dropbox')->putFile($shop_slug, $video2);
+
+            $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
+
+            $video = self::$ffmpeg->open($video2->getPathname());
+            $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(0.5));
+            $thumbnailPath = 'thumbnail/' . uniqid() . '.jpg';
+            $frame->save(storage_path('app/public/' . $thumbnailPath));
+
+            $videoModel = Video::create([
+                'cast_id' => $cast->id,
+                'video_url' => $videoPath,
+                'thumb_url' => $thumbnailPath,
+            ]);
+            $cast->video2_id = $videoModel->id;
+        }
+
         $cast->is_public = $request->is_public ? true : false;
         $cast->memo = $request->memo;
         $cast->save();
@@ -283,6 +433,9 @@ class CastController extends Controller
         $cast->personalities()->sync($request->personalities);
         $cast->styles()->sync($request->styles);
 
+        if ($request->filled('redirect')) {
+            return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
+        }
         return redirect('/admin/cast/' . $cast->id);
     }
 
