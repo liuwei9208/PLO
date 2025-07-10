@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\FeeController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\VisitController;
+use App\Http\Controllers\Admin\VideoController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -242,5 +243,17 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('/', [FeeController::class, 'index'])->name('index');
         Route::get('{id}', [FeeController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [FeeController::class, 'update']);
+    });
+
+        /**
+     * Video
+     *
+     * @see \App\Http\Controllers\Admin\VideoController
+     */
+    Route::prefix('video')->name('video.')->group(function () {
+        Route::get('/', [VideoController::class, 'index'])->name('index');
+        Route::get('{id}', [VideoController::class, 'show'])->name('detail');
+        Route::put('{id}/publish', [VideoController::class, 'publish']);
+        Route::put('{id}/unpublish', [VideoController::class, 'unpublish']);
     });
 });

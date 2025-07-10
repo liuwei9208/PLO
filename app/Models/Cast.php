@@ -36,8 +36,15 @@ class Cast extends Model
         'gallery_3',
         'gallery_4',
         'gallery_5',
+        'gallery_6',
+        'gallery_7',
+        'gallery_8',
+        'gallery_9',
+        'gallery_10',
         'is_public',
         'memo',
+        'video1_id',
+        'video2_id'
     ];
 
     /**
@@ -66,5 +73,15 @@ class Cast extends Model
     public function attendances()
     {
         return $this->hasMany(Attendance::class);
+    }
+
+    public function video1(): BelongsTo
+    {
+        return $this->belongsTo(Video::class);
+    }
+
+    public function video2(): BelongsTo
+    {
+        return $this->belongsTo(Video::class);
     }
 }

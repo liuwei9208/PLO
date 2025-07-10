@@ -1,5 +1,6 @@
 <x-admin-layout>
   <form
+    id="cast-detail"
     class="p-4 mx-auto max-w-full md:p-6"
     method="post"
     action="{{ url('/admin/cast/add') }}"
@@ -207,6 +208,109 @@
               class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full max-w-[380px] rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
             >
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+      <div class="px-6 py-5">
+        <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+          ギャラリー
+        </h3>
+      </div>
+      <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
+        <div class="flex gap-6">
+          @for ($i = 1; $i <= 10; $i++)
+            <label
+              class="cast-gallery-item dropzone flex items-center justify-center hover:border-brand-500! dark:hover:border-brand-500! rounded-xl border border-dashed! border-gray-300! bg-gray-50 p-7 lg:p-10 dark:border-gray-700! dark:bg-gray-900 dz-clickable"
+              for="{{ 'file_' . $i }}"
+            >
+              <div class="dz-message m-0! flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
+                <svg class="fill-current" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z" fill=""></path>
+                </svg>
+              </div>
+              <input
+                name="{{ 'file_' . $i }}"
+                id="{{ 'file_' . $i }}"
+                type="file"
+                accept=".jpg, .jpeg, .png, .HEIC"
+                class="cast-gallery-input"
+                hidden
+              />
+              <div class="cast-gallery-img">
+              </div>
+              <button
+                type="button"
+                class="cast-gallery-remove absolute z-999 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600 dark:bg-gray-700 dark:bg-white/[0.05] dark:text-gray-400 dark:hover:bg-white/[0.07] dark:hover:text-gray-300 sm:h-11 sm:w-11"
+              >
+                <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.04289 16.5418C5.65237 16.9323 5.65237 17.5655 6.04289 17.956C6.43342 18.3465 7.06658 18.3465 7.45711 17.956L11.9987 13.4144L16.5408 17.9565C16.9313 18.347 17.5645 18.347 17.955 17.9565C18.3455 17.566 18.3455 16.9328 17.955 16.5423L13.4129 12.0002L17.955 7.45808C18.3455 7.06756 18.3455 6.43439 17.955 6.04387C17.5645 5.65335 16.9313 5.65335 16.5408 6.04387L11.9987 10.586L7.45711 6.04439C7.06658 5.65386 6.43342 5.65386 6.04289 6.04439C5.65237 6.43491 5.65237 7.06808 6.04289 7.4586L10.5845 12.0002L6.04289 16.5418Z" fill=""></path>
+                </svg>
+              </button>
+            </label>
+          @endfor
+        </div>
+      </div>
+    </div>
+
+    <!-- Video -->
+    <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+      <div class="px-6 py-5">
+        <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
+          動画ギャラリー
+        </h3>
+      </div>
+      <div class="p-4 border-t border-gray-100 dark:border-gray-800 p-6">
+        <div class="flex gap-6">
+          @for ($i = 1; $i <= 2; $i++)
+            <div class="flex flex-col items-center flex-1">
+              <label class="cast-video-item w-full flex flex-col items-center justify-center rounded-xl border border-dashed border-gray-300 bg-gray-50 dark:border-gray-700 dark:bg-gray-900">
+                <input
+                  name="video_{{ $i }}"
+                  id="video_{{ $i }}"
+                  type="file"
+                  accept="video/mp4,video/webm,video/ogg"
+                  class="cast-video-input"
+                  hidden
+                />
+                <div class="cast-video-thumb relative flex items-center justify-center w-full h-full " data-index="{{ $i }}">
+                  <!-- Empty state -->
+                  <div class="video-thumb-empty flex flex-col items-center justify-center bg-gray-200 p-5 rounded-full cursor-pointer" style="display: flex;">
+                    <svg class="fill-current" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z" fill=""></path>
+                    </svg>
+                    <div class="video-action-btns absolute inset-0 flex items-center justify-center gap-2 z-10" style="display:none;">
+                      <button type="button" class="video-upload-btn bg-white/80 hover:bg-white rounded-full p-2 shadow" title="アップロード">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M5 20h14v-2H5v2zm7-18L5.33 9h3.34v6h4.66V9h3.34L12 2z"/></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Uploaded state -->
+                  <div class="video-thumb-uploaded flex flex-col items-center justify-center w-full h-full" style="display: none;">
+                    <img src="" class="object-cover w-full h-full pointer-events-none" alt="動画サムネイル">
+                    <div class="video-action-btns absolute inset-0 flex items-center justify-center gap-4 z-10">
+                      <button type="button" class="video-upload-btn bg-gray-200 p-4 rounded-full cursor-pointer" title="アップロード">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                          <path d="M12 16V4M12 4l-5 5M12 4l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                          <rect x="4" y="16" width="16" height="4" rx="2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                      </button>
+                      <button type="button" class="video-play-btn bg-gray-200 p-4 rounded-full cursor-pointer" title="再生">
+                        <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                      </button>
+                      <button type="button" class="video-delete-btn bg-gray-200 p-4 rounded-full cursor-pointer" title="削除">
+                        <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd" clip-rule="evenodd" d="M6.04289 16.5418C5.65237 16.9323 5.65237 17.5655 6.04289 17.956C6.43342 18.3465 7.06658 18.3465 7.45711 17.956L11.9987 13.4144L16.5408 17.9565C16.9313 18.347 17.5645 18.347 17.955 17.9565C18.3455 17.566 18.3455 16.9328 17.955 16.5423L13.4129 12.0002L17.955 7.45808C18.3455 7.06756 18.3455 6.43439 17.955 6.04387C17.5645 5.65335 16.9313 5.65335 16.5408 6.04387L11.9987 10.586L7.45711 6.04439C7.06658 5.65386 6.43342 5.65386 6.04289 6.04439C5.65237 6.43491 5.65237 7.06808 6.04289 7.4586L10.5845 12.0002L6.04289 16.5418Z" fill=""></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          @endfor
         </div>
       </div>
     </div>
@@ -522,49 +626,7 @@
       </div>
         @endforeach
     </div>
-    <!-- Gallery -->
-    <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-      <div class="px-6 py-5">
-        <h3 class="text-base font-medium text-gray-800 dark:text-white/90">
-          ギャラリー
-        </h3>
-      </div>
-      <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
-        <div class="flex gap-6">
-          @for ($i = 1; $i <= 10; $i++)
-            <label
-              class="cast-gallery-item dropzone flex items-center justify-center hover:border-brand-500! dark:hover:border-brand-500! rounded-xl border border-dashed! border-gray-300! bg-gray-50 p-7 lg:p-10 dark:border-gray-700! dark:bg-gray-900 dz-clickable"
-              for="{{ 'file_' . $i }}"
-            >
-              <div class="dz-message m-0! flex h-[68px] w-[68px] items-center justify-center rounded-full bg-gray-200 text-gray-700 dark:bg-gray-800 dark:text-gray-400">
-                <svg class="fill-current" width="29" height="28" viewBox="0 0 29 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M14.5019 3.91699C14.2852 3.91699 14.0899 4.00891 13.953 4.15589L8.57363 9.53186C8.28065 9.82466 8.2805 10.2995 8.5733 10.5925C8.8661 10.8855 9.34097 10.8857 9.63396 10.5929L13.7519 6.47752V18.667C13.7519 19.0812 14.0877 19.417 14.5019 19.417C14.9161 19.417 15.2519 19.0812 15.2519 18.667V6.48234L19.3653 10.5929C19.6583 10.8857 20.1332 10.8855 20.426 10.5925C20.7188 10.2995 20.7186 9.82463 20.4256 9.53184L15.0838 4.19378C14.9463 4.02488 14.7367 3.91699 14.5019 3.91699ZM5.91626 18.667C5.91626 18.2528 5.58047 17.917 5.16626 17.917C4.75205 17.917 4.41626 18.2528 4.41626 18.667V21.8337C4.41626 23.0763 5.42362 24.0837 6.66626 24.0837H22.3339C23.5766 24.0837 24.5839 23.0763 24.5839 21.8337V18.667C24.5839 18.2528 24.2482 17.917 23.8339 17.917C23.4197 17.917 23.0839 18.2528 23.0839 18.667V21.8337C23.0839 22.2479 22.7482 22.5837 22.3339 22.5837H6.66626C6.25205 22.5837 5.91626 22.2479 5.91626 21.8337V18.667Z" fill=""></path>
-                </svg>
-              </div>
-              <input
-                name="{{ 'file_' . $i }}"
-                id="{{ 'file_' . $i }}"
-                type="file"
-                accept=".jpg, .jpeg, .png, .HEIC"
-                class="cast-gallery-input"
-                hidden
-              />
-              <div class="cast-gallery-img">
-              </div>
-              <button
-                type="button"
-                class="cast-gallery-remove absolute z-999 flex h-8 w-8 items-center justify-center rounded-full bg-gray-100 text-gray-400 hover:bg-gray-200 hover:text-gray-600 dark:bg-gray-700 dark:bg-white/[0.05] dark:text-gray-400 dark:hover:bg-white/[0.07] dark:hover:text-gray-300 sm:h-11 sm:w-11"
-              >
-                <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M6.04289 16.5418C5.65237 16.9323 5.65237 17.5655 6.04289 17.956C6.43342 18.3465 7.06658 18.3465 7.45711 17.956L11.9987 13.4144L16.5408 17.9565C16.9313 18.347 17.5645 18.347 17.955 17.9565C18.3455 17.566 18.3455 16.9328 17.955 16.5423L13.4129 12.0002L17.955 7.45808C18.3455 7.06756 18.3455 6.43439 17.955 6.04387C17.5645 5.65335 16.9313 5.65335 16.5408 6.04387L11.9987 10.586L7.45711 6.04439C7.06658 5.65386 6.43342 5.65386 6.04289 6.04439C5.65237 6.43491 5.65237 7.06808 6.04289 7.4586L10.5845 12.0002L6.04289 16.5418Z" fill=""></path>
-                </svg>
-              </button>
-            </label>
-          @endfor
-        </div>
-      </div>
-    </div>
-
+    
     <!-- Buttons -->
     <div class="px-5 flex items-center justify-between">
       <button
@@ -575,10 +637,27 @@
       </button>
     </div>
   </form>
+  <!-- <div id="loading-overlay" style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(255,255,255,0.7);align-items:center;justify-content:center;">
+    <div style="font-size:2rem;color:#333;">
+      保存中...
+      <span class="loader" style="display:inline-block;width:2rem;height:2rem;border:4px solid #ccc;border-top:4px solid #333;border-radius:50%;animation:spin 1s linear infinite;vertical-align:middle;"></span>
+    </div>
+  </div>
+  <style>
+  @keyframes spin { 100% { transform: rotate(360deg); } }
+  </style> -->
 </x-admin-layout>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
+  // const form = document.querySelector('form#cast-detail');
+  // const overlay = document.getElementById('loading-overlay');
+  // if(form && overlay) {
+  //   form.addEventListener('submit', function() {
+  //     overlay.style.display = 'flex';
+  //   });
+  // }
+
   document.querySelectorAll('input[type=file].cast-gallery-input').forEach(input => {
     const item = input.parentElement
     const img = item.querySelector('.cast-gallery-img')
@@ -606,5 +685,73 @@ document.addEventListener('DOMContentLoaded', function () {
       }, { once: true })
     })
   })
+
+  // Video upload and preview (thumbnail only, no upload)
+  document.querySelectorAll('.cast-video-input').forEach(input => {
+    const label = input.closest('.cast-video-item');
+    const thumbDiv = label.querySelector('.cast-video-thumb');
+    const emptyDiv = thumbDiv.querySelector('.video-thumb-empty');
+    const uploadedDiv = thumbDiv.querySelector('.video-thumb-uploaded');
+    const uploadedImg = uploadedDiv.querySelector('img');
+    const playBtn = uploadedDiv.querySelector('.video-play-btn');
+    const deleteBtn = uploadedDiv.querySelector('.video-delete-btn');
+    const uploadBtns = thumbDiv.querySelectorAll('.video-upload-btn');
+
+    uploadBtns.forEach(btn => {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        input.click();
+      });
+    });
+
+    input.addEventListener('change', (e) => {
+      if (!e.target.files.length) return;
+      const file = e.target.files[0];
+      const video = document.createElement('video');
+      video.preload = 'metadata';
+      video.muted = true;
+      video.src = URL.createObjectURL(file);
+
+      video.addEventListener('loadedmetadata', function () {
+        video.currentTime = 1;
+      }, { once: true });
+
+      video.addEventListener('seeked', function () {
+        const thumbRect = label.getBoundingClientRect();
+        const canvas = document.createElement('canvas');
+        canvas.width = Math.round(thumbRect.width);
+        canvas.height = Math.round(thumbRect.height);
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        uploadedImg.src = canvas.toDataURL('image/jpeg');
+        // Show uploaded, hide empty
+        emptyDiv.style.display = 'none';
+        uploadedDiv.style.display = 'flex';
+        URL.revokeObjectURL(video.src);
+      }, { once: true });
+    });
+
+    // Play video in new window
+    playBtn.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      if (input.files && input.files[0]) {
+        const url = URL.createObjectURL(input.files[0]);
+        window.open(url, '_blank', 'width=800,height=600');
+        setTimeout(() => URL.revokeObjectURL(url), 10000);
+      }
+    });
+
+    // Delete video
+    deleteBtn.addEventListener('click', function (ev) {
+      ev.stopPropagation();
+      input.value = '';
+      uploadedImg.src = '';
+      uploadedDiv.style.display = 'none';
+      emptyDiv.style.display = 'flex';
+    });
+  });
 })
 </script>
+@once
+    @vite(['resources/scss/admin/casts.scss'])
+@endonce
