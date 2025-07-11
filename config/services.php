@@ -34,5 +34,10 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+    'dropbox' => [
+        'key' => env('DROPBOX_APP_KEY'),
+        'secret' => env('DROPBOX_APP_SECRET'),
+        'refresh_token' => env('DROPBOX_REFRESH_TOKEN'),
+    ],
 
 ];
