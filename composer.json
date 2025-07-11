@@ -9,11 +9,13 @@
         "php": "^8.2",
         "directorytree/imapengine": "^1.6",
         "endroid/qr-code": "^6.0",
+        "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.31",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "php-ffmpeg/php-ffmpeg": "*",
         "rutorika/sortable": "^9.3",
+        "spatie/dropbox-api": "^1.23",
         "spatie/flysystem-dropbox": "*",
         "spatie/laravel-backup": "^9.3",
         "spatie/laravel-permission": "^6.16"

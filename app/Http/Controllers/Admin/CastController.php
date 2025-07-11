@@ -18,15 +18,18 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Log;
 use FFMpeg;
+use App\Services\DropboxService;
+use Carbon\Carbon;
 
 class CastController extends Controller
 {
     const DEFAULT_LIMIT = 30;
 
     protected static $ffmpeg;
-
-    public function __construct()
+    protected DropboxService $dropbox;
+    public function __construct(DropboxService $dropbox)
     {
+        $this->dropbox = $dropbox;
         if (!self::$ffmpeg) {
             self::$ffmpeg = \FFMpeg\FFMpeg::create([
                 'ffmpeg.binaries'  => env('FFMPEG_BINARIES', 'C:/ffmpeg/bin/ffmpeg.exe'),
@@ -171,10 +174,14 @@ class CastController extends Controller
 
         if ($request->hasFile("video_1")) {
             $video1 = $request->file('video_1');
-            $path = Storage::disk('dropbox')->putFile(Shop::find($cast->shop_id)->slug, $video1);
-
-            $client = Storage::disk('dropbox')->getAdapter()->getClient();
-            $sharedLink = $client->createSharedLinkWithSettings($path);
+            // $path = Storage::disk('dropbox')->putFile(Shop::find($cast->shop_id)->slug, $video1);
+            $file_ext = pathinfo($video1->getClientOriginalName(), PATHINFO_EXTENSION );
+            $file_name = $cast->id."_".pathinfo($video1->getClientOriginalName(), PATHINFO_FILENAME )."_".Carbon::now()->format('YmdHis').".".$file_ext;
+            $path = '/'.Shop::find($cast->shop_id)->slug.'/'.$file_name;
+            $this->dropbox->uploadFile($path, file_get_contents($video1->getPathname()));
+            // $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            // $sharedLink = $client->createSharedLinkWithSettings($path);
+            $sharedLink = $this->dropbox->createSharedLink($path);
             $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
 
             $video = self::$ffmpeg->open($video1->getPathname());
@@ -191,10 +198,12 @@ class CastController extends Controller
         }
         if ($request->hasFile("video_2")) {
             $video2 = $request->file('video_2');
-            $path = Storage::disk('dropbox')->putFile(Shop::find($cast->shop_id)->slug, $video2);
+            $file_ext = pathinfo($video2->getClientOriginalName(), PATHINFO_EXTENSION );
+            $file_name = $cast->id."_".pathinfo($video2->getClientOriginalName(), PATHINFO_FILENAME )."_".Carbon::now()->format('YmdHis').".".$file_ext;
+            $path = '/'.Shop::find($cast->shop_id)->slug.'/'.$file_name;
+            $this->dropbox->uploadFile($path, file_get_contents($video2->getPathname()));
 
-            $client = Storage::disk('dropbox')->getAdapter()->getClient();
-            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $sharedLink = $this->dropbox->createSharedLink($path);
             $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
 
             $video = self::$ffmpeg->open($video2->getPathname());
@@ -353,7 +362,9 @@ class CastController extends Controller
                     if ($video->video_url) {
                         // Extract Dropbox path from URL if needed
                         $dropboxPath = $shop_slug . '/' . basename(parse_url($video->video_url, PHP_URL_PATH));
-                        Storage::disk('dropbox')->delete($dropboxPath);
+                        // Storage::disk('dropbox')->delete($dropboxPath);
+                        // Log::info('delete file: '.$dropboxPath);
+                        $this->dropbox->deleteFile($dropboxPath);
                     }
                     // Delete thumbnail from local storage
                     if ($video->thumb_url && file_exists(storage_path('app/public/' . $video->thumb_url))) {
@@ -366,11 +377,21 @@ class CastController extends Controller
         }
         if ($request->hasFile("video_1")) {
             $video1 = $request->file('video_1');
-            $path = Storage::disk('dropbox')->putFile($shop_slug, $video1);
-
-            $client = Storage::disk('dropbox')->getAdapter()->getClient();
-            $sharedLink = $client->createSharedLinkWithSettings($path);
+            // $path = Storage::disk('dropbox')->putFile($shop_slug, $video1);
+            // Log::info('video1: '.$video1->getClientOriginalName());
+            $file_ext = pathinfo($video1->getClientOriginalName(), PATHINFO_EXTENSION );
+            // $file_name = uniqid().".".$file_ext;
+            $file_name = $id."_".pathinfo($video1->getClientOriginalName(), PATHINFO_FILENAME )."_".Carbon::now()->format('YmdHis').".".$file_ext;
+            $path = "/".$shop_slug."/".$file_name;
+            // Log::info('upload file: '.$path);
+            $this->dropbox->uploadFile($path, file_get_contents($video1->getPathname()));
+            $sharedLink = $this->dropbox->createSharedLink($path);
+            // Log::info('shared link: '.$sharedLink);
             $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
+            // Log::info('video path: '.$videoPath);
+            // $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            // $sharedLink = $client->createSharedLinkWithSettings($path);
+            // $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
 
             $video = self::$ffmpeg->open($video1->getPathname());
             $frame = $video->frame(FFMpeg\Coordinate\TimeCode::fromSeconds(0.5));
@@ -393,7 +414,8 @@ class CastController extends Controller
                     if ($video->video_url) {
                         // Extract Dropbox path from URL if needed
                         $dropboxPath = $shop_slug . '/' . basename(parse_url($video->video_url, PHP_URL_PATH));
-                        Storage::disk('dropbox')->delete($dropboxPath);
+                        // Storage::disk('dropbox')->delete($dropboxPath);
+                        $this->dropbox->deleteFile($dropboxPath);
                     }
                     // Delete thumbnail from local storage
                     if ($video->thumb_url && file_exists(storage_path('app/public/' . $video->thumb_url))) {
@@ -406,10 +428,17 @@ class CastController extends Controller
         }
         if ($request->hasFile("video_2")) {
             $video2 = $request->file('video_2');
-            $path = Storage::disk('dropbox')->putFile($shop_slug, $video2);
 
-            $client = Storage::disk('dropbox')->getAdapter()->getClient();
-            $sharedLink = $client->createSharedLinkWithSettings($path);
+            $file_ext = pathinfo($video2->getClientOriginalName(), PATHINFO_EXTENSION );
+            $file_name = $id."_".pathinfo($video2->getClientOriginalName(), PATHINFO_FILENAME )."_".Carbon::now()->format('YmdHis').".".$file_ext;
+            $path = "/".$shop_slug."/".$file_name;
+            $this->dropbox->uploadFile($path, file_get_contents($video2->getPathname()));
+            $sharedLink = $this->dropbox->createSharedLink($path);
+
+            // $path = Storage::disk('dropbox')->putFile($shop_slug, $video2);
+
+            // $client = Storage::disk('dropbox')->getAdapter()->getClient();
+            // $sharedLink = $client->createSharedLinkWithSettings($path);
             $videoPath = str_replace('dl=0', 'raw=1', $sharedLink['url']);
 
             $video = self::$ffmpeg->open($video2->getPathname());

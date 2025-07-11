@@ -31,18 +31,18 @@ class AppServiceProvider extends ServiceProvider
         //     logger($query->bindings);
         // });
 
-        Storage::extend('dropbox', function (Application $app, array $config) {
+        // Storage::extend('dropbox', function (Application $app, array $config) {
 
-            $adapter = new DropboxAdapter(new DropboxClient(
-                $config['authorization_token']
-            ));
+        //     $adapter = new DropboxAdapter(new DropboxClient(
+        //         $config['authorization_token']
+        //     ));
 
-            return new FilesystemAdapter(
-                new Filesystem($adapter, $config),
-                $adapter,
-                $config
-            );
+        //     return new FilesystemAdapter(
+        //         new Filesystem($adapter, $config),
+        //         $adapter,
+        //         $config
+        //     );
 
-        });
+        // });
     }
 }
