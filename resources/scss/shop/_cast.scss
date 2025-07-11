@@ -12,17 +12,20 @@
     padding: 80px 0 0;
   }
   @media #{media-query(md)} {
+    padding: 80px 0 0;
   }
   @media #{media-query(lg)} {
     padding: 80px 0 0;
   }
 
   .title-label1 {
-    @include font.serif;
+    // @include font.serif;
+    font-family: $font-midashi-min;
     @media #{media-query(sm)} {
       font-size: 40px;
     }
     @media #{media-query(md)} {
+      font-size: 60px;
     }
     @media #{media-query(lg)} {
       font-size: 95px;
@@ -30,17 +33,20 @@
   }
 
   .title-label2 {
-    @include font.serif;
+    // @include font.serif;
+    font-family: $font-midashi-min;
     color: #F933A7;
     @media #{media-query(sm)} {
       margin: 20px 0 0;
       font-size: 30px;
     }
     @media #{media-query(md)} {
+      margin: 35px 0 0;
+      font-size: 40px;
     }
     @media #{media-query(lg)} {
       margin: 50px 0 0;
-      font-size: 70px;
+      // font-size: 70px;
     }
   }
 
