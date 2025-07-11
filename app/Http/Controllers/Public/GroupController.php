@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Diary;
 use App\Models\Point;
 use App\Models\History;
+use App\Models\Video;
 class GroupController extends Controller
 {
     /**
@@ -82,6 +83,15 @@ class GroupController extends Controller
             ])
             ->limit(9)
             ->get();
+        $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('videos.is_public', 1)
+        ->where('casts.is_public', 1)
+        ->orderBy('videos.updated_at', 'desc')
+        ->limit(4)
+        ->select('videos.*','casts.*','shops.slug as shop_slug','shops.name as shop_name')
+        ->get();
+        // dd($videos);
         $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
         // dd($diaries);
         return view('public.group.front', [
@@ -94,6 +104,7 @@ class GroupController extends Controller
             'diaries' => $diaries,
             'shops' => $shops,
             'news' => $news,
+            'videos' => $videos,
         ]);
     }
     public function showFront(Request $request): View

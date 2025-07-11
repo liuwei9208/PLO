@@ -205,25 +205,87 @@
         font-size: 14px;
         line-height: 1.6;
         color: #fff;
+        &-name {
+          text-align: center;
+          font-weight: bold;
+          @media #{media-query(sm)} {
+           //  margin: 26px 0 0;
+            font-size: 14px;
+          }
+          @media #{media-query(md)} {
+           //  margin: 30px 0 0;
+            font-size: 18px;
+          }
+          @media #{media-query(lg)} {
+           //  margin: 0 0;
+            font-size: 21px;
+          }
 
-        @media #{media-query(sm)} {
-          font-size: 18px;
-          // padding: 0 15px 15px;
-          @include text.multiline-ellipsis(3);
-          margin: 10px 0;
+          small {
+            font-size: 80%;
+           //  font-weight: 500;
+          }
+
         }
 
-        @media #{media-query(md)} {
-          font-size: 21px;
-          // padding: 0 20px 20px;
+        &-size {
+          display: block;
+          text-align: center;
+          @media #{media-query(sm)} {
+            font-size: 13px;
+            margin: 8px 0;
+          }
+          @media #{media-query(md)} {
+            font-size: 16px;
+            margin: 10px 0;
+          }
+          @media #{media-query(lg)} {
+            font-size: 18px;
+            margin: 10px 0 ;
+          }
+        }
+        &-intro {
+          width: 100%;
           @include text.multiline-ellipsis(2);
+          @media #{media-query(sm)} {
+            margin: 0 0 8px ;
+            font-size: 13px;
+            line-height: 20px;
+            height: 65px;
+          }
+          @media #{media-query(md)} {
+            margin: 0 0 14px ;
+           //  padding: 0 10px;
+            font-size: 14px;
+            line-height: 20px;
+            height: 52px;
+          }
+          @media #{media-query(lg)} {
+            margin: 0 0 15px;
+           //  padding: 0 10px;
+            font-size: 14px;
+            line-height: 20px;
+            height: 52px;
+          }
         }
+        // @media #{media-query(sm)} {
+        //   font-size: 18px;
+        //   // padding: 0 15px 15px;
+        //   @include text.multiline-ellipsis(3);
+        //   margin: 10px 0;
+        // }
 
-        @media #{media-query(lg)} {
-          font-size: 24px;
-          // padding: 0 25px 25px;
-          @include text.multiline-ellipsis(2);
-        }
+        // @media #{media-query(md)} {
+        //   font-size: 21px;
+        //   // padding: 0 20px 20px;
+        //   @include text.multiline-ellipsis(2);
+        // }
+
+        // @media #{media-query(lg)} {
+        //   font-size: 24px;
+        //   // padding: 0 25px 25px;
+        //   @include text.multiline-ellipsis(2);
+        // }
       }
     }
   }
