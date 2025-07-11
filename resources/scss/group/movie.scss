@@ -11,7 +11,7 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-
+  background-color: #fff;
   @media #{media-query(sm)} {
     background-image: url('/assets/img/group/movie-pc.svg');
     background-size: cover;
