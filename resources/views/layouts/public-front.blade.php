@@ -7,7 +7,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
-
+    {{-- <link href="https://vjs.zencdn.net/8.22.0/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/8.22.0/video.min.js"></script> --}}
     <title>{{ config('app.name', 'PLOグループ') }}</title>
       <script>
 //       (function(d) {

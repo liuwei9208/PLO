@@ -350,7 +350,36 @@
       <h3 class="movie-title-ja title-font-sm">各お店の最新動画</h3>
     </div>
     <div class="movie-list content-wrapper">
+      @foreach ($videos as $video)
       <div class="movie-list-item">
+        {{-- <a href="#" target="_blank"> --}}
+          <div class="movie-list-item-shop --{{ $video->shop_slug }} sp-only">
+            {{ $video->shop_name }}
+          </div>
+          {{-- <div class="movie-list-item-movie">
+            <img src="{{ asset('storage/' . $video->thumb_url) }}" alt="movie-1">
+          </div> --}}
+          <video class="movie-list-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+            <source src="{{ $video->video_url }}" type="video/mp4">
+          </video>
+          <div class="movie-list-item-shop --{{ $video->shop_slug }} pc-only">
+            {{ $video->shop_name }}
+          </div>
+          <div class="movie-list-item-content">
+            <div class="movie-list-item-content-name --{{ $video->shop_slug }}">
+              {{ $video->name }}<small>{{ $video->age ? '(' . $video->age . ')' : '' }}</small>
+            </div>
+            <div class="movie-list-item-content-size --{{ $video->shop_slug }}">
+              B{{ $video->bust }}　W{{ $video->waist }}　H{{ $video->hip }}
+            </div>
+            <div class="movie-list-item-content-intro --{{ $video->shop_slug }}">
+              {{ $video->appeal_point }}
+            </div>
+          </div>
+        {{-- </a> --}}
+      </div>
+      @endforeach
+      {{-- <div class="movie-list-item">
         <a href="#" target="_blank">
           <div class="movie-list-item-shop --pussycat sp-only">
             店舗名
@@ -413,7 +442,7 @@
             テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
           </div>
         </a>
-      </div>
+      </div> --}}
     </div>
     <a href="#"  class="movie-more more-button more-button-title">もっと見る</a>
   </div>
@@ -473,7 +502,8 @@ document.addEventListener('DOMContentLoaded', function() {
       shopsList.style.display = 'flex';
     });
   }
-
+  // Video.js functionality
+  // videojs(document.querySelectorAll('.video-js'));
   // Drawer functionality
   // const drawerToggle = document.getElementById('drawer-toggle');
   // const drawer = document.getElementById('drawer');
