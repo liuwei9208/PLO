@@ -204,8 +204,8 @@
           <div class="swiper-slide">
             <div class="event-main">
               <div class="event-main-content">
-                <div class="event-main-date">{{ $event->published_at->format('y.m.d')."  |  " }}</div>
-                <h3 class="event-main-title">{{ $event->title }}</h3>
+                {{-- <div class="event-main-date">{{ $event->published_at->format('y.m.d')."  |  " }}</div> --}}
+                <h3 class="event-main-title">{{ $event->published_at->format('y.m.d')."  |  " .$event->title}}</h3>
               </div>
               <div class="event-main-image">
                 <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
