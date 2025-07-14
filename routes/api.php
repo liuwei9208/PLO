@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\QRCodeController;
 use App\Http\Controllers\Api\CastController;
+use App\Http\Controllers\Api\WorkController;
 // use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 use Illuminate\Support\Facades\Log;
 
@@ -23,7 +24,11 @@ Route::middleware(['auth:sanctum'])->prefix('schedule')->group(function () {
     Route::post('/updatereservation', [ScheduleController::class, 'updateReservationTime']);
     Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
 });
-
+Route::middleware(['auth:sanctum'])->prefix('work')->group(function () {
+    // Route::prefix('schedule')->group(function () {
+    Route::post('/', [WorkController::class, 'showCastsSchedule']);
+    Route::post('/updateattendance', [WorkController::class, 'updateAttendanceTime']);
+});
 Route::middleware('auth:sanctum')->prefix('member')->group(function () {
 // Route::prefix('member')->group(function () {
     Route::post('/update', [MemberController::class, 'update']);
