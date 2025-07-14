@@ -64,34 +64,64 @@ body {
 
 // Color change animation
 @keyframes colorChange {
+  // 0%, 100% {
+  //   color: #000;
+  // }
+  // 10% {
+  //   color: #DC53D7; // pussycat
+  // }
+  // 20% {
+  //   color: #4068fb; // shizuku
+  // }
+  // 30% {
+  //   color: #FF8C71; // miyabi
+  // }
+  // 40% {
+  //   color: #FFC557; // en
+  // }
+  // 50% {
+  //   color: #009162; // shiroganeze
+  // }
+  // 60% {
+  //   color: #FF5AA2; // lovestory
+  // }
+  // 70% {
+  //   color: #DC53D7; // back to pussycat
+  // }
+  // 80% {
+  //   color: #4068fb; // back to shizuku
+  // }
+  // 90% {
+  //   color: #FF8C71; // back to miyabi
+  // }
   0%, 100% {
-    color: #000;
+    color: $shop-color-shizuku;
   }
   10% {
-    color: #DC53D7; // pussycat
+    color: $shop-color-miyabi; // pussycat
   }
   20% {
-    color: #4068fb; // shizuku
+    color: $shop-color-pussycat; // shizuku
   }
   30% {
-    color: #FF8C71; // miyabi
+    color: $shop-color-en; // miyabi
   }
   40% {
-    color: #FFC557; // en
+    color: $shop-color-shiroganeze; // en
   }
   50% {
-    color: #009162; // shiroganeze
+    color: $shop-color-lovestory; // shiroganeze
   }
   60% {
-    color: #FF5AA2; // lovestory
+    color: $shop-color-shizuku; // lovestory
   }
   70% {
-    color: #DC53D7; // back to pussycat
+    color: $shop-color-miyabi; // back to pussycat
   }
   80% {
-    color: #4068fb; // back to shizuku
+    color: $shop-color-pussycat; // back to shizuku
   }
   90% {
-    color: #FF8C71; // back to miyabi
+    color: $shop-color-en; // back to miyabi
   }
 }
