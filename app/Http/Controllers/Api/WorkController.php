@@ -52,7 +52,7 @@ class WorkController extends Controller
                     $query = Cast::where('shop_id', $shop);
                 }
             } else if ($user->hasRole('shop')) {
-                $shopId = \DB::table('shop_user')
+                $shop_id = \DB::table('shop_user')
                     ->where('user_id', $user->id)
                     ->value('shop_id');
                 $query = Cast::where('shop_id', $shop_id);

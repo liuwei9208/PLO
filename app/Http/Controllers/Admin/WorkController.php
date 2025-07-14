@@ -24,7 +24,8 @@ class WorkController extends Controller
     const DEFAULT_LIMIT = 30;
     public function index(Request $request): View
     {
-        $token =Auth::user()->createToken('schedule')->plainTextToken;
+        $user = Auth::guard('web')->user();
+        $token = $user->createToken('schedule')->plainTextToken;
         return view('admin.work.index',[
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'token'=> $token,
