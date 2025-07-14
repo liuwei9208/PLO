@@ -3,6 +3,14 @@ import laravel from 'laravel-vite-plugin';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
+  server: {
+    host: '127.0.0.1',
+    port: 3000,
+    hmr: {
+        protocol: 'ws',
+        host: '127.0.0.1',
+    }
+  },
     plugins: [
         laravel({
             input: [
@@ -73,6 +81,7 @@ export default defineConfig({
             targets: [
               { src: 'node_modules/tinymce/skins', dest: 'js/tinymce' },
               { src: 'public/assets/*', dest: 'assets' },
+              { src: 'resources/fonts/*', dest: 'assets/fonts' },
             ],
           }),
     ],

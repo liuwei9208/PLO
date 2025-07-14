@@ -21,38 +21,48 @@ $white: #fff;
 // $shop-color-all: #fff;
 // $shop-color-headquarter: #8B4513;
 
-$shop-color-pussycat: #DC53D7;
-$shop-color-shizuku: #4068fb;
-$shop-color-miyabi: #FF8C71;
-$shop-color-en: #FFC557;
-$shop-color-shiroganeze: #009162;
-$shop-color-lovestory: #FF5AA2;
+// $shop-color-pussycat: #DC53D7;
+// $shop-color-shizuku: #4068fb;
+// $shop-color-miyabi: #FF8C71;
+// $shop-color-en: #FFC557;
+// $shop-color-shiroganeze: #009162;
+// $shop-color-lovestory: #FF5AA2;
+// $shop-color-all: #fff;
+// $shop-color-headquarter: #8B4513;
+
+$shop-color-pussycat: #fb50cd;
+$shop-color-shizuku: #613ffe;
+$shop-color-miyabi: #9941fb;
+$shop-color-en: #d93bfc;
+$shop-color-shiroganeze: #13c4d4;
+$shop-color-lovestory: #fa1862;
 $shop-color-all: #fff;
 $shop-color-headquarter: #8B4513;
+
 
 $border-color: #cba86b;
 
 @font-face {
   font-family: 'toppan-bunkyu-gothic-pr6n';
-  src: url('../../fonts/ToppanBunkyuGothicPr6N.ttc') format('truetype');
+  src: url('/assets/fonts/ToppanBunkyuGothicPr6N.ttc') format('truetype');
   // font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'toppan-bunkyu-mincho-pr6n';
-  src: url('../../fonts/ToppanBunkyuMinchoPr6N-Regular.otf') format('opentype');
+  src: url('/assets/fonts/ToppanBunkyuMinchoPr6N-Regular.otf') format('opentype');
   // font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'toppan-bunkyu-midashi-go-std';
-  src: url('../../fonts/ToppanBunkyuMidashiGothicStdN-ExtraBold.otf') format('opentype');
+  src: url('/assets/fonts/ToppanBunkyuMidashiGothicStdN-ExtraBold.otf') format('opentype');
   // font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'toppan-bunkyu-midashi-min-st';
-  src: url('../../fonts/ToppanBunkyuMidashiMinchoStdN-ExtraBold.otf') format('opentype');
+  src: url('/assets/fonts/ToppanBunkyuMidashiMinchoStdN-ExtraBold.otf') format('opentype');
   // font-weight: normal;
   font-style: normal;
 }
