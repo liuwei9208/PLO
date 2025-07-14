@@ -43,13 +43,13 @@ class WorkController extends Controller
             $is_public = true;
 
             $query = Cast::where('is_public', 1);
-            
+
             $shop = $request->input('shop');
             Log::info("1111");
             Log::info($shop);
             if ($user->hasRole('admin')) {
                 if ($shop) {
-                    $query = Cast::where('shop_id', $shop);    
+                    $query = Cast::where('shop_id', $shop);
                 }
             } else if ($user->hasRole('shop')) {
                 $shopId = \DB::table('shop_user')
@@ -58,7 +58,7 @@ class WorkController extends Controller
                 $query = Cast::where('shop_id', $shop_id);
             }
 
-            
+
             $total = $query->count();
             $page = $request->input('page') ? (int) $request->input('page') : 1;
             $limit = $request->input('limit') ? (int) $request->input('limit') : self::DEFAULT_LIMIT;
@@ -67,8 +67,9 @@ class WorkController extends Controller
 
             $casts = $query->skip($skip)
                 ->take($limit)
-                ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc')
+                // ->orderBy('created_at', 'desc')
+                // ->orderBy('id', 'desc')
+                ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                 ->get(['id', 'name', 'gallery_1']);
 
             $dates = [];

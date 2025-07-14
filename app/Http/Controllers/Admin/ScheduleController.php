@@ -149,8 +149,9 @@ class ScheduleController extends Controller
 
             $casts = $query->skip($skip)
                 ->take($limit)
-                ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc')
+                // ->orderBy('created_at', 'desc')
+                // ->orderBy('id', 'desc')
+                ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                 ->get();
 
             $attendances = Attendance::where('is_public', $is_public)
@@ -278,7 +279,7 @@ class ScheduleController extends Controller
         $reservation->end_time = Carbon::parse($endTime);
         $reservation->save();
         return response()->json(['status' => 'success', 'reservation_id' => $reservation->id]);
-    }   
+    }
     public function deleteReservationTime(Request $request): JsonResponse
     {
         if ( !$request->expectsJson() ){

@@ -112,8 +112,9 @@ class ScheduleController extends Controller
 
             $casts = $query->skip($skip)
                 ->take($limit)
-                ->orderBy('created_at', 'desc')
-                ->orderBy('id', 'desc')
+                // ->orderBy('created_at', 'desc')
+                // ->orderBy('id', 'desc')
+                ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                 ->get();
 
             $attendances = Attendance::where('is_public', $is_public)
