@@ -37,23 +37,33 @@
     overflow: hidden;
     @media #{media-query(sm)} {
       background-image: url('/assets/img/group/event/bg-news-sp.svg') !important;
-      padding: 30px 15px;
+      // padding: 30px 15px;
 
       .event {
         &-main {
 
           &-content {
-            flex-direction: column;
+            // display: flex;
+            // align-items: center;
+            // justify-content: center;
+            // flex-direction: row;
+            // gap: 10px;
+            // padding: 8px 15px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
-            padding: 8px 15px;
+            padding: 8px 0px;
+            @include text.multiline-ellipsis(1);
           }
 
           &-date {
             font-size: 20px;
+            // @include text.multiline-ellipsis(1);
           }
 
           &-title {
             font-size: 20px;
+            // @include text.multiline-ellipsis(1);
           }
 
           &-image {
@@ -62,8 +72,8 @@
         }
 
         &-slider {
-          padding: 0 15px;
-
+          // padding: 0 15px;
+          padding: 0 0px;
           .swiper-slide {
             width: 240px;
           }

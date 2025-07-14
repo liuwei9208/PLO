@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     console.log({logo_height});
     console.log(logo.clientHeight);
+    mv.style.top = `${logo_height}px`;
     const main = document.querySelector('.main');
     if (main) {
       main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
