@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\FeeController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\VisitController;
 use App\Http\Controllers\Admin\VideoController;
+use App\Http\Controllers\Admin\WorkController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -237,6 +238,9 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('/updateattendance', [ScheduleController::class, 'updateAttendanceTime']);
         Route::post('/updatereservation', [ScheduleController::class, 'updateReservationTime']);
         Route::post('/deletereservation', [ScheduleController::class, 'deleteReservationTime']);
+    });
+    Route::prefix('work')->name('work.')->group(function () {
+        Route::get('/', [WorkController::class, 'index'])->name('index');
     });
 
     Route::prefix('fee')->name('fee.')->group(function () {

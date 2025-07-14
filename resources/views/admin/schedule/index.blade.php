@@ -138,7 +138,7 @@
 
     <div class="schedule-container">
         <div class="schedule-date">
-            {{-- 2025年06月08日(日)の出勤予定 --}}
+            {{-- 2025年06月08日(日)の予約状況 --}}
         </div>
         <div class="schedule-navigation">
             <button class="prev-week-btn">先週</button>
@@ -158,10 +158,10 @@
         </div>
     </div>
     <div class="schedule-content">
-        <!-- キャスト　出勤予定 タイトル-->
+        <!-- キャスト　予約状況 タイトル-->
         <div class="schedule-header">
             <div class="cast-column">キャスト</div>
-            <div class="schedule-column">出勤予定</div>
+            <div class="schedule-column">予約状況</div>
         </div>
         <div class="schedule-casts">
 
