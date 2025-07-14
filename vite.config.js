@@ -80,8 +80,8 @@ export default defineConfig({
         viteStaticCopy({
             targets: [
               { src: 'node_modules/tinymce/skins', dest: 'js/tinymce' },
+              { src: 'resources/fonts/*', dest: 'public/assets/fonts' },
               { src: 'public/assets/*', dest: 'assets' },
-              { src: 'resources/fonts/*', dest: 'assets/fonts' },
             ],
           }),
     ],
