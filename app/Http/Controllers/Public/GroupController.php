@@ -231,13 +231,22 @@ class GroupController extends Controller
     public function showEvent(Request $request): View
     {
         $events = Event::where('published_status', 1)
-        ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
-        ->orWhere(function($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', Carbon::now());
-        })
-        ->orderBy('published_at', 'desc')
-        ->get();
+            ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orWhere('published_status',4)
+            ->where('published_at', '>=', Carbon::now()->subMonth(1))
+            ->orderBy('published_at', 'desc')
+            ->get();        // $events = Event::where('published_status', 1)
+        // ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+        // ->orWhere(function($query) {
+        //     $query->where('published_status', 2)
+        //         ->where('published_at', '<=', Carbon::now());
+        // })
+        // ->orderBy('published_at', 'desc')
+        // ->get();
         return view('public.group.event', [
             'events' => $events,
         ]);

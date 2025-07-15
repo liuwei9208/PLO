@@ -262,7 +262,7 @@
   padding: 40px 20px;
   // max-width: 1260px;
   margin: 0 auto;
-  
+
   @media (max-width: 767px) {
     flex-direction: column;
     padding: 30px 15px;
@@ -282,13 +282,13 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
-    
+
         @media (max-width: 767px) {
           gap: 15px;
           padding: 0 10px 15px;
         }
       }
-    
+
       &-item {
         @media #{media-query(sm)} {
           height: 100%;
@@ -301,14 +301,14 @@
           overflow: hidden;
           border-radius: 8px;
           margin-bottom: 10px;
-    
+
           img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
         }
-    
+
         &-published {
           font-size: 1rem;
           color: #000;
@@ -318,7 +318,7 @@
             border-bottom: none;
           }
         }
-    
+
         &-contents {
           font-size: 1rem;
           line-height: 1.5;
@@ -379,7 +379,7 @@
     }
   }
 
-  
+
 
   .diary-top-items {
     display: grid;
@@ -555,13 +555,13 @@
           margin-bottom: 5px;
           color: #fff;
         }
-    
+
         &-property {
           font-size: 0.8rem;
           color: #fff;
           text-align: center;
         }
-  
+
         &-appeal {
           font-size: 1rem;
           color: #fff;
@@ -655,7 +655,7 @@
       right: 0;
     }
   }
-  
+
   &-content-wrapper {
     width: 1260px;
     margin: 0 auto;
@@ -665,9 +665,9 @@
     @media #{media-query(sm)} {
       width: calc(100% - 40px);
     }
-    
+
   }
-  
+
   &-footer-button {
     display: none;
     text-align: center;
