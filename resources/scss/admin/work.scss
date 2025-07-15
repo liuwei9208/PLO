@@ -40,7 +40,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  
+
   .table-cols {
     display: flex;
     width: 100%;
@@ -56,17 +56,17 @@
       text-align: center;
       font-weight: normal;
       position: relative;
-      
+
       // 土曜日のタブ
       &.saturday {
         border-top: 4px solid #1976d2;
       }
-      
+
       // 日曜日のタブ
       &.sunday {
         border-top: 4px solid #e91e63;
       }
-      
+
       &.active {
         background: #e91e63;
         color: #fff;
@@ -112,17 +112,17 @@
       text-align: center;
       font-weight: normal;
       position: relative;
-      
+
       // 土曜日のタブ
       &.saturday {
         border-top: 4px solid #1976d2;
       }
-      
+
       // 日曜日のタブ
       &.sunday {
         border-top: 4px solid #e91e63;
       }
-      
+
       &.active {
         background: #e91e63;
         color: #fff;
@@ -162,8 +162,37 @@
     font-weight: bold;
 }
 
-.attendance-time {
+.work-attendance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  padding: 0 2px;
+  gap: 4px;
+
+  .attendance-time {
+  }
+
+  .attendance-close {
+    // visibility: hidden;
+    background: none;
+    border: none;
+    color: #9ca3af; /* gray-400 */
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .attendance-close:hover {
+    color: #374151; /* gray-700 */
+  }
+
+  &:hover {
+    .attendance-close {
+      visibility: visible;
+    }
+  }
 }
 
 #attendanceTimeSave {
@@ -187,6 +216,8 @@
     display: none;
   }
 }
+
+
 
 #attendanceTimeClose {
   position: absolute;

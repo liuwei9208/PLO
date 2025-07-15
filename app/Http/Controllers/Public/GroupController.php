@@ -71,7 +71,10 @@ class GroupController extends Controller
             ->where('casts.is_public', 1)
             ->whereNot('shops.slug', 'touchvip')
             ->whereNot('shops.slug', 'headquarter')
-            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->groupBy('shops.id')
+            ->havingRaw('MAX(diaries.updated_at)')
+            ->orderBy('shops.rank', 'asc')
+            // ->orderBy('diaries.updated_at', 'desc') // ここを明示
             ->select([
                 'diaries.id',
                 'diaries.subject',
@@ -81,7 +84,7 @@ class GroupController extends Controller
                 'casts.id as cast_id',
                 'shops.slug as shop_slug',
             ])
-            ->limit(9)
+            // ->limit(9)
             ->get();
         $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
         ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
@@ -231,13 +234,22 @@ class GroupController extends Controller
     public function showEvent(Request $request): View
     {
         $events = Event::where('published_status', 1)
-        ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
-        ->orWhere(function($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', Carbon::now());
-        })
-        ->orderBy('published_at', 'desc')
-        ->get();
+            ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+            ->orWhere(function($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orWhere('published_status',4)
+            ->where('published_at', '>=', Carbon::now()->subMonth(1))
+            ->orderBy('published_at', 'desc')
+            ->get();        // $events = Event::where('published_status', 1)
+        // ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
+        // ->orWhere(function($query) {
+        //     $query->where('published_status', 2)
+        //         ->where('published_at', '<=', Carbon::now());
+        // })
+        // ->orderBy('published_at', 'desc')
+        // ->get();
         return view('public.group.event', [
             'events' => $events,
         ]);

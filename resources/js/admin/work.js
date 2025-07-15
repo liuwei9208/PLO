@@ -109,6 +109,51 @@ function convertDateTimeToTime(dateTime) {
     return date.toLocaleTimeString('ja-JP', { hour: '2-digit', minute: '2-digit', hour12: false , hourCycle: 'h23' , separator: ':'});
 }
 
+async function deleteAttendance(workAttendance, attendance_date) {
+    let confirmMsg = "出勤を削除しますか？";
+    if (workAttendance.nextElementSibling.textContent !== '') {
+        confirmMsg = "予約が入っています。出勤を削除しますか？";
+    }
+
+    if (confirm(confirmMsg)) {
+        let attendance_id = workAttendance.dataset.id;
+        attendance_id = await deleteAttendanceTime(attendance_id);
+        if (attendance_id) {
+            workAttendance.dataset.id = "";
+            workAttendance.querySelector(".attendance-time").textContent = "---";
+            workAttendance.querySelector(".attendance-close").remove();
+            workAttendance.nextElementSibling.textContent = '';
+        }
+    } else {
+        return;
+    }
+}
+
+function generateCell(day) {
+    let cellContent = '';
+
+    if (day.attendance && day.attendance.start_datetime) {
+        const attendanceStartTime = convertDateTimeToTime(day.attendance.start_datetime);
+        const attendanceEndTime = convertDateTimeToTime(day.attendance.end_datetime);
+        cellContent += `
+            <div class="work-attendance" data-date="${day.date}" data-id="${day.attendance.id}">
+                <p class="attendance-time">${attendanceStartTime} - ${attendanceEndTime}</p>
+                <span class="attendance-close">&times;</span>
+            </div>`;
+    } else {
+        cellContent += `
+            <div class="work-attendance">
+                <p class="attendance-time" data-date="${day.date}">- - -</p>
+            </div>`;
+    }
+    if (day.reservation_count) {
+        cellContent += `<p class="reservation-count">予約: ${day.reservation_count}</p>`;
+    } else {
+        cellContent += `<p class="reservation-count"></p>`;
+    }
+
+    return cellContent;
+}
 /*
 * キャストの出勤・予約を取得する関数
 * @param {string} date - 日付
@@ -173,22 +218,7 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
                 }
                 tableHTML += `<div class="work-row" data-cast="${cast.id}"><div class="work-cell">${castImageHtml}<p>${cast.name}</p></div>`;
                 cast.schedule.forEach(day => {
-                    let cellContent = '';
-
-                    if (day.attendance && day.attendance.start_datetime) {
-                        const attendanceStartTime = convertDateTimeToTime(day.attendance.start_datetime);
-                        const attendanceEndTime = convertDateTimeToTime(day.attendance.end_datetime);
-                        cellContent += `<p class="attendance-time" data-date="${day.date}" data-id="${day.attendance.id}
-                        ">${attendanceStartTime} - ${attendanceEndTime}</p>`;
-                    } else {
-                        cellContent += `<p class="attendance-time" data-date="${day.date}">- - -</p>`;
-                    }
-                    if (day.reservation_count) {
-                        cellContent += `<p class="reservation-count">予約: ${day.reservation_count}</p>`;
-                    } else {
-                        cellContent += `<p class="reservation-count">&nbsp;</p>`;
-                    }
-                    tableHTML += `<div class="work-cell">${cellContent}</div>`;
+                    tableHTML += `<div class="work-cell">${generateCell(day)}</div>`;
                 });
                 tableHTML += `</div>`;
             });
@@ -197,26 +227,46 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
             // Render
             document.querySelector('.work-content').innerHTML = tableHTML;
 
-            document.querySelectorAll('.attendance-time').forEach(attendanceTimeField => {
-                attendanceTimeField.addEventListener('click', (e) => {
-                    const timeText = e.target.textContent.trim();
-                    const [start, end] = timeText.split(' - ');
-                    const attendanceDate = attendanceTimeField.dataset.date;
+            document.querySelectorAll('.attendance-time').forEach(attendanceTime => {
+                let workAttendance = attendanceTime.closest(".work-attendance");
+
+                attendanceTime.addEventListener('click', (e) => {
+                    let onlyTimeText = attendanceTime.textContent.trim();;
+                    const [start, end] = onlyTimeText.split(' - ');
+                    const attendanceDate = workAttendance.dataset.date;
                     showAttendanceTimeModal(start, end, async function(selectedStart, selectedEnd) {
-                        let attendance_id = e.target.dataset.id;
-                        const cast_id = e.target.closest('.work-row').dataset.cast;
+                        let attendance_id = workAttendance.dataset.id;
+                        const cast_id = workAttendance.closest('.work-row').dataset.cast;
                         attendance_id = await updateAttendanceTime(cast_id, attendance_id, selectedStart, selectedEnd, 1, attendanceDate);
                         if (attendance_id) {
-                            e.target.textContent = `${selectedStart} - ${selectedEnd}`;
+                            workAttendance.querySelector('.attendance-time').textContent = `${selectedStart} - ${selectedEnd}`;
+                            workAttendance.dataset.id = attendance_id;
+
+                            if (!workAttendance.querySelector('span')) {
+                                const closeSpan = document.createElement('span');
+                                closeSpan.className = 'attendance-close';
+                                closeSpan.innerHTML = '&times;';
+                                workAttendance.appendChild(closeSpan);
+                                closeSpan.addEventListener('click', async (e) => {
+                                    deleteAttendance(workAttendance, attendanceDate);
+                                })
+                            }
                         }
                     }, attendanceDate);
                 });
             });
 
+            document.querySelectorAll('.attendance-close').forEach(attendanceClose => {
+                attendanceClose.addEventListener('click', async (e) => {
+                    const workAttendance = attendanceClose.closest(".work-attendance");
+                    const date = workAttendance.dataset.date;
+                    deleteAttendance(workAttendance, date);
+                })
+            });
+
             await generateScheduleCastsPagination(page, limit, skip, pages, total, selectedDate);
 
             return {page, limit, skip, pages, total};
-            // window.scrollTo({top:0, behavior: 'smooth'});
         } else {
             throw new Error(response.data.message || 'データの取得に失敗しました');
         }
@@ -326,6 +376,47 @@ async function updateAttendanceTime(cast_id, attendance_id, startTime, endTime, 
             },
             // credentials: 'include'
             // withCredentials: true
+        });
+
+        console.log('サーバーレスポンス:', response.data);
+
+        if (response.data.status === 'success') {
+            console.log('更新成功:', response.data);
+            return response.data.attendance_id;
+        } else {
+            throw new Error(response.data.message || '更新に失敗しました');
+        }
+    } catch (error) {
+        console.error('エラーが発生しました:', error);
+        if (error.response) {
+            console.error('エラーレスポンス:', error.response.data);
+            alert('更新中にエラーが発生しました: ' + (error.response.data.message || error.message));
+        } else if (error.request) {
+            console.error('リクエストエラー:', error.request);
+            alert('サーバーからの応答がありません。ネットワーク接続を確認してください。');
+        } else {
+            console.error('リクエスト設定エラー:', error.message);
+            alert('リクエストの処理中にエラーが発生しました: ' + error.message);
+        }
+        throw error;
+    }
+}
+
+async function deleteAttendanceTime(attendance_id) {
+    try {
+        console.log('更新リクエスト:', {
+            attendance_id,
+        });
+        const response = await axios.post('/api/work/deleteattendance', {
+            attendance_id: attendance_id,
+        }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Authorization': 'Bearer ' + window.apiToken
+            },
         });
 
         console.log('サーバーレスポンス:', response.data);

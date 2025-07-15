@@ -9,7 +9,7 @@ export default defineConfig({
     hmr: {
         protocol: 'ws',
         host: '127.0.0.1',
-    }
+    },
   },
     plugins: [
         laravel({
