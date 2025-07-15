@@ -71,7 +71,10 @@ class GroupController extends Controller
             ->where('casts.is_public', 1)
             ->whereNot('shops.slug', 'touchvip')
             ->whereNot('shops.slug', 'headquarter')
-            ->orderBy('diaries.updated_at', 'desc') // ここを明示
+            ->groupBy('shops.id')
+            ->havingRaw('MAX(diaries.updated_at)')
+            ->orderBy('shops.rank', 'asc')
+            // ->orderBy('diaries.updated_at', 'desc') // ここを明示
             ->select([
                 'diaries.id',
                 'diaries.subject',
@@ -81,7 +84,7 @@ class GroupController extends Controller
                 'casts.id as cast_id',
                 'shops.slug as shop_slug',
             ])
-            ->limit(9)
+            // ->limit(9)
             ->get();
         $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
         ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')

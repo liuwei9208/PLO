@@ -650,6 +650,14 @@
 
       &-top {
         margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: auto;
+          width: 120%;
+          // object-fit: cover;
+        }
       }
 
       &-list {
@@ -682,6 +690,14 @@
 
       &-bottom {
         margin-bottom: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: auto;
+          width: 120%;
+          // object-fit: cover;
+        }
 
         &-more {
           &-button {
