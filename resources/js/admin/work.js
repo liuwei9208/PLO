@@ -233,7 +233,8 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
                 attendanceTime.addEventListener('click', (e) => {
                     let onlyTimeText = attendanceTime.textContent.trim();;
                     const [start, end] = onlyTimeText.split(' - ');
-                    const attendanceDate = workAttendance.dataset.date;
+                    const attendanceDate = attendanceTime.dataset.date;
+                    console.log("111", attendanceDate)
                     showAttendanceTimeModal(start, end, async function(selectedStart, selectedEnd) {
                         let attendance_id = workAttendance.dataset.id;
                         const cast_id = workAttendance.closest('.work-row').dataset.cast;
@@ -259,7 +260,7 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
             document.querySelectorAll('.attendance-close').forEach(attendanceClose => {
                 attendanceClose.addEventListener('click', async (e) => {
                     const workAttendance = attendanceClose.closest(".work-attendance");
-                    const date = workAttendance.dataset.date;
+                    const date = workAttendance.querySelector(".attendance-time").dataset.date;
                     deleteAttendance(workAttendance, date);
                 })
             });
