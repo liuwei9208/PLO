@@ -1,4 +1,12 @@
-<div class="drawer" id="drawer">
+<div class="drawer" id="drawer" data-pushbar-id="right" data-pushbar-direction="right">
+  <button class="drawer-toggle active" data-pushbar-close>
+    <div class="drawer-toggle-bars">
+      <span class="drawer-toggle-bar"></span>
+      <span class="drawer-toggle-bar"></span>
+      <span class="drawer-toggle-bar"></span>
+    </div>
+    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+  </button>
   <nav class="drawer-nav">
     <ul>
       <li class="drawer-nav-item">

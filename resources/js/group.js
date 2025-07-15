@@ -3,20 +3,24 @@ import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import Scroll from './group/Scroll'
-import Header from './group/Header'
-import Drawer from './group/Drawer'
+// import Scroll from './group/Scroll'
+// import Header from './group/Header'
+// import Drawer from './group/Drawer'
+import Pushbar from './group/pushbar'
 
 /** Scroll */
-const scroll = new Scroll()
+// const scroll = new Scroll()
 
 /** Header */
 // const header = new Header()
 
 /** Drawer */
-const drawer = new Drawer({ scroll: scroll })
+// const drawer = new Drawer({ scroll: scroll })
 
-
+const pushbar = new Pushbar({
+  blur: true,
+  overlay: true,
+});
 
 new Swiper('.newface-slide', {
   modules: [ Autoplay, Navigation ],

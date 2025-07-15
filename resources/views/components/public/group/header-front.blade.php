@@ -21,7 +21,7 @@
   </div>
 
 </header>
-<button class="drawer-toggle" id="drawer-toggle">
+<button class="drawer-toggle" id="drawer-toggle" data-pushbar-target="right">
   <div class="drawer-toggle-bars">
     <span class="drawer-toggle-bar"></span>
     <span class="drawer-toggle-bar"></span>
