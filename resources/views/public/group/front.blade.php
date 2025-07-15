@@ -444,7 +444,16 @@
         </a>
       </div> --}}
     </div>
-    <a href="#"  class="movie-more more-button more-button-title">もっと見る</a>
+    <a href="#"  class="movie-more more-button more-button-title" id="movie_more_button">もっと見る</a>
+    <ul class="movie-content-bottom-shops ">
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'pussycat']) }}"><li class="movie-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'shizuku']) }}"><li class="movie-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'miyabi']) }}"><li class="movie-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'en']) }}"><li class="movie-content-bottom-shops-item " data-shop="en">艶</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'shiroganeze']) }}"><li class="movie-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'lovestory']) }}"><li class="movie-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
+    </ul>
+
   </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
@@ -502,6 +511,17 @@ document.addEventListener('DOMContentLoaded', function() {
       shopsList.style.display = 'flex';
     });
   }
+
+  const movieMoreButton = document.getElementById('movie_more_button');
+  const movieShopsList = document.querySelector('.movie-content-bottom-shops');
+
+  if (movieMoreButton && movieShopsList) {
+    movieMoreButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      movieShopsList.style.display = 'flex';
+    });
+  }
+
   // Video.js functionality
   // videojs(document.querySelectorAll('.video-js'));
   // Drawer functionality
