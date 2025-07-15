@@ -178,5 +178,18 @@ class WorkController extends Controller
         return response()->json(['status' => 'success', 'attendance_id' => $attendance->id]);
     }
 
+    public function deleteAttendance(Request $request): JsonResponse
+    {
+        if ( !$request->expectsJson() ){
+            abort(404);
+        }
+        Log::info($request->all());
 
+        $attendance_id = $request->input('attendance_id');
+        Reservation::where('attendance_id', $attendance_id)->delete();
+        $attendance = Attendance::find($attendance_id);
+        $attendance->delete();
+
+        return response()->json(['status' => 'success', 'attendance_id' => $attendance_id]);
+    }
 }

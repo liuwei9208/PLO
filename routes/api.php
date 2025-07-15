@@ -28,6 +28,7 @@ Route::middleware(['auth:sanctum'])->prefix('work')->group(function () {
     // Route::prefix('schedule')->group(function () {
     Route::post('/', [WorkController::class, 'showCastsSchedule']);
     Route::post('/updateattendance', [WorkController::class, 'updateAttendanceTime']);
+    Route::post('/deleteattendance', [WorkController::class, 'deleteAttendance']);
 });
 Route::middleware('auth:sanctum')->prefix('member')->group(function () {
 // Route::prefix('member')->group(function () {
