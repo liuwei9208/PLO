@@ -24,6 +24,18 @@
       <img src="{{ asset('assets/img/group/mv/event.jpg') }}" alt="">
       {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
     </picture>
+    @elseif(request()->routeIs('public.group.newcomer'))
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/sinjin.jpg') }}">
+      <img src="{{ asset('assets/img/group/mv/sinjin.jpg') }}" alt="">
+      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
+    </picture>
+    @elseif(request()->routeIs('public.group.pickup'))
+    <picture>
+      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/pickup.jpg') }}">
+      <img src="{{ asset('assets/img/group/mv/pickup.jpg') }}" alt="">
+      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
+    </picture>
     @else
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.jpg') }}">
