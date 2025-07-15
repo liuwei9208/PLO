@@ -302,7 +302,7 @@
   position: fixed;
   // top: 1rem;
   // right: 1rem;
-  z-index: 9999;
+  z-index: 999;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -448,37 +448,37 @@
 
 // Drawer styles
 .drawer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 999;
-  width: 100%;
-  min-height: 100dvh;
-  background-color: #FFF;
-  overflow: hidden;
-  transition: .3s;
+  // position: absolute;
+  // top: 0;
+  // right: 0;
+  // z-index: 999;
+  // width: 100%;
+  // min-height: 100dvh;
+  // background-color: #FFF;
+  // overflow: hidden;
+  // transition: .3s;
 
-  &:not(.--shown) {
-    position: fixed;
-    pointer-events: none;
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+  // &:not(.--shown) {
+  //   position: fixed;
+  //   pointer-events: none;
+  //   opacity: 0;
+  //   transform: translateY(-10px);
+  // }
 
-  @at-root .drawer-base {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: z-index(10);
-    height: 100dvh;
-    transition: .25s;
-    &:not(.--shown) {
-      pointer-events: none;
-      visibility: hidden;
-      opacity: 0;
-    }
-  }
+  // @at-root .drawer-base {
+  //   position: fixed;
+  //   top: 0;
+  //   right: 0;
+  //   left: 0;
+  //   z-index: z-index(10);
+  //   height: 100dvh;
+  //   transition: .25s;
+  //   &:not(.--shown) {
+  //     pointer-events: none;
+  //     visibility: hidden;
+  //     opacity: 0;
+  //   }
+  // }
 
   .drawer-nav {
     overflow: auto;
