@@ -154,7 +154,7 @@ const eventSlider = new Swiper('.event-slider', {
 
       // サムネイルスライダーを同期
       if (thumbsSwiper.slides) {
-        // thumbsSwiper.slideToLoop(realIndex, 0);
+        thumbsSwiper.slideToLoop(realIndex, 0);
 
         // すべてのサムネイルからアクティブクラスを削除
         const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
