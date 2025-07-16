@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\VisitController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WorkController;
+use App\Http\Controllers\Admin\ReviewController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -242,7 +243,12 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
     Route::prefix('work')->name('work.')->group(function () {
         Route::get('/', [WorkController::class, 'index'])->name('index');
     });
-
+    Route::prefix('review')->name('review.')->group(function () {
+        Route::get('/', [ReviewController::class, 'index'])->name('index');
+        Route::get('{id}', [ReviewController::class, 'show'])->name('detail');
+        Route::put('{id}/update', [ReviewController::class, 'update']);
+        Route::put('{id}/delete', [ReviewController::class, 'delete']);
+    });
     Route::prefix('fee')->name('fee.')->group(function () {
         Route::get('/', [FeeController::class, 'index'])->name('index');
         Route::get('{id}', [FeeController::class, 'show'])->where('id', '[0-9]+')->name('detail');
