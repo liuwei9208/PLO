@@ -240,15 +240,22 @@
   </div>
   @endif
   <!-- 新人情報 - New Face -->
+  @if($newfaces_this_month->count() > 0)
   <section class="newface">
+  @endif
     @if($newfaces_this_month->count() > 0)
+    <div class="newface-main">
     <div class="section-title">
+      <div class="newface-border">
       <span class="section-title-en title-font front-title">
         {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
         <span>N</span><span>E</span><span>W</span> <span>F</span><span>A</span><span>C</span><span>E</span>
       </span>
       <h2 class="newface-title-sm title-font-sm">新人情報</h2>
+      </div>
     </div>
+    </div>
+
     @endif
     @if($newfaces_this_week->count() > 0)
     <div class="newface-slide content-wrapper">
@@ -277,7 +284,10 @@
     @if($newfaces_this_month->count() > 0)
     <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button more-button-title">もっと見る</a>
     @endif
+  @if($newfaces_this_month->count() > 0)
+  {{-- </div> --}}
   </section>
+  @endif
   <!-- 最新写メ日記 - Photo Diary -->
   {{-- <div class="mock">
     <picture>
@@ -444,7 +454,16 @@
         </a>
       </div> --}}
     </div>
-    <a href="#"  class="movie-more more-button more-button-title">もっと見る</a>
+    <a href="#"  class="movie-more more-button more-button-title" id="movie_more_button">もっと見る</a>
+    <ul class="movie-content-bottom-shops ">
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="en">艶</li></a>
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
+    </ul>
+
   </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
@@ -502,6 +521,17 @@ document.addEventListener('DOMContentLoaded', function() {
       shopsList.style.display = 'flex';
     });
   }
+
+  const movieMoreButton = document.getElementById('movie_more_button');
+  const movieShopsList = document.querySelector('.movie-content-bottom-shops');
+
+  if (movieMoreButton && movieShopsList) {
+    movieMoreButton.addEventListener('click', function(e) {
+      e.preventDefault();
+      movieShopsList.style.display = 'flex';
+    });
+  }
+
   // Video.js functionality
   // videojs(document.querySelectorAll('.video-js'));
   // Drawer functionality
