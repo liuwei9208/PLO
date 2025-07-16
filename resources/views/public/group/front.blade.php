@@ -240,15 +240,22 @@
   </div>
   @endif
   <!-- 新人情報 - New Face -->
+  @if($newfaces_this_month->count() > 0)
   <section class="newface">
+  @endif
     @if($newfaces_this_month->count() > 0)
+    <div class="newface-main">
     <div class="section-title">
+      <div class="newface-border">
       <span class="section-title-en title-font front-title">
         {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
         <span>N</span><span>E</span><span>W</span> <span>F</span><span>A</span><span>C</span><span>E</span>
       </span>
       <h2 class="newface-title-sm title-font-sm">新人情報</h2>
+      </div>
     </div>
+    </div>
+
     @endif
     @if($newfaces_this_week->count() > 0)
     <div class="newface-slide content-wrapper">
@@ -277,7 +284,10 @@
     @if($newfaces_this_month->count() > 0)
     <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button more-button-title">もっと見る</a>
     @endif
+  @if($newfaces_this_month->count() > 0)
+  {{-- </div> --}}
   </section>
+  @endif
   <!-- 最新写メ日記 - Photo Diary -->
   {{-- <div class="mock">
     <picture>

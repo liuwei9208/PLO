@@ -154,7 +154,7 @@ const eventSlider = new Swiper('.event-slider', {
 
       // サムネイルスライダーを同期
       if (thumbsSwiper.slides) {
-        thumbsSwiper.slideToLoop(realIndex, 0);
+        // thumbsSwiper.slideToLoop(realIndex, 0);
 
         // すべてのサムネイルからアクティブクラスを削除
         const thumbnails = document.querySelectorAll('.event-pagination .event-slide-image');
@@ -203,8 +203,9 @@ if (eventSliderElement) {
 }
 
 // DOMContentLoadedイベントで初期化
-document.addEventListener('DOMContentLoaded', () => {
-  const mv = document.querySelector('.mv');
+// document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
+    const mv = document.querySelector('.mv');
   if (mv) {
     console.log({mv});
     console.log(mv.offsetHeight);
@@ -220,6 +221,32 @@ document.addEventListener('DOMContentLoaded', () => {
     const main = document.querySelector('.main');
     if (main) {
       main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
+    }
+  }
+
+  const newface = document.querySelector('.newface');
+  if (newface) {
+    let newfaceHeight = newface.offsetHeight;
+    console.log({newfaceHeight});
+    const newfaceBorder = document.querySelector('.newface-main');
+    console.log({newfaceBorder});
+    if (newfaceBorder) {
+      console.log(newfaceBorder.offsetHeight);
+      const body = document.querySelector('body');
+      const fullWidth = body.clientWidth;
+      console.log({fullWidth});
+      if (fullWidth < 768) {
+        newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight + 10;
+      } else if (fullWidth >= 768 && fullWidth < 1440) {
+        newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 0;
+      }else{
+        newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 30;
+      }
+      console.log({newfaceHeight});
+      document.documentElement.style.setProperty('--newface-height', `${newfaceHeight}px`);
+      // newfaceBorder.style.setProperty('--newface-height', `${newfaceHeight}px`);
+      // const border = document.querySelector('.section-title');
+      // console.log(getComputedStyle(border).getPropertyValue('--newface-height'));
     }
   }
 });

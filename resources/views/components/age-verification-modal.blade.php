@@ -35,7 +35,8 @@ function confirmAge(isAdult) {
 
     if (isAdult) {
         // 18歳以上の場合
-        localStorage.setItem('ageVerified', 'true');
+        // localStorage.setItem('ageVerified', 'true');
+        sessionStorage.setItem('ageVerified', 'true');
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     } else {
@@ -47,7 +48,8 @@ function confirmAge(isAdult) {
 
 // ページ読み込み時に年齢確認をチェック
 document.addEventListener('DOMContentLoaded', function() {
-    const ageVerified = localStorage.getItem('ageVerified');
+    // const ageVerified = localStorage.getItem('ageVerified');
+    const ageVerified = sessionStorage.getItem('ageVerified');
     const modal = document.getElementById('{{ $id }}');
 
     if (!ageVerified || ageVerified == 'false') {
