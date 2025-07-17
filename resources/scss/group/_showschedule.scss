@@ -427,7 +427,15 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
+    border: 3px solid $border-color;
+    border-radius: 60px;
 
+    @media #{media-query(sm)} {
+      border-radius: 30px;
+    }
+    @media #{media-query(md)} {
+      border-radius: 40px;
+    }
     &-item {
       margin-bottom: 0;
       width: 100%;
@@ -939,7 +947,7 @@
       }
     }
 
-    
+
   }
 }
 
