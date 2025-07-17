@@ -13,8 +13,8 @@
     </span>
     <h2 class="section-title-ja title-font-sm">ピックアップ</h2>
   </div>
-  <ul class="pickup-shops content-wrapper">
-    <div class="pickup-shop-button" >
+  <ul class="pickup-shops ">
+    <div class="pickup-shop-button content-wrapper" >
       <li class="pickup-shop-detail" data-shop="all">
         <span class="shop-text">
           <span class="shop-name">ALL</span>
@@ -64,7 +64,7 @@
       </li>
     </div>
 
-    <div class="pickup-list-detail " data-shop="all" >
+    <div class="pickup-list-detail content-wrapper" data-shop="all" >
     @foreach ($pickups as $pickup)
     <a
     href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
