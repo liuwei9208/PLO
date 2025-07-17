@@ -203,18 +203,35 @@ if (eventSliderElement) {
 }
 
 // DOMContentLoadedイベントで初期化
-// document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+  const mv = document.querySelector('.mv');
+  const body = document.querySelector('body');
+
+  if (mv) {
+    // if ( body.clientWidth < 768){
+    //   mv.style.width = `${body.clientWidth}px`;
+
+    // }
+  }
+});
 window.addEventListener('load', () => {
     const mv = document.querySelector('.mv');
+    const body = document.querySelector('body');
+
   if (mv) {
     console.log({mv});
-    console.log(mv.offsetHeight);
-    console.log(mv.clientHeight);
+    console.log(body.clientWidth);
+    console.log(mv.offsetWidth);
+    console.log(mv.clientWidth);
     let logo_height = 0;
     const logo = document.querySelector('.header-logo');
     if (logo) {
       logo_height = logo.offsetHeight;
     }
+    // if ( body.clientWidth < 768){
+    //   mv.style.width = `${body.clientWidth}px`;
+
+    // }
     console.log({logo_height});
     console.log(logo.clientHeight);
     mv.style.top = `${logo_height}px`;
@@ -232,7 +249,6 @@ window.addEventListener('load', () => {
     console.log({newfaceBorder});
     if (newfaceBorder) {
       console.log(newfaceBorder.offsetHeight);
-      const body = document.querySelector('body');
       const fullWidth = body.clientWidth;
       console.log({fullWidth});
       if (fullWidth < 768) {

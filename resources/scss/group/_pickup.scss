@@ -442,15 +442,20 @@
 
    .pickup-list-detail {
       display: grid;
+      border: 3px solid $border-color;
+      border-radius: 60px;
+
       @media #{media-query(sm)} {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+        gap: 5px;
         margin: 30px auto 0;
+        border-radius: 30px;
       }
       @media #{media-query(md)} {
         grid-template-columns: repeat(3, 1fr);
         gap: 40px;
         margin: 50px auto 0;
+        border-radius: 40px;
       }
       @media #{media-query(lg)} {
         grid-template-columns: repeat(3, 1fr);

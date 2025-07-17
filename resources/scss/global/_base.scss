@@ -50,7 +50,7 @@ a {
     width: calc(100% - 80px);
   }
   @media #{media-query(sm)} {
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
   }
 }
 
