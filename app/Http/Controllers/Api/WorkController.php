@@ -42,7 +42,9 @@ class WorkController extends Controller
             $endDate = $date->copy()->addDays(6)->endOfDay();
             $is_public = true;
 
-            $query = Cast::where('is_public', 1);
+            $query = Cast::where('is_public', 1)
+            ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+            ->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
 
             $shop = $request->input('shop');
             Log::info("1111");
