@@ -232,7 +232,9 @@ window.addEventListener('load', () => {
     if (draw) {
       const draw_height = draw.offsetHeight;
       console.log({draw_height});
-      draw.style.top = `${logo_height - draw_height}px`;
+      if (logo_height > draw_height) {
+        draw.style.top = `${logo_height - draw_height}px`;
+      }
     }
     // if ( body.clientWidth < 768){
     //   mv.style.width = `${body.clientWidth}px`;
