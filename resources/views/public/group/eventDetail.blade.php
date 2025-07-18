@@ -6,8 +6,12 @@
   <!-- Event List -->
   <section class="event">
     <div class="event-title">
-      <img src="{{ asset('assets/img/group/event/event_detail.svg') }}" alt="Event">
-      <h2 class="event-title-ja">イベント詳細</h2>
+      {{-- <img src="{{ asset('assets/img/group/event/event_detail.svg') }}" alt="Event"> --}}
+      <h3 class="event-title-en title-font front-title">
+        <span>E</span><span>V</span><span>E</span><span>N</span><span>T</span>
+      </h3>
+
+      <h2 class="event-title-ja title-font-sm">イベント詳細</h2>
     </div>
     <div class="event-detail">
       <div class="event-detail-image">
