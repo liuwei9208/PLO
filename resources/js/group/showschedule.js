@@ -99,6 +99,11 @@ async function getCastsSchedule(date, page_tmp, limit_tmp, skip_tmp, pages_tmp, 
 
 function drawCastsSchedule(casts){
   const castsSchedule = document.querySelector('.schedule-person-info-list');
+  if (casts.length == 0){
+    castsSchedule.innerHTML = '';
+    castsSchedule.style.display = 'none';
+    return;
+  }
   castsSchedule.innerHTML = '';
   casts.forEach(cast => {
     const castItem = document.createElement('div');

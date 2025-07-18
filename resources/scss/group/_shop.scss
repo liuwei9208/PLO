@@ -261,23 +261,23 @@
         height: 40px;
       }
       &.--pussycat {
-        background-color: rgba($shop-color-pussycat, 0.5);
+        background-color: rgba($shop-color-pussycat, 1);
       }
       &.--shizuku {
-        background-color: rgba($shop-color-shizuku, 0.5);
+        background-color: rgba($shop-color-shizuku, 1);
       }
       &.--miyabi {
-        background-color: rgba($shop-color-miyabi, 0.5);
+        background-color: rgba($shop-color-miyabi, 1);
       }
       &.--en {
-        background-color: rgba($shop-color-en, 0.5);
+        background-color: rgba($shop-color-en, 1);
         // color: #000;
       }
       &.--shiroganeze {
-        background-color: rgba($shop-color-shiroganeze, 0.5);
+        background-color: rgba($shop-color-shiroganeze, 1);
       }
       &.--lovestory {
-        background-color: rgba($shop-color-lovestory, 0.5);
+        background-color: rgba($shop-color-lovestory, 1);
       }
     }
     .shop-group-item-logo {
@@ -369,10 +369,10 @@
             padding: 0.2em 1.2em 0.2em 0em;
           }
           @media #{media-query(md)} {
-            padding: 0.2em 1.2em 0.2em 0em;
+            padding: 0.2em 1.6em 0.2em 0em;
           }
           @media #{media-query(lg)} {
-            padding: 0.2em 1.2em 0.2em 0em;
+            padding: 0.2em 2.0em 0.2em 0em;
           }
         }
         .shop-group-item-intro-table-td-label {
@@ -382,11 +382,11 @@
           }
           @media #{media-query(md)} {
             width: 35%;
-            padding: 0.2em 0em 0.2em 1.2em;
+            padding: 0.2em 0em 0.2em 1.6em;
           }
           @media #{media-query(lg)} {
             width: 30%;
-            padding: 0.2em 0em 0.2em 1.2em;
+            padding: 0.2em 0em 0.2em 2.8em;
           }
           &.--pussycat {
             color: $shop-color-pussycat;
