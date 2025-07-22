@@ -321,7 +321,8 @@
                 {{ $diary->name }}
               </div>
               <div class="diary-content-item-date">
-                {{ $diary->updated_at->format('y.m.d') }}
+                {{-- {{ $diary->updated_at->format('y.m.d') }} --}}
+                {{ $diary->updated_at }}
               </div>
             </a>
           </div>

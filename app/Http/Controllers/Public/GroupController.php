@@ -64,28 +64,55 @@ class GroupController extends Controller
         ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 7 : 9)
         ->orderBy('published_at', 'desc')
         ->get();
-
-        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
-            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
-            ->where('diaries.is_public', 1)
-            ->where('casts.is_public', 1)
-            ->whereNot('shops.slug', 'touchvip')
-            ->whereNot('shops.slug', 'headquarter')
-            ->groupBy('shops.id')
-            ->havingRaw('MAX(diaries.updated_at)')
-            ->orderBy('shops.rank', 'asc')
-            // ->orderBy('diaries.updated_at', 'desc') // ここを明示
-            ->select([
-                'diaries.id',
-                'diaries.subject',
-                'diaries.updated_at',
-                'casts.name',
-                'diaries.photo',
-                'casts.id as cast_id',
-                'shops.slug as shop_slug',
-            ])
-            // ->limit(9)
-            ->get();
+        $diaries_sql = 'SELECT
+        `'.env('DB_DATABASE').'`.diaries.id,
+        `'.env('DB_DATABASE').'`.diaries.subject,
+        DATE_FORMAT(`'.env("DB_DATABASE").'`.diaries.updated_at, "%y.%m.%d") as updated_at,
+        `'.env('DB_DATABASE').'`.casts.name,
+        `'.env('DB_DATABASE').'`.diaries.photo,
+        `'.env('DB_DATABASE').'`.casts.id as cast_id,
+        `'.env('DB_DATABASE').'`.shops.slug as shop_slug
+        FROM `'.env('DB_DATABASE').'`.diaries
+LEFT JOIN `'.env('DB_DATABASE').'`.casts
+ON `'.env('DB_DATABASE').'`.diaries.`cast_id` = `'.env('DB_DATABASE').'`.casts.`id`
+INNER JOIN (
+SELECT `'.env('DB_DATABASE').'`.casts.`shop_id` AS shop_id , MAX(`'.env('DB_DATABASE').'`.diaries.`updated_at`) AS last_created
+FROM `'.env('DB_DATABASE').'`.diaries
+LEFT JOIN `'.env('DB_DATABASE').'`.casts
+ON `'.env('DB_DATABASE').'`.casts.`id` = `'.env('DB_DATABASE').'`.diaries.`cast_id`
+WHERE `'.env('DB_DATABASE').'`.diaries.`is_public` = 1 AND `'.env('DB_DATABASE').'`.casts.`is_public` = 1
+GROUP BY `'.env('DB_DATABASE').'`.casts.shop_id
+) AS qry1
+ON qry1.shop_id = `'.env('DB_DATABASE').'`.casts.`shop_id` AND `'.env('DB_DATABASE').'`.diaries.`updated_at` = qry1.last_created
+LEFT JOIN `'.env('DB_DATABASE').'`.shops
+ON `'.env('DB_DATABASE').'`.casts.`shop_id` = `'.env('DB_DATABASE').'`.shops.`id`
+WHERE `'.env('DB_DATABASE').'`.diaries.`is_public` = 1 AND `'.env('DB_DATABASE').'`.casts.`is_public` = 1
+AND `'.env('DB_DATABASE').'`.shops.`slug` != "touchvip" AND `'.env('DB_DATABASE').'`.shops.`slug` != "headquarter"
+ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
+        // dd($diaries_sql);
+        $diaries = DB::select($diaries_sql);
+        // dd($diaries);
+        // $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        //     ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        //     ->where('diaries.is_public', 1)
+        //     ->where('casts.is_public', 1)
+        //     ->whereNot('shops.slug', 'touchvip')
+        //     ->whereNot('shops.slug', 'headquarter')
+        //     ->groupBy('shops.id')
+        //     ->havingRaw('MAX(diaries.updated_at)')
+        //     ->orderBy('shops.rank', 'asc')
+        //     // ->orderBy('diaries.updated_at', 'desc') // ここを明示
+        //     ->select([
+        //         'diaries.id',
+        //         'diaries.subject',
+        //         'diaries.updated_at',
+        //         'casts.name',
+        //         'diaries.photo',
+        //         'casts.id as cast_id',
+        //         'shops.slug as shop_slug',
+        //     ])
+        //     // ->limit(9)
+        //     ->get();
         $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
         ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
         ->where('videos.is_public', 1)
