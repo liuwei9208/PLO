@@ -3,7 +3,8 @@
   class="newface-item is-{{ $cast->shop->slug }}"
 >
   <span class="newface-date">
-    {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }}
+    {{-- {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('n/j') : '' }} --}}
+    {{ $cast->created_at ? \Carbon\Carbon::createFromTimeString($cast->created_at)->format('Y.m.d D').'　入店' : '' }}
   </span>
   <div class="newface-photo --{{ $cast->shop->slug }}">
     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
