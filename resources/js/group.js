@@ -98,16 +98,16 @@ const thumbsSwiper = new Swiper('.event-pagination', {
   spaceBetween: 4,
   watchSlidesProgress: true,
   loop: true,
-  loopedSlides: 4,
+  loopedSlides: 5,
   breakpoints: {
     320: {
       slidesPerView: 4,
     },
     768: {
-      slidesPerView: 4,
+      slidesPerView: 6,
     },
     1024: {
-      slidesPerView: 4,
+      slidesPerView: 6,
     }
   }
 });
@@ -154,6 +154,7 @@ const eventSlider = new Swiper('.event-slider', {
 
       // サムネイルスライダーを同期
       if (thumbsSwiper.slides) {
+        console.log({realIndex});
         thumbsSwiper.slideToLoop(realIndex, 0);
 
         // すべてのサムネイルからアクティブクラスを削除

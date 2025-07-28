@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     breakpoints: {
       768: {
-        slidesPerView: 3,
-        spaceBetween: 30,
+        slidesPerView: 1,
+        spaceBetween: 10,
       }
     }
   });

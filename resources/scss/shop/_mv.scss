@@ -5,10 +5,13 @@
 @use '../global/vars' as *;
 
 .mv {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -500;
   width: 100%;
   @media #{media-query(lg)} {
-    padding: 104px 0 0;
+    // padding: 104px 0 0;
   }
 
   .mv-main {

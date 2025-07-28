@@ -1,12 +1,40 @@
-<header class="header">
+<header class="header --{{ $shop->slug }}">
   <div class="header-logo --shizuku lg md sm" id="header-logo">
-    <a href="{{ url('/shizuku') }}">
-      <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="" class="pc-logo">
-      <img src="{{ asset('assets/img/logo/logo-sm.svg') }}" alt="" class="sp-logo">
+    <a href="{{ url('/'.$shop->slug) }}">
+      {{-- <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="" class="pc-logo"> --}}
+      {{-- <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-lg.svg') }}" alt="" class="pc-logo">
+      <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-sm.svg') }}" alt="" class="sp-logo"> --}}
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-lg.svg') }}" alt="" class="pc-logo">
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-sm.svg') }}" alt="" class="sp-logo">
     </a>
   </div>
   <div class="header-nav lg">
-    <img src="{{ asset('assets/img/shop/' . 'shizuku' . '/nav-mock.svg') }}" alt="">
+    {{-- <img src="{{ asset('assets/img/shop/' . 'shizuku' . '/nav-mock.svg') }}" alt=""> --}}
+    <div class="header-nav-lists">
+      <div class="header-nav-lists-opentime">
+        <p>朝8:30〜
+        </p>
+        <p>予約可能</p>
+      </div>
+      <div class="header-nav-lists-contact">
+        <a href="tel:011-533-8988">
+          <img src="{{ asset('assets/img/shop/call.png') }}" alt="">
+          <span>011-533-8988</span>
+        </a>
+      </div>
+      <div class="header-nav-lists-signin">
+        <a href="{{ route('login') }}">
+          <img src="{{ asset('assets/img/shop/signin-e.png') }}" alt="">
+          <span>ログイン</span>
+        </a>
+      </div>
+      <div class="header-nav-lists-signup">
+        <a href="{{ route('register') }}">
+          <img src="{{ asset('assets/img/shop/signup.png') }}" alt="">
+          <span>新規登録</span>
+        </a>
+      </div>
+    </div>
   </div>
   <button class="header-toggle" id="drawer-toggle">
     <i class="header-toggle-bar"></i>
@@ -45,7 +73,7 @@
           <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
           </a></li>
           @if(Auth::guard('member')->check())
-          <li><a href="{{ route('public.shop.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
+          <li><a href="#"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
           </a></li>
           @endif
           @if (Auth::guard('member')->check() || Auth::guard('web')->check())

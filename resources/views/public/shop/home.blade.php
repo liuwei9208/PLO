@@ -9,14 +9,17 @@
   @if ($todayCasts->count() > 0)
   <!-- Today Schedule -->
   <div class="today">
-    <h2 class="today-title title-font">
+    <h2 class="today-title title-font-midashi --{{ $shop->slug }}">
       {{-- <img src="{{ asset('assets/img/shop/' . $shop->slug . '/today/title.svg') }}" alt="Today Schedule"> --}}
       Today Schedule
+      <img src="{{ asset('assets/img/shop/calender.png') }}" alt="Today Schedule">
     </h2>
-    <div class="today-list">
+    <div class="today-lists --{{ $shop->slug }}">
+    <div class="today-list content-wrapper-shop">
       @foreach ($todayCasts as $cast)
-        <x-public.shop.today :cast="$cast" />
+        <x-public.shop.today :cast="$cast"/>
       @endforeach
+    </div>
     </div>
   </div>
   @endif
@@ -37,25 +40,81 @@
     </h2>
     <div class="new-girls-list"></div>
   </div> --}}
-  <div class="new-girls content-wrapper">
+  <div class="new-girls">
     @if($new_girls_month->count() > 0)
+    {{-- <div class="new-girls-header --{{ $shop->slug }}"> --}}
     <div class="new-girls-header">
-      <div class="new-girls-header-title title-font">
+      <div class="new-girls-header-title title-font-midashi">
         New Girls
+        <img src="{{ asset('assets/img/shop/attachment2.png') }}" alt="New Girls"/>
       </div>
       <div class="new-girls-header-button">
-        <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link content-font">
+        <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link">
           一覧を見る
         </a>
       </div>
     </div>
     @endif
     @if ($new_girls->count() > 0)
-    <div class="new-girls-list">
+    <div class="new-girls-list content-wrapper-shop">
       @foreach ($new_girls as $new_girl)
-        <div class="new-girls-item">
-          <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}">
-            <div class="new-girls-item-image">
+      {{-- <div class="new-girls-item"> --}}
+        <a class="new-girls-item" href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}">
+          {{-- <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"> --}}
+            <div class="new-girls-item-left">
+              <div class="new-girls-item-left-image">
+                <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+              </div>
+              <div class="new-girls-item-left-contents-hr">
+
+              </div>
+              <div class="new-girls-item-left-contents">
+                <div class="new-girls-item-left-contents-date">
+                    <img src="{{ asset('assets/img/shop/calender-y.png') }}" alt="Today Schedule">
+                  {{ $new_girl->created_at->format('Y:m:d')." 入店" }}
+                </div>
+                <div class="new-girls-item-left-contents-name">
+                  <img src="{{ asset('assets/img/shop/star-w.png') }}" alt="Name">
+                  {{ $new_girl->name."(".$new_girl->age.")" }}
+                </div>
+                <div class="new-girls-item-left-contents-size">
+                  <img src="{{ asset('assets/img/shop/heart-w.png') }}" alt="Size">
+                  {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
+                </div>
+                <div class="new-girls-item-left-contents-note --{{ $shop->slug }}">
+                  <div class="new-girls-item-left-contents-note-memo">
+                    {{ $new_girl->appeal_point }}
+                  </div>
+                  <div class="new-girls-item-left-contents-note-comment">
+                    {{ $new_girl->manager_comment }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{-- <div class="new-girls-item-middle">
+              <div class="new-girls-item-middle-name">
+                {{ $new_girl->name }}
+              </div>
+            </div> --}}
+            <div class="new-girls-item-right">
+              <div class="new-girls-item-right-name --{{ $shop->slug }}">
+                {{ $new_girl->name }}
+              </div>
+              <div class="new-girls-item-right-image">
+                <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
+              </div>
+              <div class="new-girls-item-right-note --{{ $shop->slug }}">
+                <div class="new-girls-item-right-note-contents">
+                  <div class="new-girls-item-right-note-contents-memo">
+                    {{ "性格：".$new_girl->pointpersonality }}
+                  </div>
+                  <div class="new-girls-item-right-note-contents-comment">
+                    {{ "スタイル：".$new_girl->style }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{-- <div class="new-girls-item-image">
               <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
               <div class="new-girls-item-image-overlay">
                 <div class="new-girls-item-image-overlay-text">
@@ -71,32 +130,35 @@
                   {{ $new_girl->appeal_point }}
                 </div>
               </div>
-            </div>
-          </a>
-        </div>
+            </div> --}}
+          {{-- </a> --}}
+        </a>
+      {{-- </div> --}}
       @endforeach
     </div>
-    <div class="new-girls-sp-slider">
+    <div class="new-girls-sp-slider content-wrapper-shop">
       <div class="news-girls-slider swiper">
         <div class="swiper-wrapper">
           @foreach($new_girls as $new_girl)
             <div class="swiper-slide">
-              <div class="new-girls-item new-girls-item-wrapper">
+              <div class="new-girls-slider-item new-girls-item-wrapper">
                 <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}">
-                  <div class="new-girls-item-image">
+                  <div class="new-girls-slider-item-image">
                     <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
-                    <div class="new-girls-item-image-overlay">
-                      <div class="new-girls-item-image-overlay-text">
+                    <div class="new-girls-slider-item-image-overlay">
+                      <div class="new-girls-slider-item-image-overlay-text">
                         {{ $new_girl->created_at->format('Y:m:d')."入店" }}
                       </div>
-                      <div class="new-girls-item-image-overlay-name">
+                      <div class="new-girls-slider-item-image-overlay-name">
                         {{ $new_girl->name."(".$new_girl->age.")" }}
                       </div>
-                      <div class="new-girls-item-image-overlay-property">
+                      <div class="new-girls-slider-item-image-overlay-property">
                         {{ "T:" . $new_girl->height." B:".$new_girl->bust." W:".$new_girl->waist." H:".$new_girl->hip }}
                       </div>
-                      <div class="new-girls-item-image-overlay-appeal">
-                        {{ $new_girl->appeal_point }}
+                      <div class="new-girls-slider-item-image-overlay-appeal">
+                        <div class="new-girls-slider-item-image-overlay-appeal-text">
+                          {{ $new_girl->appeal_point }}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -117,19 +179,21 @@
     @endif
     @if($new_girls_month->count() > 0)
     <div class="new-girls-footer-button">
-      <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-header-button-link content-font">
+      <a href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}" class="new-girls-footer-button-link content-font">
         一覧を見る
       </a>
     </div>
     @endif
   </div>
-  <div class="news-diary content-wrapper">
-    <div class="news">
-      <div class="news-header">
+  <div class="news_diary">
+  <div class="news-diary content-wrapper-shop">
+    <div class="news --{{ $shop->slug }}">
+      <div class="news-header --{{ $shop->slug }}">
         <div class="news-header-title">
-          <h2 class="news-title title-font">
+          <h2 class="news-title title-font-midashi">
             News
           </h2>
+          <img src="{{ asset('assets/img/shop/attachment3.png') }}" alt="News"/>
         </div>
         <div class="news-header-button">
           <a href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}" class="news-header-button-link content-font">
@@ -157,12 +221,13 @@
         </div>
       </div>
     </div>
-    <div class="diary-top">
-      <div class="diary-top-header">
+    <div class="diary-top --{{ $shop->slug }}">
+      <div class="diary-top-header --{{ $shop->slug }}">
         <div class="diary-top-header-title">
-          <h2 class="diary-top-title title-font">
+          <h2 class="diary-top-title title-font-midashi">
             Photo Diary
           </h2>
+          <img src="{{ asset('assets/img/shop/attachment4.png') }}" alt="Photo Diary"/>
         </div>
         <div class="diary-top-header-button">
           <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug]) }}" class="diary-top-header-button-link content-font">
@@ -194,19 +259,55 @@
       </div>
     </div>
   </div>
+  </div>
   @if ($events->count() > 0)
-  <div class="evnet">
-    <h2 class="event-title title-font">Event</h2>
-    <div class="event-main">
+  <div class="event">
+    <div class="event-title">
+      <h2 class="title-font-midashi">Event</h2>
+      <img src="{{ asset('assets/img/shop/attachment.png') }}" alt="Event"/>
+    </div>
+    <div class="event-slider swiper content-wrapper-shop">
+      <div class="swiper-wrapper">
+        @foreach($events as $event)
+          <div class="swiper-slide">
+            <div class="event-main">
+              <div class="event-main-content">
+                {{-- <div class="event-main-date">{{ $event->published_at->format('y.m.d')."  |  " }}</div> --}}
+                <h3 class="event-main-title">{{ $event->published_at->format('y.m.d')."  |  " .$event->title}}</h3>
+              </div>
+              <div class="event-main-image">
+                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                  <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+                </a>
+              </div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+      <div class="event-pagination">
+        <div class="swiper-wrapper">
+          @foreach($events as $event)
+            <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
+              <div class="event-slide-image">
+                <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
+              </div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+      <button class="event-slide-prev">
+        <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+      </button>
+      <button class="event-slide-next">
+        <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+      </button>
+    </div>    
+    {{-- <div class="event-main">
       <div class="event-main-image">
         <a href="{{ route('public.shop.event.detail', ['shop' => $shop->slug, 'id' => $events[0]->id]) }}">
           <img src="{{ asset('storage/' . $events[0]->thumbnail) }}" alt="{{ $events[0]->title }}">
         </a>
       </div>
-      {{-- <picture>
-        <source media="(max-width: 767px)" srcset="{{ asset('assets/img/shop/event-store-sm.png') }}">
-        <img src="{{ asset('assets/img/shop/event-store.png') }}" alt="Event">
-      </picture> --}}
       <div class="event-slider swiper">
         <div class="swiper-wrapper">
           @foreach ($events->skip(1) as $event)
@@ -230,15 +331,16 @@
         </div>
 
       </div>
-    </div>
+    </div> --}}
   </div>
   @endif
 
-  <div class="castlist content-wrapper">
-    <div class="castlist-header">
-      <div class="castlist-header-title">
-        <h2 class="castlist-title title-font">
+  <div class="castlist">
+    <div class="castlist-header --{{ $shop->slug }}">
+      <div class="castlist-header-title ">
+        <h2 class="castlist-header-title-content title-font-midashi">
           Cast List
+          <img src="{{ asset('assets/img/shop/attachment1.png') }}" alt="Cast List"/>
         </h2>
         <div class="castlist-header-button">
           <a href="{{ route('public.shop.castlist', ['shop' => $shop->slug]) }}" class="castlist-header-button-link content-font">
@@ -247,8 +349,8 @@
         </div>
       </div>
     </div>
-    <div class="castlist-body">
-      <div class="castlist-body-items">
+    <div class="castlist-body --{{ $shop->slug }}">
+      <div class="castlist-body-items content-wrapper-shop">
         <div class="castlist-body-items-slider swiper">
           <div class="swiper-wrapper">
             @foreach ($castlist as $cast)
@@ -273,14 +375,21 @@
             @endforeach
           </div>
           <div class="swiper-pagination"></div>
+          <div class="castlist-body-footer-slide-prev">
+            <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+          </div>
+          <div class="castlist-body-footer-slide-next">
+            <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+          </div>
         </div>
-        <div class="castlist-body-footer">
+        {{-- <div class="castlist-body-footer">
         <div class="castlist-body-footer-slide-prev">
           <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
         </div>
         <div class="castlist-body-footer-slide-next">
           <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
         </div>
+      </div> --}}
       </div>
     </div>
   </div>
@@ -313,47 +422,49 @@
     <x-public.shop.phone-link :shop="$shop" />
   </div>
 </x-public-shop-layout>
-
+@production
+  @vite(['resources/scss/shop/_today.scss', 'resources/scss/shop/newgirls.scss', 'resources/scss/shop/event.scss', 'resources/scss/shop/newsdiary.scss'])
+@endonce
 @push('scripts')
 <script>
-  import { Autoplay, Navigation, Pagination } from 'swiper/modules'
+  // import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 document.addEventListener('DOMContentLoaded', function() {
-  if (typeof Swiper !== 'undefined') {
-    const eventSlider = new Swiper('.event-slider', {
-      modules: [Navigation, Pagination, Autoplay],
-      slidesPerView: 'auto',
-      spaceBetween: 20,
-      centeredSlides: true,
-      loop: true,
-      speed: 1000,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-        reverseDirection: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-      navigation: {
-        nextEl: '.event-slide-next',
-        prevEl: '.event-slide-prev',
-      },
-      breakpoints: {
-        320: {
-          slidesPerView: 2,
-          spaceBetween: 20,
-        },
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-          centeredSlides: false,
-        }
-      }
-    });
-  } else {
-    console.error('Swiper is not loaded');
-  }
+  // if (typeof Swiper !== 'undefined') {
+  //   const eventSlider = new Swiper('.event-slider', {
+  //     modules: [Navigation, Pagination, Autoplay],
+  //     slidesPerView: 'auto',
+  //     spaceBetween: 20,
+  //     centeredSlides: true,
+  //     loop: true,
+  //     speed: 1000,
+  //     autoplay: {
+  //       delay: 3000,
+  //       disableOnInteraction: false,
+  //       reverseDirection: false,
+  //     },
+  //     pagination: {
+  //       el: '.swiper-pagination',
+  //       clickable: true,
+  //     },
+  //     navigation: {
+  //       nextEl: '.event-slide-next',
+  //       prevEl: '.event-slide-prev',
+  //     },
+  //     breakpoints: {
+  //       320: {
+  //         slidesPerView: 2,
+  //         spaceBetween: 20,
+  //       },
+  //       768: {
+  //         slidesPerView: 3,
+  //         spaceBetween: 30,
+  //         centeredSlides: false,
+  //       }
+  //     }
+  //   });
+  // } else {
+  //   console.error('Swiper is not loaded');
+  // }
 
   const mvLink = document.querySelector('.phone-link-container.--mv');
   const fixedLink = document.querySelector('.phone-link-container.--fixed');

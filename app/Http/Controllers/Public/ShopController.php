@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Models\News;
+use Illuminate\Support\Facades\DB;
 
 class ShopController extends Controller
 {
@@ -31,6 +32,7 @@ class ShopController extends Controller
                 $query->where('published_status', 2)
                     ->where('published_at', '<=', Carbon::now());
             })
+            ->orWhere('published_status',4)
             ->orderBy('published_at', 'desc')
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
@@ -50,6 +52,7 @@ class ShopController extends Controller
                 'casts.waist as waist',
                 'casts.hip as hip',
                 'casts.gallery_1 as gallery_1',
+                'casts.appeal_point as appeal_point',
                 'attendances.start_datetime as start_datetime',
                 'attendances.end_datetime as end_datetime',
                 'shops.slug as shop_slug',
@@ -76,8 +79,31 @@ class ShopController extends Controller
             ->get();
         $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('created_at', '>=', Carbon::now()->subWeek(2))
-        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
         ->get();
+        if ($new_girls) {
+            $new_girls = $new_girls->map(function ($new_girl) {
+                $sql = "SELECT group_concat(personalities.name) AS personality FROM `".env('DB_DATABASE')."`.cast_personality
+LEFT JOIN `".env('DB_DATABASE')."`.personalities
+ON cast_personality.personality_id = personalities.id
+WHERE cast_personality.cast_id = $new_girl->id;
+";
+                // dd($sql);
+                $results = DB::select($sql);
+                // dd($results[0]->personality);
+                $new_girl->pointpersonality = $results[0]->personality;
+                $sql = "SELECT GROUP_CONCAT(styles.name) AS style FROM `".env('DB_DATABASE')."`.cast_style
+LEFT JOIN `".env('DB_DATABASE')."`.styles
+ON cast_style.style_id = styles.id
+WHERE cast_style.cast_id = $new_girl->id;";
+                $results = DB::select($sql);
+                // dd($results[0]->style);
+                $new_girl->style = $results[0]->style;
+                // $new_girl->appeal_pointpersonality = $new_girl->appeal_point ?? '';
+                return $new_girl;
+            });
+        }
+        // dd($new_girls);
         $new_girls_month = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('created_at', '>=', Carbon::now()->subMonth(1))
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
