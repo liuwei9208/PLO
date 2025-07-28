@@ -124,8 +124,14 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         // dd($videos);
         $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
         // dd($diaries);
+        $pickups = Pickup::leftJoin('casts', 'pickups.cast_id', '=', 'casts.id')
+        ->where('casts.is_public', 1)
+        ->inRandomOrder()
+        ->limit(9)
+        ->get();
+        // dd($pickups);
         return view('public.group.front', [
-            'pickups' => Pickup::inRandomOrder()->limit(9)->get(),
+            'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
             'newfaces_this_month' => $newfaces_this_month,
             'events' => $events,
