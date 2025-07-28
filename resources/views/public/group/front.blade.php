@@ -116,49 +116,61 @@
     <ul class="pickup-shops content-wrapper">
       <li class="pickup-shop" data-shop="all">
         <span class="shop-text">
-          <span class="shop-name">ALL</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="pussycat">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          <span class="shop-slug">pussycat</span>
-          <span class="shop-name">プッシー<br class="sm">キャット</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="shizuku">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          <span class="shop-slug">shizuku</span>
-          <span class="shop-name">雫</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="miyabi">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          <span class="shop-slug">miyabi</span>
-          <span class.shop-name>雅</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="en">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          <span class="shop-slug">en</span>
-          <span class="shop-name">艶</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="shiroganeze">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          <span class="shop-slug">shiroganeze</span>
-          <span class="shop-name">シロガネーゼ</span>
+          <span class="shop-slug">SHOP ALL</span>
         </span>
       </li>
       <li class="pickup-shop" data-shop="lovestory">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="shop-text">
-          <span class="shop-slug">lovestory</span>
-          <span class="shop-name">ラブストーリー</span>
+          {{-- <span class="shop-slug">lovestory</span>
+          <span class="shop-name">ラブストーリー</span> --}}
+          <span class="shop-slug">ラブストーリー</span>
+          <span class="shop-name">育成型ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="pussycat">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">pussycat</span>
+          <span class="shop-name">プッシー<br class="sm">キャット</span> --}}
+          <span class="shop-slug">プッシーキャット</span>
+          <span class="shop-name">エンターテイメントヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="en">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">en</span>
+          <span class="shop-name">艶</span> --}}
+          <span class="shop-slug">艶</span>
+          <span class="shop-name">素人系人妻ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="miyabi">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">miyabi</span>
+          <span class.shop-name>雅</span> --}}
+          <span class="shop-slug">雅</span>
+          <span class="shop-name">人妻ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shizuku">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">shizuku</span>
+          <span class="shop-name">雫</span> --}}
+          <span class="shop-slug">雫</span>
+          <span class="shop-name">ハイグレードヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shiroganeze">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">shiroganeze</span>
+          <span class="shop-name">シロガネーゼ</span> --}}
+          <span class="shop-slug">シロガネーゼ</span>
+          <span class="shop-name">大人の回春メンズエステ</span>
         </span>
       </li>
     </ul>
