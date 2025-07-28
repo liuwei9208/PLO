@@ -19,11 +19,41 @@
     height: 64px;
   }
   @media #{media-query(lg)} {
-    height: 104px;
-    padding: 6px 30px 0;
-    background-color: rgba($color: #FFF, $alpha: 0.93);
+    height: 65px;
+    // padding: 6px 0px 0;
+    // background-color: rgba($color: #FFF, $alpha: 0.93);
   }
-
+  &.--shizuku {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-shizuku, 0.3);
+      // opacity: 0.3;
+    }
+  }
+  &.--miyabi {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-miyabi, 0.3);
+    }
+  }
+  &.--en {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-en, 0.3);
+    }
+  }
+  &.--shiroganeze {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-shiroganeze, 0.3);
+    }
+  }
+  &.--lovestory {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-lovestory, 0.3);  
+    }
+  }
+  &.--pussycat {
+    @media #{media-query(lg)} {
+      background-color: rgba($shop-color-pussycat, 0.3);
+    }
+  }
   &.-scrolled {
     top: -100%;
   }
@@ -38,28 +68,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $shop-color-shizuku;
+    // background-color: $shop-color-shizuku;
     z-index: 11;
     margin-right: auto;
     @media #{media-query(sm)} {
       width: 180px;
       height: 160px;
-      padding: 20px 0 30px;
-      background-color: $shop-color-shizuku;
-      clip-path: path("M0,0v141.25C18.25,153.11,40.03,160,63.42,160C127.8,160,180,107.8,180,43.42c0-15.35-2.97-30-8.36-43.42H0z");
+      top:48px;
+      // padding: 20px 0 30px;
+      // background-color: $shop-color-shizuku;
+      clip-path: path("m178.57,0H0v154.19c12.68,3.77,26.1,5.81,40,5.81,77.32,0,140-62.68,140-140,0-6.79-.49-13.47-1.43-20Z");
     }
     @media #{media-query(md)} {
       width: 180px;
       height: 160px;
-      padding: 20px 0 30px;
-      background-color: $shop-color-shizuku;
-      clip-path: path("M0,0v141.25C18.25,153.11,40.03,160,63.42,160C127.8,160,180,107.8,180,43.42c0-15.35-2.97-30-8.36-43.42H0z");
+      top:48px;
+      // padding: 20px 0 30px;
+      // background-color: $shop-color-shizuku;
+      clip-path: path("m178.57,0H0v154.19c12.68,3.77,26.1,5.81,40,5.81,77.32,0,140-62.68,140-140,0-6.79-.49-13.47-1.43-20Z");
     }
     @media #{media-query(lg)} {
       width: 320px;
       height: 180px;
-      padding: 20px 0 30px;
-      clip-path: path("M1.24,0C0.43,6.55,0,13.23,0,20c0,88.37,71.63,160,160,160s160-71.63,160-160c0-6.77-0.43-13.45-1.24-20H1.24z");
+      top: 57px;
+      // padding: 20px 0 30px;
+      // clip-path: path("M1.24,0C0.43,6.55,0,13.23,0,20c0,88.37,71.63,160,160,160s160-71.63,160-160c0-6.77-0.43-13.45-1.24-20H1.24z");
+      clip-path: path("m1.24,0C.43,6.55,0,13.23,0,20c0,88.37,71.63,160,160,160S320,108.37,320,20c0-6.77-.43-13.45-1.24-20H1.24Z");
     }
 
     a {
@@ -92,7 +126,7 @@
     }
 
     &.--shizuku {
-      background-color: $shop-color-shizuku;
+      // background-color: $shop-color-shizuku;
       a {
         @media #{media-query(sm)} {
           width: 180px;
@@ -128,8 +162,77 @@
     top: 0;
     right: 30px;
     z-index: 12;
+    
     @media #{media-query(lg)} {
       margin: 0 80px 0 30px;
+    }
+    &-lists {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-family: $font-midashi-min;
+      &-opentime{
+        background-color: #F933A7;
+        padding: 10px 20px;
+        // border-radius: 40px;
+        p{
+          font-size: 16px;
+          color: #fff;
+          line-height: 1.4;
+        }
+      }
+      &-contact{
+        a{
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          img{
+            width: 50px;
+            height: 50px;
+          }
+          span{
+            font-size: 53px;
+            color: #000;
+          }
+        }
+      }
+      &-signin{
+        a{
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          border-radius: 40px;
+          background-color: #000;
+          padding: 10px 20px;
+          img{
+            width: 30px;
+            height: 30px;
+          }
+          span{
+            font-size: 19px;
+            color: #fff;
+          }
+        }
+      }
+      &-signup{
+        a{
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          border-radius: 40px;
+          background-color: #F933A7;
+          padding: 10px 20px;
+          img{
+            width: 30px;
+            height: 30px;
+          }
+          span{
+            font-size: 19px;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 

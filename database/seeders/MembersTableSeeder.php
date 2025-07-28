@@ -32,7 +32,7 @@ class MembersTableSeeder extends Seeder
 
         // $customerRole = Role::create(['name' => 'customer']);
 
-        $memberRole = Role::create(['name' => 'member']);
+        // $memberRole = Role::create(['name' => 'member']);
 
         Member::factory()->create([
             'id' => 99990,

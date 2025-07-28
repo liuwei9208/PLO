@@ -1,5 +1,27 @@
-<footer class="footer" id="footer">
-  <div class="footer-content">
+<footer class="footer --{{ $shop->slug }}" id="footer">
+  <div class="footer__nav-wrapper content-wrapper">
+    <nav class="footer__nav">
+      <div class="footer__nav-item"><a href="{{ url('#')}}">HOME</a></div>
+      <div class="footer__nav-item"><a href="{{ url('#')}}">最新情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.shop.fee', $shop->slug) }}">料金システム</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.shop.castlist', $shop->slug) }}">キャスト一覧</a></div>
+      <div class="footer__nav-item"><a href="{{ url('shop')}}">店舗一覧</a></div>
+      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/')}}">求人情報</a></div>
+      <div class="footer__nav-item"><a href="{{ url('/privacy-policy') }}">個人情報保護方針</a></div>
+      <div class="footer__nav-item"><a href="{{ url('/') }}">グループTOP</a></div>
+      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div> --}}
+    </nav>
+    <div class="footer__nav_logo">
+      {{-- <img src="{{ asset('assets/img/shop/footer.svg') }}" alt="logo"> --}}
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo.png') }}" alt="logo">
+    </div>
+  </div>
+  <div class="footer__copyright">
+    Copyright © PLO Group All Rights Reserved.
+  </div>
+
+
+  {{-- <div class="footer-content">
     <div class="footer-nav">
       <ul class="footer-nav-list">
         <li><a href="{{ url('#')}}">HOME</a></li>
@@ -18,5 +40,5 @@
   </div>
   <div class="footer-copyright">
     <p>Copyright © PLO Group All Rights Reserved.</p>
-  </div>
+  </div> --}}
 </footer>

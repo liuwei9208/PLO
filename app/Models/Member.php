@@ -7,10 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Member extends Authenticatable
 {
-  use Notifiable, HasApiTokens;
+  use Notifiable, HasApiTokens, HasFactory;
   
 //   protected $connection = 'member_mysql';
   protected $connection = 'mysql';
