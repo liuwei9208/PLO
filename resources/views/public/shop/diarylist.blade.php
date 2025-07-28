@@ -1,14 +1,14 @@
-script<x-public-shop-layout :shop="$shop">
+<x-public-shop-layout :shop="$shop">
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
 
   <section class="diary">
     <div class="diary-container">
-      <h2 class="diary-title title-font ">Photo Diary</h2>
+      <h2 class="diary-title title-font-midashi --{{ $shop->slug }}">Photo Diary</h2>
     </div>
 
-      <div class="diary-body">
+      <div class="diary-body content-wrapper">
         <div class="diary-body-left">
           <div class="diary-body-left-calendar">
             <div class="diary-body-left-calendar-content" id="diary-calendar">

@@ -25,9 +25,18 @@
 
 .diary {
   // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  min-height: 100vh;
-  padding: 60px 0;
-
+  // min-height: 100vh;
+  // padding: 60px 0;
+  @media #{media-query(md)} {
+    padding: 45px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 55px 0;
+  }
+  @media #{media-query(sm)} {
+    padding: 25px 0;
+  }
+  background-color: #fff;
   .diary-title {
     text-align: center !important;
   }
@@ -47,10 +56,10 @@
   &-title {
     // font-size: 32px;
     // font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+    // color: #2c3e50;
+    // margin-bottom: 40px;
+    // text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    // position: relative;
     text-align: center;
 
     // &::after {
@@ -64,6 +73,24 @@
     //   background: linear-gradient(90deg, #3498db, #e74c3c);
     //   border-radius: 2px;
     // }
+    &.--shizuku {
+      color: $shop-color-shizuku;
+    }
+    &.--pussycat {
+      color: $shop-color-pussycat;
+    }
+    &.--miyabi {
+      color: $shop-color-miyabi;
+    }
+    &.--en {
+      color: $shop-color-en;
+    }
+    &.--shiroganeze {
+      color: $shop-color-shiroganeze;
+    }
+    &.--lovestory {
+      color: $shop-color-lovestory;
+    }
   }
 
   &-header {
@@ -160,11 +187,20 @@
 
   &-body {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 480px 1fr;
     gap: 25px;
-    max-width: 1200px;
+    // max-width: 1200px;
     margin: 0 auto;
-    padding: 0 0;
+    // padding: 0 0;
+    @media #{media-query(md)} {
+      padding: 45px 0;
+    }
+    @media #{media-query(lg)} {
+      padding: 55px 0;
+    }
+    @media #{media-query(sm)} { 
+      padding: 25px 0;
+    }
 
     &-left {
       &-profile {
@@ -284,6 +320,7 @@
             line-height: 1.8;
             color: #34495e;
             font-size: 16px;
+            white-space: pre-line;
 
             p {
               margin-bottom: 15px;
@@ -376,6 +413,8 @@
       grid-template-columns: 300px 1fr;
       gap: 25px;
       padding: 0 15px;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
@@ -390,7 +429,7 @@
     }
 
     &-title {
-      font-size: 24px;
+      // font-size: 24px;
       margin-bottom: 30px;
       text-align: center;
     }
@@ -403,7 +442,7 @@
         text-align: center;
 
         .diary-title {
-          font-size: 22px;
+          // font-size: 22px;
           text-align: center;
         }
       }
@@ -418,6 +457,8 @@
       grid-template-columns: 1fr;
       gap: 20px;
       padding: 0 10px;
+      align-items: center;
+      justify-content: center;
 
       &-left {
         order: 2;
@@ -543,7 +584,7 @@
     }
 
     &-title {
-      font-size: 20px;
+      // font-size: 20px;
       text-align: center;
     }
 
@@ -571,6 +612,8 @@
 
     &-body {
       padding: 0 5px;
+      align-items: center;
+      justify-content: center;
 
       &-left {
         &-profile {

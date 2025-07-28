@@ -25,22 +25,49 @@
 
 .diary {
   // background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-  min-height: 100vh;
-  padding: 60px 0;
-
+  // min-height: 100vh;
+  // padding: 60px 0;
+  @media #{media-query(md)} {
+    padding: 45px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 55px 0;
+  }
+  @media #{media-query(sm)} {
+    padding: 25px 0;
+  }
+  background-color: #fff;
   .diary-title {
     text-align: center !important;
   }
 
   &-container {
     // max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    // margin: 0 auto;
+    // padding: 0 20px;
     text-align: center;
 
     .diary-title {
-      text-align: center;
-      justify-self: center;
+      // text-align: center;
+      // justify-self: center;
+      &.--shizuku {
+        color: $shop-color-shizuku;
+      }
+      &.--pussycat {
+        color: $shop-color-pussycat;
+      }
+      &.--miyabi {
+        color: $shop-color-miyabi;
+      }
+      &.--en {
+        color: $shop-color-en;
+      }
+      &.--shiroganeze {
+        color: $shop-color-shiroganeze;
+      }
+      &.--lovestory {
+        color: $shop-color-lovestory;
+      }
     }
   }
 
@@ -67,9 +94,18 @@
   }
 
   &-header {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px;
+    // max-width: 1200px;
+    // margin: 0 auto;
+    // padding: 30px;
+    @media #{media-query(md)} {
+      padding: 45px 0;
+    }
+    @media #{media-query(lg)} {
+      padding: 55px 0;
+    }
+    @media #{media-query(sm)} {
+      padding: 25px 0;
+    }
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
@@ -81,12 +117,29 @@
       text-align: center;
 
       .diary-title {
-        font-size: 28px;
-        font-weight: 600;
-        color: #34495e;
-        margin: 0;
-        text-align: center;
-
+        // font-size: 28px;
+        // font-weight: 600;
+        // color: #34495e;
+        // margin: 0;
+        // text-align: center;
+        &.--shizuku {
+          color: $shop-color-shizuku;
+        }
+        &.--pussycat {
+          color: $shop-color-pussycat;
+        }
+        &.--miyabi {
+          color: $shop-color-miyabi;
+        }
+        &.--en {
+          color: $shop-color-en;
+        }
+        &.--shiroganeze {
+          color: $shop-color-shiroganeze;
+        }
+        &.--lovestory {
+          color: $shop-color-lovestory;
+        }
         &::after {
           display: none;
         }
@@ -100,7 +153,15 @@
       align-items: center;
       justify-content: flex-start;
       margin-bottom: 30px;
-
+      @media #{media-query(md)} {
+        padding: 0 45px;
+      }
+      @media #{media-query(lg)} {
+        padding: 0 55px;
+      }
+      @media #{media-query(sm)} {
+        padding: 0 25px;
+      }
       &-working {
         &-text {
           &-working {
@@ -108,7 +169,7 @@
             color: white;
             padding: 12px 24px;
             border-radius: 25px;
-            font-weight: 600;
+            // font-weight: 600;
             font-size: 14px;
             box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
             animation: pulse 2s infinite;
@@ -119,7 +180,7 @@
             color: white;
             padding: 12px 24px;
             border-radius: 25px;
-            font-weight: 600;
+            // font-weight: 600;
             font-size: 14px;
             box-shadow: 0 4px 15px rgba(149, 165, 166, 0.3);
           }
@@ -160,11 +221,20 @@
 
   &-body {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 480px 1fr;
     gap: 25px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 0;
+    @media #{media-query(md)} {
+      padding: 0 45px;
+    }
+    @media #{media-query(lg)} {
+      padding: 0 55px;
+    }
+    @media #{media-query(sm)} {
+      padding: 0 25px;
+    }
+    // max-width: 1200px;
+    // margin: 0 auto;
+    // padding: 0 0;
 
     &-left {
       &-profile {
@@ -515,7 +585,7 @@
 
     &-header {
       padding: 15px;
-      margin: 0 5px 15px 5px;
+      margin: 0 auto 15px;
 
       &-title {
         text-align: center;
@@ -528,9 +598,9 @@
 
       &-content {
         display: flex;
-        flex-direction: row;
-        gap: 10px;
-        align-items: center;
+        flex-direction:column;
+        gap: 20px;
+        align-items: flex-start;
         justify-content: flex-start;
       }
     }

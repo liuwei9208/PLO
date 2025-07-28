@@ -12,7 +12,7 @@
   {{-- <span class="newface-name">
     {{ $cast->name }} <small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
   </span> --}}
-  <div class="newface-shop ">
+  <div class="newface-shop --{{ $cast->shop->slug }}">
     {{ $cast->shop->name }}
   </div>
   {{-- <span class="newface-name">

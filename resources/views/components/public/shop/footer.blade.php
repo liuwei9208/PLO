@@ -2,7 +2,7 @@
   <div class="footer__nav-wrapper content-wrapper">
     <nav class="footer__nav">
       <div class="footer__nav-item"><a href="{{ url('#')}}">HOME</a></div>
-      <div class="footer__nav-item"><a href="{{ url('#')}}">最新情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.shop.newslist', $shop->slug)}}">最新情報</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.shop.fee', $shop->slug) }}">料金システム</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.shop.castlist', $shop->slug) }}">キャスト一覧</a></div>
       <div class="footer__nav-item"><a href="{{ url('shop')}}">店舗一覧</a></div>

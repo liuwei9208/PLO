@@ -171,6 +171,15 @@
       line-height: 1.4;
       margin-bottom: 0;
       @include text.multiline-ellipsis(1);
+      @media #{media-query(lg)} {
+        font-size: 34px;
+      }
+      @media #{media-query(md)} {
+        font-size: 24px;
+      }
+      @media #{media-query(sm)} {
+        font-size: 16px;
+      }
     }
 
     &-image {

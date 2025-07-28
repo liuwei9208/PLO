@@ -187,6 +187,6 @@
   </script>
   @endpush --}}
   @once
-    @vite('resources/js/shop/profile.js')
+    @vite(['resources/js/shop/profile.js', 'resources/scss/shop/_cast.scss'])
   @endonce
 </x-public-shop-layout>

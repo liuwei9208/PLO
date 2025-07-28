@@ -5,9 +5,9 @@
 
   <!-- schedule List -->
   <section class="schedule">
-    <div class="schedule-title">
+    <div class="schedule-title --{{ $shop->slug }}">
       {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
-      <h2 class="schedule-title-ja">出勤情報</h2>
+      <h2 class="schedule-title-ja title-font-midashi">出勤情報</h2>
     </div>
     <div class="schedule-weeks content-wrapper">
       <div class="schedule-weeks-day">

@@ -5,6 +5,7 @@
       {{-- <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-lg.svg') }}" alt="" class="pc-logo">
       <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-sm.svg') }}" alt="" class="sp-logo"> --}}
       <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-lg.svg') }}" alt="" class="pc-logo">
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-md.svg') }}" alt="" class="md-logo">
       <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-sm.svg') }}" alt="" class="sp-logo">
     </a>
   </div>
@@ -17,9 +18,9 @@
         <p>予約可能</p>
       </div>
       <div class="header-nav-lists-contact">
-        <a href="tel:011-533-8988">
+        <a href="tel:{{ $shop->tel }}">
           <img src="{{ asset('assets/img/shop/call.png') }}" alt="">
-          <span>011-533-8988</span>
+          <span>{{ $shop->tel }}</span>
         </a>
       </div>
       <div class="header-nav-lists-signin">
@@ -64,7 +65,7 @@
           <li><a href="{{ route('public.shop.about', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">アクセス情報</a></li>
         </ul>
         <ul class="drawer-nav-list">
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">News情報</a></li>
+          <li><a href="{{ route('public.shop.newslist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">News情報</a></li>
           <li><a href="{{ route('public.shop.fee',$shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">料金システム</a></li>
           <li><a href="{{ route('public.shop.diarylist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">写メ日記一覧
           </a></li>

@@ -4,31 +4,47 @@
 @use '../global/utils';
 
 .about {
-    padding: 60px 0;
+    // padding: 60px 0;
     background-color: #f8f8f8;
-    min-height: calc(100vh - 200px);
+    // min-height: calc(100vh - 200px);
     display: flex;
     align-items: center;
     justify-content: center;
+    @media #{media-query(md)} {
+        padding-bottom: 45px;
+    }
+    @media #{media-query(lg)} {
+        padding-bottom: 55px;
+    }
+    @media #{media-query(sm)} {
+        padding-bottom: 25px;
+    }
 
     .about-container {
-        max-width: 1200px;
+        // max-width: 1200px;
         width: 100%;
         margin: 0 auto;
-        padding: 0 20px;
+        // padding: 0 20px;
 
-        @media #{media-query(md)} {
-            padding: 0 15px;
-        }
+        // @media #{media-query(md)} {
+        //     padding: 0 15px;
+        // }
     }
 
     .about-title {
-        font-size: $title-font-size;
-        font-weight: bold;
+        // font-size: $title-font-size;
+        // font-weight: bold;
         text-align: center;
-        margin: 40px 0;
-        padding: 15px 0;
-
+        // margin: 40px 0;
+        @media #{media-query(md)} {
+            padding: 45px 0;
+        }
+        @media #{media-query(lg)} {
+            padding: 55px 0;
+        }
+        @media #{media-query(sm)} {
+            padding: 25px 0;
+        }
         &.--pussycat {
             color: $shop-color-pussycat;
         }
@@ -54,14 +70,14 @@
         }
 
         @media #{media-query(md)} {
-            font-size: $title-font-size-md;
-            margin: 30px 0;
-            padding: 10px 0;
+            // font-size: $title-font-size-md;
+            // margin: 30px 0;
+            // padding: 10px 0;
         }
 
         @media #{media-query(sm)} {
-            font-size: 20px;
-            margin: 20px 0;
+            // font-size: 20px;
+            // margin: 20px 0;
         }
     }
 

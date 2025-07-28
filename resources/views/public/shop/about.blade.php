@@ -5,7 +5,7 @@
 
   <section class="about">
     <div class="about-container">
-      <h2 class="about-title --{{ $shop->slug }}">
+      <h2 class="about-title --{{ $shop->slug }} title-font-midashi">
         About
       </h2>
       <div class="about-content content-wrapper">
@@ -35,7 +35,7 @@
             </div>
         </div>
       </div>
-      <h2 class="about-title --{{ $shop->slug }}">
+      <h2 class="about-title --{{ $shop->slug }} title-font-midashi">
         MAP
       </h2>
       <div class="about-content content-wrapper">
