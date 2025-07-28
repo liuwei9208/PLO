@@ -140,23 +140,30 @@
      // }
    }
    .pickup-shops {
-     display: flex;
-     flex-wrap: wrap;
-     justify-content: space-around;
+    //  display: flex;
+    //  flex-wrap: wrap;
+     display: grid;
+     grid-template-columns: repeat(3, 1fr);
+     justify-content: center;
+     align-items: center;
+     gap: 20px;
      @media #{media-query(sm)} {
+      grid-template-columns: repeat(2, 1fr);
        // width: 344px;
        // margin: 40px auto 0;
-       justify-content: space-between;
+      //  justify-content: space-between;
+       gap: 10px;
      }
      @media #{media-query(md)} {
        // width: 640px;
        // margin: 50px auto 0;
-       justify-content: space-between;
+      //  justify-content: space-between;
+       gap: 10px;
       }
      @media #{media-query(lg)} {
        // width: 840px;
        // margin: 60px auto 0;
-       justify-content: space-between;
+      //  justify-content: space-between;
       }
 
      .pickup-shop {
@@ -168,23 +175,30 @@
        cursor: pointer;
        transition: .2s;
        position: relative;
+       width: 100%;
+
        @media #{media-query(sm)} {
-         width: 145px;
+        //  width: 145px;
          height: 45px;
          margin: 0 3px 6px;
          border-radius: 22px;
        }
        @media #{media-query(md)} {
-         width: 240px;
+        //  width: 240px;
+        //  width: 300px;
          height: 70px;
-         margin: 0 5px 15px;
+        //  margin: 0 5px 15px;
          border-radius: 35px;
        }
        @media #{media-query(lg)} {
-         width: 250px;
+        //  width: 400px;
          height: 90px;
-         margin: 0 5px 15px;
+        //  margin: 0 5px 15px;
          border-radius: 45px;
+       }
+
+       &:first-child {
+        grid-column: 1 / -1;
        }
        & a {
          color: #000;
@@ -198,14 +212,22 @@
 
        img {
          position: absolute;
-         left: 10px;
+         left: 10%;
          top: 50%;
          transform: translateY(-50%) scaleX(-1);
          height: 2em;
          width: auto;
          transition: all 0.3s ease;
          @media #{media-query(sm)} {
-           height: 2.5em;
+           height: 20px;
+           left:8px;
+         }
+         @media #{media-query(lg)} {
+          height: 50px;
+         }
+         @media #{media-query(md)} {
+          height: 30px;
+          // left: 10%;
          }
        }
 
@@ -238,8 +260,12 @@
          text-align: center;
          row-gap: 15px;
          @media #{media-query(sm)} {
-           font-size: 10px;
+           font-size: 12px;
            row-gap: 10px;
+         }
+         @media #{media-query(md)} {
+          font-size: 15px;
+          row-gap: 10px;
          }
        }
 
@@ -252,6 +278,9 @@
         font-size: 16px;
         @media #{media-query(sm)} {
           font-size: 8px;
+        }
+        @media #{media-query(md)} {
+          font-size: 12px;
         }
        }
 
@@ -512,29 +541,45 @@
      }
    }
 
+   .pickup-list-wrapper {
+    border: 3px solid $border-color;
+    border-radius: 60px;
+    @media #{media-query(sm)} {
+      border-radius: 30px;
+    }
+    @media #{media-query(md)} {
+      border-radius: 40px;
+    }
+    @media #{media-query(lg)} {
+      margin: 50px auto 0;
+    }
+  }
+
    .pickup-list, .pickup-list-detail{
      display: grid;
-     border: 3px solid $border-color;
-     border-radius: 60px;
+    //  border: 3px solid $border-color;
+    //  border-radius: 60px;
      @media #{media-query(sm)} {
        grid-template-columns: repeat(2, 1fr);
-       gap: 5px;
+      //  grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+       column-gap: 15px;
+       row-gap: 15px;
       //  width: calc(100% - 56px);
-       margin: 30px auto 0;
-       border-radius: 30px;
+      //  margin: 30px auto 0;
+      //  border-radius: 30px;
      }
      @media #{media-query(md)} {
        grid-template-columns: repeat(3, 1fr);
        gap: 40px;
       //  width: 720px;
-       margin: 50px auto 0;
-       border-radius: 40px;
+      //  margin: 50px auto 0;
+      //  border-radius: 40px;
      }
      @media #{media-query(lg)} {
        grid-template-columns: repeat(3, 1fr);
        gap: 54px;
       //  width: 1260px;
-       margin: 50px auto 0;
+      //  margin: 50px auto 0;
      }
 
      .pickup-item {
@@ -544,22 +589,22 @@
        width: 100%;
       //  border: 1px solid #000;
        @media #{media-query(sm)} {
-         max-width: 384px;
+        //  max-width: 384px;
          margin: 0 auto;
 
          &:first-child {
            grid-column: 1 / -1;
            width: 100%;
-           max-width: 384px;
+          //  max-width: 384px;
            margin: 0 auto;
            & .pickup-photo {
-            height: 440px;
+            // height: 440px;
            }
          }
 
          &:not(:first-child) {
-           width: 100%;
-           max-width: 160px;
+          //  width: 100%;
+           min-width: 141px;
          }
 
          &:nth-child(odd):not(:first-child) {
@@ -591,6 +636,8 @@
          @media #{media-query(sm)} {
           //  aspect-ratio: 1 / 1;
           //  height: 210px;
+          // width: 148px;
+          // height: 197px;
          }
          @media #{media-query(md)} {
           //  height: 360px;
@@ -601,11 +648,11 @@
 
          img {
            width: 100%;
-          //  height: 100%;
-           height: auto;
+           height: 100%;
+          //  height: auto;
            object-fit: cover;
-           object-position: center center;
-           transition: .25s;
+          //  object-position: center center;
+          //  transition: .25s;
          }
        }
        &:hover .pickup-photo {
@@ -785,7 +832,7 @@
        }
        .pickup-intro {
          width: 100%;
-         @include text.multiline-ellipsis(2);
+        //  @include text.multiline-ellipsis(2);
          @media #{media-query(sm)} {
            margin: 0 0 8px ;
            font-size: 13px;
@@ -805,6 +852,9 @@
            font-size: 14px;
            line-height: 20px;
            height: 52px;
+         }
+         .pickup-intro-text {
+          @include text.multiline-ellipsis(2);
          }
        }
      }
