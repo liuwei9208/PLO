@@ -5,12 +5,16 @@
 
   <!-- Ranking -->
   <section class="ranking">
-    <div class="ranking-title">
-      <h2>ランキング</h2>
+    <div class="ranking-title --{{ $shop->slug }}">
+      <div class="ranking-title-en title-font-midashi">
+        RANKING
+      </div>
+      <h2 class="title-font-sm-midashi">ランキング</h2>
       @foreach ($rankings as $ranking)
-        @if($ranking->rank == 1)
-          <div class="ranking-item">
-            @if($ranking->rank == 1)
+        @if($ranking->ranking_rank == 1)
+        <div class="content-wrapper-shop">
+          <div class="ranking-item_one">
+            @if($ranking->ranking_rank == 1)
               <img src="{{ asset('assets/img/shop/1.png') }}" alt="1位" class="ranking-badge">
             @endif
             <div class="ranking-item-photo">
@@ -29,20 +33,21 @@
               {{-- {{ $ranking->cast->appeal_point }} --}}
             </div>
           </div>
+        </div>
         @endif
       @endforeach
 
-      <div class="ranking-items-container">
+      <div class="ranking-items-container content-wrapper-shop">
         @foreach ($rankings as $ranking)
-          @if($ranking->rank > 1)
+          @if($ranking->ranking_rank > 1)
             <div class="ranking-item">
-              @if($ranking->rank == 2)
+              @if($ranking->ranking_rank == 2)
                 <img src="{{ asset('assets/img/shop/2.png') }}" alt="2位" class="ranking-badge">
-              @elseif($ranking->rank == 3)
+              @elseif($ranking->ranking_rank == 3)
                 <img src="{{ asset('assets/img/shop/3.png') }}" alt="3位" class="ranking-badge">
-              @elseif($ranking->rank == 4)
+              @elseif($ranking->ranking_rank == 4)
                 <img src="{{ asset('assets/img/shop/4.png') }}" alt="4位" class="ranking-badge">
-              @elseif($ranking->rank == 5)
+              @elseif($ranking->ranking_rank == 5)
                 <img src="{{ asset('assets/img/shop/5.png') }}" alt="5位" class="ranking-badge">
               @endif
               <div class="ranking-item-photo">
@@ -66,3 +71,6 @@
     </div>
   </section>
 </x-public-shop-layout>
+@once
+  @vite(['resources/scss/shop/_ranking.scss'])
+@endonce

@@ -403,12 +403,12 @@
   </div> --}}
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner content-wrapper">
+  <div class="banner">
     {{-- <div class="banner-title">
       <img src="{{ asset('assets/img/link.svg') }}" alt="相互リンク">
       <h2 class="banner-title-ja">相互リンク</h2>
     </div> --}}
-    <div class="banner-list">
+    <div class="banner-list content-wrapper-shop">
     @foreach ($banners as $banner)
       <a href="{{ $banner->link_url }}" target="_blank">
         <img src="{{ asset('storage/' . $banner->thumbnail) }}" alt="{{ $banner->title }}">
@@ -423,7 +423,7 @@
   </div>
 </x-public-shop-layout>
 @production
-  @vite(['resources/scss/shop/_today.scss', 'resources/scss/shop/newgirls.scss', 'resources/scss/shop/event.scss', 'resources/scss/shop/newsdiary.scss'])
+  @vite(['resources/scss/shop/_today.scss', 'resources/scss/shop/newgirls.scss', 'resources/scss/shop/event.scss', 'resources/scss/shop/newsdiary.scss', 'resources/scss/shop/banner.scss'])
 @endonce
 @push('scripts')
 <script>

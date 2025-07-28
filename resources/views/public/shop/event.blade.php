@@ -1,15 +1,20 @@
 <x-public-shop-layout :shop="$shop">
 
+  <x-public.shop.mv :shop="$shop" />
 
 
 
   <!-- Event List -->
   <section class="event">
-    <div class="event-title">
-      <img src="{{ asset('assets/img/group/event/event.svg') }}" alt="Event">
-      <h2 class="event-title-ja">イベント一覧</h2>
+    <div class="event-title --{{ $shop->slug }}">
+      <div class="event-title-en title-font-midashi">
+        EVENT LIST
+        {{-- <img src="{{ asset('assets/img/group/event/event.svg') }}" alt="Event"> --}}
+      </div>
+      {{-- <img src="{{ asset('assets/img/group/event/event.svg') }}" alt="Event"> --}}
+      <h2 class="event-title-ja title-font-sm-midashi">イベント一覧</h2>
     </div>
-    <div class="event-list">
+    <div class="event-list content-wrapper-shop">
       @foreach ($events as $event)
         <div class="event-list-item">
           <div class="event-list-item-image">
@@ -30,5 +35,5 @@
 
 </x-public-shop-layout>
 @once
-  @vite(['resources/scss/group/_eventview.scss'])
+  @vite(['resources/scss/shop/_eventview.scss'])
 @endonce

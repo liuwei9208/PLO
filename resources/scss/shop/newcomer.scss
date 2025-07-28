@@ -6,9 +6,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
+    // max-width: 1200px;
+    // margin: 40px auto;
+    // padding: 0 20px;
 
     @media #{media-query(sm)} {
       gap: 20px;
@@ -78,7 +78,7 @@
 
 .section-title {
   text-align: center;
-  margin-bottom: 80px;
+  // margin-bottom: 80px;
 
   &-en {
     display: flex;
@@ -94,23 +94,51 @@
   }
 
   &-ja {
-    font-size: 36px;
-    font-weight: bold;
-    color: #333;
-    margin: 30px auto;
-  }
-
-  @media #{media-query(sm)} {
-    margin-bottom: 30px;
-
-    &-en {
-      img {
-        height: 30px;
-      }
+    // font-size: 36px;
+    // font-weight: bold;
+    // color: #333;
+    // margin: 30px auto;
+    @media #{media-query(sm)} {
+      margin: 20px auto;
+    }
+    @media #{media-query(md)} {
+      margin: 40px auto;
+    }
+    @media #{media-query(lg)} {
+      margin: 40px auto;
     }
 
-    &-ja {
-      font-size: 20px;
-    }
   }
+  &.--shizuku {
+    color: $shop-color-shizuku;
+  }
+  &.--miyabi {
+    color: $shop-color-miyabi;
+  }
+  &.--en {
+    color: $shop-color-en;
+  }
+  &.--shiroganeze {
+    color: $shop-color-shiroganeze;
+  }
+  &.--lovestory {
+    color: $shop-color-lovestory;
+  }
+  &.--pussycat {
+    color: $shop-color-pussycat;
+  }
+
+  // @media #{media-query(sm)} {
+  //   margin-bottom: 30px;
+
+  //   &-en {
+  //     img {
+  //       height: 30px;
+  //     }
+  //   }
+
+  //   &-ja {
+  //     font-size: 20px;
+  //   }
+  // }
 }
