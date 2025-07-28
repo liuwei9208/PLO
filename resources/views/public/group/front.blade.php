@@ -275,6 +275,21 @@
     @endif
     @if($newfaces_this_week->count() > 0)
     <div class="newface-slide content-wrapper">
+      {{-- <div class="newface-slide-nav">
+        <button class="newface-slide-prev">
+          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
+        </button>
+        <button class="newface-slide-next">
+          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
+        </button>
+      </div> --}}
+      <div class="swiper-wrapper">
+        @foreach ($newfaces_this_week as $cast)
+          <div class="swiper-slide">
+            <x-public.group.newface :cast="$cast" />
+          </div>
+        @endforeach
+      </div>
       <div class="newface-slide-nav">
         <button class="newface-slide-prev">
           <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
@@ -282,13 +297,6 @@
         <button class="newface-slide-next">
           <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
         </button>
-      </div>
-      <div class="swiper-wrapper">
-        @foreach ($newfaces_this_week as $cast)
-          <div class="swiper-slide">
-            <x-public.group.newface :cast="$cast" />
-          </div>
-        @endforeach
       </div>
     </div>
     @endif
