@@ -191,12 +191,12 @@
        @media #{media-query(sm)} {
          height: 42px;
          border-radius: 21px;
-         font-size: 25px;
+         font-size: 10px;
        }
        @media #{media-query(md)} {
          height: 50px;
          border-radius: 25px;
-         font-size: 30px;
+         font-size: 22px;
        }
        @media #{media-query(lg)} {
          height: 60px;
@@ -256,7 +256,51 @@
          transform: scale(1.04);
        }
      }
- 
+     .newface-shop {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      color: #FFF;
+      font-weight: 700;
+      letter-spacing: .1em;
+      &.--shizuku {
+        background-color: $shop-color-shizuku;
+      }
+      &.--pussycat {
+        background-color: $shop-color-pussycat;
+      }
+      &.--miyabi {
+        background-color: $shop-color-miyabi;
+      }
+      &.--en {
+        background-color: $shop-color-en;
+      }
+      &.--shiroganeze {
+        background-color: $shop-color-shiroganeze;
+      }
+      &.--lovestory {
+        background-color: $shop-color-lovestory;
+      }
+      @media #{media-query(sm)} {
+        height: 30px;
+        border-radius: 21px;
+        font-size: 14px;
+        margin-top: 16px;
+      }
+      @media #{media-query(md)} {
+        height: 50px;
+        border-radius: 25px;
+        font-size: 22px;
+        margin-top: 20px;
+      }
+      @media #{media-query(lg)} {
+        height: 60px;
+        border-radius: 30px;
+        font-size: 35px;
+        margin-top: 24px;
+      }
+    }
      .newface-name {
        display: block;
        font-weight: 700;
@@ -264,11 +308,11 @@
        text-align: center;
        @media #{media-query(sm)} {
          margin: 26px 0 0;
-         font-size: 26px;
+         font-size: 16px;
        }
        @media #{media-query(md)} {
          margin: 30px 0 0;
-         font-size: 30px;
+         font-size: 25px;
        }
        @media #{media-query(lg)} {
          margin: 35px 0 0;
@@ -303,7 +347,7 @@
        display: block;
        text-align: center;
        @media #{media-query(sm)} {
-         font-size: 16px;
+         font-size: 14px;
          margin: 24px 0 0;
        }
        @media #{media-query(md)} {
@@ -323,6 +367,7 @@
        @include text.multiline-ellipsis(2);
        @media #{media-query(sm)} {
          margin: 18px 0 0;
+         font-size: 14px;
        }
        @media #{media-query(md)} {
          margin: 18px 0 0;

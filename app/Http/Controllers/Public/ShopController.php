@@ -33,6 +33,7 @@ class ShopController extends Controller
                     ->where('published_at', '<=', Carbon::now());
             })
             ->orWhere('published_status',4)
+            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->orderBy('published_at', 'desc')
             ->get();
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();

@@ -46,7 +46,25 @@
 }
 
 .phone-link {
-  background-color: $shop-color-shizuku;
+  &.--shizuku {
+    background-color: $shop-color-shizuku;
+  }
+  &.--pussycat {
+    background-color: $shop-color-pussycat;
+  }
+  &.--miyabi {
+    background-color: $shop-color-miyabi;
+  }
+  &.--en {
+    background-color: $shop-color-en;
+  }
+  &.--shiroganeze {
+    background-color: $shop-color-shiroganeze;
+  }
+  &.--lovestory {
+    background-color: $shop-color-lovestory;
+  }
+  // background-color: $shop-color-shizuku;
   color: #fff;
   text-decoration: none;
   padding: 12px 24px;

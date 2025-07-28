@@ -5,23 +5,49 @@
 @use '../mixins/text';
 
 .schedule {
-  padding: 40px 0;
-  justify-self: center;
+  background-color: #fff;
+  @media #{media-query(sm)} {
+    padding: 25px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 45px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 55px 0;
+  }
+  // justify-self: center;
   
   &-title {
     text-align: center;
     margin-bottom: 30px;
     justify-self: center;
-    img {
-      width: 200px;
-      height: auto;
-      margin-bottom: 10px;
+    // img {
+    //   width: 200px;
+    //   height: auto;
+    //   margin-bottom: 10px;
+    // }
+    &.--shizuku {
+      color: $shop-color-shizuku;
     }
-    
+    &.--miyabi {
+      color: $shop-color-miyabi;
+    }
+    &.--pussycat {
+      color: $shop-color-pussycat;
+    }
+    &.--en {
+      color: $shop-color-en;
+    }
+    &.--shiroganeze {
+      color: $shop-color-shiroganeze;
+    }
+    &.--lovestory {
+      color: $shop-color-lovestory;
+    }
     &-ja {
-      font-size: $title-font-size;
-      font-weight: bold;
-      font-family: "toppan-bunkyu-midashi-go-std", sans-serif;
+      // font-size: $title-font-size;
+      // font-weight: bold;
+      // font-family: "toppan-bunkyu-midashi-go-std", sans-serif;
     }
   }
   
@@ -29,7 +55,7 @@
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-bottom: 30px;
+    // margin-bottom: 30px;
     
     &-day {
       &-date {
@@ -195,7 +221,9 @@
         border-radius: 8px;
         transition: all 0.3s ease;
         height: 100%;
-        
+        @media #{media-query(sm)} {
+          padding: 5px;
+        }
         &:hover {
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }

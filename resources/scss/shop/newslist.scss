@@ -5,28 +5,52 @@
 @use '../global/utils';
 
 .news-list {
-  padding: 40px 20px;
+  background-color: #fff;
+  // padding: 40px 20px;
   
   @media #{media-query(sm)} {
-    padding: 30px 15px;
+    padding: 25px 0;
+  }
+  @media #{media-query(md)} {
+    padding: 45px 0;
+  }
+  @media #{media-query(lg)} {
+    padding: 55px 0;
   }
 
   &-title {
     text-align: center;
-    margin-bottom: 40px;
-
+    // margin-bottom: 40px;
+    &.--shizuku {
+      color: $shop-color-shizuku;
+    }
+    &.--miyabi {
+      color: $shop-color-miyabi;
+    }
+    &.--pussycat {
+      color: $shop-color-pussycat;
+    }
+    &.--en {
+      color: $shop-color-en;
+    }
+    &.--shiroganeze {
+      color: $shop-color-shiroganeze;
+    }
+    &.--lovestory {
+      color: $shop-color-lovestory;
+    }
     @media #{media-query(sm)} {
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
     }
 
     &-ja {
-      font-size: $title-font-size-lg;
-      font-weight: $title-font-weight-lg;
-      color: #000;
+      // font-size: $title-font-size-lg;
+      // font-weight: $title-font-weight-lg;
+      // color: #000;
 
       @media #{media-query(sm)} {
-        font-size: $title-font-size-sm;
-        font-weight: $title-font-weight-sm;
+        // font-size: $title-font-size-sm;
+        // font-weight: $title-font-weight-sm;
       }
     }
   }
@@ -76,9 +100,18 @@
       padding: 10px 15px 5px;
       
       p {
-        font-size: 1rem;
+        // font-size: 1rem;
         color: #000;
         margin: 0;
+        @media #{media-query(sm)} {
+          font-size: 13px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 18px;
+        }
       }
     }
 
@@ -86,8 +119,8 @@
       padding: 0 15px 10px;
 
       &-ja {
-        font-size: 1.1rem;
-        font-weight: bold;
+        // font-size: 1.1rem;
+        // font-weight: bold;
         color: #333;
         margin: 0;
         line-height: 1.4;
@@ -98,7 +131,13 @@
         text-overflow: ellipsis;
 
         @media #{media-query(sm)} {
-          font-size: 1rem;
+          font-size: 14px;
+        }
+        @media #{media-query(md)} {
+          font-size: 18px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 21px;
         }
       }
     }
@@ -107,7 +146,7 @@
       padding: 0 15px 15px;
 
       p {
-        font-size: 1rem;
+        // font-size: 1rem;
         color: #000;
         line-height: 1.5;
         margin: 0;
@@ -119,6 +158,13 @@
 
         @media #{media-query(sm)} {
           -webkit-line-clamp: 2;
+          font-size: 13px;
+        }
+        @media #{media-query(md)} {
+          font-size: 16px;
+        }
+        @media #{media-query(lg)} {
+          font-size: 18px;
         }
       }
     }

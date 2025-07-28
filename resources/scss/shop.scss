@@ -12,13 +12,13 @@
 //  @use 'shop/ranking';
  @use 'shop/home';
  @use 'shop/footer';
- @use 'shop/cast';
+//  @use 'shop/cast';
 //  @use 'shop/banner';
 
 
  .mock {
   width: 1260px;
-  justify-self: center;
+  // justify-self: center;
 
   @media #{media-query(sm)} {
     width: calc(100% - 40px);

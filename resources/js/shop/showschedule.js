@@ -7,8 +7,17 @@ let pages = 0;
 let total = 0;
 
 document.addEventListener('DOMContentLoaded', async function() {
-  await getCastsSchedule(date, page, limit, skip, pages, total);
+  const results = await getCastsSchedule(date, page, limit, skip, pages, total);
+  // console.log(results);
+  page = results.page;
+  limit = results.limit;
+  skip = results.skip;
+  pages = results.pages;
+  total = results.total;
+  date = results.date;
   drawPagination(page, pages);
+  // drawCastsSchedule(results.casts);
+  // drawCastsSchedule(results.casts);
   // document.querySelector('.schedule-shop-list-title').innerHTML = `${document.querySelector('.schedule-week-day-date').dataset.weekday}出勤女性`;
   
   // 曜日ボタンのイベントリスナー
@@ -21,7 +30,13 @@ document.addEventListener('DOMContentLoaded', async function() {
       e.target.classList.add('active');
       
       date = e.target.value;
-      await getCastsSchedule(date, page, limit, skip, pages, total);
+      const results = await getCastsSchedule(date, page, limit, skip, pages, total);
+      page = results.page;
+      limit = results.limit;
+      skip = results.skip;
+      pages = results.pages;
+      total = results.total;
+      date = results.date;
       drawPagination(page, pages);
       // document.querySelector('.schedule-shop-list-title').innerHTML = `${e.target.dataset.weekday}出勤女性`;
     });
@@ -71,7 +86,7 @@ async function getCastsSchedule(date, page, limit, skip, pages, total) {
           pages = response.data.pages;
           total = response.data.total;
           date = response.data.date;
-
+          // console.log(page, limit, skip, pages, total);
           drawCastsSchedule(casts);
         }
         return response.data;
@@ -93,7 +108,7 @@ function drawCastsSchedule(casts){
       </div>
       <div class="schedule-person-info-items">
         <div class="schedule-person-info-shop-working --${cast.shop_slug}">
-          ${cast.shop_name} ${cast.start_datetime} - ${cast.end_datetime}
+          ${cast.start_datetime} - ${cast.end_datetime}
         </div>
         <div class="schedule-person-info-name --${cast.shop_slug}">
           ${cast.cast_name}
@@ -113,6 +128,7 @@ function drawCastsSchedule(casts){
 
 function drawPagination(currentPage, totalPages) {
   const pagination = document.querySelector('.schedule-pagination');
+  console.log(currentPage, totalPages);
   if (totalPages > 1) {
     let paginationHTML = `
       <nav aria-label="Page navigation">
@@ -200,7 +216,14 @@ function setupPaginationListeners() {
       if (!isNaN(newPage) && newPage !== page) {
         page = newPage;
         skip = (page - 1) * limit;
-        await getCastsSchedule(date, page, limit, skip, pages, total);
+        const results = await getCastsSchedule(date, page, limit, skip, pages, total);
+        page = results.page;
+        limit = results.limit;
+        skip = results.skip;
+        pages = results.pages;
+        total = results.total;
+        date = results.date;
+        drawPagination(page, pages);
       }
     });
   });

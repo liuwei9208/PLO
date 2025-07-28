@@ -1,15 +1,15 @@
-script<x-public-shop-layout :shop="$shop">
+<x-public-shop-layout :shop="$shop">
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
 
   <section class="diary">
     <div class="diary-container">
-      <h2 class="diary-title title-font ">Photo Diary</h2>
+      <h2 class="diary-title title-font-midashi --{{ $shop->slug }}">Photo Diary</h2>
     </div>
     <div class="diary-header content-wrapper">
       <div class="diary-header-title">
-        <h2 class="diary-title ">{{ $diary->cast_name }}</h2>
+        <h2 class="diary-title title-font-sm-midashi --{{ $shop->slug }}">{{ $diary->cast_name }}</h2>
       </div>
       <div class="diary-header-content">
         <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $diary->cast_id]) }}" class="diary-header-content-link sp-only">

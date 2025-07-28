@@ -1,8 +1,9 @@
 <x-public-shop-layout :shop="$shop">
-
+  <x-public.shop.mv :shop="$shop" />
+  
   <section class="news-list">
-    <div class="news-list-title">
-      <h2 class="news-list-title-ja title-font">NEWS一覧</h2>
+    <div class="news-list-title --{{ $shop->slug }}">
+      <h2 class="news-list-title-ja title-font-midashi">NEWS一覧</h2>
     </div>
     <div class="news-list-items content-wrapper">
       @foreach ($news as $new)
