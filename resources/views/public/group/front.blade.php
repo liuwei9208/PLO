@@ -174,7 +174,8 @@
         </span>
       </li>
     </ul>
-    <div class="pickup-list content-wrapper">
+    <div class="pickup-list-wrapper content-wrapper">
+    <div class="pickup-list ">
       @foreach ($pickups as $pickup)
         <a
           href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
@@ -192,11 +193,14 @@
           <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
             B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
           </span>
-          <span class="pickup-intro --{{ $pickup->cast->shop->slug }}">
-            {{ $pickup->cast->appeal_point }}
-          </span>
+          <div class="pickup-intro --{{ $pickup->cast->shop->slug }}">
+            <div class="pickup-intro-text">
+              {{ $pickup->cast->appeal_point }}
+            </div>
+          </div>
         </a>
       @endforeach
+    </div>
     </div>
     <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
   </section>
