@@ -120,6 +120,17 @@ a {
     font-style: $title-font-style-lg;
   }
 }
+.title-font-sm-midashi {
+  font-family: $font-midashi-min;
+  font-size: 36px;
+  @media #{media-query(sm)} {
+    font-size: 20px;
+  }
+  @media #{media-query(md)} {
+    font-size: 28px;
+  }
+}
+
 .title-font-sm {
   font-family: $font-gothic-min;
   font-size: 36px;

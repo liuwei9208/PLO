@@ -5,13 +5,14 @@
   <!-- Newcomer -->
     <!-- 新人情報 - New Face -->
     <section class="newface">
-      <div class="section-title">
-        <span class="section-title-en">
+      <div class="section-title --{{ $shop->slug }}">
+        <span class="section-title-en title-font-midashi">
+          CAST LIST
           {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
         </span>
-        <h2 class="section-title-ja">Cast List</h2>
+        <h2 class="section-title-ja title-font-sm-midashi">キャスト一覧</h2>
       </div>
-      <div class="newcomer-list">
+      <div class="newcomer-list content-wrapper-shop">
         @foreach ($castlist as $cast)
           <div class="newcomer-item">
             <x-public.group.castlist :cast="$cast" />
