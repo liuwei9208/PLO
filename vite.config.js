@@ -66,6 +66,8 @@ export default defineConfig({
                 'resources/scss/shop/_cast.scss',
                 'resources/scss/admin/sortcast.scss',
                 'resources/scss/admin/casts.scss',
+                'resources/scss/shop/reviewlist.scss',
+                'resources/scss/mypage.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',
