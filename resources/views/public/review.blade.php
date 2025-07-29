@@ -66,7 +66,7 @@
             <div class="flex items-center mb-4">
                 <label class="w-32 font-semibold text-sm">スタッフ対応度</label>
                 <div class="flex items-center mr-2">
-                    <template x-for="i in 5" :key="'staff-'+i">
+                    <template x-for="i in 5" :key="'stuff-'+i">
                         <span
                             @click="stuffPoint = i"
                             :class="stuffPoint >= i ? 'text-red-400' : 'text-gray-300'"
