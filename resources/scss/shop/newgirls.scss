@@ -438,7 +438,7 @@
   
       .swiper-wrapper {
         display: flex;
-        gap: 15px;
+        // gap: 15px;
       }
   
       .swiper-slide {
@@ -630,12 +630,13 @@
   
   .news-girls-slider {
     position: relative;
-    padding: 0 40px;
+    padding: 0 0;
+    width: 100%;
     margin: 0 auto;
   
     .swiper-wrapper {
       display: flex;
-      gap: 15px;
+      // gap: 15px;
     }
   
     .swiper-slide {
@@ -653,8 +654,8 @@
   .new-girls-slide {
     &-prev,
     &-next {
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       z-index: 10;
       position: absolute;
       top: 50%;
@@ -668,8 +669,8 @@
       padding: 0;
   
       img {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         object-fit: contain;
       }
   
