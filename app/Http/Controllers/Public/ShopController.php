@@ -390,6 +390,13 @@ WHERE cast_style.cast_id = $new_girl->id;";
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
+    public function showReviewlist(Request $request, string $shop): View
+    {
+        return view('public.shop.reviewlist', [
+            // 'castlist' => $castlist,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
+    }
 
     public function showDiaryDetail_old(Request $request, string $shop, string $id, string $cast_name): View
     {

@@ -21,7 +21,13 @@ class Review extends Model
         'title',
         'content',
         'is_public',
-        'manager_comment'
+        'manager_comment',
+        'cast_point',
+        'play_point',
+        'price_point',
+        'staff_point',
+        'photo_point',
+        'average_point',
     ];
 
     /**

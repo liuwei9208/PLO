@@ -1,83 +1,60 @@
 <x-mypage-layout>
-  <div class="p-4 mx-auto max-w-7xl md:p-6">
-    <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">会員詳細</h2>
-      <a href="{{ route('public.group.home') }}" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg bg-gray-300 text-gray-800 rounded-lg hover:bg-gray-400 text-center">
-        グループTOPへ
-      </a>
-      <button id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg  bg-blue-600 text-white  hover:bg-blue-700">
-        QRコード表示
-      </button>
-    </div>
-
-    <div class="bg-white rounded-lg shadow-xl overflow-auto border border-gray-200 dark:border-gray-800 dark:bg-white/[0.03]">
-      <div class="p-4">
-        <div class="flex gap-4">
-          <!-- Left side -->
-          <div class="w-2/3" style="width: 100%;">
-            <!-- Member Info -->
-            <table class="w-full border-collapse border-t border-l border-gray-400">
-              <tbody>
-                <tr>
-                  <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員番号</th>
-                  <td class="p-1 border-b border-r border-gray-400">{{ $member->id }}</td>
-                  <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">ニックネーム</th>
-                  <td class="p-1 border-b border-r border-gray-400">{{ $member->name }}</td>
-                </tr>
-                <tr>
-                  <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">携帯番号</th>
-                  <td class="p-1 border-b border-r border-gray-400">{{ $member->tel }}</td>
-                  <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">会員名</th>
-                  <td class="p-1 border-b border-r border-gray-400">{{ $member->subname }}</td>
-                </tr>
-                <tr>
-                  <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">現在のポイント</th>
-                  <td class="p-1 border-b border-r border-gray-400" colspan="3">{{ $pay }}</td>
-                </tr>
-              </tbody>
-            </table>
-
-            <!-- Visit History -->
-            <div class="mt-4 border border-gray-400 border-b-0" style="margin-top: 40px;">
-              <table class="w-full text-sm text-center">
-                <thead class="bg-gray-100">
-                  <tr>
-                    <th class="p-1 w-[120px] border-b border-r border-gray-400">来店日</th>
-                    <th class="p-1 w-[120px] border-b border-r border-gray-400">店舗名</th>
-                    <th class="p-1 w-[120px] border-b border-r border-gray-400">キャスト名</th>
-                    <th class="p-1 border-b border-r border-gray-400">コース</th>
-                    <th class="p-1 w-[100px] border-b border-r border-gray-400">利用ポイント</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach( $histories as $history)
-                  <tr>
-                    <td class="p-1 border-b border-r border-gray-400 h-8">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->shop_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->point_use }}</td>
-                  </tr>
-                  @endforeach
-                  {{-- @for ($i = 0; $i < 14; $i++)
-                  <tr>
-                    <td class="p-1 border-b border-r border-gray-400 h-8"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                    <td class="p-1 border-b border-r border-gray-400"></td>
-                  </tr>
-                  @endfor --}}
-                </tbody>
-              </table>
+  <div class="mypage">
+  <div class="mypage-container p-4 mx-auto max-w-7xl md:p-6">
+    <div class="flex flex-col lg:flex-row gap-4">
+      {{-- Member Info --}}
+      <div class="flex-1 bg-white border rounded p-3 text-sm leading-relaxed">
+        <div class="flex items-center mb-2">
+                <span class="font-bold">会員詳細</span>
             </div>
-          </div>
+        <div>
+          会員番号　<span class="font-bold">{{ $member->id }}</span>
+        </div>
+        <div>ニックネーム　{{ $member->name }}</div>
+        <div>登録日　{{ $member->created_at->format('Y-m-d') }}</div>
+        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+          <button id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg  bg-blue-600 text-white  hover:bg-blue-700">
+            QRコード表示
+          </button>
         </div>
       </div>
+
+      {{-- Current Points & Point Usage History --}}
+        <div class="flex-1 bg-white border rounded p-3">
+            <div class="flex items-center mb-2">
+                <span class="font-bold">現在のポイント</span>
+            </div>
+            <div class="text-center text-3xl font-bold text-gray-800 mb-2">25,000pt</div>
+            <div class="text-xs font-bold mb-1">ポイント利用履歴</div>
+            <div class="text-xs space-y-1">
+                <div>2025年7月20日　2,000pt（零）</div>
+                <div>2025年6月10日　1,500pt（シロガネオーゼ）</div>
+                <div>2025年5月25日　3,000pt（ラブストーリー）</div>
+            </div>
+        </div>
+
+        {{-- Visit History --}}
+        <div class="flex-1 bg-white border rounded p-3">
+            <div class="flex items-center mb-2">
+                <span class="font-bold">来店履歴</span>
+            </div>
+            @foreach ($histories as $history)
+                <div class="mb-3 last:mb-0 border-b pb-2 last:border-b-0 last:pb-0">
+                    <div class="text-xs">来店日　{{ $history->created_at->format('Y年m月d日') }}</div>
+                    <div class="text-xs">店舗名　{{ $history->shop_name }}</div>
+                    <div class="text-xs mb-4">遊んだ女の子　{{ $history->cast_name }}</div>
+                    <button class="btn-write-review w-full mt-1 py-1 text-xs bg-gray-500 text-white rounded hover:bg-gray-400">クチコミを書く</button>
+                </div>
+            @endforeach
+
+            {{-- View More --}}
+            <div class="text-center">
+                <button class="px-6 py-2 bg-white border rounded hover:bg-gray-100 text-sm">もっと見る</button>
+            </div>
+        </div>
+
     </div>
-    
+
     <!-- QR Code Modal -->
     <div id="qr-modal" style="display: none;" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div id="qr-modal-content" class="bg-white rounded-lg shadow-xl overflow-hidden flex flex-col" style="max-width: 500px; width: 100%;">
@@ -100,8 +77,11 @@
     </div>
 
   </div>
+  </div>
 </x-mypage-layout>
-
+@once
+  @vite(['resources/scss/mypage.scss'])
+@endonce
 <script>
 document.addEventListener('DOMContentLoaded', function () {
   const memberId = '{{ $member->id }}';
@@ -146,6 +126,12 @@ document.addEventListener('DOMContentLoaded', function () {
     if (event.key === 'Escape' && qrModal.style.display === 'flex') {
       closeModal();
     }
+  });
+
+  document.querySelectorAll('.btn-write-review').forEach(btn => {
+    btn.addEventListener('click', function () {
+      window.location.href = '/review';
+    })
   });
 });
 </script>

@@ -49,6 +49,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
         Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
+        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
     });
@@ -74,6 +75,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('schedule', [ShopController::class, 'showSchedule'])->name('schedule');
         Route::get('newcomer', [ShopController::class, 'showNewcomer'])->name('newcomer');
         Route::get('castlist', [ShopController::class, 'showCastlist'])->name('castlist');
+        Route::get('reviewlist', [ShopController::class, 'showReviewlist'])->name('reviewlist');
         Route::get('newslist', [ShopController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [ShopController::class, 'showNewsDetail'])->name('newsdetail');
     });
