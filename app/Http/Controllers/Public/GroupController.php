@@ -650,6 +650,19 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             return redirect('/');
         }
     }
+    public function wirteReview(Request $request)
+    {
+        $member = Auth::guard('member')->user();
+        $token = Auth::guard('member')->user()->createToken('mypage')->plainTextToken;
+        if ($member) {
+            return view('public.review', [
+                'member' => $member,
+                'token' => $token,
+            ]);
+        } else {
+            return redirect('/');
+        }
+    }
     public function showNewsList(Request $request, string $shop): View
     {
         if($shop == 'all'){

@@ -1,0 +1,208 @@
+// Review List Container
+.reviewlist__container {
+  max-width: 800px;
+  margin: 32px auto;
+  padding: 24px;
+  background: #fff;
+  border: 4px solid #ffe066; // yellow
+  border-radius: 16px;
+}
+
+// Header
+.reviewlist__header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+.reviewlist__filter-select {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.reviewlist__count {
+  font-size: 15px;
+  color: #444;
+}
+
+// Cards
+.reviewlist__cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.reviewcard {
+  border: 2px solid #fbb6ce; // pink
+  border-radius: 12px;
+  background: #fff0f6; // light pink
+  padding: 20px;
+}
+.reviewcard__header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.reviewcard__nickname {
+  font-weight: bold;
+  font-size: 15px;
+}
+.reviewcard__visitdate {
+  font-size: 13px;
+  color: #888;
+}
+
+// Cast Info
+.reviewcard__castinfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+.reviewcard__castphoto {
+  width: 64px;
+  height: 64px;
+  background: #e9ecef;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  color: #888;
+}
+.reviewcard__castprofile {
+  flex: 1;
+}
+.reviewcard__castname {
+  font-size: 14px;
+  font-weight: 500;
+}
+.reviewcard__castsize {
+  font-size: 13px;
+  color: #666;
+}
+.reviewcard__profilebtn {
+  margin-top: 6px;
+  padding: 4px 16px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 13px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+// Rating
+.reviewcard__rating {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  margin-bottom: 8px;
+  gap: 8px;
+}
+.reviewcard__stars {
+  color: #222;
+  font-weight: bold;
+  margin-right: 4px;
+}
+.reviewcard__score {
+  margin-left: 4px;
+}
+.reviewcard__details {
+  margin-left: 12px;
+  color: #888;
+}
+
+// Title & Body
+.reviewcard__title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.reviewcard__body {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+// Shop Comment
+.reviewcard__shopcomment {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+.reviewcard__shopcomment-label {
+  font-size: 12px;
+  color: #888;
+  margin-bottom: 2px;
+}
+.reviewcard__shopcomment-body {
+  font-size: 13px;
+}
+
+// Footer & Pagination
+.reviewlist__footer {
+  margin-top: 32px;
+  text-align: center;
+  font-size: 15px;
+  color: #444;
+}
+.reviewlist__pagination {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+.reviewlist__pagination-nav {
+  display: inline-flex;
+  gap: 0;
+}
+.reviewlist__pagination-page,
+.reviewlist__pagination-prev,
+.reviewlist__pagination-next {
+  padding: 6px 14px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #666;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background: #f3f4f6;
+    color: #222;
+  }
+}
+.reviewlist__pagination-page--active {
+  color: #2563eb;
+  font-weight: bold;
+  border-bottom: 2px solid #2563eb;
+}
+
+// Responsive
+@media (max-width: 600px) {
+  .reviewlist__container {
+    padding: 8px;
+  }
+  .reviewcard {
+    padding: 10px;
+  }
+  .reviewcard__castinfo {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
