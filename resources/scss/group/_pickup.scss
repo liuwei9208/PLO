@@ -479,7 +479,8 @@
           }
 
           &:not(:first-of-type) {
-            width: 100%;
+            // width: 100%;
+            min-width: 141px;
           }
 
           &:nth-child(odd):not(:first-of-type) {
