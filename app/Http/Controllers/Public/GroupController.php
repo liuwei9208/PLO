@@ -23,7 +23,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Diary;
-use App\Models\Point;
 use App\Models\History;
 use App\Models\Video;
 use App\Models\Review;
