@@ -74,7 +74,7 @@
                             >★</span>
                     </template>
                 </div>
-                <select class="w-40 ml-2 border rounded px-2 py-1 text-sm" x-model.number="staffPoint">
+                <select class="w-40 ml-2 border rounded px-2 py-1 text-sm" x-model.number="stuffPoint">
                     <option value="1">1.0 微妙</option>
                     <option value="2">2.0 まあまあ</option>
                     <option value="3">3.0 特に問題なし</option>
