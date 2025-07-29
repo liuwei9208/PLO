@@ -30,6 +30,7 @@ class ReviewController extends Controller
         $review->stuff_point = $request->input('staff_point');
         $review->photo_point = $request->input('photo_point');
         $review->average_point = $request->input('average_point');
+        $review->history_id = $request->input('history_id');
         $review->save();
 
         return response()->json(['status' => 'success' ] )  ;

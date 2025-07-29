@@ -16,6 +16,9 @@ use App\Models\Event;
 use App\Models\Banner;
 use App\Models\News;
 use App\Models\Attendance;
+use App\Models\Member;
+use App\Models\Point;
+use App\Models\Course;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,6 +26,7 @@ use App\Models\Diary;
 use App\Models\Point;
 use App\Models\History;
 use App\Models\Video;
+use App\Models\Review;
 class GroupController extends Controller
 {
     /**
@@ -624,27 +628,46 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $pay = 0;
         $histories = [];
         if ($member) {
-            $maxDate = Point::where('user_id', $member->id)->where('type', 3)->max('created_at');
-            // dd($maxDate);
-            if ($maxDate){
-              $pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
-            }else{
-              $pay = 0;
-            }
-            // $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
-            $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
-            if ( $histories ) {
+            // $member = Member::find($id);
+            $today_point = Point::where('user_id', $member->id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+                          ->where('type', 3)
+                          ->sum('point');
+            $histories = History::where('user_id', $member->id)
+                          ->whereIn('name', ['来店', 'PT有効期限切れ'])
+                          ->orderBy('created_at', 'desc')
+                          ->orderBy('id', 'desc')
+                          ->get();
+            if ($histories) {
               $histories = $histories->map(function ($history) {
                 $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+                $history->course_name_table = Course::where('id', $history->course_id)->first()->name ?? '';
                 $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
+                $history->point_pay = Point::where('history_id', $history->id)->where('type', 3)->sum('point') ?? 0;
                 $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
                 return $history;
               });
             }
+
+            $shop_histories = History::where('user_id', $member->id)
+            ->whereIn('name', ['来店', 'PT有効期限切れ'])
+            ->orderBy('created_at', 'desc')
+            ->orderBy('id', 'desc')
+            ->limit(3)
+            ->get();
+
+            if ($shop_histories) {
+                $shop_histories = $shop_histories->map(function ($history) {
+                  $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
+                  $history->history_id = Review::where('history_id', $history->id)->first()->id ?? 0;
+                  $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
+                  return $history;
+                });
+            }
             return view('public.mypage', [
-                'histories' => $histories,
+                'today_point' => $today_point,
                 'member' => $member,
-                'pay' => $pay,
+                'histories' => $histories,
+                'shop_histories' => $shop_histories,
             ]);
         } else {
             return redirect('/');
@@ -654,10 +677,12 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     {
         $member = Auth::guard('member')->user();
         $token = Auth::guard('member')->user()->createToken('mypage')->plainTextToken;
+        $history_id = $request->query('history_id');
         if ($member) {
             return view('public.review', [
                 'member' => $member,
                 'token' => $token,
+                'history_id' => $history_id,
             ]);
         } else {
             return redirect('/');

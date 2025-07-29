@@ -28,6 +28,7 @@ class Review extends Model
         'staff_point',
         'photo_point',
         'average_point',
+        'history_id',
     ];
 
     /**
