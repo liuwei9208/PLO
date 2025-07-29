@@ -8,8 +8,16 @@
     @elseif(request()->routeIs('public.shop.diarylist') || request()->routeIs('public.shop.diarydetail'))
     <img src="{{ asset('assets/img/shop/mv/diary.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/diary.jpg') }}" alt="" class="pc-only">
+    @elseif(request()->routeIs('public.shop.castlist'))
+    <img src="{{ asset('assets/img/shop/mv/cast.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/mv/cast.jpg') }}" alt="" class="pc-only">
+    @elseif(request()->routeIs('public.shop.event') || request()->routeIs('public.shop.event.detail'))
+    <img src="{{ asset('assets/img/shop/mv/event.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/mv/event.jpg') }}" alt="" class="pc-only">
+    @elseif(request()->routeIs('public.shop.schedule'))
+    <img src="{{ asset('assets/img/shop/mv/schedule.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/mv/schedule.jpg') }}" alt="" class="pc-only">
     @else
-    
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-sm.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-lg.jpg') }}" alt="" class="pc-only">
     @endif
