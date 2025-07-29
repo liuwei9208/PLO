@@ -24,12 +24,15 @@
             <div class="flex items-center mb-2">
                 <span class="font-bold">現在のポイント</span>
             </div>
-            <div class="text-center text-3xl font-bold text-gray-800 mb-2">25,000pt</div>
+            <div class="text-center text-3xl font-bold text-gray-800 mb-2">{{ number_format($today_point) }}pt</div>
             <div class="text-xs font-bold mb-1">ポイント利用履歴</div>
             <div class="text-xs space-y-1">
-                <div>2025年7月20日　2,000pt（零）</div>
+              @foreach($histories as $history)
+                <div>{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y年m月d日') : '' }}　{{ $history->point_pay }}pt（{{ $history->shop_name }}）</div>
+              @endforeach
+                {{-- <div>2025年7月20日　2,000pt（零）</div>
                 <div>2025年6月10日　1,500pt（シロガネオーゼ）</div>
-                <div>2025年5月25日　3,000pt（ラブストーリー）</div>
+                <div>2025年5月25日　3,000pt（ラブストーリー）</div> --}}
             </div>
         </div>
 
@@ -38,18 +41,24 @@
             <div class="flex items-center mb-2">
                 <span class="font-bold">来店履歴</span>
             </div>
-            @foreach ($histories as $history)
+            @foreach($shop_histories as $shop_history)
                 <div class="mb-3 last:mb-0 border-b pb-2 last:border-b-0 last:pb-0">
-                    <div class="text-xs">来店日　{{ $history->created_at->format('Y年m月d日') }}</div>
-                    <div class="text-xs">店舗名　{{ $history->shop_name }}</div>
-                    <div class="text-xs mb-4">遊んだ女の子　{{ $history->cast_name }}</div>
-                    <button class="btn-write-review w-full mt-1 py-1 text-xs bg-gray-500 text-white rounded hover:bg-gray-400">クチコミを書く</button>
+                    <div class="text-xs">来店日　{{ $shop_history->created_at ? \Carbon\Carbon::parse($shop_history->created_at)->format('Y年m月d日') : '' }}</div>
+                    <div class="text-xs">店舗名　{{ $shop_history->shop_name }}</div>
+                    <div class="text-xs">遊んだ女の子　{{ $shop_history->casts_name }}</div>
+                    <input type="hidden" id="history_id" value="{{ $shop_history->id }}">
+                    @if($shop_history->history_id > 0)
+                        {{-- Already reviewed --}}
+                        <button class="btn-write-review w-full mt-1 py-1 text-xs bg-gray-300 text-gray-500 rounded" disabled>クチコミを書く</button>
+                    @else
+                        <button class="btn-write-review w-full mt-1 py-1 text-xs bg-white border border-gray-400 rounded hover:bg-gray-100">クチコミを書く</button>
+                    @endif
                 </div>
             @endforeach
 
             {{-- View More --}}
             <div class="text-center">
-                <button class="px-6 py-2 bg-white border rounded hover:bg-gray-100 text-sm">もっと見る</button>
+                <button class="px-6 py-2 bg-white border rounded hover:bg-gray-100 text-sm" id="btn_view">もっと見る</button>
             </div>
         </div>
 
@@ -130,8 +139,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.querySelectorAll('.btn-write-review').forEach(btn => {
     btn.addEventListener('click', function () {
-      window.location.href = '/review';
+      const historyId = document.getElementById('history_id').value;
+      window.location.href = `/review?history_id=${historyId}`;
     })
+  });
+
+  document.getElementById('btn_view').addEventListener('click', function () {
+
   });
 });
 </script>
