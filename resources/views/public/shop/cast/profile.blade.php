@@ -89,7 +89,7 @@
       </div>
     </div>
   </div>
-
+  @if(count($videos) > 0)
   <div class="movie content-wrapper-shop">
     <div class="movie-title">
       <h2 class="movie-title__title title-font-midashi --{{ $shop->slug }}">Movie</h2>
@@ -117,7 +117,7 @@
       </div> --}}
     </div>
   </div>
-
+  @endif
   <!-- Profile Content -->
   <div class="profile-content content-wrapper-shop">
     <h2 class="profile-content__main-title title-font-midashi --{{ $shop->slug }}">Profile</h2>
