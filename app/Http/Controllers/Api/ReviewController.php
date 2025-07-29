@@ -27,7 +27,7 @@ class ReviewController extends Controller
         $review->cast_point = $request->input('cast_point');
         $review->play_point = $request->input('play_point');
         $review->price_point = $request->input('price_point');
-        $review->stuff_point = $request->input('staff_point');
+        $review->stuff_point = $request->input('stuff_point');
         $review->photo_point = $request->input('photo_point');
         $review->average_point = $request->input('average_point');
         $review->history_id = $request->input('history_id');
