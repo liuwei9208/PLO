@@ -57,8 +57,8 @@
     background: #fff;
     border-radius: 8px;
     box-shadow: none;
-    margin-bottom: 30px;
-    padding: 20px;
+    // margin-bottom: 30px;
+    // padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -68,17 +68,21 @@
     margin-left: auto;
     margin-right: auto;
     border: none;
+    padding: 0 0;
     @media #{media-query(sm)} {
       width: 100%;
     }
+  }
+  &-items-container {
+    padding: 0;
   }
   &-item {
     position: relative;
     background: #fff;
     border-radius: 8px;
     box-shadow: none;
-    margin-bottom: 30px;
-    padding: 20px;
+    // margin-bottom: 30px;
+    // padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -174,14 +178,14 @@
         // height: 160%;
         // height: 600px;
         margin: 0 auto;
-        transform: translateY(-30px);
+        // transform: translateY(-30px);
       }
 
       // 2位以降のアイテムを2列表示
       .ranking-items-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px 30px;
+        gap: 30px 30px;
 
         // width: 100%;
         // max-width: 1200px;
