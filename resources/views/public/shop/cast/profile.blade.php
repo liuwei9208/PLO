@@ -1,8 +1,8 @@
 <x-public-shop-layout :shop="$shop">
   <div class="container-prof">
   <!-- Title -->
-  <div class="title">
-    <p class="title-label1">CAST PROFILE</p>
+  <div class="title --{{ $shop->slug }}">
+    <p class="title-label1 title-font-midashi ">CAST PROFILE</p>
     <p class="title-label2">Girls Name</p>
     <h1 class="title-name">{{ $cast->name }}</h1>
     <p class="title-attr">
@@ -33,7 +33,7 @@
   @if(count($diarys) > 0)
   <div class="diary content-wrapper-shop">
     <div class="diary-title">
-      <h2 class="diary-title__title">Photo Diary</h2>
+      <h2 class="diary-title__title title-font-midashi --{{ $shop->slug }}">Photo Diary</h2>
       <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'cast_id' => $cast->id]) }}" class="diary-title__link">もっと見る</a>
     </div>
     <div class="diary-item">
@@ -53,7 +53,7 @@
   @endif
   <div class="working content-wrapper-shop">
     <div class="working-title">
-      <h2 class="working-title__title">Schedule</h2>
+      <h2 class="working-title__title title-font-midashi --{{ $shop->slug }}">Schedule</h2>
     </div>
     <div class="working-container">
       <div class="schedule-container">
@@ -89,13 +89,23 @@
       </div>
     </div>
   </div>
-
+  @if(count($videos) > 0)
   <div class="movie content-wrapper-shop">
     <div class="movie-title">
-      <h2 class="movie-title__title">Movie</h2>
+      <h2 class="movie-title__title title-font-midashi --{{ $shop->slug }}">Movie</h2>
     </div>
     <div class="movie-container">
+      @foreach($videos as $video)
       <div class="movie-item">
+        <video class="movie-item__image" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+          <source src="{{ $video->video_url }}" type="video/mp4">
+        </video>
+      </div>
+      {{-- <div class="movie-item__image">
+          <img src="{{ asset('storage/movie/1.png') }}" alt="">
+        </div> --}}
+      @endforeach
+      {{-- <div class="movie-item">
         <div class="movie-item__image">
           <img src="{{ asset('storage/movie/1.png') }}" alt="">
         </div>
@@ -104,22 +114,22 @@
         <div class="movie-item__image">
           <img src="{{ asset('storage/movie/2.png') }}" alt="">
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
-
+  @endif
   <!-- Profile Content -->
   <div class="profile-content content-wrapper-shop">
-    <h2 class="profile-content__main-title --{{ $shop->slug }}">Profile</h2>
+    <h2 class="profile-content__main-title title-font-midashi --{{ $shop->slug }}">Profile</h2>
     <div class="profile-content__top">
       <div class="profile-content__message ">
-        <h3 class="profile-content__title --{{ $shop->slug }}">Girl Message</h3>
+        <h3 class="profile-content__title title-font-sm-midashi --{{ $shop->slug }}">Girl Message</h3>
         <div class="profile-content__text">
           {{ $cast->appeal_point }}
         </div>
       </div>
       <div class="profile-content__qa">
-        <h3 class="profile-content__title --{{ $shop->slug }}">Q&A</h3>
+        <h3 class="profile-content__title title-font-sm-midashi --{{ $shop->slug }}">Q&A</h3>
         <div class="profile-content__text">
           @foreach($qas as $qa)
             <div class="profile-content__qa-item">
@@ -132,7 +142,7 @@
     </div>
 
     <div class="profile-content__style">
-      <h3 class="profile-content__title --{{ $shop->slug }}">性格＆スタイル</h3>
+      <h3 class="profile-content__title title-font-sm-midashi --{{ $shop->slug }}">性格＆スタイル</h3>
       <div class="profile-content__text">
         @if($personalities == "")
           {{ $styles }}
@@ -143,7 +153,7 @@
     </div>
 
     <div class="profile-content__option">
-      <h3 class="profile-content__title --{{ $shop->slug }}">Option</h3>
+      <h3 class="profile-content__title title-font-sm-midashi --{{ $shop->slug }}">Option</h3>
       <div class="profile-content__text">
         {{ $options }}
       </div>
@@ -151,7 +161,7 @@
 
     <div class="profile-content__bottom">
       <div class="profile-content__shop-message">
-        <h3 class="profile-content__title --{{ $shop->slug }}">Shop Message</h3>
+        <h3 class="profile-content__title title-font-sm-midashi --{{ $shop->slug }}">Shop Message</h3>
         <div class="profile-content__text">
           {{ $cast->manager_comment }}
         </div>
