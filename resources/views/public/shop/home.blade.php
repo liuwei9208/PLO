@@ -2,9 +2,9 @@
 
   <!-- Main Visual -->
   <x-public.shop.mv :shop="$shop" />
-  <div class="phone-link-container --mv">
+  {{-- <div class="phone-link-container --mv">
     <x-public.shop.phone-link :shop="$shop" />
-  </div>
+  </div> --}}
   
   @if ($todayCasts->count() > 0)
   <!-- Today Schedule -->
@@ -418,9 +418,9 @@
   </div>
   @endif
   <!-- Fixed Phone Link (SP Only) -->
-  {{-- <div class="phone-link-container --fixed">
+  <div class="phone-link-container --fixed">
     <x-public.shop.phone-link :shop="$shop" />
-  </div> --}}
+  </div>
 </x-public-shop-layout>
 @production
   @vite(['resources/scss/shop/_today.scss', 'resources/scss/shop/newgirls.scss', 'resources/scss/shop/event.scss', 'resources/scss/shop/newsdiary.scss', 'resources/scss/shop/banner.scss'])

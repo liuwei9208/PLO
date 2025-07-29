@@ -1,4 +1,5 @@
 <x-public-shop-layout :shop="$shop">
+  <div class="container-prof">
   <!-- Title -->
   <div class="title">
     <p class="title-label1">CAST PROFILE</p>
@@ -10,7 +11,7 @@
   </div>
 
   @if(count($gallerys) > 0)
-    <div class="gallery">
+    <div class="gallery content-wrapper-shop">
       <div class="gallery-slider swiper">
         <div class="swiper-wrapper">
           @foreach($gallerys as $gallery)
@@ -30,7 +31,7 @@
     </div>
   @endif
   @if(count($diarys) > 0)
-  <div class="diary">
+  <div class="diary content-wrapper-shop">
     <div class="diary-title">
       <h2 class="diary-title__title">Photo Diary</h2>
       <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug, 'cast_id' => $cast->id]) }}" class="diary-title__link">もっと見る</a>
@@ -50,7 +51,7 @@
     </div>
   </div>
   @endif
-  <div class="working">
+  <div class="working content-wrapper-shop">
     <div class="working-title">
       <h2 class="working-title__title">Schedule</h2>
     </div>
@@ -89,7 +90,7 @@
     </div>
   </div>
 
-  <div class="movie">
+  <div class="movie content-wrapper-shop">
     <div class="movie-title">
       <h2 class="movie-title__title">Movie</h2>
     </div>
@@ -108,17 +109,17 @@
   </div>
 
   <!-- Profile Content -->
-  <div class="profile-content">
-    <h2 class="profile-content__main-title">Profile</h2>
+  <div class="profile-content content-wrapper-shop">
+    <h2 class="profile-content__main-title --{{ $shop->slug }}">Profile</h2>
     <div class="profile-content__top">
-      <div class="profile-content__message">
-        <h3 class="profile-content__title">Girl Message</h3>
+      <div class="profile-content__message ">
+        <h3 class="profile-content__title --{{ $shop->slug }}">Girl Message</h3>
         <div class="profile-content__text">
           {{ $cast->appeal_point }}
         </div>
       </div>
       <div class="profile-content__qa">
-        <h3 class="profile-content__title">Q&A</h3>
+        <h3 class="profile-content__title --{{ $shop->slug }}">Q&A</h3>
         <div class="profile-content__text">
           @foreach($qas as $qa)
             <div class="profile-content__qa-item">
@@ -131,7 +132,7 @@
     </div>
 
     <div class="profile-content__style">
-      <h3 class="profile-content__title">性格＆スタイル</h3>
+      <h3 class="profile-content__title --{{ $shop->slug }}">性格＆スタイル</h3>
       <div class="profile-content__text">
         @if($personalities == "")
           {{ $styles }}
@@ -142,7 +143,7 @@
     </div>
 
     <div class="profile-content__option">
-      <h3 class="profile-content__title">Option</h3>
+      <h3 class="profile-content__title --{{ $shop->slug }}">Option</h3>
       <div class="profile-content__text">
         {{ $options }}
       </div>
@@ -150,7 +151,7 @@
 
     <div class="profile-content__bottom">
       <div class="profile-content__shop-message">
-        <h3 class="profile-content__title">Shop Message</h3>
+        <h3 class="profile-content__title --{{ $shop->slug }}">Shop Message</h3>
         <div class="profile-content__text">
           {{ $cast->manager_comment }}
         </div>
@@ -186,6 +187,8 @@
   });
   </script>
   @endpush --}}
+
+</div>
   @once
     @vite(['resources/js/shop/profile.js', 'resources/scss/shop/_cast.scss'])
   @endonce

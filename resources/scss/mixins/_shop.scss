@@ -1,0 +1,28 @@
+@use 'sass:math';
+@use '../global/vars' as *;
+
+
+$shop-colors: (
+  shizuku: $shop-color-shizuku,
+  miyabi: $shop-color-miyabi,
+  pussycat: $shop-color-pussycat,
+  en: $shop-color-en,
+  shiroganeze: $shop-color-shiroganeze,
+  lovestory: $shop-color-lovestory
+);
+
+@mixin shop-bgcolor-modifiers {
+  @each $key, $value in $shop-colors {
+    &.--#{$key} {
+      background-color: $value;
+    }
+  }
+}
+
+@mixin shop-color-modifiers {
+  @each $key, $value in $shop-colors {
+    &.--#{$key} {
+      color: $value;
+    }
+  }
+}
