@@ -153,6 +153,8 @@
 <script>
 const token = '{{ $token }}';
 const member = @json($member);
+const history_id = '{{ $history_id }}';
+
 function reviewForm() {
     return {
         castPoint: 3,
@@ -186,7 +188,7 @@ function reviewForm() {
 
             if (!this.content.trim()) {
                 this.errors.content = 'レビュー内容を入力してください';
-            } else if (this.content.length < 200) {
+            } else if (this.content.length < 2) {
                 this.errors.content = '200文字以上入力してください';
             } else if (this.content.length > 2000) {
                 this.errors.content = '2000文字以下で入力してください';
@@ -215,13 +217,14 @@ function reviewForm() {
                     body: JSON.stringify({
                         title: this.title,
                         content: this.content,
-                        cast_point: this.castPoint,
-                        play_point: this.playPoint,
-                        price_point: this.pricePoint,
-                        staff_point: this.staffPoint,
-                        photo_point: this.photoPoint,
-                        average_point: this.averagePoint,
+                        girl_satisfaction: this.girlSatisfaction,
+                        play_satisfaction: this.playSatisfaction,
+                        price_satisfaction: this.priceSatisfaction,
+                        staff_satisfaction: this.staffSatisfaction,
+                        photo_satisfaction: this.photoSatisfaction,
+                        average_score: this.averageScore,
                         member_id: member.id,
+                        history_id: history_id
                     })
                 });
 
