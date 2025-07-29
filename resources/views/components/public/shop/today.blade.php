@@ -12,7 +12,7 @@
     <div class="today-profile">
       <span class="today-profile-schedule">
         <img src="{{ asset('assets/img/shop/clock-icon-y.png') }}" alt="移動時間のみ">
-        移動時間のみ
+        待機中
       </span>
       <span class="today-profile-name">
         <img src="{{ asset('assets/img/shop/star-w.png') }}" alt="移動時間のみ">

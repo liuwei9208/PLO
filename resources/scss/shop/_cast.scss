@@ -3,6 +3,7 @@
 @use '../global/base';
 @use '../global/utils';
 @use '../mixins/font';
+@use '../mixins/shop';
 
 .title {
   display: flex;
@@ -80,9 +81,9 @@
 }
 
 .profile-content {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 60px auto 60px;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   &__main-title {
     font-size: 32px;
@@ -99,6 +100,7 @@
       margin-bottom: 30px;
       padding: 12px 0;
     }
+    @include shop.shop-bgcolor-modifiers;
   }
 
   &__top {
@@ -169,6 +171,7 @@
     text-align: center;
     border-radius: 25px 25px 0 0;
     font-family: $font-midashi-min;
+    @include shop.shop-bgcolor-modifiers;
     @media #{media-query(sm)} {
       font-size: 20px;
       // margin-bottom: 15px;
@@ -200,9 +203,9 @@
 }
 
 .gallery {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 40px auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   &-slider {
     position: relative;
@@ -310,9 +313,9 @@
 }
 
 .diary {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 60px auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   &-title {
     display: flex;
@@ -438,9 +441,9 @@
 }
 
 .movie {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 60px auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   &-title {
     margin-bottom: 30px;
@@ -679,9 +682,9 @@
 }
 
 .working {
-  max-width: 1200px;
+  // max-width: 1200px;
   margin: 60px auto;
-  padding: 0 20px;
+  // padding: 0 20px;
 
   &-title {
     margin-bottom: 30px;
