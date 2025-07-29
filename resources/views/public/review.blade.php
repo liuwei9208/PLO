@@ -68,8 +68,8 @@
                 <div class="flex items-center mr-2">
                     <template x-for="i in 5" :key="'staff-'+i">
                         <span
-                            @click="staffPoint = i"
-                            :class="staffPoint >= i ? 'text-red-400' : 'text-gray-300'"
+                            @click="stuffPoint = i"
+                            :class="stuffPoint >= i ? 'text-red-400' : 'text-gray-300'"
                             class="text-2xl cursor-pointer select-none"
                             >★</span>
                     </template>
