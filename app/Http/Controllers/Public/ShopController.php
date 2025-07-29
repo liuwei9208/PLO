@@ -14,6 +14,7 @@ use App\Models\Event;
 use App\Models\Banner;
 use App\Models\Attendance;
 use App\Models\Reservation;
+use App\Models\Video;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
@@ -229,6 +230,15 @@ WHERE cast_style.cast_id = $new_girl->id;";
         }
         // dd($days);
         // dd($attendances);
+
+        $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
+        ->where('videos.cast_id', $id)
+        ->where('videos.is_public', 1)
+        ->orderBy('videos.updated_at', 'desc')
+        ->limit(2)
+        ->select('videos.*','casts.*')
+        ->get();
+        // dd($videos);
         return view('public.shop.cast.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
@@ -242,6 +252,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             'attendance_today' => $attendance_today,
             'reservation' => $reservations,
             'days' => $days,
+            'videos' => $videos,
         ]);
     }
 
