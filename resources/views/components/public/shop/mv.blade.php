@@ -17,6 +17,9 @@
     @elseif(request()->routeIs('public.shop.schedule'))
     <img src="{{ asset('assets/img/shop/mv/schedule.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/schedule.jpg') }}" alt="" class="pc-only">
+    @elseif(request()->routeIs('public.shop.about'))
+    <img src="{{ asset('assets/img/shop/mv/address.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/mv/address.jpg') }}" alt="" class="pc-only">
     @else
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-sm.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-lg.jpg') }}" alt="" class="pc-only">

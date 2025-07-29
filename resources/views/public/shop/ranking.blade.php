@@ -13,7 +13,7 @@
       @foreach ($rankings as $ranking)
         @if($ranking->ranking_rank == 1)
         <div class="content-wrapper-shop">
-          <div class="ranking-item_one">
+          <a class="ranking-item_one" href="{{ route('public.shop.cast.profile',['shop'=>$shop->slug,'id'=>$ranking->cast_id]) }}">
             @if($ranking->ranking_rank == 1)
               <img src="{{ asset('assets/img/shop/1.png') }}" alt="1位" class="ranking-badge">
             @endif
@@ -32,7 +32,7 @@
               <span class="ranking-item-appeal-text">{{ $ranking->cast->appeal_point }}</span>
               {{-- {{ $ranking->cast->appeal_point }} --}}
             </div>
-          </div>
+          </a>
         </div>
         @endif
       @endforeach
@@ -40,7 +40,7 @@
       <div class="ranking-items-container content-wrapper-shop">
         @foreach ($rankings as $ranking)
           @if($ranking->ranking_rank > 1)
-            <div class="ranking-item">
+            <a class="ranking-item"  href="{{ route('public.shop.cast.profile',['shop'=>$shop->slug,'id'=>$ranking->cast_id]) }}">
               @if($ranking->ranking_rank == 2)
                 <img src="{{ asset('assets/img/shop/2.png') }}" alt="2位" class="ranking-badge">
               @elseif($ranking->ranking_rank == 3)
@@ -64,7 +64,7 @@
               <div class="ranking-item-appeal">
                 <span class="ranking-item-appeal-text">{{ $ranking->cast->appeal_point }}</span>
               </div>
-            </div>
+            </a>
           @endif
         @endforeach
       </div>

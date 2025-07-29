@@ -263,6 +263,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
         $rankings = Ranking::where('rankings.shop_id', $shop->id)
             ->join('casts', 'rankings.cast_id', '=', 'casts.id')
             ->where('casts.shop_id', $shop->id)
+            ->where('casts.is_public',1)
             ->select('rankings.*', 'casts.*','rankings.rank as ranking_rank')
             ->orderBy('rankings.rank', 'asc')
             ->get();
