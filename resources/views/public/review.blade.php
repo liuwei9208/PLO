@@ -160,7 +160,7 @@ function reviewForm() {
         castPoint: 3,
         playPoint: 3,
         pricePoint: 3,
-        staffPoint: 3,
+        stuffPoint: 3,
         photoPoint: 3,
         title: '',
         content: '',
@@ -172,7 +172,7 @@ function reviewForm() {
                 (this.castPoint +
                 this.playPoint +
                 this.pricePoint +
-                this.staffPoint +
+                this.stuffPoint +
                 this.photoPoint) / 5
             );
         },
@@ -217,12 +217,12 @@ function reviewForm() {
                     body: JSON.stringify({
                         title: this.title,
                         content: this.content,
-                        girl_satisfaction: this.girlSatisfaction,
-                        play_satisfaction: this.playSatisfaction,
-                        price_satisfaction: this.priceSatisfaction,
-                        staff_satisfaction: this.staffSatisfaction,
-                        photo_satisfaction: this.photoSatisfaction,
-                        average_score: this.averageScore,
+                        cast_point: this.castPoint,
+                        play_point: this.playPoint,
+                        price_point: this.pricePoint,
+                        stuff_point: this.stuffPoint,
+                        photo_point: this.photoPoint,
+                        average_point: this.averagePoint,
                         member_id: member.id,
                         history_id: history_id
                     })
