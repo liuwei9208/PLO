@@ -86,7 +86,11 @@
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">取得ポイント</th>
-                  <td class="p-1 border-b border-gray-400"><input type="number" name="point" id="point" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="number" name="point" id="point" value="0" class="p-1 border border-gray-400 text-right w-full" readonly></td>
+                </tr>
+                <tr>
+                  <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">PLOの日</th>
+                  <td class="p-1 border-b border-gray-400"><input type="checkbox" name="plo_day" id="plo_day" value="1" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
@@ -104,6 +108,22 @@
                   </td>
                 </tr>
                 <tr>
+                <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">指名</th>
+                  <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio" name="appointment" id="appointment" value="1" class="p-1 border border-gray-400 text-right w-full">パネル指名</label><label><input type="radio" name="appointment" id="appointment" value="0" class="p-1 border border-gray-400 text-right w-full">本指名指名</label></td>
+                </tr>
+                @for($i = 1 ; $i <= 5 ; $i++)
+                <tr>
+                <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">オプション</th>
+                  <td class="p-1 border-b border-gray-400 flex gap-2">
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="option.{{ $i }}" id="option{{ $i }}">
+                      <option value="" data-price="0">選択してください</option>
+                      <option value="1">パネル指名</option>
+                      <option value="2">本指名指名</option>
+                    </select>
+                  </td>
+                  </tr>
+                  @endfor
+                <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
                   <td class="p-1 border-b border-gray-400">
                     <select class="p-1 border border-gray-400 w-full bg-white" name="course" id="course">
@@ -116,7 +136,13 @@
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">延長</th>
-                  <td class="p-1 border-b border-gray-400"><input type="text" class="p-1 border border-gray-400 w-full" name="extension_name" id="extension_name"></td>
+                  <td class="p-1 border-b border-gray-400">
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="extension_name" id="extension_name">
+                      <option value=""></option>
+                      <option value="1">パネル指名</option>
+                      <option value="0">本指名指名</option>
+                    </select>
+                  </td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left" style="width: 100px;">メモ</th>
