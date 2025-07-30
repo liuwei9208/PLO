@@ -29,21 +29,31 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // Enforce SMS verification
+        if (!session('sms_verified') || !session('sms_phone_number')) {
+            return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'phone' => ['required', 'string', 'max:20'],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'tel' => $request->phone,
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+        // Clear SMS verification session
+        session()->forget('sms_verified');
+        session()->forget('sms_phone_number');
 
         return redirect(route('dashboard', absolute: false));
     }
