@@ -55,6 +55,7 @@ class RegisteredUserController extends Controller
         session()->forget('sms_verified');
         session()->forget('sms_phone_number');
 
-        return redirect(route('dashboard', absolute: false));
+        // return redirect(route('dashboard', absolute: false));
+        return redirect('/');
     }
 }
