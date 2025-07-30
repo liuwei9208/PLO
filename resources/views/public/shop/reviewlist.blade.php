@@ -21,20 +21,21 @@
         <div class="review-item-head">
           <div class="review-item-head-top">
             <div class="review-item-shopnameButton">
-              <p class="userrank">
+              {{-- <p class="userrank">
                 <span style="background-image: url('//img2.cityheaven.net/img/myheaven/icon-user.svg'); width: 50px;height: 50px;border:1px solid #fff;border-radius: 50%;background-size: cover;background-position: center;float: left;" id="iconimage">
                 </span>
-              </p>
+              </p> --}}
               <div class="userrank_box">
-                <p class="userrank_icon">愛の狩人</p>
+                {{-- <p class="userrank_icon">愛の狩人</p> --}}
                 <p class="userrank_nickname_shogo">
-                  <a href="/userpage/12732714/review-list/">{{$review->member_name}}</a>
+                  {{-- <a href="/userpage/12732714/review-list/">{{$review->member_name}}</a> --}}
+                  {{$review->member_name}}
                 </p>
               </div>
             </div>
-            <span class="special_thanks_icon">
+            {{-- <span class="special_thanks_icon">
               <img src="//img2.cityheaven.net/img/specialthanks.png?imgopt=y">
-            </span>
+            </span> --}}
           </div>
           <div class="review-visit">
             <div class="visit-time">
@@ -60,7 +61,7 @@
                 </dd>
               </dl>
               <p class="girls-spec">
-              T154･ (Ccup)･･ </p>
+                T{{ $review->cast_height }} B{{ $review->cast_cup }} W{{ $review->cast_waist }} H{{ $review->cast_hip }}</p>
               <p class="more-girlsinfo"><a href="{{route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $review->cast_id])}}">プロフィールを見る</a></p>
             </div>
           </div>
@@ -131,7 +132,7 @@
     </div>
 
     <!-- Pagination and Footer -->
-    <div class="reviewlist__footer">コメントを１０掲載</div>
+    {{-- <div class="reviewlist__footer">コメントを１０掲載</div>
     <div class="reviewlist__pagination">
       <ul class="pagination">
         <li class="pagination-item disabled">
@@ -167,7 +168,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> --}}
 </x-public-shop-layout>
 @once
   @vite(['resources/scss/shop/reviewlist.scss', 'resources/scss/shop/newface.scss'])
