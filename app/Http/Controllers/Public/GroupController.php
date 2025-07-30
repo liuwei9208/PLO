@@ -651,7 +651,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereIn('name', ['来店', 'PT有効期限切れ'])
             ->orderBy('created_at', 'desc')
             ->orderBy('id', 'desc')
-            ->limit(3)
+            // ->limit(3)
             ->get();
 
             if ($shop_histories) {

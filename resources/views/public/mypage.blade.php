@@ -57,9 +57,9 @@
             @endforeach
 
             {{-- View More --}}
-            <div class="text-center">
+            {{-- <div class="text-center">
                 <button class="px-6 py-2 bg-white border rounded hover:bg-gray-100 text-sm" id="btn_view">もっと見る</button>
-            </div>
+            </div> --}}
         </div>
 
     </div>
