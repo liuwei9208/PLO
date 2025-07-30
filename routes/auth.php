@@ -12,8 +12,15 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['guest'])->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+    Route::get('/terms', function () {
+        return view('auth.terms');
+    })->name('terms.show');
+
+    Route::get('/sms-verify', [\App\Http\Controllers\Auth\SmsVerificationController::class, 'showSmsVerifyForm'])->name('sms.verify.show');
+    Route::post('/sms-send', [\App\Http\Controllers\Auth\SmsVerificationController::class, 'sendSmsCode'])->name('sms.send');
+    Route::post('/sms-verify', [\App\Http\Controllers\Auth\SmsVerificationController::class, 'verifySmsCode'])->name('sms.verify');
+
+    Route::get('register', [RegisteredUserController::class, 'create'])->name('register');
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
