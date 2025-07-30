@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class VisitController extends Controller{
     const DEFAULT_LIMIT = 30;
     public function index(Request $request): View{
-    
+
     // $model = \App\Models\History::with([
     //   'member',
     //   'cast',
@@ -28,19 +28,27 @@ class VisitController extends Controller{
 
     // ])->orderBy('created_at', 'desc');
   //
-  $sql_total = 'SELECT COUNT(*) as total 
+//   $sql_total = 'SELECT COUNT(*) as total
+//   FROM `'.env("MEMBER_DB_DATABASE").'`.histories
+//   LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.users ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("MEMBER_DB_DATABASE").'`.users.id
+//   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
+//   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
+//   LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
+//   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
+
+  $sql_total = 'SELECT COUNT(*) as total
   FROM `'.env("MEMBER_DB_DATABASE").'`.histories
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.users ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("MEMBER_DB_DATABASE").'`.users.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
   LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
 
   $sql = 'SELECT DATE_FORMAT(`'.env("MEMBER_DB_DATABASE").'`.histories.created_at, "%Y-%m-%d %H:%i:%s") as created_at,
-  `'.env("MEMBER_DB_DATABASE").'`.users.name as user_name,
+  `'.env("DB_DATABASE").'`.members.name as user_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.id as id,
   `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id as shop_id,
-  `'.env("MEMBER_DB_DATABASE").'`.users.id as user_id,
+  `'.env("DB_DATABASE").'`.members.id as user_id,
   `'.env("MEMBER_DB_DATABASE").'`.histories.office_id as office_id,
   `'.env("MEMBER_DB_DATABASE").'`.histories.name as name,
   `'.env("DB_DATABASE").'`.shops.name as shop_name,
@@ -49,9 +57,9 @@ class VisitController extends Controller{
   `'.env("MEMBER_DB_DATABASE").'`.courses.name as course_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.extension_name as extension_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.price as price,
-  `'.env("MEMBER_DB_DATABASE").'`.users.comment as user_comment
+  `'.env("DB_DATABASE").'`.members.comment as user_comment
   FROM `'.env("MEMBER_DB_DATABASE").'`.histories
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.users ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("MEMBER_DB_DATABASE").'`.users.id
+  LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
   LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
@@ -176,7 +184,7 @@ class VisitController extends Controller{
 //                 //         WHERE type = 5
 //                 //     ) AS pt3'),
 //                 //     env('MEMBER_DB_DATABASE').'.histories.id', '=', 'pt3.history_id'
-//                 // )                
+//                 // )
 //                 // // POINTS type=3
 //                 // ->leftJoin(
 //                 //     DB::raw('(
@@ -185,7 +193,7 @@ class VisitController extends Controller{
 //                 //         WHERE confirm = 1
 //                 //     ) AS pt4'),
 //                 //     env('MEMBER_DB_DATABASE').'.histories.id', '=', 'pt4.history_id'
-//                 // )                
+//                 // )
 //                 ->orderBy('`'.env('MEMBER_DB_DATABASE').'`.histories.created_at','desc');
 //     // dd($model->limit(100)->get());
 //     // $model->whereIn(env('MEMBER_DB_DATABASE').'.histories.name', ['"来店"', '"PT有効期限切れ"']);
@@ -262,7 +270,7 @@ class VisitController extends Controller{
 //     ->orderBy('`'.env("MEMBER_DB_DATABASE").'`.histories.created_at', 'desc')
 //     ->orderBy('`'.env("MEMBER_DB_DATABASE").'`.histories.id', 'desc')
 //     ->get();
-    $datas = [];    
+    $datas = [];
     if ($results) {
         $datas = collect($results)->map(function ($item) {
             $item->history_shop_count = \App\Models\History::where('user_id', $item->user_id)

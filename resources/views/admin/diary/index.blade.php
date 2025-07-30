@@ -268,7 +268,7 @@
       </div>
     </div>
 
-    <!-- Pagination -->
+    {{-- <!-- Pagination -->
     <div class="mb-10 flex justify-center">
       <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         @if ($page > 1)
@@ -326,7 +326,98 @@
           </span>
         @endif
       </div>
-    </div>
+    </div> --}}
+    <!-- Pagination -->
+    <div class="mb-10 flex justify-center">
+      <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+        @if ($page > 1)
+          <a
+            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
+            class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            </svg>
+          </a>
+        @else
+          <span
+            class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800"
+          >
+            <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+              <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+            </svg>
+          </span>
+        @endif
 
+        @php
+          $start = max(1, $page - 2);
+          $end = min($pages, $page + 2);
+        @endphp
+
+        @if ($start > 1)
+          <a
+            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => 1])) }}"
+            class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            1
+          </a>
+          @if ($start > 2)
+            <span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800">
+              ...
+            </span>
+          @endif
+        @endif
+
+        @for ($i = $start; $i <= $end; $i++)
+          @if ($i === $page)
+            <span
+              class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white"
+            >
+              {{ $i }}
+            </span>
+          @else
+            <a
+              href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $i])) }}"
+              class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
+            >
+              {{ $i }}
+            </a>
+          @endif
+        @endfor
+
+        @if ($end < $pages)
+          @if ($end < $pages - 1)
+            <span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800">
+              ...
+            </span>
+          @endif
+          <a
+            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $pages])) }}"
+            class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            {{ $pages }}
+          </a>
+        @endif
+
+        @if ($page < $pages)
+          <a
+            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
+            class="flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-gray-800"
+          >
+            <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
+            </svg>
+          </a>
+        @else
+          <span
+            class="flex items-center justify-center w-10 h-10"
+          >
+            <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+              <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
+            </svg>
+          </span>
+        @endif
+      </div>
+    </div>
   </div>
 </x-admin-layout>
