@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cast;
 use App\Models\Shop;
 use App\Models\Review;
+use App\Models\History;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
@@ -18,10 +19,11 @@ class ReviewController extends Controller
 
     public function createReview(Request $request): JsonResponse
     {
+        $history = History::where('id', $request->input('history_id'))->first();
         Log::info($request->all());
         $review = new Review();
         $review->member_id = $request->input('member_id');
-        // $review->cast_id = $request->input('cast_id');
+        $review->cast_id = $history->cast_id;
         $review->title = $request->input('title');
         $review->content = $request->input('content');
         $review->cast_point = $request->input('cast_point');
