@@ -33,7 +33,7 @@
 function confirmAge(isAdult) {
     const modal = document.getElementById('{{ $id }}');
 
-    return false;
+    // return false;
     if (isAdult) {
         // 18歳以上の場合
         // localStorage.setItem('ageVerified', 'true');
