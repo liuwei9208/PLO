@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use Spatie\Permission\Models\Role;
 
 class RegisteredUserController extends Controller
 {
@@ -31,32 +32,35 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Enforce SMS verification
-        if (!session('sms_verified') || !session('sms_phone_number')) {
-            return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
-        }
-
+        // if (!session('sms_verified') || !session('sms_phone_number')) {
+        //     return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
+        // }
+        $memberRole = Role::create(['name' => 'member','guard_name' => 'member']);
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'name' => ['required', 'string', 'max:255', 'unique:'.Member::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Member::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'phone' => ['required', 'string', 'max:20'],
+            // 'phone' => ['required', 'string', 'max:20'],
         ]);
-
+        // $member = Member::where('email', $request->email)->first();
+        // if ($member) {
+        //     return back()->withErrors(['email' => __('message.member_email_exists')]);
+        // }
         $member = Member::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'tel' => $request->phone,
+            // 'tel' => $request->phone,
         ]);
         $member->assignRole('member');
         event(new Registered($member));
 
         // Auth::login($user);
         // Clear SMS verification session
-        session()->forget('sms_verified');
-        session()->forget('sms_phone_number');
+        // session()->forget('sms_verified');
+        // session()->forget('sms_phone_number');
 
         // return redirect(route('dashboard', absolute: false));
-        return redirect('/')->with('success', 'PLO会員登録が完了しました。');
+        return redirect('/');
     }
 }
