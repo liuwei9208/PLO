@@ -12,6 +12,7 @@ use App\Models\Shop;
 use App\Models\CourseGroup;
 use App\Models\Extend;
 use App\Models\Option;
+use App\Models\OptionRS;
 use Carbon\Carbon;
 use App\Models\Cast;
 use Illuminate\Support\Facades\Auth;
@@ -230,9 +231,11 @@ class MemberController extends Controller{
     ->orderBy('name', 'asc')
     ->get();
     // $courses = Course::groupBy('name')->get();
-    $courses = CourseGroup::all();
-    $extends = Extend::all();
-    $options = Option::all();
+    $courses = CourseGroup::where('shop_id',$shop_user[0]->shop_id)->get();
+    $extends = Extend::where('shop_id',$shop_user[0]->shop_id)->get();
+    $options = OptionRS::leftJoin('options', 'options.id', '=', 'options_rs.option_id')
+    ->where('options_rs.shop_id',$shop_user[0]->shop_id)
+    ->get();
     // $extension = Extension::groupBy('name')->get();
     $user = Auth::user();
     $token = $user->createToken('api-token')->plainTextToken;
