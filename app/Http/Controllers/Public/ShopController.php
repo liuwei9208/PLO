@@ -302,7 +302,20 @@ WHERE cast_style.cast_id = $new_girl->id;";
             'events' => $events,
         ]);
     }
-
+    public function showMovieList(Request $request, string $shop): View
+    {
+        $movies = Video::join('casts', 'videos.cast_id', '=', 'casts.id')
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('casts.is_public', 1)
+        ->where('videos.is_public', 1)
+        ->orderBy('videos.updated_at', 'desc')
+        ->select('videos.*', 'casts.*')
+        ->get();
+        return view('public.shop.movielist', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'movies' => $movies,
+        ]);
+    }
     public function showEventDetail(Request $request, string $shop, string $id): View
     {
         $event = Event::find($id);

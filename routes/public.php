@@ -77,6 +77,7 @@ Route::name('public.')->group(function () {
         Route::get('castlist', [ShopController::class, 'showCastlist'])->name('castlist');
         Route::get('reviewlist', [ShopController::class, 'showReviewlist'])->name('reviewlist');
         Route::get('newslist', [ShopController::class, 'showNewsList'])->name('newslist');
+        Route::get('movielist', [ShopController::class, 'showMovieList'])->name('movielist');
         Route::get('newsdetail/{id}', [ShopController::class, 'showNewsDetail'])->name('newsdetail');
     });
 });
