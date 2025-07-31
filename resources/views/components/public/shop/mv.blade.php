@@ -20,6 +20,9 @@
     @elseif(request()->routeIs('public.shop.about'))
     <img src="{{ asset('assets/img/shop/mv/address.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/address.jpg') }}" alt="" class="pc-only">
+    @elseif(request()->routeIs('public.shop.movielist'))
+    <img src="{{ asset('assets/img/shop/mv/movie.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/mv/movie.jpg') }}" alt="" class="pc-only">
     @else
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-sm.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-lg.jpg') }}" alt="" class="pc-only">

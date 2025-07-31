@@ -4,7 +4,7 @@
   </a>
   <div class="header-user md lg">
     <div class="header-user-menu">
-      <a href="{{ route('logoutAll') }}">
+      <a href="{{ route('public.group.newcomer') }}">
         <small>NEWFACET</small>
         <span class="menu_newface">新人情報</span>
       </a>
