@@ -35,17 +35,14 @@ class RegisteredUserController extends Controller
         // if (!session('sms_verified') || !session('sms_phone_number')) {
         //     return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
         // }
-        $memberRole = Role::create(['name' => 'member','guard_name' => 'member']);
+        // $memberRole = Role::create(['name' => 'member','guard_name' => 'member']);
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:'.Member::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Member::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             // 'phone' => ['required', 'string', 'max:20'],
         ]);
-        // $member = Member::where('email', $request->email)->first();
-        // if ($member) {
-        //     return back()->withErrors(['email' => __('message.member_email_exists')]);
-        // }
+
         $member = Member::create([
             'name' => $request->name,
             'email' => $request->email,
