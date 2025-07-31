@@ -20,8 +20,7 @@
                 </p>
             </div>
 
-            {{-- <form method="GET" action="{{ route('sms.verify.show') }}"> --}}
-            <form method="GET" action="{{ route('register') }}">
+            <form method="GET" action="{{ route('sms.verify.show') }}">
                     @csrf
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button>
