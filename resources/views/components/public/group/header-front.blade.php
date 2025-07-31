@@ -6,19 +6,19 @@
     <div class="header-user-menu">
       <a href="{{ route('logoutAll') }}">
         <small>NEWFACET</small>
-        <span>新人情報</span>
+        <span class="menu_newface">新人情報</span>
       </a>
       <a href="{{ route('logoutAll') }}">
         <small>SCHEDULE</small>
-        <span>出勤情報</span>
+        <span class="menu_schedule">出勤情報</span>
       </a>
       <a href="{{ route('logoutAll') }}">
         <small>EVENT</small>
-        <span>イベント情報</span>
+        <span class="menu_event">イベント情報</span>
       </a>
       <a href="{{ route('logoutAll') }}">
         <small>SHOP</small>
-        <span>店舗一覧</span>
+        <span class="menu_shop">店舗一覧</span>
       </a>
     </div>
     <div class="header-user-logbox">

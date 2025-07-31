@@ -8,11 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\Permission\Traits\HasRoles;
 
 class Member extends Authenticatable
 {
   use Notifiable, HasApiTokens, HasFactory;
-  
+  use HasRoles;
 //   protected $connection = 'member_mysql';
   protected $connection = 'mysql';
   protected $table = 'members';
