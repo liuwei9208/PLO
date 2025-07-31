@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\VisitController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\ReviewController;
+use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\ExtendController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -265,5 +267,21 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [VideoController::class, 'show'])->name('detail');
         Route::put('{id}/publish', [VideoController::class, 'publish']);
         Route::put('{id}/unpublish', [VideoController::class, 'unpublish']);
+    });
+
+    Route::prefix('course')->name('course.')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('add', [CourseController::class, 'create'])->name('create');
+        Route::post('add', [CourseController::class, 'store']);
+        Route::get('{id}', [CourseController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [CourseController::class, 'update']);
+    });
+
+    Route::prefix('extend')->name('extend.')->group(function () {
+        Route::get('/', [ExtendController::class, 'index'])->name('index');
+        Route::get('add', [ExtendController::class, 'create'])->name('create');
+        Route::post('add', [ExtendController::class, 'store']);
+        Route::get('{id}', [ExtendController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [ExtendController::class, 'update']);
     });
 });

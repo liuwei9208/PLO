@@ -15,7 +15,10 @@ use App\Models\Diary;
 use App\Models\Member;
 use App\Models\Point;
 use App\Models\History;
+use App\Models\CourseGroup;
 use App\Models\Course;
+use App\Models\Extend;
+use App\Models\Option;
 use Illuminate\Support\Facades\DB;
 class MemberController extends Controller
 {
@@ -104,6 +107,29 @@ class MemberController extends Controller
       // if (!$history) {
         $shop_manager = Auth::user();
 
+        // There is no direct strtofloat in PHP, but you can convert a string to float using (float) or floatval().
+        // Example:
+        // $floatValue = (float) $stringValue;
+        $course_id = $request->input('course') == '' ? null :  $request->input('course');
+        $extend_id = $request->input('extend') == '' ? null :  $request->input('extend');
+        $option1_id = $request->input('option1') == '' ? null :  $request->input('option1');
+        $option2_id = $request->input('option2') == '' ? null :  $request->input('option2');
+        $option3_id = $request->input('option3') == '' ? null :  $request->input('option3');
+        $option4_id = $request->input('option4') == '' ? null :  $request->input('option4');
+        $option5_id = $request->input('option5') == '' ? null :  $request->input('option5');
+        Log::info($request->input('course'));
+        Log::info($course_id);
+        Log::info($request->input('option2'));
+        Log::info($option2_id);
+        $course_price = is_numeric($request->input('course_price')) ? floatval($request->input('course_price')) : 0;
+        $extend_price = is_numeric($request->input('extend_price')) ? floatval($request->input('extend_price')) : 0;
+        $option1_price = is_numeric($request->input('option1_price')) ? floatval($request->input('option1_price')) : 0;
+        $option2_price = is_numeric($request->input('option2_price')) ? floatval($request->input('option2_price')) : 0;
+        $option3_price = is_numeric($request->input('option3_price')) ? floatval($request->input('option3_price')) : 0;
+        $option4_price = is_numeric($request->input('option4_price')) ? floatval($request->input('option4_price')) : 0;
+        $option5_price = is_numeric($request->input('option5_price')) ? floatval($request->input('option5_price')) : 0;
+
+
         $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $shop_manager->id)->get();
         $shop_id = $shop_user[0]->shop_id;
         $history = new History();
@@ -111,10 +137,22 @@ class MemberController extends Controller
         $history->name = '来店';
         $history->office_id = 1;
         $history->shop_id = $shop_id;
-        $history->cast_id = $request->input('cast') ?: 'null';
-        $history->course_id = $request->input('course') ?: 'null';
-        $history->price = is_numeric($request->input('price')) ? $request->input('price') : 0;
-        $history->extension_name = $request->input('extension_name') ?? '';
+        $history->cast_id = $request->input('cast') ?: null;
+        $history->course_id = $course_id;
+        $history->course_price = $course_price;
+        $history->price_new = is_numeric($request->input('price')) ? floatval($request->input('price')) : 0;
+        $history->extend_id = $extend_id;
+        $history->extend_price = $extend_price;
+        $history->option1_id = $option1_id;
+        $history->option1_price = $option1_price;
+        $history->option2_id = $option2_id;
+        $history->option2_price = $option2_price;
+        $history->option3_id = $option3_id;
+        $history->option3_price = $option3_price;
+        $history->option4_id = $option4_id;
+        $history->option4_price = $option4_price;
+        $history->option5_id = $option5_id;
+        $history->option5_price = $option5_price;
         $history->memo = $request->input('memo') ?? '';
         // $history->created_at = $history;
         $history->save();
@@ -155,11 +193,16 @@ class MemberController extends Controller
     }
     public function getValues(Request $request){
         $shop_id = $request->input('shop_id');
-        $courses = Course::where('shop_id', $shop_id)->get();
+        $courses = CourseGroup::all();
         $casts = Cast::where('shop_id', $shop_id)->where('is_public', 1)->get();
+        $options = Option::all();
+        $extends = Extend::all();
+
         return response()->json([
           'courses' => $courses,
           'casts' => $casts,
+          'options' => $options,
+          'extends' => $extends,
         ]);
     }
 }
