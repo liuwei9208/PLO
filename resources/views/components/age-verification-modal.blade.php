@@ -33,6 +33,7 @@
 function confirmAge(isAdult) {
     const modal = document.getElementById('{{ $id }}');
 
+    return false;
     if (isAdult) {
         // 18歳以上の場合
         // localStorage.setItem('ageVerified', 'true');
@@ -57,4 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden';
     }
 });
+// マウスのダブルクリックを無効化
+// document.addEventListener('dblclick', function(e) {
+//     e.preventDefault();
+//     if (e.target.classList.contains('age-verification-btn')) {
+//         return;
+//     }
+//     const modal = document.getElementById('{{ $id }}');
+//     sessionStorage.setItem('ageVerified', 'true');
+//     modal.style.display = 'none';
+//     document.body.style.overflow = 'auto';
+
+// }, { passive: false });
+
 </script>
