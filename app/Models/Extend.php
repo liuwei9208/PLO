@@ -14,6 +14,7 @@ class Extend extends Model
      * @var array
      */
     protected $fillable = [
+        'shop_id',
         'extend',
         'price',
         'description',
@@ -29,4 +30,8 @@ class Extend extends Model
         'updated_at'
 
     ];
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

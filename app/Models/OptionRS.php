@@ -4,20 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CourseGroup extends Model
+class OptionRS extends Model
 {
     protected $connection = 'mysql';
-    protected $table = 'courses';
+    protected $table = 'options_rs';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
+        'option_id',
         'shop_id',
-        'course',
-        'price',
-        'description',
+        'price'
     ];
 
     /**
@@ -28,11 +27,15 @@ class CourseGroup extends Model
     protected $hidden = [
         'created_at',
         'updated_at'
-
     ];
 
     public function shop()
     {
-        return $this->belongsTo(Shop::class);
+        return $this->belongsTo('App\Models\Shop');
+    }
+
+    public function option()
+    {
+        return $this->belongsTo('App\Models\Option');
     }
 }

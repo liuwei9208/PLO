@@ -846,17 +846,15 @@
                   </a>
                 </li>
 
-                {{-- @can('edit personalities') --}}
                 <li>
                   <a
-                    href="{{ url('/admin/option') }}"
+                    href="{{ url('/admin/option_rs') }}"
                     class="menu-dropdown-item group"
                     :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                   >
                     オプション管理
                   </a>
                 </li>
-                {{-- @endcan --}}
 
                 <li>
                   <a
