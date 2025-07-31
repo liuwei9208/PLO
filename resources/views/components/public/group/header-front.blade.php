@@ -27,12 +27,28 @@
         <small>LOGOUT</small>
         <span>ログアウト</span>
       </a>
+      @if (Auth::guard('member')->check())
+      <div class="header-user-logbox-last">
+        <span></span>
+        <a href="{{ route('public.group.mypage') }}">
+          <small>MYPAGE</small>
+          <span>マイページ</span>
+        </a>
+      </div>
+      @elseif (Auth::guard('web')->check())
+      <div class="header-user-logbox-last">
+        <span></span>
+        <a href="{{ route('admin.home') }}">
+          <small>MANAGER</small>
+          <span>管理者</span>
+        </a>
+      </div>
+      @endif
     @else
       <a href="{{ route('login') }}">
         <small>LOGIN</small>
         <span>ログイン</span>
       </a>
-    @endif
       <div class="header-user-logbox-last">
         <span></span>
         <a href="#">
@@ -40,6 +56,7 @@
           <span>新規登録</span>
         </a>
       </div>
+    @endif
     </div>
   </div>
 
