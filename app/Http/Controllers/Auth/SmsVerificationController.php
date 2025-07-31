@@ -33,8 +33,9 @@ class SmsVerificationController extends Controller
             Session::put('sms_verification_code', $verificationCode);
             Session::put('sms_phone_number', $request->phone);
             $message = "PLO会員認証番号：".$verificationCode."\nこの番号をメンバー登録の画面で入力して下さい。";
+            // dd($message);
             $client->messages->create(
-                $request->phone,
+                $phone,
                 [
                     'from' => $twilio_number,
                     'body' => $message
