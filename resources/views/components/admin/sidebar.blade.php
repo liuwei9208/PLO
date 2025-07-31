@@ -818,7 +818,67 @@
               >
                 料金管理
               </span>
+              <svg class="menu-item-arrow" :class="[(selected === 'Fee') ? 'menu-item-arrow-active' : 'menu-item-arrow-inactive', sidebarToggle ? 'lg:hidden' : '' ]" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.79175 7.39584L10.0001 12.6042L15.2084 7.39585" stroke="" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
             </a>
+
+            <!-- Dropdown Menu Start -->
+            <div class="overflow-hidden transform translate block" :class="(selected === 'Fee') ? 'block' :'hidden'">
+              <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'" class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
+                <li>
+                  <a
+                    href="{{ url('/admin/shop') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'shop' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    料金画面管理
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    href="{{ url('/admin/course') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'course' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    コース管理
+                  </a>
+                </li>
+
+                {{-- @can('edit personalities') --}}
+                <li>
+                  <a
+                    href="{{ url('/admin/option') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    オプション管理
+                  </a>
+                </li>
+                {{-- @endcan --}}
+
+                <li>
+                  <a
+                    href="{{ url('/admin/extend') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'extend' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    延長管理
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="{{ url('#') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'qa' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    パネル管理
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <!-- Dropdown Menu End -->
           </li>
           <!-- Masters -->
           @canany(['edit options', 'edit personalities', 'edit styles'])

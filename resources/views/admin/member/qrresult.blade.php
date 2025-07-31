@@ -55,7 +55,7 @@
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name_table }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->extension_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ $history->price }}</td>
+                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ $history->price_new }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->point_use }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->memo }}</td>
                   </tr>
@@ -90,11 +90,11 @@
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">PLOの日</th>
-                  <td class="p-1 border-b border-gray-400"><input type="checkbox" name="plo_day" id="plo_day" value="1" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input type="checkbox" name="plo_day" id="plo_day" value="1" class="p-1 border border-gray-400 text-right w-full" onchange="updatePrice()"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">料金</th>
-                  <td class="p-1 border-b border-gray-400"><input name="price" id="price" type="number" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
+                  <td class="p-1 border-b border-gray-400"><input name="price" readonly id="price" type="number" value="0" class="p-1 border border-gray-400 text-right w-full"></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">キャスト名</th>
@@ -109,27 +109,15 @@
                 </tr>
                 <tr>
                 <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">指名</th>
-                  <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio" name="appointment" id="appointment" value="1" class="p-1 border border-gray-400 text-right w-full">パネル指名</label><label><input type="radio" name="appointment" id="appointment" value="0" class="p-1 border border-gray-400 text-right w-full">本指名指名</label></td>
+                  <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio" name="appointment" id="appointment" value="1" class="p-1 border border-gray-400 text-right w-full">パネル指名</label><label><input type="radio" name="appointment" id="appointment" value="0" class="p-1 border border-gray-400 text-right w-full">本指名</label></td>
                 </tr>
-                @for($i = 1 ; $i <= 5 ; $i++)
-                <tr>
-                <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">オプション</th>
-                  <td class="p-1 border-b border-gray-400 flex gap-2">
-                    <select class="p-1 border border-gray-400 w-full bg-white" name="option.{{ $i }}" id="option{{ $i }}">
-                      <option value="" data-price="0">選択してください</option>
-                      <option value="1">パネル指名</option>
-                      <option value="2">本指名指名</option>
-                    </select>
-                  </td>
-                  </tr>
-                  @endfor
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
                   <td class="p-1 border-b border-gray-400">
-                    <select class="p-1 border border-gray-400 w-full bg-white" name="course" id="course">
-                      <option value=""></option>
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="course" id="course" onchange="updatePrice()">
+                      <option value="" data-price="0">選択してください</option>
                       @foreach( $courses as $course )
-                      <option value="{{ $course->id }}">{{ $course->name }}</option>
+                      <option value="{{ $course->id }}" data-price="{{ $course->price }}">{{ $course->course }}</option>
                       @endforeach
                     </select>
                   </td>
@@ -137,13 +125,27 @@
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">延長</th>
                   <td class="p-1 border-b border-gray-400">
-                    <select class="p-1 border border-gray-400 w-full bg-white" name="extension_name" id="extension_name">
-                      <option value=""></option>
-                      <option value="1">パネル指名</option>
-                      <option value="0">本指名指名</option>
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="extend" id="extend" onchange="updatePrice()">
+                      <option value="" data-price="0">選択してください</option>
+                      @foreach( $extends as $extend )
+                      <option value="{{ $extend->id }}" data-price="{{ $extend->price }}">{{ $extend->extend }}</option>
+                      @endforeach
                     </select>
                   </td>
                 </tr>
+                @for($i = 1 ; $i <= 5 ; $i++)
+                <tr>
+                <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">オプション</th>
+                  <td class="p-1 border-b border-gray-400 flex gap-2">
+                    <select class="p-1 border border-gray-400 w-full bg-white" name="option.{{ $i }}" id="option{{ $i }}" onchange="updatePrice()">
+                      <option value="" data-price="0">選択してください</option>
+                      @foreach( $options as $option )
+                      <option value="{{ $option->id }}" data-price="{{ $option->price }}">{{ $option->name }}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  </tr>
+                  @endfor
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left" style="width: 100px;">メモ</th>
                 </tr>
@@ -163,6 +165,31 @@
   </div>
 </x-admin-layout>
 <script>
+  function updatePrice(){
+    const courseSelect = document.getElementById('course');
+    const extendSelect = document.getElementById('extend');
+    const option1Select = document.getElementById('option1');
+    const option2Select = document.getElementById('option2');
+    const option3Select = document.getElementById('option3');
+    const option4Select = document.getElementById('option4');
+    const option5Select = document.getElementById('option5');
+
+    const course_price = Number(courseSelect.options[courseSelect.selectedIndex]?.dataset?.price || 0);
+    const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0);
+    const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0);
+    const option2_price = Number(option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0);
+    const option3_price = Number(option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0);
+    const option4_price = Number(option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0);
+    const option5_price = Number(option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0);
+
+    const price = course_price + extend_price + option1_price + option2_price + option3_price + option4_price + option5_price;
+
+    const plo_day = document.getElementById('plo_day').checked;
+    const point = plo_day ? price * 0.1 : price * 0.03;
+    console.log(price);
+    document.getElementById('price').value = price;
+    document.getElementById('point').value = point;
+  }
   const token = '{{ $token }}';
   const member_id = '{{ $member->id }}';
   async function saveInfo(event){
@@ -172,7 +199,26 @@
     const price = document.getElementById('price').value;
     const cast = document.getElementById('cast').value;
     const course = document.getElementById('course').value;
-    const extension_name = document.getElementById('extension_name').value;
+    const courseSelect = document.getElementById('course');
+    const course_price = courseSelect.options[courseSelect.selectedIndex]?.dataset?.price || 0;
+    const extend = document.getElementById('extend').value;
+    const extendSelect = document.getElementById('extend');
+    const extend_price = extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0;
+    const option1 = document.getElementById('option1').value;
+    const option1Select = document.getElementById('option1');
+    const option1_price = option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0;
+    const option2 = document.getElementById('option2').value;
+    const option2Select = document.getElementById('option2');
+    const option2_price = option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0;
+    const option3 = document.getElementById('option3').value;
+    const option3Select = document.getElementById('option3');
+    const option3_price = option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0;
+    const option4 = document.getElementById('option4').value;
+    const option4Select = document.getElementById('option4');
+    const option4_price = option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0;
+    const option5 = document.getElementById('option5').value;
+    const option5Select = document.getElementById('option5');
+    const option5_price = option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0;
     const memo = document.getElementById('memo').value;
     // const member_id = document.getElementById('member_id').value;
 
@@ -182,7 +228,19 @@
       price: price,
       cast: cast,
       course: course,
-      extension_name: extension_name,
+      course_price: course_price,
+      extend: extend,
+      extend_price: extend_price,
+      option1: option1,
+      option1_price: option1_price,
+      option2: option2,
+      option2_price: option2_price,
+      option3: option3,
+      option3_price: option3_price,
+      option4: option4,
+      option4_price: option4_price,
+      option5: option5,
+      option5_price: option5_price,
       memo: memo,
       member_id: member_id
     };

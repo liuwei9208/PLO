@@ -9,12 +9,14 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Point;
 use App\Models\History;
 use App\Models\Shop;
+use App\Models\CourseGroup;
+use App\Models\Extend;
+use App\Models\Option;
 use Carbon\Carbon;
 use App\Models\Cast;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Course;
-use App\Models\Extension;
 class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
@@ -209,7 +211,8 @@ class MemberController extends Controller{
         $histories = $histories->map(function ($history) {
           $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
           $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
-          $history->course_name_table = Course::where('id', $history->course_id)->first()->name ?? '';
+          $history->course_name_table = CourseGroup::where('id', $history->course_id)->first()->course ?? '';
+          $history->extend_name = Extend::where('id', $history->extend_id)->first()->extend ?? '';
           return $history;
         });
       }
@@ -226,7 +229,10 @@ class MemberController extends Controller{
     $casts = Cast::where('shop_id',$shop_user[0]->shop_id)->where('is_public', 1)
     ->orderBy('name', 'asc')
     ->get();
-    $courses = Course::groupBy('name')->get();
+    // $courses = Course::groupBy('name')->get();
+    $courses = CourseGroup::all();
+    $extends = Extend::all();
+    $options = Option::all();
     // $extension = Extension::groupBy('name')->get();
     $user = Auth::user();
     $token = $user->createToken('api-token')->plainTextToken;
@@ -236,6 +242,8 @@ class MemberController extends Controller{
       'histories' => $histories,
       'casts' => $casts,
       'courses' => $courses,
+      'extends' => $extends,
+      'options' => $options,
       // 'extension' => $extension,
       'token' => $token,
     ]);
