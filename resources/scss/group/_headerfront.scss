@@ -245,7 +245,7 @@
         text-decoration: none;
         color: #333;
         font-weight: 500;
-        font-size: 0.9rem;
+        // font-size: 0.9rem;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         padding: 0.5rem 1rem;
         // border: 2px solid #333;
@@ -253,6 +253,11 @@
         background: transparent;
         font-family: $font-gothic-min;
         font-size: 18px;
+        @media #{media-query(md)} {
+          font-size: 14px;
+          min-width: 110px;
+        }
+
         border-radius: 24px;
         text-align: center;
         font-family: $font-gothic-min;
@@ -329,6 +334,10 @@
         justify-content: center;
         height: 100%;
         width: 180px;
+        @media #{media-query(md)} {
+          min-width: 110px;
+          width: 130px;
+        }
         position: relative;
         background-color: #000;
         // border-radius: 60px;
@@ -352,7 +361,7 @@
           text-decoration: none;
           color: #fff;
           font-weight: 500;
-          font-size: 0.9rem;
+          // font-size: 0.9rem;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           // padding: 1.5rem 1rem;
           // border: 2px solid #333;
@@ -360,6 +369,10 @@
           background: transparent;
           font-family: $font-gothic-min;
           font-size: 18px;
+          @media #{media-query(md)} {
+            font-size: 14px;
+            min-width: 110px;
+          }
           border-radius: 24px;
           text-align: center;
           // vertical-align: middle;
@@ -435,7 +448,7 @@
         text-decoration: none;
         color: #333;
         font-weight: 500;
-        font-size: 0.9rem;
+        // font-size: 0.9rem;
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         padding: 0.5rem 1rem;
         // border: 2px solid #333;
@@ -443,6 +456,10 @@
         background: transparent;
         font-family: $font-gothic-min;
         font-size: 18px;
+        @media #{media-query(md)} {
+          font-size: 14px;
+          min-width: 120px;
+        }
         border-radius: 24px;
         text-align: center;
         font-family: $font-gothic-min;
