@@ -57,6 +57,6 @@ class RegisteredUserController extends Controller
         session()->forget('sms_phone_number');
 
         // return redirect(route('dashboard', absolute: false));
-        return redirect('/');
+        return redirect('/')->with('success', 'PLO会員登録が完了しました。');
     }
 }
