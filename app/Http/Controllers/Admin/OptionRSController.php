@@ -3,14 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Extend;
+use App\Models\OptionRS;
+use App\Models\Option;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 
-class ExtendController extends Controller
+class OptionRSController extends Controller
 {
     const DEFAULT_LIMIT = 30;
 
@@ -22,10 +23,10 @@ class ExtendController extends Controller
         $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
         if ($is_shop_manager) {
             $shop_id = $request->user()->shops->first()->id;
-            $query = Extend::query()->where('shop_id', $shop_id);
+            $query = OptionRS::query()->where('shop_id', $shop_id);
             $shop = Shop::find($shop_id);
         } else {
-            $query = Extend::query();
+            $query = OptionRS::query();
 
             if ($request->has('shop') && $request->query('shop')) {
                 $shop_slug = $request->query('shop');
@@ -34,7 +35,7 @@ class ExtendController extends Controller
                 });
             }
         }
-        
+
         $total = $query->count();
 
         $page = $request->query('page') ? (int) $request->query('page') : 1;
@@ -42,12 +43,12 @@ class ExtendController extends Controller
         $skip = ($page - 1) * $limit;
         $pages = ceil($total / $limit);
 
-        $extends = $query->skip($skip)
+        $options_rs = $query->skip($skip)
             ->take($limit)
             ->orderBy('id', 'asc')->get();
 
-        return view('admin.extend.index', [
-            'extends' => $extends,
+        return view('admin.option_rs.index', [
+            'options_rs' => $options_rs,
             'page' => $page,
             'limit' => $limit,
             'skip' => $skip,
@@ -66,28 +67,28 @@ class ExtendController extends Controller
             $shop = Shop::find($shop_id);
         }
 
-        return view('admin.extend.create', [
+        return view('admin.option_rs.create', [
             'shops' => $is_shop_manager ? null : Shop::all(),
             'shop' => $is_shop_manager ? $shop : null,
+            'options' => Option::all()
         ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'extend_name' => 'required',
+            'option_id' => 'required',
             'price' => 'required|numeric',
             'shop_id' => 'required',
         ]);
 
-        $extend = Extend::firstOrCreate([
-            'extend' => request('extend_name'),
+        $optionrs = OptionRS::firstOrCreate([
+            'option_id' => request('option_id'),
             'price' => request('price'),
             'shop_id' => request('shop_id'),
-            'description' => request('description'),
         ]);
 
-        return redirect('/admin/extend/');
+        return redirect('/admin/option_rs/');
     }
 
     /**
@@ -95,15 +96,16 @@ class ExtendController extends Controller
      */
     public function show(Request $request, string $id): View
     {
-        $extend = Extend::find($id);
+        $optionrs = OptionRS::find($id);
         $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
         if ($is_shop_manager) {
             $shop_id = $request->user()->shops->first()->id;
             $shop = Shop::find($shop_id);
         }
 
-        return view('admin.extend.detail', [
-            'extend' => $extend,
+        return view('admin.option_rs.detail', [
+            'optionrs' => $optionrs,
+            'options' => Option::all(),
             'shops' => $is_shop_manager ? null : Shop::all(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
@@ -115,18 +117,17 @@ class ExtendController extends Controller
     public function update(Request $request, string $id): RedirectResponse
     {
         $validated = $request->validate([
-            'extend_name' => 'required',
+            'option_id' => 'required',
             'price' => 'required|numeric',
             'shop_id' => 'required',
         ]);
 
-        $extend = Extend::find($id);
-        $extend->extend = request('extend_name');
-        $extend->price = request('price');
-        $extend->shop_id = request('shop_id');
-        $extend->description = request('description');
-        $extend->save();
+        $optionrs = OptionRS::find($id);
+        $optionrs->option_id = request('option_id');
+        $optionrs->price = request('price');
+        $optionrs->shop_id = request('shop_id');
+        $optionrs->save();
 
-        return redirect('/admin/extend');
+        return redirect('/admin/option_rs');
     }
 }

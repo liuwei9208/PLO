@@ -1,29 +1,29 @@
 <x-admin-layout>
   <div class="p-4 mx-auto max-w-full md:p-6">
 
-    <div x-data="{ pageName: `延長管理`}">
+    <div x-data="{ pageName: `オプション管理`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
-          class="text-xl font-semibold text-gray-800 dark:text-white/90"
+          class="text-xl font-semibold text-gray-800"
           x-text="pageName"
         ></h2>
         <a
-          href="{{ url('/admin/extend/add') }}"
-          class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
+          href="{{ url('/admin/option_rs/add') }}"
+          class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50"
         >
-          延長追加
+          オプション追加
         </a>
       </div>
     </div>
 
     <!-- Search & Limit -->
     <form
-      action="{{ route('admin.extend.index') }}"
+      action="{{ route('admin.option_rs.index') }}"
       method="get"
       id="search_form"
-      class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+      class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white"
     >
-    <div
+      <div
         class="flex p-5 sm:p-6 dark:border-gray-800"
       >
     <!-- Shop filter -->
@@ -91,23 +91,23 @@
     </form>
 
     <!-- Page -->
-    <p class="px-2 py-2 text-sm text-gray-500 dark:text-gray-400 text-right">
+    <p class="px-2 py-2 text-sm text-gray-500 text-right">
       {{ $total }}件中 {{ ($page - 1) * $limit + 1 }} - {{ $page * $limit > $total ? $total : $page * $limit }}件を表示
     </p>
 
     <!-- Table -->
     <div
-      class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
+      class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white"
     >
       <div class="max-w-full overflow-x-auto">
         <table class="min-w-full">
           <!-- table header start -->
           <thead>
-            <tr class="border-b border-gray-100 dark:border-gray-800">
+            <tr class="border-b border-gray-100">
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                    class="font-medium text-gray-500 text-theme-xs"
                   >
                     ID
                   </p>
@@ -116,50 +116,37 @@
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                    class="font-medium text-gray-500 text-theme-xs"
                   >
-                    店舗名
+                    Option
                   </p>
                 </div>
               </th>
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                    class="font-medium text-gray-500 text-theme-xs"
                   >
-                    延長
+                    Price	
                   </p>
                 </div>
               </th>
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                    class="font-medium text-gray-500 text-theme-xs"
                   >
-                    値段
+                    Shop		
                   </p>
                 </div>
               </th>
               <th class="px-5 py-3 sm:px-6">
                 <div class="flex items-center">
                   <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                    class="font-medium text-gray-500 text-theme-xs"
                   >
-                    説明
+                    		
                   </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                    
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
                 </div>
               </th>
             </tr>
@@ -167,7 +154,7 @@
           <!-- table header end -->
           <!-- table body start -->
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-            @foreach ($extends as $extend)
+            @foreach ($options_rs as $option_rs)
               <tr>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
@@ -175,7 +162,7 @@
                       <span
                         class="block font-medium text-gray-800 white-space-nowrap text-theme-sm dark:text-white/90"
                       >
-                        {{ $extend->id }}
+                        {{ $option_rs->id }}
                       </span>
                     </div>
                   </div>
@@ -183,22 +170,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <div>
-                      <span
-                        class="block font-medium text-gray-800 white-space-nowrap text-theme-sm dark:text-white/90"
-                      >
-                        {{ $extend->shop->name }}
-                      </span>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <div>
-                      <span
-                        class="block font-medium text-gray-800 white-space-nowrap text-theme-sm dark:text-white/90"
-                      >
-                        {{ $extend->extend }}
-                      </span>
+                      {{ $option_rs->option->name }}
                     </div>
                   </div>
                 </td>
@@ -208,7 +180,7 @@
                         <span
                         class="block font-medium text-gray-800 white-space-nowrap text-theme-sm dark:text-white/90"
                       >
-                      {{ $extend->price }}
+                        {{ $option_rs->price }}
                     </span>
                     </div>
                   </div>
@@ -219,7 +191,7 @@
                         <span
                         class="block font-medium text-gray-800 white-space-nowrap text-theme-sm dark:text-white/90"
                       >
-                      {{ $extend->description }}
+                        {{ $option_rs->shop->name }}
                     </span>
                     </div>
                   </div>
@@ -227,7 +199,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
-                      href="{{ url('/admin/extend/' . $extend->id) }}"
+                      href="{{ url('/admin/option_rs/' . $option_rs->id) }}"
                       class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
                     >
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

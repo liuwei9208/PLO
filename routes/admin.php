@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\WorkController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ExtendController;
+use App\Http\Controllers\Admin\OptionRSController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -283,5 +284,13 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('add', [ExtendController::class, 'store']);
         Route::get('{id}', [ExtendController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [ExtendController::class, 'update']);
+    });
+
+    Route::prefix('option_rs')->name('option_rs.')->group(function () {
+        Route::get('/', [OptionRSController::class, 'index'])->name('index');
+        Route::get('add', [OptionRSController::class, 'create'])->name('create');
+        Route::post('add', [OptionRSController::class, 'store']);
+        Route::get('{id}', [OptionRSController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [OptionRSController::class, 'update']);
     });
 });
