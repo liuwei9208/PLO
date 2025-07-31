@@ -51,7 +51,7 @@
       </a>
       <div class="header-user-logbox-last">
         <span></span>
-        <a href="#">
+        <a href="{{ route('terms.show') }}">
           <small>SIGN UP</small>
           <span>新規登録</span>
         </a>

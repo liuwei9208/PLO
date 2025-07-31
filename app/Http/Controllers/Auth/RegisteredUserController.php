@@ -32,15 +32,15 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         // Enforce SMS verification
-        // if (!session('sms_verified') || !session('sms_phone_number')) {
-        //     return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
-        // }
-        // $memberRole = Role::create(['name' => 'member','guard_name' => 'member']);
+        if (!session('sms_verified') || !session('sms_phone_number')) {
+            return redirect()->route('sms.verify.show')->withErrors(['phone' => 'Please verify your phone number before registering.']);
+        }
+
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'unique:'.Member::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Member::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'phone' => ['required', 'string', 'max:20'],
+            'phone' => ['required', 'string', 'max:20'],
         ]);
 
         $member = Member::create([
@@ -54,10 +54,10 @@ class RegisteredUserController extends Controller
 
         // Auth::login($user);
         // Clear SMS verification session
-        // session()->forget('sms_verified');
-        // session()->forget('sms_phone_number');
+        session()->forget('sms_verified');
+        session()->forget('sms_phone_number');
 
         // return redirect(route('dashboard', absolute: false));
-        return redirect('/');
+        return redirect(route('login'))->with('success', 'PLO会員登録が完了しました。');
     }
 }
