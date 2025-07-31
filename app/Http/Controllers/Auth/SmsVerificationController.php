@@ -32,7 +32,7 @@ class SmsVerificationController extends Controller
             $verificationCode = rand(100000, 999999);
             Session::put('sms_verification_code', $verificationCode);
             Session::put('sms_phone_number', $request->phone);
-            $message = "PLO会員認証番号：".$verificationCode."\nこの番号をメンバー登録の画面で入力して下さい。";
+            $message = "PLO会員認証番号：".$verificationCode."\nこの番号を登録画面に入力して下さい。";
             // dd($message);
             $client->messages->create(
                 $phone,
