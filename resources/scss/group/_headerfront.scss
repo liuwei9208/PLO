@@ -314,7 +314,7 @@
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           display: inline-block;
         }
-      }
+    }
 
       &-last{
         display: flex;
@@ -495,7 +495,20 @@
           letter-spacing: 0.5px;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           display: inline-block;
-        }
+          &.menu_newface{
+            color: #fc0012;
+          }
+          &.menu_schedule{ 
+            color: #fe44cf;
+          }
+          &.menu_event{
+            color: #af27fd;
+          }
+          &.menu_shop{
+            color: #2f71fc;
+          }
+    
+       }
       }
     }
   } 
