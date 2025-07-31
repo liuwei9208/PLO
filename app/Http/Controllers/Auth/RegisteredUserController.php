@@ -40,7 +40,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255', 'unique:'.Member::class],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Member::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            // 'phone' => ['required', 'string', 'max:20'],
+            'phone' => ['required', 'string', 'max:20'],
         ]);
 
         $member = Member::create([
@@ -58,6 +58,6 @@ class RegisteredUserController extends Controller
         session()->forget('sms_phone_number');
 
         // return redirect(route('dashboard', absolute: false));
-        return redirect('/');
+        return redirect(route('login'))->with('success', 'PLO会員登録が完了しました。');
     }
 }
