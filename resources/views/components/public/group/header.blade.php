@@ -4,9 +4,9 @@
   </a>
   <div class="header-user md lg">
     @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-      <a href="{{ route('logoutAll') }}">
-        <span>ログアウト</span>
-      </a>
+    <a href="{{ route('logoutAll') }}">
+      <span>ログアウト</span>
+    </a>
     @else
     <a href="{{ route('login') }}">
       <span>LOGIN</span>

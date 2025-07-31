@@ -3,21 +3,44 @@
     <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
   </a>
   <div class="header-user md lg">
+    <div class="header-user-menu">
+      <a href="{{ route('logoutAll') }}">
+        <small>NEWFACET</small>
+        <span>新人情報</span>
+      </a>
+      <a href="{{ route('logoutAll') }}">
+        <small>SCHEDULE</small>
+        <span>出勤情報</span>
+      </a>
+      <a href="{{ route('logoutAll') }}">
+        <small>EVENT</small>
+        <span>イベント情報</span>
+      </a>
+      <a href="{{ route('logoutAll') }}">
+        <small>SHOP</small>
+        <span>店舗一覧</span>
+      </a>
+    </div>
+    <div class="header-user-logbox">
     @if (Auth::guard('member')->check() || Auth::guard('web')->check())
       <a href="{{ route('logoutAll') }}">
         <small>LOGOUT</small>
         <span>ログアウト</span>
       </a>
     @else
-    <a href="{{ route('login') }}">
-      <small>LOGIN</small>
-      <span>ログイン</span>
-    </a>
+      <a href="{{ route('login') }}">
+        <small>LOGIN</small>
+        <span>ログイン</span>
+      </a>
     @endif
-    <a href="#">
-      <small>SIGN UP</small>
-      <span>新規登録</span>
-    </a>
+      <div class="header-user-logbox-last">
+        <span></span>
+        <a href="#">
+          <small>SIGN UP</small>
+          <span>新規登録</span>
+        </a>
+      </div>
+    </div>
   </div>
 
 </header>
