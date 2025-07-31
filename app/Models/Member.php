@@ -15,6 +15,7 @@ class Member extends Authenticatable
   use Notifiable, HasApiTokens, HasFactory;
   use HasRoles;
 //   protected $connection = 'member_mysql';
+  protected $guard_name = 'member';
   protected $connection = 'mysql';
   protected $table = 'members';
   protected $fillable = [
