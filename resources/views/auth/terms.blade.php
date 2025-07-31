@@ -20,8 +20,9 @@
                 </p>
             </div>
 
-            <form method="GET" action="{{ route('sms.verify.show') }}">
-                @csrf
+            {{-- <form method="GET" action="{{ route('sms.verify.show') }}"> --}}
+            <form method="GET" action="{{ route('register') }}">
+                    @csrf
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button>
                         {{ __('同意して進む') }}

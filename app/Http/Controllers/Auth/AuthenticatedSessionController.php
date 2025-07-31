@@ -34,6 +34,7 @@ class AuthenticatedSessionController extends Controller
     public function frontLogin(): View
     {
         // dd('frontLogin');
+        // dd(session()->all());
         return view('auth.frontlogin');
     }
 

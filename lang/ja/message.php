@@ -16,5 +16,6 @@ return [
     'admin_fee_update_success' => '料金システムを更新しました',
     'admin_pickup_update_success' => 'ピックアップを更新しました',
     'admin_pickup_error' => '同じキャストは複数選択できません。',
+    'member_email_exists' => 'このメールアドレスはすでに登録されています。',
 ];
 ?>
