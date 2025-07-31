@@ -69,7 +69,7 @@
 
             const phoneNumber = phoneInput.value.trim();
             // Simple validation: check if it's a number and has a reasonable length
-            const phoneRegex = /^\+[0-9]{10,15}$/; // Example: 10 to 15 digits, starting with a +
+            const phoneRegex = /^(0[789]0|0[1-9][0-9]{0,3})?[0-9]{4}?[0-9]{4}$/; // Japanese phone number format
 
             if (!phoneRegex.test(phoneNumber)) {
                 event.preventDefault(); // Prevent form submission
