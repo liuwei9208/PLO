@@ -41,16 +41,16 @@ class RegisteredUserController extends Controller
             'phone' => ['required', 'string', 'max:20'],
         ]);
 
-        $user = User::create([
+        $member = Member::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'tel' => $request->phone,
         ]);
+        $member->assignRole('member');
+        event(new Registered($member));
 
-        event(new Registered($user));
-
-        Auth::login($user);
+        // Auth::login($user);
         // Clear SMS verification session
         session()->forget('sms_verified');
         session()->forget('sms_phone_number');
