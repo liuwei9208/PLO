@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Extend;
+use App\Models\Appoint;
 use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Log;
 
-class ExtendController extends Controller
+class AppointController extends Controller
 {
     const DEFAULT_LIMIT = 30;
 
@@ -22,10 +22,10 @@ class ExtendController extends Controller
         $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
         if ($is_shop_manager) {
             $shop_id = $request->user()->shops->first()->id;
-            $query = Extend::query()->where('shop_id', $shop_id);
+            $query = Appoint::query()->where('shop_id', $shop_id);
             $shop = Shop::find($shop_id);
         } else {
-            $query = Extend::query();
+            $query = Appoint::query();
 
             if ($request->has('shop') && $request->query('shop')) {
                 $shop_slug = $request->query('shop');
@@ -34,25 +34,12 @@ class ExtendController extends Controller
                 });
             }
         }
-        
-        $total = $query->count();
 
-        $page = $request->query('page') ? (int) $request->query('page') : 1;
-        $limit = $request->query('limit') ? (int) $request->query('limit') : self::DEFAULT_LIMIT;
-        $skip = ($page - 1) * $limit;
-        $pages = ceil($total / $limit);
 
-        $extends = $query->skip($skip)
-            ->take($limit)
-            ->orderBy('id', 'asc')->get();
+        $appoints = $query->orderBy('id', 'asc')->get();
 
-        return view('admin.extend.index', [
-            'extends' => $extends,
-            'page' => $page,
-            'limit' => $limit,
-            'skip' => $skip,
-            'total' => $total,
-            'pages' => $pages,
+        return view('admin.appoint.index', [
+            'appoints' => $appoints,
             'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
@@ -66,8 +53,8 @@ class ExtendController extends Controller
             $shop = Shop::find($shop_id);
         }
 
-        return view('admin.extend.create', [
-            'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
+        return view('admin.course.create', [
+            'shops' => $is_shop_manager ? null : Shop::all(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
@@ -75,19 +62,19 @@ class ExtendController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'extend_name' => 'required',
+            'course_name' => 'required',
             'price' => 'required|numeric',
             'shop_id' => 'required',
         ]);
 
-        $extend = Extend::firstOrCreate([
-            'extend' => request('extend_name'),
+        $course = CourseGroup::firstOrCreate([
+            'course' => request('course_name'),
             'price' => request('price'),
             'shop_id' => request('shop_id'),
             'description' => request('description'),
         ]);
 
-        return redirect('/admin/extend/');
+        return redirect('/admin/course/');
     }
 
     /**
@@ -95,17 +82,18 @@ class ExtendController extends Controller
      */
     public function show(Request $request, string $id): View
     {
-        $extend = Extend::find($id);
-        // $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
+        $appoint = Appoint::find($id);
+        $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
         // if ($is_shop_manager) {
         //     $shop_id = $request->user()->shops->first()->id;
         //     $shop = Shop::find($shop_id);
         // }
-        $shop=Shop::find($extend->shop_id);
-        return view('admin.extend.detail', [
-            'extend' => $extend,
+        $shop = Shop::find($appoint->shop_id);
+        // dd($shop);
+        return view('admin.appoint.detail', [
+            'appoint' => $appoint,
             'shop' => $shop,
-            // 'shops' => $is_shop_manager ? null : Shop::all(),
+            // 'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             // 'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
@@ -116,18 +104,17 @@ class ExtendController extends Controller
     public function update(Request $request, string $id): RedirectResponse
     {
         $validated = $request->validate([
-            'extend_name' => 'required',
-            'price' => 'required|numeric',
+            'repeat_price' => 'required|numeric',
+            'panel_price' => 'required|numeric',
             'shop_id' => 'required',
         ]);
 
-        $extend = Extend::find($id);
-        $extend->extend = request('extend_name');
-        $extend->price = request('price');
-        $extend->shop_id = request('shop_id');
-        $extend->description = request('description');
-        $extend->save();
+        $appoint = Appoint::find($id);
+        $appoint->repeat_price = request('repeat_price');
+        $appoint->panel_price = request('panel_price');
+        $appoint->shop_id = request('shop_id');
+        $appoint->save();
 
-        return redirect('/admin/extend');
+        return redirect('/admin/appoint');
     }
 }

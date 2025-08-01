@@ -117,6 +117,8 @@ class MemberController extends Controller
         $option3_id = $request->input('option3') == '' ? null :  $request->input('option3');
         $option4_id = $request->input('option4') == '' ? null :  $request->input('option4');
         $option5_id = $request->input('option5') == '' ? null :  $request->input('option5');
+        $appointment_id = $request->input('appointmentID') == '' ? null :  $request->input('appointmentID');
+        $appointment_type = $request->input('appointmentType') == '' ? null :  $request->input('appointmentType');
         Log::info($request->input('course'));
         Log::info($course_id);
         Log::info($request->input('option2'));
@@ -128,7 +130,7 @@ class MemberController extends Controller
         $option3_price = is_numeric($request->input('option3_price')) ? floatval($request->input('option3_price')) : 0;
         $option4_price = is_numeric($request->input('option4_price')) ? floatval($request->input('option4_price')) : 0;
         $option5_price = is_numeric($request->input('option5_price')) ? floatval($request->input('option5_price')) : 0;
-
+        $appointment_price = is_numeric($request->input('appointmentPrice')) ? floatval($request->input('appointmentPrice')) : 0;
 
         $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $shop_manager->id)->get();
         $shop_id = $shop_user[0]->shop_id;
@@ -154,6 +156,9 @@ class MemberController extends Controller
         $history->option5_id = $option5_id;
         $history->option5_price = $option5_price;
         $history->memo = $request->input('memo') ?? '';
+        $history->appoint_id = $appointment_id;
+        $history->appoint_type = $appointment_type;
+        $history->appoint_price = $appointment_price;
         // $history->created_at = $history;
         $history->save();
         // dd($history);

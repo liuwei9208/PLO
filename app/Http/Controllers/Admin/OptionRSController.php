@@ -54,7 +54,7 @@ class OptionRSController extends Controller
             'skip' => $skip,
             'total' => $total,
             'pages' => $pages,
-            'shops' => $is_shop_manager ? null : Shop::all(),
+            'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
@@ -68,7 +68,7 @@ class OptionRSController extends Controller
         }
 
         return view('admin.option_rs.create', [
-            'shops' => $is_shop_manager ? null : Shop::all(),
+            'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             'shop' => $is_shop_manager ? $shop : null,
             'options' => Option::all()
         ]);
@@ -97,17 +97,18 @@ class OptionRSController extends Controller
     public function show(Request $request, string $id): View
     {
         $optionrs = OptionRS::find($id);
-        $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
-        if ($is_shop_manager) {
-            $shop_id = $request->user()->shops->first()->id;
-            $shop = Shop::find($shop_id);
-        }
-
+        // $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
+        // if ($is_shop_manager) {
+        //     $shop_id = $request->user()->shops->first()->id;
+        //     $shop = Shop::find($shop_id);
+        // }
+        $shop=Shop::find($optionrs->shop_id);
         return view('admin.option_rs.detail', [
             'optionrs' => $optionrs,
             'options' => Option::all(),
-            'shops' => $is_shop_manager ? null : Shop::all(),
-            'shop' => $is_shop_manager ? $shop : null,
+            'shop' => $shop,
+            // 'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
+            // 'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
 

@@ -66,7 +66,15 @@
                 :class="isOptionSelected &amp;&amp; 'text-gray-800'"
                 @change="isOptionSelected = true"
               >
-                @role('admin')
+              <option
+              value="{{ $shop->id }}"
+              class="text-gray-700"
+              selected
+            >
+              {{ $shop->name }}
+            </option>
+
+              {{-- @role('admin')
                   @foreach ($shops as $shop)
                     <option
                       value="{{ $shop->id }}"
@@ -85,7 +93,7 @@
                   >
                     {{ $shop->name }}
                   </option>
-                @endrole
+                @endrole --}}
               </select>
               <span class="pointer-events-none absolute top-1/2 right-4 z-30 -translate-y-1/2 text-gray-700 dark:text-gray-400">
                 <svg class="stroke-current" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

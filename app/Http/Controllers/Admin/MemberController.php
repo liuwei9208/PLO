@@ -18,6 +18,8 @@ use App\Models\Cast;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\Course;
+use App\Models\Appoint;
+
 class MemberController extends Controller{
   const DEFAULT_LIMIT = 30;
 
@@ -236,6 +238,7 @@ class MemberController extends Controller{
     $options = OptionRS::leftJoin('options', 'options.id', '=', 'options_rs.option_id')
     ->where('options_rs.shop_id',$shop_user[0]->shop_id)
     ->get();
+    $appoints = Appoint::where('shop_id',$shop_user[0]->shop_id)->get();
     // $extension = Extension::groupBy('name')->get();
     $user = Auth::user();
     $token = $user->createToken('api-token')->plainTextToken;
@@ -247,6 +250,7 @@ class MemberController extends Controller{
       'courses' => $courses,
       'extends' => $extends,
       'options' => $options,
+      'appoints' => $appoints,
       // 'extension' => $extension,
       'token' => $token,
     ]);
