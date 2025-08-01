@@ -109,7 +109,7 @@
                 </tr>
                 <tr>
                 <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">指名</th>
-                  <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio" name="appointment" id="appointment" value="1" class="p-1 border border-gray-400 text-right w-full">パネル指名</label><label><input type="radio" name="appointment" id="appointment" value="0" class="p-1 border border-gray-400 text-right w-full">本指名</label></td>
+                  <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio" name="appointment" id="appointment" value="0" data-price="{{ $appoints[0]->panel_price }}" data-id="{{ $appoints[0]->id }}" class="p-1 border border-gray-400 text-right w-full" onchange="updatePrice()">パネル指名</label><label><input type="radio" name="appointment" id="appointment" value="1" data-price="{{ $appoints[0]->repeat_price }}" data-id="{{ $appoints[0]->id }}" class="p-1 border border-gray-400 text-right w-full" onchange="updatePrice()">本指名</label></td>
                 </tr>
                 <tr>
                   <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left" style="width: 100px;">コース</th>
@@ -173,7 +173,20 @@
     const option3Select = document.getElementById('option3');
     const option4Select = document.getElementById('option4');
     const option5Select = document.getElementById('option5');
-
+    const appointmentRadios = document.getElementsByName('appointment');
+    let appointmentType = '';
+    let appointmentPrice = 0;
+    let appointmentID = '';
+    for (const radio of appointmentRadios) {
+      if (radio.checked) {
+        appointmentType = radio.value;
+        appointmentPrice = parseFloat(radio.dataset.price || 0);
+        appointmentID = radio.dataset.id;
+        break;
+      }
+    }
+    console.log({appointmentPrice});
+    // const appointment = document.getElementById('appointment').value;
     const course_price = Number(courseSelect.options[courseSelect.selectedIndex]?.dataset?.price || 0);
     const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0);
     const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0);
@@ -182,7 +195,7 @@
     const option4_price = Number(option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0);
     const option5_price = Number(option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0);
 
-    const price = course_price + extend_price + option1_price + option2_price + option3_price + option4_price + option5_price;
+    const price = course_price + extend_price + option1_price + option2_price + option3_price + option4_price + option5_price + appointmentPrice;
 
     const plo_day = document.getElementById('plo_day').checked;
     const point = plo_day ? price * 0.1 : price * 0.03;
@@ -221,6 +234,18 @@
     const option5_price = option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0;
     const memo = document.getElementById('memo').value;
     // const member_id = document.getElementById('member_id').value;
+    const appointmentRadios = document.getElementsByName('appointment');
+    let appointmentType = '';
+    let appointmentPrice = 0;
+    let appointmentID = '';
+    for (const radio of appointmentRadios) {
+      if (radio.checked) {
+        appointmentType = radio.value;
+        appointmentPrice = parseFloat(radio.dataset.price || 0);
+        appointmentID = radio.dataset.id;
+        break;
+      }
+    }
 
     const formData = {
       point_use: point_use,
@@ -242,7 +267,10 @@
       option5: option5,
       option5_price: option5_price,
       memo: memo,
-      member_id: member_id
+      member_id: member_id,
+      appointmentType: appointmentType,
+      appointmentID: appointmentID,
+      appointmentPrice: appointmentPrice
     };
 
     try{

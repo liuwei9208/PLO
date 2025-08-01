@@ -53,7 +53,7 @@ class CourseController extends Controller
             'skip' => $skip,
             'total' => $total,
             'pages' => $pages,
-            'shops' => $is_shop_manager ? null : Shop::all(),
+            'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
@@ -67,7 +67,7 @@ class CourseController extends Controller
         }
 
         return view('admin.course.create', [
-            'shops' => $is_shop_manager ? null : Shop::all(),
+            'shops' => $is_shop_manager ? null : Shop::whereNot('slug', 'touchvip')->whereNot('slug','headquarter')->orderBy('rank', 'asc')->get(),
             'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
@@ -96,16 +96,17 @@ class CourseController extends Controller
     public function show(Request $request, string $id): View
     {
         $course = CourseGroup::find($id);
-        $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
-        if ($is_shop_manager) {
-            $shop_id = $request->user()->shops->first()->id;
-            $shop = Shop::find($shop_id);
-        }
-
+        // $is_shop_manager = $request->user()->hasRole('shop') && $request->user()->shops->first();
+        // if ($is_shop_manager) {
+        //     $shop_id = $request->user()->shops->first()->id;
+        //     $shop = Shop::find($shop_id);
+        // }
+        $shop=Shop::find($course->shop_id);
         return view('admin.course.detail', [
             'course' => $course,
-            'shops' => $is_shop_manager ? null : Shop::all(),
-            'shop' => $is_shop_manager ? $shop : null,
+            'shop' => $shop,
+            // 'shops' => $is_shop_manager ? null : Shop::all(),
+            // 'shop' => $is_shop_manager ? $shop : null,
         ]);
     }
 

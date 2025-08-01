@@ -797,7 +797,8 @@
           <!-- Fee -->
           <li>
             <a
-              href="{{ url('/admin/fee') }}"
+              {{-- href="{{ url('/admin/fee') }}" --}}
+              href="{{ url('#') }}"
               @click="selected = (selected === 'Fee' ? '':'Fee')"
               class="menu-item group"
               :class=" (selected === 'Fee') ? 'menu-item-active' : 'menu-item-inactive'"
@@ -867,7 +868,7 @@
                 </li>
                 <li>
                   <a
-                    href="{{ url('#') }}"
+                    href="{{ url(route('admin.appoint.index')) }}"
                     class="menu-dropdown-item group"
                     :class="page === 'qa' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                   >
