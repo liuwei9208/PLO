@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     generateDateTabs(currentWeekStart);
     console.log(currentWeekStart);
     selectedDate = currentDate.toDateString();
+    limit = document.getElementById('search_form_limit').value;
     await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
     await generateScheduleCasts();
     await generateScheduleCastsPagination(page, limit, skip, pages, total,selectedDate);
@@ -994,16 +995,16 @@ function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total
     document.querySelector('.pagination-container').innerHTML = `<div class="pagination-button">${paginationHTML}</div></div>`;
     document.querySelectorAll('.pagination').forEach(pagination => {
         pagination.addEventListener('click', async function(e){
-        e.preventDefault();
-        selectedDate = e.target.dataset.date;
-        page = e.target.dataset.page;
-        limit = e.target.dataset.limit;
-        skip = e.target.dataset.skip;
-        pages = e.target.dataset.pages;
-        total = e.target.dataset.total;
-        // window.scrollTo({top:0, behavior: 'smooth'});
-        await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
-        await generateScheduleCasts();
+            e.preventDefault();
+            selectedDate = e.target.dataset.date;
+            page = e.target.dataset.page;
+            limit = e.target.dataset.limit;
+            skip = e.target.dataset.skip;
+            pages = e.target.dataset.pages;
+            total = e.target.dataset.total;
+            // window.scrollTo({top:0, behavior: 'smooth'});
+            await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
+            await generateScheduleCasts();
         });
     });
 
