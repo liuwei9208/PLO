@@ -23,10 +23,10 @@
   padding: 6px 12px;
   border-radius: 6px;
   border: 1px solid #ccc;
-  font-size: 14px;
+  font-size: 16px;
 }
 .reviewlist__count {
-  font-size: 15px;
+  font-size: 16px;
   color: #444;
 }
 
@@ -73,8 +73,25 @@
     padding: 0 30px 0;
 }
 .review-visit{
-    font-size:12px;
+    font-size:16px;
 }
+.review-visit .visit-time {
+    font-size: 20px;
+}
+.visit-date .list {
+    margin-bottom: 6px;
+}
+
+.visit-date .list dt {
+    margin-bottom: 6px;
+}
+.visit-date .girls-spec {
+    margin-bottom: 6px;
+}
+.visit-date .more-girlsinfo {
+    margin-bottom: 6px;
+}
+
 .review-visit .visit-time, .review-visit .visit-date{
     border-bottom: 1px solid #f2f2f2;
     padding:10px 20px;
@@ -168,7 +185,7 @@
 }
 .review-item-rate li {
     float:left;
-    font-size:12px;
+    font-size:14px;
     margin-right:15px;
     color:#aaa;
 }
@@ -218,6 +235,12 @@
     vertical-align: bottom;
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
 }
+.review-average-star-icon.star_on {
+    background-image: url('/assets/img/group/star-fill.svg') /* ↑ 口コミ（第２弾） @SMC 2019/05/23 */;
+}
+.review-average-star-icon.star_half {
+    background-image: url('/assets/img/group/star-half.svg') /* ↑ 口コミ（第２弾） @SMC 2019/05/23 */;
+}
 .review-item-title {
     display: inline-block;
     /*width: -webkit-calc(100% - 115px);
@@ -232,7 +255,7 @@
     color: #13131e;
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
 	width: 100%;
-    padding: 20px 0 10px;
+    padding: 30px 0 10px;
 }
 .review-item-author {
     display: inline-block;
@@ -274,12 +297,9 @@
 /*    border-radius: 16px; */
 /*    font-size: 10px; */
     border-radius: 20px;
-/* ↓ 口コミ一覧変更 @SMC 2020/03/16 */
-    /* width: 130px; */
-    width: 140px;
 /* ↑ 口コミ一覧変更 @SMC 2020/03/16 */
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
     white-space: nowrap;
 }
@@ -302,7 +322,7 @@
 /* ↓ 口コミ（第２弾） @SMC 2019/04/23 */
 /*    font-size: 13px; */
 /*    color: #333; */
-    font-size: 13px;
+    font-size: 14px;
     color:#13131e;
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
     word-wrap: break-word;
@@ -514,11 +534,17 @@ div#contensbox .review-item-reply-open.is_open:before {
     text-overflow: ellipsis;
     overflow: hidden;
 }
+.review_bold {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #13131e;
+}
 
 .userrank_nickname_shogo {
     padding-left: 7px;
     padding-bottom: 2px;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: bold;
 }
 .userrank_nickname {
