@@ -71,7 +71,7 @@
           </a></li>
           <li><a href="{{ route('public.shop.schedule', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">出勤情報
           </a></li>
-          <li><a href="{{ url('#') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
+          <li><a href="{{ route('public.shop.movielist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
           </a></li>
           @if(Auth::guard('member')->check())
           <li><a href="#"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
