@@ -216,6 +216,100 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 window.addEventListener('load', () => {
+  // const header_child_menu_logo = document.querySelector('.header-child-user-menu-logo');
+  // if (header_child_menu_logo) {
+  //   console.log(header_child_menu_logo.getBoundingClientRect().x) ;
+  //   const header_child_logo = document.querySelector('.header-child-logo');
+  //   if (header_child_logo) {
+  //     console.log(header_child_menu_logo.getBoundingClientRect().left) ;
+  //     let logo_left = header_child_menu_logo.getBoundingClientRect().left;
+  //     document.documentElement.style.setProperty('--logo-left', `${logo_left + 10}px`);
+  //     // header_child_logo.style.left = `${header_child_menu_logo.getBoundingClientRect().x}px`;
+  //     console.log(header_child_logo.getBoundingClientRect()) ;
+  //   }
+  // }
+  // const mv = document.querySelector('.mv');
+  // const body = document.querySelector('body');
+
+  // if (mv) {
+  //   console.log({mv});
+  //   console.log(body.clientWidth);
+  //   console.log(mv.offsetWidth);
+  //   console.log(mv.clientWidth);
+  //   let logo_height = 0;
+  //   const logo = document.querySelector('.header-logo');
+  //   if (logo) {
+  //     logo_height = logo.offsetHeight;
+  //   }
+  //   let logo_child_logo_height = 0;
+  //   const logo_child_logo = document.querySelector('.header-child-logo');
+  //   if (logo_child_logo) {
+  //     logo_child_logo_height = logo_child_logo.offsetHeight;
+  //   }
+  //   const draw = document.querySelector('.drawer-toggle');
+  //   if (draw) {
+  //     const draw_height = draw.offsetHeight;
+  //     console.log({draw_height});
+      
+  //     if (logo_height > draw_height) {
+  //       draw.style.top = `${logo_height - draw_height}px`;
+  //     }
+  //     if (logo_child_logo_height > draw_height) {
+  //       draw.style.top = `${logo_child_logo_height - draw_height}px`;
+  //     }
+  //   }
+  //   // if ( body.clientWidth < 768){
+  //   //   mv.style.width = `${body.clientWidth}px`;
+
+  //   // }
+  //   console.log({logo_height});
+  //   // console.log(logo.clientHeight);
+  //   const main = document.querySelector('.main');
+  //   if (main) {
+  //     if ( logo_height > 0){
+  //       mv.style.top = `${logo_height}px`;
+  //       main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
+  //     }
+  //     if ( logo_child_logo_height > 0){
+  //       mv.style.top = `${logo_child_logo_height}px`;
+  //       main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
+  //     }
+  //   }
+  // }
+
+  // const newface = document.querySelector('.newface');
+  // if (newface) {
+  //   let newfaceHeight = newface.offsetHeight;
+  //   console.log({newfaceHeight});
+  //   const newfaceBorder = document.querySelector('.newface-main');
+  //   console.log({newfaceBorder});
+  //   if (newfaceBorder) {
+  //     console.log(newfaceBorder.offsetHeight);
+  //     const fullWidth = body.clientWidth;
+  //     console.log({fullWidth});
+  //     if (fullWidth < 768) {
+  //       newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight + 10;
+  //     } else if (fullWidth >= 768 && fullWidth < 1440) {
+  //       newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 0;
+  //     }else{
+  //       newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 30;
+  //     }
+  //     console.log({newfaceHeight});
+  //     document.documentElement.style.setProperty('--newface-height', `${newfaceHeight}px`);
+  //     // newfaceBorder.style.setProperty('--newface-height', `${newfaceHeight}px`);
+  //     // const border = document.querySelector('.section-title');
+  //     // console.log(getComputedStyle(border).getPropertyValue('--newface-height'));
+  //   }
+  // }
+
+  resizeModule();
+});
+
+window.addEventListener('resize', () => {
+  resizeModule();
+});
+
+function resizeModule() {
   const header_child_menu_logo = document.querySelector('.header-child-user-menu-logo');
   if (header_child_menu_logo) {
     console.log(header_child_menu_logo.getBoundingClientRect().x) ;
@@ -301,4 +395,4 @@ window.addEventListener('load', () => {
       // console.log(getComputedStyle(border).getPropertyValue('--newface-height'));
     }
   }
-});
+}
