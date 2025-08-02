@@ -29,7 +29,7 @@
                 </tr>
                 <tr>
                   <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400" style="width: 140px;">現在のポイント</th>
-                  <td class="p-1 border-b border-r border-gray-400" colspan="3">{{ $member->pay }}</td>
+                  <td class="p-1 border-b border-r border-gray-400" colspan="3">{{ number_format($member->pay)."pt" }}</td>
                 </tr>
               </tbody>
             </table>
@@ -55,8 +55,8 @@
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->course_name_table }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->extension_name }}</td>
-                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ $history->price_new }}</td>
-                    <td class="p-1 border-b border-r border-gray-400">{{ $history->point_use }}</td>
+                    <td class="p-1 border-b border-r border-gray-400 text-right pr-2">{{ number_format($history->price_new)."円" }}</td>
+                    <td class="p-1 border-b border-r border-gray-400">{{ number_format($history->point_use)."pt" }}</td>
                     <td class="p-1 border-b border-r border-gray-400">{{ $history->memo }}</td>
                   </tr>
                   @endforeach
