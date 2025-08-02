@@ -74,7 +74,7 @@
           <li><a href="{{ route('public.shop.movielist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
           </a></li>
           @if(Auth::guard('member')->check())
-          <li><a href="#"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
+          <li><a href="{{ route('public.group.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
           </a></li>
           @endif
           @if (Auth::guard('member')->check() || Auth::guard('web')->check())
