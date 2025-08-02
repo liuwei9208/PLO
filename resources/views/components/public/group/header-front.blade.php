@@ -140,6 +140,7 @@
   </div>  
 </header>
 @endif
+@if (request()->routeIs('public.group.home'))
 <button class="drawer-toggle" id="drawer-toggle" data-pushbar-target="right">
   <div class="drawer-toggle-bars">
     <span class="drawer-toggle-bar"></span>
@@ -148,3 +149,13 @@
   </div>
   <span class="drawer-toggle-menu rainbow-text">MENU</span>
 </button>
+@else
+<button class="drawer-toggle-child" id="drawer-toggle" data-pushbar-target="right">
+  <div class="drawer-toggle-bars">
+    <span class="drawer-toggle-bar"></span>
+    <span class="drawer-toggle-bar"></span>
+    <span class="drawer-toggle-bar"></span>
+  </div>
+  <span class="drawer-toggle-menu rainbow-text">MENU</span>
+</button>
+@endif

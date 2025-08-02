@@ -647,6 +647,10 @@
       left:var(--logo-left, 0px);
       // left: 50%;
       width: 550px;
+      @media #{media-query(md)} {
+        width: 270px;
+        display: none;
+      }
       // height: 100%;
       background-color: #fff;
       z-index:1;
@@ -688,7 +692,7 @@
         width: 140px;
         @media #{media-query(md)} {
           font-size: 14px;
-          min-width: 110px;
+          width: 110px;
         }
 
         border-radius: 24px;
@@ -899,6 +903,10 @@
       // }
       &-logo{
         width: 570px !important;
+        @media #{media-query(md)} {
+          width: 270px !important;
+          display: none !important;
+        }
       }
 
       a {
@@ -916,7 +924,7 @@
         width: 140px;
         @media #{media-query(md)} {
           font-size: 14px;
-          min-width: 120px;
+          width: 120px;
         }
         border-radius: 24px;
         text-align: center;
@@ -1013,6 +1021,141 @@
        }
       }
     }
+  }
+}
+
+// Drawer toggle button - fixed position on right side
+.drawer-toggle-child {
+  position: fixed;
+  // top: 1rem;
+  // right: 1rem;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #000;
+  // border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.3s;
+  @media #{media-query(sm)} {
+    width: 70px;
+    height: 70px;
+    top: 9px;
+    right: 5px;
+  }
+  @media #{media-query(md)} {
+    width: 80px;
+    height: 80px;
+    top: 0px;
+    right: 15px;
+  }
+  @media #{media-query(lg)} {
+    width: 80px;
+    height: 80px;
+    top: 00px;
+    right: 20px;
+  }
+  .drawer-toggle-bars {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 6px;
+    margin-bottom: 2px;
+    width: 22px;
+    @media #{media-query(sm)} {
+      width: 38px;
+      gap: 7px;
+      margin-bottom: 6px;
+    }
+    @media #{media-query(md)} {
+      width: 38px;
+      gap: 7px;
+      margin-bottom: 6px;
+    }
+    @media #{media-query(lg)} {
+      width: 38px;
+      gap: 7px;
+      margin-bottom: 6px;
+    }
+  }
+  .drawer-toggle-bar {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    border-radius: 1.5px;
+    transition: all 0.3s cubic-bezier(.4,2,.6,1);
+    @media #{media-query(sm)} {
+      height: 2px;
+      border-radius: 1px;
+    }
+    @media #{media-query(md)} {
+      height: 3px;
+      border-radius: 1.5px;
+    }
+    @media #{media-query(lg)} {
+      height: 3px;
+      border-radius: 1.5px;
+    }
+  }
+  .drawer-toggle-menu {
+    display: block;
+    font-family: $font-gothic-min;
+    font-weight: 900;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    margin-top: 0px;
+    text-align: center;
+    @media #{media-query(sm)} {
+      font-size: 0.6rem;
+    }
+    @media #{media-query(md)} {
+      font-size: 0.7rem;
+    }
+    @media #{media-query(lg)} {
+      font-size: 0.8rem;
+    }
+  }
+  &:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    .drawer-toggle-bar {
+      background: #ffe066;
+    }
+    .drawer-toggle-menu {
+      filter: brightness(1.2);
+    }
+  }
+  &.active .drawer-toggle-bar {
+    @media #{media-query(sm)} {
+      &:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      &:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+    @media #{media-query(md)}, #{media-query(lg)} {
+      &:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+      }
+      &:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+      }
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    // &:nth-child(3) {
+    //   transform: translateY(-7px) rotate(-45deg);
+    // }
   }
 }
 
@@ -1150,6 +1293,7 @@
     // }
   }
 }
+
 
 .rainbow-text {
   background: linear-gradient(90deg, #DC53D7, #4068fb, #FF8C71, #FFC557, #009162, #FF5AA2, #DC53D7);
