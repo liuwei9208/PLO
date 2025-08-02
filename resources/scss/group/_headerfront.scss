@@ -397,7 +397,7 @@
           }
           position: relative;
           overflow: hidden;
-    
+
           &:hover {
             color: #fff;
             // background: linear-gradient(135deg, #333, #555, #333);
@@ -443,7 +443,7 @@
             display: inline-block;
           }
         }
-    
+
       }
     }
     &-menu{
@@ -554,7 +554,7 @@
           &.menu_newface{
             color: #fc0012;
           }
-          &.menu_schedule{ 
+          &.menu_schedule{
             color: #fe44cf;
           }
           &.menu_event{
@@ -563,11 +563,11 @@
           &.menu_shop{
             color: #2f71fc;
           }
-    
+
        }
       }
     }
-  } 
+  }
 }
 
 // Drawer toggle button - fixed position on right side
@@ -865,6 +865,15 @@
       }
       &:nth-child(9)::before {
         background-color: $shop-color-shizuku;
+      }
+      &:nth-child(10)::before {
+        background-color: $shop-color-pussycat;
+      }
+      &:nth-child(11)::before {
+        background-color: $shop-color-en;
+      }
+      &:nth-child(12)::before {
+        background-color: $shop-color-miyabi;
       }
 
       .drawer-nav-en {
