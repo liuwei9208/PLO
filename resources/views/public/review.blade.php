@@ -188,7 +188,7 @@ function reviewForm() {
 
           if (!this.content.trim()) {
               this.errors.content = 'レビュー内容を入力してください';
-          } else if (this.content.length < 2) {
+          } else if (this.content.length < 200) {
               this.errors.content = '200文字以上入力してください';
           } else if (this.content.length > 2000) {
               this.errors.content = '2000文字以下で入力してください';
