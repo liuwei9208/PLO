@@ -213,7 +213,8 @@
                   {{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y.m.d') : '' }}
                 </div>
                 <div class="news-body-item-contents">
-                  {!! $new->contents !!}
+                  {{-- {!! $new->contents !!} --}}
+                  {{ $new->title }}
                 </div>
               </a>
             </div>

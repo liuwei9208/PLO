@@ -32,11 +32,13 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/assets/img/group/event/bg-news.svg');
+    // background-image: url('/assets/img/group/event/bg-news.svg');
+    background-image: url('/assets/img/group/event/bg-news-lp.jpg');
     // padding: 40px 20px;
     overflow: hidden;
     @media #{media-query(sm)} {
-      background-image: url('/assets/img/group/event/bg-news-sp.svg') !important;
+      // background-image: url('/assets/img/group/event/bg-news-sp.svg') !important;
+      background-image: url('/assets/img/group/event/bg-news-lp.jpg') !important;
       // padding: 30px 15px;
 
       .event {

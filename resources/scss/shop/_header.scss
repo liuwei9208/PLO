@@ -247,7 +247,7 @@
     right: 0;
     z-index: 12;
     // background-color: #fff;
-    border-radius: 100%;
+    // border-radius: 100%;
     @include button.hamburger(
       $container-width: 64px,
       $container-height: 64px,
@@ -260,7 +260,7 @@
 
     @media #{media-query(sm)} {
       background-color: #fff;
-      border-radius: 100%;
+      // border-radius: 100%;
     }
     @media #{media-query(md)} {
       background-color: #fff;
@@ -405,7 +405,9 @@
       gap: 30rem;
 
       @media #{media-query(sm)} {
-        flex-direction: column;
+        // flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 0;
         width: 100%;
       }

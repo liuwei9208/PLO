@@ -216,8 +216,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 window.addEventListener('load', () => {
-    const mv = document.querySelector('.mv');
-    const body = document.querySelector('body');
+  const header_child_menu_logo = document.querySelector('.header-child-user-menu-logo');
+  if (header_child_menu_logo) {
+    console.log(header_child_menu_logo.getBoundingClientRect().x) ;
+    const header_child_logo = document.querySelector('.header-child-logo');
+    if (header_child_logo) {
+      console.log(header_child_menu_logo.getBoundingClientRect().left) ;
+      let logo_left = header_child_menu_logo.getBoundingClientRect().left;
+      document.documentElement.style.setProperty('--logo-left', `${logo_left + 10}px`);
+      // header_child_logo.style.left = `${header_child_menu_logo.getBoundingClientRect().x}px`;
+      console.log(header_child_logo.getBoundingClientRect()) ;
+    }
+  }
+  const mv = document.querySelector('.mv');
+  const body = document.querySelector('body');
 
   if (mv) {
     console.log({mv});
@@ -229,12 +241,21 @@ window.addEventListener('load', () => {
     if (logo) {
       logo_height = logo.offsetHeight;
     }
+    let logo_child_logo_height = 0;
+    const logo_child_logo = document.querySelector('.header-child-logo');
+    if (logo_child_logo) {
+      logo_child_logo_height = logo_child_logo.offsetHeight;
+    }
     const draw = document.querySelector('.drawer-toggle');
     if (draw) {
       const draw_height = draw.offsetHeight;
       console.log({draw_height});
+      
       if (logo_height > draw_height) {
         draw.style.top = `${logo_height - draw_height}px`;
+      }
+      if (logo_child_logo_height > draw_height) {
+        draw.style.top = `${logo_child_logo_height - draw_height}px`;
       }
     }
     // if ( body.clientWidth < 768){
@@ -242,11 +263,17 @@ window.addEventListener('load', () => {
 
     // }
     console.log({logo_height});
-    console.log(logo.clientHeight);
-    mv.style.top = `${logo_height}px`;
+    // console.log(logo.clientHeight);
     const main = document.querySelector('.main');
     if (main) {
-      main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
+      if ( logo_height > 0){
+        mv.style.top = `${logo_height}px`;
+        main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
+      }
+      if ( logo_child_logo_height > 0){
+        mv.style.top = `${logo_child_logo_height}px`;
+        main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
+      }
     }
   }
 
