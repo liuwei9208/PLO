@@ -481,12 +481,12 @@
     </div>
     <a href="#"  class="movie-more more-button more-button-title" id="movie_more_button">もっと見る</a>
     <ul class="movie-content-bottom-shops ">
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="en">艶</li></a>
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
-      <a href="#"><li class="movie-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'pussycat']) }}"><li class="movie-content-bottom-shops-item " data-shop="pussycat">プッシー<br class="sm">キャット</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'shizuku']) }}"><li class="movie-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'miyabi']) }}"><li class="movie-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'en']) }}"><li class="movie-content-bottom-shops-item " data-shop="en">艶</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'shiroganeze']) }}"><li class="movie-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'lovestory']) }}"><li class="movie-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
     </ul>
 
   </div>
