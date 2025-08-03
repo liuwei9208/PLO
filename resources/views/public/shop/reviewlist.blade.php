@@ -5,7 +5,7 @@
     <div class="reviewlist__header content-wrapper-shop">
       <div class="reviewlist__filter">
         <select class="reviewlist__filter-select" id="cast-select">
-          <option value="">女の子で絞り込む | 女の子を選んでください</option>
+          <option value="">女の子を選んでください</option>
           @foreach($casts as $cast)
           <option value="{{ $cast->id }}" {{ $cast_id == $cast->id ? 'selected' : '' }}>{{ $cast->name }}</option>
           @endforeach
