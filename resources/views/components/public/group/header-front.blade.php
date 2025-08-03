@@ -6,7 +6,7 @@
   <div class="header-user md lg">
     <div class="header-user-menu">
       <a href="{{ route('public.group.newcomer') }}">
-        <small>NEWFACET</small>
+        <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>
       <a href="{{ route('public.group.schedule') }}">
@@ -85,7 +85,7 @@
         <span class="menu_top">トップページ</span>
       </a>
       <a href="{{ route('public.group.newcomer') }}">
-        <small>NEWFACE</small>
+        <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>
       <a href="{{ route('public.group.schedule') }}">
