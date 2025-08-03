@@ -21,9 +21,11 @@
   {{-- <span class="newface-size">
     B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
   </span> --}}
+  <div class="newface-name-container">
   <span class="newface-name">
     {{ $cast->name }}<small>{{ $cast->age ? '(' . $cast->age . ')' : '' }}</small>
   </span>
+  </div>
   <span class="newface-size --{{ $cast->shop->slug }}">
     B{{ $cast->bust }}　W{{ $cast->waist }}　H{{ $cast->hip }}
   </span>
