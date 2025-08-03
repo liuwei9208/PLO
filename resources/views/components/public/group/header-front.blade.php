@@ -72,7 +72,7 @@
       <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
     </div>
     <div class="header-child-user-menu">
-      <a href="{{ route('public.group.newcomer') }}">
+      <a href="{{ route('public.group.home') }}">
         <small>TOP</small>
         <span class="menu_top">トップページ</span>
       </a>
