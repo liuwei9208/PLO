@@ -103,7 +103,7 @@
               <div class="new-girls-item-right-image">
                 <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
               </div>
-              <div class="new-girls-item-right-note --{{ $shop->slug }}">
+              {{-- <div class="new-girls-item-right-note --{{ $shop->slug }}">
                 <div class="new-girls-item-right-note-contents">
                   <div class="new-girls-item-right-note-contents-memo">
                     {{ "性格：".$new_girl->pointpersonality }}
@@ -112,7 +112,7 @@
                     {{ "スタイル：".$new_girl->style }}
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
             {{-- <div class="new-girls-item-image">
               <img src="{{ asset('storage/' . $new_girl->gallery_1) }}" alt="{{ $new_girl->name }}">
