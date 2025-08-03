@@ -1,20 +1,21 @@
 <x-public-shop-layout :shop="$shop">
+  <x-public.shop.mv :shop="$shop" />
   <div class="reviewlist__container">
     <!-- Filter and Comment Count -->
-    <div class="reviewlist__header">
+    <div class="reviewlist__header content-wrapper-shop">
       <div class="reviewlist__filter">
-        <select class="reviewlist__filter-select">
-          <option>女の子で絞り込む | 女の子を選んでください</option>
-          @foreach($reviews as $review)
-          <option>{{ $review->cast_name }}</option>
+        <select class="reviewlist__filter-select" id="cast-select">
+          <option value="">女の子で絞り込む | 女の子を選んでください</option>
+          @foreach($casts as $cast)
+          <option value="{{ $cast->id }}" {{ $cast_id == $cast->id ? 'selected' : '' }}>{{ $cast->name }}</option>
           @endforeach
         </select>
       </div>
       <div class="reviewlist__count">コメント数　{{ count($reviews) }}件</div>
     </div>
-
+    @if (count($reviews) > 0)
     <!-- Review Cards -->
-    <div class="reviewlist__cards">
+    <div class="reviewlist__cards content-wrapper-shop">
       {{-- @foreach(range(1, 5) as $i) --}}
       @foreach($reviews as $review)
       <div class="review-item">
@@ -48,25 +49,27 @@
             </div>
             <div class="visit-date">
               <div class="shop-icon inner">
-              <a href="/hokkaido/A0101/A010103/oneesan/girlid-60894823/">
+              <a href="{{route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $review->cast_id])}}">
                 <img name="osusume" itemprop="image url" class="type-girls" oncontextmenu="return false"
                 src="{{ asset('storage/'.$review->cast_gallery) }}"
                 style="background-image: none; background-repeat: no-repeat; background-position: center center; animation-duration: 0.8s;">
               </a>
               </div>
-              <dl class="list">
-              <dt>遊んだ女の子</dt>
-              {{-- <dd class="name">夢野凪彩7/24Debut[23歳] --}}
-                <dd class="name">{{$review->cast_name." [".$review->cast_age."] "}}
-                </dd>
-              </dl>
-              <p class="girls-spec">
-                T{{ $review->cast_height }} B{{ $review->cast_cup }} W{{ $review->cast_waist }} H{{ $review->cast_hip }}</p>
-              <p class="more-girlsinfo"><a href="{{route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $review->cast_id])}}">プロフを見る</a></p>
+              <div class="visit-date-list">
+                <dl class="list">
+                <dt>遊んだ女の子</dt>
+                {{-- <dd class="name">夢野凪彩7/24Debut[23歳] --}}
+                  <dd class="name">{{$review->cast_name." [".$review->cast_age."] "}}
+                  </dd>
+                </dl>
+                <p class="girls-spec">
+                  T{{ $review->cast_height }} B{{ $review->cast_cup }} W{{ $review->cast_waist }} H{{ $review->cast_hip }}</p>
+                <p class="more-girlsinfo"><a href="{{route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $review->cast_id])}}">プロフを見る</a></p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="review-item-content">
+        <div class="review-item-header">
           <div class="review-item-star">
             @php
                 $averagePoint = $review->review_average_point;
@@ -101,6 +104,8 @@
             <li>スタッフ <span>{{$review->review_stuff_point}}</span></li>
             <li>写真 <span>{{$review->review_photo_point}}</span></li>
           </ul>
+        </div>
+        <div class="review-item-content">
 
           <div class="review-item-title">
             <span class="review_bold">{{$review->review_title}}</span>
@@ -114,7 +119,7 @@
                 <img src="//img2.cityheaven.net/img/icon/baseline-chat_bubble_outline-24px.svg">
               </div>
               <p class="review-item-reply-body">
-                {{$review->review_manager_comment}}
+                {{$review->cast_manager_comment}}
               </p>
             </div>
           </div>
@@ -122,6 +127,7 @@
       </div>
       @endforeach
     </div>
+    @endif
 
     <!-- Pagination and Footer -->
     {{-- <div class="reviewlist__footer">コメントを１０掲載</div>
@@ -162,6 +168,17 @@
     </div>
   </div> --}}
 </x-public-shop-layout>
+<script>
+const shop = {!! json_encode($shop) !!};
+document.addEventListener('DOMContentLoaded', function() {
+  const castSelect = document.getElementById('cast-select');
+  castSelect.addEventListener('change', function() {
+    const castId = this.value;
+    console.log(castId);
+    window.location.href = `/${shop.slug}/reviewlist/${castId}`;
+  });
+});
+</script>
 @once
   @vite(['resources/scss/shop/reviewlist.scss', 'resources/scss/shop/newface.scss'])
 @endonce
