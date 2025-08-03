@@ -406,7 +406,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             'shop' => Shop::where('slug', $shop)->get()->first(),
         ]);
     }
-    public function showReviewlist(Request $request, string $shop): View
+    public function showReviewlist(Request $request, string $shop,string $id = null): View
     {
         $sql = 'SELECT `'.env("DB_DATABASE").'`.reviews.id as review_id,
         `'.env("DB_DATABASE").'`.reviews.title as review_title,
@@ -431,21 +431,34 @@ WHERE cast_style.cast_id = $new_girl->id;";
         `'.env("DB_DATABASE").'`.casts.bust as cast_bust,
         `'.env("DB_DATABASE").'`.casts.waist as cast_waist,
         `'.env("DB_DATABASE").'`.casts.hip as cast_hip,
-        `'.env("DB_DATABASE").'`.casts.gallery_1 as cast_gallery
+        `'.env("DB_DATABASE").'`.casts.gallery_1 as cast_gallery,
+        `'.env("DB_DATABASE").'`.casts.manager_comment as cast_manager_comment
         FROM `'.env("DB_DATABASE").'`.reviews
         LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.histories ON `'.env("DB_DATABASE").'`.reviews.history_id = `'.env("MEMBER_DB_DATABASE").'`.histories.id
         LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("DB_DATABASE").'`.reviews.member_id = `'.env("DB_DATABASE").'`.members.id
         LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
         WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = '.Shop::where('slug', $shop)->first()->id.'
-        AND `'.env("DB_DATABASE").'`.casts.is_public = 1
-        AND `'.env("DB_DATABASE").'`.reviews.is_public = 1 ORDER BY `'.env("DB_DATABASE").'`.reviews.created_at DESC';
+        AND `'.env("DB_DATABASE").'`.casts.is_public = 1';
+
+        if ($id) {
+            $sql .= ' AND `'.env("DB_DATABASE").'`.casts.id = '.$id;
+        }
+
+        $sql .= ' AND `'.env("DB_DATABASE").'`.reviews.is_public = 1 ORDER BY `'.env("DB_DATABASE").'`.reviews.created_at DESC';
         // dd($sql);
         $reviews = DB::select($sql);
+
+        $casts = Cast::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('is_public', 1)
+        ->orderBy('rank', 'asc')
+        ->get();
 
         return view('public.shop.reviewlist', [
             // 'castlist' => $castlist,
             'reviews' => $reviews,
             'shop' => Shop::where('slug', $shop)->get()->first(),
+            'casts' => $casts,
+            'cast_id' => $id,
         ]);
     }
 
