@@ -184,6 +184,7 @@ thumbsSwiper.on('click', function (swiper) {
   }
 });
 
+
 // Add Intersection Observer for event-slider animation
 const eventSliderElement = document.querySelector('.event-slider');
 if (eventSliderElement) {

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Log;
 
 class LoginRequest extends FormRequest
 {
@@ -68,6 +69,8 @@ class LoginRequest extends FormRequest
         if (Auth::guard('member')->attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::clear($this->throttleKey());
             // セッションにユーザータイプを保存
+            Log::info('member');
+            Log::info(Auth::guard('member')->check());
             session(['user_type' => 'member']);
             return;
         }

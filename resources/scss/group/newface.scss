@@ -448,17 +448,17 @@
        @media #{media-query(sm)} {
          height: 42px;
          border-radius: 21px;
-         font-size: 16px;
+         font-size: 14px;
        }
        @media #{media-query(md)} {
          height: 50px;
          border-radius: 25px;
-         font-size: 30px;
+         font-size: 16px;
        }
        @media #{media-query(lg)} {
          height: 60px;
          border-radius: 30px;
-         font-size: 35px;
+         font-size: 19px;
        }
      }
      &.is-pussycat .newface-date {
@@ -567,8 +567,27 @@
     &.is-lovestory .newface-shop {
       background-color: $shop-color-lovestory;
     }
+     @keyframes slideFromRight {
+       from {
+         transform: translateX(100%);
+         opacity: 0;
+       }
+       to {
+         transform: translateX(0);
+         opacity: 1;
+       }
+     }
 
      .newface-name {
+       animation: slideFromRight 0.8s ease-out forwards;
+       animation-delay: 0.2s;
+       opacity: 0;
+       transform: translateX(100%); /* Add initial transform state */
+       will-change: transform, opacity; /* Optimize animation performance */
+     }
+     .newface-name {
+       white-space: nowrap;
+       overflow: hidden;
        display: block;
        font-weight: 700;
        letter-spacing: .1em;

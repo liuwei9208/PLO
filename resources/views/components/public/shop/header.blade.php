@@ -24,16 +24,37 @@
         </a>
       </div>
       <div class="header-nav-lists-signin">
+        @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+        <a href="{{ route('logoutAll') }}">
+          <img src="{{ asset('assets/img/shop/signout-'.$shop->slug.'.png') }}" alt="">
+          <span>ログアウト</span>
+        </a>
+        @else
         <a href="{{ route('login') }}">
-          <img src="{{ asset('assets/img/shop/signin-e.png') }}" alt="">
+          <img src="{{ asset('assets/img/shop/signin-'.$shop->slug.'.png') }}" alt="">
           <span>ログイン</span>
         </a>
+        @endif
       </div>
       <div class="header-nav-lists-signup">
+        @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+          @if (Auth::guard('member')->check())
+          <a href="{{ route('public.group.mypage') }}">
+            <img src="{{ asset('assets/img/shop/signup.png') }}" alt="">
+            <span>マイページ</span>
+          </a>
+          @elseif (Auth::guard('web')->check())
+          <a href="{{ route('admin.home') }}">
+            <img src="{{ asset('assets/img/shop/signup.png') }}" alt="">
+            <span>管理者</span>
+          </a>
+          @endif
+        @else
         <a href="{{ route('register') }}">
           <img src="{{ asset('assets/img/shop/signup.png') }}" alt="">
           <span>新規登録</span>
         </a>
+        @endif
       </div>
     </div>
   </div>
@@ -75,6 +96,9 @@
           </a></li>
           @if(Auth::guard('member')->check())
           <li><a href="{{ route('public.group.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
+          </a></li>
+          @elseif (Auth::guard('web')->check())
+          <li><a href="{{ route('admin.home') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">管理者
           </a></li>
           @endif
           @if (Auth::guard('member')->check() || Auth::guard('web')->check())
