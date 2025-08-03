@@ -24,7 +24,15 @@
     </div>
     <div class="header-user-logbox">
     @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-      <a href="{{ route('logoutAll') }}">
+    {{-- <form action="{{ route('logout') }}" method="POST">
+      @csrf
+      <button type="submit" id="logoutAll">
+        <small>LOGOUT</small>
+        <span>ログアウト</span>
+      </button>
+    </form>
+ --}}
+    <a href="{{ route('logoutAll') }}">
         <small>LOGOUT</small>
         <span>ログアウト</span>
       </a>
@@ -102,7 +110,14 @@
     </div>
     <div class="header-child-user-logbox">
     @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-      <a href="{{ route('logoutAll') }}">
+    {{-- <form action="{{ route('logoutAll') }}" method="POST">
+      @csrf
+      <button type="submit" id="logoutAll">
+        <small>LOGOUT</small>
+        <span>ログアウト</span>
+      </button>
+    </form> --}}
+    <a href="{{ route('logoutAll') }}">
         <small>LOGOUT</small>
         <span>ログアウト</span>
       </a>

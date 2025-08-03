@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Log;
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -60,16 +62,25 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         // 現在のユーザータイプを取得
+        Log::info('destroy');
         $userType = session('user_type');
-
+        Log::info($userType);
         // 両方のガードからログアウト
-        Auth::guard('web')->logout();
-        Auth::guard('member')->logout();
+        if (Auth::guard('web')->check()) {
+            // dd('web');
+            Auth::guard('web')->logout();
+        }
+        if (Auth::guard('member')->check()) {
+            // dd('member');
+            Auth::guard('member')->logout();
+        }
 
         // セッションからユーザータイプを削除
         $request->session()->forget('user_type');
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        // $request->session()->clear();
+        // $request->session()->flush();
 
         // ユーザータイプに応じてリダイレクト先を決定
         if ($userType === 'member') {
@@ -137,6 +148,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function logoutAll(Request $request): RedirectResponse
     {
+        Log::info('logoutAll');
         return $this->destroy($request);
     }
 }
