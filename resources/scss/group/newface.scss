@@ -567,34 +567,42 @@
     &.is-lovestory .newface-shop {
       background-color: $shop-color-lovestory;
     }
-     @keyframes slideFromRight {
-       from {
-         transform: translateX(100%);
-         opacity: 0;
-       }
-       to {
-         transform: translateX(0);
-         opacity: 1;
-       }
-     }
-
-     .newface-name {
-       animation: slideFromRight 0.8s ease-out forwards;
-       animation-delay: 0.2s;
-       opacity: 0;
-       transform: translateX(100%); /* Add initial transform state */
-       will-change: transform, opacity; /* Optimize animation performance */
-     }
-     .newface-name {
-       white-space: nowrap;
-       overflow: hidden;
-       display: block;
-       font-weight: 700;
-       letter-spacing: .1em;
-       text-align: center;
-       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-       font-family: $font-gothic-min;
-       @media #{media-query(sm)} {
+      
+ 
+    .newface-name-container {
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+    }
+    .newface-name {
+      transform: translateX(0);
+      position: relative;
+      display: block;
+      width: 100%;
+      opacity: 1;
+      white-space: nowrap;
+      font-weight: 700;
+      @keyframes slideFromRightToLeft {
+        0% {
+          transform: translateX(100%);
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(-65%);
+          opacity: 1;
+        }
+      }
+      animation: slideFromRightToLeft 8s ease-out forwards infinite;
+      // animation: slideFromRight 0.8s ease-out forwards;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      font-family: $font-gothic-min;
+      @media #{media-query(sm)} {
         //  margin: 26px 0 0;
         //  font-size: 26px;
         font-size: 14px;
@@ -696,3 +704,12 @@
      }
    }
  }
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
