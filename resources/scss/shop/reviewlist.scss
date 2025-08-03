@@ -6,19 +6,25 @@
 //   padding: 24px;
   background: #fff;
   padding: 40px 0;
+  @media #{media-query(sm)} {
+    padding: 20px 0;
+  }
 }
 
 // Header
 .reviewlist__header {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
+  justify-content: space-between;
+  align-items: center;
 //   margin-bottom: 24px;
   padding: 0px 40px 20px;
-  @media (min-width: 600px) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+  @media #{media-query(sm)} {
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: space-between;
+    padding:0;
   }
 }
 .reviewlist__filter-select {
@@ -40,6 +46,9 @@
   border: 3px solid #fb50cd;
   padding: 20px 20px;
   border-radius: 20px;
+  @media #{media-query(sm)} {
+    padding: 10px 10px;
+  }
 }
 
 .review-item {
@@ -82,6 +91,9 @@
 }
 .review-visit .visit-time {
     font-size: 20px;
+    @media #{media-query(sm)} {
+        font-size: 16px;
+    }
 }
 .visit-date .list {
     margin-bottom: 6px;
@@ -106,6 +118,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    @media #{media-query(sm)} {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: 10px;
+    }
     // min-height: 155px;
 }
 .visit-date-list{
@@ -115,6 +133,11 @@
     height: 100%;
     row-gap: 20px;
     align-items: flex-start;
+    @media #{media-query(sm)} {
+        align-items: center;
+        justify-content: center;
+        row-gap: 10px;
+    }
 }
 .list{
     overflow:hidden;
@@ -154,6 +177,9 @@
     padding: 20px;
     border-bottom: 1px dotted #e0e0e0;
     position: relative;
+    @media #{media-query(sm)} {
+        padding: 10px;
+    }
 }
 .review-item-head-main{
     padding: 10px 0 10px;
@@ -208,6 +234,12 @@
 .review-item-rate {
     overflow:hidden;
     margin-top:5px;
+    @media #{media-query(sm)} {
+        // margin-top: 5px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
 }
 .review-item-rate li {
     float:left;
@@ -282,6 +314,11 @@
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
 	width: 100%;
     padding: 30px 0 10px;
+    font-weight: 700;
+    @media #{media-query(sm)} {
+        padding: 10px 0 10px;
+        font-size: 16px;
+    }
 }
 .review-item-author {
     display: inline-block;
@@ -360,6 +397,9 @@
 	-khtml-user-select:none;
 	-webkit-user-drag:none;
 	-khtml-user-drag:none;
+    @media #{media-query(sm)} {
+        padding: 10px 0 10px;
+    }
 }
 
 .review-item-more {
@@ -495,6 +535,9 @@ div#contensbox .review-item-reply-open.is_open:before {
     // margin-bottom: 15px;
     // padding:0 20px;
 /* ↑ 口コミ（第２弾） @SMC 2019/04/23 */
+    @media #{media-query(sm)} {
+        font-size: 16px;
+    }
 }
 /* ↓ 口コミ（第２弾） @SMC 2019/04/23 */
 .review-item-reply-head img{
@@ -562,7 +605,7 @@ div#contensbox .review-item-reply-open.is_open:before {
 }
 .review_bold {
     font-weight: 700;
-    font-size: 18px;
+    // font-size: 18px;
     line-height: 1.4;
     color: #13131e;
 }
