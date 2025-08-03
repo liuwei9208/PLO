@@ -646,7 +646,7 @@
       top: 0;
       left:var(--logo-left, 0px);
       // left: 50%;
-      width: 550px;
+      width: 360px;
       @media #{media-query(md)} {
         width: 270px;
         display: none;
@@ -657,7 +657,7 @@
       padding:10px;
       border-bottom-right-radius: 30px;
       border-bottom-left-radius: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 5px 15px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3), 0 5px 5px rgba(0, 0, 0, 0.2);
       img{
         width: 100%;
         height: 100%;
@@ -902,7 +902,7 @@
       //   }
       // }
       &-logo{
-        width: 570px !important;
+        width: 380px !important;
         @media #{media-query(md)} {
           width: 270px !important;
           display: none !important;
