@@ -1378,34 +1378,37 @@
         display: flex;
         align-items: center;
         padding: 12px 0 12px 28px;
-        &:nth-child(6) {
-          margin-top: 12px;
-        }
-        &:nth-child(8) {
-          margin-top: 24px;
-        }
+        column-gap: 20px;
+        // &:nth-child(6) {
+        //   margin-top: 12px;
+        // }
+        // &:nth-child(8) {
+        //   margin-top: 24px;
+        // }
       }
       @media #{media-query(md)} {
         display: flex;
         align-items: center;
         padding: 18px 0 18px 45px;
-        &:nth-child(6) {
-          margin-top: 18px;
-        }
-        &:nth-child(8) {
-          margin-top: 36px;
-        }
+        column-gap: 40px;
+        // &:nth-child(6) {
+        //   margin-top: 18px;
+        // }
+        // &:nth-child(8) {
+        //   margin-top: 36px;
+        // }
       }
       @media #{media-query(lg)} {
         display: flex;
         align-items: center;
         padding: 18px 0 18px 45px;
-        &:nth-child(6) {
-          margin-top: 18px;
-        }
-        &:nth-child(8) {
-          margin-top: 36px;
-        }
+        column-gap: 40px;
+        // &:nth-child(6) {
+        //   margin-top: 18px;
+        // }
+        // &:nth-child(8) {
+        //   margin-top: 36px;
+        // }
       }
 
       &::before {
@@ -1461,9 +1464,9 @@
       &:nth-child(10)::before {
         background-color: $shop-color-pussycat;
       }
-      &:nth-child(11)::before {
-        background-color: $shop-color-en;
-      }
+      // &:nth-child(11)::before {
+      //   background-color: $shop-color-en;
+      // }
       &:nth-child(12)::before {
         background-color: $shop-color-miyabi;
       }
@@ -1475,19 +1478,19 @@
         white-space: nowrap;
         user-select: none;
         @media #{media-query(sm)} {
-          min-width: 110px;
+          min-width: 130px;
           font-size: 18px;
-          margin: 0 28px 2px 0;
+          // margin: 0 28px 2px 0;
         }
         @media #{media-query(md)} {
-          min-width: 155px;
+          min-width: 165px;
           font-size: 24px;
-          margin: 0 40px 3px 0;
+          // margin: 0 40px 3px 0;
         }
         @media #{media-query(lg)} {
-          min-width: 155px;
+          min-width: 165px;
           font-size: 24px;
-          margin: 0 40px 3px 0;
+          // margin: 0 40px 3px 0;
         }
       }
 
