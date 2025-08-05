@@ -1,66 +1,76 @@
 <x-mypage-layout>
   <div class="mypage">
   <div class="mypage-container p-4 mx-auto max-w-7xl md:p-6">
-    <div class="flex flex-col lg:flex-row gap-4">
+    <div class="flex flex-col gap-8">
       {{-- Member Info --}}
-      <div class="flex-1 bg-white border rounded p-3 text-sm leading-relaxed">
-        <div class="flex items-center mb-2">
-                <span class="font-bold">会員詳細</span>
+      <div class="mypage-block relative flex-1 border rounded p-4 leading-relaxed">
+        <div class="bg-white">
+          <div class="flex items-center mb-6">
+              <h3 class="font-bold">会員詳細</h3>
+          </div>
+          <div class="flex flex-col lg:flex-row gap-4">
+            <div>
+              会員番号　{{ $member->id }}
             </div>
-        <div>
-          会員番号　<span class="font-bold">{{ $member->id }}</span>
-        </div>
-        <div>ニックネーム　{{ $member->name }}</div>
-        <div>登録日　{{ $member->created_at->format('Y-m-d') }}</div>
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
-          <button id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg  bg-blue-600 text-white  hover:bg-blue-700">
-            QRコード表示
-          </button>
+            <div>ニックネーム　{{ $member->name }}</div>
+            <div>登録日　{{ $member->created_at->format('Y-m-d') }}</div>
+          </div>
+          <div class="absolute right-4 top-4 flex items-center justify-center">
+            <button id="show-qr-button" class="flex items-center px-4 py-3 text-sm font-medium  transition ring-1 ring-inset ring-gray-300 rounded-lg  bg-blue-600 text-white  hover:bg-blue-700">
+              QRコード表示
+            </button>
+          </div>
         </div>
       </div>
 
       {{-- Current Points & Point Usage History --}}
-        <div class="flex-1 bg-white border rounded p-3">
-            <div class="flex items-center mb-2">
-                <span class="font-bold">現在のポイント</span>
-            </div>
-            <div class="text-center text-3xl font-bold text-gray-800 mb-2">{{ number_format($today_point) }}pt</div>
-            <div class="text-xs font-bold mb-1">ポイント利用履歴</div>
-            <div class="text-xs space-y-1">
-              @foreach($histories as $history)
-                <div>{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y年m月d日') : '' }}　{{ $history->point_pay }}pt（{{ $history->shop_name }}）</div>
-              @endforeach
-                {{-- <div>2025年7月20日　2,000pt（零）</div>
-                <div>2025年6月10日　1,500pt（シロガネオーゼ）</div>
-                <div>2025年5月25日　3,000pt（ラブストーリー）</div> --}}
-            </div>
+      <div class="mypage-block flex-1 border rounded p-4">
+        <div class="bg-white">
+          <div class="flex items-center mb-6">
+              <h3 class="font-bold">現在のポイント</h3>
+          </div>
+          <div class="text-center text-3xl font-bold text-gray-800 mb-4">{{ number_format($today_point) }}pt</div>
+          <div class="font-bold mb-1">ポイント利用履歴</div>
+          <div class="space-y-1">
+            @foreach($histories as $history)
+              <div>{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y年m月d日') : '' }}　{{ $history->point_pay }}pt（{{ $history->shop_name }}）</div>
+            @endforeach
+              {{-- <div>2025年7月20日　2,000pt（零）</div>
+              <div>2025年6月10日　1,500pt（シロガネオーゼ）</div>
+              <div>2025年5月25日　3,000pt（ラブストーリー）</div> --}}
+          </div>
         </div>
+      </div>
 
-        {{-- Visit History --}}
-        <div class="flex-1 bg-white border rounded p-3">
-            <div class="flex items-center mb-2">
-                <span class="font-bold">来店履歴</span>
-            </div>
-            @foreach($shop_histories as $shop_history)
-                <div class="mb-3 last:mb-0 border-b pb-2 last:border-b-0 last:pb-0">
-                    <div class="text-xs">来店日　{{ $shop_history->created_at ? \Carbon\Carbon::parse($shop_history->created_at)->format('Y年m月d日') : '' }}</div>
-                    <div class="text-xs">店舗名　{{ $shop_history->shop_name }}</div>
-                    <div class="text-xs">遊んだ女の子　{{ $shop_history->casts_name }}</div>
-                    <input type="hidden" id="history_id" value="{{ $shop_history->id }}">
+      {{-- Visit History --}}
+      <div class="mypage-block flex-1 border rounded p-4">
+        <div class="bg-white">
+
+          <div class="flex items-center mb-6">
+              <h3 class="font-bold">来店履歴</h3>
+          </div>
+          @foreach($shop_histories as $shop_history)
+              <div class="mb-3 last:mb-0 border-b pb-2 last:border-b-0 last:pb-0">
+                  <div class="">来店日　{{ $shop_history->created_at ? \Carbon\Carbon::parse($shop_history->created_at)->format('Y年m月d日') : '' }}</div>
+                  <div class="">店舗名　{{ $shop_history->shop_name }}</div>
+                  <div class="">遊んだ女の子　{{ $shop_history->casts_name }}</div>
+                  <input type="hidden" id="history_id" value="{{ $shop_history->id }}">
+                  <div class="w-full text-center mt-4">
                     @if($shop_history->history_id > 0)
                         {{-- Already reviewed --}}
-                        <button class="btn-write-review w-full mt-1 py-1 text-xs bg-gray-300 text-gray-500 rounded" disabled>クチコミを書く</button>
+                        <button class="btn-write-review max-w-3xl mx-uto w-full mt-1 py-1 bg-gray-300 text-gray-500 rounded" disabled>クチコミを書く</button>
                     @else
-                        <button class="btn-write-review w-full mt-1 py-1 text-xs bg-white border border-gray-400 rounded hover:bg-gray-100">クチコミを書く</button>
+                        <button class="btn-write-review max-w-3xl mx-auto w-full mt-1 py-1 bg-white border border-gray-400 rounded hover:bg-gray-100">クチコミを書く</button>
                     @endif
-                </div>
-            @endforeach
-
+                  </div>
+              </div>
+          @endforeach
+        </div>
             {{-- View More --}}
             {{-- <div class="text-center">
                 <button class="px-6 py-2 bg-white border rounded hover:bg-gray-100 text-sm" id="btn_view">もっと見る</button>
             </div> --}}
-        </div>
+      </div>
 
     </div>
 
