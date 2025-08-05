@@ -87,6 +87,7 @@ export default defineConfig({
                 'resources/js/shop/diarylist.js',
                 'resources/js/admin/sortcast.js',
                 'resources/js/admin/work.js',
+                'resources/js/shop/ranking.js',
             ],
             refresh: true,
         }),
