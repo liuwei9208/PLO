@@ -38,7 +38,7 @@
     </picture>
     @else
     <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.jpg') }}">
+      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.png') }}">
       <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
       {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
     </picture>
