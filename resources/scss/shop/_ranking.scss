@@ -132,6 +132,7 @@
             font-size: 20px;
             vertical-align:top;
             white-space:pre-line;
+            @include text.multiline-ellipsis(6);
             @media #{media-query(sm)} {
               font-size: 12px;
             }
@@ -238,6 +239,7 @@
           font-size: 12px;
           color:#000;
           white-space:pre-line;
+          @include text.multiline-ellipsis(6);
         }
       }
     }
@@ -508,6 +510,7 @@
           font-size: 20px;
           color:#000;
           white-space:pre-line;
+          @include text.multiline-ellipsis(6);
           @media #{media-query(sm)} {
             font-size: 12px;
           }
@@ -521,7 +524,7 @@
 
   &-four {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     // width: 100%;
     padding: 40px 0;
@@ -628,6 +631,7 @@
         &-appeal {
           width: 100%;
           &-text {
+            @include text.multiline-ellipsis(6);
             font-size: 20px;
             color:#000;
             white-space:pre-line;
