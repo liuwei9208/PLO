@@ -45,7 +45,7 @@
             <img src="{{ asset('storage/' . $rankings[0]->cast->gallery_3) }}" alt="{{ $rankings[0]->cast->name }}">
           </div>
         </div>
-        <div class="ranking-one-item-image-sp sp-only">
+        <div class="ranking-one-item-image-sp sp-only swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="ranking-one-item-image-sp-photo">
@@ -75,32 +75,7 @@
           <span class="ranking-one-item-content-appeal-text">{{ $rankings[0]->cast->appeal_point }}</span>
         </div>
     </a>
-      {{-- @foreach ($rankings as $ranking)
-        @if($ranking->ranking_rank == 1)
-        <div class="content-wrapper-shop">
-          <a class="ranking-item_one" href="{{ route('public.shop.cast.profile',['shop'=>$shop->slug,'id'=>$ranking->cast_id]) }}">
-            @if($ranking->ranking_rank == 1)
-              <img src="{{ asset('assets/img/shop/1.png') }}" alt="1位" class="ranking-badge">
-            @endif
-            <div class="ranking-item-photo">
-              <img src="{{ asset('storage/' . $ranking->cast->gallery_1) }}" alt="{{ $ranking->cast->name }}">
-            </div>
-            <div class="ranking-item-name">
-              {{ $ranking->cast->name}}<span class="ranking-item-age">{{ '('.$ranking->cast->age.')' }}</span>
-            </div>
-            <div class="ranking-item-bwh">
-              <span class="ranking-item-bwh-bust">{{ 'B'.$ranking->cast->bust }}</span>
-              <span class="ranking-item-bwh-waist">{{ 'W'.$ranking->cast->waist }}</span>
-              <span class="ranking-item-bwh-hip">{{ 'H'.$ranking->cast->hip }}</span>
-            </div>
-            <div class="ranking-item-appeal">
-              <span class="ranking-item-appeal-text">{{ $ranking->cast->appeal_point }}</span>
-              {{-- {{ $ranking->cast->appeal_point }} --}}
-            {{-- </div>
-          </a>
-        </div>
-        @endif
-      @endforeach --}}
+
     </div>
     @endif
     <div class="ranking-two content-wrapper-shop">
@@ -132,7 +107,7 @@
               <img src="{{ asset('storage/' . $ranking->cast->gallery_2) }}" alt="{{ $ranking->cast->name }}">
             </div>
           </div>
-          <div class="ranking-two-item-image-two-sp sp-only">
+          <div class="ranking-two-item-image-two-sp sp-only swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="ranking-two-item-image-two-sp-photo">
@@ -186,7 +161,7 @@
               <img src="{{ asset('storage/' . $ranking->cast->gallery_2) }}" alt="{{ $ranking->cast->name }}">
             </div>
           </div>
-          <div class="ranking-two-item-image-three-sp sp-only">
+          <div class="ranking-two-item-image-three-sp sp-only swiper">
             <div class="swiper-wrapper">
               <div class="swiper-slide">
                 <div class="ranking-two-item-image-three-sp-photo">
