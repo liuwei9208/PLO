@@ -75,7 +75,7 @@
       <!-- Name, Shop, Profile -->
       <div class="mb-6 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         <div class="p-4 sm:p-6">
-          @foreach (['1位','2位','3位','4位','5位'] as $index => $label)
+          @foreach (['1位','2位','3位','4位','5位','6位','7位'] as $index => $label)
             <div class="flex items-center gap-4 mb-6">
               <label class="text-sm font-medium text-gray-700 dark:text-gray-400">
                 {{ $label }}

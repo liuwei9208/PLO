@@ -255,6 +255,68 @@
             </div>
           </a>
         @endif
+        @if($ranking->ranking_rank === 6)
+          <a class="ranking-four-item" href="{{ route('public.shop.cast.profile',['shop'=>$shop->slug,'id'=>$ranking->cast_id]) }}">
+            <div class="ranking-four-item-content">
+              <div class="ranking-four-item-content-rank">
+                <img src="{{ asset('assets/img/shop/no6.png') }}" alt="5位" class="ranking-badge">
+              </div>
+            </div>
+            <div class="ranking-four-item-image">
+              <div class="ranking-four-item-image-photo1">
+                <img src="{{ asset('storage/' . $ranking->cast->gallery_1) }}" alt="{{ $ranking->cast->name }}">
+              </div>
+            </div>
+            <div class="ranking-four-item-context">
+              <div class="ranking-four-item-context-info">
+                <div class="ranking-four-item-context-info-name">
+                  {{ $ranking->cast->name}}
+                </div>
+                <div class="ranking-four-item-context-info-bwh">
+                  <span class="ranking-item-age">{{ $ranking->cast->age.'歳 / ' }}</span>              
+                  <span class="ranking-item-bwh-bust">{{ 'H.'.$rankings[0]->cast->height }}</span>
+                  <span class="ranking-item-bwh-bust">{{ 'B.'.$rankings[0]->cast->bust }}</span>
+                  <span class="ranking-item-bwh-waist">{{ 'W.'.$rankings[0]->cast->waist }}</span>
+                  <span class="ranking-item-bwh-hip">{{ 'H.'.$rankings[0]->cast->hip }}</span>
+                </div>
+              </div>
+              <div class="ranking-four-item-context-appeal">
+                <span class="ranking-four-item-context-appeal-text">{{ $ranking->cast->appeal_point }}</span>
+              </div>
+            </div>
+          </a>
+        @endif
+        @if($ranking->ranking_rank === 7)
+          <a class="ranking-four-item" href="{{ route('public.shop.cast.profile',['shop'=>$shop->slug,'id'=>$ranking->cast_id]) }}">
+            <div class="ranking-four-item-content">
+              <div class="ranking-four-item-content-rank">
+                <img src="{{ asset('assets/img/shop/no7.png') }}" alt="5位" class="ranking-badge">
+              </div>
+            </div>
+            <div class="ranking-four-item-image">
+              <div class="ranking-four-item-image-photo1">
+                <img src="{{ asset('storage/' . $ranking->cast->gallery_1) }}" alt="{{ $ranking->cast->name }}">
+              </div>
+            </div>
+            <div class="ranking-four-item-context">
+              <div class="ranking-four-item-context-info">
+                <div class="ranking-four-item-context-info-name">
+                  {{ $ranking->cast->name}}
+                </div>
+                <div class="ranking-four-item-context-info-bwh">
+                  <span class="ranking-item-age">{{ $ranking->cast->age.'歳 / ' }}</span>              
+                  <span class="ranking-item-bwh-bust">{{ 'H.'.$rankings[0]->cast->height }}</span>
+                  <span class="ranking-item-bwh-bust">{{ 'B.'.$rankings[0]->cast->bust }}</span>
+                  <span class="ranking-item-bwh-waist">{{ 'W.'.$rankings[0]->cast->waist }}</span>
+                  <span class="ranking-item-bwh-hip">{{ 'H.'.$rankings[0]->cast->hip }}</span>
+                </div>
+              </div>
+              <div class="ranking-four-item-context-appeal">
+                <span class="ranking-four-item-context-appeal-text">{{ $ranking->cast->appeal_point }}</span>
+              </div>
+            </div>
+          </a>
+        @endif
       @endforeach
     </div>
 
