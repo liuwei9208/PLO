@@ -1,6 +1,6 @@
 import Swiper from 'swiper'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
-import Scroll from './shop/Scroll'
+// import Scroll from './shop/Scroll'
 import Header from './shop/Header'
 // import Drawer from './shop/Drawer'
 import 'swiper/css'
@@ -9,7 +9,7 @@ import 'swiper/css/pagination'
 import Pushbar from './group/pushbar'
 
 /** Scroll */
-const scroll = new Scroll()
+// const scroll = new Scroll()
 
 /** Header */
 const header = new Header()

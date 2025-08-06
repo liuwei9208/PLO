@@ -1,6 +1,6 @@
 <div class="drawer" id="drawer" data-pushbar-id="right" data-pushbar-direction="right">
-  <div class="drawer-content active" data-pushbar-close>
-    <button class="drawer-close" id="drawer-close">
+  <div class="drawer-content active">
+    <button class="drawer-close" id="drawer-close"  data-pushbar-close>
       <span></span>
       <span></span>
     </button>
