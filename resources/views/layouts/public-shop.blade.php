@@ -36,6 +36,9 @@
     <!-- Header -->
     <x-public.shop.header :shop="$shop" />
 
+    <!-- Drawer -->
+    <x-public.shop.drawer :shop="$shop" />
+
     <!-- Main -->
     <main class="main" id="main">
       {{ $slot }}

@@ -48,6 +48,8 @@
 
     <!-- Footer -->
     <x-public.group.footer />
+
+    <x-public.group.bottom-nav />
     @stack('scripts')
   </body>
 </html>

@@ -2,10 +2,11 @@ import Swiper from 'swiper'
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import Scroll from './shop/Scroll'
 import Header from './shop/Header'
-import Drawer from './shop/Drawer'
+// import Drawer from './shop/Drawer'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import Pushbar from './group/pushbar'
 
 /** Scroll */
 const scroll = new Scroll()
@@ -13,9 +14,13 @@ const scroll = new Scroll()
 /** Header */
 const header = new Header()
 
-
 /** Drawer */
-const drawer = new Drawer({ scroll: scroll })
+// const drawer = new Drawer({ scroll: scroll })
+const pushbar = new Pushbar({
+  blur: true,
+  overlay: true,
+});
+
 document.addEventListener('DOMContentLoaded', function() {
   // if (typeof Swiper !== 'undefined') {
   //   const eventSlider = new Swiper('.event-slider', {
