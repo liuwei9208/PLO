@@ -78,7 +78,7 @@
         }
         @media #{media-query(sm)} {
           font-size: 12px;
-          margin: 0 30px;
+          margin: 0 20px;
 
         }
         @media #{media-query(md)} {
@@ -123,6 +123,10 @@
     @media #{media-query(lg)} {
       font-size: 14px;
     }
+  }
+
+  @media #{media-query(sm)} {
+    padding-bottom: 80px;
   }
 }
 
@@ -218,6 +222,7 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   animation: searchGirlFloat 3s ease-in-out infinite, searchGirlPulse 2s ease-in-out infinite;
   @media #{media-query(sm)} {
+    display: none;
     font-size: 14px;
     width: 185px;
     border-top-left-radius: 24px;
