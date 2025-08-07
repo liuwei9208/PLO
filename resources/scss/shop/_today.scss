@@ -87,6 +87,7 @@
   .today-lists {
     &.--shizuku {
       background-color: $shop-color-shizuku;
+      // background-color: #fff;
     }
     &.--miyabi {
       background-color: $shop-color-miyabi;
@@ -110,6 +111,7 @@
     // flex-wrap: wrap;
     // position: relative;
     display: grid;
+    // background-color: #fff;
     @media #{media-query(sm)} {
       display: grid;
       // flex-direction: column;
@@ -141,6 +143,7 @@
 
     .today-item {
       transition: .2s;
+      // background-color: #fff;
       @media #{media-query(sm)} {
         width: 100%;
         background-color: #fff;
@@ -162,21 +165,17 @@
       }
 
       &:hover {
-        // opacity: .8;
-        // .today-status {
-        //   display: none;
-        // }
-        // .today-profile {
-        //   display: none;
-        // }
-        // background-color: #000;
-        opacity: .6;
-      }
+        // background-color: rgba(255, 255, 255, 0.8);
+        // animation: fadeZoomIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        // background-color: rgba(255, 255, 255, 0.8); // Add subtle white overlay
+        opacity: 0.6;
+  }
 
       .today-photo {
         position: relative;
         width: 100%;
         overflow: hidden;
+        // background-color: #ff0;
         @media #{media-query(sm)} {
           border-radius: 20px;
         }
@@ -192,7 +191,8 @@
             transform: scale(1.08);
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             // filter: brightness(1.1); // Add slight brightness effect
-            filter: opacity(0.6);
+            // filter: opacity(0.6);
+            // background-color: rgba(#fff, 1);
           }
           .today-hover {
             display: flex;
