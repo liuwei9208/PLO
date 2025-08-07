@@ -12,10 +12,30 @@
             <img src="{{ asset('assets/img/group/bottom-nav/system.png') }}" alt="">
             <span class="bottom-nav__button__text">システム</span>
         </a>
-        <a href="{{ route('public.group.newcomer') }}" class="bottom-nav__button group">
+        @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+
+          @if (Auth::guard('member')->check())
+          <a href="{{ route('public.group.mypage') }}" class="bottom-nav__button group">
+              <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
+              <span class="bottom-nav__button__text">マイページ</span>
+          </a>
+          @endif
+          @if (Auth::guard('web')->check())
+          <a href="{{ route('admin.home') }}" class="bottom-nav__button group">
+              <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
+              <span class="bottom-nav__button__text">管理者</span>
+          </a>
+          @endif
+        @else
+        <a href="{{ route('login') }}" class="bottom-nav__button group">
+            <img src="{{ asset('assets/img/group/bottom-nav/login.png') }}" alt="">
+            <span class="bottom-nav__button__text">ログイン</span>
+        </a>
+        @endif
+        {{-- <a href="{{ route('public.group.newcomer') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
             <span class="bottom-nav__button__text">マイページ</span>
-        </a>
+        </a> --}}
     </div>
     
     <div class="tel-link-container">
