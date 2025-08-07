@@ -206,6 +206,7 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
     @media #{media-query(sm)} {
+      padding-bottom: 60px;
       font-size: 13px;
     }
     @media #{media-query(md)} {

@@ -173,3 +173,80 @@
 .qr-modal.active {
   display: flex;
 }
+
+@keyframes scrollTopFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.tel-link-container {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  // z-index: 1000;
+  background-color: #8B6B20;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: scrollTopShimmer 1s ease-in-out, scrollTopFloat 1.5s ease-in-out infinite;
+  transform: scale(1.15) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  
+  .tel-link {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background: linear-gradient(135deg, #DC53D7, #FF5AA2, #DC53D7);
+    // background-size: 200% 200%;
+
+    &:hover {
+      transform: translateY(-2px) scale(1.2);
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+
+    &.--shizuku {
+      svg {
+        fill: $shop-color-shizuku;
+      }
+    }
+    &.--pussycat {
+      svg {
+        fill: $shop-color-pussycat;
+      }
+    }
+    &.--miyabi {
+      svg {
+        fill: $shop-color-miyabi;
+      }
+    }
+    &.--en {
+      svg {
+        fill: $shop-color-en;
+      }
+    }
+    &.--shiroganeze {
+      svg {
+        fill: $shop-color-shiroganeze;
+      }
+    }
+    &.--lovestory {
+      svg {
+        fill: $shop-color-lovestory;
+      }
+    }
+  }
+
+  .tel-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
