@@ -47,6 +47,7 @@
     <!-- Footer -->
     <x-public.shop.footer :shop="$shop" />
 
+    <x-public.shop.bottom-nav :shop="$shop" />
 
     {{-- {!! $scripts ?? '' !!} --}}
     {{-- {{ $scripts ?? '' }} --}}
