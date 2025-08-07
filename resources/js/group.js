@@ -346,9 +346,9 @@ function resizeModule() {
       const draw_height = draw.offsetHeight;
       console.log({draw_height});
       
-      if (logo_height > draw_height) {
-        draw.style.top = `${logo_height - draw_height}px`;
-      }
+      // if (logo_height > draw_height) {
+      //   draw.style.top = `${logo_height - draw_height}px`;
+      // }
       if (logo_child_logo_height > draw_height) {
         draw.style.top = `${logo_child_logo_height - draw_height}px`;
       }
@@ -370,6 +370,14 @@ function resizeModule() {
         main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
       }
     }
+    
+    if (mv.style.top != draw.getBoundingClientRect().bottom && body.clientWidth < 768) {
+      console.log('aaa');
+      console.log(mv.style.top);
+      console.log(draw.getBoundingClientRect().bottom);
+      draw.style.top = `${mv.getBoundingClientRect().top - draw.offsetHeight}px`;
+    }
+
   }
 
   const newface = document.querySelector('.newface');
