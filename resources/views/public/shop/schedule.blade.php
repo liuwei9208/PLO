@@ -9,7 +9,7 @@
       {{-- <img src="{{ asset('assets/img/group/schedule/schedule.svg') }}" alt="Schedule"> --}}
       <h2 class="schedule-title-ja title-font-midashi">出勤情報</h2>
     </div>
-    <div class="schedule-weeks content-wrapper">
+    <div class="schedule-weeks content-wrapper-shop">
       <div class="schedule-weeks-day">
         <button class="schedule-weeks-day-date active" value="{{ $days[0]['date'] }} " id = "weekDay" data-weekday="{{ $days[0]['weekDay'] }}">{{ $days[0]['weekDay'] }}</button>
       </div>
@@ -19,7 +19,7 @@
         </div>
       @endfor
     </div>
-    <div class="schedule-person-info-list content-wrapper">
+    <div class="schedule-person-info-list content-wrapper-shop">
       {{-- @foreach ($casts as $cast)
       <div class="schedule-person-info-list-item">
         <a href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->cast_id]) }}">

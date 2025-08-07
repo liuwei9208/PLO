@@ -71,6 +71,9 @@
         &:hover {
           background: $black;
           color: $white;
+          transform: translateY(-3px) scale(1.05);
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         &.active {
@@ -114,6 +117,9 @@
         &:hover {
           background: $black;
           color: $white;
+          transform: translateY(-2px) scale(1.03);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+          transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         &.active {
@@ -208,7 +214,20 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    
+    border: 3px solid #cba86b;
+    padding: 3%;
+    @media #{media-query(sm)} {
+      border-radius: 20px;
+      gap: 15px;
+    }
+    @media #{media-query(md)} {
+      gap:20px;
+      border-radius: 40px;
+    }
+    @media #{media-query(lg)} {
+      border-radius: 60px;
+    }
+
     &-item {
       margin-bottom: 0;
       
@@ -216,16 +235,18 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
-        padding: 15px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
+        // padding: 15px;
+        // border: 1px solid #ddd;
+        // border-radius: 8px;
         transition: all 0.3s ease;
         height: 100%;
         @media #{media-query(sm)} {
-          padding: 5px;
+          // padding: 5px;
         }
         &:hover {
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transform: translateY(-15px) scale(1.08) rotate(2deg);
+          box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
       }
     }
@@ -237,6 +258,11 @@
       height: 200%;
       border-radius: 8px;
       overflow: hidden;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
       
       img {
         width: 100%;
@@ -390,6 +416,9 @@
             text-decoration: none;
             background-color: #e9ecef;
             border-color: #dee2e6;
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           }
           
           &:focus {
