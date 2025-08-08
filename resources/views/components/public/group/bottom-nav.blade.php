@@ -17,12 +17,12 @@
             <span class="bottom-nav__button__text">新人</span>
         </a>
         @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-        <a href="{{ route('logoutAll') }}" class="bottom-nav__button group">
+        {{-- <a href="{{ route('logoutAll') }}" class="bottom-nav__button group">
           <img src="{{ asset('assets/img/group/bottom-nav/logout.png') }}" alt="">
           <span class="bottom-nav__button__text">ログアウト</span>
-        </a>
+        </a> --}}
 
-          {{-- @if (Auth::guard('member')->check())
+          @if (Auth::guard('member')->check())
           <a href="{{ route('public.group.mypage') }}" class="bottom-nav__button group">
               <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
               <span class="bottom-nav__button__text">マイページ</span>
@@ -33,7 +33,7 @@
               <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
               <span class="bottom-nav__button__text">管理者</span>
           </a>
-          @endif --}}
+          @endif
         @else
         <a href="{{ route('login') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/login.png') }}" alt="">
@@ -47,12 +47,12 @@
             <span class="bottom-nav__button__text">QR</span>
           </button>
           @endif
-          @if (Auth::guard('web')->check())
+          {{-- @if (Auth::guard('web')->check())
           <a href="{{ route('admin.home') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
             <span class="bottom-nav__button__text">管理者</span>
           </a>
-          @endif
+          @endif --}}
         @else
         <a href="{{ route('register') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
