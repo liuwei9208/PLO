@@ -75,20 +75,21 @@ class WorkController extends Controller
                 ->get(['id', 'name', 'gallery_1']);
 
             $dates = [];
-            for ($i = 0; $i < 7; $i++) {
-                $dates[] = $date->copy()->addDays($i)->toDateString();
+            for ($i = 0; $i < 8; $i++) {
+                $dates[$i] = $date->copy()->addDays($i)->toDateTimeString();
             }
+            Log::info($dates);
 
             $result = [];
             foreach ($casts as $cast) {
                 $castData = $cast->toArray();
                 $castData['schedule'] = [];
-                foreach ($dates as $d) {
+                for ($i = 0; $i < 7; $i++) {
                     // Attendance for this cast on this day
                     $attendance = Attendance::where('cast_id', $cast->id)
                         ->where('is_public', 1)
-                        ->whereDate('start_datetime', '<=', $d)
-                        ->whereDate('end_datetime', '>=', $d)
+                        ->whereDate('start_datetime', '>=', $dates[$i])
+                        ->whereDate('end_datetime', '<=', $dates[$i+1])
                         ->first();
 
                     $attendance_id = $attendance ? $attendance->id : null;
@@ -98,7 +99,7 @@ class WorkController extends Controller
                     }
 
                     $castData['schedule'][] = [
-                        'date' => $d,
+                        'date' => $dates[$i],
                         'attendance' => $attendance,
                         'reservation_count' => $reservation_count,
                     ];

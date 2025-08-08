@@ -13,6 +13,9 @@ let selectedDate = '';
 console.log(window.apiToken);
 // 時間オプションを生成する関数
 function generateTimeOptions(strTime) {
+    if (strTime === "00:00")
+        strTime = "24:00";
+    
     let options = '';
     for (let hour = 8; hour <= 24; hour++) {
         for (let min = 0; min < 60; min += 30) {
@@ -215,6 +218,7 @@ function reDrawScheduleCasts() {
         const startTime = startTimeSelect.value;
         const endTime = endTimeSelect.value;
 
+        console.log(startTime, endTime)
         // 時間を分に変換する関数
         function timeToMinutes(timeStr) {
             const [hours, minutes] = timeStr.split(':').map(Number);
@@ -833,7 +837,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
                 if (attendance) {
                     attendanceStartTime = attendance.start_datetime;
                     attendanceEndTime = attendance.end_datetime;
-                    attendanceStartTime =convertDateTimeToTime(attendanceStartTime);
+                    attendanceStartTime = convertDateTimeToTime(attendanceStartTime);
                     attendanceEndTime = convertDateTimeToTime(attendanceEndTime);
 
                     const reservationTimes = reservations.filter(reservation => reservation.attendance_id === attendance.id);
