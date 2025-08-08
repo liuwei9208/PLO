@@ -57,15 +57,19 @@
     &-item {
     
       &-content {
-        display: flex;
-        flex-direction: row;
+        // display: flex;
+        // flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         align-items: center;
         justify-content: space-between;
-        gap: 30px;
+        gap: 10px;
 
         border-bottom: 2px solid #000;
         padding-bottom: 20px;
         @media #{media-query(sm)} {
+          display: flex;
+          flex-direction: row;
           padding-bottom: 10px;
           flex-direction: column;
           gap: 10px;
@@ -261,14 +265,16 @@
     }
     &-item {
       &-content {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         align-items: center;
         justify-content: space-between;
-        gap: 30px;
+        gap: 10px;
         border-bottom: 2px solid #000;
         padding-bottom: 20px;
         @media #{media-query(sm)} {
+          display: flex;
+          flex-direction: row;
           padding-bottom: 10px;
           flex-direction: column;
           gap: 10px;
