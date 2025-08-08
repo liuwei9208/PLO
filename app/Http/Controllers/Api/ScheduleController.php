@@ -36,7 +36,9 @@ class ScheduleController extends Controller
 
             $user = Auth::user();
             Log::info($user);
-            $date = $request->input('date') ? Carbon::parse($request->input('date'))->toDateString() : Carbon::today()->toDateString();
+            $date = $request->input('date') ? Carbon::parse($request->input('date')) : Carbon::today();
+            $tomorrow = $date->copy()->addDays(1);
+            
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
             $query = Cast::where('is_public',1)
@@ -120,8 +122,8 @@ class ScheduleController extends Controller
                 ->get();
 
             $attendances = Attendance::where('is_public', $is_public)
-                ->whereRaw('DATE(start_datetime) <= ?', [$date])
-                ->whereRaw('DATE(end_datetime) >= ?', [$date])
+                ->whereRaw('DATE(start_datetime) >= ?', [$date->toDateTimeString()])
+                ->whereRaw('DATE(end_datetime) <= ?', [$tomorrow->toDateTimeString()])
                 ->get();
 
             $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
@@ -145,7 +147,7 @@ class ScheduleController extends Controller
                 'skip' => $skip,
                 'pages' => $pages,
                 'total' => $total,
-                'date' => $date,
+                'date' => $date->toDateString(),
             ]);
 
         } catch (\Exception $e) {

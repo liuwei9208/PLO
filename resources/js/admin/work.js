@@ -134,7 +134,11 @@ function generateCell(day) {
 
     if (day.attendance && day.attendance.start_datetime) {
         const attendanceStartTime = convertDateTimeToTime(day.attendance.start_datetime);
-        const attendanceEndTime = convertDateTimeToTime(day.attendance.end_datetime);
+        let attendanceEndTime = convertDateTimeToTime(day.attendance.end_datetime);
+        if (attendanceEndTime === '00:00') {
+            attendanceEndTime = '24:00';
+        }
+        
         cellContent += `
             <div class="work-attendance" data-date="${day.date}" data-id="${day.attendance.id}">
                 <p class="attendance-time">${attendanceStartTime} - ${attendanceEndTime}</p>
@@ -234,7 +238,7 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
                     let onlyTimeText = attendanceTime.textContent.trim();;
                     const [start, end] = onlyTimeText.split(' - ');
                     const attendanceDate = attendanceTime.dataset.date;
-                    console.log("111", attendanceDate)
+                    
                     showAttendanceTimeModal(start, end, async function(selectedStart, selectedEnd) {
                         let attendance_id = workAttendance.dataset.id;
                         const cast_id = workAttendance.closest('.work-row').dataset.cast;
