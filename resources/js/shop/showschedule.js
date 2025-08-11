@@ -87,7 +87,12 @@ async function getCastsSchedule(date, page, limit, skip, pages, total) {
           total = response.data.total;
           date = response.data.date;
           // console.log(page, limit, skip, pages, total);
-          drawCastsSchedule(casts);
+          if (casts.length > 0){
+            drawCastsSchedule(casts);
+          }else{
+            // document.querySelector('.schedule-person-info-list').innerHTML = '<div class="schedule-person-info-list-item">出勤女性はいません</div>';
+            document.querySelector('.schedule-person-info-list').style.display = 'none';
+          }
         }
         return response.data;
     } catch (error) {
