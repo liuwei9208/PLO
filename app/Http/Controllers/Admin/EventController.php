@@ -92,10 +92,12 @@ class EventController extends Controller
         }else{
             $shop = null;
         }
+        $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
             'shop' => $shop,
+            'token' => $token,
         ]);
     }
 
@@ -148,9 +150,11 @@ class EventController extends Controller
             $shop = null;
         }
         // dd($shop->name);
+        $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
         return view('admin.event.create', [
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
             'shop' => $shop,
+            'token' => $token,
         ]);
     }
     /**

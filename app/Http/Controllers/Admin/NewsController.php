@@ -9,6 +9,7 @@ use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\Shop;
 use App\Models\News;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -62,9 +63,11 @@ class NewsController extends Controller
     {
       // $event = Event::findOrFail($id);
       // dd($event);
+      $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
         return view('admin.news.detail', [
             'news' => News::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
+            'token' => $token,
         ]);
     }
 
@@ -104,8 +107,10 @@ class NewsController extends Controller
      */
     public function create(Request $request): View
     {
+        $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
         return view('admin.news.create', [
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
+            'token' => $token,
         ]);
     }
     /**
@@ -113,6 +118,7 @@ class NewsController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        // dd($request->all());
         $validated = $request->validate([
             'shop_id' => 'required',
             'title' => 'required',
