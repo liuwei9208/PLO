@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\QRCodeController;
 use App\Http\Controllers\Api\CastController;
 use App\Http\Controllers\Api\WorkController;
 use App\Http\Controllers\Api\ReviewController;
+use App\Http\Controllers\Api\CkeditorController;
 // use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 use Illuminate\Support\Facades\Log;
 
@@ -47,4 +48,12 @@ Route::middleware(['auth:sanctum'])->prefix('review')->group(function () {
     // Route::prefix('schedule')->group(function () {
     Route::post('/create', [ReviewController::class, 'createReview']);
 });
+
+Route::middleware(['auth:sanctum'])->prefix('ckeditor')->group(function () {
+    // Route::prefix('schedule')->group(function () {
+    Route::post('/news_upload', [CkeditorController::class, 'newsUpload']);
+    Route::post('/event_upload', [CkeditorController::class, 'eventUpload']);
+});
+
+
 Route::post('/login', [App\Http\Controllers\Api\AuthController::class, 'login']);

@@ -288,6 +288,7 @@ https://cdn.jsdelivr.net/npm/ckeditor5-full-free-plugin@23.1.2/build/ckeditor.mi
 <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/translations/ja.js"></script>
 
 <script>
+  window.apiToken = "{{ $token }}"
   ClassicEditor
   .create(document.querySelector('#news_content'), {
       language: 'ja',
@@ -306,6 +307,17 @@ https://cdn.jsdelivr.net/npm/ckeditor5-full-free-plugin@23.1.2/build/ckeditor.mi
       ],
       fontSize: {
         options: [9, 11, 13, 'default', 17, 19, 21]
+      },
+      simpleUpload: {
+        uploadUrl: '/api/ckeditor/news_upload',
+        withCredentials: false,
+        headers: {
+          // 'Content-Type': 'multipart/form-data',
+          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+          // 'Accept': 'application/json',
+          // 'X-Requested-With': 'XMLHttpRequest',
+          'Authorization': 'Bearer ' + window.apiToken
+        },
       },
     })
     .catch(error => {
