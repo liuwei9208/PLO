@@ -159,13 +159,31 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="footer__nav-wrapper content-wrapper">
     <nav class="footer__nav">
       <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント一覧</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.newcomer') }}">新人情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.group.search') }}">女の子検索</a></div>
-      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">求人情報</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div>
-      <div class="footer__nav-item"><a href="#">お問い合わせ</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント一覧</a></div>
+      @if (Auth::guard('web')->check() || Auth::guard('member')->check())
+      <div class="footer__nav-item"><a href="{{ route('logoutAll') }}">ログアウト</a></div>
+      @else
+      <div class="footer__nav-item"><a href="{{ route('login') }}">ログイン</a></div>
+      @endif
+      @if (Auth::guard('web')->check() || Auth::guard('member')->check())
+      @if (Auth::guard('web')->check())
+      <div class="footer__nav-item"><a href="{{ route('admin.home') }}">管理画面</a></div>
+      @elseif (Auth::guard('member')->check())
+      <div class="footer__nav-item"><a href="{{ route('public.group.mypage') }}">マイページ</a></div>
+      @endif
+      @else
+      <div class="footer__nav-item"><a href="{{ route('terms.show') }}">新規会員登録</a></div>
+      @endif
+      <div class="footer__nav-item"><a href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a></div>
+      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">女性求人</a></div>
+      <div class="footer__nav-item"><a href="">男性求人</a></div>
+      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div> --}}
+      <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">個人情報保護方針</a></div>
+      <div class="footer__nav-item"><a href="mailto:mail@example.com">お問い合わせ</a></div>
       {{-- <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div> --}}
     </nav>
     <div class="footer__nav_logo">
