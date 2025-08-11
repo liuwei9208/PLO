@@ -40,7 +40,7 @@
     
     <div class="tel-link-container">
       <a href="tel:{{ $shop->tel }}" class="tel-link --{{ $shop->slug }}">
-        <img src="{{ asset('assets/img/shop/TEL.png') }}" alt="電話" class="tel-icon">
+        <img src="{{ asset('assets/img/shop/TEL-y.png') }}" alt="電話" class="tel-icon">
       </a>
     </div>
 </nav>
