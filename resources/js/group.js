@@ -77,6 +77,29 @@ if (pickupShops.length > 0) {
   })
 }
 
+const todayShops = document.querySelectorAll('.today-shops-item')
+if (todayShops.length > 0) {
+  todayShops.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedShop = button.dataset.shop
+      const todayItems = document.querySelectorAll('.today-casts-item')
+
+      // すべてのボタンからアクティブクラスを削除
+      todayShops.forEach(btn => btn.classList.remove('is-active'))
+      // クリックされたボタンにアクティブクラスを追加
+      button.classList.add('is-active')
+
+      // 各アイテムの表示/非表示を制御
+      todayItems.forEach(item => {
+        if (selectedShop === 'all') {
+          item.style.display = 'block'
+        } else {
+          item.style.display = item.classList.contains(`--${selectedShop}`) ? 'block' : 'none'
+        }
+      })
+    })
+  })
+}
 
 
 
