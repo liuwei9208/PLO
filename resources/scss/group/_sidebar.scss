@@ -1,0 +1,108 @@
+.pg-fixed-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    z-index: 30;
+    display: none;
+}
+
+@media (min-width: 1200px) {
+    .pg-fixed-sidebar {
+        display: block;
+    }
+}
+
+.pg-fixed-sidebar__inner {
+    height: 100%;
+    box-sizing: border-box;
+    border-right: 1px solid #eee;
+    background: #fff;
+    overflow-y: auto;
+}
+
+.pg-fixed-sidebar__logo {
+    padding: 8px 0 16px;
+    text-align: center;
+    border-bottom: 1px dotted #333;
+    padding: 15px 10px 20px;
+}
+
+.pg-fixed-sidebar__logo img {
+    max-width: 160px;
+    height: auto;
+}
+
+.pg-fixed-sidebar__shops {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+}
+
+.pg-fixed-sidebar__shop {
+    display: flex;
+    align-items: center;
+    padding: 12px 10px;
+    gap: 10px;
+    text-decoration: none;
+    border-bottom: 1px dotted #333;
+}
+
+.pg-fixed-sidebar__shop img {
+    width: 120px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.pg-fixed-sidebar__shop-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    color: #333;
+    .pg-fixed-sidebar__shop-label-japanese {
+        font-size: 12px;
+    }
+}
+
+.pg-fixed-sidebar__phone {
+    position: sticky;
+    bottom: 10px;
+}
+
+.pg-phone { position: relative; width: 200px; margin: 0 auto; }
+.pg-phone__frame { position: absolute; inset: 0; width: 200px; height: auto; pointer-events: none; }
+.pg-phone__content { position: relative; z-index: 1; padding: 40px 10px 50px; } /* top spacing aligns under speaker notch, bottom for x button */
+
+.pg-phone__banner { position: relative; width: 100%; height: 64px; overflow: hidden; border-radius: 8px; }
+
+.pg-phone__banner-track {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    height: 100%;
+    transform: translateX(0);
+    transition: transform 0.5s ease;
+}
+
+.pg-phone__banner-item {
+    min-width: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pg-phone__banner-item img { max-height: 46px; width: auto; border-radius: 6px; }
+
+.pg-phone__xlink { position: absolute; left: 16px; right: 16px; bottom: 14px; height: 28px; display: inline-flex; align-items:center; justify-content:center; gap:8px; background:#111; color:#fff; text-decoration:none; border-radius:14px; font-size:12px; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+.pg-phone__xicon { font-weight: 700; }
+
+/* remove body/message */
+
+/* Push page content */
+@media (min-width: 1200px) {
+    body .main {
+        margin-left: 250px; 
+    }
+}
