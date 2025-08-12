@@ -40,6 +40,10 @@
     <!-- Drawer -->
     <x-public.group.drawer />
 
+    <!-- Sidebar -->
+    <x-public.group.sidebar />
+
+
     <!-- Main -->
     <main class="main" id="main">
       {{ $slot }}
