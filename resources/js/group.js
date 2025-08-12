@@ -369,12 +369,16 @@ function resizeModule() {
         mv.style.top = `${logo_child_logo_height}px`;
         main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
       }
+      if (logo_child_logo_height == 0 && logo_height == 0){
+        mv.style.top = `0px`;
+        main.style.marginTop = `${mv.offsetHeight}px`;
+      }
     }
     
     if (mv.style.top != draw.getBoundingClientRect().bottom && body.clientWidth < 768) {
-      console.log('aaa');
-      console.log(mv.style.top);
-      console.log(draw.getBoundingClientRect().bottom);
+      // console.log('aaa');
+      // console.log(mv.style.top);
+      // console.log(draw.getBoundingClientRect().bottom);
       draw.style.top = `${mv.getBoundingClientRect().top - draw.offsetHeight}px`;
     }
 

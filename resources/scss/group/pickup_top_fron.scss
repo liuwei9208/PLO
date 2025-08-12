@@ -540,8 +540,7 @@
        }
      }
    }
-
-   .pickup-list-wrapper {
+   .pickup-content {
     border: 3px solid $border-color;
     border-radius: 60px;
     @media #{media-query(sm)} {
@@ -552,6 +551,19 @@
     }
     @media #{media-query(lg)} {
       margin: 50px auto 0;
+    }
+   }
+   .pickup-list-wrapper {
+    // border: 3px solid $border-color;
+    // border-radius: 60px;
+    @media #{media-query(sm)} {
+      padding: 10px 0 ;
+    }
+    @media #{media-query(md)} {
+      padding: 20px 0 ;
+    }
+    @media #{media-query(lg)} {
+      padding: 40px 0 ;
     }
   }
 
@@ -570,14 +582,16 @@
      }
      @media #{media-query(md)} {
        grid-template-columns: repeat(3, 1fr);
-       gap: 40px;
+      //  gap: 40px;
+       gap: 10px;
       //  width: 720px;
       //  margin: 50px auto 0;
       //  border-radius: 40px;
      }
      @media #{media-query(lg)} {
        grid-template-columns: repeat(3, 1fr);
-       gap: 54px;
+      //  gap: 54px;
+       gap: 20px;
       //  width: 1260px;
       //  margin: 50px auto 0;
      }

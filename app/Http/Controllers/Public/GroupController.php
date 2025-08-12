@@ -125,14 +125,38 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ->select('videos.*','casts.*','shops.slug as shop_slug','shops.name as shop_name')
         ->get();
         // dd($videos);
-        $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
+        $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get();
         // dd($diaries);
         $pickups = Pickup::leftJoin('casts', 'pickups.cast_id', '=', 'casts.id')
         ->where('casts.is_public', 1)
         ->inRandomOrder()
         ->limit(9)
         ->get();
-        // dd($pickups);
+
+        $todayCasts = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+        ->where('casts.is_public', 1)
+        // ->where('shops.slug', 'like', $shop)
+        ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+        ->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            'attendances.start_datetime as start_datetime',
+            'attendances.end_datetime as end_datetime',
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+            ]) // 必要に応じて明示的に
+        ->inRandomOrder()
+        ->limit(9)
+        ->get();
+        // dd($todayCasts);
         return view('public.group.front', [
             'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
@@ -144,6 +168,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shops' => $shops,
             'news' => $news,
             'videos' => $videos,
+            'todayCasts' => $todayCasts,
         ]);
     }
     public function showFront(Request $request): View

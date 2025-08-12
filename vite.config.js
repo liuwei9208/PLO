@@ -54,6 +54,7 @@ export default defineConfig({
                 'resources/scss/group/privacy.scss',
                 'resources/scss/global/age.scss',
                 'resources/scss/admin/work.scss',
+                'resources/scss/group/today.scss',
                 // 'resources/scss/group/law.scss',
                 'resources/scss/group/event.scss',
                 'resources/scss/shop/_today.scss',

@@ -99,112 +99,65 @@
     </div>
   </section>
   @endif --}}
-  <!-- ピックアップ - Pickup Girl -->
-  <section class="pickup-top" style="background-color: #fff;">
-    <div class="section-title" >
-      <span class="pickup-title title-font front-title">
-        <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
-        {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
-      </span>
-      {{-- <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2> --}}
+  @if($todayCasts->count() > 0)
+  <section class="today">
+    <div class="today-title">
+      <h2 class="today-title-lg title-font front-title">
+        <span>T</span><span>O</span><span>D</span><span>A</span><span>Y</span> <span>S</span><span>C</span><span>H</span><span>E</span><span>D</span><span>U</span><span>L</span><span>E</span>
+      </h2>
+      <h3 class="today-title-sm title-font-sm">出勤情報</h3>
     </div>
-  </section>
-  <section class="pickup">
-    <div class="section-title">
-      <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
-    </div>
-    <ul class="pickup-shops content-wrapper">
-      <li class="pickup-shop" data-shop="all">
-        <span class="shop-text">
-          <span class="shop-slug">SHOP ALL</span>
+    <ul class="today-shops content-wrapper">
+      <li class="today-shops-item" data-shop="all">
+        <span class="today-shops-item-text">
+          <span class="today-shops-item-slug">SHOP ALL</span>
         </span>
       </li>
-      <li class="pickup-shop" data-shop="lovestory">
+      @foreach($shops as $shop)
+      <li class="today-shops-item" data-shop="{{$shop->slug}}">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">lovestory</span>
-          <span class="shop-name">ラブストーリー</span> --}}
-          <span class="shop-slug">ラブストーリー</span>
-          <span class="shop-name">育成型ヘルス</span>
+        <span class="today-shops-item-text">
+          <span class="today-shops-item-slug">{{$shop->slug}}</span>
+          <span class="today-shops-item-name">{{$shop->name}}</span>
         </span>
       </li>
-      <li class="pickup-shop" data-shop="pussycat">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">pussycat</span>
-          <span class="shop-name">プッシー<br class="sm">キャット</span> --}}
-          <span class="shop-slug">プッシーキャット</span>
-          <span class="shop-name">エンターテイメントヘルス</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="en">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">en</span>
-          <span class="shop-name">艶</span> --}}
-          <span class="shop-slug">艶</span>
-          <span class="shop-name">素人系人妻ヘルス</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="miyabi">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">miyabi</span>
-          <span class.shop-name>雅</span> --}}
-          <span class="shop-slug">雅</span>
-          <span class="shop-name">人妻ヘルス</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="shizuku">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">shizuku</span>
-          <span class="shop-name">雫</span> --}}
-          <span class="shop-slug">雫</span>
-          <span class="shop-name">ハイグレードヘルス</span>
-        </span>
-      </li>
-      <li class="pickup-shop" data-shop="shiroganeze">
-        <img src="{{ asset('assets/img/search.png') }}" alt="search">
-        <span class="shop-text">
-          {{-- <span class="shop-slug">shiroganeze</span>
-          <span class="shop-name">シロガネーゼ</span> --}}
-          <span class="shop-slug">シロガネーゼ</span>
-          <span class="shop-name">大人の回春メンズエステ</span>
-        </span>
-      </li>
+
+      @endforeach
     </ul>
-    <div class="pickup-list-wrapper content-wrapper">
-    <div class="pickup-list ">
-      @foreach ($pickups as $pickup)
-        <a
-          href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
-          class="pickup-item --{{ $pickup->cast->shop->slug }}"
-        >
-          <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
-            <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
+    {{-- <div class="content-wrapper"> --}}
+    <div class="today-casts content-wrapper">
+      @foreach($todayCasts as $todayCast)
+        <a href="{{ route('public.shop.cast.profile', ['shop' => $todayCast->shop_slug, 'id' => $todayCast->id]) }}" class="today-casts-item --{{ $todayCast->shop_slug }}">
+          <div class="today-casts-item-image --{{ $todayCast->shop_slug }}">
+            <img src="{{ asset('storage/' . $todayCast->gallery_1) }}" alt="{{ $todayCast->name }}">
           </div>
-          <span class="pickup-shop">
-            {{ $pickup->cast->shop->name }}
-          </span>
-          <span class="pickup-name">
-            {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
-          </span>
-          <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
-            B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
-          </span>
-          <div class="pickup-intro --{{ $pickup->cast->shop->slug }}">
-            <div class="pickup-intro-text">
-              {{ $pickup->cast->appeal_point }}
+          <div class="today-casts-item-shop --{{ $todayCast->shop_slug }}">
+            <span class="today-casts-item-shop-name">{{ $todayCast->shop_name }}</span>
+          </div>
+          <div class="today-casts-item-content --{{ $todayCast->shop_slug }}">
+            <div class="today-casts-item-content-name --{{ $todayCast->shop_slug }}">
+              <span class="today-casts-item-content-name-text">{{ $todayCast->name}}<small>{{$todayCast->age ? ' (' . $todayCast->age . ')' :'' }}</small></span>
+            </div>
+            <div class="today-casts-item-content-schedule --{{ $todayCast->shop_slug }}">
+              <span class="today-casts-item-content-schedule-text">
+                {{ date('H:i', strtotime($todayCast->start_datetime)) }} ～ {{ date('H:i', strtotime($todayCast->end_datetime)) }}
+              </span>
+            </div>
+            <div class="today-casts-item-content-size">
+              <span class="today-casts-item-content-size-text">B{{ $todayCast->bust }}　W{{ $todayCast->waist }}　H{{ $todayCast->hip }}</span>
+            </div>
+            <div class="today-casts-item-content-appeal">
+              <span class="today-casts-item-content-appeal-text">{{ $todayCast->appeal_point }}</span>
             </div>
           </div>
         </a>
       @endforeach
     </div>
-    </div>
-    <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
-  </section>
+    {{-- </div> --}}
+    <a href="{{ route('public.group.schedule') }}" class="today-more more-button more-button-title">もっと見る</a>
 
+  </section>
+  @endif
   <!-- 新着情報 - PLO News -->
   @if($events->count() > 0)
   <div class="event-1">
@@ -312,6 +265,117 @@
   {{-- </div> --}}
   </section>
   @endif
+
+  @if($pickups->count() > 0)
+  <!-- ピックアップ - Pickup Girl -->
+  <section class="pickup-top" style="background-color: #fff;">
+    <div class="section-title" >
+      <span class="pickup-title title-font front-title">
+        <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
+        {{-- <img src="{{ asset('assets/img/group/pickup/title-en.svg') }}" alt="Pickup Girl"> --}}
+      </span>
+      {{-- <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2> --}}
+    </div>
+  </section>
+  <section class="pickup">
+    <div class="section-title">
+      <h2 class="pcikup-title-sm title-font-sm">ピックアップ</h2>
+    </div>
+    <div class="content-wrapper pickup-content">
+    <ul class="pickup-shops">
+      <li class="pickup-shop" data-shop="all">
+        <span class="shop-text">
+          <span class="shop-slug">SHOP ALL</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="lovestory">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">lovestory</span>
+          <span class="shop-name">ラブストーリー</span> --}}
+          <span class="shop-slug">ラブストーリー</span>
+          <span class="shop-name">育成型ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="pussycat">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">pussycat</span>
+          <span class="shop-name">プッシー<br class="sm">キャット</span> --}}
+          <span class="shop-slug">プッシーキャット</span>
+          <span class="shop-name">エンターテイメントヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="en">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">en</span>
+          <span class="shop-name">艶</span> --}}
+          <span class="shop-slug">艶</span>
+          <span class="shop-name">素人系人妻ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="miyabi">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">miyabi</span>
+          <span class.shop-name>雅</span> --}}
+          <span class="shop-slug">雅</span>
+          <span class="shop-name">人妻ヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shizuku">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">shizuku</span>
+          <span class="shop-name">雫</span> --}}
+          <span class="shop-slug">雫</span>
+          <span class="shop-name">ハイグレードヘルス</span>
+        </span>
+      </li>
+      <li class="pickup-shop" data-shop="shiroganeze">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="shop-text">
+          {{-- <span class="shop-slug">shiroganeze</span>
+          <span class="shop-name">シロガネーゼ</span> --}}
+          <span class="shop-slug">シロガネーゼ</span>
+          <span class="shop-name">大人の回春メンズエステ</span>
+        </span>
+      </li>
+    </ul>
+    <div class="pickup-list-wrapper">
+      <div class="pickup-list ">
+        @foreach ($pickups as $pickup)
+          <a
+            href="{{ route('public.shop.cast.profile', ['shop' => $pickup->cast->shop->slug, 'id' => $pickup->cast->id]) }}"
+            class="pickup-item --{{ $pickup->cast->shop->slug }}"
+          >
+            <div class="pickup-photo --{{ $pickup->cast->shop->slug }}">
+              <img src="{{ asset('storage/' . $pickup->cast->gallery_1) }}" alt="{{ $pickup->cast->name }}">
+            </div>
+            <span class="pickup-shop">
+              {{ $pickup->cast->shop->name }}
+            </span>
+            <span class="pickup-name">
+              {{ $pickup->cast->name }} <small>{{ $pickup->cast->age ? '(' . $pickup->cast->age . ')' : '' }}</small>
+            </span>
+            <span class="pickup-size --{{ $pickup->cast->shop->slug }}">
+              B{{ $pickup->cast->bust }}　W{{ $pickup->cast->waist }}　H{{ $pickup->cast->hip }}
+            </span>
+            <div class="pickup-intro --{{ $pickup->cast->shop->slug }}">
+              <div class="pickup-intro-text">
+                {{ $pickup->cast->appeal_point }}
+              </div>
+            </div>
+          </a>
+        @endforeach
+      </div>
+    </div>
+    </div>
+    <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
+  </section>
+  @endif
+
   <!-- 最新写メ日記 - Photo Diary -->
   {{-- <div class="mock">
     <picture>
@@ -532,7 +596,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
+  @vite(['resources/scss/group/front.scss','resources/scss/group/today.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
