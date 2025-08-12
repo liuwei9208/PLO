@@ -125,7 +125,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ->select('videos.*','casts.*','shops.slug as shop_slug','shops.name as shop_name')
         ->get();
         // dd($videos);
-        $shops = Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get();
+        $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get();
         // dd($diaries);
         $pickups = Pickup::leftJoin('casts', 'pickups.cast_id', '=', 'casts.id')
         ->where('casts.is_public', 1)

@@ -18,11 +18,40 @@ $shop-colors: (
     }
   }
 }
+@mixin data-shop-bgcolor-modifiers {
+  @each $key, $value in $shop-colors {
+    &[data-shop="#{$key}"] {
+      background-color: $value;
+      &:hover {
+        background-color: darken($value, 10%);
+      }
+    }
+  }
+}
 
 @mixin shop-color-modifiers {
   @each $key, $value in $shop-colors {
     &.--#{$key} {
       color: $value;
+    }
+  }
+}
+
+@mixin shop-border-color-modifiers {
+  @each $key, $value in $shop-colors {
+    &.--#{$key} {
+      border-color: $value;
+    }
+  }
+}
+
+@mixin shop-border-color-hover-modifiers {
+  @each $key, $value in $shop-colors {
+    &.--#{$key} {
+      &:hover {
+
+        border-color: $value;
+      }
     }
   }
 }

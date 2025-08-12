@@ -99,6 +99,65 @@
     </div>
   </section>
   @endif --}}
+  @if($todayCasts->count() > 0)
+  <section class="today">
+    <div class="today-title">
+      <h2 class="today-title-lg title-font front-title">
+        <span>T</span><span>O</span><span>D</span><span>A</span><span>Y</span> <span>S</span><span>C</span><span>H</span><span>E</span><span>D</span><span>U</span><span>L</span><span>E</span>
+      </h2>
+      <h3 class="today-title-sm title-font-sm">出勤情報</h3>
+    </div>
+    <ul class="today-shops content-wrapper">
+      <li class="today-shops-item" data-shop="all">
+        <span class="today-shops-item-text">
+          <span class="today-shops-item-slug">SHOP ALL</span>
+        </span>
+      </li>
+      @foreach($shops as $shop)
+      <li class="today-shops-item" data-shop="{{$shop->slug}}">
+        <img src="{{ asset('assets/img/search.png') }}" alt="search">
+        <span class="today-shops-item-text">
+          <span class="today-shops-item-slug">{{$shop->slug}}</span>
+          <span class="today-shops-item-name">{{$shop->name}}</span>
+        </span>
+      </li>
+
+      @endforeach
+    </ul>
+    {{-- <div class="content-wrapper"> --}}
+    <div class="today-casts content-wrapper">
+      @foreach($todayCasts as $todayCast)
+        <a href="{{ route('public.shop.cast.profile', ['shop' => $todayCast->shop_slug, 'id' => $todayCast->id]) }}" class="today-casts-item --{{ $todayCast->shop_slug }}">
+          <div class="today-casts-item-image --{{ $todayCast->shop_slug }}">
+            <img src="{{ asset('storage/' . $todayCast->gallery_1) }}" alt="{{ $todayCast->name }}">
+          </div>
+          <div class="today-casts-item-shop --{{ $todayCast->shop_slug }}">
+            <span class="today-casts-item-shop-name">{{ $todayCast->shop_name }}</span>
+          </div>
+          <div class="today-casts-item-content --{{ $todayCast->shop_slug }}">
+            <div class="today-casts-item-content-name --{{ $todayCast->shop_slug }}">
+              <span class="today-casts-item-content-name-text">{{ $todayCast->name}}<small>{{$todayCast->age ? ' (' . $todayCast->age . ')' :'' }}</small></span>
+            </div>
+            <div class="today-casts-item-content-schedule --{{ $todayCast->shop_slug }}">
+              <span class="today-casts-item-content-schedule-text">
+                {{ date('H:i', strtotime($todayCast->start_datetime)) }} ～ {{ date('H:i', strtotime($todayCast->end_datetime)) }}
+              </span>
+            </div>
+            <div class="today-casts-item-content-size">
+              <span class="today-casts-item-content-size-text">B{{ $todayCast->bust }}　W{{ $todayCast->waist }}　H{{ $todayCast->hip }}</span>
+            </div>
+            <div class="today-casts-item-content-appeal">
+              <span class="today-casts-item-content-appeal-text">{{ $todayCast->appeal_point }}</span>
+            </div>
+          </div>
+        </a>
+      @endforeach
+    </div>
+    {{-- </div> --}}
+    <a href="{{ route('public.group.schedule') }}" class="today-more more-button more-button-title">もっと見る</a>
+
+  </section>
+  @endif
   <!-- 新着情報 - PLO News -->
   @if($events->count() > 0)
   <div class="event-1">
@@ -537,7 +596,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
+  @vite(['resources/scss/group/front.scss','resources/scss/group/today.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {
