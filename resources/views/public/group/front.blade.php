@@ -1,4 +1,6 @@
 <x-public-front-layout>
+    <!-- Sidebar -->
+    <x-public.group.sidebar />
 
   <!-- Main Visual -->
   <x-public.group.mv />
@@ -596,7 +598,7 @@
 <x-public.group.drawer />
 
 @once
-  @vite(['resources/scss/group/front.scss','resources/scss/group/today.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
+  @vite(['resources/scss/group/sidebar.scss','resources/scss/group/front.scss','resources/scss/group/today.scss', 'resources/scss/group/pickup_top_fron.scss','resources/scss/group/event.scss','resources/scss/group/newface.scss','resources/scss/group/diary_top.scss','resources/scss/group/banner.scss','resources/scss/group/movie.scss'])
 @endonce
 <script>
 document.addEventListener('DOMContentLoaded', function() {

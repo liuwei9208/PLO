@@ -40,8 +40,8 @@
     <!-- Drawer -->
     <x-public.group.drawer />
 
-    <!-- Sidebar -->
-    <x-public.group.sidebar />
+    {{-- <!-- Sidebar -->
+    <x-public.group.sidebar /> --}}
 
 
     <!-- Main -->
