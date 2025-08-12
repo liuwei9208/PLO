@@ -1,9 +1,16 @@
+@use '../global/vars' as *;
+@use '../mixins/text';
+@use '../global/reset';
+@use '../global/base';
+@use '../global/utils';
+
+
 .pg-fixed-sidebar {
     position: fixed;
     left: 0;
     top: 0;
     height: 100vh;
-    width: 250px;
+    width: 280px;
     z-index: 30;
     display: none;
 }
@@ -23,15 +30,17 @@
 }
 
 .pg-fixed-sidebar__logo {
-    padding: 8px 0 16px;
+    // padding: 8px 0 16px;
     text-align: center;
     border-bottom: 1px dotted #333;
-    padding: 15px 10px 20px;
+    // padding: 15px 10px 20px;
+    padding: 15px 20px;
 }
 
 .pg-fixed-sidebar__logo img {
-    max-width: 160px;
+    // max-width: 160px;
     height: auto;
+    width: 100%
 }
 
 .pg-fixed-sidebar__shops {
@@ -101,8 +110,31 @@
 /* remove body/message */
 
 /* Push page content */
-@media (min-width: 1200px) {
+// @media (min-width: 1200px) {
+//     body .main {
+//         margin-left: 280px; 
+//     }
+//     .mv {
+
+//     }
+// }
+
+@media #{media-query(md)} {
     body .main {
-        margin-left: 250px; 
+        margin-left: 280px; 
+    }
+    .mv {
+        left: 280px !important;
+        width: calc(100% - 280px);
+    }
+
+}
+@media #{media-query(lg)} {
+    body .main {
+        margin-left: 280px; 
+    }
+    .mv {
+        left: 280px !important;
+        width: calc(100% - 280px);
     }
 }
