@@ -1,5 +1,5 @@
 <footer class="footer --{{ $shop->slug }}" id="footer">
-  <div class="footer__nav-wrapper content-wrapper">
+  <div class="footer__nav-wrapper">
     <nav class="footer__nav">
       <div class="footer__nav-item"><a href="{{ route('public.shop.home', $shop->slug)}}">店舗TOP</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.shop.schedule', $shop->slug)}}">出勤情報</a></div>

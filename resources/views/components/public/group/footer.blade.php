@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <footer class="footer" id="footer">
-  <div class="footer__nav-wrapper content-wrapper">
+  <div class="footer__nav-wrapper">
     <nav class="footer__nav">
       <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
