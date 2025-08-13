@@ -50,7 +50,16 @@
     justify-content: center;
     gap: 10px;
     // margin-bottom: 30px;
-
+    @media #{media-query(sm)} {
+      padding-left: 0;
+      padding-right: 0;
+    }
+    @media #{media-query(md)} {
+      padding-bottom: 0;
+    }
+    @media #{media-query(lg)} {
+      padding-bottom: 0;
+    }
     &-day {
       &-date {
         font-family: $font-gothic-min;
@@ -88,7 +97,10 @@
   &-shop-list {
     // max-width: 800px;
     // margin: 0 auto 30px;
-
+    @media #{media-query(sm)} {
+      padding-left: 0;
+      padding-right: 0;
+    }
     &-title {
       // font-family: $font-gothic-min;
       // font-size: 20px;
@@ -862,12 +874,21 @@
     }
 
     &-week {
-      flex-wrap: wrap;
-      gap: 8px;
-
+      // flex-wrap:wrap;
+      // flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content:space-between;
+      align-items: center;
+      gap: 10px;
       &-day {
+        &:last-child {
+          grid-column: 2 / 3;
+          grid-row: 3 / 4;
+        }
+  
         &-date {
-          width: 100px;
+          width: 90px;
           // padding: 8px 0;
           // font-size: 14px;
         }
