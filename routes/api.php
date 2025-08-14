@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\CkeditorController;
 // use App\Http\Controllers\Admin\ScheduleController as NormalSchedule;
 use Illuminate\Support\Facades\Log;
 
+// Route::get('/twitter', [QRCodeController::class, 'showTwitter']);
 Route::get('/diary/{cast_id}', [TouchVipDiaryController::class, 'get']);
 Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
 

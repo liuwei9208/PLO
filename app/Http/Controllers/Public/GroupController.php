@@ -26,6 +26,8 @@ use App\Models\Diary;
 use App\Models\History;
 use App\Models\Video;
 use App\Models\Review;
+use Illuminate\Support\Facades\Http;
+
 class GroupController extends Controller
 {
     /**
@@ -157,6 +159,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ->limit(9)
         ->get();
         // dd($todayCasts);
+        // $url = 'https://x.com/ShizukuHealth';
+        // $response = Http::withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1')
+        //     ->get($url);
+        // $shizukuX = $response->body();
         return view('public.group.front', [
             'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
@@ -169,6 +175,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'news' => $news,
             'videos' => $videos,
             'todayCasts' => $todayCasts,
+            // 'shizukuX' => $shizukuX,
         ]);
     }
     public function showFront(Request $request): View
@@ -752,5 +759,16 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         return view('public.group.newsdetail', [
             'news' => $news,
         ]);
+    }
+
+    public function showTwitter(Request $request)
+    {
+        $url = $request->query('url');
+
+        $response = Http::widthHeader([
+           'User-Agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1'
+        ])->get($url);
+
+        return response($response->body(),$response->status(),$response->headers('Content-Type', $response->header('Content-Type')));
     }
 }

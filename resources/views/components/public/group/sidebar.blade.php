@@ -1,20 +1,13 @@
 @php
   $shopNavs = [
-    'pussycat' => [
-      'name' => 'Pussycat',
-      'japanese' => 'プッシーキャット',
-      'logo' => 'pussycat-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'pussycat']),
-      'banner' => 'pussycat.png',
-      'xlink' => 'https://x.com/xxxx'
-    ],
     'shizuku' => [
       'name' => 'Shizuku',
       'japanese' => '雫',
       'logo' => 'shizuku-logo.png',
       'link' => route('public.shop.home', ['shop' => 'shizuku']),
       'banner' => 'shizuku.png',
-      'xlink' => 'https://x.com/ShizukuHealth'
+      'xlink' => 'http://localhost/shizuku'
+      // 'xlink' => 'https://plo-group.jp/shizuku'
     ],
     'miyabi' => [
       'name' => 'Miyabi',
@@ -22,7 +15,26 @@
       'logo' => 'miyabi-logo.png',
       'link' => route('public.shop.home', ['shop' => 'miyabi']),
       'banner' => 'miyabi.png',
-      'xlink' => 'https://x.com/xxxx'
+      'xlink' => 'http://localhost/miyabi'
+      // 'xlink' => 'https://plo-group.jp/miyabi'
+    ],
+    'pussycat' => [
+      'name' => 'Pussycat',
+      'japanese' => 'プッシーキャット',
+      'logo' => 'pussycat-logo.png',
+      'link' => route('public.shop.home', ['shop' => 'pussycat']),
+      'banner' => 'pussycat.png',
+      'xlink' => 'http://localhost/pussycat'
+      // 'xlink' => 'https://plo-group.jp/pussycat'
+    ],
+    'en' => [
+      'name' => 'En',
+      'japanese' => '艶',
+      'logo' => 'en-logo.png',
+      'link' => route('public.shop.home', ['shop' => 'en']),
+      'banner' => 'en.png',
+      'xlink' => 'http://localhost/en'
+      // 'xlink' => 'https://plo-group.jp/en'
     ],
     'shiroganeze' => [
       'name' => 'Shiroganeze',
@@ -30,7 +42,8 @@
       'logo' => 'shiroganeze-logo.png',
       'link' => route('public.shop.home', ['shop' => 'shiroganeze']),
       'banner' => 'shiroganeze.png',
-      'xlink' => 'https://x.com/EstheSiroganeze'
+      'xlink' => 'http://localhost/shiroganeze'
+      // 'xlink' => 'https://plo-group.jp/shiroganeze'
     ],
     'lovestory' => [
       'name' => 'Love Story',
@@ -38,7 +51,8 @@
       'logo' => 'lovestory-logo.png',
       'link' => route('public.shop.home', ['shop' => 'lovestory']),
       'banner' => 'lovestory.png',
-      'xlink' => 'https://x.com/lovestory9911'
+      'xlink' => 'http://localhost/lovestory'
+      // 'xlink' => 'https://plo-group.jp/lovestory'
     ],
   ];
 @endphp
@@ -66,18 +80,27 @@
     <div class="pg-fixed-sidebar__phone">
       <div class="pg-phone">
         <div class="pg-phone__content">
-          <div class="pg-phone__banner">
+          <div class="pg-phone__banner" data-phone-banner>
             <div class="pg-phone__banner-track" data-banner-track>
               @foreach($shopNavs as $shopKey => $shopNav)
-                <a class="pg-phone__banner-item" href="{{ $shopNav['xlink'] }}" data-xlink="{{ $shopNav['xlink'] }}" target="_blank" rel="noopener">
-                  <img src="{{ asset('assets/img/shop banner/'. $shopNav['banner']) }}" alt="{{ $shopNav['name'] }} banner" />
-                </a>
+                <!-- <div class="pg-phone__banner-item" data-xlink="{{ $shopNav['xlink'] }}">
+                  <iframe class="pg-phone__iframe" src="{{ $shopNav['xlink'] }}" loading="lazy" referrerpolicy="no-referrer"></iframe>
+                </div> -->
               @endforeach
+              <div class="pg-phone__banner-item" data-xlink="https://x.com/ShizukuHealth">
+                <img src="{{ asset('assets/img/shop banner/phone-shizuku.png' ) }}" alt="Shizuku" />
+              </div>
+              <div class="pg-phone__banner-item" data-xlink="https://x.com/sapporoenn0219">
+                <img src="{{ asset('assets/img/shop banner/phone-en.png' ) }}" alt="En" />
+              </div>
+              <div class="pg-phone__banner-item" data-xlink="https://x.com/EstheSiroganeze">
+                <img src="{{ asset('assets/img/shop banner/phone-shiroganeze.png' ) }}" alt="Shiroganeze" />
+              </div>
+              <div class="pg-phone__banner-item" data-xlink="https://x.com/lovestory9911">
+                <img src="{{ asset('assets/img/shop banner/phone-lovestory.png' ) }}" alt="Love Story" />
+              </div>
             </div>
           </div>
-          <a class="pg-phone__xlink" href="#" target="_blank" rel="noopener" data-xlink-button>
-            <span class="pg-phone__xicon">𝕏</span>
-          </a>
         </div>
         <img src="{{ asset('assets/img/phone.png') }}" alt="phone" class="pg-phone__frame" />
       </div>
@@ -89,15 +112,15 @@
   <script>
     (function(){
       const track = document.querySelector('[data-banner-track]');
-      const xBtn = document.querySelector('[data-xlink-button]');
-      if(!track || !xBtn) return;
+      const banner = document.querySelector('[data-phone-banner]');
+      if(!track || !banner) return;
       let index = 0;
-      const updateXLink = () => {
+      let currentHref = '';
+      const updateCurrent = () => {
         const items = Array.from(track.children);
         if(items.length === 0) return;
         const current = items[index];
-        const href = current.getAttribute('data-xlink') || current.getAttribute('href');
-        xBtn.setAttribute('href', href);
+        currentHref = current.getAttribute('data-xlink') || '';
       };
       const step = () => {
         const items = track.children;
@@ -106,12 +129,13 @@
         const itemWidth = items[0].getBoundingClientRect().width + 8; // width + gap
         const x = -index * itemWidth;
         track.style.transform = `translateX(${x}px)`;
-        updateXLink();
+        updateCurrent();
       };
-      updateXLink();
+      updateCurrent();
       setInterval(step, 2500);
+      banner.addEventListener('click', function(){
+        if(currentHref){ window.open(currentHref, '_blank', 'noopener'); }
+      });
     })();
   </script>
 @endpush
-
-
