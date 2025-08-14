@@ -270,7 +270,7 @@
 
   @if($pickups->count() > 0)
   <!-- ピックアップ - Pickup Girl -->
-  <section class="pickup-top" style="background-color: #fff;">
+  <section class="pickup-top" >
     <div class="section-title" >
       <span class="pickup-title title-font front-title">
         <span>P</span><span>I</span><span>C</span><span>K</span><span>U</span><span>P</span> <span>G</span><span>I</span><span>R</span><span>L</span>
@@ -385,7 +385,7 @@
       <img src="{{ asset('assets/img/mock-diary-lg.png') }}" alt="">
     </picture>
   </div> --}}
-  <div class="diary" style="background-color: #fff;">
+  <div class="diary" >
     <div class="section-title">
       <h2 class="section-title-lg title-font front-title">
         <span>P</span><span>H</span><span>O</span><span>T</span><span>O</span> <span>D</span><span>I</span><span>A</span><span>R</span><span>Y</span>
@@ -558,7 +558,7 @@
   </div>
   <!-- 相互リンク - Link -->
   @if ($banners->count() > 0)
-  <div class="banner" style="background-color: #fff;">
+  <div class="banner" >
     <div class="banner-title">
       <span class="banner-title-en title-font front-title">
         <span>L</span><span>I</span><span>N</span><span>K</span>

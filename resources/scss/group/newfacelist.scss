@@ -46,7 +46,7 @@
 
  .newface {
    width: 100%;
-   background-color: #F8F5F5;
+   background-color: rgba(#F8F5F5,.8);
    @media #{media-query(sm)} {
      padding: 20px 0;
     //  margin: 0 0 10px;

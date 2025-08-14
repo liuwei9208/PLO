@@ -71,8 +71,8 @@
 //   }
 // }
 .pickup-top {
-  // background-color: #fff;
-  background: linear-gradient(to top, #f8f7f6 0%, #f8f7f6 35%, transparent 35%, transparent 100%);
+  background-color: rgba(#f8f7f6,.9);
+  // background: linear-gradient(to top, rgba(#f8f7f6,.8) 0%, rgba(#f8f7f6,.8) 35%, transparent 35%, transparent 100%);
   .section-title {
     text-align: center;
   }
@@ -83,7 +83,7 @@
 }
  .pickup {
    width: 100%;
-   background-color: #f8f7f6;
+   background-color: rgba(#f8f7f6,.9);
    @media #{media-query(sm)} {
     padding-bottom: 20px;
    }
