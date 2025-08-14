@@ -6,7 +6,7 @@
 @use '../mixins/shop';
 
 .today {
-  background-color: #fff;
+  background-color: rgba(#fff,.9);
   margin: 0 auto;
   @media #{media-query(sm)} {
     padding: 20px 0;

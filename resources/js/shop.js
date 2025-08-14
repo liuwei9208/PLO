@@ -210,17 +210,17 @@ if (eventSliderElement) {
   observer.observe(eventSliderElement);
 }
 
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-  const mv = document.querySelector('.mv');
-  if (mv) {
-    mv.style.opacity = 0.6;
-  }
-clearTimeout(scrollTimeout);
-  scrollTimeout = setTimeout(() => {
-    // const mv = document.querySelector('.mv');
-    if (mv) {
-      mv.style.opacity = 1;
-    }
-  }, 150); // 150msのディレイ
-});
+// let scrollTimeout;
+// window.addEventListener('scroll', () => {
+//   const mv = document.querySelector('.mv');
+//   if (mv) {
+//     mv.style.opacity = 0.6;
+//   }
+// clearTimeout(scrollTimeout);
+//   scrollTimeout = setTimeout(() => {
+//     // const mv = document.querySelector('.mv');
+//     if (mv) {
+//       mv.style.opacity = 1;
+//     }
+//   }, 150); // 150msのディレイ
+// });

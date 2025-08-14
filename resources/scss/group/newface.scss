@@ -49,7 +49,7 @@
 
  .newface {
    width: 100%;
-   background-color: #F8F5F5;
+   background-color: rgba(#F8F5F5,.9);
    position: relative;
    @media #{media-query(sm)} {
      padding: 20px 0;
