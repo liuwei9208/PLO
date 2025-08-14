@@ -52,6 +52,7 @@ Route::name('public.')->group(function () {
         Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
+        // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
 
     /**
