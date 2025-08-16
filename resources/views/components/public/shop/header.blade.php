@@ -4,14 +4,66 @@
       {{-- <img src="{{ asset('assets/img/logo/logo.svg') }}" alt="" class="pc-logo"> --}}
       {{-- <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-lg.svg') }}" alt="" class="pc-logo">
       <img src="{{ asset('assets/img/shop/shizuku/shizuku-logo-sm.svg') }}" alt="" class="sp-logo"> --}}
-      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-lg.svg') }}" alt="" class="pc-logo">
+      {{-- <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-lg.svg') }}" alt="" class="pc-logo">
       <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-md.svg') }}" alt="" class="md-logo">
-      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-sm.svg') }}" alt="" class="sp-logo">
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo-sm.svg') }}" alt="" class="sp-logo"> --}}
+      <img src="{{ asset('assets/img/shop/logo/'.$shop->slug.'-logo.png') }}" alt="" class="">
     </a>
   </div>
-  <div class="header-nav lg">
+  <div class="header-nav">
+    <a class="header-nav-item" href="{{ url('/'.$shop->slug) }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/home-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>ホーム</span>
+      </div>
+    </a>
+    <a class="header-nav-item" href="{{ route('public.shop.schedule', ['shop' => $shop->slug]) }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/schedule-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>出勤</span>
+      </div>
+    </a>
+    <a class="header-nav-item" href="{{ route('public.shop.fee', ['shop' => $shop->slug]) }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/system-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>システム</span>
+      </div>
+    </a>
+    <a class="header-nav-item" href="{{ route('public.shop.newcomer', ['shop' => $shop->slug]) }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/newgirl-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>新人</span>
+      </div>
+    </a>
+    @if (Auth::guard('member')->check() || Auth::guard('web')->check())
+    <a class="header-nav-item" href="{{ route('logoutAll') }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/logout-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>ログアウト</span>
+      </div>
+    </a>
+    @else
+    <a class="header-nav-item" href="{{ route('login') }}">
+      <div class="header-nav-item-icon">
+        <img src="{{ asset('assets/img/group/bottom-nav/login-w.png') }}" alt="">
+      </div>
+      <div class="header-nav-item-text">
+        <span>ログイン</span>
+      </div>
+    </a>
+    @endif
     {{-- <img src="{{ asset('assets/img/shop/' . 'shizuku' . '/nav-mock.svg') }}" alt=""> --}}
-    <div class="header-nav-lists">
+    {{-- <div class="header-nav-lists">
       <div class="header-nav-lists-opentime">
         <p>朝8:30〜
         </p>
@@ -56,13 +108,19 @@
         </a>
         @endif
       </div>
-    </div>
+    </div> --}}
+    <button class="header-toggle" id="drawer-toggle" data-pushbar-target="right">
+      <i class="header-toggle-bar"></i>
+      <i class="header-toggle-bar"></i>
+      <i class="header-toggle-bar"></i>
+    </button>
+  
   </div>
-  <button class="header-toggle" id="drawer-toggle" data-pushbar-target="right">
+  {{-- <button class="header-toggle" id="drawer-toggle" data-pushbar-target="right">
     <i class="header-toggle-bar"></i>
     <i class="header-toggle-bar"></i>
     <i class="header-toggle-bar"></i>
-  </button>
+  </button> --}}
 </header>
 
 <script>
