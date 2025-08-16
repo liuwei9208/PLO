@@ -37,7 +37,7 @@
       // 'xlink' => 'https://plo-group.jp/en'
     ],
     'shiroganeze' => [
-      'name' => 'Shiroganeze',
+      'name' => 'Siroganeze',
       'japanese' => 'シロガネーゼ',
       'logo' => 'shiroganeze-logo.png',
       'link' => route('public.shop.home', ['shop' => 'shiroganeze']),
