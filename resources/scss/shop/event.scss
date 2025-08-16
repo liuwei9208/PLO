@@ -5,13 +5,13 @@
 @use '../global/utils';
 
 .event {
-  background-color: #fff;
+  background-color: rgba(#fff, .9);
   &-title {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
-    background-color: #CCA86C;
+    background-color: rgba(#CCA86C, .9);
     color: #fff;
     // font-size: 36px;
     // font-weight: bold;

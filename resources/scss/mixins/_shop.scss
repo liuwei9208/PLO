@@ -18,6 +18,15 @@ $shop-colors: (
     }
   }
 }
+
+@mixin shop-bgcolor-modifiers-opacity($opacity) {
+  @each $key, $value in $shop-colors {
+    &.--#{$key} {
+      background-color: rgba($value, $opacity);
+    }
+  }
+}
+
 @mixin data-shop-bgcolor-modifiers {
   @each $key, $value in $shop-colors {
     &[data-shop="#{$key}"] {

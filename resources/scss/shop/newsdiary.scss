@@ -5,7 +5,7 @@
 @use '../global/utils';
 
 .news_diary {
-  background-color: #fff;
+  background-color: rgba(#fff, .9);
   .news-diary {
     display: flex;
     gap: 20px;
@@ -21,25 +21,27 @@
     .news, .diary-top {
       flex: 1;
       border-radius: 30px;
-      border: 3px solid #000;
-      &.--shizuku {
-        border-color: $shop-color-shizuku;
-      }
-      &.--miyabi {
-        border-color: $shop-color-miyabi;
-      }
-      &.--en {
-        border-color: $shop-color-en;
-      }
-      &.--shiroganeze {
-        border-color: $shop-color-shiroganeze;
-      }
-      &.--lovestory {
-        border-color: $shop-color-lovestory;
-      }
-      &.--pussycat {
-        border-color: $shop-color-pussycat;
-      }
+      border: 3px solid #ccc;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3), 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+      // box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+      // &.--shizuku {
+      //   border-color: $shop-color-shizuku;
+      // }
+      // &.--miyabi {
+      //   border-color: $shop-color-miyabi;
+      // }
+      // &.--en {
+      //   border-color: $shop-color-en;
+      // }
+      // &.--shiroganeze {
+      //   border-color: $shop-color-shiroganeze;
+      // }
+      // &.--lovestory {
+      //   border-color: $shop-color-lovestory;
+      // }
+      // &.--pussycat {
+      //   border-color: $shop-color-pussycat;
+      // }
       
       
       
