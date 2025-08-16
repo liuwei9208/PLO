@@ -633,6 +633,7 @@
     width: 100%;
     font-size: 12px;
     row-gap: 5px;
+    background-color: #fff;
     &-name {
       display: flex;
       align-items:center;
@@ -667,6 +668,7 @@
       justify-content: flex-start;
       letter-spacing: .1em;
       column-gap: 10px;
+      color: #000;
       img {
         width: 32px;
         height: 32px;
