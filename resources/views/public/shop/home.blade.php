@@ -357,7 +357,46 @@
             @foreach ($castlist as $cast)
             <div class="swiper-slide">
               <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}">
-                <div class="castlist-body-items-time">
+                <div class="castlist-photo">
+                  <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
+                  <div class="castlist-status --{{ $cast->shop_slug }}">
+                    <img src="{{ asset('assets/img/shop/clock-icon-y.png') }} " class="pc-only" alt="本日出勤">
+                    <span class="castlist-status-label pc-only">本日出勤</span>
+                    <span class="castlist-status-label sp-only">出勤</span>
+                    @if ($cast->start_datetime && $cast->end_datetime)
+                      <span class="castlist-status-time --{{ $cast->shop_slug }}">{{ date('H:i', strtotime($cast->start_datetime)) }} ～ {{ date('H:i', strtotime($cast->end_datetime)) }}</span>
+                    @else
+                      <span class="castlist-status-time --{{ $cast->shop_slug }}">　　休み中　　</span>
+                    @endif
+                  </div>
+                  <div class="castlist-profile pc-only">
+                    <span class="castlist-profile-schedule">
+                      <img src="{{ asset('assets/img/shop/clock-icon-y.png') }}" alt="移動時間のみ">
+                      待機中
+                    </span>
+                    <span class="castlist-profile-name">
+                      <img src="{{ asset('assets/img/shop/star-w.png') }}" alt="移動時間のみ">
+                      {{ $cast->name }}({{ $cast->age }})
+                    </span>
+                    <span class="castlist-profile-size ">
+                      <img src="{{ asset('assets/img/shop/heart-w.png') }}" alt="移動時間のみ">
+                      T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
+                    </span>
+                  </div>
+                  <div class="castlist-profile-sp sp-only">
+                    <span class="castlist-profile-sp-name --{{ $cast->shop_slug }}">
+                      {{-- <img src="{{ asset('assets/img/shop/star-w.png') }}" alt="移動時間のみ"> --}}
+                      {{ $cast->name }}({{ $cast->age }})
+                    </span>
+                    <span class="castlist-profile-sp-size ">
+                      {{-- <img src="{{ asset('assets/img/shop/heart-w.png') }}" alt="移動時間のみ"> --}}
+                      T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
+                    </span>
+                  </div>
+                </div>
+              
+
+                {{-- <div class="castlist-body-items-time">
                   <div class="castlist-slide-image">
                     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
                     <div class="castlist-body-item-name">
@@ -370,7 +409,7 @@
                   <div class="castlist-body-item-appeal">
                     {{ $cast->appeal_point }}
                   </div>
-                </div>
+                </div> --}}
               </a>
             </div>
             @endforeach

@@ -57,6 +57,7 @@ class ShopController extends Controller
                 'casts.hip as hip',
                 'casts.gallery_1 as gallery_1',
                 'casts.appeal_point as appeal_point',
+                'casts.created_at as created_at',
                 'attendances.start_datetime as start_datetime',
                 'attendances.end_datetime as end_datetime',
                 'shops.slug as shop_slug',
@@ -113,9 +114,37 @@ WHERE cast_style.cast_id = $new_girl->id;";
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
         ->get();
 
-        $castlist = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        $castlist = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->where('casts.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
         ->inRandomOrder()
+        ->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            'casts.created_at as created_at',
+            // 'attendances.start_datetime as start_datetime',
+            // 'attendances.end_datetime as end_datetime',
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+        ])
         ->get();
+
+        if ($castlist) {
+            $castlist = $castlist->map(function ($cast) {
+                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->start_datetime ?? '';
+                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->end_datetime ?? '';
+                return $cast;
+            });
+        }
 
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
         ->where('published_status', 1)

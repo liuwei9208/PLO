@@ -5,12 +5,12 @@
 @use '../global/utils';
 
 .new-girls {
-    background-color: #fff;
+    background-color: rgba(#fff, .9);
     &-header {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #CCA86C;
+      background-color: rgba(#CCA86C, .9);
       padding: 15px 20px;
       // margin-bottom: 20px;
       // border-radius: 25px 25px 0 0;
