@@ -17,7 +17,7 @@
     <a href="{{ route('public.shop.home', ['shop' => 'miyabi']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/miyabi-logo.png') }}" alt="logo">
+          <img src="{{ asset('assets/img/logo/miyabi-logo-m.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>
@@ -27,7 +27,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'pussycat']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
+        <div class="shopintro-contents-item-photo-logo --pussycat">
           <img src="{{ asset('assets/img/logo/pussycat-logo.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
@@ -39,7 +39,7 @@
     <a href="{{ route('public.shop.home', ['shop' => 'en']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/en-logo-r.png') }}" alt="logo">
+          <img src="{{ asset('assets/img/logo/en-logo-m.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>
@@ -49,7 +49,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'shiroganeze']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
+        <div class="shopintro-contents-item-photo-logo --shiroganeze">
           <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
@@ -60,7 +60,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'lovestory']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
+        <div class="shopintro-contents-item-photo-logo --lovestory">
           <img src="{{ asset('assets/img/logo/lovestory-logo.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
