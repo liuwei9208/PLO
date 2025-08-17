@@ -72,6 +72,8 @@ export default defineConfig({
                 'resources/scss/shop/movielist.scss',
                 'resources/scss/group/sidebar.scss',
                 'resources/scss/review.scss',
+                'resources/scss/member.scss',
+                'resources/scss/password.scss',
                 'resources/js/admin.js',
                 'resources/js/group.js',
                 'resources/js/shop.js',

@@ -1,26 +1,98 @@
 <x-mypage-layout>
   <section class="mypage">
     <div class="mypage-container">
-      {{-- <div class="mypage-container-sidebar">
+      <div class="mypage-container-sidebar">
         <ul class="mypage-container-sidebar-list">
+          @if (request()->routeIs('public.group.mypage'))
           <li class="mypage-container-sidebar-list-item active">
-            <a href="#mypage">
+            <a href="{{route('public.group.mypage')}}">
               <span>マイページ</span>
             </a>
           </li>
+          @else
           <li class="mypage-container-sidebar-list-item">
-            <a href="#member">
+            <a href="{{route('public.group.mypage')}}">
+              <span>マイページ</span>
+            </a>
+          </li>
+          @endif
+          @if (request()->routeIs('public.group.memberinfo'))
+          <li class="mypage-container-sidebar-list-item active">
+            <a href="{{route('public.group.memberinfo')}}">
               <span>会員情報変更</span>
             </a>
           </li>
+          @else
           <li class="mypage-container-sidebar-list-item">
-            <a href="#mdf_password">
+            <a href="{{route('public.group.memberinfo')}}">
+              <span>会員情報変更</span>
+            </a>
+          </li>
+          @endif
+          @if (request()->routeIs('public.group.password'))
+          <li class="mypage-container-sidebar-list-item active">
+            <a href="{{route('public.group.password')}}">
               <span>パスワード変更</span>
             </a>
           </li>
+          @else
+          <li class="mypage-container-sidebar-list-item">
+            <a href="{{route('public.group.password')}}">
+              <span>パスワード変更</span>
+            </a>
+          </li>
+          @endif
+          {{-- <li class="mypage-container-sidebar-list-item">
+            <a href="#mdf_password">
+              <span>パスワード変更</span>
+            </a>
+          </li> --}}
         </ul>
-      </div> --}}
+      </div>
       <div class="mypage-container-main">
+        <div class="mypage-container-main-nav sp-only">
+          <ul class="mypage-container-main-nav-list">
+            @if (request()->routeIs('public.group.mypage'))
+            <li class="mypage-container-main-nav-list-item active">
+              <a href="{{route('public.group.mypage')}}">
+                <span>マイページ</span>
+              </a>
+            </li>
+            @else
+            <li class="mypage-container-main-nav-list-item">
+              <a href="{{route('public.group.mypage')}}">
+                <span>マイページ</span>
+              </a>
+            </li>
+            @endif
+            @if (request()->routeIs('public.group.memberinfo'))
+            <li class="mypage-container-main-nav-list-item active">
+              <a href="{{route('public.group.memberinfo')}}">
+                <span>会員情報</span>
+              </a>
+            </li>
+            @else
+            <li class="mypage-container-main-nav-list-item">
+              <a href="{{route('public.group.memberinfo')}}">
+                <span>会員情報</span>
+              </a>
+            </li>
+            @endif
+            @if (request()->routeIs('public.group.password'))
+            <li class="mypage-container-main-nav-list-item active">
+              <a href="{{route('public.group.password')}}">
+                <span>パスワード</span>
+              </a>
+            </li>
+            @else
+            <li class="mypage-container-main-nav-list-item">
+              <a href="{{route('public.group.password')}}">
+                <span>パスワード</span> 
+              </a>
+            </li>
+            @endif
+          </ul>
+        </div>
         <div class="mypage-container-main-mypage" id="mypage">
           {{-- <div class="mypage-container-main-mypage-title title-font">マイページ</div> --}}
           <div class="mypage-container-main-mypage-content pc-only">
@@ -213,13 +285,13 @@
           </div>
         </div>
         
-        <div class="mypage-container-main-member" id="member">
+        {{-- <div class="mypage-container-main-member" id="member">
           <h2>会員情報変更</h2>
         </div>
         <div class="mypage-container-main-password" id="mdf_password">
           <h2>パスワード変更</h2>
         </div>
-      </div>
+      </div> --}}
     </div>
   </section>
 </x-mypage-layout>
@@ -260,21 +332,21 @@ window.addEventListener('load', () => {
     }
 
   }
-  const mypage_container_main = document.querySelector('.mypage-container-main');
-  if (mypage_container_main) {
-    const mypage_container_main_mypage = document.querySelector('.mypage-container-main-mypage');
-    if (mypage_container_main_mypage) {
-      mypage_container_main_mypage.style.display = 'block';
-    }
-    const mypage_container_main_member = document.querySelector('.mypage-container-main-member');
-    if (mypage_container_main_member) {
-      mypage_container_main_member.style.display = 'none';
-    }
-    const mypage_container_main_password = document.querySelector('.mypage-container-main-password');
-    if (mypage_container_main_password) {
-      mypage_container_main_password.style.display = 'none';
-    }
-  }
+  // const mypage_container_main = document.querySelector('.mypage-container-main');
+  // if (mypage_container_main) {
+  //   const mypage_container_main_mypage = document.querySelector('.mypage-container-main-mypage');
+  //   if (mypage_container_main_mypage) {
+  //     mypage_container_main_mypage.style.display = 'block';
+  //   }
+  //   const mypage_container_main_member = document.querySelector('.mypage-container-main-member');
+  //   if (mypage_container_main_member) {
+  //     mypage_container_main_member.style.display = 'none';
+  //   }
+  //   const mypage_container_main_password = document.querySelector('.mypage-container-main-password');
+  //   if (mypage_container_main_password) {
+  //     mypage_container_main_password.style.display = 'none';
+  //   }
+  // }
 
   document.querySelectorAll('.review-button').forEach(btn => {
     btn.addEventListener('click', function () {
@@ -317,67 +389,67 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-document.querySelector('a[href="#mypage"]').addEventListener('click', function (e) {
-  const target = e.target;
+// document.querySelector('a[href="#mypage"]').addEventListener('click', function (e) {
+//   const target = e.target;
 
-  const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
-  if (sidebar_items) {
-    sidebar_items.forEach(item => {
-      item.classList.remove('active');
-    });
-  }
-  if (!target.parentElement.parentElement.classList.contains('active')) {
-    target.parentElement.parentElement.classList.add('active');
-  }
+//   const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
+//   if (sidebar_items) {
+//     sidebar_items.forEach(item => {
+//       item.classList.remove('active');
+//     });
+//   }
+//   if (!target.parentElement.parentElement.classList.contains('active')) {
+//     target.parentElement.parentElement.classList.add('active');
+//   }
 
-  const mypage_section = document.querySelector('.mypage-container-main-mypage');
-  const member_section = document.querySelector('.mypage-container-main-member');
-  const password_section = document.querySelector('.mypage-container-main-password');
+//   const mypage_section = document.querySelector('.mypage-container-main-mypage');
+//   const member_section = document.querySelector('.mypage-container-main-member');
+//   const password_section = document.querySelector('.mypage-container-main-password');
   
-  if (mypage_section) mypage_section.style.display = 'block';
-  if (member_section) member_section.style.display = 'none';
-  if (password_section) password_section.style.display = 'none';
-});
-document.querySelector('a[href="#member"]').addEventListener('click', function (e) {
-  // e.preventDefault();
-  const target = e.target;  
-  // Show member section and hide others
-  const mypage_section = document.querySelector('.mypage-container-main-mypage');
-  const member_section = document.querySelector('.mypage-container-main-member');
-  const password_section = document.querySelector('.mypage-container-main-password');
+//   if (mypage_section) mypage_section.style.display = 'block';
+//   if (member_section) member_section.style.display = 'none';
+//   if (password_section) password_section.style.display = 'none';
+// });
+// document.querySelector('a[href="#member"]').addEventListener('click', function (e) {
+//   // e.preventDefault();
+//   const target = e.target;  
+//   // Show member section and hide others
+//   const mypage_section = document.querySelector('.mypage-container-main-mypage');
+//   const member_section = document.querySelector('.mypage-container-main-member');
+//   const password_section = document.querySelector('.mypage-container-main-password');
   
-  if (mypage_section) mypage_section.style.display = 'none';
-  if (member_section) member_section.style.display = 'block';
-  if (password_section) password_section.style.display = 'none';
+//   if (mypage_section) mypage_section.style.display = 'none';
+//   if (member_section) member_section.style.display = 'block';
+//   if (password_section) password_section.style.display = 'none';
 
-  const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
-  if (sidebar_items) {
-    sidebar_items.forEach(item => {
-      item.classList.remove('active');
-    });
-  }
-  if (!target.parentElement.parentElement.classList.contains('active')) {
-    target.parentElement.parentElement.classList.add('active');
-  }
-});
-document.querySelector('a[href="#mdf_password"]').addEventListener('click', function (e) {
-  const target = e.target;
-  const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
-  if (sidebar_items) {
-    sidebar_items.forEach(item => {
-      item.classList.remove('active');
-    });
-  }
-  if (!target.parentElement.parentElement.classList.contains('active')) {
-    target.parentElement.parentElement.classList.add('active');
-  }
-  const mypage_section = document.querySelector('.mypage-container-main-mypage');
-  const member_section = document.querySelector('.mypage-container-main-member');
-  const password_section = document.querySelector('.mypage-container-main-password');
+//   const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
+//   if (sidebar_items) {
+//     sidebar_items.forEach(item => {
+//       item.classList.remove('active');
+//     });
+//   }
+//   if (!target.parentElement.parentElement.classList.contains('active')) {
+//     target.parentElement.parentElement.classList.add('active');
+//   }
+// });
+// document.querySelector('a[href="#mdf_password"]').addEventListener('click', function (e) {
+//   const target = e.target;
+//   const sidebar_items = document.querySelectorAll('.mypage-container-sidebar-list-item');
+//   if (sidebar_items) {
+//     sidebar_items.forEach(item => {
+//       item.classList.remove('active');
+//     });
+//   }
+//   if (!target.parentElement.parentElement.classList.contains('active')) {
+//     target.parentElement.parentElement.classList.add('active');
+//   }
+//   const mypage_section = document.querySelector('.mypage-container-main-mypage');
+//   const member_section = document.querySelector('.mypage-container-main-member');
+//   const password_section = document.querySelector('.mypage-container-main-password');
   
-  if (mypage_section) mypage_section.style.display = 'none';
-  if (member_section) member_section.style.display = 'none';
-  if (password_section) password_section.style.display = 'block';
-});
+//   if (mypage_section) mypage_section.style.display = 'none';
+//   if (member_section) member_section.style.display = 'none';
+//   if (password_section) password_section.style.display = 'block';
+// });
 </script>
 
