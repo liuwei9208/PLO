@@ -22,6 +22,10 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use App\Models\News;
 use Illuminate\Support\Facades\DB;
+use App\Models\CourseGroup;
+use App\Models\Appoint;
+use App\Models\Extend;
+use App\Models\OptionRS;
 
 class ShopController extends Controller
 {
@@ -363,8 +367,20 @@ WHERE cast_style.cast_id = $new_girl->id;";
 
     public function showFee(Request $request, string $shop): View
     {
+        $course_groups = CourseGroup::where('shop_id', Shop::where('slug', $shop)->first()->id)->get();
+        $appoints = Appoint::where('shop_id', Shop::where('slug', $shop)->first()->id)->get();
+        $extends = Extend::where('shop_id', Shop::where('slug', $shop)->first()->id)->get();
+        $option_rs = OptionRS::leftJoin('options', 'options_rs.option_id', '=', 'options.id')
+        ->where('options_rs.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->select('options_rs.*', 'options.name as option_name')
+        ->get();
+        // dd($course_groups, $appoints, $extends, $option_rs);
         return view('public.shop.fee', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
+            'course_groups' => $course_groups,
+            'appoints' => $appoints,
+            'extends' => $extends,
+            'option_rs' => $option_rs,
         ]);
     }
 
