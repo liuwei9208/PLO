@@ -54,7 +54,9 @@
         <div class="fee-option-content-items">
           @foreach ($option_rs as $option_r)
             <div class="fee-option-content-items-item">
-              <span class="fee-option-content-items-item-title --{{ $shop->slug }}">{{ $option_r->option_name }}</span>
+              <div class="fee-option-content-items-item-title --{{ $shop->slug }}">
+                <span>{{ $option_r->option_name }}</span>
+              </div>
               <div class="fee-option-content-items-item-price">
                 <span class="fee-option-content-items-item-price-number --{{ $shop->slug }}">
                   {{ "¥".Number::format($option_r->price)."-" }}
@@ -122,9 +124,23 @@
     </div>
     <div class="fee-other">
       <div class="fee-sub-bar --{{ $shop->slug }}"></div>
-      <div class="fee-other-content">
-        <img src="{{ asset('assets/img/shop/feebanner-1.png') }}" alt="料金システム">
+      <div class="fee-other-title">
+        <span>お支払いは現金の他、各種クレジットカードの利用が可能です。</span>
       </div>
+      <div class="fee-other-content">
+        <div class="fee-other-content-bank">
+          <img src="{{ asset('assets/img/shop/bank1.png') }}" alt="銀行">
+        </div>
+        <div class="fee-other-content-text">
+          <p>各種カードご利用いただけます。</p>
+          <p>詳しくはお尋ね下さい。</p>
+          <p>領収書の発行もいたしております。</p>
+          <p>お気軽にお申し付けください。</p>
+        </div>
+      </div>
+      {{-- <div class="fee-other-content">
+        <img src="{{ asset('assets/img/shop/feebanner-1.png') }}" alt="料金システム">
+      </div> --}}
       <div class="fee-sub-bar --{{ $shop->slug }}"></div>
 
     </div>
