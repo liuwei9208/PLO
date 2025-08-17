@@ -35,6 +35,9 @@
         @endforeach
       </div>
       @else
+      <div class="fee-main-pussycat">
+        <img src="{{ asset('assets/img/shop/pussycat-price.png') }}" alt="料金システム">
+      </div>
       @endif
     </div>
     <div class="fee-option">

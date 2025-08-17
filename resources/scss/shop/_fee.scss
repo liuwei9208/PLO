@@ -200,6 +200,14 @@
       }
     }
   }
+  &-main-pussycat {
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  }
   &-option {
     &-content {
       &-title {
@@ -350,7 +358,7 @@
         &-list {
           padding: 0 20px;
           @media #{media-query(sm)} {
-            padding: 0 10px;
+            padding: 0 15px;
           }
           @media #{media-query(md)} {
             padding: 0 15px;
