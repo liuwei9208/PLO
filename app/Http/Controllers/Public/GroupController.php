@@ -27,6 +27,9 @@ use App\Models\History;
 use App\Models\Video;
 use App\Models\Review;
 use Illuminate\Support\Facades\Http;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\Encoding\Encoding;
 
 class GroupController extends Controller
 {
@@ -675,6 +678,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
                 $history->point_pay = Point::where('history_id', $history->id)->where('type', 3)->sum('point') ?? 0;
                 $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
+                $history->review_id = Review::where('history_id', $history->id)->where('is_public', 1) ?? 0;
                 return $history;
               });
             }
@@ -694,11 +698,24 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                   return $history;
                 });
             }
+
+            $url = "http://plo-group.jp/admin/member/qrresult?qr={$member->id}";
+            $qrCode = new QrCode(
+              data: $url,
+              encoding: new Encoding('UTF-8'),
+              size: 200,
+              margin: 0,
+            );
+      
+            $writer = new PngWriter();
+            $result = $writer->write($qrCode);
+      
             return view('public.mypage', [
                 'today_point' => $today_point,
                 'member' => $member,
                 'histories' => $histories,
                 'shop_histories' => $shop_histories,
+                'qr_code' => $result->getDataUri(),
             ]);
         } else {
             return redirect('/');

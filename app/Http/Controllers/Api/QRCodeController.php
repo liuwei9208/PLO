@@ -20,7 +20,8 @@ class QRCodeController extends Controller
         data: $url,
         encoding: new Encoding('UTF-8'),
         size: 300,
-        margin: 10,
+        margin: 0,
+        padding: 0,
       );
 
       $writer = new PngWriter();

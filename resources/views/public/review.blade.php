@@ -148,7 +148,7 @@
   </div>
 </x-mypage-layout>
 @once
-@vite(['resources/scss/mypage.scss'])
+@vite(['resources/scss/review.scss'])
 @endonce
 <script>
 const token = '{{ $token }}';

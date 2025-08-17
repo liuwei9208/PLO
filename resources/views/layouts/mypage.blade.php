@@ -24,7 +24,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
     @vite(['resources/scss/groupbase.scss', 'resources/js/group.js'])
-    @vite(['resources/css/guest.css'])
+    {{-- @vite(['resources/css/guest.css']) --}}
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
@@ -37,9 +37,7 @@
 
     <!-- Drawer -->
     <x-public.group.drawer />
-       
     {{ $slot }}
-      
     <!-- Footer -->
     <x-public.group.footer />
     @stack('scripts')
