@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Http;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
 use Endroid\QrCode\Encoding\Encoding;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class GroupController extends Controller
 {
@@ -787,5 +789,65 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ])->get($url);
 
         return response($response->body(),$response->status(),$response->headers('Content-Type', $response->header('Content-Type')));
+    }
+
+    public function showMemberInfo(Request $request)
+    {
+        $member = Auth::guard('member')->user();
+        return view('public.memberinfo', [
+            'member' => $member,
+        ]);
+    }
+    public function updateMemberInfo(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'tel' => 'required',
+            'email' => 'required|email',
+        ],[
+            'name.required' => 'ニックネームを入力してください。',
+            'tel.required' => '電話番号を入力してください。',
+            'email.required' => 'メールアドレスを入力してください。',
+            'email.email' => 'メールアドレスが不正です。',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('public.group.memberinfo')->withErrors($validator)->withInput();
+        }
+        $member = Auth::guard('member')->user();
+        $member->name = $request->name;
+        $member->tel = $request->tel;
+        $member->email = $request->email;
+        $member->save();
+        return redirect()->route('public.group.memberinfo');
+    }
+    public function showPassword(Request $request)
+    {
+        $member = Auth::guard('member')->user();
+        return view('public.password', [
+            'member' => $member,
+        ]);
+    }
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'password' => 'required',
+            'new_password' => 'required|min:8|confirmed',
+        ],[
+            'password.required' => '以前のパスワードを入力してください。',
+            'new_password.required' => '新しいパスワードを入力してください。',
+            'new_password.confirmed' => '新しいパスワードが一致しません。',
+            'new_password.min' => '新しいパスワードは8文字以上で入力してください。',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->route('public.group.password')->withErrors($validator)->withInput();
+        }
+        $member = Auth::guard('member')->user();
+        if (Hash::check($request->password, $member->password)) {   
+            $member->password = Hash::make($request->new_password);
+            $member->save();
+            return redirect()->route('public.group.password')->with('success', 'パスワードを変更しました。');
+        } else {
+            return redirect()->route('public.group.password')->withErrors(['password' => '以前のパスワードが間違っています。']);
+        }
     }
 }

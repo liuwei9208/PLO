@@ -49,6 +49,10 @@ Route::name('public.')->group(function () {
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
         Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
+        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
+        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
+        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
+        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
         Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
