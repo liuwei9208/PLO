@@ -3,7 +3,7 @@
 @use '../global/reset';
 @use '../global/base';
 @use '../global/utils';
-
+@use '../mixins/shop';
 .event {
   background-color: rgba(#fff, .9);
   &-title {
@@ -11,7 +11,8 @@
     align-items: center;
     justify-content: center;
     gap: 30px;
-    background-color: rgba(#CCA86C, .9);
+    // background-color: rgba(#CCA86C, .9);
+    @include shop.shop-bgcolor-modifiers-opacity(.9);
     color: #fff;
     // font-size: 36px;
     // font-weight: bold;

@@ -21,7 +21,7 @@
   &-header {
     background-color: #000;
     padding: 20px;
-    // margin-bottom: 30px;
+    margin-bottom: 30px;
     @include shop.shop-bgcolor-modifiers-opacity(.9);
     // &.--shizuku {
     //   background-color: $shop-color-shizuku;
@@ -94,96 +94,30 @@
       }
     }
   }
-  &-description {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin: 0 auto;
-    text-align: center;
-    color: #000;
-    font-family: $font-midashi-min;
-    font-size: 36px;
-    @media #{media-query(sm)} {
-      font-size: 16px;
-      padding: 10px;
-      gap: 20px;
-    }
-    @media #{media-query(md)} {
-      font-size: 32px;
-      padding: 15px;
-      gap: 40px;
-    }
-    @media #{media-query(lg)} {
-      font-size: 48px;
-      padding: 20px;
-      gap: 50px;
-    }
-    &-title {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      @media #{media-query(sm)} {
-        gap: 10px;
-      }
-      @media #{media-query(md)} {
-        gap: 15px;
-      }
-      @media #{media-query(lg)} {
-        gap: 20px;
-      }
-      & img {
-        width: 48px;
-        height: 48px;
 
-        @media #{media-query(sm)} {
-          width: 16px;
-          height: 16px;
-        }
-        @media #{media-query(md)} {
-          width: 32px;
-          height: 32px;
-        }
-      }
-    }
-    &-content {
-      font-size: 16px;
-      @media #{media-query(sm)} {
-        font-size: 14px;
-      }
-      @media #{media-query(md)} {
-        font-size: 30px;
-      }
-      @media #{media-query(lg)} {
-        font-size: 40px;
-      }
-    }
-  }
   &-body {
     // background: linear-gradient(to bottom, #fff 0%, #000 100%);
     padding: 40px 0;
+    @include shop.shop-bgcolor-modifiers-opacity(.9);
     // @include shop.shop-bgcolor-modifiers-opacity(.9);
-    // @include shop.shop-bgcolor-modifiers-opacity(.9);
-    &.--shizuku {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-shizuku, .9) 100%);
-    }
-    &.--miyabi {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-miyabi, .9) 100%);
-    }
-    &.--en {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-en, .9) 100%);
-    }
-    &.--shiroganeze {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-shiroganeze, .9) 100%);
-    }
-    &.--lovestory {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-lovestory, .9) 100%);
-    }
-    &.--pussycat {
-      background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-pussycat, .9) 100%);
-    }
+    // &.--shizuku {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-shizuku, .9) 100%);
+    // }
+    // &.--miyabi {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-miyabi, .9) 100%);
+    // }
+    // &.--en {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-en, .9) 100%);
+    // }
+    // &.--shiroganeze {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-shiroganeze, .9) 100%);
+    // }
+    // &.--lovestory {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-lovestory, .9) 100%);
+    // }
+    // &.--pussycat {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-pussycat, .9) 100%);
+    // }
     &-items {
       // max-width: 1200px;
       margin: 0 auto;
