@@ -12,8 +12,17 @@
     <h2 class="today-title title-font-midashi --{{ $shop->slug }}">
       {{-- <img src="{{ asset('assets/img/shop/' . $shop->slug . '/today/title.svg') }}" alt="Today Schedule"> --}}
       Today Schedule
-      <img src="{{ asset('assets/img/shop/calender.png') }}" alt="Today Schedule">
+      {{-- <img src="{{ asset('assets/img/shop/calender-b.png') }}" alt="Today Schedule"> --}}
     </h2>
+    <div class="today-description">
+      <div class="today-description-title">
+        <img src="{{ asset('assets/img/shop/calender-g.png') }}" alt="Today Schedule">
+        <span>出勤情報</span>
+      </div>
+      <div class="today-description-content">
+        本日出勤する女性情報になります。
+      </div>
+    </div>
     <div class="today-lists --{{ $shop->slug }}">
     <div class="today-list content-wrapper-shop">
       @foreach ($todayCasts as $cast)
@@ -42,8 +51,8 @@
   </div> --}}
   <div class="new-girls">
     @if($new_girls_month->count() > 0)
-    {{-- <div class="new-girls-header --{{ $shop->slug }}"> --}}
-    <div class="new-girls-header">
+    <div class="new-girls-header --{{ $shop->slug }}">
+    {{-- <div class="new-girls-header"> --}}
       <div class="new-girls-header-title title-font-midashi">
         New Girls
         <img src="{{ asset('assets/img/shop/attachment2.png') }}" alt="New Girls"/>
@@ -193,7 +202,7 @@
           <h2 class="news-title title-font-midashi">
             News
           </h2>
-          <img src="{{ asset('assets/img/shop/attachment3.png') }}" alt="News"/>
+          <img src="{{ asset('assets/img/shop/attachment3-b.png') }}" alt="News"/>
         </div>
         <div class="news-header-button">
           <a href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}" class="news-header-button-link content-font">
@@ -228,7 +237,7 @@
           <h2 class="diary-top-title title-font-midashi">
             Photo Diary
           </h2>
-          <img src="{{ asset('assets/img/shop/attachment4.png') }}" alt="Photo Diary"/>
+          <img src="{{ asset('assets/img/shop/attachment4-b.png') }}" alt="Photo Diary"/>
         </div>
         <div class="diary-top-header-button">
           <a href="{{ route('public.shop.diarylist', ['shop' => $shop->slug]) }}" class="diary-top-header-button-link content-font">
@@ -263,7 +272,7 @@
   </div>
   @if ($events->count() > 0)
   <div class="event">
-    <div class="event-title">
+    <div class="event-title --{{ $shop->slug }}">
       <h2 class="title-font-midashi">Event</h2>
       <img src="{{ asset('assets/img/shop/attachment.png') }}" alt="Event"/>
     </div>
@@ -341,7 +350,7 @@
       <div class="castlist-header-title ">
         <h2 class="castlist-header-title-content title-font-midashi">
           Cast List
-          <img src="{{ asset('assets/img/shop/attachment1.png') }}" alt="Cast List"/>
+          {{-- <img src="{{ asset('assets/img/shop/attachment1.png') }}" alt="Cast List"/> --}}
         </h2>
         <div class="castlist-header-button">
           <a href="{{ route('public.shop.castlist', ['shop' => $shop->slug]) }}" class="castlist-header-button-link content-font">
@@ -350,6 +359,16 @@
         </div>
       </div>
     </div>
+    <div class="castlist-description">
+      <div class="castlist-description-title">
+        <img src="{{ asset('assets/img/shop/attachment1-g.png') }}" alt="Cast List">
+        <span>在籍女性</span>
+      </div>
+      <div class="castlist-description-content">
+        当店に在籍する女性情報になります。
+      </div>
+    </div>
+
     <div class="castlist-body --{{ $shop->slug }}">
       <div class="castlist-body-items content-wrapper-shop">
         <div class="castlist-body-items-slider swiper">
@@ -357,7 +376,7 @@
             @foreach ($castlist as $cast)
             <div class="swiper-slide">
               <a href="{{ route('public.shop.cast.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}">
-                <div class="castlist-photo">
+                {{-- <div class="castlist-photo">
                   <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
                   <div class="castlist-status --{{ $cast->shop_slug }}">
                     <img src="{{ asset('assets/img/shop/clock-icon-y.png') }} " class="pc-only" alt="本日出勤">
@@ -385,18 +404,16 @@
                   </div>
                   <div class="castlist-profile-sp sp-only">
                     <span class="castlist-profile-sp-name --{{ $cast->shop_slug }}">
-                      {{-- <img src="{{ asset('assets/img/shop/star-w.png') }}" alt="移動時間のみ"> --}}
                       {{ $cast->name }}({{ $cast->age }})
                     </span>
                     <span class="castlist-profile-sp-size ">
-                      {{-- <img src="{{ asset('assets/img/shop/heart-w.png') }}" alt="移動時間のみ"> --}}
                       T{{ $cast->height }} B{{ $cast->bust }} W{{ $cast->waist }} H{{ $cast->hip }}
                     </span>
                   </div>
                 </div>
-              
+               --}}
 
-                {{-- <div class="castlist-body-items-time">
+                <div class="castlist-body-items-time">
                   <div class="castlist-slide-image">
                     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}">
                     <div class="castlist-body-item-name">
@@ -409,7 +426,7 @@
                   <div class="castlist-body-item-appeal">
                     {{ $cast->appeal_point }}
                   </div>
-                </div> --}}
+                </div>
               </a>
             </div>
             @endforeach

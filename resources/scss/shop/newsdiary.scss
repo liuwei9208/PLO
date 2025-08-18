@@ -121,24 +121,26 @@
       border-top-right-radius: 25px;
       // border-radius: 25px 25px 0 0;
       height: 4rem;
-      &.--shizuku {
-        background-color: $shop-color-shizuku;
-      }
-      &.--miyabi {
-        background-color: $shop-color-miyabi;
-      }
-      &.--en {
-        background-color: $shop-color-en;
-      }
-      &.--shiroganeze {
-        background-color: $shop-color-shiroganeze;
-      }
-      &.--lovestory {
-        background-color: $shop-color-lovestory;
-      }
-      &.--pussycat {
-        background-color: $shop-color-pussycat;
-      }
+      background-color: rgba(#DFDCED, .9);
+      color: #000;
+      // &.--shizuku {
+      //   background-color: $shop-color-shizuku;
+      // }
+      // &.--miyabi {
+      //   background-color: $shop-color-miyabi;
+      // }
+      // &.--en {
+      //   background-color: $shop-color-en;
+      // }
+      // &.--shiroganeze {
+      //   background-color: $shop-color-shiroganeze;
+      // }
+      // &.--lovestory {
+      //   background-color: $shop-color-lovestory;
+      // }
+      // &.--pussycat {
+      //   background-color: $shop-color-pussycat;
+      // }
       
       @media #{media-query(lg)} {
         padding: 50px 20px;
@@ -150,7 +152,7 @@
         justify-content: center;
         gap: 30px;
         h2 {
-          color: #fff;
+          // color: #fff;
           // font-size: $title-font-size-md;
           font-weight: $title-font-weight-md;
           margin: 0;

@@ -3,6 +3,7 @@
 @use '../global/reset';
 @use '../global/base';
 @use '../global/utils';
+@use '../mixins/shop';
 
 .new-girls {
     background-color: rgba(#fff, .9);
@@ -10,31 +11,32 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgba(#CCA86C, .9);
+      @include shop.shop-bgcolor-modifiers-opacity(0.9);
+      // background-color: rgba(#CCA86C, .9);
       padding: 15px 20px;
       // margin-bottom: 20px;
       // border-radius: 25px 25px 0 0;
       // height: 4rem;
       color: #fff;
       position: relative;
-      &.--shizuku {
-        background-color: $shop-color-shizuku;
-      }
-      &.--miyabi {
-        background-color: $shop-color-miyabi;
-      }
-      &.--en {
-        background-color: $shop-color-en;
-      }
-      &.--shiroganeze {
-        background-color: $shop-color-shiroganeze;
-      }
-      &.--lovestory {
-        background-color: $shop-color-lovestory;
-      }
-      &.--pussycat {
-        background-color: $shop-color-pussycat;
-      }
+      // &.--shizuku {
+      //   background-color: $shop-color-shizuku;
+      // }
+      // &.--miyabi {
+      //   background-color: $shop-color-miyabi;
+      // }
+      // &.--en {
+      //   background-color: $shop-color-en;
+      // }
+      // &.--shiroganeze {
+      //   background-color: $shop-color-shiroganeze;
+      // }
+      // &.--lovestory {
+      //   background-color: $shop-color-lovestory;
+      // }
+      // &.--pussycat {
+      //   background-color: $shop-color-pussycat;
+      // }
   
       &-title {
         display: flex;
