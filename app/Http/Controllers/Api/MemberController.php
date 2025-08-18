@@ -32,7 +32,7 @@ class MemberController extends Controller
       $history = History::find($request->input('id'));
     //   $history->course_id = $request->input('course') ?? '';
     //   $history->cast_id = $request->input('cast_id') ?? '';
-      $history->price = $price;
+      $history->price_new = $price;
       $point = Point::where('history_id', $request->input('id'))->where('type', 3)->first();
       $point_use = Point::where('history_id', $request->input('id'))->where('type', 5)->first();
       Log::info($point);
