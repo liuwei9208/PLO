@@ -412,7 +412,7 @@
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ number_format($history->price) ?? 0 }}
+                      {{ number_format($history->price_new) ?? 0 }}
                     </p>
                   </div>
                 </td>
@@ -435,7 +435,7 @@
                   <div class="flex items-center">
                     <button
                       type="button"
-                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price }}, '{{ $history->course_name_table }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
+                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price_new }}, '{{ $history->course_name_table }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
                       class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]"
                     >
                       <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

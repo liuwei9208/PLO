@@ -71,9 +71,12 @@ class MemberController extends Controller{
   public function show(Request $request, int $id): View{
 
     $member = Member::find($id);
-    $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
-                  ->where('type', 3)
-                  ->sum('point');
+    // $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+    //               ->where('type', 3)
+    //               ->sum('point');
+    $point_pay = Point::where('user_id', $id)->where('type', 3)->sum('point');
+    $point_use = Point::where('user_id', $id)->where('type', 5)->sum('point');
+    $today_point = $point_pay - $point_use;
 
     // 来店履歴の仮データ
     $dummyHistories = [
