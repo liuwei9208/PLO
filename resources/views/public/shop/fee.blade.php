@@ -95,9 +95,9 @@
     </div>
     <div class="fee-service">
       <div class="fee-sub-title --{{ $shop->slug }}">
-        <span class="fee-sub-title-small">SERVICE</span>
+        <span class="fee-sub-title-small">PROHIBITED MATTERS</span>
         <span class="fee-sub-title-content">
-          サービスのご案内
+          禁止事項
         </span>
       </div>
       <div class="fee-service-content">
@@ -132,10 +132,12 @@
           <img src="{{ asset('assets/img/shop/bank1.png') }}" alt="銀行">
         </div>
         <div class="fee-other-content-text">
-          <p>各種カードご利用いただけます。</p>
-          <p>詳しくはお尋ね下さい。</p>
-          <p>領収書の発行もいたしております。</p>
-          <p>お気軽にお申し付けください。</p>
+          {{-- <div class="pc-only"> --}}
+          <p>各種カードご利用いただけます。詳しくはお尋ね下さい。</p>
+          {{-- <p>詳しくはお尋ね下さい。</p> --}}
+          <p>領収書の発行もいたしております。お気軽にお申し付けください。</p>
+          {{-- <p>お気軽にお申し付けください。</p> --}}
+          {{-- </div> --}}
         </div>
       </div>
       {{-- <div class="fee-other-content">
