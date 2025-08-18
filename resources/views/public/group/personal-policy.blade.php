@@ -5,6 +5,7 @@
 
   <!-- Pickup -->
 <!-- privacy policy -->
+<div class="personal-policy" style="background-color: rgba(255, 255, 255, 0.9);width: 100%;">
 <div style="max-width: 56rem; margin: 0 auto; padding: 2rem 1rem; width: 100%;">
   <h2 style="font-size: clamp(1.5rem, 5vw, 1.875rem); font-weight: 700; text-align: center; margin-bottom: 3rem;">個人情報保護方針</h2>
   <p style="white-space: pre-line; text-align: left; font-size: clamp(1rem, 4vw, 1.125rem); line-height: 1.75; padding: 0 1rem;">
@@ -24,5 +25,6 @@
 
     お気軽にご利用下さい。
   </p>
+</div>
 </div>
 </x-public-front-layout>
