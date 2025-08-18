@@ -126,7 +126,7 @@
             </div>
             <div class="mypage-container-main-mypage-content-info">
               <div class="mypage-container-main-mypage-content-info-title">
-                <img src="{{ asset('assets/img/member.png') }}" alt="現在のポイント">
+                <img src="{{ asset('assets/img/point.png') }}" alt="現在のポイント">
                 <span>現在のポイント</span>
               </div>
               <div class="mypage-container-main-mypage-content-info-point">
@@ -204,7 +204,7 @@
             </div>
             <div class="mypage-container-main-mypage-content-sp-member">
               <div class="mypage-container-main-mypage-content-sp-title">
-                <img src="{{ asset('assets/img/member.png') }}" alt="会員情報">
+                <img src="{{ asset('assets/img/info.png') }}" alt="会員情報">
                 <span>会員情報</span>
               </div>
               <div class="mypage-container-main-mypage-content-sp-member-content">
@@ -226,7 +226,7 @@
             </div>
             <div class="mypage-container-main-mypage-content-sp-point">
               <div class="mypage-container-main-mypage-content-sp-title">
-                <img src="{{ asset('assets/img/member.png') }}" alt="現在のポイント">
+                <img src="{{ asset('assets/img/point.png') }}" alt="現在のポイント">
                 <span>現在のポイント</span>
               </div>
               <div class="mypage-container-main-mypage-content-sp-point-content">

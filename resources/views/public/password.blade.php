@@ -97,7 +97,7 @@
           </div>
           <div class="password-container-main-content" >
             <div class="password-container-main-content-title">
-              <img src="{{asset('assets/img/member.png')}}" alt="会員情報">
+              <img src="{{asset('assets/img/password.png')}}" alt="会員情報">
               <span>パスワード変更</span>
             </div>
             {{-- <div class="member-container-main-content-form"> --}}
