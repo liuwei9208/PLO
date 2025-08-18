@@ -5,7 +5,7 @@
 @use '../global/utils';
 
 .ranking {
-  background-color: #fff;
+  background-color: rgba(#fff, 0.9);
   // padding: 60px 0;
   @media #{media-query(sm)} {
     padding: 25px 0;

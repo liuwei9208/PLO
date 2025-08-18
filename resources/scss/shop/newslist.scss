@@ -5,7 +5,7 @@
 @use '../global/utils';
 
 .news-list {
-  background-color: #fff;
+  background-color: rgba(#fff, 0.9);
   // padding: 40px 20px;
   
   @media #{media-query(sm)} {
