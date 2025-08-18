@@ -10,9 +10,10 @@
     left: 0;
     top: 0;
     height: 100vh;
-    width: 280px;
+    width: 290px;
     z-index: 30;
     display: none;
+    // overflow:scroll;
 }
 
 @media #{media-query(lg)} {
@@ -90,22 +91,25 @@
 
 .pg-phone { 
     position: relative; 
-    width: 250px; 
-    height: 380px; 
+    width: 250px;
+    // aspect-ratio: 250/400;
+    // height: 380px; 
     margin: 0 auto;
 }
 .pg-phone__frame { 
     position: absolute; 
     inset: 0; 
     width: 250px; 
-    height: 400px; 
+    // height: 400px; 
+    aspect-ratio: 357/667;
     pointer-events: none; 
+    z-index: 100;
 }
 .pg-phone__content { 
     position: relative; 
     z-index: 1;
     height: 100%; 
-    padding: 40px 12px 0 12px; 
+    padding: 10px 12px 0 12px; 
 }
 
 .pg-phone__banner { 
@@ -129,10 +133,12 @@
 .pg-phone__banner-item { 
     min-width: 225px; 
     // width:220px;
-    height: 100%; 
+    // height: 100%; 
+    aspect-ratio: 357/710;
     display: flex; 
+    z-index: 10;
 }
-.pg-phone__banner-item img { width: 100%; height: 100%; border: 0; }
+.pg-phone__banner-item img { width: 100%; height: 100%; border: 0; z-index: 10;}
 .pg-phone__iframe { width: 100%; height: 100%; border: 0; pointer-events: none; }
 
 /* xlink button removed */

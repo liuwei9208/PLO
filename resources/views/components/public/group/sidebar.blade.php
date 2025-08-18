@@ -3,6 +3,7 @@
     'shizuku' => [
       'name' => 'Shizuku',
       'japanese' => '雫',
+      'description' => 'ハイグレードヘルス',
       'logo' => 'shizuku-logo.png',
       'link' => route('public.shop.home', ['shop' => 'shizuku']),
       'banner' => 'shizuku.png',
@@ -12,6 +13,7 @@
     'miyabi' => [
       'name' => 'Miyabi',
       'japanese' => '雅',
+      'description' => '人妻ヘルス',
       'logo' => 'miyabi-logo.png',
       'link' => route('public.shop.home', ['shop' => 'miyabi']),
       'banner' => 'miyabi.png',
@@ -21,6 +23,7 @@
     'pussycat' => [
       'name' => 'Pussycat',
       'japanese' => 'プッシーキャット',
+      'description' => 'エンターテイメントヘルス',
       'logo' => 'pussycat-logo.png',
       'link' => route('public.shop.home', ['shop' => 'pussycat']),
       'banner' => 'pussycat.png',
@@ -30,6 +33,7 @@
     'en' => [
       'name' => 'En',
       'japanese' => '艶',
+      'description' => '素人系人妻ヘルス',
       'logo' => 'en-logo.png',
       'link' => route('public.shop.home', ['shop' => 'en']),
       'banner' => 'en.png',
@@ -39,6 +43,7 @@
     'shiroganeze' => [
       'name' => 'Siroganeze',
       'japanese' => 'シロガネーゼ',
+      'description' => '大人の回春メンズエステ',
       'logo' => 'shiroganeze-logo.png',
       'link' => route('public.shop.home', ['shop' => 'shiroganeze']),
       'banner' => 'shiroganeze.png',
@@ -48,6 +53,7 @@
     'lovestory' => [
       'name' => 'Love Story',
       'japanese' => 'ラブストーリー',
+      'description' => '育成型ヘルス',
       'logo' => 'lovestory-logo.png',
       'link' => route('public.shop.home', ['shop' => 'lovestory']),
       'banner' => 'lovestory.png',
@@ -72,6 +78,7 @@
             <div class="pg-fixed-sidebar__shop-label">
                 <span class="pg-fixed-sidebar__shop-label-name">{{ strtoupper($shopNav['name']) }}</span>
                 <span class="pg-fixed-sidebar__shop-label-japanese">{{ $shopNav['japanese'] }}</span>
+                <span class="pg-fixed-sidebar__shop-label-name">{{ $shopNav['description'] }}</span>
             </div>
           </a>
         @endforeach
