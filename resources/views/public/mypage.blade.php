@@ -141,7 +141,7 @@
                       {{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y年m月d日') : '' }}
                     </span>
                     <span class="mypage-container-main-mypage-content-info-point-value-history-point">
-                      {{ $history->point_pay }}pt
+                      {{ $history->point_use }}pt
                     </span>
                     <span class="mypage-container-main-mypage-content-info-point-value-history-shop">
                       （{{ $history->shop_name }}）
@@ -176,7 +176,7 @@
                       遊んだ女の子
                     </span>
                     <span class="mypage-container-main-mypage-content-history-content-item-info-value">
-                      {{ $shop_history->cast_name }}
+                      {{ $shop_history->casts_name }}
                     </span>
                   </div>
                   <div class="mypage-container-main-mypage-content-history-content-item-review">

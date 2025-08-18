@@ -665,9 +665,13 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $histories = [];
         if ($member) {
             // $member = Member::find($id);
-            $today_point = Point::where('user_id', $member->id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
-                          ->where('type', 3)
-                          ->sum('point');
+            // $today_point = Point::where('user_id', $member->id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
+            //               ->where('type', 3)
+            //               ->sum('point');
+            $point_pay = Point::where('user_id', $member->id)->where('type', 3)->sum('point');
+            $point_use = Point::where('user_id', $member->id)->where('type', 5)->sum('point');
+            $today_point = $point_pay - $point_use;
+            
             $histories = History::where('user_id', $member->id)
                           ->whereIn('name', ['来店', 'PT有効期限切れ'])
                           ->orderBy('created_at', 'desc')
