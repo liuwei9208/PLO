@@ -201,13 +201,16 @@ class MemberController extends Controller{
     }
     $histories = null;
     if ( $member ) {
-      $maxDate = Point::where('user_id', $member->id)->where('type', 3)->max('created_at');
-      // dd($maxDate);
-      if ($maxDate){
-        $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
-      }else{
-        $member->pay = 0;
-      }
+      // $maxDate = Point::where('user_id', $member->id)->where('type', 3)->max('created_at');
+      // // dd($maxDate);
+      // if ($maxDate){
+      //   $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
+      // }else{
+      //   $member->pay = 0;
+      // }
+      $point_pay = Point::where('user_id', $member->id)->where('type', 3)->sum('point');
+      $point_use = Point::where('user_id', $member->id)->where('type', 5)->sum('point');
+      $member->pay = $point_pay - $point_use;
       // $member->pay = Point::where('user_id', $member->id)->where('type', 3)->where('created_at', '>=', $maxDate)->sum('point');
       $histories = History::where('user_id', $member->id)->whereIn('name', ['来店', 'PT有効期限切れ'])->orderBy('created_at', 'desc')->orderBy('id', 'desc')->get();
       if ( $histories ) {
