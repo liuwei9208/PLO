@@ -124,8 +124,12 @@
     </div>
     <div class="fee-other">
       <div class="fee-sub-bar --{{ $shop->slug }}"></div>
-      <div class="fee-other-title">
+      <div class="fee-other-title pc-only">
         <span>お支払いは現金の他、各種クレジットカードの利用が可能です。</span>
+      </div>
+      <div class="fee-other-title sp-only">
+        <span>お支払いは現金の他、</span>
+        <span>各種クレジットカードの利用が可能です。</span>
       </div>
       <div class="fee-other-content">
         <div class="fee-other-content-bank">
