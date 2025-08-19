@@ -8,6 +8,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  display: block;
   z-index: -500;
   width: 100%;
   @media #{media-query(lg)} {

@@ -60,16 +60,58 @@ document.addEventListener('DOMContentLoaded', function() {
   // }
 })
 window.addEventListener('load', () => {
+  resizeModule();
+  // const mv = document.querySelector('.mv');
+  // const body = document.querySelector('body');
+  // const header = document.querySelector('.header');
+
+  // if (mv) {
+  //   console.log({mv});
+  //   console.log(body.clientWidth);
+  //   console.log(mv.offsetWidth);
+  //   console.log(mv.clientWidth);
+  //   console.log(header.offsetHeight);
+  //   let logo_height = 0;
+  //   // const logo = document.querySelector('.header-logo');
+  //   // if (logo) {
+  //   //   logo_height = logo.offsetHeight;
+  //   // }
+  //   // const draw = document.querySelector('.drawer-toggle');
+  //   // if (draw) {
+  //   //   const draw_height = draw.offsetHeight;
+  //   //   console.log({draw_height});
+  //   //   if (logo_height > draw_height) {
+  //   //     draw.style.top = `${logo_height - draw_height}px`;
+  //   //   }
+  //   // }
+  //   // if ( body.clientWidth < 768){
+  //   //   mv.style.width = `${body.clientWidth}px`;
+
+  //   // }
+  //   console.log({logo_height});
+  //   // console.log(logo.clientHeight);
+  //   // mv.style.top = `${logo_height}px`;
+  //   const main = document.querySelector('.main');
+  //   if (main) {
+  //     console.log({main});
+  //     main.style.marginTop = `${mv.offsetHeight - header.offsetHeight}px`;
+  //   }
+  // }
+});
+window.addEventListener('resize', () => {
+  resizeModule();
+});
+function resizeModule() {
   const mv = document.querySelector('.mv');
   const body = document.querySelector('body');
   const header = document.querySelector('.header');
 
   if (mv) {
-    console.log({mv});
-    console.log(body.clientWidth);
-    console.log(mv.offsetWidth);
-    console.log(mv.clientWidth);
-    console.log(header.offsetHeight);
+    // console.log({mv});
+    // console.log(body.clientWidth);
+    // console.log(mv.offsetWidth);
+    // console.log(mv.clientWidth);
+    // console.log(header.offsetHeight);
     let logo_height = 0;
     // const logo = document.querySelector('.header-logo');
     // if (logo) {
@@ -87,17 +129,38 @@ window.addEventListener('load', () => {
     //   mv.style.width = `${body.clientWidth}px`;
 
     // }
-    console.log({logo_height});
+    // console.log({logo_height});
     // console.log(logo.clientHeight);
     // mv.style.top = `${logo_height}px`;
     const main = document.querySelector('.main');
     if (main) {
-      console.log({main});
-      main.style.marginTop = `${mv.offsetHeight - header.offsetHeight}px`;
+      // console.log({main});
+      // console.log(header.offsetHeight);
+      // console.log(body.clientHeight);
+      mv.style.top = `${header.offsetHeight}px`;
+      main.style.marginTop = `${mv.offsetHeight + header.offsetHeight}px`;
     }
   }
-});
 
+}
+window.addEventListener('scroll', () => {
+  // Get current scroll position
+  const scrollPosition = window.scrollY || window.pageYOffset;
+  // Get viewport height
+  const viewportHeight = window.innerHeight;
+  // Get total page height
+  const pageHeight = document.documentElement.scrollHeight;
+  
+  // Calculate percentage scrolled
+  const scrollPercentage = (scrollPosition / (pageHeight - viewportHeight)) * 100;
+  
+  // console.log({
+  //   scrollPosition,
+  //   viewportHeight, 
+  //   pageHeight,
+  //   scrollPercentage: Math.round(scrollPercentage)
+  // });
+});
 // Create thumbnail swiper for pagination
 const thumbsSwiper = new Swiper('.event-pagination', {
   slidesPerView: 'auto',

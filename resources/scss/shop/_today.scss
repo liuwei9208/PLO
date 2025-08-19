@@ -99,17 +99,20 @@
     font-family: $font-midashi-min;
     font-size: 36px;
     @media #{media-query(sm)} {
-      font-size: 16px;
-      padding: 10px;
-      gap: 20px;
+      font-size: 18px;
+      // padding: 10px;
+      gap: 0px;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
     }
     @media #{media-query(md)} {
-      font-size: 32px;
+      font-size: 20px;
       padding: 15px;
       gap: 40px;
     }
     @media #{media-query(lg)} {
-      font-size: 48px;
+      font-size: 21px;
       padding: 20px;
       gap: 50px;
     }
@@ -120,6 +123,7 @@
       gap: 10px;
       @media #{media-query(sm)} {
         gap: 10px;
+        padding: 10px 0;
       }
       @media #{media-query(md)} {
         gap: 15px;
@@ -128,29 +132,34 @@
         gap: 20px;
       }
       & img {
-        width: 48px;
-        height: 48px;
+        width: 21px;
+        height: 21px;
 
         @media #{media-query(sm)} {
           width: 16px;
           height: 16px;
         }
         @media #{media-query(md)} {
-          width: 32px;
-          height: 32px;
+          width: 21px;
+          height: 21px;
         }
       }
     }
     &-content {
       font-size: 16px;
       @media #{media-query(sm)} {
-        font-size: 14px;
+        font-size: 18px;
+        width: 100%;
+        border-top: 2px solid #000;
+        border-bottom: 2px solid #000;
+        padding: 10px 0;
+        
       }
       @media #{media-query(md)} {
-        font-size: 30px;
+        font-size: 20px;
       }
       @media #{media-query(lg)} {
-        font-size: 40px;
+        font-size: 21px;
       }
     }
   }

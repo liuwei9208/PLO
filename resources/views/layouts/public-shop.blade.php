@@ -34,11 +34,13 @@
     <x-age-verification-modal />
 
     <!-- Header -->
-    <x-public.shop.header :shop="$shop" />
+    {{-- <div class="header-container"> --}}
+      <x-public.shop.header :shop="$shop" />
 
-    <!-- Drawer -->
-    <x-public.shop.drawer :shop="$shop" />
-
+      <!-- Drawer -->
+      <x-public.shop.drawer :shop="$shop" />
+      {{-- <x-public.shop.mv :shop="$shop" /> --}}
+    {{-- </div> --}}
     <!-- Main -->
     <main class="main" id="main">
       {{ $slot }}

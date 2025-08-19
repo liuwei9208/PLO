@@ -131,13 +131,19 @@
         <div class="fee-other-content-bank">
           <img src="{{ asset('assets/img/shop/bank1.png') }}" alt="銀行">
         </div>
-        <div class="fee-other-content-text">
+        <div class="fee-other-content-text pc-only">
           {{-- <div class="pc-only"> --}}
           <p>各種カードご利用いただけます。詳しくはお尋ね下さい。</p>
           {{-- <p>詳しくはお尋ね下さい。</p> --}}
           <p>領収書の発行もいたしております。お気軽にお申し付けください。</p>
           {{-- <p>お気軽にお申し付けください。</p> --}}
           {{-- </div> --}}
+        </div>
+        <div class="fee-other-content-text sp-only">
+          <p>各種カードご利用いただけます。</p>
+          <p>詳しくはお尋ね下さい。</p>
+          <p>領収書の発行もいたしております。</p>
+          <p>お気軽にお申し付けください。</p>
         </div>
       </div>
       {{-- <div class="fee-other-content">
