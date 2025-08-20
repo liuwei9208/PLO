@@ -109,7 +109,8 @@
       </h2>
       <h3 class="today-title-sm title-font-sm">出勤情報</h3>
     </div>
-    <ul class="today-shops content-wrapper">
+    <div class="content-wrapper today-container">
+    <ul class="today-shops ">
       <li class="today-shops-item" data-shop="all">
         <span class="today-shops-item-text">
           <span class="today-shops-item-slug">SHOP ALL</span>
@@ -170,7 +171,7 @@
 
     </ul>
     {{-- <div class="content-wrapper"> --}}
-    <div class="today-casts content-wrapper">
+    <div class="today-casts ">
       @foreach($todayCasts as $todayCast)
         <a href="{{ route('public.shop.cast.profile', ['shop' => $todayCast->shop_slug, 'id' => $todayCast->id]) }}" class="today-casts-item --{{ $todayCast->shop_slug }}">
           <div class="today-casts-item-image --{{ $todayCast->shop_slug }}">
@@ -197,6 +198,7 @@
           </div>
         </a>
       @endforeach
+    </div>
     </div>
     {{-- </div> --}}
     <a href="{{ route('public.group.schedule') }}" class="today-more more-button more-button-title">もっと見る</a>

@@ -159,18 +159,34 @@
 
     }
   }
+  &-container{
+    border: 3px solid $border-color;
+    border-radius: 60px;
+    @media #{media-query(sm)} {
+      border-radius: 30px;
+    }
+    @media #{media-query(md)} {
+      border-radius: 40px;
+    }
+    @media #{media-query(lg)} {
+      margin: 50px auto 0;
+    }
 
+  }
   &-casts {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    padding-top: 55px;
     @media #{media-query(sm)} {
       grid-template-columns: repeat(2, 1fr);
       gap: 10px;
+      padding-top: 20px;
     }
     @media #{media-query(md)} {
       grid-template-columns: repeat(3, 1fr);
       gap: 10px;
+      padding-top: 45px;
     }
     
     &-item {
