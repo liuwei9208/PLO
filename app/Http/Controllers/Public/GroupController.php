@@ -732,11 +732,15 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $member = Auth::guard('member')->user();
         $token = Auth::guard('member')->user()->createToken('mypage')->plainTextToken;
         $history_id = $request->query('history_id');
+        $history = History::find($history_id);
+        $cast_id = $history->cast_id;
+        $cast = Cast::find($cast_id);
         if ($member) {
             return view('public.review', [
                 'member' => $member,
                 'token' => $token,
                 'history_id' => $history_id,
+                'cast' => $cast,
             ]);
         } else {
             return redirect('/');
