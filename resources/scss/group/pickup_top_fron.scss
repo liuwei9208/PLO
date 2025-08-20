@@ -541,17 +541,17 @@
      }
    }
    .pickup-content {
-    border: 3px solid $border-color;
-    border-radius: 60px;
-    @media #{media-query(sm)} {
-      border-radius: 30px;
-    }
-    @media #{media-query(md)} {
-      border-radius: 40px;
-    }
-    @media #{media-query(lg)} {
-      margin: 50px auto 0;
-    }
+    // border: 3px solid $border-color;
+    // border-radius: 60px;
+    // @media #{media-query(sm)} {
+    //   border-radius: 30px;
+    // }
+    // @media #{media-query(md)} {
+    //   border-radius: 40px;
+    // }
+    // @media #{media-query(lg)} {
+    //   margin: 50px auto 0;
+    // }
    }
    .pickup-list-wrapper {
     // border: 3px solid $border-color;
