@@ -4,6 +4,14 @@
 @use '../global/utils';
 @use '../mixins/text';
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
 .schedule {
   background-color: rgba(#fff, 0.9);
   @media #{media-query(sm)} {
@@ -230,7 +238,6 @@
 
     &-item {
       margin-bottom: 0;
-      
       a {
         display: flex;
         flex-direction: column;
@@ -244,9 +251,83 @@
           // padding: 5px;
         }
         &:hover {
-          transform: translateY(-15px) scale(1.08) rotate(2deg);
-          box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          // transform: translateY(-15px) scale(1.08) rotate(2deg);
+          // box-shadow: 0 25px 35px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.2);
+          // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+          transform: translateY(-15px) scale(1.08);
+          // box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 8px 25px rgba(0, 0, 0, 0.15);
+          animation: none; // Stop floating animation on hover
+          .schedule-person-info-photo {
+            img {
+              transform: scale(1.15);
+            }
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+              animation: shimmer 1.5s ease-in-out;
+            }
+            &.--pussycat {
+              border: 5px solid $shop-color-pussycat;
+            }
+            &.--shizuku {
+              border: 5px solid $shop-color-shizuku;
+            }
+            &.--miyabi {
+              border: 5px solid $shop-color-miyabi;
+            }
+            &.--en {
+              border: 5px solid $shop-color-en;
+            }
+            &.--shiroganeze {
+              border: 5px solid $shop-color-shiroganeze;
+            }
+            &.--lovestory {
+              border: 5px solid $shop-color-lovestory;
+            }
+    
+          }
+          .schedule-person-info-shop-working {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            animation: pulse 1s ease-in-out infinite;
+          }
+          .schedule-person-info-name {
+            transform: translateY(-5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+          .schedule-person-info-property {
+            transform: translateY(-3px);
+            opacity: 0.8;
+          }
+          .schedule-person-info-message {
+            transform: translateY(-2px);
+            opacity: 0.9;
+            &.--pussycat {
+              color: $shop-color-pussycat;
+             }
+             &.--shizuku {
+              color: $shop-color-shizuku;
+             }
+             &.--miyabi {
+              color: $shop-color-miyabi;
+             }
+             &.--en {
+              color: $shop-color-en;
+             }
+             &.--shiroganeze {
+              color: $shop-color-shiroganeze;
+             }
+             &.--lovestory {
+              color: $shop-color-lovestory;
+             }
+          }
+   
         }
       }
     }
@@ -256,12 +337,12 @@
     &-photo {
       width: 100%;
       height: 200%;
-      border-radius: 8px;
+      border-radius: 30px;
       overflow: hidden;
       transition: transform 0.3s ease;
       
       &:hover {
-        transform: scale(1.05);
+        // transform: scale(1.05);
       }
       
       img {

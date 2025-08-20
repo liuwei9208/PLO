@@ -108,7 +108,7 @@ function drawCastsSchedule(casts){
     castItem.classList.add('schedule-person-info-list-item');
     castItem.innerHTML = `
     <a href="${window.location.origin}/${cast.shop_slug}/cast/${cast.cast_id}">
-      <div class="schedule-person-info-photo">
+      <div class="schedule-person-info-photo --${cast.shop_slug}">
         <img src="${window.location.origin}/storage/${cast.gallery_1}" alt="${cast.cast_name}">
       </div>
       <div class="schedule-person-info-items">
@@ -121,7 +121,7 @@ function drawCastsSchedule(casts){
         <div class="schedule-person-info-property --${cast.shop_slug}">
           ${cast.age}歳/T.${cast.height} B.${cast.bust} W.${cast.waist} H.${cast.hip}
         </div>
-        <div class="schedule-person-info-message">
+        <div class="schedule-person-info-message --${cast.shop_slug}">
           ${cast.appeal_point == null ? '' : cast.appeal_point}
         </div>
       </div>
