@@ -128,43 +128,43 @@
       <li class="today-shops-item" data-shop="lovestory">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">ラブストーリー</span>          
-          <span class="today-shops-item-name">育成型ヘルス</span>
+          <span class="today-shops-item-text-slug">ラブストーリー</span>          
+          <span class="today-shops-item-text-name">育成型ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="pussycat">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">プッシーキャット</span>          
-          <span class="today-shops-item-name">エンターテイメントヘルス</span>
+          <span class="today-shops-item-text-slug">プッシーキャット</span>          
+          <span class="today-shops-item-text-name">エンターテイメントヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="en">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">艶</span>          
-          <span class="today-shops-item-name">素人系人妻ヘルス</span>
+          <span class="today-shops-item-text-slug">艶</span>          
+          <span class="today-shops-item-text-name">素人系人妻ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="miyabi">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">雅</span>          
-          <span class="today-shops-item-name">人妻ヘルス</span>
+          <span class="today-shops-item-text-slug">雅</span>          
+          <span class="today-shops-item-text-name">人妻ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="shizuku">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">雫</span>          
-          <span class="today-shops-item-name">ハイグレードヘルス</span>
+          <span class="today-shops-item-text-slug">雫</span>          
+          <span class="today-shops-item-text-name">ハイグレードヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="shiroganeze">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">シロガネーゼ</span>          
-          <span class="today-shops-item-name">大人の回春メンズエステ</span>
+          <span class="today-shops-item-text-slug">シロガネーゼ</span>          
+          <span class="today-shops-item-text-name">大人の回春メンズエステ</span>
         </span>
       </li>
 

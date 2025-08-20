@@ -461,11 +461,11 @@
 
       // 初期状態での微細なアニメーション
       &:nth-child(odd) {
-        animation: subtleFloat 3s ease-in-out infinite;
+        // animation: subtleFloat 3s ease-in-out infinite;
       }
 
       &:nth-child(even) {
-        animation: subtleFloat 3s ease-in-out infinite 1.5s;
+        // animation: subtleFloat 3s ease-in-out infinite 1.5s;
       }
 
       a {
@@ -493,13 +493,13 @@
         }
 
         &:hover {
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-          transform: translateY(-8px) scale(1.02);
-          border-color: #007bff;
+          // box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+          // transform: translateY(-8px) scale(1.02);
+          // border-color: #007bff;
 
-          &::before {
-            left: 100%;
-          }
+          // &::before {
+          //   left: 100%;
+          // }
         }
       }
 
