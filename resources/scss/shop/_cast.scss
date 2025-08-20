@@ -7,6 +7,7 @@
 
 
 .container-prof {
+  position: relative;
   background-color: #fff;
   @media #{media-query(sm)} {
     padding: 25px 0;

@@ -47,7 +47,7 @@
                 @break
               @case('miyabi')
                 <div class="shop-group-item-logo">
-                  <img src="{{ asset('assets/img/logo/miyabi-logo.png') }}" alt="miyabi">
+                  <img src="{{ asset('assets/img/logo/miyabi-logo-m.png') }}" alt="miyabi">
                 </div>
                 <div class="shop-group-item-text">
                   <div class="shop-group-item-text-content">
@@ -57,7 +57,7 @@
                 @break
               @case('en')
                 <div class="shop-group-item-logo">
-                  <img src="{{ asset('assets/img/logo/en-logo-r.png') }}" alt="en">
+                  <img src="{{ asset('assets/img/logo/en-logo-m.png') }}" alt="en">
                 </div>
                 <div class="shop-group-item-text">
                   <div class="shop-group-item-text-content">

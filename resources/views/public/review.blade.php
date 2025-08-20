@@ -2,6 +2,12 @@
   <div class="review-container">
       <div class="max-w-2xl mx-auto p-4 bg-white border rounded shadow mt-6">
       <form x-data="reviewForm()" @submit.prevent="submitReview">
+          <div class="flex items-center mb-4">
+            <label class="w-32 font-semibold text-sm">遊んだ女の子</label>
+            <label class="flex items-center mr-2">{{ $cast->name }}</label>
+
+          </div>
+          
           <!-- 女の子満足度 -->
           <div class="flex items-center mb-4">
               <label class="w-32 font-semibold text-sm">女の子満足度</label>

@@ -452,8 +452,10 @@
       margin-bottom: 0;
       width: 100%;
       position: relative;
-      transform: translateY(0);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      background-color: rgba(#fff, 0.9);
+
+      // transform: translateY(0);
+      // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
       @media #{media-query(sm)} {
         // max-width: 173px;
@@ -461,11 +463,11 @@
 
       // 初期状態での微細なアニメーション
       &:nth-child(odd) {
-        animation: subtleFloat 3s ease-in-out infinite;
+        // animation: subtleFloat 3s ease-in-out infinite;
       }
 
       &:nth-child(even) {
-        animation: subtleFloat 3s ease-in-out infinite 1.5s;
+        // animation: subtleFloat 3s ease-in-out infinite 1.5s;
       }
 
       a {
@@ -475,35 +477,78 @@
         // padding: 15px;
         // border: 1px solid #ddd;
         // border-radius: 8px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         height: 100%;
-        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        // background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
         position: relative;
         overflow: hidden;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: -100%;
-          width: 100%;
-          height: 100%;
-          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-          transition: left 0.6s ease;
-        }
+        // background-color: rgba(#fff, 0.9);
+        // &::before {
+        //   content: '';
+        //   position: absolute;
+        //   top: 0;
+        //   left: -100%;
+        //   width: 100%;
+        //   height: 100%;
+        //   // background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        //   transition: left 0.6s ease;
+        // }
 
         &:hover {
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-          transform: translateY(-8px) scale(1.02);
-          border-color: #007bff;
+          // background-color: rgba(#fff, 0.9);
+          // box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+          // transform: translateY(-8px) scale(1.02);
+          // border-color: #007bff;
 
-          &::before {
-            left: 100%;
-          }
+          // &::before {
+          //   left: 100%;
+          // }
         }
       }
 
       &:hover {
+        transform: translateY(-15px) scale(1.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 8px 25px rgba(0, 0, 0, 0.15);
+        // animation: none; // Stop floating animation on hover
+        // background-color: rgba(255, 255, 255, 0.9);
+        .schedule-person-info-photo {
+          img {
+            transform: scale(1.15);
+          }
+ 
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 1.5s ease-in-out;
+          }
+          &.--pussycat {
+            border: 5px solid $shop-color-pussycat;
+          }
+          &.--shizuku {
+            border: 5px solid $shop-color-shizuku;
+          }
+          &.--miyabi {
+            border: 5px solid $shop-color-miyabi;
+          }
+          &.--en {
+            border: 5px solid $shop-color-en;
+          }
+          &.--shiroganeze {
+            border: 5px solid $shop-color-shiroganeze;
+          }
+          &.--lovestory {
+            border: 5px solid $shop-color-lovestory;
+          }
+         }
+
+
+
+        /*
         transform: translateY(-8px) scale(1.02);
         z-index: 10;
 
@@ -593,6 +638,8 @@
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
         }
+
+        */
       }
     }
   }
@@ -601,9 +648,9 @@
     &-photo {
       width: 100%;
       // height: 358%;
-      border-radius: 8px;
+      border-radius: 30px;
       overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       @media #{media-query(sm)} {
         // height: 189px;
       }
@@ -618,7 +665,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
     }
 
@@ -637,20 +684,20 @@
       color: $white;
       // font-size: 16px;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       overflow: hidden;
 
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        transition: left 0.6s ease;
-      }
+      // &::before {
+      //   content: '';
+      //   position: absolute;
+      //   top: 0;
+      //   left: -100%;
+      //   width: 100%;
+      //   height: 100%;
+      //   // background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      //   transition: left 0.6s ease;
+      // }
 
       @media #{media-query(sm)} {
         font-size: 14px;
@@ -738,7 +785,7 @@
 
     &-property {
       font-size: 14px;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
       &.--pussycat {
         color: $shop-color-pussycat;
@@ -784,7 +831,7 @@
       text-overflow: ellipsis;
       height: 42px;
       color: #000; // 14px * 1.5 * 2行
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       @media #{media-query(sm)}{
         font-size:13px;
       }
@@ -993,6 +1040,7 @@
   }
 }
 
+/*
 // タッチデバイスでのホバー効果改善
 @media (hover: none) and (pointer: coarse) {
   .schedule-person-info-list-item {
@@ -1027,7 +1075,7 @@
     }
   }
 }
-
+*/
 .search-result-pagination {
   @media #{media-query(sm)} {
     margin: 20px auto;
