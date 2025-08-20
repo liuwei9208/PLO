@@ -146,10 +146,16 @@
 
 @media #{media-query(lg)} {
     body .main {
-        margin-left: 280px; 
+        margin-left: 300px; 
     }
     .mv {
-        left: 280px !important;
-        width: calc(100% - 280px);
+        left: 300px !important;
+        width: calc(100% - 300px);
+    }
+    .footer{
+        // position: relative;
+        // left: 300px !important;
+        margin-left: 300px;
+        width: calc(100% - 300px);
     }
 }
