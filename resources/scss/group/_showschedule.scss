@@ -485,14 +485,16 @@
         display: flex;
         flex-direction: column;
         gap: 15px;
+        transition: all 0.3s ease;
+        
         // padding: 15px;
         // border: 1px solid #ddd;
         // border-radius: 8px;
         // transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         height: 100%;
         // background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-        position: relative;
-        overflow: hidden;
+        // position: relative;
+        // overflow: hidden;
         // background-color: rgba(#fff, 0.9);
         // &::before {
         //   content: '';
@@ -520,7 +522,7 @@
       &:hover {
         transform: translateY(-15px) scale(1.08);
         // box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 8px 25px rgba(0, 0, 0, 0.15);
-        // animation: none; // Stop floating animation on hover
+        animation: none; // Stop floating animation on hover
         // background-color: rgba(255, 255, 255, 0.1);
         .schedule-person-info-photo {
           img {
@@ -558,9 +560,9 @@
          }
 
          .schedule-person-info-shop-working {
-            // transform: scale(1.1);
+            transform: scale(1.1);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            // animation: pulse 1s ease-in-out infinite;
+            animation: pulse 1s ease-in-out infinite;
          }
          .schedule-person-info-name{
           transform: translateY(-5px);
