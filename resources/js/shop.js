@@ -140,6 +140,15 @@ function resizeModule() {
       mv.style.top = `${header.offsetHeight}px`;
       main.style.marginTop = `${mv.offsetHeight + header.offsetHeight}px`;
     }
+  }else{
+    console.log({header});
+    if (header) {
+      console.log(header.offsetHeight);
+      const main = document.querySelector('.main');
+      if (main) {
+        main.style.marginTop = `${header.offsetHeight}px`;
+      }
+    }
   }
 
 }
