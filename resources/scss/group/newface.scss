@@ -50,7 +50,7 @@
  .newface {
    width: 100%;
   //  background-color: rgba(#F8F5F5,.9);
-   background-color: rgba(#FFF,.9);
+   background-color: rgba(#FFF,1);
    position: relative;
    @media #{media-query(sm)} {
      padding: 20px 0;
@@ -77,6 +77,7 @@
       z-index: 1;
       width: 580px;
       margin: 0 auto;
+      background-color: #fff;
       // background-color: #F8F5F5;
       // background-color: rgba(#FFF,0.9);
       @media #{media-query(sm)} {
