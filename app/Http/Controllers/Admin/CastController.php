@@ -255,62 +255,61 @@ class CastController extends Controller
         $qas = Qa::where('cast_id', $id)->with('question')->orderBy('rank', 'asc')->get();
         $cast = Cast::find($id);
         $imagePath = storage_path('app/public/' . $cast->gallery_1);
-        if (file_exists($imagePath) && ($cast->gallery_1 !== "" || $cast->gallery_1 !== null)) {
+        if (file_exists($imagePath) && ($cast->gallery_1 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_1_width = $width;
             $cast->gallery_1_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_2);
-        if (file_exists($imagePath) && ($cast->gallery_2 !== "" || $cast->gallery_2 !== null)) {
+        if (file_exists($imagePath) && ($cast->gallery_2 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_2_width = $width;
             $cast->gallery_2_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_3);
-        if (file_exists($imagePath) && ($cast->gallery_3 !== "" || $cast->gallery_3 !== null)) {
+        if (file_exists($imagePath) && ($cast->gallery_3 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_3_width = $width;
             $cast->gallery_3_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_4);
-        if (file_exists($imagePath) && ($cast->gallery_4 !== "" || $cast->gallery_4 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_4 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_4_width = $width;
             $cast->gallery_4_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_5);
-        dd($imagePath, $cast->gallery_5);
-        if (file_exists($imagePath) && ($cast->gallery_5 !== "" || $cast->gallery_5 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_5 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_5_width = $width;
             $cast->gallery_5_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_6);
-        if (file_exists($imagePath) && ($cast->gallery_6 !== "" || $cast->gallery_6 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_6 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_6_width = $width;
             $cast->gallery_6_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_7);
-        if (file_exists($imagePath) && ($cast->gallery_7 !== "" || $cast->gallery_7 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_7 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_7_width = $width;
             $cast->gallery_7_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_8);
-        if (file_exists($imagePath) && ($cast->gallery_8 !== "" || $cast->gallery_8 !== null)) {
+        if (file_exists($imagePath) && ($cast->gallery_8 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_8_width = $width;
             $cast->gallery_8_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_9);
-        if (file_exists($imagePath) && ($cast->gallery_9 !== "" || $cast->gallery_9 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_9 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_9_width = $width;
             $cast->gallery_9_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_10);
-        if (file_exists($imagePath) && ($cast->gallery_10 !== "" || $cast->gallery_10 !== null)) {
+        if (file_exists($imagePath) && ( $cast->gallery_10 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_10_width = $width;
             $cast->gallery_10_height = $height;
