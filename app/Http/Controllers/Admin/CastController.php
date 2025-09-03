@@ -279,6 +279,7 @@ class CastController extends Controller
             $cast->gallery_4_height = $height;
         }
         $imagePath = storage_path('app/public/' . $cast->gallery_5);
+        dd($imagePath, $cast->gallery_5);
         if (file_exists($imagePath) && ($cast->gallery_5 !== "" || $cast->gallery_5 !== null)) {
             [$width, $height] = getimagesize($imagePath);
             $cast->gallery_5_width = $width;
