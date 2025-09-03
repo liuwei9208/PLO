@@ -131,4 +131,12 @@ class OptionRSController extends Controller
 
         return redirect('/admin/option_rs');
     }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $optionrs = OptionRS::find($id);
+        $optionrs->delete();
+
+        return redirect('/admin/option_rs')->with('success', __('message.admin_option_rs_delete_success'));
+    }
 }

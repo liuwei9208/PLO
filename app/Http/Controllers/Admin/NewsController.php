@@ -64,10 +64,16 @@ class NewsController extends Controller
       // $event = Event::findOrFail($id);
       // dd($event);
       $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
+      $news = News::findOrFail($id);
+      $imagePath = storage_path('app/public/' . $news->thumbnail);
+      [$width, $height] = getimagesize($imagePath);
+      // dd($width, $height);
         return view('admin.news.detail', [
             'news' => News::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
             'token' => $token,
+            'width' => $width,
+            'height' => $height,
         ]);
     }
 

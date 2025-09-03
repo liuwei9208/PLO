@@ -207,7 +207,7 @@
 
       </div>
       <div class="p-4 border-t border-gray-100 dark:border-gray-800 sm:p-6">
-        <div class="flex gap-6">
+        <div class="flex gap-6 flex-col items-center justify-center">
           <label
             class="event-gallery-item dropzone flex items-center justify-center hover:border-brand-500! dark:hover:border-brand-500! rounded-xl border border-dashed! border-gray-300! bg-gray-50 p-7 lg:p-10 dark:border-gray-700! dark:bg-gray-900 dz-clickable"
             for="{{ 'file_1' }}"
@@ -236,6 +236,7 @@
               </svg>
             </button>
           </label>
+          <span class="text-sm font-medium text-gray-700 dark:text-gray-400 justify-center items-center" id="image-size"></span>
         </div>
       </div>
     </div>
@@ -337,12 +338,21 @@ document.addEventListener('DOMContentLoaded', function () {
       imgEl.className = 'w-full h-full object-cover'
       img.appendChild(imgEl)
 
+      const imageForSize = new Image();
+      imageForSize.onload = () => {
+        console.log('Width:', imageForSize.width);
+        console.log('Height:', imageForSize.height);
+        document.getElementById('image-size').innerHTML = `${imageForSize.width}x${imageForSize.height}`;
+      };
+      imageForSize.src = src;
+
       removeBtn.addEventListener('click', (e) => {
         e.preventDefault()
         input.value = null
         img.innerHTML = ''
         item.classList.remove('has-img')
         URL.revokeObjectURL(src)
+        document.getElementById('image-size').innerHTML = '';
       }, { once: true })
     })
   })

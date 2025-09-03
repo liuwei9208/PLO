@@ -130,4 +130,12 @@ class CourseController extends Controller
 
         return redirect('/admin/course');
     }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $course = CourseGroup::find($id);
+        $course->delete();
+
+        return redirect('/admin/course')->with('success', __('message.admin_course_delete_success'));
+    }
 }
