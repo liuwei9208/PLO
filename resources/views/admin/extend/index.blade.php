@@ -15,6 +15,11 @@
         </a>
       </div>
     </div>
+    @if (session('success'))
+      <div class="alert alert-success" style="position: relative; padding: 1rem; margin-bottom: 1rem; border: 1px solid #badbcc; border-radius: 0.375rem; color: #0f5132; background-color: #d1e7dd;">
+        {{ session('success') }}
+      </div>
+    @endif
 
     <!-- Search & Limit -->
     <form
@@ -249,7 +254,7 @@
       <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         @if ($page > 1)
           <a
-            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
+            href="{{ route('admin.extend.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
             class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
@@ -275,7 +280,7 @@
             </span>
           @else
             <a
-              href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $i])) }}"
+              href="{{ route('admin.extend.index', array_merge(request()->all(), ['page' => $i])) }}"
               class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               {{ $i }}
@@ -285,7 +290,7 @@
 
         @if ($page < $pages)
           <a
-            href="{{ route('admin.diary.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
+            href="{{ route('admin.extend.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
             class="flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">

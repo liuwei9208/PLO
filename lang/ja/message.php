@@ -17,5 +17,9 @@ return [
     'admin_pickup_update_success' => 'ピックアップを更新しました',
     'admin_pickup_error' => '同じキャストは複数選択できません。',
     'member_email_exists' => 'このメールアドレスはすでに登録されています。',
+    'admin_course_delete_success' => 'コースを削除しました',
+    'admin_option_rs_delete_success' => 'オプションを削除しました',
+    'admin_extend_delete_success' => '延長を削除しました',
+    'admin_appoint_delete_success' => '予約を削除しました',
 ];
 ?>

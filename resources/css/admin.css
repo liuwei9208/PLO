@@ -17,7 +17,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 1 / 1;
-  width: calc((100% - 96px) / 5);
+  /* width: calc((100% - 96px) / 5); */
   min-height: auto !important;
 }
 .cast-gallery-item.has-img {

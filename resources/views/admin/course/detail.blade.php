@@ -127,13 +127,13 @@
       >
         保存する
       </button>
-      <!-- <button
+      <button
         type="button"
         id="deleteModalOpener"
         class="inline-flex items-center gap-2 px-4 py-3.5 text-sm font-medium text-white transition rounded-lg bg-error-500 shadow-theme-xs"
       >
         削除する
-      </button> -->
+      </button>
     </div>
   </form>
 
@@ -149,7 +149,7 @@
       <div class="flex flex-col px-2 overflow-y-auto modal-content custom-scrollbar">
         <div class="modal-header">
           <h5 class="mb-2 font-semibold text-gray-800 modal-title text-theme-xl dark:text-white/90 lg:text-2xl" id="eventModalLabel">
-            オプションを削除
+            コースを削除
           </h5>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             本当に削除してよろしいでしょうか？

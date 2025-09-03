@@ -130,4 +130,12 @@ class ExtendController extends Controller
 
         return redirect('/admin/extend');
     }
+
+    public function destroy(string $id): RedirectResponse
+    {
+        $extend = Extend::find($id);
+        $extend->delete();
+
+        return redirect('/admin/extend')->with('success', __('message.admin_extend_delete_success'));
+    }
 }

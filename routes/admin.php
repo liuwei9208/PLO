@@ -277,6 +277,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('add', [CourseController::class, 'store']);
         Route::get('{id}', [CourseController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [CourseController::class, 'update']);
+        Route::delete('{id}', [CourseController::class, 'destroy']);
     });
 
     Route::prefix('extend')->name('extend.')->group(function () {
@@ -285,6 +286,7 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('add', [ExtendController::class, 'store']);
         Route::get('{id}', [ExtendController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [ExtendController::class, 'update']);
+        Route::delete('{id}', [ExtendController::class, 'destroy']);
     });
 
     Route::prefix('option_rs')->name('option_rs.')->group(function () {
@@ -293,10 +295,12 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::post('add', [OptionRSController::class, 'store']);
         Route::get('{id}', [OptionRSController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [OptionRSController::class, 'update']);
+        Route::delete('{id}', [OptionRSController::class, 'destroy']);
     });
     Route::prefix('appoint')->name('appoint.')->group(function () {
         Route::get('/', [AppointController::class, 'index'])->name('index');
         Route::get('{id}', [AppointController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [AppointController::class, 'update']);
+        Route::delete('{id}', [AppointController::class, 'destroy']);
     });
 });

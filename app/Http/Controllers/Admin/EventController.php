@@ -93,11 +93,18 @@ class EventController extends Controller
             $shop = null;
         }
         $token =Auth::guard('web')->user()->createToken('news')->plainTextToken;
+
+        $event = Event::findOrFail($id);
+        $imagePath = storage_path('app/public/' . $event->thumbnail);
+        [$width, $height] = getimagesize($imagePath);
+        // dd($width, $height);
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
             'shop' => $shop,
             'token' => $token,
+            'width' => $width,
+            'height' => $height,
         ]);
     }
 
