@@ -26,7 +26,7 @@ class WorkController extends Controller
     public function showCastsSchedule(Request $request): JsonResponse
     {
         try {
-            Log::info('リクエストデータ:', $request->all());
+            // Log::info('リクエストデータ:', $request->all());
 
             if (!$request->expectsJson()) {
                 return response()->json([
@@ -36,7 +36,6 @@ class WorkController extends Controller
             }
 
             $user = Auth::user();
-            Log::info($user);
             $date = $request->input('date') ? Carbon::parse($request->input('date'))->startOfDay() : Carbon::today()->startOfDay();
 
             $endDate = $date->copy()->addDays(6)->endOfDay();
@@ -47,8 +46,6 @@ class WorkController extends Controller
             ->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
 
             $shop = $request->input('shop');
-            Log::info("1111");
-            Log::info($shop);
             if ($user->hasRole('admin')) {
                 if ($shop) {
                     $query = Cast::where('shop_id', $shop);
@@ -71,6 +68,7 @@ class WorkController extends Controller
                 ->take($limit)
                 // ->orderBy('created_at', 'desc')
                 // ->orderBy('id', 'desc')
+                ->where('is_public', 1)
                 ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                 ->get(['id', 'name', 'gallery_1']);
 
@@ -86,12 +84,15 @@ class WorkController extends Controller
                 $castData['schedule'] = [];
                 for ($i = 0; $i < 7; $i++) {
                     // Attendance for this cast on this day
+                    $start_date = Carbon::createFromDate($dates[$i])->toDateString();
+                    $end_date = Carbon::createFromDate($dates[$i])->toDateString();
+                    // $attendance = Attendance::where('cast_id', 258)
                     $attendance = Attendance::where('cast_id', $cast->id)
                         ->where('is_public', 1)
-                        ->whereDate('start_datetime', '>=', $dates[$i])
-                        ->whereDate('end_datetime', '<=', $dates[$i+1])
+                        ->whereDate('start_datetime', '>=', $start_date)
+                        ->whereDate('end_datetime', '<=', $end_date)
                         ->first();
-
+                    // dd($attendance);
                     $attendance_id = $attendance ? $attendance->id : null;
                     $reservation_count = 0;
                     if ($attendance_id) {
@@ -108,6 +109,7 @@ class WorkController extends Controller
             }
 
             Log::info($result);
+            // dd($result);
             return response()->json([
                 'status' => 'success',
                 'casts' => $result,
