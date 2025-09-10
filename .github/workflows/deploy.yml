@@ -21,7 +21,7 @@ jobs:
           password: ${{ secrets.FTP_TEST_PASSWORD }}
           server-dir: ${{ secrets.FTP_TEST_PATH }}
           local-dir: ./   # アップロード対象。必要に応じて public/ や build/ に変更可能
-          method: ftp
+          method: ftps
           exclude: |
             **/.git*
             **/.github*
