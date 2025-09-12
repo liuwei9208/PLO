@@ -17,7 +17,7 @@ class AuthenticateMultiple
     public function handle(Request $request, Closure $next): Response
     {
         // dd(session('user_type'));
-        Log::info(session('user_type'));
+        // Log::info(session('user_type'));
         // 両方のガードで認証チェック
         if (!Auth::guard('web')->check() && !Auth::guard('member')->check()) {
             // 認証されていない場合、リダイレクト
@@ -25,7 +25,8 @@ class AuthenticateMultiple
                 return response()->json(['message' => 'Unauthenticated.'], 401);
             }
                 // dd(session('user_type'));
-            return redirect('/login');
+            abort(404);
+            // return redirect('/login');
         }
         // dd(session('user_type'));
         return $next($request);
