@@ -120,10 +120,10 @@ class ScheduleController extends Controller
                 // ->orderBy('id', 'desc')
                 ->orderByRaw('(casts.rank IS NULL) ASC, casts.rank ASC')
                 ->get();
-
+            $date_tmp = Carbon::parse($date->toDateTimeString())->toDateString();
             $attendances = Attendance::where('is_public', $is_public)
-                ->whereRaw('DATE(start_datetime) >= ?', [$date->toDateTimeString()])
-                ->whereRaw('DATE(end_datetime) <= ?', [$tomorrow->toDateTimeString()])
+                ->whereRaw('DATE(start_datetime) >= ?', [$date_tmp])
+                ->whereRaw('DATE(end_datetime) <= ?', [$date_tmp])
                 ->get();
 
             $reservations = Reservation::whereIn('attendance_id', $attendances->pluck('id'))
