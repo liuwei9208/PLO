@@ -14,17 +14,26 @@ console.log(window.apiToken);
 // 時間オプションを生成する関数
 function generateTimeOptions(strTime) {
     if (strTime === "00:00")
-        strTime = "24:00";
+        strTime = "23:59";
     
     let options = '';
     for (let hour = 8; hour <= 24; hour++) {
         for (let min = 0; min < 60; min += 30) {
+            let timeStr = '';
+            let timeContext = '';
             if (hour === 24 && min === 30) continue;
-            const timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
-            if (strTime && strTime === timeStr) {
-                options += `<option value="${timeStr}" selected>${timeStr}</option>`;
+            if (hour === 24 && min === 0){
+                timeStr = "23:59";
+                timeContext = '24:00';
             } else {
-                options += `<option value="${timeStr}">${timeStr}</option>`;
+                timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+                timeContext = timeStr;
+            }
+            // const timeStr = `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
+            if (strTime && strTime === timeStr) {
+                options += `<option value="${timeStr}" selected>${timeContext}</option>`;
+            } else {
+                options += `<option value="${timeStr}">${timeContext}</option>`;
             }
         }
     }

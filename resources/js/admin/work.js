@@ -138,7 +138,12 @@ function generateCell(day) {
         if (attendanceEndTime === '00:00') {
             attendanceEndTime = '24:00';
         }
-        
+        if (attendanceEndTime === '23:59') {
+            attendanceEndTime = '24:00';
+        }
+        if (attendanceStartTime === '23:59') {
+            attendanceStartTime = '24:00';
+        }
         cellContent += `
             <div class="work-attendance" data-date="${day.date}" data-id="${day.attendance.id}">
                 <p class="attendance-time">${attendanceStartTime} - ${attendanceEndTime}</p>
@@ -244,6 +249,12 @@ async function getCastsWork(shop, date_l, page_l, limit_l, skip_l, pages_l, tota
                         const cast_id = workAttendance.closest('.work-row').dataset.cast;
                         attendance_id = await updateAttendanceTime(cast_id, attendance_id, selectedStart, selectedEnd, 1, attendanceDate);
                         if (attendance_id) {
+                            if (selectedEnd === '23:59') {
+                                selectedEnd = '24:00';
+                            }
+                            if (selectedStart === '23:59') {
+                                selectedStart = '24:00';
+                            }
                             workAttendance.querySelector('.attendance-time').textContent = `${selectedStart} - ${selectedEnd}`;
                             workAttendance.dataset.id = attendance_id;
 
@@ -471,7 +482,15 @@ function populateTimeSelect(select, selectedValue) {
     select.innerHTML = '';
     generateTimeOptions().forEach(time => {
         const option = document.createElement('option');
-        option.value = time;
+        if (time === '24:00'){
+            
+            option.value = '23:59';
+            option.textContent = '23:59';
+        } else {
+            option.value = time;
+            option.textContent = time;
+        }
+        // option.value = time;
         option.textContent = time;
         if (selectedValue && selectedValue === time) option.selected = true;
         select.appendChild(option);
