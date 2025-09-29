@@ -990,15 +990,56 @@ function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total
         </svg></span>`;
     }
     console.log({pages_l});
-    for ( var i = 1 ; i <= pages_l ; i++ ){
+    // ページネーションの範囲を計算
+    let start, end;
+        
+    if (pages_l <= 7) {
+        // 7ページ以下の場合は全て表示
+        start = 1;
+        end = pages_l;
+    } else {
+        // 8ページ以上の場合は適切に省略
+        if (page_l <= 4) {
+            // 1-4ページの場合: 1,2,3,4,5,...,最後
+            start = 1;
+            end = 5;
+        } else if (page_l >= pages_l - 3) {
+            // 最後の4ページの場合: 1,...,最後の5ページ
+            start = pages_l - 4;
+            end = pages_l;
+        } else {
+            // 中間の場合: 1,...,現在-1,現在,現在+1,...,最後
+            start = page_l - 1;
+            end = page_l + 1;
+        }
+    }
+
+    // 1ページ目を表示（現在のページが1でない場合）
+    if (start > 1) {
+        paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="1" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}">1</button>`;
+        if (start > 2) {
+            paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800">...</span>`;
+        }
+    }
+    console.log({start});
+    console.log({end});
+    console.log({page_l});
+    for ( var i = start ; i <= end ; i++ ){
         if ( i === page_l ){
             paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 bg-gray-100 dark:bg-gray-800 dark:text-white">${i}</span>`;
         }else{
             paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${i}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}">${i}</button>`;
         }
     }
+    // 最後のページを表示（現在のページが最後でない場合）
+    if (end < pages_l) {
+        if (end < pages_l - 1) {
+            paginationHTML += `<span class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800">...</span>`;
+        }
+        paginationHTML += `<button class="pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${pages_l}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}">${pages_l}</button>`;
+    }
     if ( page_l < pages_l ){
-        paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${page_l + 1}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
+        paginationHTML += `<button class=" pagination flex items-center justify-center w-10 h-10 border-l border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800" data-date="${date_l}" data-page="${page_l + 1}" data-limit="${limit_l}" data-skip="${skip_l}" data-pages="${pages_l}" data-total="${total_l}"><svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6-6-6z"></path>
         </svg></button>`;
     }else{
@@ -1009,15 +1050,22 @@ function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total
     document.querySelectorAll('.pagination').forEach(pagination => {
         pagination.addEventListener('click', async function(e){
             e.preventDefault();
-            selectedDate = e.target.dataset.date;
-            page = e.target.dataset.page;
-            limit = e.target.dataset.limit;
-            skip = e.target.dataset.skip;
-            pages = e.target.dataset.pages;
-            total = e.target.dataset.total;
+            // SVGアイコンをクリックした場合、親要素のbuttonからdatasetを取得
+            let targetElement = e.target;
+            if (targetElement.tagName === 'svg' || targetElement.tagName === 'path') {
+                targetElement = e.currentTarget; // button要素を取得
+            }
+            
+            selectedDate = targetElement.dataset.date;
+            page = targetElement.dataset.page;
+            limit = targetElement.dataset.limit;
+            skip = targetElement.dataset.skip;
+            pages = targetElement.dataset.pages;
+            total = targetElement.dataset.total;
             // window.scrollTo({top:0, behavior: 'smooth'});
             await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
             await generateScheduleCasts();
+            await generateScheduleCastsPagination(page, limit, skip, pages, total,selectedDate);
         });
     });
 
