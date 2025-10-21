@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\Shop;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
