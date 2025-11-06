@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Log;
 use FFMpeg;
 use App\Services\DropboxService;
 use Carbon\Carbon;
+use App\Models\Playstyle;
+use App\Models\Individuality;
 
 class CastController extends Controller
 {
@@ -113,6 +115,8 @@ class CastController extends Controller
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
             'personalities' => Personality::all(),
+            'playstyles' => Playstyle::all(),
+            'individualities' => Individuality::all(),
             'styles' => Style::all(),
             'questions' => $questions,
         ]);
@@ -140,6 +144,7 @@ class CastController extends Controller
             'hip' => $request->hip,
             'appeal_point' => $request->appeal_point,
             'manager_comment' => $request->manager_comment,
+            'catch_copy' => $request->catch_copy,
             'diary_email_from' => $request->diary_email_from,
             'diary_email_to' => $request->diary_email_to,
             'is_public' => $request->is_public ? true : false,
@@ -148,6 +153,8 @@ class CastController extends Controller
 
         $cast->options()->sync($request->options);
         $cast->personalities()->sync($request->personalities);
+        $cast->playstyles()->sync($request->playstyles);
+        $cast->individualities()->sync($request->individualities);
         $cast->styles()->sync($request->styles);
 
         $file_path = "gallery/{$cast->id}";
@@ -331,6 +338,8 @@ class CastController extends Controller
             'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get(),
             'options' => Option::all(),
             'personalities' => Personality::all(),
+            'playstyles' => Playstyle::all(),
+            'individualities' => Individuality::all(),
             'styles' => Style::all(),
             'questions' => Question::where('is_public', true)->orderBy('id', 'asc')->get(),
             'qas' => $qas,
@@ -399,6 +408,7 @@ class CastController extends Controller
         $cast->hip = $request->hip;
         $cast->appeal_point = $request->appeal_point;
         $cast->manager_comment = $request->manager_comment;
+        $cast->catch_copy = $request->catch_copy;
         $cast->diary_email_from = $request->diary_email_from;
         $cast->diary_email_to = $request->diary_email_to;
         $cast->gallery_1 = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
@@ -520,6 +530,8 @@ class CastController extends Controller
 
         $cast->options()->sync($request->options);
         $cast->personalities()->sync($request->personalities);
+        $cast->playstyles()->sync($request->playstyles);
+        $cast->individualities()->sync($request->individualities);
         $cast->styles()->sync($request->styles);
 
         if ($request->filled('redirect')) {
