@@ -560,7 +560,7 @@
         <!-- Personality -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            体型
+            個性
           </label>
           <div class="flex flex-wrap items-center gap-8">
             @foreach ($individualities as $individuality)
