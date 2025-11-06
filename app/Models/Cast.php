@@ -65,6 +65,16 @@ class Cast extends Model
         return $this->belongsToMany(Personality::class);
     }
 
+    public function playstyles()
+    {
+        return $this->belongsToMany(Playstyle::class);
+    }
+
+    public function individualities()
+    {
+        return $this->belongsToMany(Individuality::class);
+    }
+
     public function styles()
     {
         return $this->belongsToMany(Style::class);

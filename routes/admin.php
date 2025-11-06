@@ -27,6 +27,8 @@ use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ExtendController;
 use App\Http\Controllers\Admin\OptionRSController;
 use App\Http\Controllers\Admin\AppointController;
+use App\Http\Controllers\Admin\IndividualityController;
+use App\Http\Controllers\Admin\PlaystyleController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -157,6 +159,36 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [PersonalityController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [PersonalityController::class, 'update']);
         Route::delete('{id}', [PersonalityController::class, 'destroy']);
+    });
+
+    /**
+     * Playstyle master
+    /**
+     * Playstyle master
+     *
+     * @see \App\Http\Controllers\Admin\PlaystyleController
+     */
+    Route::prefix('playstyle')->name('playstyle.')->group(function () {
+        Route::get('/', [PlaystyleController::class, 'index'])->name('index');
+        Route::get('add', [PlaystyleController::class, 'create'])->name('create');
+        Route::post('add', [PlaystyleController::class, 'store']);
+        Route::get('{id}', [PlaystyleController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [PlaystyleController::class, 'update']);
+        Route::delete('{id}', [PlaystyleController::class, 'destroy']);
+    });
+
+    /**
+     * Individuality master
+     *
+     * @see \App\Http\Controllers\Admin\IndividualityController
+     */
+    Route::prefix('individuality')->name('individuality.')->group(function () {
+        Route::get('/', [IndividualityController::class, 'index'])->name('index');
+        Route::get('add', [IndividualityController::class, 'create'])->name('create');
+        Route::post('add', [IndividualityController::class, 'store']);
+        Route::get('{id}', [IndividualityController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [IndividualityController::class, 'update']);
+        Route::delete('{id}', [IndividualityController::class, 'destroy']);
     });
 
     /**
