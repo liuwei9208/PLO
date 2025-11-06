@@ -1,7 +1,7 @@
 <x-admin-layout>
   <div class="p-4 mx-auto max-w-full md:p-6">
 
-    <div x-data="{ pageName: `スタイルマスター`}">
+    <div x-data="{ pageName: `体型マスター`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -40,7 +40,7 @@
               type="text"
               name="style"
               id="search_form_cast"
-              placeholder="スタイル名"
+              placeholder="体型名"
               value="{{ request()->style }}"
               class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[300px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
             >
