@@ -7,7 +7,7 @@
     @method('POST')
     @csrf
 
-    <div x-data="{ pageName: `スタイル追加`}">
+    <div x-data="{ pageName: `体型追加`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -23,7 +23,7 @@
         <!-- Name -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            スタイル名 <span class="text-error-500">*</span>
+            体型名 <span class="text-error-500">*</span>
           </label>
           <input
             name="style_name"

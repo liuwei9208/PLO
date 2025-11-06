@@ -7,7 +7,7 @@
     @method('PUT')
     @csrf
 
-    <div x-data="{ pageName: `スタイル編集`}">
+    <div x-data="{ pageName: `体型編集`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -23,7 +23,7 @@
         <!-- Name -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            スタイル名 <span class="text-error-500">*</span>
+            体型名 <span class="text-error-500">*</span>
           </label>
           <input
             name="style_name"
@@ -79,7 +79,7 @@
       <div class="flex flex-col px-2 overflow-y-auto modal-content custom-scrollbar">
         <div class="modal-header">
           <h5 class="mb-2 font-semibold text-gray-800 modal-title text-theme-xl dark:text-white/90 lg:text-2xl" id="eventModalLabel">
-            スタイルを削除
+            体型を削除
           </h5>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             本当に削除してよろしいでしょうか？

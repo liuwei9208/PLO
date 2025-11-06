@@ -11,7 +11,7 @@
           href="{{ url('/admin/style/add') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
-          スタイルを追加
+          体型を追加
         </a>
       </div>
     </div>
@@ -102,7 +102,7 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    スタイル名
+                    体型名
                   </p>
                 </div>
               </th>

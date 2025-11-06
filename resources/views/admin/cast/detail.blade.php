@@ -614,7 +614,7 @@
         </div>
 
         <!-- Style -->
-        <div>
+        <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
             体型
           </label>
@@ -669,7 +669,7 @@
           </div>
         </div>
         <!-- Playstyle -->
-        <div>
+        <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
             プレイスタイル
           </label>
