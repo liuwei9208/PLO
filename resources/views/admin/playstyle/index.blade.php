@@ -1,24 +1,24 @@
 <x-admin-layout>
   <div class="p-4 mx-auto max-w-full md:p-6">
 
-    <div x-data="{ pageName: `体型マスター`}">
+    <div x-data="{ pageName: `プレイスタイルマスター`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
           x-text="pageName"
         ></h2>
         <a
-          href="{{ url('/admin/style/add') }}"
+          href="{{ url('/admin/playstyle/add') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
-          体型を追加
+          プレイスタイルを追加
         </a>
       </div>
     </div>
 
     <!-- Search & Limit -->
     <form
-      action="{{ route('admin.style.index') }}"
+      action="{{ route('admin.playstyle.index') }}"
       method="get"
       id="search_form"
       class="flex align-center justify-between mb-2 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
@@ -38,10 +38,10 @@
             </span>
             <input
               type="text"
-              name="style"
+              name="playstyle"
               id="search_form_cast"
-              placeholder="体型名"
-              value="{{ request()->style }}"
+              placeholder="プレイスタイル名"
+              value="{{ request()->playstyle }}"
               class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full rounded-lg border border-gray-300 bg-transparent py-2.5 pr-2 pl-12 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden xl:w-[300px] dark:border-gray-800 dark:bg-gray-900 dark:bg-white/[0.03] dark:text-white/90 dark:placeholder:text-white/30"
             >
             <button type="submit" class="absolute top-1/2 right-2.5 inline-flex -translate-y-1/2 items-center gap-0.5 rounded-lg border border-gray-200 bg-gray-50 px-[7px] py-[4.5px] text-xs -tracking-[0.2px] text-gray-500 dark:border-gray-800 dark:bg-white/[0.03] dark:text-gray-400">
@@ -102,7 +102,7 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    体型名
+                    プレイスタイル名
                   </p>
                 </div>
               </th>
@@ -133,33 +133,33 @@
           <!-- table header end -->
           <!-- table body start -->
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
-            @foreach ($styles as $style)
+            @foreach ($playstyles as $playstyle)
               <tr>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $style->name }}
+                      {{ $playstyle->name }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $style->description ?? '' }}
+                      {{ $playstyle->description ?? '' }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $style->is_public ? '公開' : '非公開' }}
+                      {{ $playstyle->is_public ? '公開' : '非公開' }}
                     </p>
                   </div>
                 </td>
                 <td class="px-5 py-4 sm:px-6">
                   <div class="flex items-center justify-end">
                     <a
-                      href="{{ url('/admin/style/' . $style->id) }}"
+                      href="{{ url('/admin/playstyle/' . $playstyle->id) }}"
                       class="flex items-center justify-center gap-2 rounded-full border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 white-space-nowrap shadow-theme-xs hover:bg-gray-50 hover:text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] dark:hover:text-gray-200 lg:inline-flex lg:w-auto"
                     >
                       <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -181,7 +181,7 @@
       <div class="flex align-center rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
         @if ($page > 1)
           <a
-            href="{{ route('admin.style.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
+            href="{{ route('admin.playstyle.index', array_merge(request()->all(), ['page' => $page - 1])) }}"
             class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">
@@ -207,7 +207,7 @@
             </span>
           @else
             <a
-              href="{{ route('admin.style.index', array_merge(request()->all(), ['page' => $i])) }}"
+              href="{{ route('admin.playstyle.index', array_merge(request()->all(), ['page' => $i])) }}"
               class="flex items-center justify-center w-10 h-10 border-r border-gray-200 dark:border-gray-800 hover:bg-gray-100 dark:hover:bg-gray-800"
             >
               {{ $i }}
@@ -217,7 +217,7 @@
 
         @if ($page < $pages)
           <a
-            href="{{ route('admin.style.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
+            href="{{ route('admin.personality.index', array_merge(request()->all(), ['page' => $page + 1])) }}"
             class="flex items-center justify-center w-10 h-10 hover:bg-gray-100 dark:hover:bg-gray-800"
           >
             <svg class="w-4 h-4 fill-current text-gray-500 dark:text-gray-400" viewBox="0 0 24 24">

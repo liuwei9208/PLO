@@ -2,12 +2,12 @@
   <form
     class="p-4 mx-auto max-w-full md:p-6"
     method="post"
-    action="{{ url('/admin/style/' . $style->id) }}"
+    action="{{ url('/admin/individuality/' . $individuality->id) }}"
   >
     @method('PUT')
     @csrf
 
-    <div x-data="{ pageName: `体型編集`}">
+    <div x-data="{ pageName: `個性編集`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -23,16 +23,16 @@
         <!-- Name -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            体型名 <span class="text-error-500">*</span>
+            個性名 <span class="text-error-500">*</span>
           </label>
           <input
-            name="style_name"
+            name="individuality_name"
             type="text"
-            value="{{ $style->name }}"
+            value="{{ $individuality->name }}"
             class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full max-w-[380px] rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
           >
-          @if ($errors->has('style_name'))
-            <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('style_name') }}</p>
+          @if ($errors->has('individuality_name'))
+            <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('individuality_name') }}</p>
           @endif
         </div>
 
@@ -44,7 +44,7 @@
           <textarea
             name="description"
             class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
-          >{{ $style->description }}</textarea>
+          >{{ $individuality->description }}</textarea>
         </div>
       </div>
     </div>
@@ -79,7 +79,7 @@
       <div class="flex flex-col px-2 overflow-y-auto modal-content custom-scrollbar">
         <div class="modal-header">
           <h5 class="mb-2 font-semibold text-gray-800 modal-title text-theme-xl dark:text-white/90 lg:text-2xl" id="eventModalLabel">
-            体型を削除
+            個性を削除
           </h5>
           <p class="text-sm text-gray-500 dark:text-gray-400">
             本当に削除してよろしいでしょうか？
@@ -89,7 +89,7 @@
           <button type="button" class="btn modal-close-btn bg-danger-subtle text-danger flex w-full justify-center rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03] sm:w-auto" data-bs-dismiss="modal">
             いいえ
           </button>
-          <form action="{{ url('/admin/style/' . $style->id) }}" method="post">
+          <form action="{{ url('/admin/individuality/' . $individuality->id) }}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-primary flex w-full justify-center rounded-lg bg-error-500 px-4 py-2.5 text-sm font-medium text-white sm:w-auto">

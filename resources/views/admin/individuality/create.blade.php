@@ -2,12 +2,12 @@
   <form
     class="p-4 mx-auto max-w-full md:p-6"
     method="post"
-    action="{{ url('/admin/style/add') }}"
+    action="{{ url('/admin/individuality/add') }}"
   >
     @method('POST')
     @csrf
 
-    <div x-data="{ pageName: `体型追加`}">
+    <div x-data="{ pageName: `個性追加`}">
       <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
         <h2
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
@@ -23,16 +23,16 @@
         <!-- Name -->
         <div class="mb-6">
           <label class="mb-1.5 block text-sm font-medium text-gray-700 dark:text-gray-400">
-            体型名 <span class="text-error-500">*</span>
+            個性名 <span class="text-error-500">*</span>
           </label>
           <input
-            name="style_name"
+            name="individuality_name"
             type="text"
-            value="{{ old('style_name') }}"
+            value="{{ old('individuality_name') }}"
             class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full max-w-[380px] rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
           >
-          @if ($errors->has('style_name'))
-            <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('style_name') }}</p>
+          @if ($errors->has('individuality_name'))
+            <p class="mt-1.5 text-xs text-error-500">{{ $errors->first('individuality_name') }}</p>
           @endif
         </div>
 

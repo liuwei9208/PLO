@@ -10,6 +10,7 @@ use App\Models\Event;
 use App\Models\Shop;
 use App\Models\News;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends Controller
 {
@@ -67,10 +68,19 @@ class NewsController extends Controller
       $news = News::findOrFail($id);
       $imagePath = storage_path('app/public/' . $news->thumbnail);
       [$width, $height] = getimagesize($imagePath);
+
+      $shop_id = 0;
+
+      if (Auth::guard('web')->user()->hasRole('shop')) {
+        $user = Auth::guard('web')->user();
+        $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->first();
+        $shop_id = $shop_user->shop_id;
+      }
       // dd($width, $height);
         return view('admin.news.detail', [
             'news' => News::findOrFail($id),
             'shops' => Shop::whereNot('slug', 'touchvip')->orderBy('rank', 'asc')->get(),
+            'shop' => Shop::findOrFail($shop_id),
             'token' => $token,
             'width' => $width,
             'height' => $height,

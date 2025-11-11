@@ -938,6 +938,15 @@
                   </a>
                 </li>
                 @endcan
+                <li>
+                  <a
+                    href="{{ url('/admin/individuality') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                    個性マスター
+                  </a>
+                </li>
 
                 @can('edit styles')
                 <li>
@@ -946,10 +955,28 @@
                     class="menu-dropdown-item group"
                     :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
                   >
-                    スタイルマスター
+                  体型マスター
                   </a>
                 </li>
                 @endcan
+                <li>
+                  <a
+                    href="{{ url('/admin/playstyle') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                  プレイスタイルマスター
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="{{ url('/admin/personality') }}"
+                    class="menu-dropdown-item group"
+                    :class="page === 'option' ? 'menu-dropdown-item-active' : 'menu-dropdown-item-inactive'"
+                  >
+                  ランキングマスター
+                  </a>
+                </li>
                 <li>
                   <a
                     href="{{ url('/admin/qa') }}"
