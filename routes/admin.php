@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\OptionRSController;
 use App\Http\Controllers\Admin\AppointController;
 use App\Http\Controllers\Admin\IndividualityController;
 use App\Http\Controllers\Admin\PlaystyleController;
+use App\Http\Controllers\Admin\RankController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -190,7 +191,19 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::put('{id}', [IndividualityController::class, 'update']);
         Route::delete('{id}', [IndividualityController::class, 'destroy']);
     });
-
+    /**
+     * Rank master
+     *
+     * @see \App\Http\Controllers\Admin\RankController
+     */
+    Route::prefix('rank')->name('rank.')->group(function () {
+        Route::get('/', [RankController::class, 'index'])->name('index');
+        Route::get('add', [RankController::class, 'create'])->name('create');
+        Route::post('add', [RankController::class, 'store']);
+        Route::get('{id}', [RankController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [RankController::class, 'update']);
+        Route::delete('{id}', [RankController::class, 'destroy']);
+    });
     /**
      * Style master
      *
