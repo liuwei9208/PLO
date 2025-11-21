@@ -102,6 +102,50 @@
                 <div class="home-schedule-title">
                     <h2>schedule</h2>
                 </div>
+                <div class="home-schedule-info">
+                    <div class="schedule-info-header">
+                        <img src="{{ asset('assets/img/shop/calender-g.png') }}" alt="出勤情報" class="schedule-info-icon">
+                        <p class="schedule-info-title">出勤情報</p>
+                    </div>
+                    <div class="schedule-info-description">
+                        <p>本日出勤するキャスト一覧になります。</p>
+                    </div>
+                    <div class="schedule-info-button">
+                        <p>一覧を見る</p>
+                        <div class="schedule-info-underline"></div>
+                    </div>
+                </div>
+                <div class="home-schedule-cards">
+                    @for ($i = 0; $i < 12; $i++)
+                    <div class="schedule-card">
+                        <div class="schedule-card-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/coming-soon-card.png') }}" alt="Background" class="card-bg">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame" class="card-frame">
+                            <div class="schedule-card-content">
+                                <div class="schedule-card-badge">
+                                    <div class="badge-red-bg">
+                                        <span class="badge-shift">本日出勤</span>
+                                    </div>
+                                    <div class="badge-content">
+                                        <span class="badge-time">12:00〜24:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="schedule-card-info">
+                            <div class="schedule-card-status">
+                                <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/>
+                                </svg>                                    
+                                <span class="status-text">待機中</span>
+                            </div>
+                            <p class="schedule-card-name">のんたん（20）</p>
+                            <p class="schedule-card-measurements">T.160 B.85(C) W.60 H.83</p>
+                            <p class="schedule-card-message">キャストメッセージが甲斐キキキャ</p>
+                        </div>
+                    </div>
+                    @endfor
+                </div>
             </div>
         </div>
     </div>
