@@ -65,6 +65,7 @@ export default defineConfig({
                 'resources/scss/shop/_eventview.scss',
                 'resources/scss/shop/_ranking.scss',
                 'resources/scss/shop/_cast.scss',
+                'resources/scss/shops/shizuku/home.scss',
                 'resources/scss/admin/sortcast.scss',
                 'resources/scss/admin/casts.scss',
                 'resources/scss/shop/reviewlist.scss',

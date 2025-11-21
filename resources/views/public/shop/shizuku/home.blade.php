@@ -1,3 +1,112 @@
 <x-shizuku-layout>
-    <h1 class="text-blue-500">Shizuku</h1>
+    <div class="home">
+        <div class="home-gradient-overlay"></div>
+        <div class="banner">
+            <div class="contact-info">
+                <div class="contact-wrapper">
+                    <div class="contact-phone">
+                        <div class="contact-phone-content">
+                            <div class="contact-phone-main">
+                                <div class="contact-phone-icon">
+                                    <img src="{{ asset('assets/img/shops/shizuku/phone.png') }}" alt="Phone">
+                                </div>
+                                <p class="contact-phone-number">011-533-8988</p>
+                            </div>
+                            <div class="contact-email">
+                                <p>@ShizukuHealth</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-address">
+                        <div class="contact-address-content">
+                            <p class="contact-address-text">〒064-0806</br> 北海道札幌市中央区南6条西5丁目</p>
+                            <div class="contact-buttons">
+                                <button class="contact-button-hours">
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7.5 3V7.5H4.125M14.25 7.5C14.25 8.38642 14.0754 9.26417 13.7362 10.0831C13.397 10.9021 12.8998 11.6462 12.273 12.273C11.6462 12.8998 10.9021 13.397 10.0831 13.7362C9.26417 14.0754 8.38642 14.25 7.5 14.25C6.61358 14.25 5.73583 14.0754 4.91689 13.7362C4.09794 13.397 3.35382 12.8998 2.72703 12.273C2.10023 11.6462 1.60303 10.9021 1.26381 10.0831C0.924594 9.26417 0.75 8.38642 0.75 7.5C0.75 5.70979 1.46116 3.9929 2.72703 2.72703C3.9929 1.46116 5.70979 0.75 7.5 0.75C9.29021 0.75 11.0071 1.46116 12.273 2.72703C13.5388 3.9929 14.25 5.70979 14.25 7.5Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <p>9:00 ~ 0:00</p>
+                                </button>
+                                <button class="contact-button-credit">
+                                    <p>クレジット決済可能</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-note">
+                    <p>電話予約の対応時間は朝8:30~となります。</p>
+                </div>
+            </div>
+            <div class="register">
+                <button class="register-button">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <rect width="20" height="20" fill="url(#pattern0_8_13)"/>
+                        <defs>
+                        <pattern id="pattern0_8_13" patternContentUnits="objectBoundingBox" width="1" height="1">
+                        <use xlink:href="#image0_8_13" transform="scale(0.00390625)"/>
+                        </pattern>
+                        <image id="image0_8_13" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/>
+                        </defs>
+                    </svg>                    
+                    <p>新規会員登録はコチラ！</p>
+                </button>
+            </div>
+        </div>
+        <div class="home-content">
+            <div class="home-header">
+                <div class="menu-list-container">
+                    <div class="menu-item">
+                        <h1>トップページ</h1>
+                        <p> top page </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>キャスト一覧</h1>
+                        <p> cast list </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>出勤情報</h1>
+                        <p> schedule </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>写メ日記</h1>
+                        <p> photo diary </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>イベント一覧</h1>
+                        <p> event </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>料金システム</h1>
+                        <p> system </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>新人情報</h1>
+                        <p> new cast </p>
+                    </div>
+                    <div class="menu-item">
+                        <h1>ログイン</h1>
+                        <p> login </p>
+                    </div>
+                </div>
+                <div class="menu-button">
+                    <svg width="51" height="22" viewBox="0 0 51 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line y1="1" x2="50.5785" y2="1" stroke="#FFDA89" stroke-width="2"/>
+                        <line y1="11" x2="50.5785" y2="11" stroke="#FFDA89" stroke-width="2"/>
+                        <line y1="21" x2="50.5785" y2="21" stroke="#FFDA89" stroke-width="2"/>
+                        </svg>                    
+                    <p>menu</p>
+                </div>
+            </div>
+            <div class="home-schedule">
+                <div class="home-schedule-title">
+                    <h2>schedule</h2>
+                </div>
+            </div>
+        </div>
+    </div>
 </x-shizuku-layout>
+
+@once
+@vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js'])
+@endonce

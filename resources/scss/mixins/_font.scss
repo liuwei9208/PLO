@@ -7,3 +7,34 @@
   font-weight: 400;
   font-style: normal;
 }
+
+
+@mixin lustria() {
+  font-family: "Lustria", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin Hiragino_Mincho_Pro() {
+  font-family: "Hiragino Mincho Pro", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin inter() {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin didot() {
+  font-family: "GFS Didot", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin yu-mincho-pr6n() {
+  font-family: "yu-mincho-pr6n", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
