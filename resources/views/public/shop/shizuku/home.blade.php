@@ -486,6 +486,31 @@
                     </div>
                 </div>
             </div>
+            <div class="home-event">
+                <div class="event-background">
+                    <img src="{{ asset('assets/img/shops/shizuku/event-bg.png') }}" alt="Event Background" class="event-bg-image">
+                    <div class="event-bg-overlay"></div>
+                </div>
+                <div class="event-main-banner">
+                    <div class="event-main-bg">
+                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}" alt="Main Banner Background" class="event-main-image">
+                    </div>
+                </div>
+                <div class="event-sub-banners">
+                    <div class="event-sub-banner">
+                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}" alt="Event Sub Banner">
+                    </div>
+                    <div class="event-sub-banner">
+                        <img src="{{ asset('assets/img/shops/shizuku/event-second.png') }}" alt="Event Sub Banner">
+                    </div>
+                    <div class="event-sub-banner">
+                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}" alt="Event Sub Banner">
+                    </div>
+                    <div class="event-sub-banner">
+                        <img src="{{ asset('assets/img/shops/shizuku/event-second.png') }}" alt="Event Sub Banner">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </x-shizuku-layout>
