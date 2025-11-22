@@ -348,6 +348,55 @@
                     </div>
                 </div>
             </div>
+            <div class="home-castlist">
+                <div class="home-castlist-title">
+                    <h2>cast list</h2>
+                </div>
+                <div class="home-castlist-info">
+                    <div class="castlist-info-header">
+                        <img src="{{ asset('assets/img/shops/shizuku/girl-icon.png') }}" alt="出勤情報" class="castlist-info-icon">
+                        <p class="castlist-info-title">キャスト一覧</p>
+                    </div>
+                    <div class="castlist-info-description">
+                        <p>ヴィラコート雫のキャスト一覧です</p>
+                    </div>
+                    <div class="castlist-info-button">
+                        <p>一覧を見る</p>
+                        <div class="castlist-info-underline"></div>
+                    </div>
+                </div>
+                <div class="home-castlist-cards">
+                    @for ($i = 0; $i < 12; $i++)
+                    <div class="castlist-card">
+                        <div class="castlist-card-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Background" class="card-bg">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame" class="card-frame">
+                            <div class="castlist-card-content">
+                                <div class="castlist-card-badge">
+                                    <div class="badge-red-bg">
+                                        <span class="badge-shift">本日出勤</span>
+                                    </div>
+                                    <div class="badge-content">
+                                        <span class="badge-time">12:00〜24:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="castlist-card-info">
+                            <div class="castlist-card-status">
+                                {{-- <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/>
+                                </svg>                                     --}}
+                                <span class="status-text">待機中</span>
+                            </div>
+                            <p class="castlist-card-name">かれん (20)</p>
+                            <p class="castlist-card-measurements">T.160 B.85(C) W.60 H.83</p>
+                            <p class="castlist-card-message">キャストメッセージが甲斐キキキャ</p>
+                        </div>
+                    </div>
+                    @endfor
+                </div>
+            </div>
         </div>
     </div>
 </x-shizuku-layout>

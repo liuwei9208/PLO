@@ -569,6 +569,317 @@ p{
   }
 }
 
+// Cast List Section Styles (Duplicate of Schedule Section)
+.home-castlist{
+  margin-top: 30px;
+}
+.home-castlist-title{
+  text-align: center;
+  background-color: #2A1A08; 
+  opacity: 0.7;
+}
+
+.home-castlist-title h2{
+  @include didot();
+  @include responsive-font(60px, 120px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6px;
+  background: var(---h1, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  opacity: 1;
+}
+
+.home-castlist-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  padding: 0;
+}
+
+.castlist-info-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 21px 65px;
+  background: #2A1A08;
+  border: 6px solid $white;
+  border-left: none;
+  border-right: none;
+  flex-shrink: 0;
+}
+
+.castlist-info-icon {
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.castlist-info-title {
+  @include yu-mincho-pr6n();
+  @include responsive-font(20px, 30px);
+  font-weight: 500;
+  line-height: normal;
+  color: $white;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.castlist-info-description {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 60px;
+  height: 102px;
+  flex: 1;
+  background: #2A1A08;
+  border: 6px solid $white;
+  border-right: none;
+  border-left: 6px solid $white;
+}
+
+.castlist-info-description p {
+  @include yu-mincho-pr6n();
+  @include responsive-font(16px, 21px);
+  font-weight: 500;
+  line-height: normal;
+  color: $white;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.castlist-info-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 0 60px;
+  height: 102px;
+  width: 230px;
+  flex-shrink: 0;
+  background: #2A1A08;
+  border: 6px solid $white;
+  border-right: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  p {
+    @include yu-mincho-pr6n();
+    @include responsive-font(16px, 21px);
+    font-weight: 500;
+    line-height: normal;
+    color: $white;
+    margin: 0;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+
+.castlist-info-underline {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);
+  margin-top: -3px;
+}
+
+.home-castlist-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 30px;
+  background: var(---N, linear-gradient(90deg, rgba(42, 26, 8, 0.70) 58.65%, rgba(0, 0, 0, 0.00) 100%));
+}
+
+.castlist-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.castlist-card-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  
+  .card-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  
+  .card-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+.castlist-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+  gap: 20px;
+}
+
+.castlist-card-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.castlist-card-info {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.castlist-card-content {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  bottom: 0;
+  padding: 20px 10px;
+  border-radius: 0 0 15px 15px;
+  background: linear-gradient(90deg, rgba(42, 26, 8, 0.80) 58.65%, rgba(0, 0, 0, 0.00) 100%);
+}
+
+.castlist-card-badge {
+  display: flex;
+  align-items: center;
+  background: $white;
+  border: 2px solid #B90000;
+  border-radius: 30px;
+  overflow: hidden;
+  width: fit-content;
+  flex-shrink: 0;
+}
+
+.castlist-card-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  width: fit-content;
+  
+  .status-text {
+    color: #FFE500;
+    text-align: center;
+    font-family: Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 21px);
+    font-weight: 600;
+  }
+}
+
+.castlist-card-name {
+  @include yu-mincho-pr6n();
+  @include responsive-font(14px, 16px);
+  color: $white;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.castlist-card-measurements {
+  @include yu-mincho-pr6n();
+  @include responsive-font(14px, 16px);
+  color: $white;
+  font-weight: 400;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.castlist-card-message {
+  @include yu-mincho-pr6n();
+  @include responsive-font(14px, 16px);
+  background: var(---h1, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  .home-castlist-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 1024px) {
+  .home-castlist-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .home-castlist-cards {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .home-castlist-info {
+    flex-wrap: wrap;
+  }
+  
+  .castlist-info-header {
+    padding: 20px 40px;
+    border-right: 6px solid $white;
+  }
+  
+  .castlist-info-description {
+    flex: 1 1 100%;
+    padding: 20px 40px;
+    border-right: 6px solid $white;
+    border-left: 6px solid $white;
+    border-top: none;
+    height: auto;
+  }
+  
+  .castlist-info-description p {
+    white-space: normal;
+  }
+  
+  .castlist-info-button {
+    width: 100%;
+    border-left: 6px solid $white;
+    border-right: 6px solid $white;
+    border-top: none;
+    height: auto;
+    padding: 20px 40px;
+  }
+}
+
 .home-news{
   display: flex;
   width: 100%;
@@ -1045,6 +1356,7 @@ p{
   align-items: center;
   justify-content: center;
   background-color: #2A1A08;
+  opacity: 0.7;
   text-align: center;
 }
 
@@ -1061,6 +1373,7 @@ p{
   -webkit-text-fill-color: transparent;
   margin: 0;
   text-transform: uppercase;
+  opacity: 1;
 }
 
 @media (max-width: 768px) {
