@@ -1344,6 +1344,256 @@ p{
   }
 }
 
+// Ranking Section Styles (Reversed Layout from Pickup)
+.home-ranking {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  background: var(---N_, rgba(42, 26, 8, 0.75));
+}
+
+.ranking-cast-card {
+  position: relative;
+  width: 25%;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.ranking-cast-image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  
+  .cast-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    z-index: 1;
+  }
+  
+  .cast-frame {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: 50% 50%;
+    z-index: 2;
+    pointer-events: none;
+  }
+}
+
+.ranking-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  z-index: 3;
+  
+  &.ranking-no1 {
+    width: 70%;
+    height: 30%;
+  }
+  
+  &.ranking-no2 {
+    width: 55%;
+    height: 30%;
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  }
+}
+
+.ranking-badge-button {
+  position: absolute;
+  left: calc(50% - 94px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 188px;
+  height: 188px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-50%) scale(1.05);
+  }
+}
+
+.ranking-badge-diamond {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.ranking-badge-text {
+  @include yu-mincho-pr6n();
+  @include responsive-font(20px, 24px);
+  font-weight: 600;
+  line-height: normal;
+  color: #2A1A08;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ranking-header {
+  position: relative;
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.ranking-header-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+
+.ranking-header-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.ranking-header-shadow {
+  position: absolute;
+  inset: 0;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.25) inset;
+}
+
+.ranking-header-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 80px 60px;
+  z-index: 1;
+}
+
+.ranking-title-en {
+  @include didot();
+  @include responsive-font(60px, 72px);
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 1.44px;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.ranking-title-ja-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.ranking-crown-icon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.ranking-title-ja {
+  @include yu-mincho-pr6n();
+  @include responsive-font(30px, 35px);
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -1.4px;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.ranking-description {
+  @include yu-mincho-pr6n();
+  @include responsive-font(20px, 23px);
+  font-weight: 600;
+  line-height: normal;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  margin: 30px 0 0 0;
+}
+
+@media (max-width: 1200px) {
+  .home-ranking {
+    flex-wrap: wrap;
+  }
+  
+  .ranking-header {
+    width: 100%;
+    order: -1;
+  }
+  
+  .ranking-badge-button {
+    left: calc(50% - 94px);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .ranking-cast-card {
+    width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-ranking {
+    flex-direction: column;
+  }
+  
+  .ranking-header {
+    width: 100%;
+  }
+  
+  .ranking-header-content {
+    padding: 60px 40px;
+  }
+  
+  .ranking-crown-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .ranking-cast-card {
+    width: 100%;
+  }
+}
+
 // New Girl Section Styles
 .home-new-girl-section {
   margin-top: 30px;
