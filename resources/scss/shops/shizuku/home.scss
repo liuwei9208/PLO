@@ -3196,3 +3196,147 @@ p{
     }
   }
 }
+
+// Fixed Phone Button Styles
+.fixed-phone-button {
+  position: fixed;
+  bottom: 0.625rem;
+  right: 0.625rem;
+  width: 21.9375rem;
+  height: 6.0625rem;
+  background: linear-gradient(90deg, #CF2B0E 0%, #F32621 100%);
+  border-radius: 1.875rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1001;
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
+  gap: 0.3125rem;
+  padding: 0.9375rem 1.875rem;
+  
+  &:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.4);
+  }
+  
+  .flex {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    width: 100%;
+  }
+  
+  .justify-center {
+    justify-content: flex-start;
+  }
+  
+  svg {
+    width: 1.5625rem;
+    height: 1.5625rem;
+    flex-shrink: 0;
+  }
+  
+  .phone-number {
+    @include lustria();
+    font-size: 2.6875rem;
+    line-height: 2.9375rem;
+    color: $white;
+    font-weight: 400;
+    margin: 0;
+    text-align: left;
+  }
+  
+  .phone-hours {
+    @include Hiragino_Mincho_Pro();
+    font-size: 0.9375rem;
+    line-height: 1.1875rem;
+    color: $white;
+    font-weight: 300;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .fixed-phone-button {
+    width: 18.75rem;
+    height: 5rem;
+    bottom: 0.625rem;
+    right: 0.625rem;
+    padding: 0.625rem 1.25rem;
+    
+    svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    .phone-number {
+      font-size: 1.75rem;
+      line-height: 2rem;
+    }
+    
+    .phone-hours {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+  }
+}
+
+// Fixed Side Buttons Styles
+.fixed-side-buttons {
+  position: fixed;
+  right: 0.625rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9375rem;
+  z-index: 1000;
+}
+
+.side-button {
+  display: block;
+  width: 9.375rem;
+  height: 10.5625rem;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(-0.3125rem);
+    filter: brightness(1.1);
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+}
+
+@media (max-width: 1024px) {
+  .fixed-side-buttons {
+    right: 0.3125rem;
+    gap: 0.625rem;
+  }
+  
+  .side-button {
+    width: 7.5rem;
+    height: 8.4375rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .fixed-side-buttons {
+    right: 0.3125rem;
+    gap: 0.3125rem;
+  }
+  
+  .side-button {
+    width: 5.625rem;
+    height: 6.328125rem;
+  }
+}
