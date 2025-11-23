@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.querySelector('.home-gradient-overlay');
     const homeHeader = document.querySelector('.home-header');
     const homeContent = document.querySelector('.home-content');
-    const homeSchedule = document.querySelector('.home-schedule');
+    const homeSchedule = document.querySelector('.home-schedule-title');
     
     if (overlay) {
         function handleScroll() {
@@ -27,24 +27,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (homeHeader && homeContent) {
                 const headerRect = homeHeader.getBoundingClientRect();
                 const scheduleRect = homeSchedule ? homeSchedule.getBoundingClientRect() : null;
+                const headerHeight = homeHeader.offsetHeight;
                 
-                // Check if we've scrolled past the home-schedule section
-                const pastSchedule = scheduleRect && scheduleRect.top < 0;
+                // Calculate distance from bottom of header to top of schedule section
+                // When header is fixed at top (top = 0), we check if schedule is within 100px
+                const distanceToSchedule = scheduleRect ? scheduleRect.top - headerHeight : Infinity;
                 
-                // When header reaches top of viewport (top <= 0) and not past schedule
-                if (headerRect.top <= 0 && !pastSchedule) {
-                    homeHeader.classList.add('fixed-header');
-                    // Add padding to content to prevent jump when header becomes fixed
-                    if (!homeContent.dataset.originalPadding) {
-                        homeContent.dataset.originalPadding = homeContent.style.paddingTop || '';
-                        homeContent.style.paddingTop = homeHeader.offsetHeight + 'px';
+                // Header should be fixed when:
+                // 1. Header has reached the top of viewport (headerRect.top <= 0)
+                // 2. AND schedule section is more than 100px away (distanceToSchedule > 100)
+                const shouldBeFixed =  distanceToSchedule  <= 0;
+                
+                if (shouldBeFixed) {
+                    if (!homeHeader.classList.contains('fixed-header')) {
+                        homeHeader.classList.add('fixed-header');
                     }
                 } else {
-                    homeHeader.classList.remove('fixed-header');
-                    // Restore original padding
-                    if (homeContent.dataset.originalPadding !== undefined) {
-                        homeContent.style.paddingTop = homeContent.dataset.originalPadding;
-                        delete homeContent.dataset.originalPadding;
+                    if (homeHeader.classList.contains('fixed-header')) {
+                        homeHeader.classList.remove('fixed-header');
                     }
                 }
             }
