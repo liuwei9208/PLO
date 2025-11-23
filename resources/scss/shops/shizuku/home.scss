@@ -212,7 +212,7 @@ p{
     position: fixed;
     top: 0;
     left: 5rem;
-    width: 100%;
+    width: calc(100% - 5rem);
     z-index: 1000;
     border-radius: 1.875rem 0 0 0;
   }
