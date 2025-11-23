@@ -642,7 +642,50 @@
                 </a>
                 @endforeach
             </div>
-            
+
+            <!-- Footer Menu Section -->
+            <div class="footer-menu">
+                <div class="footer-menu-content">
+                    <div class="footer-menu-links">
+                        <div class="footer-menu-row">
+                            <a href="#" class="footer-menu-link">店舗TOP</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">出勤情報</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">料金システム</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">キャスト一覧</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">新着情報</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">SNS</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">店舗一覧</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">ログイン</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">新規会員登録</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="https://17auto.biz/plogroup/registp/entryform2.htm" target="_blank" rel="noopener noreferrer" class="footer-menu-link">メルマガ</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">女性求人</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="#" class="footer-menu-link">男性求人</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="https://plo-group.jp/privacy-policy" target="_blank" rel="noopener noreferrer" class="footer-menu-link">個人情報保護方針</a>
+                            <span class="footer-menu-separator">|</span>
+                            <a href="https://plo-group.jp/" target="_blank" rel="noopener noreferrer" class="footer-menu-link">グループTOP</a>
+                            <span class="footer-menu-separator">|</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-logo">
+                    <img src="{{ asset('assets/img/shops/shizuku/footer-logo.png') }}" alt="Villa Cort Shizuku">
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>Copyright © PLO Group All Rights Reserved.</p>
+            </div>
         </div>
     </div>
 </x-shizuku-layout>
