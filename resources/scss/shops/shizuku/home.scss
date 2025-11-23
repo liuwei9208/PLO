@@ -2843,8 +2843,7 @@ p{
   border-top: 3px solid $white;
   border-bottom: 3px solid $white;
   width: 100%;
-  max-width: 85rem;
-  margin-top: 0;
+  margin: 3.125rem 0;
 }
 
 .footer-external-link-header {
@@ -2889,6 +2888,37 @@ p{
     color: $white;
     white-space: nowrap;
     margin: 0;
+  }
+}
+
+// Footer External Links Grid
+.footer-external-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.875rem;
+  width: 100%;
+  margin-top: 1.875rem;
+  padding-right:3rem;
+}
+
+.footer-external-link-item {
+  position: relative;
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.3125rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.3);
+  }
+  
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
   }
 }
 
@@ -3100,6 +3130,12 @@ p{
     p {
       white-space: normal;
     }
+  }
+  
+  .footer-external-links-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
   }
   
   .footer-menu-row {
