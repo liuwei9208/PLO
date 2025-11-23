@@ -511,6 +511,81 @@
                     </div>
                 </div>
             </div>
+            <div class="home-shop-info">
+                <div class="shop-info-logo-section">
+                    <div class="shop-info-plo-logo">
+                        <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
+                    </div>
+                    <div class="shop-info-area-text">
+                        <p>すすきのエリア 全６店舗</p>
+                    </div>
+                    <a href="#" class="shop-info-group-site">
+                        <div class="shop-info-group-site-logo">
+                            <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
+                        </div>
+                        <p class="shop-info-group-site-text">GROUP SITE</p>
+                    </a>
+                </div>
+                <div class="shop-info-grid">
+                    @php
+                        $shops = [
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 1',
+                                'text1' => '上品な空間、時を忘れる美貌と',
+                                'text2' => 'おもてなしが魅力のヘルス',
+                                'url' => '#'
+                            ],
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 2',
+                                'text1' => '雅は、すすきの屈指の人妻・痴女が',
+                                'text2' => '在籍するヘルス',
+                                'url' => '#'
+                            ],
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 3',
+                                'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる',
+                                'text2' => '人妻ヘルス店',
+                                'url' => '#'
+                            ],
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 4',
+                                'text1' => '女の子を見て選べる唯一無二の',
+                                'text2' => 'エンターテインメントヘルス',
+                                'url' => '#'
+                            ],
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 5',
+                                'text1' => '容姿端麗なオトナ女性による',
+                                'text2' => '丁寧な本格マッサージ店',
+                                'url' => '#'
+                            ],
+                            [
+                                'image' => 'assets/img/shops/shizuku/home-banner.png',
+                                'alt' => 'Shop 6',
+                                'text1' => 'アナタ色のエッチな女の子に育てられる',
+                                'text2' => '育成型ヘルス',
+                                'url' => '#'
+                            ]
+                        ];
+                    @endphp
+                    @foreach ($shops as $shop)
+                    <a href="{{ $shop['url'] }}" class="shop-info-card">
+                        <div class="shop-info-card-image">
+                            <img src="{{ asset($shop['image']) }}" alt="{{ $shop['alt'] }}">
+                        </div>
+                        <div class="shop-info-card-text">
+                            <p>{{ $shop['text1'] }}</p>
+                            <p>{{ $shop['text2'] }}</p>
+                        </div>
+                    </a>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </div>
 </x-shizuku-layout>

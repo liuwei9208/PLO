@@ -2343,3 +2343,777 @@ p{
     height: 45px;
   }
 }
+
+// Shop Info Section Styles
+.home-shop-info {
+  display: flex;
+  width: 100%;
+  margin: 50px auto 0;
+  align-items: flex-start;
+}
+
+.shop-info-logo-section {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  padding: 0px 80px;
+}
+
+.shop-info-grid {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 23px;
+  padding: 18px 0 0 0;
+}
+
+.shop-info-card {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  padding: 0;
+  width: calc(50% - 45px);
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.shop-info-card-image {
+  width: 100%;
+  height: 106px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 106px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.shop-info-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  flex: 1;
+  min-width: 100%;
+  width: min-content;
+  
+  p {
+    @include inter();
+    font-weight: 500;
+    font-size: 13px;
+    line-height: normal;
+    color: #2A1A08;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+  
+}
+
+.shop-info-plo-logo {
+  width: 100%;
+  height: 173px;
+  margin: 0px auto;
+  
+  img {
+    margin: 0px auto;
+    display: block;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+
+.shop-info-area-text {
+  width: 100%;
+  border-top: 1px solid $white;
+  border-bottom: 1px solid $white;
+  padding: 30px 0;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  
+  p {
+    @include Hiragino_Mincho_Pro();
+    font-weight: 600;
+    font-size: 46px;
+    line-height: normal;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+.shop-info-group-site {
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid $white;
+  transition: opacity 0.3s ease;
+  margin-top: 16px;
+  display: block;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.shop-info-group-site-logo {
+  width: 395px;
+  height: 133px;
+  margin: 0px auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+  }
+}
+
+.shop-info-group-site-text {
+  @include Hiragino_Mincho_Pro();
+  font-weight: 600;
+  font-size: 45px;
+  line-height: normal;
+  color: $white;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 1400px) {
+  .home-shop-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .shop-info-logo-section {
+    width: 100%;
+    max-width: 530px;
+    margin-bottom: 30px;
+  }
+  
+  .shop-info-grid {
+    width: 100%;
+    max-width: 700px;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shop-info-grid {
+    gap: 15px;
+  }
+  
+  .shop-info-card {
+    width: calc(50% - 45px);
+  }
+}
+
+@media (max-width: 768px) {
+  .shop-info-grid {
+    width: 100%;
+    max-width: 335px;
+  }
+  
+  .shop-info-card {
+    width: 100%;
+  }
+  
+  .shop-info-area-text p {
+    font-size: 32px;
+  }
+  
+  .shop-info-group-site-text {
+    font-size: 30px;
+  }
+  
+  .shop-info-group-site-logo {
+    width: 80%;
+    max-width: 395px;
+  }
+}
+
+// Footer Section Styles
+.home-footer {
+  width: 100%;
+  margin-top: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: center;
+  width: 100%;
+}
+
+// Footer Shop Info Section
+.footer-shop-info {
+  display: flex;
+  gap: 0;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  max-width: 1360px;
+}
+
+.footer-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 23px;
+  width: 694px;
+  height: 553px;
+  margin-left: 592px;
+  margin-top: 18px;
+  position: relative;
+}
+
+.footer-shop-card {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  border: 3px solid $white;
+  padding: 0;
+  width: 335px;
+  height: 173px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.footer-shop-card-image {
+  width: 100%;
+  height: 106px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+  }
+}
+
+.footer-shop-card-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex: 1;
+  min-width: 100%;
+  width: min-content;
+  
+  p {
+    @include inter();
+    font-weight: 500;
+    font-size: 13px;
+    line-height: normal;
+    color: #2A1A08;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    
+    &:first-child {
+      margin-bottom: 0;
+    }
+  }
+  
+  // Card 4 has specific width of 311px
+  .footer-shop-card-4 & {
+    width: 311px;
+    min-width: 311px;
+  }
+}
+
+.footer-logo-section {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.footer-plo-logo {
+  width: 527px;
+  height: 173px;
+  margin-left: 2.5px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+
+.footer-group-site {
+  position: relative;
+  width: 530px;
+  height: 237px;
+  margin-top: 334px;
+  margin-left: 1px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid $white;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.footer-group-site-logo {
+  position: absolute;
+  width: 395px;
+  height: 133px;
+  left: 67px;
+  top: 21px;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+}
+
+.footer-group-site-text {
+  @include Hiragino_Mincho_Pro();
+  font-weight: 600;
+  font-size: 45px;
+  line-height: normal;
+  color: $white;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  left: 265px;
+  top: 154px;
+  transform: translateX(-50%);
+  margin: 0;
+}
+
+.footer-group-site-border {
+  position: absolute;
+  inset: 0;
+  border: 3px solid $white;
+}
+
+.footer-area-text {
+  width: 530px;
+  border-top: 1px solid $white;
+  border-bottom: 1px solid $white;
+  padding: 30px 0;
+  margin-top: 189px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  p {
+    @include Hiragino_Mincho_Pro();
+    font-weight: 600;
+    font-size: 46px;
+    line-height: normal;
+    color: $white;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+// Footer Banners Section
+.footer-banners {
+  width: 100%;
+  max-width: 1360px;
+  position: relative;
+}
+
+.footer-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  margin-left: 32.75px;
+  margin-top: 127px;
+  position: relative;
+  width: calc(100% - 65.5px);
+  height: auto;
+}
+
+.footer-banner-item {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  
+  &:nth-child(1) {
+    grid-area: 1 / 1;
+    width: 632px;
+    height: 81px;
+    margin-top: 2.7px;
+  }
+  
+  &:nth-child(2) {
+    grid-area: 2 / 1;
+    width: 633px;
+    height: 93px;
+    margin-left: 2.35px;
+    margin-top: 107.66px;
+  }
+  
+  &:nth-child(3) {
+    grid-area: 3 / 1;
+    width: 633px;
+    height: 93px;
+    margin-left: 2.35px;
+    margin-top: 233px;
+  }
+  
+  &:nth-child(4) {
+    grid-area: 2 / 2;
+    width: 632px;
+    height: 92px;
+    margin-left: 661.83px;
+    margin-top: 110.54px;
+  }
+  
+  &:nth-child(5) {
+    grid-area: 1 / 2;
+    width: 628px;
+    height: 81px;
+    margin-left: 662.04px;
+    margin-top: 0;
+  }
+  
+  &:nth-child(6) {
+    grid-area: 3 / 2;
+    width: 632px;
+    height: 92px;
+    margin-left: 661.83px;
+    margin-top: 235.89px;
+  }
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+  }
+}
+
+.footer-external-link {
+  display: flex;
+  align-items: flex-start;
+  border-top: 3px solid $white;
+  border-bottom: 3px solid $white;
+  width: 100%;
+  max-width: 1360px;
+  margin-top: 0;
+}
+
+.footer-external-link-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(42, 26, 8, 0.75);
+  padding: 27px 65px;
+  flex-shrink: 0;
+  
+  svg {
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+  }
+  
+  p {
+    @include yu-mincho-pr6n();
+    font-weight: 600;
+    font-size: 30px;
+    line-height: normal;
+    color: $white;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+.footer-external-link-description {
+  flex: 1;
+  background: rgba(42, 26, 8, 0.75);
+  border-left: 3px solid $white;
+  padding: 0 0 0 60px;
+  display: flex;
+  align-items: center;
+  height: 102px;
+  
+  p {
+    @include yu-mincho-pr6n();
+    font-weight: 600;
+    font-size: 20px;
+    line-height: normal;
+    color: $white;
+    white-space: nowrap;
+    margin: 0;
+  }
+}
+
+// Footer Menu Section
+.footer-menu {
+  width: 100%;
+  max-width: 1360px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 30px;
+}
+
+.footer-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 5.21px;
+}
+
+.footer-menu-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  
+  &:nth-child(2) {
+    margin-top: 55.47px;
+  }
+  
+  &:nth-child(3) {
+    margin-top: 110.94px;
+  }
+}
+
+.footer-menu-link {
+  @include Hiragino_Mincho_Pro();
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 45px;
+  color: $white;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.footer-menu-separator {
+  @include Hiragino_Mincho_Pro();
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 45px;
+  color: $white;
+  display: inline-block;
+  transform: rotate(90deg);
+  width: 18px;
+  height: 0;
+  margin: 0;
+}
+
+.footer-copyright {
+  @include Hiragino_Mincho_Pro();
+  font-weight: 300;
+  font-size: 16px;
+  line-height: normal;
+  color: $white;
+  margin: 290.33px 0 0 472.95px;
+  width: 344px;
+}
+
+.footer-shop-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 352px;
+  height: 234px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  img {
+    width: 100%;
+    height: 87.2%;
+    object-fit: contain;
+    object-position: left top;
+    margin-top: 6.4%;
+  }
+}
+
+@media (max-width: 1400px) {
+  .footer-shop-info {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .footer-shop-grid {
+    margin-left: 0;
+    width: 100%;
+    max-width: 694px;
+  }
+  
+  .footer-logo-section {
+    position: relative;
+    width: 100%;
+    max-width: 530px;
+    margin-top: 30px;
+  }
+  
+  .footer-banner-grid {
+    margin-left: 0;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .footer-banner-item {
+    position: relative !important;
+    margin: 0 !important;
+    width: 100% !important;
+    height: auto !important;
+    
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer-shop-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+  }
+  
+  .footer-shop-card {
+    width: 100%;
+    max-width: 335px;
+  }
+  
+  .footer-banner-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-menu {
+    padding: 0 20px;
+  }
+  
+  .footer-copyright {
+    margin-left: 0;
+    width: auto;
+  }
+  
+  .footer-shop-logo {
+    position: relative;
+    margin-top: 20px;
+    width: 200px;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-shop-grid {
+    grid-template-columns: 1fr;
+    margin-left: 0;
+  }
+  
+  .footer-shop-card {
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .footer-group-site-text {
+    font-size: 30px;
+  }
+  
+  .footer-area-text p {
+    font-size: 32px;
+  }
+  
+  .footer-external-link {
+    flex-direction: column;
+  }
+  
+  .footer-external-link-header {
+    padding: 20px 30px;
+    width: 100%;
+  }
+  
+  .footer-external-link-description {
+    border-left: none;
+    border-top: 3px solid $white;
+    padding: 20px 30px;
+    height: auto;
+    
+    p {
+      white-space: normal;
+    }
+  }
+  
+  .footer-menu-row {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .footer-menu-separator {
+    display: none;
+  }
+  
+  .footer-copyright {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+  }
+}
