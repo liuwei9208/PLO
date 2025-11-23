@@ -3340,3 +3340,107 @@ p{
     height: 6.328125rem;
   }
 }
+
+// Page Top Section Styles
+.page-top-section {
+  position: absolute;
+  left: -50px;
+  top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+}
+
+.page-top-line {
+  width: 0.0625rem;
+  height: 9.0625rem;
+  background: #B19D67;
+}
+
+.page-top-text {
+  @include lustria();
+  font-size: 1.0625rem;
+  line-height: normal;
+  color: #B19D67;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    color: #d4b76a;
+    letter-spacing: 0.05em;
+  }
+}
+
+.page-top-social {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    transform: scale(1.1);
+    
+    svg path {
+      fill: #d4b76a;
+    }
+  }
+  
+  svg {
+    width: 100%;
+    height: 100%;
+    
+    path {
+      transition: fill 0.3s ease;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .page-top-section {
+    left: 1rem;
+    top: 30rem;
+  }
+  
+  .page-top-line {
+    height: 6.25rem;
+  }
+  
+  .page-top-text {
+    font-size: 0.875rem;
+  }
+  
+  .page-top-social {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-top-section {
+    left: 0.5rem;
+    top: 25rem;
+  }
+  
+  .page-top-line {
+    height: 4.375rem;
+  }
+  
+  .page-top-text {
+    font-size: 0.75rem;
+  }
+  
+  .page-top-social {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
