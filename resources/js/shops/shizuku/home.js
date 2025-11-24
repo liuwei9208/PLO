@@ -4,6 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
     const homeContent = document.querySelector('.home-content');
     const homeSchedule = document.querySelector('.home-schedule-title');
     
+    // Menu toggle functionality
+    const menuButton = document.querySelector('.menu-button');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const menuClose = document.getElementById('menuClose');
+    
+    if (menuButton && menuOverlay && menuClose) {
+        menuButton.addEventListener('click', function() {
+            menuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        menuClose.addEventListener('click', function() {
+            menuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Close menu when clicking outside content
+        menuOverlay.addEventListener('click', function(e) {
+            if (e.target === menuOverlay) {
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        
+        // Close menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+    
     if (overlay) {
         function handleScroll() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
