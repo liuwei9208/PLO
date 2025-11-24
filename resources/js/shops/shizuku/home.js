@@ -6,33 +6,45 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Menu toggle functionality
     const menuButton = document.querySelector('.menu-button');
+    const mobileMenuButton = document.getElementById('mobileMenuButton');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuClose = document.getElementById('menuClose');
     
-    if (menuButton && menuOverlay && menuClose) {
-        menuButton.addEventListener('click', function() {
+    function openMenu() {
+        if (menuOverlay) {
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-        });
-        
-        menuClose.addEventListener('click', function() {
+        }
+    }
+    
+    function closeMenu() {
+        if (menuOverlay) {
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
-        });
+        }
+    }
+    
+    if (menuButton && menuOverlay && menuClose) {
+        menuButton.addEventListener('click', openMenu);
+        
+        // Also add click handler for mobile menu button if it exists
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', openMenu);
+        }
+        
+        menuClose.addEventListener('click', closeMenu);
         
         // Close menu when clicking outside content
         menuOverlay.addEventListener('click', function(e) {
             if (e.target === menuOverlay) {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMenu();
             }
         });
         
         // Close menu with Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && menuOverlay.classList.contains('active')) {
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
+                closeMenu();
             }
         });
     }
