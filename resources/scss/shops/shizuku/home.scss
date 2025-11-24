@@ -1410,6 +1410,14 @@ p{
   z-index: 10;
 }
 
+@media screen and (max-width: 850px) {
+  .pickup-badge {
+    top: 385px;
+    width: 10.75rem;
+    height: 10.75rem;
+  }
+}
+
 .pickup-badge-diamond {
   position: absolute;
   width: 100%;
@@ -1461,14 +1469,13 @@ p{
     position: absolute;
     width: 100%;
     height: 100%;
-    object-fit: contain;
     object-position: 50% 50%;
     z-index: 2;
     pointer-events: none;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 850px) {
   .home-pickup {
     flex-wrap: wrap;
   }
@@ -1476,12 +1483,7 @@ p{
   .pickup-header {
     width: 100%;
   }
-  
-  .pickup-badge {
-    left: calc(50% - 5.875rem);
-    top: 50%;
-    transform: translateY(-50%);
-  }
+
   
   .pickup-cast-card {
     width: 50%;
@@ -1942,7 +1944,6 @@ p{
 
 .home-new-girl-title {
   width: 100%;
-  height: 9.4375rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1971,7 +1972,6 @@ p{
   display: flex;
   align-items: flex-start;
   background: $white;
-  gap: 0.625rem;
   padding: 0;
 }
 
@@ -2071,6 +2071,10 @@ p{
   }
   
   .new-girl-info-header {
+    justify-content: center;
+    justify-items: center;
+    inline-size: -webkit-fill-available;
+    text-align: center;
     padding: 1.25rem 2.5rem;
   }
   
@@ -2080,6 +2084,7 @@ p{
     border-left: none;
     border-top: 3px solid #2A1A08;
     height: auto;
+    justify-content: center;
   }
   
   .new-girl-info-description p {
@@ -3352,9 +3357,72 @@ p{
     margin: 0;
     width: 100%;
     text-align: center;
+    
+    .mobile-tel {
+      display: none;
+    }
+    
+    .desktop-hours {
+      display: inline;
+    }
   }
 }
 
+@media (max-width: 850px) {
+  .fixed-phone-button {
+    width: 5.179125rem;
+    height: 5.179125rem;
+    border-radius: 50%;
+    background: linear-gradient(180deg, #C89E4E 0%, #7A5F2A 100%);
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0.125rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+    
+    .flex {
+      flex-direction: column;
+      gap: 0;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    svg {
+      width: 1.875rem;
+      height: 1.875rem;
+    }
+    
+    .phone-number {
+      display: none;
+    }
+    
+    .phone-hours {
+      @include times-new-roman();
+      font-size: 0.9375rem;
+      line-height: 1;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 0.03em;
+      
+      .desktop-hours {
+        display: none;
+      }
+      
+      .mobile-tel {
+        display: inline;
+      }
+    }
+  }
+}
 
 // Fixed Side Buttons Styles
 .fixed-side-buttons {

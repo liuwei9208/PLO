@@ -875,7 +875,7 @@
                 </svg>
                 <p class="phone-number">011-533-8988</p>
             </div>
-            <p class="phone-hours">8:30〜24:00まで</p>
+            <p class="phone-hours"><span class="desktop-hours">8:30〜24:00まで</span><span class="mobile-tel">TEL</span></p>
         </a>
 
         <!-- Fixed Side Buttons -->
