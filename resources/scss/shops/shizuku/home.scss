@@ -21,7 +21,8 @@ p{
 
 @media screen and (max-width: 850px) {
   .home {
-    background-position: left;
+    background-position: center;
+    background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
   }
 }
 
@@ -1845,7 +1846,7 @@ p{
   margin: 1.875rem 0 0 0;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 850px) {
   .home-ranking {
     flex-wrap: wrap;
   }
@@ -1857,7 +1858,7 @@ p{
   
   .ranking-badge-button {
     left: calc(50% - 5.875rem);
-    top: 50%;
+    top: 400px;
     transform: translateY(-50%);
   }
   
