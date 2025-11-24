@@ -1059,6 +1059,54 @@ p{
   .news-section{
     width: 100%;
   }
+  
+  // Hide arrow buttons
+  .news-slider-prev,
+  .news-slider-next,
+  .diary-slider-prev,
+  .diary-slider-next {
+    display: none !important;
+  }
+  
+  // Enable scrollbar for news and diary content
+  .news-content,
+  .diary-content {
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 0.625rem;
+    
+    // Custom scrollbar styling (Webkit browsers)
+    &::-webkit-scrollbar {
+      height: 0.625rem;
+      display: block;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 0.3125rem;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(90deg, #FFF2D7 20.67%, #BD902F 100%);
+      border-radius: 0.3125rem;
+      border: 2px solid rgba(42, 26, 8, 0.75);
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(90deg, #BD902F 0%, #FFF2D7 100%);
+    }
+    
+    // For Firefox
+    scrollbar-width: thin;
+    scrollbar-color: #BD902F rgba(255, 255, 255, 0.2);
+  }
+  
+  // Add padding to slider wrapper when arrows are hidden
+  .news-slider-wrapper,
+  .diary-slider-wrapper {
+    padding: 0 0.9375rem;
+  }
 }
 
 .news-title{
