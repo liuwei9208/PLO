@@ -1003,6 +1003,97 @@ p{
   }
 }
 
+// Castlist Slider Wrapper (hidden by default, shown at 850px)
+.castlist-slider-wrapper {
+  position: relative;
+  display: block;
+}
+
+.castlist-slider-prev,
+.castlist-slider-next {
+  display: none; // Hidden by default
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  width: 1.875rem; // 30px
+  height: 1.875rem; // 30px
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #B19D67; // Figma color: 雫カラー/N雫_ポイント２
+  color: $white;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  z-index: 100;
+  padding: 0.34375rem 0.3125rem; // Positioning for the arrow icon
+  
+  
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    &:hover {
+      background: #B19D67;
+      transform: translateY(-50%);
+    }
+  }
+  
+  svg {
+    width: 1.16706rem; // 18.673px
+    height: 1.16706rem;
+  }
+}
+
+.castlist-slider-prev {
+  left: 0;
+  border-radius: 0 0.625rem 0.625rem 0; // Rounded on right side (10px)
+  svg {
+    transform: scaleX(-1); // Flip the arrow for next button
+  }
+}
+
+.castlist-slider-next {
+  right: 0;
+  border-radius: 0.625rem 0 0 0.625rem; // Rounded on left side (10px)
+}
+
+@media (max-width: 850px) {
+  .castlist-slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  
+  .castlist-slider-prev,
+  .castlist-slider-next {
+    display: flex !important;
+  }
+  
+  .home-castlist-cards {
+    display: flex !important;
+    grid-template-columns: unset;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    gap: 0.9375rem;
+    padding: 1.875rem 3.125rem;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    
+    // Hide scrollbar
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  .castlist-card {
+    min-width: 16.875rem;
+    flex-shrink: 0;
+  }
+}
+
 
 
 @media (max-width: 1200px) {
