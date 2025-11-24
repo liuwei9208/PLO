@@ -93,6 +93,7 @@ export default defineConfig({
                 'resources/js/admin/sortcast.js',
                 'resources/js/admin/work.js',
                 'resources/js/shop/ranking.js',
+                'resources/scss/app.scss',
             ],
             refresh: true,
         }),

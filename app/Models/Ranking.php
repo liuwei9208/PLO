@@ -20,6 +20,7 @@ class Ranking extends Model
         'shop_id',
         'cast_id',
         'rank',
+        'rank_id',
     ];
 
     /**
@@ -36,5 +37,13 @@ class Ranking extends Model
     public function cast(): BelongsTo
     {
         return $this->belongsTo(Cast::class);
+    }
+
+    /**
+     * Get the cast that owns the ranking.
+     */
+    public function rank(): BelongsTo
+    {
+        return $this->belongsTo(Rank::class);
     }
 }
