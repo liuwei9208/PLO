@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Middleware\AuthenticateMultiple;
 use App\Http\Controllers\QRCodeController;
+use App\Http\Controllers\Public\ShizukuController;
+
 // Route::middleware([AuthenticateMultiple::class])->group(function () {
 
 
@@ -85,6 +87,12 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('newslist', [ShopController::class, 'showNewsList'])->name('newslist');
         Route::get('movielist', [ShopController::class, 'showMovieList'])->name('movielist');
         Route::get('newsdetail/{id}', [ShopController::class, 'showNewsDetail'])->name('newsdetail');
+    });
+
+    Route::prefix('shops')->name('shops.')->group(function () {
+        Route::prefix('shizuku')->name('shizuku.')->group(function () {
+            Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
+        });
     });
 });
 
