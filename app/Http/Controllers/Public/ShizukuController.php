@@ -11,4 +11,14 @@ class ShizukuController extends Controller
     {
         return view('public.shop.shizuku.home');
     }
+
+    public function showSystem(Request $request): View
+    {
+        return view('public.shop.shizuku.system');
+    }
+
+    public function showProfile(Request $request): View
+    {
+        return view('public.shop.shizuku.profile');
+    }
 }
