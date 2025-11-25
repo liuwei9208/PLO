@@ -52,7 +52,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.querySelector('.home-gradient-overlay');
     const homeHeader = document.querySelector('.home-header');
     const homeContent = document.querySelector('.home-content');
+    const profileContent = document.querySelector('.profile-content');
     const homeSchedule = document.querySelector('.home-schedule');
+    const banner = document.querySelector('.banner');
     
     if (overlay || homeHeader) {
         function handleScroll() {
@@ -77,16 +79,38 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Handle sticky header
-            if (homeHeader && homeContent) {
-                const headerRect = homeHeader.getBoundingClientRect();
-                const scheduleRect = homeSchedule ? homeSchedule.getBoundingClientRect() : null;
-                const headerHeight = homeHeader.offsetHeight;
+            if (homeHeader) {
+                let shouldBeFixed = false;
                 
-                // Calculate distance from bottom of header to top of schedule section
-                const distanceToSchedule = scheduleRect ? scheduleRect.top - headerHeight : Infinity;
-                
-                // Header should be fixed when schedule section reaches or passes the header bottom
-                const shouldBeFixed = distanceToSchedule <= 0;
+                // For home page: check schedule section
+                if (homeContent && homeSchedule) {
+                    const headerRect = homeHeader.getBoundingClientRect();
+                    const scheduleRect = homeSchedule.getBoundingClientRect();
+                    const headerHeight = homeHeader.offsetHeight;
+                    
+                    // Calculate distance from bottom of header to top of schedule section
+                    const distanceToSchedule = scheduleRect.top - headerHeight;
+                    
+                    // Header should be fixed when schedule section reaches or passes the header bottom
+                    shouldBeFixed = distanceToSchedule <= 0;
+                }
+                // For profile page: check banner section
+                else if (profileContent && banner) {
+                    const headerRect = homeHeader.getBoundingClientRect();
+                    const bannerRect = banner.getBoundingClientRect();
+                    const headerHeight = homeHeader.offsetHeight;
+                    
+                    // Calculate distance from bottom of header to bottom of banner section
+                    const distanceToBanner = bannerRect.bottom - headerHeight;
+                    
+                    // Header should be fixed when banner section passes the header bottom
+                    shouldBeFixed = distanceToBanner <= 0;
+                }
+                // Fallback: fix header when scrolling past a certain point
+                else if (homeHeader) {
+                    const headerRect = homeHeader.getBoundingClientRect();
+                    shouldBeFixed = scrollTop > headerRect.height;
+                }
                 
                 if (shouldBeFixed) {
                     if (!homeHeader.classList.contains('fixed-header')) {
