@@ -3,6 +3,7 @@
 @use '../../mixins/font' as *;
 @use '../contact-info' as *;
 @use '../home-header' as *;
+@use '../footer' as *;
 p{
     @include lustria();
   }
@@ -93,6 +94,73 @@ transition: opacity 0.2s ease-out;
     width: 30%;
 }
 
+.profile-right-column{
+    width: 70%;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.girl-basic-info{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: $white;
+}
+
+.girl-basic-info-header{
+    background: #2A1A08;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 20px;
+}
+
+.girl-basic-info-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(20px, 24px);
+    color: $white;
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-basic-info-body{
+    padding: 25px 40px 20px;
+    text-align: center;
+    border-bottom: 1px solid #E5D6B4;
+}
+
+.girl-basic-info-name{
+    @include yu-mincho-regular();
+    @include responsive-font(32px, 40px);
+    color: #2A1A08;
+    margin-bottom: 10px;
+}
+
+.girl-basic-info-meta{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(18px, 20px);
+    color: #2A1A08;
+    margin: 0;
+}
+
+.girl-basic-info-caption{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(18px, 20px);
+    color: #2A1A08;
+    text-align: center;
+    padding: 15px 20px 25px;
+    margin: 0;
+}
+
 .girl-info-section{
     display: flex;
     position: relative;
@@ -131,6 +199,7 @@ transition: opacity 0.2s ease-out;
     width: 100%;
     border-radius: 15px 15px 0 0;
     background: var(---N__, #2A1A08);
+    margin-top: 10px;
 }
 
 .girl-video-title{
@@ -138,6 +207,7 @@ transition: opacity 0.2s ease-out;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    padding: 0px 20px;
 }
 .girl-video-title h3{
     @include yu-mincho-regular();
@@ -146,4 +216,688 @@ transition: opacity 0.2s ease-out;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+.girl-video-container{
+    background: #F5F5F5;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.girl-video-item{
+    width: 100%;
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.girl-video-item video{
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.girl-qa-section{
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+    overflow: hidden;
+}
+
+.girl-qa-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-qa-header svg{
+    flex-shrink: 0;
+}
+
+.girl-qa-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-qa-content{
+    background: #F5F0E8;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    overflow: hidden;
+}
+
+.girl-qa-row{
+    display: grid;
+    grid-template-columns: 45% 55%;
+    border-bottom: 1px solid #E5D6B4;
+}
+
+.girl-qa-row:last-child{
+    border-bottom: none;
+}
+
+.girl-qa-question,
+.girl-qa-answer{
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 14px 24px;
+}
+
+.girl-qa-question{
+    background: #FFFDF0;
+    border-right: 1px solid #E5D6B4;
+}
+
+.girl-qa-answer{
+    background: #FFFFFF;
+}
+
+.girl-qa-question .girl-qa-label{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    font-weight: 600;
+    color: #2A1A08;
+    flex-shrink: 0;
+}
+
+.girl-qa-answer .girl-qa-label{
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 18px);
+    font-weight: 400;
+    color: #2A1A08;
+    flex-shrink: 0;
+}
+
+.girl-qa-question .girl-qa-text{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    color: #2A1A08;
+    line-height: 1.6;
+}
+
+.girl-qa-answer .girl-qa-text{
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 18px);
+    color: #2A1A08;
+    line-height: 1.6;
+}
+
+.girl-message-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-message-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-message-header svg{
+    flex-shrink: 0;
+}
+
+.girl-message-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-message-content{
+    background: #FFFFFF;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 24px;
+}
+
+.girl-message-content p{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    color: #2A1A08;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.girl-diary-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-diary-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-diary-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-diary-carousel{
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 10px;
+    overflow: hidden;
+}
+
+.girl-diary-track{
+    display: flex;
+    gap: 15px;
+}
+
+.girl-diary-card{
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.girl-diary-image{
+    position: relative;
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.girl-diary-image img{
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    display: block;
+}
+
+.girl-diary-overlay{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 6px;
+}
+
+.girl-diary-body{
+    margin-top: 8px;
+}
+
+.girl-diary-author{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    font-weight: 600;
+    margin: 0;
+    color: #2A1A08;
+}
+
+.girl-diary-date{
+    @include Hiragino_Mincho_Pro();
+    font-size: 12px;
+    color: #2A1A08;
+    margin: 2px 0 0;
+}
+
+.girl-diary-nav{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 72px;
+    border: none;
+    background: rgba(0, 0, 0, 0.7);
+    color: #FFFFFF;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.girl-diary-nav--prev{
+    left: 5px;
+}
+
+.girl-diary-nav--next{
+    right: 5px;
+}
+
+.girl-schedule-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-schedule-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-schedule-header svg{
+    flex-shrink: 0;
+}
+
+.girl-schedule-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-schedule-content{
+    background: #F5F0E8;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 20px 0;
+    // flex-wrap: wrap;
+    // display: flex;
+}
+
+@media screen and (max-width: 1200px) {
+    .girl-schedule-content{
+        flex-wrap: wrap;
+        display: flex;
+    }
+}
+
+.girl-schedule-day{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 8px;
+    border-right: 1px solid #E5D6B4;
+}
+
+.girl-schedule-day:last-child{
+    border-right: none;
+}
+
+.girl-schedule-label{
+    background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);
+    border-radius: 4px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 12px;
+    min-width: 60px;
+    justify-content: center;
+}
+
+.girl-schedule-date{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(12px, 14px);
+    font-weight: 600;
+    color: #2A1A08;
+}
+
+.girl-schedule-label svg{
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+}
+
+.girl-schedule-time{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    color: #2A1A08;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.girl-manager-comment-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-manager-comment-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-manager-comment-header svg{
+    flex-shrink: 0;
+}
+
+.girl-manager-comment-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-manager-comment-content{
+    background: #F5F0E8;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 24px 30px;
+}
+
+.girl-manager-comment-content p{
+    font-family: "Hiragino Mincho ProW3";
+    @include responsive-font(16px, 18px);
+    font-weight: 300;
+    color: #2A1A08;
+    line-height: 1.8;
+    margin: 0;
+}
+
+.girl-sales-points-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-sales-points-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-sales-points-header svg{
+    flex-shrink: 0;
+}
+
+.girl-sales-points-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-sales-points-content{
+    background: #FFFFFF;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 24px;
+}
+
+.girl-sales-points-row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.girl-sales-points-row:last-child{
+    margin-bottom: 0;
+}
+
+.girl-sales-points-label{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    font-weight: 600;
+    color: #2A1A08;
+    background: #E5E5E5;
+    padding: 10px 16px;
+    min-width: 100px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.girl-sales-points-tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-left: 16px;
+    flex: 1;
+}
+
+.girl-sales-points-tag{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    color: #2A1A08;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    padding: 6px 12px;
+    white-space: nowrap;
+}
+
+.girl-reviews-section{
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
+    background: #2A1A08;
+}
+
+.girl-reviews-header{
+    background: linear-gradient(180deg, #3C230A 0%, #2A1A08 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 16px 20px;
+}
+
+.girl-reviews-header svg{
+    flex-shrink: 0;
+}
+
+.girl-reviews-header h3{
+    @include yu-mincho-regular();
+    @include responsive-font(24px, 30px);
+    margin: 0;
+    letter-spacing: 0.08em;
+    background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.girl-reviews-content{
+    background: #FFFFFF;
+    border: 1px solid #8B6F47;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 24px;
+}
+
+.girl-review-item{
+    padding: 18px 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid #C9B07E;
+}
+
+.girl-review-item:last-of-type{
+    border-bottom: none;
+}
+
+.girl-review-header{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.girl-review-top-row{
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.girl-review-stars{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.girl-review-stars svg{
+    width: 18px;
+    height: 18px;
+}
+
+.girl-review-rating{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    font-weight: 600;
+    color: #2A1A08;
+    margin-left: 4px;
+}
+
+.girl-review-meta{
+    display: flex;
+    gap: 16px;
+}
+
+.girl-review-meta span{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(12px, 14px);
+    font-weight: 600;
+    color: #7B6A52;
+}
+
+.girl-review-body{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.girl-review-text{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    color: #2A1A08;
+    line-height: 1.8;
+    max-height: 100px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.girl-review-text::-webkit-scrollbar{
+    width: 8px;
+}
+
+.girl-review-text::-webkit-scrollbar-track{
+    background: #E9DDC6;
+    border-radius: 10px;
+}
+
+.girl-review-text::-webkit-scrollbar-thumb{
+    background: #B99A62;
+    border-radius: 10px;
+}
+
+.girl-review-text p{
+    margin: 0;
+}
+
+.girl-review-author{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(16px, 18px);
+    font-weight: 600;
+    color: #2A1A08;
+    margin-bottom: 10px;
+}
+
+.girl-review-text{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    color: #2A1A08;
+    line-height: 1.8;
+}
+
+.girl-review-text p{
+    margin: 0;
+}
+
+.girl-reviews-footer{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.girl-reviews-more-btn{
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(14px, 16px);
+    color: #2A1A08;
+    background: #FFFFFF;
+    border: 1px solid #2A1A08;
+    border-radius: 24px;
+    padding: 10px 32px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.girl-reviews-more-btn:hover{
+    background: #2A1A08;
+    color: #FFFFFF;
 }
