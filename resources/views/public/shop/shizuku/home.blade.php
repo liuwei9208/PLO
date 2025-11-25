@@ -192,391 +192,148 @@
         </div>
 
         <div class="banner">
-            <div class="contact-info">
-                <div class="contact-wrapper">
-                    <div class="contact-phone">
-                        <div class="contact-phone-content">
-                            <div class="contact-phone-main">
-                                <div class="contact-phone-icon">
-                                    <img src="{{ asset('assets/img/shops/shizuku/phone.png') }}" alt="Phone">
-                                </div>
-                                <p class="contact-phone-number">011-533-8988</p>
-                            </div>
-                            <div class="contact-email">
-                                <p>@ShizukuHealth</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="contact-address">
-                        <div class="contact-address-content">
-                            <p class="contact-address-text">〒064-0806</br> 北海道札幌市中央区南6条西5丁目</p>
-                            <div class="contact-buttons">
-                                <button class="contact-button-hours">
-                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M7.5 3V7.5H4.125M14.25 7.5C14.25 8.38642 14.0754 9.26417 13.7362 10.0831C13.397 10.9021 12.8998 11.6462 12.273 12.273C11.6462 12.8998 10.9021 13.397 10.0831 13.7362C9.26417 14.0754 8.38642 14.25 7.5 14.25C6.61358 14.25 5.73583 14.0754 4.91689 13.7362C4.09794 13.397 3.35382 12.8998 2.72703 12.273C2.10023 11.6462 1.60303 10.9021 1.26381 10.0831C0.924594 9.26417 0.75 8.38642 0.75 7.5C0.75 5.70979 1.46116 3.9929 2.72703 2.72703C3.9929 1.46116 5.70979 0.75 7.5 0.75C9.29021 0.75 11.0071 1.46116 12.273 2.72703C13.5388 3.9929 14.25 5.70979 14.25 7.5Z"
-                                            stroke="black" stroke-width="1.5" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                    </svg>
-                                    <p>9:00 ~ 0:00</p>
-                                </button>
-                                <button class="contact-button-credit">
-                                    <p>クレジット決済可能</p>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-note">
-                    <p>電話予約の対応時間は朝8:30~となります。</p>
-                </div>
-            </div>
+            <x-public.shops.contact-info phone-icon="assets/img/shops/shizuku/phone.png" phone-number="011-533-8988"
+                email="@ShizukuHealth" address="〒064-0806</br> 北海道札幌市中央区南6条西5丁目" hours="9:00 ~ 0:00"
+                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。"
+                phone-background="linear-gradient(180deg, rgba(255, 242, 215, 0.8) 20.67%, rgba(189, 144, 47, 0.8) 100%)"
+                address-background="#160B00" />
             <div class="register">
-                <button class="register-button">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <rect width="20" height="20" fill="url(#pattern0_8_13)" />
-                        <defs>
-                            <pattern id="pattern0_8_13" patternContentUnits="objectBoundingBox" width="1"
-                                height="1">
-                                <use xlink:href="#image0_8_13" transform="scale(0.00390625)" />
-                            </pattern>
-                            <image id="image0_8_13" width="256" height="256" preserveAspectRatio="none"
-                                xlink:href="data:image/png;base64,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" />
-                        </defs>
-                    </svg>
-                    <p>新規会員登録はコチラ！</p>
-                </button>
+                <x-public.shops.register-button text="新規会員登録はコチラ！" background-color="#FFF5FB" text-color="#FF3498" />
+            </div>
+
+            <!-- Breadcrumb Navigation -->
+            <div class="breadcrumb-navigation">
+                <p>すすきのhigh grade health ＞ トップページ</p>
             </div>
         </div>
         <div class="home-content">
-            <div class="home-header">
-                <div class="menu-list-container">
-                    <div class="menu-item">
-                        <h1>トップページ</h1>
-                        <p> top page </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>キャスト一覧</h1>
-                        <p> cast list </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>出勤情報</h1>
-                        <p> schedule </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>写メ日記</h1>
-                        <p> photo diary </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>イベント一覧</h1>
-                        <p> event </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>料金システム</h1>
-                        <p> system </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>新人情報</h1>
-                        <p> new cast </p>
-                    </div>
-                    <div class="menu-item">
-                        <h1>ログイン</h1>
-                        <p> login </p>
-                    </div>
-                </div>
-                <div class="menu-button">
-                    <svg width="51" height="22" viewBox="0 0 51 22" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <line y1="1" x2="50.5785" y2="1" stroke="#FFDA89" stroke-width="2" />
-                        <line y1="11" x2="50.5785" y2="11" stroke="#FFDA89" stroke-width="2" />
-                        <line y1="21" x2="50.5785" y2="21" stroke="#FFDA89" stroke-width="2" />
-                    </svg>
-                    <p>menu</p>
-                </div>
-                <!-- Page Top Button -->
-                <div class="page-top-section">
-                    <div class="page-top-line"></div>
-                    <a href="#" class="page-top-text"
-                        onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">page top</a>
-                    <a href="#" class="page-top-text"
-                        onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
-                        class="page-top-social">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40"
-                            fill="none">
-                            <path
-                                d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z"
-                                fill="#B19D67" />
-                        </svg>
-                    </a>
-                </div>
-            </div>
+            <x-public.shops.home-header logo-image="assets/img/shops/shizuku/footer-logo.png" logo-alt="Shizuku Logo"
+                :menu-items="[
+                    ['title' => 'トップページ', 'subtitle' => 'top page'],
+                    ['title' => 'キャスト一覧', 'subtitle' => 'cast list'],
+                    ['title' => '出勤情報', 'subtitle' => 'schedule'],
+                    ['title' => '写メ日記', 'subtitle' => 'photo diary'],
+                    ['title' => 'イベント一覧', 'subtitle' => 'event'],
+                    ['title' => '料金システム', 'subtitle' => 'system'],
+                    ['title' => '新人情報', 'subtitle' => 'new cast'],
+                    ['title' => 'ログイン', 'subtitle' => 'login'],
+                ]" menu-button-id="mobileMenuButton" background-color="#160B00" />
             <div class="home-schedule">
-                <div class="home-schedule-title">
-                    <h2>schedule</h2>
-                </div>
-                <div class="home-schedule-info">
-                    <div class="schedule-info-header">
-                        <img src="{{ asset('assets/img/shop/calender-g.png') }}" alt="出勤情報"
-                            class="schedule-info-icon">
-                        <p class="schedule-info-title">出勤情報</p>
+                <x-public.shops.section-title text="schedule" background-color="#2A1A08" gradient-start="#FFF2D7"
+                    gradient-end="#BD902F" letter-spacing="6px" />
+                <x-public.shops.schedule-info icon-image="assets/img/shop/calender-g.png" icon-alt="出勤情報"
+                    title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る" background-color="#FFFFFF"
+                    border-color="#2A1A08" text-color="#2A1A08" underline-gradient-start="#FFF2D7"
+                    underline-gradient-end="#BD902F" />
+                <div class="home-scheule-ifo-mobile w-full flex bg-black text-white border-t-8 border-b-8">
+                    <div class="my-[20px] justify-items-center border-r px-[20px]">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="25" height="25" fill="url(#pattern0_10_3954)" />
+                            <defs>
+                                <pattern id="pattern0_10_3954" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_10_3954" transform="scale(0.00390625)" />
+                                </pattern>
+                                <image id="image0_10_3954" width="256" height="256" preserveAspectRatio="none"
+                                    xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                        <p class="pt-[10px]">HOME</p>
                     </div>
-                    <div class="schedule-info-description">
-                        <p>本日出勤するキャスト一覧になります。</p>
+                    <div class="my-[20px] justify-items-center border-r px-[20px]">
+                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="26" height="26" fill="url(#pattern0_10_3957)" />
+                            <defs>
+                                <pattern id="pattern0_10_3957" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_10_3957" transform="scale(0.00390625)" />
+                                </pattern>
+                                <image id="image0_10_3957" width="256" height="256" preserveAspectRatio="none"
+                                    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAQAElEQVR4AeydS4hkVxnH773V0zOdR3ePC4nP9OhGRXxEjaCQTDCCLlQwgu4ys4iQgBCCj43Q7U7B4EZBITDJSlBciCaCGCYqiJIHuHChC2cCMhKRzFQnpFM1Xff4fZ3qWN3pqr6Pc8/jnt9wT6rq1rnf4/ed71/33qI6Rca/hQSMuXRqMr721XK0/YvJaPhPGbsyTMMxkeOulOPhbyeja98yOy++c6HzBN4cj4e3T8bDhyej4TMymnL9/3Hj4QvC93eT0fY3zcsv35IAwlYpIgAL8E1e3X6oHL/pSmbyn5jMfFGmnpExkNF0U95vMSb7dJbl3y2LwfOy+H9gjGljM4vxn3nllbdJw/90YLK/ZCZ7SHL4iIz2m8neLHw/lWXme+WJyRXxsdXeaH8t6ILsb3YNM5OGLOQT/+dZbh4WE6dldLeZ7MFyvP2MGW2/pzsnYVk211+6sxxc/4dE9RUZXW65GN8sR8MnjPnPTfKc7RABBOAQEH1pxtuPm8x8SZ87Gh8qM/OE2bl6qyN/3tyY8fDjZTn5jQRwgwwnm8myz05Gy487cRaREw0VAVAKM2PvlDzLPjOzy9XTMyYvHnHlzJefsjSSY77i2n+e53dMXh3+yLXf0P0hADMVMq9sf0KuRx+c2eX0qcmzuydyw9GpU4fO5Hr821mev9+hy4Ou8uyBvRof3Jv0KwRgpvzlwDww89LPU1P4j6G7zO/vznQ1y1Lj+6rNTGMWAjCts9z40xtG90xfenwwHzSjFz/gMYBOXF/fuXpWDL9Vhu/tC74DCMH/fgwIwJTE9evbH5Wnp2R43yb50u3eg7AcQJEP7HzN1z6u02b00nvbm+mHBQRgWsfC5G+fPvX+kE/MhvcgrAdg3mHdZEODu2YSTCwNU7B2GALwOspy+fWnvp8MMmdfkTlM9aRDXwtd5VkRTCyZ538IgOcC4B4CrgnM+kMAZmnwHAKJEUAAEis46UJglgACMEuD5xBIjAACkFjBSTdtAoezRwAOE+E1BBIigAAkVGxShcBhAgjAYSK8hkBCBBCAhIpNqmkTOCp7BOAoKuyDQCIEEIBECk2aEDiKAAJwFBX2QSARAghAIoUmzbQJzMseAZhHhv0QSIAAApBAkUkRAvMIIADzyLAfAgkQCEIA9O/F7e5sn9MxGQ03bY++1rErXnX4awx95VuHQ9W5ykvXu9m5uqHDBbtFPrwIgEIQYBdk7P0/3YqiuJgX5oIOCXargyEm+7cVg+xeyaoLXpVtTmOQMHq5VeYg2Veaq2tc13tZFJd0aA+U4+2L2hM+BMGZAGiCmqgmrBAE2DkZbBBInoAx5qz2hAqC9oj2iisx6FwANBlNShPURJOvNgAgsICA9sherwwGF/RSYcFUK291JgAaPI1vpUYYSZCACsHepYJcHrQ5GzgOXScCoM2vwWsSxwXA+xCAwHwC2kN6aaBn0vNnNX/HugDINf6mNn/zkDgSAhA4TCCXm+TaW7bPBqwKgJ7yS+B6N1Qe2CAAAcsEtozcG7ApAtYEQJtfT1csJ4w5CEBghoD2mFwS6Ne/M3uPflplrxUB2Ds1ka8yqjhkDgQg0JrAlvZcaytioLUA6A0/scNpv0Bgg4BDAls2bgy2EgC9FuGGn8OS4woCMwT0xqD24Myu2k9bCYDNa5HakXMABCCQzevBqmgaC8BUeTj1r0qaeRDohsDWtBcbWW8uAPJ1RCOPHAQBCFglIGcBm00NNhIAVRz9OqKpU46DAASsEjinPdnEYiMBEMWx9j1kk6A5BgIQOEhgticPvrP4VSMBEJP8lFcgsEEgFAJ5np9tEkttAZieamw0ccYxEIBANwT0knzam7Uc1BaApqcataJiMgQgUJtAk96sLQASVXSf/pWU0RQ7klsYm8nDicUWkSLbtWWqvR1zbCyV1kz7QGxb2KhrsLYAyLVGdAJQBcpgMni6yjwXc4zJ/lzFj572VZnX5RyJodJ6MJP82S7jqGN7MFn6a535scxt0pu1BaBqwUOCJnJ/7CLNb7zx31me/dB33ML3D0unVn/lO44a/o9lq7aWVlYfk8e/y/C7GfOI1PrKcUFUWTPH2XD9vqydSrWYjau2AMjBtZ3IMV63oijurBLAYHnta1luHpa5Exk+tp8NxsU9VRyHdIpaMRazmxX35Hn2ZJX8Opljsh8PTq3fV8V21TVTxZbDObV7s5YAVCy0w3yrucprfEUyWF7/erG8enMxyT9ZluVdrkZxfXDL4OTal/PV1f9WyarJDZ8qdpvMqRrLyZM3/61YXru7KM27XHFVP0WR31Esl6cHp9bur5pfnTVT1WbX89R+3R6tJQDqIMYhp0Zn64CR4u/kN6z+6cTK6adcjfymm16oyTaY32EIr1rfQecr65dccVU/+YnVP+b56WtV+epa0TVTdX7M85IQAC1Q1U8pnRv6sPXHIGzlqc1i47fptuJpa6dPa+U4FskIgIBo9aspOT6ITT+dJJBgPv0llr0tL8zmNLa917H+Z5pDcHy74pmSAOhvpy9OC9wVz87t6h+F7NxJMwcbsX9y6toImO/CqjR9MykBEEi6SKMVATn1v2DC/tuL1v5WndTK+abNHzhf60xSEwAFuLFX6J2rtb8y0YN9Df2ry+I7hh9h7YmAfppKvFFsGqvyTa35tTgpCkCmhZbT1YvTP2iqHIIdGmOEi9P636/vqkB7fIvioq6JrnyEbDdJAZgWZKOQwmtz6SLQT4Hp/iAe9K66xqYxxrg4NWYR2Ut7ly0Bnm3N8pWCR3U2KPEe2Nq8SFkA9rjpQtUm08WqDScLdlMFwfXQBalD/F+QcUnuqod+vb/Hr8J/zs2y1Rxds1V/6leHsO0b3wolmD8leQGYRaNiIK+3VBBcD214HeJfr/N794m0z1ZzdM1W/alfHX3lK3k12hCARtg4CAL9IIAA9KOOZJEogbZpIwBtCXI8BCImgABEXDxCh0BbAghAW4IcD4GICSAAEReP0NMmYCN7BMAGRWxAIFICCECkhSNsCNgggADYoIgNCERKAAGItHCEnTYBW9kjALZIYgcCERJAACIsGiFDwBYBBMAWSexAIEICCECERSPktAnYzB4BsEkTWxCIjAACEFnBCBcCNgkgADZpYgsCkRFAACIrGOGmTcB29giAbaLYg0BEBBCAiIpFqBCwTQABsE0UexCIiAACEFGxCDVtAl1kjwB0QRWbEIiEAAIQSaEIEwJdEEAAuqCKTQhEQgABiKRQhJk2ga6yRwC6IotdCERAwIsAmDI/Pzi5ljNgwBp4bQ1oT/jQCy8C4CNRfEIAAm8kgAC8kQl7IBAUgS6DQQC6pIttCAROAAEIvECEB4EuCSAAXdLFNgQCJ4AABF4gwkubQNfZIwBdE8Y+BAImgAAEXBxCg0DXBBCArgljHwIBE0AAAi4OoaVNwEX2CIALyviAQKAEEIBAC0NYEHBBAAFwQRkfEAiUAAIQaGEIK20CrrJHAFyRxg8EAiSAAARYFEKCgCsCCIAr0viBQIAEEIAAi0JIaRNwmT0C4JI2viAQGAEEILCCEA4EXBJAAFzSxhcEAiOQlACY8bXbJqOhKUfDXzJgcHgN6NrYHW/f67NHXftOSgD24Zos+zwDBofXwP76SOkxSQFIqcDkCoFFBBCARXR4DwI9J4AA9LzApBcPAR+RIgA+qOMTAoEQQAACKQRhQMAHAQTAB3V8QiAQAghAIIUgjLQJ+MoeAfBFHr8QCIAAAhBAEQgBAr4IIAC+yOMXAgEQQAACKAIhpE3AZ/YIgE/6+IaAZwIIgOcC4B4CPgkgAD7p4xsCngkgAJ4LgPu0CfjOPlkBMFn2NAMG+2vAdyP68p+UAOTL688NTq7lOpZOrt3OgMH+GtA1oWNpefUxX83ow29SAuADMD4hEDIBBCDk6hBbrwmEkBwCEEIViAECngggAJ7A4xYCIRBAAEKoAjFAwBMBBMATeNymTSCU7BGAUCpBHBDwQAAB8AAdlxAIhQACEEoliAMCHgggAB6g4zJtAiFljwCEVA1igYBjAgiAY+C4g0BIBBCAkKpBLBBwTAABcAwcd2kTCC17BCC0ihAPBBwSQAAcwsYVBEIjgACEVhHigYBDAgiAQ9i4SptAiNkjACFWhZgg4IgAAuAING4gECIBBCDEqhATBBwRSEoAdsfb905GQzMzhvKcMRqmzuD1NWHG127rovdCtZmUABxRhFXZx8iy1BnIMkhzS10A0qw6WUNgSgABmILgAQIpEkAAUqw6OTslELIzBCDk6hAbBDomgAB0DBjzEAiZAAIQcnWIDQIdE0AAOgaM+bQJhJ49AhB6hYgPAh0SQAA6hItpCIROAAEIvULEB4EOCSAAHcLFdNoEYsgeAYihSsQIgY4IIAAdgcUsBGIggADEUCVihEBHBBCAjsBiNm0CsWSfngAY8/2MAYN5ayCWzrUUZ1ICsLS8+tjg1Po3GDCYtwby5fXnLPVWFGaSEoAoKkKQEHBIAAFwCBtXaRCIKUsEIKZqESsELBNAACwDxRwEYiKAAMRULWKFgGUCCIBloJhLm0Bs2SMAsVWMeCFgkQACYBEmpiAQGwEEILaKES8ELBJAACzCxFTaBGLMHgGIsWrEDAFLBBAASyAxA4EYCSAAMVaNmCFgiQACYAkkZtImEGv2CECslSNuCFgggABYgIgJCMRKAAGItXLEDQELBBAACxAxkTaBmLNHAGKuHrFDoCUBBKAlQA6HQMwEkhIAM3rpfWZ89cOMABjsXN2IuXH6EntSAjDJzcdKUzzH8M9gN8vf3Ycmij2HpAQg9mIRPwRsE0AAbBPFHgQiIoAARFQsQoWAbQIIgG2i2EuGQB8SRQD6UEVygEBDAghAQ3AcBoE+EEAA+lBFcoBAQwIIQENwHJY2gb5kjwD0pZLkAYEGBBCABtA4BAJ9IYAA9KWS5AGBBgQQgAbQOCRtAn3KHgHoUzXJBQI1CSAANYExHQJ9IoAA9Kma5AKBmgQQgJrAmJ42gb5ln5QAmEn5L2PyzzH8M1gaZNcy/nknkJQAnFhZf3Lp1OqvGf4Z5Mvrz3pf/QSQJSUA1BsCEDhIAAE4yINXEJhLoI9vIAB9rCo5QaAiAQSgIiimQaCPBBCAPlaVnCBQkQACUBEU09Im0NfsEYC+Vpa8IFCBAAJQARJTINBXAghAXytLXhCoQAABqACJKWkT6HP2CECfq0tuEDiGAAJwDCDehkCfCSAAfa4uuUHgGAIIwDGAeDttAn3PHgHoe4XJDwILCCAAC+DwFgT6TgAB6HuFyQ8CCwggAAvg8FbaBFLIHgFIocrkCIE5BBCAOWDYDYEUCCAAKVSZHCEwhwACMAcMu9Mm4Dr7vDC32vCZr5y+XMdOLQGoa3xeIJLsnfPeYz8EIOCOQC0BmIZVS2Gmxxx4yPN848AOXkAgcQLSE2ctIKjdm00EoHWcxpizZucqItCaJAb6QEB7QXvCRy61BUCUqrbKHJVYowEioQAAAnBJREFUWRSbR+1nHwR8E3Dt3wwGF2z4bNKbtQVAlMqKAEjC5yajISIgINjSJaA9ID1l4/Q/EztP1SVZXwDK/Pd1nSyYv1WOty/qKdCCObwFgd4R0DWva18S25JhZTNl/nxdQ7UFYGll9VFxYussQFXrrFwOXFIYOlQRGcNNGPSWwQWp7SVd8/KJbeWTX/pxb5v25t7zqv+pLQBTw7VPNabHzX1QGDpkgioiI8tg4IFB1r3Pc+LD+g3wPM8b9WQjAZBTDZuXAcKDDQIQaENAPjzdCcD0VMPaZUCbxDkWAhDILg9Orn2nCYdGZwBTR3ovYPqUBwhAwCOBxr3YWACmisNZgMeq49ougUitNf7013wbC4AeLKOx8sixbBCAQHsCrXqwlQBwFtC+eliAQFMCeud/2oNNTWStBEC9FmV5lzxyKSAQ2CDgkMDlYnlVe6+Vy9YCoD8RRgRa1YCDAyAQWQiXy7I8byPm1gKgQagIyKNei3AmICDYINAlAW3+EyunG33vfzguKwKgRvVaRAOT54iAQGCDQBcEpMfustX8Gp81AVBjGhiXA0qCAQHrBPS032rza4RWBUAN6uWAnA2cked6SSAPbBAIm0Do0U3v9p/RD1jbsVoXgP0ARQTO6+mKvOaSQCCwQaAuAW187SEbd/vn+e5MANShKpYIwRlT5nrHEiFQKAwIHE/gsvaMNr720PHTm8/oVAD2w9IfD6kQqJrJPr00QAwEBBsEDhF4VBtfe0V75tB7nbx0IgD7kauaSXLnZZyZioH+5v3R/LXfMqso6NifziMEOifgw8F0vesHoY4t7QXpiVzGeVeNv5/3/wAAAP//i3LRhQAAAAZJREFUAwD8pzDwxB5NewAAAABJRU5ErkJggg==" />
+                            </defs>
+                        </svg>
+                        <p class="pt-[10px]">出勤</p>
                     </div>
-                    <div class="schedule-info-button">
-                        <p>一覧を見る</p>
-                        <div class="schedule-info-underline"></div>
+                    <div class="my-[20px] justify-items-center border-r px-[20px]">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="25" height="25" fill="url(#pattern0_10_3960)" />
+                            <defs>
+                                <pattern id="pattern0_10_3960" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_10_3960" transform="scale(0.00390625)" />
+                                </pattern>
+                                <image id="image0_10_3960" width="256" height="256" preserveAspectRatio="none"
+                                    xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                        <p class="pt-[10px]">システム</p>
+                    </div>
+                    <div class="my-[20px] justify-items-center border-r px-[20px]">
+                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <rect width="25" height="25" fill="url(#pattern0_10_3966)" />
+                            <defs>
+                                <pattern id="pattern0_10_3966" patternContentUnits="objectBoundingBox" width="1"
+                                    height="1">
+                                    <use xlink:href="#image0_10_3966" transform="scale(0.00390625)" />
+                                </pattern>
+                                <image id="image0_10_3966" width="256" height="256" preserveAspectRatio="none"
+                                    xlink:href="data:image/png;base64,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" />
+                            </defs>
+                        </svg>
+                        <p class="pt-[10px]">ログイン</p>
                     </div>
                 </div>
                 <div class="home-schedule-cards">
                     @for ($i = 0; $i < 12; $i++)
-                        <div class="schedule-card">
-                            <div class="schedule-card-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/coming-soon-card.png') }}"
-                                    alt="Background" class="card-bg">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame"
-                                    class="card-frame">
-                                <div class="schedule-card-content">
-                                    <div class="schedule-card-badge">
-                                        <div class="badge-red-bg">
-                                            <span class="badge-shift">本日出勤</span>
-                                        </div>
-                                        <div class="badge-content">
-                                            <span class="badge-time">12:00〜24:00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="schedule-card-info">
-                                <div class="schedule-card-status">
-                                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z"
-                                            fill="#FFE600" />
-                                    </svg>
-                                    <span class="status-text">待機中</span>
-                                </div>
-                                <p class="schedule-card-name">のんたん（20）</p>
-                                <p class="schedule-card-measurements">T.160 B.85(C) W.60 H.83</p>
-                                <p class="schedule-card-message">キャストメッセージが甲斐キキキャ</p>
-                            </div>
-                        </div>
+                        <x-public.shops.schedule-card background-image="assets/img/shops/shizuku/coming-soon-card.png"
+                            frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                            badge-time="12:00〜24:00"
+                            status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
+                            status-text="待機中" name="のんたん（20）" measurements="T.160 B.85(C) W.60 H.83"
+                            message="キャストメッセージが甲斐キキキャ" />
                     @endfor
                 </div>
             </div>
             <div class="home-news">
-                <div class="news-section">
-                    <div class="news-title">
-                        <h1>news</h1>
-                    </div>
-                    <div class="news-slider-wrapper">
-                        <button class="news-slider-prev">
-                            <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z"
-                                    fill="white" />
-                            </svg>
-                        </button>
-                        <div class="news-content">
-                            @for ($i = 0; $i < 10; $i++)
-                                <div class="news-content-card">
-                                    <div class="news-content-card-image">
-                                        <img src="{{ asset('assets/img/shops/shizuku/news-image.png') }}"
-                                            alt="News Card Image">
-                                    </div>
-                                    <div class="news-content-card-date">
-                                        <h2>00.00</h2>
-                                    </div>
-                                    <div class="news-content-card-content">
-                                        <p>タイトルタイトルタイトルタイトルタイ</p>
-                                    </div>
-                                </div>
-                            @endfor
-                        </div>
-                        <button class="news-slider-next">
-                            <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z"
-                                    fill="white" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-                <div class="news-section">
-                    <div class="news-title">
-                        <h1>photo diary</h1>
-                    </div>
-                    <div class="diary-slider-wrapper">
-                        <button class="diary-slider-prev">
-                            <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z"
-                                    fill="white" />
-                            </svg>
-                        </button>
-                        <div class="diary-content">
-                            @for ($i = 0; $i < 10; $i++)
-                                <div class="diary-content-card">
-                                    <div class="diary-content-card-image">
-                                        <img src="{{ asset('assets/img/shops/shizuku/diary-image.png') }}"
-                                            alt="Diary Card Image">
-                                    </div>
-                                    <div class="diary-content-card-date">
-                                        <h2>00.00</h2>
-                                    </div>
-                                    <div class="diary-content-card-content">
-                                        <p>タイトルタイトルタイトルタイトルタイ</p>
-                                    </div>
-                                </div>
-                            @endfor
-                        </div>
-                        <button class="diary-slider-next">
-                            <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z"
-                                    fill="white" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
+                <x-public.shops.news-section title="news" slider-id="newsSlider"
+                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" />
+                <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
+                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" />
             </div>
-            <div class="home-pickup">
-                <div class="pickup-header">
-                    <div class="pickup-header-bg">
-                        <img src="{{ asset('assets/img/shops/shizuku/pickup-bg.png') }}" alt="Background">
-                        <div class="pickup-header-overlay"></div>
-                        <div class="pickup-header-shadow"></div>
-                    </div>
-                    <div class="pickup-header-content">
-                        <h1 class="pickup-title-en">PICK UP</h1>
-                        <div class="pickup-title-ja-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="32"
-                                viewBox="0 0 18 32" fill="none">
-                                <path
-                                    d="M17.4396 14.9991L9.51595 12.8759L12.966 7.80923e-05L-2.36381e-06 16.6955L7.92361 18.8187L4.47353 31.6945L17.4396 14.9991Z"
-                                    fill="white" />
-                            </svg>
-                            <h2 class="pickup-title-ja">ピックアップ</h2>
-                        </div>
-                        <p class="pickup-description">当店の女の子イチオシ情報です</p>
-                    </div>
-                </div>
-                <div class="pickup-badge">
-                    <div class="pickup-badge-diamond">
-                        <svg width="188" height="188" viewBox="0 0 188 188" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path d="M94 0L188 94L94 188L0 94L94 0Z" fill="url(#paint0_linear_badge)" />
-                            <defs>
-                                <linearGradient id="paint0_linear_badge" x1="94" y1="0"
-                                    x2="94" y2="188" gradientUnits="userSpaceOnUse">
-                                    <stop stop-color="#FFF2D7" />
-                                    <stop offset="1" stop-color="#BD902F" />
-                                </linearGradient>
-                            </defs>
-                        </svg>
-                    </div>
-                    <p class="pickup-badge-text">当店一押し</p>
-                </div>
-                <div class="pickup-cast-card">
-                    <div class="pickup-cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/pickup-cast-1.png') }}" alt="Cast 1"
-                            class="cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
-                            class="cast-frame">
-                    </div>
-                </div>
-                <div class="pickup-cast-card">
-                    <div class="pickup-cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/pickup-cast-2.png') }}" alt="Cast 2"
-                            class="cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
-                            class="cast-frame">
-                    </div>
-                </div>
-            </div>
+            <x-public.shops.pickup-section header-background-image="assets/img/shops/shizuku/pickup-bg.png"
+                title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
+                :cast-images="[
+                    ['image' => 'assets/img/shops/shizuku/pickup-cast-1.png', 'alt' => 'Cast 1'],
+                    ['image' => 'assets/img/shops/shizuku/pickup-cast-2.png', 'alt' => 'Cast 2'],
+                ]" frame-image="assets/img/shops/shizuku/card-frame-2.png" />
             <div class="home-new-girl-section">
-                <div class="home-new-girl-title">
-                    <h2 class="new-girl-title">NEW GIRL</h2>
-                </div>
-                <div class="home-new-girl-info">
-                    <div class="new-girl-info-header">
-                        <svg width="35" height="35" viewBox="0 0 35 35" fill="none"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                            <rect width="35" height="35" fill="url(#pattern0_8_1967)" />
-                            <defs>
-                                <pattern id="pattern0_8_1967" patternContentUnits="objectBoundingBox" width="1"
-                                    height="1">
-                                    <use xlink:href="#image0_8_1967" transform="scale(0.00390625)" />
-                                </pattern>
-                                <image id="image0_8_1967" width="256" height="256" preserveAspectRatio="none"
-                                    xlink:href="data:image/png;base64,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" />
-                            </defs>
-                        </svg>
-                        <p class="new-girl-info-title">新人情報</p>
-                    </div>
-                    <div class="new-girl-info-description">
-                        <p>新入デビュー♪ ヴィラコート雫の新人入店情報になります</p>
-                    </div>
-                    <div class="new-girl-info-button">
-                        <p>一覧を見る</p>
-                        <div class="new-girl-info-underline"></div>
-                    </div>
-                </div>
+                <x-public.shops.section-title text="NEW GIRL" background-color="#2A1A08" gradient-start="#FFF2D7"
+                    gradient-end="#BD902F" letter-spacing="0.375rem" opacity="0.7" small="true" />
+                @php
+                    $newGirlIconSvg =
+                        '<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect width="35" height="35" fill="url(#pattern0_8_1967)"/><defs><pattern id="pattern0_8_1967" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_8_1967" transform="scale(0.00390625)"/></pattern><image id="image0_8_1967" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/></svg>';
+                @endphp
+                <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
+                    description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#FFFFFF"
+                    border-color="#2A1A08" text-color="#2A1A08" underline-gradient-start="#FFF2D7"
+                    underline-gradient-end="#BD902F" responsive-variant="new-girl" />
             </div>
             <div class="home-new-girl-slider">
                 <div class="new-girl-slider-cards">
                     <div class="new-girl-slider-content">
                         @for ($i = 0; $i < 6; $i++)
-                            <div class="new-girl-card">
-                                <div class="new-girl-card-bg-left">
-                                    <img src="{{ asset('assets/img/shops/shizuku/new-girl.png') }}" alt="Background"
-                                        class="card-bg-image">
-                                    <div class="card-bg-overlay"></div>
-                                </div>
-                                <div class="new-girl-card-left">
-                                    <div class="new-girl-card-date">
-                                        <svg width="27" height="24" viewBox="0 0 27 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <defs>
-                                                <linearGradient id="calendar-gradient-{{ $i }}"
-                                                    x1="0%" y1="0%" x2="0%" y2="100%">
-                                                    <stop offset="20.67%" style="stop-color:#FFF2D7;stop-opacity:1" />
-                                                    <stop offset="100%" style="stop-color:#BD902F;stop-opacity:1" />
-                                                </linearGradient>
-                                            </defs>
-                                            <rect width="27" height="24"
-                                                fill="url(#calendar-gradient-{{ $i }})" />
-                                        </svg>
-                                        <p class="date-text">2025.00.00 SUN <span class="date-label">入店</span></p>
-                                    </div>
-                                    <div class="new-girl-card-divider"></div>
-                                    <div class="new-girl-card-info">
-                                        <div class="card-name-section">
-                                            <p class="card-name">名前名前</p>
-                                        </div>
-                                        <p class="card-measurements">00歳／T.000 B.000(C) W.00 H.00</p>
-                                        <div class="card-description">
-                                            <p>テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="new-girl-card-divider-vertical">
-                                    <p class="divider-name-text">Name</p>
-                                </div>
-                                <div class="new-girl-card-right">
-                                    <img src="{{ asset('assets/img/shops/shizuku/new-girl.png') }}" alt="Cast Photo"
-                                        class="card-photo">
-                                    <p class="card-name-vertical">Name</p>
-                                </div>
-                            </div>
+                            <x-public.shops.new-girl-card background-image="assets/img/shops/shizuku/new-girl.png"
+                                photo-image="assets/img/shops/shizuku/new-girl.png" date="2025.00.00 SUN"
+                                date-label="入店" name="名前名前" name-vertical="Name" age="00"
+                                measurements="T.000 B.000(C) W.00 H.00"
+                                description="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
+                                gradient-id="calendar-gradient-{{ $i }}" gradient-start="#FFF2D7"
+                                gradient-end="#BD902F" overlay-opacity="0.7" name-color="#FFFFFF"
+                                measurements-color="#FFFFFF" />
                         @endfor
                     </div>
                 </div>
@@ -607,9 +364,8 @@
                 </div>
             </div>
             <div class="home-castlist">
-                <div class="home-castlist-title">
-                    <h2>cast list</h2>
-                </div>
+                <x-public.shops.section-title text="cast list" background-color="#2A1A08" gradient-start="#FFF2D7"
+                    gradient-end="#BD902F" letter-spacing="0.375rem" opacity="0.7" />
                 <div class="home-castlist-info">
                     <div class="castlist-info-header">
                         <img src="{{ asset('assets/img/shops/shizuku/girl-icon.png') }}" alt="出勤情報"
@@ -624,38 +380,36 @@
                         <div class="castlist-info-underline"></div>
                     </div>
                 </div>
-                <div class="home-castlist-cards">
-                    @for ($i = 0; $i < 12; $i++)
-                        <div class="castlist-card">
-                            <div class="castlist-card-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Background"
-                                    class="card-bg">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame"
-                                    class="card-frame">
-                                <div class="castlist-card-content">
-                                    <div class="castlist-card-badge">
-                                        <div class="badge-red-bg">
-                                            <span class="badge-shift">本日出勤</span>
-                                        </div>
-                                        <div class="badge-content">
-                                            <span class="badge-time">12:00〜24:00</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="castlist-card-info">
-                                <div class="castlist-card-status">
-                                    {{-- <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/>
-                                </svg>                                     --}}
-                                    <span class="status-text">待機中</span>
-                                </div>
-                                <p class="castlist-card-name">かれん (20)</p>
-                                <p class="castlist-card-measurements">T.160 B.85(C) W.60 H.83</p>
-                                <p class="castlist-card-message">キャストメッセージが甲斐キキキャ</p>
-                            </div>
-                        </div>
-                    @endfor
+                <div class="castlist-slider-wrapper">
+                    <button class="castlist-slider-prev">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="19" viewBox="0 0 26 19"
+                            fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.53674e-06 9.01713C9.53674e-06 9.39623 0.150606 9.7598 0.418667 10.0279C0.686729 10.2959 1.0503 10.4465 1.4294 10.4465H20.85L15.6661 15.6304C15.5257 15.7613 15.413 15.9191 15.3349 16.0944C15.2568 16.2698 15.2148 16.459 15.2114 16.651C15.208 16.8429 15.2433 17.0335 15.3152 17.2115C15.3871 17.3895 15.4941 17.5512 15.6298 17.6869C15.7655 17.8226 15.9272 17.9296 16.1052 18.0015C16.2832 18.0734 16.4738 18.1087 16.6658 18.1053C16.8577 18.102 17.047 18.06 17.2223 17.9818C17.3976 17.9037 17.5554 17.7911 17.6863 17.6506L25.3097 10.0272C25.5774 9.75922 25.7277 9.39592 25.7277 9.01713C25.7277 8.63834 25.5774 8.27504 25.3097 8.00703L17.6863 0.383632C17.4153 0.131145 17.0569 -0.00631097 16.6866 0.000222693C16.3163 0.00675636 15.963 0.15677 15.7011 0.418658C15.4392 0.680547 15.2892 1.03386 15.2827 1.40417C15.2762 1.77448 15.4136 2.13287 15.6661 2.40383L20.85 7.58774H1.4294C1.0503 7.58774 0.686729 7.73834 0.418667 8.0064C0.150606 8.27446 9.53674e-06 8.63803 9.53674e-06 9.01713Z"
+                                fill="white" />
+                        </svg>
+                    </button>
+                    <div class="home-castlist-cards">
+                        @for ($i = 0; $i < 12; $i++)
+                            <x-public.shops.schedule-card background-image="assets/img/shops/shizuku/castlist.png"
+                                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                badge-time="12:00〜24:00" status-icon="" status-text="待機中" name="かれん (20)"
+                                measurements="T.160 B.85(C) W.60 H.83" message="キャストメッセージが甲斐キキキャ"
+                                badge-border-color="#B90000" badge-bg-color="#B90000" badge-text-color="#FFDA89"
+                                badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF"
+                                measurements-color="#FFFFFF" message-gradient-start="#FFF2D7"
+                                message-gradient-end="#BD902F" content-gradient-start="rgba(42, 26, 8, 0.80)"
+                                content-gradient-end="rgba(0, 0, 0, 0.00)" variant="castlist" />
+                        @endfor
+                    </div>
+                    <button class="castlist-slider-next">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="19" viewBox="0 0 26 19"
+                            fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M9.53674e-06 9.01713C9.53674e-06 9.39623 0.150606 9.7598 0.418667 10.0279C0.686729 10.2959 1.0503 10.4465 1.4294 10.4465H20.85L15.6661 15.6304C15.5257 15.7613 15.413 15.9191 15.3349 16.0944C15.2568 16.2698 15.2148 16.459 15.2114 16.651C15.208 16.8429 15.2433 17.0335 15.3152 17.2115C15.3871 17.3895 15.4941 17.5512 15.6298 17.6869C15.7655 17.8226 15.9272 17.9296 16.1052 18.0015C16.2832 18.0734 16.4738 18.1087 16.6658 18.1053C16.8577 18.102 17.047 18.06 17.2223 17.9818C17.3976 17.9037 17.5554 17.7911 17.6863 17.6506L25.3097 10.0272C25.5774 9.75922 25.7277 9.39592 25.7277 9.01713C25.7277 8.63834 25.5774 8.27504 25.3097 8.00703L17.6863 0.383632C17.4153 0.131145 17.0569 -0.00631097 16.6866 0.000222693C16.3163 0.00675636 15.963 0.15677 15.7011 0.418658C15.4392 0.680547 15.2892 1.03386 15.2827 1.40417C15.2762 1.77448 15.4136 2.13287 15.6661 2.40383L20.85 7.58774H1.4294C1.0503 7.58774 0.686729 7.73834 0.418667 8.0064C0.150606 8.27446 9.53674e-06 8.63803 9.53674e-06 9.01713Z"
+                                fill="white" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="home-ranking">
@@ -804,244 +558,119 @@
                     </div>
                 </div>
             </div>
-            <div class="home-event">
-                <div class="event-background">
-                    <img src="{{ asset('assets/img/shops/shizuku/event-bg.png') }}" alt="Event Background"
-                        class="event-bg-image">
-                    <div class="event-bg-overlay"></div>
-                </div>
-                <div class="event-main-banner">
-                    <div class="event-main-bg">
-                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}"
-                            alt="Main Banner Background" class="event-main-image">
-                    </div>
-                </div>
-                <div class="event-sub-banners">
-                    <div class="event-sub-banner">
-                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}" alt="Event Sub Banner">
-                    </div>
-                    <div class="event-sub-banner">
-                        <img src="{{ asset('assets/img/shops/shizuku/event-second.png') }}" alt="Event Sub Banner">
-                    </div>
-                    <div class="event-sub-banner">
-                        <img src="{{ asset('assets/img/shops/shizuku/event-main.png') }}" alt="Event Sub Banner">
-                    </div>
-                    <div class="event-sub-banner">
-                        <img src="{{ asset('assets/img/shops/shizuku/event-second.png') }}" alt="Event Sub Banner">
-                    </div>
-                </div>
-            </div>
-            <div class="home-shop-info">
-                <div class="shop-info-logo-section">
-                    <div class="shop-info-plo-logo">
-                        <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
-                    </div>
-                    <div class="shop-info-area-text">
-                        <p>すすきのエリア 全６店舗</p>
-                    </div>
-                    <a href="#" class="shop-info-group-site">
-                        <div class="shop-info-group-site-logo">
-                            <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
-                        </div>
-                        <p class="shop-info-group-site-text">GROUP SITE</p>
-                    </a>
-                </div>
-                <div class="shop-info-grid">
-                    @php
-                        $shops = [
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 1',
-                                'text1' => '上品な空間、時を忘れる美貌と',
-                                'text2' => 'おもてなしが魅力のヘルス',
-                                'url' => '#',
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 2',
-                                'text1' => '雅は、すすきの屈指の人妻・痴女が',
-                                'text2' => '在籍するヘルス',
-                                'url' => '#',
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 3',
-                                'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる',
-                                'text2' => '人妻ヘルス店',
-                                'url' => '#',
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 4',
-                                'text1' => '女の子を見て選べる唯一無二の',
-                                'text2' => 'エンターテインメントヘルス',
-                                'url' => '#',
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 5',
-                                'text1' => '容姿端麗なオトナ女性による',
-                                'text2' => '丁寧な本格マッサージ店',
-                                'url' => '#',
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 6',
-                                'text1' => 'アナタ色のエッチな女の子に育てられる',
-                                'text2' => '育成型ヘルス',
-                                'url' => '#',
-                            ],
-                        ];
-                    @endphp
-                    @foreach ($shops as $shop)
-                        <a href="{{ $shop['url'] }}" class="shop-info-card">
-                            <div class="shop-info-card-image">
-                                <img src="{{ asset($shop['image']) }}" alt="{{ $shop['alt'] }}">
-                            </div>
-                            <div class="shop-info-card-text">
-                                <p>{{ $shop['text1'] }}</p>
-                                <p>{{ $shop['text2'] }}</p>
-                            </div>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
-
-            <!-- Footer External Link Section -->
-            <div class="footer-external-link">
-                <div class="footer-external-link-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
-                        fill="none">
-                        <path
-                            d="M20.4722 16.4644L18.4676 14.4613L20.4736 12.4581C21.5363 11.3952 22.1333 9.95362 22.1332 8.45055C22.133 6.94749 21.5358 5.50604 20.4729 4.4433C19.41 3.38057 17.9684 2.78361 16.4653 2.78374C14.9623 2.78387 13.5208 3.38109 12.4581 4.44401L10.4549 6.44718L8.44893 4.44401L10.4535 2.44084C12.052 0.86823 14.2071 -0.00905999 16.4494 7.0563e-05C18.6917 0.00920112 20.8396 0.904012 22.4252 2.48959C24.0108 4.07517 24.9056 6.22306 24.9147 8.46539C24.9238 10.7077 24.0465 12.8628 22.4739 14.4613L20.4722 16.4644ZM16.4644 20.4722L14.4613 22.4753C12.8628 24.048 10.7077 24.9252 8.46539 24.9161C6.22306 24.907 4.07517 24.0122 2.48959 22.4266C0.904012 20.841 0.00920112 18.6931 7.0563e-05 16.4508C-0.00905999 14.2085 0.86823 12.0534 2.44085 10.4549L4.44401 8.45176L6.44718 10.4549L4.44401 12.4581C3.38128 13.5208 2.78424 14.9622 2.78424 16.4651C2.78424 17.9681 3.38128 19.4094 4.44401 20.4722C5.50675 21.5349 6.94812 22.1319 8.45105 22.1319C9.95399 22.1319 11.3954 21.5349 12.4581 20.4722L14.4613 18.469L16.4644 20.4722ZM16.4644 6.44718L18.469 8.45176L8.45034 18.4676L6.44718 16.4644L16.4644 6.44718Z"
-                            fill="white" />
-                    </svg>
-                    <p>外部リンク</p>
-                </div>
-                <div class="footer-external-link-description">
-                    <p>当店の情報が載っている外部広告サイトになります</p>
-                </div>
-            </div>
-
-            <!-- Footer External Links Grid -->
-            <div class="footer-external-links-grid">
-                @php
-                    $externalLinks = [
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-1.png',
-                            'alt' => '全国 駅ちか人気！風俗ランキング',
-                            'url' => '#',
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-4.png',
-                            'alt' => 'VANILLA',
-                            'url' => '#',
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                            'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                            'url' => '#',
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                            'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                            'url' => '#',
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                            'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                            'url' => '#',
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                            'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                            'url' => '#',
-                        ],
-                    ];
-                @endphp
-                @foreach ($externalLinks as $link)
-                    <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer"
-                        class="footer-external-link-item">
-                        <img src="{{ asset($link['image']) }}" alt="{{ $link['alt'] }}">
-                    </a>
-                @endforeach
-            </div>
-
-            <!-- Footer Menu Section -->
-            <div class="footer-menu">
-                <div class="footer-menu-content">
-                    <div class="footer-menu-links">
-                        <div class="footer-menu-row">
-                            <a href="#" class="footer-menu-link">店舗TOP</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">出勤情報</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">料金システム</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">キャスト一覧</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">新着情報</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">SNS</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">店舗一覧</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">ログイン</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">新規会員登録</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://17auto.biz/plogroup/registp/entryform2.htm" target="_blank"
-                                rel="noopener noreferrer" class="footer-menu-link">メルマガ</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">女性求人</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">男性求人</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://plo-group.jp/privacy-policy" target="_blank" rel="noopener noreferrer"
-                                class="footer-menu-link">個人情報保護方針</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://plo-group.jp/" target="_blank" rel="noopener noreferrer"
-                                class="footer-menu-link">グループTOP</a>
-                            <span class="footer-menu-separator">|</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-logo">
-                    <img src="{{ asset('assets/img/shops/shizuku/footer-logo.png') }}" alt="Villa Cort Shizuku">
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>Copyright © PLO Group All Rights Reserved.</p>
-            </div>
+            <x-public.shops.event-section background-image="assets/img/shops/shizuku/event-bg.png"
+                background-alt="Event Background" main-banner-image="assets/img/shops/shizuku/event-main.png"
+                main-banner-alt="Main Banner Background" :sub-banner-images="[
+                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                ]" />
+            <x-public.shops.footer :shops="[
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 1',
+                    'text1' => '上品な空間、時を忘れる美貌と',
+                    'text2' => 'おもてなしが魅力のヘルス',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 2',
+                    'text1' => 'すすきの屈指の人妻・痴女が在籍するヘルス',
+                    'text2' => 'エンターテインメントヘルス',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 3',
+                    'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
+                    'text2' => '在籍するヘルス',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 4',
+                    'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
+                    'text2' => '人妻ヘルス店',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 5',
+                    'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
+                    'text2' => '丁寧な本格マッサージ店',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'alt' => 'Shop 6',
+                    'text1' => '容姿端麗なオトナ女性による丁寧な本格マッサージ店',
+                    'text2' => '育成型ヘルス',
+                    'url' => '#',
+                ],
+            ]" :external-links="[
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-1.png',
+                    'alt' => '全国 駅ちか人気！風俗ランキング',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-4.png',
+                    'alt' => 'VANILLA',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
+                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
+                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
+                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
+                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
+                    'url' => '#',
+                ],
+            ]" :menu-links="[
+                ['text' => '店舗TOP', 'url' => '#'],
+                ['text' => '出勤情報', 'url' => '#'],
+                ['text' => '料金システム', 'url' => '#'],
+                ['text' => 'キャスト一覧', 'url' => '#'],
+                ['text' => '新着情報', 'url' => '#'],
+                ['text' => 'SNS', 'url' => '#'],
+                ['text' => '店舗一覧', 'url' => '#'],
+                ['text' => 'ログイン', 'url' => '#'],
+                ['text' => '新規会員登録', 'url' => '#'],
+                [
+                    'text' => 'メルマガ',
+                    'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
+                    'target' => '_blank',
+                ],
+                ['text' => '女性求人', 'url' => '#'],
+                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
+                ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
+            ]" />
         </div>
 
         <!-- Fixed Phone Button -->
-        <a href="tel:0115338988" class="fixed-phone-button">
-            <div class="flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"
-                    fill="none">
-                    <path
-                        d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z"
-                        fill="white" />
-                </svg>
-                <p class="phone-number">011-533-8988</p>
-            </div>
-            <p class="phone-hours">8:30〜24:00まで</p>
-        </a>
+        <x-public.shops.fixed-phone-button phone-number="0115338988" phone-display="011-533-8988"
+            hours="8:30〜24:00まで" mobile-text="TEL" />
 
         <!-- Fixed Side Buttons -->
-        <div class="fixed-side-buttons">
-            <a href="#" class="side-button side-button-new">
-                <img src="{{ asset('assets/img/shops/shizuku/side-new-girl.png') }}" alt="新人情報">
-            </a>
-            <a href="#" class="side-button side-button-recruit">
-                <img src="{{ asset('assets/img/shops/shizuku/side-recruit.png') }}" alt="女の子募集中">
-            </a>
-        </div>
+        <x-public.shops.fixed-side-buttons />
     </div>
 </x-shizuku-layout>
 
 @once
-    @vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js'])
+    @vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
 @endonce
->>>>>>> 27eb87e50876f9f55243489ba9fa7de65433068d

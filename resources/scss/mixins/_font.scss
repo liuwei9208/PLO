@@ -11,6 +11,15 @@
   font-display: swap;
 }
 
+// Import Yu Mincho Regular font
+@font-face {
+  font-family: "yu-mincho-regular";
+  src: url("/assets/fonts/yu-mincho-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @mixin serif() {
   font-family: "Bentham", serif;
   font-weight: 400;
@@ -44,6 +53,12 @@
 
 @mixin yu-mincho-pr6n() {
   font-family: "yu-mincho-pr6n", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin yu-mincho-regular() {
+  font-family: "yu-mincho-regular", serif;
   font-weight: 400;
   font-style: normal;
 }
