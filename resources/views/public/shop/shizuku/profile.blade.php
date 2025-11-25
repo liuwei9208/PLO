@@ -226,7 +226,7 @@
             menu-button-id="mobileMenuButton"
             background-color="#160B00"
             />
-            <div class="flex w-full mt-6">
+            <div class="flex w-full mt-6 mobile-profile-content">
                 <div class="profile-left-colum">
                     <div class="girl-info-section">
                         <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1" class="cast-image">

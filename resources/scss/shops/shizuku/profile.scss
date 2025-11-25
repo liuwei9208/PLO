@@ -36,6 +36,12 @@ opacity: 0;
 transition: opacity 0.2s ease-out;
 }
 
+@media screen and (max-width: 850px) {
+    .mobile-profile-content{
+        display: block;
+        padding: 0px 10px;
+    }
+}
 
 .profile-title{
     width: 100%;
@@ -87,6 +93,17 @@ transition: opacity 0.2s ease-out;
     margin-top: 1.25rem;
     margin-bottom: 1.25rem;
 }
+@media screen and (max-width: 850px) {
+    .profile-page-info{
+        border-radius: 50px;
+        background: var(--menu_ber, #160B00);
+        margin-left: 15px;
+        padding: 5px 20px;
+    }
+    .profile-page-info p{
+        color: #FFFFFF !important;
+    }
+}
 
 .profile-page-info p{
     @include Hiragino_Mincho_Pro();
@@ -112,6 +129,11 @@ transition: opacity 0.2s ease-out;
 .profile-left-colum{
     width: 30%;
 }
+@media screen and (max-width: 850px) {
+    .profile-left-colum{
+        width: 100%;
+    }
+}
 
 .profile-right-column{
     width: 70%;
@@ -121,7 +143,13 @@ transition: opacity 0.2s ease-out;
     flex-direction: column;
     gap: 1.5rem;
 }
-
+@media screen and (max-width: 850px) {
+    .profile-right-column{
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 .girl-basic-info{
     width: 100%;
     border-radius: 20px;
@@ -307,6 +335,11 @@ transition: opacity 0.2s ease-out;
     border-bottom: 1px solid #E5D6B4;
 }
 
+@media screen and (max-width: 850px) {
+    .girl-qa-row{
+        grid-template-columns: 100% !important;
+    }
+}
 .girl-qa-row:last-child{
     border-bottom: none;
 }
@@ -317,6 +350,12 @@ transition: opacity 0.2s ease-out;
     align-items: flex-start;
     gap: 8px;
     padding: 14px 24px;
+}
+@media screen and (max-width: 850px) {
+    .girl-qa-question,
+    .girl-qa-answer{
+        border-bottom: 2px solid var(---N__, #2A1A08);
+    }
 }
 
 .girl-qa-question{
@@ -577,6 +616,76 @@ transition: opacity 0.2s ease-out;
     }
 }
 
+@media screen and (max-width: 850px) {
+    .girl-schedule-section{
+        border-radius: 15px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        background: #2A1A08;
+    }
+    .girl-schedule-header{
+        padding: 12px 16px;
+        gap: 8px;
+    }
+    .girl-schedule-header h3{
+        font-size: 18px !important;
+    }
+    .girl-schedule-header svg{
+        width: 18px;
+        height: 20px;
+    }
+    .girl-schedule-content{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        border-radius: 0 0 15px 15px;
+        background: #F5F0E8;
+    }
+    .girl-schedule-day{
+        display: flex;
+        flex-direction: row !important;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 16px;
+        border-right: none;
+        border-bottom: 1px solid #E5D6B4;
+        background: #F5F0E8;
+    }
+    .girl-schedule-day:last-child{
+        border-bottom: none;
+    }
+    .girl-schedule-label{
+        background: #D4B896;
+        border-radius: 8px;
+        padding: 8px 14px;
+        margin-bottom: 0;
+        min-width: auto;
+        gap: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .girl-schedule-date{
+        font-size: 13px !important;
+        font-weight: 600;
+        color: #2A1A08;
+    }
+    .girl-schedule-label svg{
+        width: 12px;
+        height: 12px;
+        flex-shrink: 0;
+    }
+    .girl-schedule-time{
+        font-size: 14px !important;
+        text-align: left !important;
+        color: #2A1A08;
+        font-weight: 400;
+        margin-left: 16px;
+        flex: 1;
+    }
+}
+
 .girl-schedule-day{
     display: flex;
     flex-direction: column;
@@ -713,7 +822,7 @@ transition: opacity 0.2s ease-out;
 
 .girl-sales-points-row{
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-bottom: 8px;
 }
 
