@@ -230,7 +230,7 @@
                 <div class="profile-left-colum">
                     <div class="girl-info-section">
                         <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1" class="cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame" class="cast-frame">
+                        <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame" class="cast-frame">
                     </div>
                     <div class="girl-photo-gallery">
                         @for ($i = 0; $i < 10; $i++)
