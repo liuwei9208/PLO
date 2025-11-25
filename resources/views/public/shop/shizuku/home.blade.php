@@ -492,183 +492,100 @@
                     ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
                 ]"
             />
-            <div class="home-shop-info">
-                <div class="shop-info-logo-section">
-                    <div class="shop-info-plo-logo">
-                        <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
-                    </div>
-                    <div class="shop-info-area-text">
-                        <p>すすきのエリア 全６店舗</p>
-                    </div>
-                    <a href="#" class="shop-info-group-site">
-                        <div class="shop-info-group-site-logo">
-                            <img src="{{ asset('assets/img/shops/shizuku/plo-logo.png') }}" alt="PLO Logo">
-                        </div>
-                        <p class="shop-info-group-site-text">GROUP SITE</p>
-                    </a>
-                </div>
-                <div class="shop-info-grid">
-                    <div class="shop-info-grid-header">
-                        <p>店舗一覧</p>
-                    </div>
-                    @php
-                        $shops = [
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 1',
-                                'text1' => '上品な空間、時を忘れる美貌と',
-                                'text2' => 'おもてなしが魅力のヘルス',
-                                'url' => '#'
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 2',
-                                'text1' => 'すすきの屈指の人妻・痴女が在籍するヘルス',
-                                'text2' => 'エンターテインメントヘルス',
-                                'url' => '#'
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 3',
-                                'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
-                                'text2' => '在籍するヘルス',
-                                'url' => '#'
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 4',
-                                'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
-                                'text2' => '人妻ヘルス店',
-                                'url' => '#'
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 5',
-                                'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
-                                'text2' => '丁寧な本格マッサージ店',
-                                'url' => '#'
-                            ],
-                            [
-                                'image' => 'assets/img/shops/shizuku/home-banner.png',
-                                'alt' => 'Shop 6',
-                                'text1' => '容姿端麗なオトナ女性による丁寧な本格マッサージ店',
-                                'text2' => '育成型ヘルス',
-                                'url' => '#'
-                            ]
-                        ];
-                    @endphp
-                    @foreach ($shops as $shop)
-                    <a href="{{ $shop['url'] }}" class="shop-info-card">
-                        <div class="shop-info-card-image">
-                            <img src="{{ asset($shop['image']) }}" alt="{{ $shop['alt'] }}">
-                        </div>
-                        <div class="shop-info-card-text">
-                            <p>{{ $shop['text1'] }}</p>
-                            @if(!empty($shop['text2']))
-                            <p>{{ $shop['text2'] }}</p>
-                            @endif
-                        </div>
-                    </a>
-                    @endforeach
-                </div>
-            </div>
-            <!-- Footer External Link Section -->
-            <div class="footer-external-link">
-                <div class="footer-external-link-header">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                        <path d="M20.4722 16.4644L18.4676 14.4613L20.4736 12.4581C21.5363 11.3952 22.1333 9.95362 22.1332 8.45055C22.133 6.94749 21.5358 5.50604 20.4729 4.4433C19.41 3.38057 17.9684 2.78361 16.4653 2.78374C14.9623 2.78387 13.5208 3.38109 12.4581 4.44401L10.4549 6.44718L8.44893 4.44401L10.4535 2.44084C12.052 0.86823 14.2071 -0.00905999 16.4494 7.0563e-05C18.6917 0.00920112 20.8396 0.904012 22.4252 2.48959C24.0108 4.07517 24.9056 6.22306 24.9147 8.46539C24.9238 10.7077 24.0465 12.8628 22.4739 14.4613L20.4722 16.4644ZM16.4644 20.4722L14.4613 22.4753C12.8628 24.048 10.7077 24.9252 8.46539 24.9161C6.22306 24.907 4.07517 24.0122 2.48959 22.4266C0.904012 20.841 0.00920112 18.6931 7.0563e-05 16.4508C-0.00905999 14.2085 0.86823 12.0534 2.44085 10.4549L4.44401 8.45176L6.44718 10.4549L4.44401 12.4581C3.38128 13.5208 2.78424 14.9622 2.78424 16.4651C2.78424 17.9681 3.38128 19.4094 4.44401 20.4722C5.50675 21.5349 6.94812 22.1319 8.45105 22.1319C9.95399 22.1319 11.3954 21.5349 12.4581 20.4722L14.4613 18.469L16.4644 20.4722ZM16.4644 6.44718L18.469 8.45176L8.45034 18.4676L6.44718 16.4644L16.4644 6.44718Z" fill="white"/>
-                      </svg>
-                    <p>外部リンク</p>
-                </div>
-                <div class="footer-external-link-description">
-                    <p>当店の情報が載っている外部広告サイトになります</p>
-                </div>
-            </div>
-            <!-- Footer External Links Grid -->
-            <div class="footer-external-links-grid">
-                @php
-                    $externalLinks = [
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-1.png',
-                            'alt' => '全国 駅ちか人気！風俗ランキング',
-                            'url' => '#'
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-4.png',
-                            'alt' => 'VANILLA',
-                            'url' => '#'
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                            'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                            'url' => '#'
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                            'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                            'url' => '#'
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                            'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                            'url' => '#'
-                        ],
-                        [
-                            'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                            'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                            'url' => '#'
-                        ]
-                    ];
-                @endphp
-                @foreach ($externalLinks as $link)
-                <a href="{{ $link['url'] }}" target="_blank" rel="noopener noreferrer" class="footer-external-link-item">
-                    <img src="{{ asset($link['image']) }}" alt="{{ $link['alt'] }}">
-                </a>
-                @endforeach
-            </div>
-            <!-- Footer Menu Section -->
-            <div class="footer-menu">
-                <div class="footer-menu-content">
-                    <div class="footer-menu-links">
-                        <div class="footer-menu-row">
-                            <a href="#" class="footer-menu-link">店舗TOP</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">出勤情報</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">料金システム</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">キャスト一覧</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">新着情報</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">SNS</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">店舗一覧</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">ログイン</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">新規会員登録</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://17auto.biz/plogroup/registp/entryform2.htm" target="_blank" rel="noopener noreferrer" class="footer-menu-link">メルマガ</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">女性求人</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="#" class="footer-menu-link">男性求人</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://plo-group.jp/privacy-policy" target="_blank" rel="noopener noreferrer" class="footer-menu-link">個人情報保護方針</a>
-                            <span class="footer-menu-separator">|</span>
-                            <a href="https://plo-group.jp/" target="_blank" rel="noopener noreferrer" class="footer-menu-link">グループTOP</a>
-                            <span class="footer-menu-separator">|</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-logo">
-                    <img src="{{ asset('assets/img/shops/shizuku/footer-logo.png') }}" alt="Villa Cort Shizuku">
-                </div>
-            </div>
-            <div class="footer-copyright">
-                <p>Copyright © PLO Group All Rights Reserved.</p>
-            </div>
+            <x-public.shops.footer
+                :shops="[
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 1',
+                        'text1' => '上品な空間、時を忘れる美貌と',
+                        'text2' => 'おもてなしが魅力のヘルス',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 2',
+                        'text1' => 'すすきの屈指の人妻・痴女が在籍するヘルス',
+                        'text2' => 'エンターテインメントヘルス',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 3',
+                        'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
+                        'text2' => '在籍するヘルス',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 4',
+                        'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
+                        'text2' => '人妻ヘルス店',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 5',
+                        'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
+                        'text2' => '丁寧な本格マッサージ店',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/home-banner.png',
+                        'alt' => 'Shop 6',
+                        'text1' => '容姿端麗なオトナ女性による丁寧な本格マッサージ店',
+                        'text2' => '育成型ヘルス',
+                        'url' => '#'
+                    ]
+                ]"
+                :external-links="[
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-1.png',
+                        'alt' => '全国 駅ちか人気！風俗ランキング',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-4.png',
+                        'alt' => 'VANILLA',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-2.png',
+                        'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-3.png',
+                        'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-2.png',
+                        'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
+                        'url' => '#'
+                    ],
+                    [
+                        'image' => 'assets/img/shops/shizuku/external-link-3.png',
+                        'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
+                        'url' => '#'
+                    ]
+                ]"
+                :menu-links="[
+                    ['text' => '店舗TOP', 'url' => '#'],
+                    ['text' => '出勤情報', 'url' => '#'],
+                    ['text' => '料金システム', 'url' => '#'],
+                    ['text' => 'キャスト一覧', 'url' => '#'],
+                    ['text' => '新着情報', 'url' => '#'],
+                    ['text' => 'SNS', 'url' => '#'],
+                    ['text' => '店舗一覧', 'url' => '#'],
+                    ['text' => 'ログイン', 'url' => '#'],
+                    ['text' => '新規会員登録', 'url' => '#'],
+                    ['text' => 'メルマガ', 'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm', 'target' => '_blank'],
+                    ['text' => '女性求人', 'url' => '#'],
+                    ['text' => '男性求人', 'url' => '#'],
+                    ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
+                    ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank']
+                ]"
+            />
         </div>
 
         <!-- Fixed Phone Button -->
@@ -680,17 +597,17 @@
         />
 
         <!-- Fixed Side Buttons -->
-        <div class="fixed-side-buttons">
-            <a href="#" class="side-button side-button-new">
-                <img src="{{ asset('assets/img/shops/shizuku/side-new-girl.png') }}" alt="新人情報">
-            </a>
-            <a href="#" class="side-button side-button-recruit">
-                <img src="{{ asset('assets/img/shops/shizuku/side-recruit.png') }}" alt="女の子募集中">
-            </a>
-        </div>
+        <x-public.shops.fixed-side-buttons />
     </div>
 </x-shizuku-layout>
 
 @once
-@vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js'])
+@vite([
+    'resources/scss/shops/shizuku/home.scss', 
+    'resources/js/shops/shizuku/home.js', 
+    'resources/js/shops/home-header.js',
+    'resources/js/shops/news-section.js',
+    'resources/js/shops/new-girl-slider.js',
+    'resources/js/shops/castlist-slider.js'
+])
 @endonce
