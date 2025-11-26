@@ -393,7 +393,7 @@ p{
     overflow-y: hidden;
     scroll-behavior: smooth;
     gap: 0.9375rem;
-    padding: 1.875rem 3.125rem;
+    padding: 1.875rem 1rem;
     -webkit-overflow-scrolling: touch;
     flex: 1;
     
@@ -707,6 +707,7 @@ p{
 // New Girl Section Styles
 .home-new-girl-section {
   margin-top: 1.875rem;
+  position: relative;
 }
 
 // New Girl Info Section Styles
@@ -823,11 +824,47 @@ p{
   display: none;
 }
 
+// Mobile button after slider (hidden on desktop)
+.home-new-girl-button-mobile {
+  display: none;
+}
+
 // Mobile styles (0px to 850px)
 @media (max-width: 850px) {
+  .home-new-girl-section {
+    .schedule-info-new-girl {
+      .schedule-info-button {
+        display: none;
+      }
+    }
+  }
+  
   .home-new-girl-slider {
     padding: 1.875rem 0;
     position: relative;
+    margin-bottom: 0;
+  }
+  
+  // Show button after slider on mobile
+  .home-new-girl-button-mobile {
+    display: block;
+    width: 100%;
+    padding: 0;
+    background: rgba(42, 26, 8, 0.75);
+    
+    .schedule-info-button-mobile {
+      width: 100%;
+      border:none;
+      height: auto;
+      padding: 1.25rem 2.5rem;
+      margin: 0;
+    }
+    .schedule-info-underline {
+      display: none;
+    }
+    p {
+      border-bottom: 3px solid #FFE500;
+    }
   }
 
   .new-girl-slider-cards {
@@ -943,15 +980,7 @@ p{
     }
   }
 
-  // Adjust card size for mobile - full width
-  .new-girl-card {
-    width: 100%;
-    min-width: 100%;
-    max-width: 100%;
-    height: 20rem;
-    flex-shrink: 0;
-    box-sizing: border-box;
-  }
+
 }
 
 // Menu Overlay Styles

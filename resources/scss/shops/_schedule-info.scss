@@ -35,8 +35,27 @@
     }
     
     @media screen and (max-width: 850px) {
+      flex-direction: column;
+      width: 100%;
+      
+      .schedule-info-header {
+        width: 100%;
+        order: 1;
+      }
+      
+      .schedule-info-description {
+        width: 100%;
+        order: 2;
+      }
+      
       .schedule-info-button {
-        display: none;
+        display: flex;
+        width: 100%;
+        order: 3;
+        border-left: none;
+        border-top: 3px solid;
+        height: auto;
+        padding: 1.25rem 2.5rem;
       }
     }
   }

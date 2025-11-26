@@ -381,6 +381,23 @@
                     </button>
                 </div>
             </div>
+            @php
+                $newGirlButtonHref = null; // Add href if needed
+                $newGirlButtonOnClick = null; // Add onClick if needed
+            @endphp
+            <div class="home-new-girl-button-mobile">
+                @if($newGirlButtonHref)
+                    <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile" style="background: #FFFFFF; border-left-color: #2A1A08;">
+                        <p style="color: #2A1A08;">一覧を見る</p>
+                        <div class="schedule-info-underline" style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                    </a>
+                @else
+                    <div class="schedule-info-button schedule-info-button-mobile" style="background: #FFFFFF; border-left-color: #2A1A08;" @if($newGirlButtonOnClick) onclick="{{ $newGirlButtonOnClick }}" @endif>
+                        <p style="color: #2A1A08;">一覧を見る</p>
+                        <div class="schedule-info-underline" style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                    </div>
+                @endif
+            </div>
             <div class="home-castlist">
                 <x-public.shops.section-title text="cast list" background-color="#2A1A08" gradient-start="#FFF2D7"
                     gradient-end="#BD902F" letter-spacing="0.375rem" opacity="0.7" />

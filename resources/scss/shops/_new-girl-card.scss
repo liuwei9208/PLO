@@ -215,3 +215,19 @@
   }
 }
 
+@media (max-width: 850px) {
+  .new-girl-card {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 20rem;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    background: none;
+    padding: 0px 15px;
+  }
+  .new-girl-card-right{
+    width: 35%;
+  }
+}
+
