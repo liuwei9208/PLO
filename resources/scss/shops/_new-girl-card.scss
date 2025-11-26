@@ -65,7 +65,7 @@
   
   .date-text {
     @include times-new-roman();
-    @include responsive-font(20px, 26px);
+    @include responsive-font(16px, 31px);
     font-weight: 700;
     line-height: normal;
     background-clip: text;
@@ -104,8 +104,8 @@
 }
 
 .card-name {
-  @include Hiragino_Mincho_Pro();
-  @include responsive-font(18px, 22px);
+  @include Hiragino_Mincho_Pro_NW6();
+  @include responsive-font(17px, 25px);
   font-weight: 600;
   line-height: normal;
   margin: 0;
@@ -113,7 +113,7 @@
 
 .card-measurements {
   @include lustria();
-  @include responsive-font(14px, 16px);
+  @include responsive-font(13px, 18px);
   font-weight: 400;
   line-height: normal;
   margin: 0;
@@ -148,7 +148,7 @@
   
   p {
     @include lustria();
-    @include responsive-font(14px, 16px);
+    @include responsive-font(14px, 17.6px);
     font-weight: 400;
     line-height: 1.6875rem;
     color: #2A1A08;
@@ -175,7 +175,7 @@
 
 .divider-name-text {
   @include times-new-roman();
-  @include responsive-font(18px, 22px);
+  @include responsive-font(16px, 25px);
   font-weight: 700;
   line-height: normal;
   color: #2A1A08;

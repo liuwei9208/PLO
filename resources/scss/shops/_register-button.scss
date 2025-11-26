@@ -18,7 +18,7 @@
   
   p {
     @include inter();
-    @include responsive-font(12px, 18.62px);
+    @include responsive-font(12px, 15.62px);
     line-height: 1.1875rem;
     font-weight: 600 !important;
     text-align: center;

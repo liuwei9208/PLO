@@ -182,9 +182,9 @@ p{
 }
 
 .castlist-info-title {
-  @include yu-mincho-pr6n();
-  @include responsive-font(20px, 30px);
-  font-weight: 500;
+  @include yu-mincho-regular();
+  @include responsive-font(18px, 35.5px);
+  font-weight: 600;
   line-height: normal;
   color: $white;
   margin: 0;
@@ -204,9 +204,9 @@ p{
 }
 
 .castlist-info-description p {
-  @include yu-mincho-pr6n();
-  @include responsive-font(16px, 21px);
-  font-weight: 500;
+  @include yu-mincho-regular();
+  @include responsive-font(16px, 24px);
+  font-weight: 600;
   line-height: normal;
   color: $white;
   margin: 0;
@@ -234,9 +234,9 @@ p{
   }
   
   p {
-    @include yu-mincho-pr6n();
-    @include responsive-font(16px, 21px);
-    font-weight: 500;
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 24px);
+    font-weight: 600;
     line-height: normal;
     color: $white;
     margin: 0;
@@ -523,8 +523,8 @@ p{
 }
 
 .ranking-badge-text {
-  @include yu-mincho-pr6n();
-  @include responsive-font(20px, 24px);
+  @include yu-mincho-regular();
+  @include responsive-font(16px, 27.8px);
   font-weight: 600;
   line-height: normal;
   color: #2A1A08;
@@ -582,7 +582,7 @@ p{
 
 .ranking-title-en {
   @include didot();
-  @include responsive-font(60px, 72px);
+  @include responsive-font(41px, 86px);
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.09rem;
@@ -608,8 +608,8 @@ p{
 }
 
 .ranking-title-ja {
-  @include yu-mincho-pr6n();
-  @include responsive-font(30px, 35px);
+  @include yu-mincho-regular();
+  @include responsive-font(17.2px, 43.3px);
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.0875rem;
@@ -620,8 +620,8 @@ p{
 }
 
 .ranking-description {
-  @include yu-mincho-pr6n();
-  @include responsive-font(20px, 23px);
+  @include yu-mincho-regular();
+  @include responsive-font(15px, 26.7px);
   font-weight: 600;
   line-height: normal;
   color: $white;

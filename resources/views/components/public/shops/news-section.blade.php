@@ -9,7 +9,7 @@
     'nextButtonId' => null,
     'variant' => 'news', // 'news' or 'diary'
     'defaultImage' => 'assets/img/shops/shizuku/news-image.png',
-    'itemCount' => 10
+    'itemCount' => 10,
 ])
 
 @php
@@ -25,62 +25,67 @@
 
 <div class="news-section">
     <div class="news-title" style="background: {{ $titleBackgroundColor }};">
-        <h1 style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+        <h1
+            style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
             {{ $title }}
         </h1>
     </div>
     <div class="{{ $wrapperClass }}" id="{{ $sliderId }}">
         <button class="{{ $prevClass }}" id="{{ $prevButtonId ?? $sliderId . 'Prev' }}">
             <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z" fill="white"/>
+                <path
+                    d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z"
+                    fill="white" />
             </svg>
         </button>
         <div class="{{ $contentClass }}">
-            @if(count($items) > 0)
-                @foreach($items as $item)
-                <div class="{{ $cardClass }}">
-                    <div class="{{ $imageClass }}">
-                        <img src="{{ asset($item['image'] ?? $defaultImage) }}" alt="{{ $item['title'] ?? 'Card Image' }}">
-                        @if($variant === 'diary' && isset($item['imageText']) && !empty($item['imageText']))
-                            <div class="diary-content-card-image-text">
-                                <span>{{ $item['imageText'] }}</span>
-                            </div>
-                        @endif
+            @if (count($items) > 0)
+                @foreach ($items as $item)
+                    <div class="{{ $cardClass }}">
+                        <div class="{{ $imageClass }}">
+                            <img src="{{ asset($item['image'] ?? $defaultImage) }}"
+                                alt="{{ $item['title'] ?? 'Card Image' }}">
+                            @if ($variant === 'diary' && isset($item['imageText']) && !empty($item['imageText']))
+                                <div class="diary-content-card-image-text">
+                                    <span>{{ $item['imageText'] }}</span>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="{{ $dateClass }}">
+                            <h2>{{ $item['date'] ?? '00.00' }}</h2>
+                        </div>
+                        <div class="{{ $contentTextClass }}">
+                            <p>{{ $item['title'] ?? 'タイトルタイトルタイトルタイトルタイ' }}</p>
+                        </div>
                     </div>
-                    <div class="{{ $dateClass }}">
-                        <h2>{{ $item['date'] ?? '00.00' }}</h2>
-                    </div>
-                    <div class="{{ $contentTextClass }}">
-                        <p>{{ $item['title'] ?? 'タイトルタイトルタイトルタイトルタイ' }}</p>
-                    </div>
-                </div>
                 @endforeach
             @else
                 @for ($i = 0; $i < $itemCount; $i++)
-                <div class="{{ $cardClass }}">
-                    <div class="{{ $imageClass }}">
-                        <img src="{{ asset($defaultImage) }}" alt="Card Image">
-                        @if($variant === 'diary')
-                            <div class="diary-content-card-image-text">
-                                <span>日記タイトル日記</span>
-                            </div>
-                        @endif
+                    <div class="{{ $cardClass }}">
+                        <div class="{{ $imageClass }}">
+                            <img src="{{ asset($defaultImage) }}" alt="Card Image">
+                            @if ($variant === 'diary')
+                                <div class="diary-content-card-image-text">
+                                    <span>日記タイトル日記</span>
+                                </div>
+                            @endif
+                        </div>
+                        <div class="{{ $dateClass }}">
+                            <h2>投稿者名</h2>
+                        </div>
+                        <div class="{{ $contentTextClass }}">
+                            <p>0月0日(水) 00:00</p>
+                        </div>
                     </div>
-                    <div class="{{ $dateClass }}">
-                        <h2>00.00</h2>
-                    </div>
-                    <div class="{{ $contentTextClass }}">
-                        <p>タイトルタイトルタイトルタイトルタイ</p>
-                    </div>
-                </div>
                 @endfor
             @endif
         </div>
         <button class="{{ $nextClass }}" id="{{ $nextButtonId ?? $sliderId . 'Next' }}">
             <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z" fill="white"/>
+                <path
+                    d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z"
+                    fill="white" />
             </svg>
         </button>
     </div>
 </div>
-

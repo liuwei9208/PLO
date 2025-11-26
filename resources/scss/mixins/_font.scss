@@ -87,6 +87,16 @@
   font-weight: 600;
   font-style: normal;
 }
+@mixin Hiragino_Mincho_Pro_N() {
+  font-family: "Hiragino Mincho ProNW3", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+@mixin Hiragino_Mincho_Pro_NW6() {
+  font-family: "Hiragino Mincho ProNW6", serif;
+  font-weight: 600;
+  font-style: normal;
+}
 
 @mixin inter() {
   font-family: "Inter", sans-serif;

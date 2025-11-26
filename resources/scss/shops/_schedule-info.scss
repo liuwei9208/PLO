@@ -77,8 +77,8 @@
 }
 
 .schedule-info-title {
-  @include yu-mincho-pr6n();
-  @include responsive-font(20px, 30px);
+  @include yu-mincho-regular();
+  @include responsive-font(25px, 33px);
   font-weight: 600;
   line-height: normal;
   margin: 0;
@@ -95,15 +95,15 @@
 }
 
 .schedule-info-description p {
-  @include yu-mincho-pr6n();
-  @include responsive-font(16px, 21px);
+  @include yu-mincho-regular();
+  @include responsive-font(16px, 26px);
   font-weight: 600;
   line-height: normal;
   margin: 0;
   
   // New-girl variant uses smaller font
   .schedule-info-new-girl & {
-    @include responsive-font(12px, 21px);
+    @include responsive-font(17px, 24px);
     white-space: nowrap;
   }
 }
@@ -128,8 +128,8 @@
   }
   
   p {
-    @include yu-mincho-pr6n();
-    @include responsive-font(16px, 21px);
+    @include yu-mincho-regular();
+    @include responsive-font(21px, 21px);
     font-weight: 600;
     line-height: normal;
     margin: 0;

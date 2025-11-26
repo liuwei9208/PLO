@@ -232,13 +232,15 @@
                             badge-time="12:00〜24:00"
                             status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
                             status-text="待機中" name="のんたん（20）" measurements="T.160 B.85(C) W.60 H.83"
-                            message="キャストメッセージが甲斐キキキャ" />
+                            message="キャストメッセージが出ます" />
                     @endfor
                 </div>
                 <div class="home-schedule-button-mobile">
-                    <div class="schedule-info-button schedule-info-button-mobile" style="background: #FFFFFF; border-left-color: #2A1A08;">
+                    <div class="schedule-info-button schedule-info-button-mobile"
+                        style="background: #FFFFFF; border-left-color: #2A1A08;">
                         <p style="color: #2A1A08;">一覧を見る</p>
-                        <div class="schedule-info-underline" style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                        <div class="schedule-info-underline"
+                            style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
                     </div>
                 </div>
             </div>
@@ -308,16 +310,16 @@
                 </div>
                 <div class="new-girl-slider-mobile-controls">
                     <button class="new-girl-slider-mobile-prev">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61"
-                            viewBox="0 0 61 61" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
+                            fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M60.5 30.5C60.5 31.4283 60.1313 32.3185 59.4749 32.9749C58.8185 33.6313 57.9283 34 57 34H11.5L23.75 46.25C24.0948 46.5948 24.3688 47.0038 24.556 47.4542C24.7432 47.9046 24.8401 48.3879 24.8413 48.8762C24.8426 49.3645 24.7482 49.8483 24.5634 50.2996C24.3786 50.7509 24.1069 51.1613 23.7638 51.5081C23.4207 51.855 23.0129 52.1311 22.5631 52.3203C22.1133 52.5095 21.6304 52.6084 21.1421 52.6118C20.6538 52.6151 20.1696 52.5228 19.7171 52.3398C19.2646 52.1568 18.8527 51.8867 18.5042 51.5458L0.979167 34.0208C0.32282 33.3645 -0.0457764 32.4748 -0.0457764 31.5466C-0.0457764 30.6185 0.32282 29.7288 0.979167 29.0725L18.5042 11.5475C19.1708 10.9236 20.0465 10.5793 20.9543 10.5859C21.8621 10.5925 22.7326 10.9496 23.3901 11.5828C24.0476 12.216 24.4417 13.0759 24.4919 13.9828C24.5421 14.8898 24.2444 15.7866 23.6625 16.4875L11.5 28.5H57C57.9283 28.5 58.8185 28.8687 59.4749 29.5251C60.1313 30.1815 60.5 31.0717 60.5 32V30.5Z"
                                 fill="white" />
                         </svg>
                     </button>
                     <button class="new-girl-slider-mobile-next">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61"
-                            viewBox="0 0 61 61" fill="none">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61"
+                            fill="none">
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M0.5 30.5C0.5 31.4283 0.868749 32.3185 1.52513 32.9749C2.1815 33.6313 3.07174 34 4 34H49.5L37.25 46.25C36.9052 46.5948 36.6312 47.0038 36.444 47.4542C36.2568 47.9046 36.1599 48.3879 36.1587 48.8762C36.1574 49.3645 36.2518 49.8483 36.4366 50.2996C36.6214 50.7509 36.8931 51.1613 37.2362 51.5081C37.5793 51.855 37.9871 52.1311 38.4369 52.3203C38.8867 52.5095 39.3696 52.6084 39.8579 52.6118C40.3462 52.6151 40.8304 52.5228 41.2829 52.3398C41.7354 52.1568 42.1473 51.8867 42.4958 51.5458L60.0208 34.0208C60.6772 33.3645 61.0458 32.4748 61.0458 31.5466C61.0458 30.6185 60.6772 29.7288 60.0208 29.0725L42.4958 11.5475C41.8292 10.9236 40.9535 10.5793 40.0457 10.5859C39.1379 10.5925 38.2674 10.9496 37.6099 11.5828C36.9524 12.216 36.5583 13.0759 36.5081 13.9828C36.4579 14.8898 36.7556 15.7866 37.3375 16.4875L49.5 28.5H4C3.07174 28.5 2.1815 28.8687 1.52513 29.5251C0.868749 30.1815 0.5 31.0717 0.5 32V30.5Z"
                                 fill="white" />
@@ -330,15 +332,20 @@
                 $newGirlButtonOnClick = null; // Add onClick if needed
             @endphp
             <div class="home-new-girl-button-mobile">
-                @if($newGirlButtonHref)
-                    <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile" style="background: #FFFFFF; border-left-color: #2A1A08;">
+                @if ($newGirlButtonHref)
+                    <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile"
+                        style="background: #FFFFFF; border-left-color: #2A1A08;">
                         <p style="color: #2A1A08;">一覧を見る</p>
-                        <div class="schedule-info-underline" style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                        <div class="schedule-info-underline"
+                            style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
                     </a>
                 @else
-                    <div class="schedule-info-button schedule-info-button-mobile" style="background: #FFFFFF; border-left-color: #2A1A08;" @if($newGirlButtonOnClick) onclick="{{ $newGirlButtonOnClick }}" @endif>
+                    <div class="schedule-info-button schedule-info-button-mobile"
+                        style="background: #FFFFFF; border-left-color: #2A1A08;"
+                        @if ($newGirlButtonOnClick) onclick="{{ $newGirlButtonOnClick }}" @endif>
                         <p style="color: #2A1A08;">一覧を見る</p>
-                        <div class="schedule-info-underline" style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                        <div class="schedule-info-underline"
+                            style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
                     </div>
                 @endif
             </div>
@@ -352,7 +359,7 @@
                         <p class="castlist-info-title">キャスト一覧</p>
                     </div>
                     <div class="castlist-info-description">
-                        <p>ヴィラコート雫のキャスト一覧です</p>
+                        <p>ヴィラコート雫のキャスト一覧です。</p>
                     </div>
                     <div class="castlist-info-button">
                         <p>一覧を見る</p>
@@ -372,8 +379,8 @@
                         @for ($i = 0; $i < 12; $i++)
                             <x-public.shops.schedule-card background-image="assets/img/shops/shizuku/castlist.png"
                                 frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
-                                badge-time="12:00〜24:00" status-icon="" status-text="待機中" name="かれん (20)"
-                                measurements="T.160 B.85(C) W.60 H.83" message="キャストメッセージが甲斐キキキャ"
+                                badge-time="12:00〜24:00" status-icon="" status-text="" name="かれん (20)"
+                                measurements="T.160 B.85(C) W.60 H.83" message="キャストメッセージが出ます"
                                 badge-border-color="#B90000" badge-bg-color="#B90000" badge-text-color="#FFDA89"
                                 badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF"
                                 measurements-color="#FFFFFF" message-gradient-start="#FFF2D7"
