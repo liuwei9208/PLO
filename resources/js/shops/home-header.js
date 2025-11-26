@@ -53,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const homeHeader = document.querySelector('.home-header');
     const homeContent = document.querySelector('.home-content');
     const profileContent = document.querySelector('.profile-content');
+    const castlistContent = document.querySelector('.castlist-content');
     const homeSchedule = document.querySelector('.home-schedule');
     const banner = document.querySelector('.banner');
     
@@ -84,7 +85,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 // For home page: check schedule section
                 if (homeContent && homeSchedule) {
-                    const headerRect = homeHeader.getBoundingClientRect();
                     const scheduleRect = homeSchedule.getBoundingClientRect();
                     const headerHeight = homeHeader.offsetHeight;
                     
@@ -96,7 +96,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 // For profile page: check banner section
                 else if (profileContent && banner) {
-                    const headerRect = homeHeader.getBoundingClientRect();
                     const bannerRect = banner.getBoundingClientRect();
                     const headerHeight = homeHeader.offsetHeight;
                     
@@ -104,6 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     const distanceToBanner = bannerRect.bottom - headerHeight;
                     
                     // Header should be fixed when banner section passes the header bottom
+                    shouldBeFixed = distanceToBanner <= 0;
+                }
+                else if (castlistContent && banner) {
+                    const bannerRect = banner.getBoundingClientRect();
+                    const headerHeight = homeHeader.offsetHeight;
+                    
+                    // Calculate distance from bottom of header to bottom of banner section
+                    const distanceToBanner = bannerRect.bottom - headerHeight;
                     shouldBeFixed = distanceToBanner <= 0;
                 }
                 // Fallback: fix header when scrolling past a certain point
