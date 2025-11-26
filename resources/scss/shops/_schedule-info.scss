@@ -10,9 +10,9 @@
   
   // Schedule variant: hide on mobile
   &.schedule-info-schedule {
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
+    // @media screen and (max-width: 850px) {
+    //   display: none;
+    // }
   }
   
   // New-girl variant: different responsive behavior
