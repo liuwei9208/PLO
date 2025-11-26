@@ -78,7 +78,6 @@
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  margin-top: 1.25rem;
 }
 @media (max-width: 850px){
   .pickup-title-ja-wrapper{
@@ -115,7 +114,7 @@
   color: $white;
   text-align: center;
   white-space: nowrap;
-  margin: 1.875rem 0 0 0;
+  margin: 25px 0 0 0;
 }
 
 .pickup-badge {

@@ -200,11 +200,10 @@
             <div class="register">
                 <x-public.shops.register-button text="新規会員登録はコチラ！" background-color="#FFF5FB" text-color="#FF3498" />
             </div>
-
-            <!-- Breadcrumb Navigation -->
-            <div class="breadcrumb-navigation">
-                <p>すすきのhigh grade health ＞ トップページ</p>
-            </div>
+        </div>
+        <!-- Breadcrumb Navigation -->
+        <div class="breadcrumb-navigation">
+            <p>すすきのhigh grade health ＞ トップページ</p>
         </div>
         <div class="home-content">
             <x-public.shops.home-header logo-image="assets/img/shops/shizuku/footer-logo.png" logo-alt="Shizuku Logo"

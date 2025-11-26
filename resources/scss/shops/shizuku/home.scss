@@ -61,7 +61,6 @@ p{
 }
 
 .home-content{
-  margin-top: 36.25rem;
   margin-left: 5rem;
   position: relative;
   z-index: 2;
@@ -75,37 +74,30 @@ p{
 
 // Breadcrumb Navigation
 .breadcrumb-navigation {
-  background-color: #000000;
-  width: 100%;
-  display: flex;
-  align-items: center;
+  border-radius: 30px;
+  background: var(---N___, #FFFFFF);
+  display: inline-flex;
+  padding: 5px 40px;
   justify-content: center;
-  position: relative;
-  z-index: 2;
-  
+  align-items: center;
+  gap: 10px;
+  margin-left: 5rem;
+  margin-top: 530px;
+  margin-bottom: 20px;
   p {
-    @include Hiragino_Mincho_Pro();
-    font-size: 10px;
-    line-height: 19px;
-    letter-spacing: 0.4px;
-    color: #FFFFFF;
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
+    @include Hiragino_Mincho_Pro_W6();
+    @include responsive-font(12px, 15px);
+    font-weight: 600;
+    line-height: normal;
+    color: #000;
   }
   
   @media screen and (max-width: 850px) {
     padding: 10px 15px;
-    
     p {
       width: 100%;
       max-width: 430px;
     }
-  }
-  
-  @media screen and (min-width: 851px) {
-    display: none;
   }
 }
 
@@ -434,7 +426,7 @@ p{
 .home-news{
   display: flex;
   width: 100%;
-  margin-top: 0px;
+  margin-top: 20px;
   padding-bottom: 20px !important;
   background: var(---N_, rgba(42, 26, 8, 0.75));
 }
@@ -443,6 +435,7 @@ p{
   .home-news{
     flex-direction: column;
     padding: 10px;
+    margin-top: 0px;
     background: none;
   }
 }
@@ -624,7 +617,6 @@ p{
   align-items: center;
   justify-content: center;
   gap: 0.625rem;
-  margin-top: 1.25rem;
 }
 @media (max-width: 850px) {
   .ranking-title-ja-wrapper {
@@ -657,7 +649,7 @@ p{
   color: $white;
   text-align: center;
   white-space: nowrap;
-  margin: 1.875rem 0 0 0;
+  margin: 25px 0 0 0;
 }
 @media (max-width: 850px) {
   .ranking-description {
