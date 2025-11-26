@@ -499,9 +499,10 @@
     background-color: $white;
     justify-content: center;
     height: auto;
-    padding: 10px 0;
+    padding: 10px 40px;
     p{
       color: #2A1A08;
+      text-wrap-style: balance;
     }
   }
 }
