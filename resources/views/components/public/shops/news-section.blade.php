@@ -41,6 +41,11 @@
                 <div class="{{ $cardClass }}">
                     <div class="{{ $imageClass }}">
                         <img src="{{ asset($item['image'] ?? $defaultImage) }}" alt="{{ $item['title'] ?? 'Card Image' }}">
+                        @if($variant === 'diary' && isset($item['imageText']) && !empty($item['imageText']))
+                            <div class="diary-content-card-image-text">
+                                <span>{{ $item['imageText'] }}</span>
+                            </div>
+                        @endif
                     </div>
                     <div class="{{ $dateClass }}">
                         <h2>{{ $item['date'] ?? '00.00' }}</h2>
@@ -55,6 +60,11 @@
                 <div class="{{ $cardClass }}">
                     <div class="{{ $imageClass }}">
                         <img src="{{ asset($defaultImage) }}" alt="Card Image">
+                        @if($variant === 'diary')
+                            <div class="diary-content-card-image-text">
+                                <span>日記タイトル日記</span>
+                            </div>
+                        @endif
                     </div>
                     <div class="{{ $dateClass }}">
                         <h2>00.00</h2>

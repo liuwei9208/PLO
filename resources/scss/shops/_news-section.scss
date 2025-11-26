@@ -125,11 +125,37 @@
 .diary-content-card-image{
   width: 100%;
   overflow: hidden;
+  position: relative;
   
   img{
     width: 100%;
     height: auto;
     display: block;
+  }
+}
+
+.diary-content-card-image-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+  width: 100%;
+  display: flex;
+  span {
+    @include Hiragino_Mincho_Pro();
+    @include responsive-font(12px, 14px);
+    font-weight: 300;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.69);
+    mix-blend-mode: multiply;
+    padding: 0.375rem 0.75rem;
+    display: inline-block;
+    white-space: nowrap;
+    letter-spacing: 0.05em;
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
 }
 
