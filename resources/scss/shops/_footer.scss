@@ -447,7 +447,7 @@
   
   .footer-external-links-grid {
     grid-template-columns: 1fr;
-    padding: 0px 0.625rem;
+    padding: 0px 15px;
     gap: 0.625rem;
   }
   
@@ -464,7 +464,7 @@
   .footer-external-link {
     // border-top: 3px solid $white;
     border: none;
-    padding: 0 0.625rem;
+    padding: 0 15px;
   }
   .footer-external-link-header {
     background-color: $white;
