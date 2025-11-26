@@ -56,7 +56,6 @@
     </div>
     <div class="new-girl-card-right">
         <img src="{{ asset($photoImage) }}" alt="Cast Photo" class="card-photo">
-        <p class="card-name-vertical">{{ $nameVertical }}</p>
     </div>
 </div>
 

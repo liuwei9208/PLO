@@ -66,6 +66,25 @@
     object-fit: contain;
   }
 }
+.menu-mobile-account{
+  display: none;
+}
+
+@media screen and (max-width: 850px) {
+  .menu-mobile-account{
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    justify-items: center;
+    margin-bottom: 21px;
+  }
+  p{
+    @include yu-mincho-regular();
+    font-size: 15px;
+    line-height: 45px;
+  }
+}
+
 
 .menu-grid {
   display: grid;
@@ -180,9 +199,9 @@
   }
   
   .menu-logo {
-    width: 7.5rem;
-    height: 4.375rem;
+    width: 25%;
     margin: 1.5rem auto 1.5rem;
+    margin-bottom: 0px;
   }
   
   .menu-grid {
