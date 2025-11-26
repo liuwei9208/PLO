@@ -54,7 +54,12 @@
   padding: 5rem 3.75rem;
   z-index: 1;
 }
-
+@media (max-width: 850px){
+  .pickup-header-content{
+    padding: 30px 0px;
+    padding-bottom: 70px;
+  }
+}
 .pickup-title-en {
   @include didot();
   @include responsive-font(41px, 86px);
@@ -74,6 +79,14 @@
   justify-content: center;
   gap: 0.625rem;
   margin-top: 1.25rem;
+}
+@media (max-width: 850px){
+  .pickup-title-ja-wrapper{
+    margin-top: 10px;
+  }
+  .pickup-description {
+    margin-top: 10px !important;
+  }
 }
 
 .pickup-lightning-icon {
@@ -178,6 +191,7 @@
 @media (max-width: 850px) {
   .home-pickup {
     flex-wrap: wrap;
+    margin-top: 0px;
   }
   
   .pickup-header {
@@ -185,9 +199,10 @@
   }
   
   .pickup-badge {
-    top: 385px;
-    width: 10.75rem;
-    height: 10.75rem;
+    top: 180px;
+    width: 132px;
+    height: 132px;
+    transform: translateX(18%);
   }
   
   .pickup-cast-card {

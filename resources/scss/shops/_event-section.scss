@@ -11,6 +11,11 @@
   overflow: hidden;
 }
 
+@media (max-width: 850px) {
+  .home-event {
+    margin-top: 20px;
+  }
+}
 .event-background {
   position: absolute;
   inset: 0;

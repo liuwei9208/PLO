@@ -117,6 +117,11 @@ p{
   background: var(---N, linear-gradient(90deg, rgba(42, 26, 8, 0.70) 58.65%, rgba(0, 0, 0, 0.00) 100%));
 }
 
+@media (max-width: 850px) {
+  .home-schedule-cards {
+    padding: 10px;
+  }
+}
 .schedule-card-overlay {
   position: absolute;
   top: 0;
@@ -154,12 +159,21 @@ p{
 .home-castlist{
   margin-top: 1.875rem;
 }
+@media screen and (max-width: 850px) {
+  .home-castlist{
+    margin-top: 20px;
+  }
+}
 
 .home-castlist-info {
   display: flex;
   align-items: flex-start;
   gap: 0;
   padding: 0;
+  border-top: 3px solid $white;
+  border-bottom: 3px solid $white;
+  align-items: center;
+  background-color: #2A1A08;
 }
 
 .castlist-info-header {
@@ -168,7 +182,7 @@ p{
   gap: 0.625rem;
   padding: 1.3125rem 4.0625rem;
   background: #2A1A08;
-  border: 6px solid $white;
+  // border: 6px solid $white;
   border-left: none !important;
   border-right: none !important;
   flex-shrink: 0;
@@ -198,9 +212,10 @@ p{
   height: 6.375rem;
   flex: 1;
   background: #2A1A08;
-  border: 6px solid $white;
-  border-right: none;
-  border-left: 6px solid $white;
+  // border: 6px solid $white;
+  // border-right: none;
+  border-top: none;
+  border-left: 3px solid $white;
 }
 
 .castlist-info-description p {
@@ -224,8 +239,7 @@ p{
   width: 14.375rem;
   flex-shrink: 0;
   background: #2A1A08;
-  border: 6px solid $white;
-  border-right: none;
+  border-left: 3px solid $white;
   cursor: pointer;
   transition: opacity 0.2s ease;
   
@@ -346,9 +360,10 @@ p{
     overflow-y: hidden;
     scroll-behavior: smooth;
     gap: 0.9375rem;
-    padding: 1.875rem 1rem;
+    padding: 20px 1rem;
     -webkit-overflow-scrolling: touch;
     flex: 1;
+    background: var(---N_, rgba(42, 26, 8, 0.75));
     
     // Hide scrollbar
     scrollbar-width: none;
@@ -367,6 +382,7 @@ p{
 @media (max-width: 1200px) {
   .home-castlist-info {
     flex-wrap: wrap;
+    border: none;
   }
   
   .castlist-info-header {
@@ -404,6 +420,13 @@ p{
 }
 
 @media screen and (max-width: 850px) {
+  .castlist-info-description{
+    border-bottom: none;
+    padding: 10px 2.5rem;
+  }
+  .castlist-info-header{
+    padding: 10px 2.5rem;
+  }
   .castlist-info-button {
     display: none;
   }
@@ -411,7 +434,8 @@ p{
 .home-news{
   display: flex;
   width: 100%;
-  margin-top: 1.875rem;
+  margin-top: 0px;
+  padding-bottom: 20px !important;
   background: var(---N_, rgba(42, 26, 8, 0.75));
 }
 
@@ -505,10 +529,6 @@ p{
   z-index: 10;
   cursor: pointer;
   transition: transform 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-50%) scale(1.05);
-  }
 }
 
 .ranking-badge-diamond {
@@ -580,6 +600,12 @@ p{
   z-index: 1;
 }
 
+@media (max-width: 850px) {
+  .ranking-header-content {
+    padding-top: 25px;
+    padding-bottom: 70px;
+  }
+}
 .ranking-title-en {
   @include didot();
   @include responsive-font(41px, 86px);
@@ -600,7 +626,11 @@ p{
   gap: 0.625rem;
   margin-top: 1.25rem;
 }
-
+@media (max-width: 850px) {
+  .ranking-title-ja-wrapper {
+    margin-top: 10px;
+  }
+}
 .ranking-crown-icon {
   width: 2.5rem;
   height: 2.5rem;
@@ -629,10 +659,15 @@ p{
   white-space: nowrap;
   margin: 1.875rem 0 0 0;
 }
-
+@media (max-width: 850px) {
+  .ranking-description {
+    margin-top: 10px;
+  }
+}
 @media (max-width: 850px) {
   .home-ranking {
     flex-wrap: wrap;
+    margin-top: 20px;
   }
   
   .ranking-header {
@@ -641,9 +676,10 @@ p{
   }
   
   .ranking-badge-button {
-    left: calc(50% - 5.875rem);
-    top: 400px;
-    transform: translateY(-50%);
+    top: 30%;
+    transform: translateX(20%);
+    width: 132px;
+    height: 132px;
   }
   
   .ranking-cast-card {
@@ -788,14 +824,24 @@ p{
 @media (max-width: 850px) {
   .home-new-girl-section {
     .schedule-info-new-girl {
+      gap: 0px;
       .schedule-info-button {
         display: none;
+      }
+      .schedule-info-header{
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+      .schedule-info-description {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
       }
     }
   }
   
   .home-new-girl-slider {
-    padding: 1.875rem 0;
+    padding: 15px 0;
     position: relative;
     margin-bottom: 0;
   }
