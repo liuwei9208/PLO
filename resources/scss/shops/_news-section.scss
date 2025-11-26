@@ -8,6 +8,15 @@
     padding-left: 0.625rem;
   }
 }
+@media (max-width: 850px) {
+  .news-section{
+    margin-top: 15px;
+    &:nth-child(2){
+      padding-left: 0;
+      margin-top: 15px;
+    }
+  }
+}
 
 .news-title{
   display: flex;
@@ -39,7 +48,7 @@
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  padding: 0 0.625rem;
+  // padding: 0 0.625rem;
 }
 
 .news-slider-prev,
@@ -254,9 +263,5 @@
   }
   
   // Add padding to slider wrapper when arrows are hidden
-  .news-slider-wrapper,
-  .diary-slider-wrapper {
-    padding: 0 0.9375rem;
-  }
 }
 
