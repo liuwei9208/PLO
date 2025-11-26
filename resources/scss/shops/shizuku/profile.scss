@@ -124,7 +124,7 @@ transition: opacity 0.2s ease-out;
 
 .profile-title h1{
     @include times-new-roman();
-    @include responsive-font(60px, 80px);
+    @include responsive-font(47px, 95px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -136,10 +136,10 @@ transition: opacity 0.2s ease-out;
 }
 
 .profile-title p{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(18px, 24px);
+    @include yu-mincho-regular();
+    @include responsive-font(19px, 25px);
     font-style: normal;
-    font-weight: 300 !important;
+    font-weight: 600 !important;
     line-height: normal;
     color: $white;
 }
@@ -169,10 +169,10 @@ transition: opacity 0.2s ease-out;
 }
 
 .profile-page-info p{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(8px, 14px);
+    @include Hiragino_Mincho_Pro_W6();
+    @include responsive-font(12px, 15px);
     font-style: normal;
-    font-weight: 300 !important;
+    // font-weight: 300 !important;
     line-height: normal;
     color: $black;
 }
@@ -232,7 +232,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-basic-info-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(20px, 24px);
+    @include responsive-font(21px, 35px);
+    font-weight: 600 !important;
     color: $white;
     margin: 0;
     letter-spacing: 0.08em;
@@ -250,21 +251,24 @@ transition: opacity 0.2s ease-out;
 
 .girl-basic-info-name{
     @include yu-mincho-regular();
-    @include responsive-font(32px, 40px);
+    @include responsive-font(30px, 31px);
+    font-weight: 600 !important;
     color: #2A1A08;
     margin-bottom: 10px;
 }
 
 .girl-basic-info-meta{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(18px, 20px);
+    @include yu-mincho-regular();
+    @include responsive-font(18px, 19px);
+    font-weight: 400 !important;
     color: #2A1A08;
     margin: 0;
 }
 
 .girl-basic-info-caption{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(18px, 20px);
+    @include yu-mincho-regular();
+    @include responsive-font(18px, 23px);
+    font-weight: 600 !important;
     color: #2A1A08;
     text-align: center;
     padding: 15px 20px 25px;
@@ -326,7 +330,8 @@ transition: opacity 0.2s ease-out;
 }
 .girl-video-title h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
     background-clip: text;
     -webkit-background-clip: text;
@@ -380,7 +385,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-qa-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -436,31 +442,33 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-qa-question .girl-qa-label{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
-    font-weight: 600;
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 16px);
+    font-weight: 600 !important;
     color: #2A1A08;
     flex-shrink: 0;
 }
 
 .girl-qa-answer .girl-qa-label{
     @include yu-mincho-regular();
-    @include responsive-font(16px, 18px);
-    font-weight: 400;
+    @include responsive-font(16px, 16px);
+    font-weight: 400 !important;
     color: #2A1A08;
     flex-shrink: 0;
 }
 
 .girl-qa-question .girl-qa-text{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 16px);
+    font-weight: 600 !important;
     color: #2A1A08;
     line-height: 1.6;
 }
 
 .girl-qa-answer .girl-qa-text{
     @include yu-mincho-regular();
-    @include responsive-font(16px, 18px);
+    @include responsive-font(16px, 16px);
+    font-weight: 400 !important;
     color: #2A1A08;
     line-height: 1.6;
 }
@@ -488,7 +496,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-message-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -507,7 +516,7 @@ transition: opacity 0.2s ease-out;
 
 .girl-message-content p{
     @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
+    @include responsive-font(18px, 18px);
     color: #2A1A08;
     line-height: 1.8;
     margin: 0;
@@ -532,7 +541,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-diary-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -585,8 +595,11 @@ transition: opacity 0.2s ease-out;
     width: 100%;
     background: rgba(0, 0, 0, 0.75);
     color: #FFFFFF;
-    font-size: 12px;
+    // font-size: 12px;
     padding: 6px;
+    @include inter();
+    @include responsive-font(14px, 14px);
+    font-weight: 400 !important;
 }
 
 .girl-diary-body{
@@ -594,16 +607,18 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-diary-author{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
-    font-weight: 600;
+    @include inter();
+    @include responsive-font(17px, 17px);
+    font-weight: 600 !important;
     margin: 0;
     color: #2A1A08;
 }
 
 .girl-diary-date{
-    @include Hiragino_Mincho_Pro();
-    font-size: 12px;
+    @include inter();
+    @include responsive-font(13px, 13px);
+    font-weight: 400 !important;
+    // font-size: 12px;
     color: #2A1A08;
     margin: 2px 0 0;
 }
@@ -656,7 +671,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-schedule-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -779,9 +795,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-schedule-date{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(12px, 14px);
-    font-weight: 600;
+    @include times-new-roman();
+    @include responsive-font(18px, 18px);
+    font-weight: 700;
     color: #2A1A08;
 }
 
@@ -792,8 +808,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-schedule-time{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
+    @include times-new-roman();
+    @include responsive-font(21px, 21px);
+    font-weight: 700 !important;
     color: #2A1A08;
     text-align: center;
     line-height: 1.4;
@@ -822,7 +839,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-manager-comment-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -841,7 +859,7 @@ transition: opacity 0.2s ease-out;
 
 .girl-manager-comment-content p{
     font-family: "Hiragino Mincho ProW3";
-    @include responsive-font(16px, 18px);
+    @include responsive-font(18px, 18px);
     font-weight: 300;
     color: #2A1A08;
     line-height: 1.8;
@@ -871,7 +889,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-sales-points-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -899,8 +918,8 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-sales-points-label{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
+    @include yu-mincho-regular();
+    @include responsive-font(14px, 14px);
     font-weight: 600;
     color: #2A1A08;
     background: #E5E5E5;
@@ -919,8 +938,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-sales-points-tag{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
+    @include yu-mincho-regular();
+    @include responsive-font(14px, 14px);
+    font-weight: 600 !important;
     color: #2A1A08;
     background: #FFFFFF;
     border: 1px solid #CCCCCC;
@@ -952,7 +972,8 @@ transition: opacity 0.2s ease-out;
 
 .girl-reviews-header h3{
     @include yu-mincho-regular();
-    @include responsive-font(24px, 30px);
+    @include responsive-font(21px, 34.2px);
+    font-weight: 600 !important;
     margin: 0;
     letter-spacing: 0.08em;
     background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
@@ -1003,9 +1024,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-review-rating{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
-    font-weight: 600;
+    @include times-new-roman();
+    @include responsive-font(17px, 17px);
+    font-weight: 300;
     color: #2A1A08;
     margin-left: 4px;
 }
@@ -1016,9 +1037,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-review-meta span{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(12px, 14px);
-    font-weight: 600;
+    @include yu-mincho-regular();
+    @include responsive-font(14px, 14px);
+    font-weight: 400;
     color: #7B6A52;
 }
 
@@ -1029,8 +1050,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-review-text{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
+    @include yu-mincho-regular();
+    @include responsive-font(15px, 16px);
+    font-weight: 600 !important;
     color: #2A1A08;
     line-height: 1.8;
     max-height: 100px;
@@ -1057,19 +1079,19 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-review-author{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(16px, 18px);
+    @include Hiragino_Mincho_Pro_NW6();
+    @include responsive-font(18px, 18px);
     font-weight: 600;
     color: #2A1A08;
     margin-bottom: 10px;
 }
 
-.girl-review-text{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
-    color: #2A1A08;
-    line-height: 1.8;
-}
+// .girl-review-text{
+//     @include Hiragino_Mincho_Pro();
+//     @include responsive-font(14px, 16px);
+//     color: #2A1A08;
+//     line-height: 1.8;
+// }
 
 .girl-review-text p{
     margin: 0;
@@ -1081,8 +1103,9 @@ transition: opacity 0.2s ease-out;
 }
 
 .girl-reviews-more-btn{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(14px, 16px);
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 16px);
+    font-weight: 600 !important;
     color: #2A1A08;
     background: #FFFFFF;
     border: 1px solid #2A1A08;
