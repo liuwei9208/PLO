@@ -172,30 +172,51 @@
     -webkit-overflow-scrolling: touch;
     padding-bottom: 0.625rem;
     
-    // Custom scrollbar styling (Webkit browsers)
+    // CSS Variables for scrollbar styling
+    --scrollbar-color-thumb: #FFFFFF;
+    --scrollbar-color-track: #C8C8C8;
+    --scrollbar-width: thin;
+    --scrollbar-width-legacy: 0.625rem; // 10px
+    
+    // Modern browsers with `scrollbar-*` support (Chrome 121+, Firefox 64+)
+    @supports (scrollbar-width: auto) {
+      scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+      scrollbar-width: var(--scrollbar-width);
+    }
+    
+    // Legacy browsers with `::-webkit-scrollbar-*` support (Chrome 2+, Safari)
+    // Apply webkit scrollbar styles for all webkit browsers
     &::-webkit-scrollbar {
-      height: 0.625rem;
-      display: block;
+      height: var(--scrollbar-width-legacy) !important;
+      width: 0 !important;
+      display: block !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
     }
     
     &::-webkit-scrollbar-track {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 0.3125rem;
+      background: var(--scrollbar-color-track) !important;
+      border-radius: 0.3125rem !important; // 5px - half of height for fully rounded
+      -webkit-border-radius: 0.3125rem !important;
+      -moz-border-radius: 0.3125rem !important;
     }
     
     &::-webkit-scrollbar-thumb {
-      background: linear-gradient(90deg, #FFF2D7 20.67%, #BD902F 100%);
-      border-radius: 0.3125rem;
-      border: 2px solid rgba(42, 26, 8, 0.75);
+      background: var(--scrollbar-color-thumb) !important;
+      border-radius: 0.3125rem !important; // 5px - half of height for fully rounded
+      -webkit-border-radius: 0.3125rem !important;
+      -moz-border-radius: 0.3125rem !important;
+      border: none !important;
+      min-height: var(--scrollbar-width-legacy) !important;
     }
     
     &::-webkit-scrollbar-thumb:hover {
-      background: linear-gradient(90deg, #BD902F 0%, #FFF2D7 100%);
+      background: var(--scrollbar-color-thumb) !important;
     }
     
-    // For Firefox
-    scrollbar-width: thin;
-    scrollbar-color: #BD902F rgba(255, 255, 255, 0.2);
+    &::-webkit-scrollbar-thumb:active {
+      background: var(--scrollbar-color-thumb) !important;
+    }
   }
   
   // Add padding to slider wrapper when arrows are hidden

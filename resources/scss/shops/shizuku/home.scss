@@ -216,8 +216,8 @@ p{
   padding: 1.3125rem 4.0625rem;
   background: #2A1A08;
   border: 6px solid $white;
-  border-left: none;
-  border-right: none;
+  border-left: none !important;
+  border-right: none !important;
   flex-shrink: 0;
 }
 
@@ -333,8 +333,8 @@ p{
   top: 50%;
   transform: translateY(-50%);
   border: none;
-  width: 1.875rem; // 30px
-  height: 1.875rem; // 30px
+  width: 2.875rem; // 30px
+  height: 3.875rem; // 30px
   align-items: center;
   justify-content: center;
   cursor: pointer;
@@ -356,7 +356,7 @@ p{
   }
   
   svg {
-    width: 1.16706rem; // 18.673px
+    width: 4.16706rem; // 18.673px
     height: 1.16706rem;
   }
 }
@@ -422,6 +422,7 @@ p{
     inline-size: -webkit-fill-available;
     text-align: center;
     padding: 1.25rem 2.5rem;
+    border: 3px solid #fff;
   }
   
   .castlist-info-description {
@@ -430,6 +431,7 @@ p{
     border: none;
     height: auto;
     justify-content: center;
+    border-bottom: 3px solid #fff;
   }
   
   .castlist-info-description p {
@@ -444,6 +446,7 @@ p{
     border-top: none;
     height: auto;
     padding: 1.25rem 2.5rem;
+    border: none;
   }
 }
 
