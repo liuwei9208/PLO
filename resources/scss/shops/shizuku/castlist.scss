@@ -55,7 +55,7 @@ transition: opacity 0.2s ease-out;
 
 .castlist-title h1{
     @include times-new-roman();
-    @include responsive-font(60px, 80px);
+    @include responsive-font(47px, 95px);
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -67,8 +67,8 @@ transition: opacity 0.2s ease-out;
 }
 
 .castlist-title p{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(18px, 24px);
+    @include Hiragino_Mincho_Pro_W6();
+    @include responsive-font(18px, 25.7px);
     font-style: normal;
     font-weight: 300 !important;
     line-height: normal;
@@ -100,10 +100,10 @@ transition: opacity 0.2s ease-out;
 }
 
 .castlist-page-info p{
-    @include Hiragino_Mincho_Pro();
-    @include responsive-font(8px, 14px);
+    @include Hiragino_Mincho_Pro_W6();
+    @include responsive-font(12px, 15px);
     font-style: normal;
-    font-weight: 300 !important;
+    // font-weight: 300 !important;
     line-height: normal;
     color: $black;
 }
