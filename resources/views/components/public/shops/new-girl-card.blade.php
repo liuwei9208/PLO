@@ -21,11 +21,11 @@
 @endphp
 
 <div class="new-girl-card">
-    <div class="new-girl-card-bg-left">
-        <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg-image">
-        <div class="card-bg-overlay" style="background: rgba(0, 0, 0, {{ $overlayOpacity }});"></div>
-    </div>
     <div class="new-girl-card-left">
+        <div class="new-girl-card-bg-left">
+            <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg-image">
+            <div class="card-bg-overlay" style="background: rgba(0, 0, 0, {{ $overlayOpacity }});"></div>
+        </div>
         <div class="new-girl-card-date">
             <svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>

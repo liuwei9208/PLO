@@ -817,6 +817,143 @@ p{
 .new-girl-slider-next {
   border-radius: 0;
 }
+
+// Mobile slider controls (hidden on desktop)
+.new-girl-slider-mobile-controls {
+  display: none;
+}
+
+// Mobile styles (0px to 850px)
+@media (max-width: 850px) {
+  .home-new-girl-slider {
+    padding: 1.875rem 0;
+    position: relative;
+  }
+
+  .new-girl-slider-cards {
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .new-girl-slider-content {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, 20rem);
+    grid-auto-columns: 100vw;
+    gap: 1.25rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    width: 100%;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // Hide desktop controls on mobile
+  .new-girl-slider-controls {
+    display: none;
+  }
+
+  // Show mobile controls - positioned between cards
+  .new-girl-slider-mobile-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 1.25rem 0;
+    position: relative;
+    z-index: 10;
+    margin: 0 auto;
+    width: 100%;
+    position: absolute;
+    top: 43.3%;
+    justify-content: space-between;
+  }
+
+  .new-girl-slider-mobile-prev{
+    border-radius: 0px 10px 10px 0px !important;
+    background: transparent;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    padding: 0;
+    background: var(---N_, #B19D67);
+    &:hover:not(:disabled) {
+      opacity: 0.8;
+    }
+    
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+    
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  .new-girl-slider-mobile-next {
+    border: none;
+    background: transparent;
+    width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: $white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    padding: 0;
+    border-radius: 10px 0 0 10px;
+    background: var(---N_, #B19D67);
+    &:hover:not(:disabled) {
+      opacity: 0.8;
+    }
+    
+    &:active:not(:disabled) {
+      transform: scale(0.95);
+    }
+    
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+
+  // Adjust card size for mobile - full width
+  .new-girl-card {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    height: 20rem;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+}
+
 // Menu Overlay Styles
 .menu-overlay {
   position: fixed;
