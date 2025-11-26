@@ -68,7 +68,7 @@
   }
   
   .phone-hours {
-    @include Hiragino_Mincho_Pro();
+    @include Hiragino_Mincho_Pro_W6();
     font-size: 0.9375rem;
     line-height: 1.1875rem;
     color: $white;

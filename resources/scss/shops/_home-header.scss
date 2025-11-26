@@ -39,8 +39,9 @@
 }
 
 .menu-item h1{
-  @include yu-mincho-pr6n();
-  @include responsive-font(12px, 15px);
+  @include yu-mincho-regular();
+  @include responsive-font(12px, 19.95px);
+  font-weight: 600 !important;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
   color: #FFFFFF;
@@ -48,7 +49,8 @@
 
 .menu-item p{
   @include didot();
-  @include responsive-font(10px, 12px);
+  @include responsive-font(10px, 15.96px);
+  font-weight: 700;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
   color: #A58C1B;
