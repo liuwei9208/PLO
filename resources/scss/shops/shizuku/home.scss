@@ -1,5 +1,6 @@
 // Import global variables and utilities
 @use '../../global/vars' as *;
+@use '../../global/setting' as *;
 @use '../../mixins/font' as *;
 @use '../contact-info' as *;
 @use '../register-button' as *;
@@ -22,7 +23,8 @@ p{
 }
 
 .home {
-  background-image: url('../../../img/shops/shizuku/home-banner.png');
+  // background-image: url('../../../img/shops/shizuku/home-banner.png');
+  background-image: url('/assets/img/shops/shizuku/home-banner.png');
   background-attachment: fixed;
   background-repeat: no-repeat;
   width: 100%;
@@ -36,7 +38,8 @@ p{
 @media screen and (max-width: 850px) {
   .home {
     background-position: center;
-    background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
+    // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
+    background-image: url('/assets/img/shops/shizuku/home-banner-sp.jpg');
   }
 }
 

@@ -7,7 +7,7 @@
             logo-image="assets/img/shops/shizuku/footer-logo-black.png"
             logo-alt="Shizuku Logo"
             :menu-links="[
-                'top' => '#',
+                'top' => route('public.shops.shizuku.home'),
                 'schedule' => '#',
                 'pricing' => '#',
                 'new' => '#',
@@ -54,14 +54,14 @@
         <div class="home-content">
             <x-public.shops.home-header logo-image="assets/img/shops/shizuku/footer-logo.png" logo-alt="Shizuku Logo"
                 :menu-items="[
-                    ['title' => 'トップページ', 'subtitle' => 'top page'],
-                    ['title' => 'キャスト一覧', 'subtitle' => 'cast list'],
-                    ['title' => '出勤情報', 'subtitle' => 'schedule'],
-                    ['title' => '写メ日記', 'subtitle' => 'photo diary'],
-                    ['title' => 'イベント一覧', 'subtitle' => 'event'],
-                    ['title' => '料金システム', 'subtitle' => 'system'],
-                    ['title' => '新人情報', 'subtitle' => 'new cast'],
-                    ['title' => 'ログイン', 'subtitle' => 'login'],
+                    ['title' => 'トップページ', 'subtitle' => 'top page', 'url' => route('public.shops.shizuku.home')],
+                    ['title' => 'キャスト一覧', 'subtitle' => 'cast list', 'url' => route('public.shops.shizuku.castlist')],
+                    ['title' => '出勤情報', 'subtitle' => 'schedule', 'url' => '#'],
+                    ['title' => '写メ日記', 'subtitle' => 'photo diary', 'url' => '#'],
+                    ['title' => 'イベント一覧', 'subtitle' => 'event', 'url' => '#'],
+                    ['title' => '料金システム', 'subtitle' => 'system', 'url' => '#'],
+                    ['title' => '新人情報', 'subtitle' => 'new cast', 'url' => '#'],
+                    ['title' => 'ログイン', 'subtitle' => 'login', 'url' => '#'],
                 ]" menu-button-id="mobileMenuButton" background-color="#160B00" />
             <div class="home-schedule">
                 <x-public.shops.section-title text="schedule" background-color="#2A1A08" gradient-start="#FFF2D7"
