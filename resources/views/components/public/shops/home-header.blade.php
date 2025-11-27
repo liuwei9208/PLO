@@ -28,10 +28,17 @@
 
     <div class="menu-list-container">
         @foreach($menuItems as $item)
-            <div class="menu-item">
-                <h1>{{ $item['title'] }}</h1>
-                <p>{{ $item['subtitle'] }}</p>
-            </div>
+            @if(isset($item['url']) && $item['url'] !== '#')
+                <a href="{{ $item['url'] }}" class="menu-item">
+                    <h1>{{ $item['title'] }}</h1>
+                    <p>{{ $item['subtitle'] }}</p>
+                </a>
+            @else
+                <div class="menu-item">
+                    <h1>{{ $item['title'] }}</h1>
+                    <p>{{ $item['subtitle'] }}</p>
+                </div>
+            @endif
         @endforeach
     </div>
 
