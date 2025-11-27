@@ -3,7 +3,7 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay 
+        <x-public.shops.menu-overlay
             logo-image="assets/img/shops/shizuku/footer-logo-black.png"
             logo-alt="Shizuku Logo"
             :menu-links="[
@@ -11,7 +11,7 @@
                 'schedule' => '#',
                 'pricing' => '#',
                 'new' => '#',
-                'cast' => '#',
+                'cast' =>  route('public.shops.shizuku.castlist'),
                 'news' => '#',
                 'event' => '#',
                 'diary' => '#',
@@ -399,44 +399,44 @@
                 ]" />
             <x-public.shops.footer :shops="[
                 [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'image' => 'assets/img/shops/shizuku/001.jpg',
                     'alt' => 'Shop 1',
                     'text1' => '上品な空間、時を忘れる美貌とおもてなしが魅力のヘルス',
                     'text2' => '',
                     'url' => '#',
                 ],
                 [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'image' => 'assets/img/shops/shizuku/002.jpg',
                     'alt' => 'Shop 2',
-                    'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
-                    'text2' => '',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
-                    'alt' => 'Shop 3',
-                    'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
-                    'text2' => '',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
-                    'alt' => 'Shop 4',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
                     'text2' => '',
                     'url' => '#',
                 ],
                 [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'image' => 'assets/img/shops/shizuku/003.jpg',
+                    'alt' => 'Shop 3',
+                    'text1' => '雅は、すすきの屈指の人妻・痴女が在籍するヘルス',
+                    'text2' => '',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/004.jpg',
+                    'alt' => 'Shop 4',
+                    'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
+                    'text2' => '',
+                    'url' => '#',
+                ],
+                [
+                    'image' => 'assets/img/shops/shizuku/005.jpg',
                     'alt' => 'Shop 5',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
                     'text2' => '',
                     'url' => '#',
                 ],
                 [
-                    'image' => 'assets/img/shops/shizuku/home-banner.png',
+                    'image' => 'assets/img/shops/shizuku/006.jpg',
                     'alt' => 'Shop 6',
-                    'text1' => '容姿端麗なオトナ女性による丁寧な本格マッサージ店',
+                    'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
                     'text2' => '',
                     'url' => '#',
                 ],
