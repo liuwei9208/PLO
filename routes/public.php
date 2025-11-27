@@ -90,13 +90,21 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
     });
 
     Route::prefix('shops')->name('shops.')->group(function () {
-        Route::prefix('shizuku')->name('shizuku.')->group(function () {
+        $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
+        Route::prefix('{shop}')->name('{shop}.')->whereIn('shop', $shop_list)->group(function () {
             Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
             Route::get('system', [ShizukuController::class, 'showSystem'])->name('system');
             Route::get('profile', [ShizukuController::class, 'showProfile'])->name('profile');
             Route::get('castlist', [ShizukuController::class, 'showCastlist'])->name('castlist');
             Route::get('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule');
         });
+        // Route::prefix('shizuku')->name('shizuku.')->group(function () {
+        //     Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
+        //     Route::get('system', [ShizukuController::class, 'showSystem'])->name('system');
+        //     Route::get('profile', [ShizukuController::class, 'showProfile'])->name('profile');
+        //     Route::get('castlist', [ShizukuController::class, 'showCastlist'])->name('castlist');
+        //     Route::get('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule');
+        // });
     });
 });
 
