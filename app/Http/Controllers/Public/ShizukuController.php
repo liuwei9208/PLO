@@ -26,4 +26,9 @@ class ShizukuController extends Controller
     {
         return view('public.shop.shizuku.castlist');
     }
+
+    public function showSchedule(Request $request): View
+    {
+        return view('public.shop.shizuku.schedule');
+    }
 }
