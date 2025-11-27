@@ -1,0 +1,12 @@
+@use '../../global/vars' as *;
+@use '../../mixins/font' as *;
+
+.schedule-menu{
+    width: 100%;
+    background-color: $white;
+}
+
+.search-list{
+    display: flex;
+    align-items: center;
+}
