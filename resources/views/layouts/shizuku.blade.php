@@ -10,12 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lustria&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=GFS+Didot&display=swap" rel="stylesheet">
-    <link
+    {{-- <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lustria&display=swap"
         rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Bentham&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lustria&display=swap"
         rel="stylesheet">
+    <link --}}
+    href="https://fonts.googleapis.com/css2?family=Bentham&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lustria&family=Pacifico&display=swap"
+    rel="stylesheet">
 
     {{-- <link
         href="https://fonts.googleapis.com/css2?family=Bentham&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"

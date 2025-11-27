@@ -9,26 +9,31 @@ class ShizukuController extends Controller
 {
     public function showHome(Request $request): View
     {
-        return view('public.shop.shizuku.home');
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.home');
     }
 
     public function showSystem(Request $request): View
     {
-        return view('public.shop.shizuku.system');
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.system');
     }
 
     public function showProfile(Request $request): View
     {
-        return view('public.shop.shizuku.profile');
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.profile');
     }
 
     public function showCastlist(Request $request): View
     {
-        return view('public.shop.shizuku.castlist');
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.castlist');
     }
 
     public function showSchedule(Request $request): View
     {
-        return view('public.shop.shizuku.schedule');
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.schedule');
     }
 }

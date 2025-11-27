@@ -1,6 +1,7 @@
 // Import global variables and utilities
-@use '../global/vars' as *;
-@use '../mixins/font' as *;
+@use '../../../global/vars' as *;
+@use '../../../global/setting' as *;
+@use '../../../mixins/font' as *;
 
 .contact-info{
   @media screen and (max-width: 850px) {
@@ -22,7 +23,8 @@
 .contact-phone{
   padding: 0.625rem 0.9375rem;
   width: 45%;
-  background: linear-gradient(180deg, rgba(255, 242, 215, 0.8) 20.67%, rgba(189, 144, 47, 0.8) 100%);
+  background: #F2138E;
+
 }
 
 .contact-phone-content {
