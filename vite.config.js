@@ -115,7 +115,12 @@ export default defineConfig({
                 'resources/scss/shops/pussycat/component/contact-info.scss',
                 'resources/scss/shops/home-header.scss',
                 'resources/js/shops/home-header.js',
-
+                'resources/scss/shops/shizuku/schedule.scss',
+                'resources/scss/shops/shizuku/page-layout.scss',
+                'resources/scss/shops/footer.scss',
+                'resources/scss/shops/fixed-phone-button.scss',
+                'resources/scss/shops/fixed-side-buttons.scss',
+                'resources/scss/shops/menu-overlay.scss',
             ],
             refresh: true,
         }),

@@ -68,6 +68,11 @@
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => '#'],
                 ]" menu-button-id="mobileMenuButton" background-color="#160B00" />
             {{ $slot }}
+            <div class="top-page-link-button">
+                <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="top-page-link">
+                    トップページはこちら
+                </a>
+            </div>
             <x-public.shops.footer :showExternalLink="false" :showExternalLinksGrid="true" :shops="[
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',

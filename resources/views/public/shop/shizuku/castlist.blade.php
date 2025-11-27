@@ -33,9 +33,4 @@
         />
     @endfor
 </div>
-<div class="castlist-top-page-button">
-    <a href="{{ route('public.shop.home', ['shop' => 'shizuku']) }}" class="top-page-link">
-        トップページはこちら
-    </a>
-</div>
 </x-shizuku-page-layout>

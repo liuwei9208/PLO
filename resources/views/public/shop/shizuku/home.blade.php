@@ -6,7 +6,7 @@
         <x-public.shops.menu-overlay logo-image="assets/img/shops/shizuku/footer-logo-black.png" logo-alt="Shizuku Logo"
             :menu-links="[
                 'top' => route('public.shops.shop.home', ['shop' => 'shizuku']),
-                'schedule' => '#',
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
                 'pricing' => '#',
                 'new' => '#',
                 'cast' => route('public.shops.shop.castlist', ['shop' => 'shizuku']),
@@ -58,7 +58,7 @@
                         'subtitle' => 'cast list',
                         'url' => route('public.shops.shop.castlist', ['shop' => 'shizuku']),
                     ],
-                    ['title' => '出勤情報', 'subtitle' => 'schedule', 'url' => '#'],
+                    ['title' => '出勤情報', 'subtitle' => 'schedule', 'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku'])],
                     ['title' => '写メ日記', 'subtitle' => 'photo diary', 'url' => '#'],
                     ['title' => 'イベント一覧', 'subtitle' => 'event', 'url' => '#'],
                     ['title' => '料金システム', 'subtitle' => 'system', 'url' => '#'],
