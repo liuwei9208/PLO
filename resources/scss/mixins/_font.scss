@@ -10,6 +10,50 @@
   font-style: normal;
   font-display: swap;
 }
+@font-face {
+  font-family: "Hiragino Mincho ProW6";
+  src: url("/assets/fonts/hiraminpro-w6.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hiragino Mincho ProW3";
+  src: url("/assets/fonts/hiraminpro-w3.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hiragino Mincho ProNW6";
+  src: url("/assets/fonts/Hiragino-Mincho-ProN-W6.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hiragino Mincho ProNW3";
+  src: url("/assets/fonts/Hiragino-Mincho-ProN-W3.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Didot Normal";
+  src: url("/assets/fonts/Didot.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Yu Mincho";
+  src: url("/assets/fonts/yumin.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
 
 // Import Yu Mincho Regular font
 @font-face {
@@ -34,8 +78,23 @@
 }
 
 @mixin Hiragino_Mincho_Pro() {
-  font-family: "Hiragino Mincho ProN", "hiragino-mincho-pron", serif;
+  font-family: "Hiragino Mincho ProW3", serif;
   font-weight: 300;
+  font-style: normal;
+}
+@mixin Hiragino_Mincho_Pro_W6() {
+  font-family: "Hiragino Mincho ProW6", serif;
+  font-weight: 600;
+  font-style: normal;
+}
+@mixin Hiragino_Mincho_Pro_N() {
+  font-family: "Hiragino Mincho ProNW3", serif;
+  font-weight: 300;
+  font-style: normal;
+}
+@mixin Hiragino_Mincho_Pro_NW6() {
+  font-family: "Hiragino Mincho ProNW6", serif;
+  font-weight: 600;
   font-style: normal;
 }
 
@@ -46,7 +105,7 @@
 }
 
 @mixin didot() {
-  font-family: "GFS Didot", serif;
+  font-family: "Didot Normal", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -58,7 +117,7 @@
 }
 
 @mixin yu-mincho-regular() {
-  font-family: "yu-mincho-regular", serif;
+  font-family: "Yu Mincho", serif;
   font-weight: 400;
   font-style: normal;
 }
@@ -70,8 +129,24 @@
 }
 
 // Formula: clamp(min, calc(min + (max - min) * ((100vw - min_vw) / (max_vw - min_vw))), max)
-@mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
-  font-size: clamp(
+// @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
+@mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1920px) {
+    font-size: clamp(
+    #{$min},
+    calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    #{$max}
+  );
+}
+
+@mixin responsive-width($min, $max, $min-vw: 375px, $max-vw: 1920px) {
+  width: clamp(
+    #{$min},
+    calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    #{$max}
+  );
+}
+@mixin responsive-height($min, $max, $min-vw: 375px, $max-vw: 1920px) {
+  height: clamp(
     #{$min},
     calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
     #{$max}

@@ -10,9 +10,9 @@
   
   // Schedule variant: hide on mobile
   &.schedule-info-schedule {
-    @media screen and (max-width: 850px) {
-      display: none;
-    }
+    // @media screen and (max-width: 850px) {
+    //   display: none;
+    // }
   }
   
   // New-girl variant: different responsive behavior
@@ -35,8 +35,27 @@
     }
     
     @media screen and (max-width: 850px) {
+      flex-direction: column;
+      width: 100%;
+      
+      .schedule-info-header {
+        width: 100%;
+        order: 1;
+      }
+      
+      .schedule-info-description {
+        width: 100%;
+        order: 2;
+      }
+      
       .schedule-info-button {
-        display: none;
+        display: flex;
+        width: 100%;
+        order: 3;
+        border-left: none;
+        border-top: 3px solid;
+        height: auto;
+        padding: 1.25rem 2.5rem;
       }
     }
   }
@@ -58,8 +77,8 @@
 }
 
 .schedule-info-title {
-  @include yu-mincho-pr6n();
-  @include responsive-font(20px, 30px);
+  @include yu-mincho-regular();
+  @include responsive-font(25px, 33px);
   font-weight: 600;
   line-height: normal;
   margin: 0;
@@ -76,15 +95,15 @@
 }
 
 .schedule-info-description p {
-  @include yu-mincho-pr6n();
-  @include responsive-font(16px, 21px);
+  @include yu-mincho-regular();
+  @include responsive-font(16px, 26px);
   font-weight: 600;
   line-height: normal;
   margin: 0;
   
   // New-girl variant uses smaller font
   .schedule-info-new-girl & {
-    @include responsive-font(12px, 21px);
+    @include responsive-font(17px, 24px);
     white-space: nowrap;
   }
 }
@@ -109,8 +128,8 @@
   }
   
   p {
-    @include yu-mincho-pr6n();
-    @include responsive-font(16px, 21px);
+    @include yu-mincho-regular();
+    @include responsive-font(21px, 21px);
     font-weight: 600;
     line-height: normal;
     margin: 0;

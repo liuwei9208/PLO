@@ -1,7 +1,7 @@
 // Import global variables and utilities
 @use '../global/vars' as *;
 @use '../mixins/font' as *;
-
+@use '../functions/size' as *;
 .register-button {
   display: flex;
   flex-direction: row;
@@ -18,9 +18,9 @@
   
   p {
     @include inter();
-    @include responsive-font(12px, 14px);
+    @include responsive-font(12px, 15.62px);
     line-height: 1.1875rem;
-    font-weight: 800 !important;
+    font-weight: 600 !important;
     text-align: center;
     letter-spacing: 0.04em;
     margin: 0;

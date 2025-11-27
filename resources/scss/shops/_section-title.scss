@@ -21,12 +21,12 @@
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   margin: 0;
-  @include responsive-font(60px, 120px);
+  @include responsive-font(43px, 155px);
 }
 
 // Variant for smaller font size (e.g., NEW GIRL)
 .section-title.section-title-small h2,
 .section-title.section-title-small .section-title-text {
-  @include responsive-font(50px, 120px);
+  @include responsive-font(50px, 154px);
 }
 

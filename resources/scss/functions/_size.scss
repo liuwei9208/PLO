@@ -7,3 +7,10 @@
 @function liquid($element-width, $viewport-width: 390) {
   @return #{math.div($element-width, $viewport-width) * 100}vw;
 }
+
+@function fluid-clamp($minSize, $maxSize, $minWidth: 375px, $maxWidth: 1920px) {
+  @return clamp(#{$minSize},
+    calc(#{$minSize} + (#{$maxSize} - #{$minSize}) * ((100vw - #{$minWidth}) / (#{$maxWidth} - #{$minWidth}))),
+    #{$maxSize}
+  );
+}

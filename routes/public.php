@@ -94,6 +94,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
             Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
             Route::get('system', [ShizukuController::class, 'showSystem'])->name('system');
             Route::get('profile', [ShizukuController::class, 'showProfile'])->name('profile');
+            Route::get('castlist', [ShizukuController::class, 'showCastlist'])->name('castlist');
         });
     });
 });

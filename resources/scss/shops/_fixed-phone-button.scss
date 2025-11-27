@@ -37,6 +37,20 @@
     justify-content: flex-start;
   }
   
+  .desktop-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .mobile-image {
+    display: none;
+  }
+  
+  .desktop-icon {
+    display: inline-block;
+  }
+  
   svg {
     width: 1.5625rem;
     height: 1.5625rem;
@@ -54,7 +68,7 @@
   }
   
   .phone-hours {
-    @include Hiragino_Mincho_Pro();
+    @include Hiragino_Mincho_Pro_W6();
     font-size: 0.9375rem;
     line-height: 1.1875rem;
     color: $white;
@@ -62,10 +76,6 @@
     margin: 0;
     width: 100%;
     text-align: center;
-    
-    .mobile-tel {
-      display: none;
-    }
     
     .desktop-hours {
       display: inline;
@@ -78,11 +88,10 @@
     width: 5.179125rem;
     height: 5.179125rem;
     border-radius: 50%;
-    background: linear-gradient(180deg, #C89E4E 0%, #7A5F2A 100%);
+    background: transparent;
     padding: 0;
     align-items: center;
     justify-content: center;
-    gap: 0.125rem;
     bottom: 1.25rem;
     right: 1.25rem;
     
@@ -90,41 +99,16 @@
       transform: scale(1.05);
     }
     
-    .flex {
-      flex-direction: column;
-      gap: 0;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .justify-center {
-      justify-content: center;
-    }
-    
-    svg {
-      width: 1.875rem;
-      height: 1.875rem;
-    }
-    
-    .phone-number {
+    .desktop-content {
       display: none;
     }
     
-    .phone-hours {
-      @include times-new-roman();
-      font-size: 0.9375rem;
-      line-height: 1;
-      font-weight: 700;
-      text-align: center;
-      letter-spacing: 0.03em;
-      
-      .desktop-hours {
-        display: none;
-      }
-      
-      .mobile-tel {
-        display: inline;
-      }
+    .mobile-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
     }
   }
 }
