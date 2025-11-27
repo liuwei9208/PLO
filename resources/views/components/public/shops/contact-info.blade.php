@@ -6,14 +6,14 @@
     'hours' => '9:00 ~ 0:00',
     'creditText' => 'クレジット決済可能',
     'note' => '電話予約の対応時間は朝8:30~となります。',
-    // 'phoneBackground' => 'linear-gradient(180deg, rgba(255, 242, 215, 0.8) 20.67%, rgba(189, 144, 47, 0.8) 100%)',
+    'phoneBackground' => 'linear-gradient(180deg, rgba(255, 242, 215, 0.8) 20.67%, rgba(189, 144, 47, 0.8) 100%)',
     'addressBackground' => '#160B00',
 ])
 
 <div class="contact-info">
     <div class="contact-wrapper">
-        {{-- <div class="contact-phone" style="background: {{ $phoneBackground }};"> --}}
-        <div class="contact-phone">
+        <div class="contact-phone" style="background: {{ $phoneBackground }};">
+            {{-- <div class="contact-phone"> --}}
             <div class="contact-phone-content">
                 <div class="contact-phone-main">
                     <div class="contact-phone-icon">

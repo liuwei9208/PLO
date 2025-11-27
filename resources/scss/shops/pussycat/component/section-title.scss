@@ -13,9 +13,9 @@
 
 .section-title h2,
 .section-title-text{
-  @include didot();
+  @include Caveat();
   font-style: normal;
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
   background-clip: text;
   -webkit-background-clip: text;

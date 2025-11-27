@@ -64,6 +64,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "YuGothic";
+  src: url("/assets/fonts/yugothib.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @mixin serif() {
   font-family: "Bentham", serif;
   font-weight: 400;
@@ -123,16 +131,32 @@
 }
 
 @mixin times-new-roman() {
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Times New Roman", serif;
   font-weight: 400;
   font-style: normal;
 }
-@mixin times-new-roman() {
+@mixin Pacifico() {
   font-family: "Pacifico", cursive;
   font-weight: 400;
   font-style: normal;
 }
+@mixin YuGothic() {
+  font-family: "YuGothic", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
+@mixin IBM_Plex_Mono() {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin Caveat() {
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
 // Formula: clamp(min, calc(min + (max - min) * ((100vw - min_vw) / (max_vw - min_vw))), max)
 // @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
 @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1920px) {

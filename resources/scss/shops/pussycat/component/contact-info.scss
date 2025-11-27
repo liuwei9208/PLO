@@ -23,7 +23,6 @@
 .contact-phone{
   padding: 0.625rem 0.9375rem;
   width: 45%;
-  background: #F2138E;
 
 }
 
@@ -55,18 +54,21 @@
 }
 
 .contact-phone-number {
-  @include responsive-font(24px, 42px);
+  @include Pacifico();
+  @include responsive-font(24px, 45px);
   line-height: 2.9375rem;
-  color: $black;
+  color: $white;
   margin: 0;
   font-weight: 400;
 }
 
 .contact-email {
   p {
+    @include YuGothic();
     @include responsive-font(12px, 18px);
+    font-weight: 500 !important;
     line-height: 1rem;
-    color: $black;
+    color: $white;
     margin: 0;
     text-align: center;
   }
@@ -85,10 +87,10 @@
 }
 
 .contact-address-text {
-  @include Hiragino_Mincho_Pro();
-  font-weight: 300 !important;
+  @include YuGothic();
+  font-weight: 500 !important;
   color: $white;
-  @include responsive-font(12px, 17px);
+  @include responsive-font(12px, 18px);
   line-height: 1.25rem;
   margin: 0;
 }
@@ -109,6 +111,14 @@
   text-align: center;
   justify-content: center;
   gap: 0.3125rem;
+  p {
+    @include Pacifico();
+    font-weight: 400 !important;
+    color: $black;
+    @include responsive-font(12px, 18px);
+    margin: 0;
+    padding-bottom: 0.125rem;
+  }
 }
 
 .contact-button-credit{
@@ -121,7 +131,9 @@
 }
 
 .contact-button-credit p {  
-  @include Hiragino_Mincho_Pro_W6();
+  @include YuGothic();
+  @include responsive-font(12px, 14.29px);
+  font-weight: 700 !important;
   // @include Hiragino_Mincho_Pro();
   // font-weight: 500 !important;
 }
@@ -133,7 +145,7 @@
   padding: 0.3125rem;
   p {
     @include responsive-font(12px, 19.95px);
-    @include Hiragino_Mincho_Pro_W6();
+    @include YuGothic();
     font-weight: 600 !important;
     color: $black;
     margin: 0;

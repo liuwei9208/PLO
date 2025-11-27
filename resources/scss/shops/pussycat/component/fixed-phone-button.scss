@@ -9,7 +9,7 @@
   right: 0.625rem;
   width: 21.9375rem;
   height: 6.0625rem;
-  background: linear-gradient(90deg, #CF2B0E 0%, #F32621 100%);
+  background: #05F2DB;
   border-radius: 1.875rem 0 0 0;
   display: flex;
   flex-direction: column;
@@ -59,21 +59,22 @@
   }
   
   .phone-number {
-    @include lustria();
+    @include Pacifico();
+    padding-bottom: 0.5rem;
     font-size: 2.6875rem;
     line-height: 2.9375rem;
-    color: $white;
+    color: $black;
     font-weight: 400;
     margin: 0;
     text-align: left;
   }
   
   .phone-hours {
-    @include Hiragino_Mincho_Pro_W6();
+    @include IBM_Plex_Mono();
     font-size: 0.9375rem;
     line-height: 1.1875rem;
-    color: $white;
-    font-weight: 300;
+    color: $black;
+    font-weight: 700;
     margin: 0;
     width: 100%;
     text-align: center;

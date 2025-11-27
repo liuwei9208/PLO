@@ -4,7 +4,7 @@
 @use '../../mixins/font' as *;
 @use './component/contact-info' as *;
 @use './component/register-button' as *;
-@use '../home-header' as *;
+@use './component/home-header' as *;
 @use './component/section-title' as *;
 @use './component/schedule-info' as *;
 @use './component/schedule-card' as *;
@@ -89,9 +89,9 @@ p{
   margin-top: 530px;
   margin-bottom: 20px;
   p {
-    @include Hiragino_Mincho_Pro_W6();
+    @include YuGothic();
     @include responsive-font(12px, 15px);
-    font-weight: 600;
+    font-weight: 700;
     line-height: normal;
     color: #000;
   }

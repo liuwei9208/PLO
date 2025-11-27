@@ -32,11 +32,10 @@
             mobile-image="assets/img/shops/pussycat/credit_system.png" mobile-image-alt="女の子募集中" />
 
         <div class="banner">
-            <x-public.shops.contact-info phone-icon="assets/img/shops/pussycat/phone.png" phone-number="011-533-8988"
-                email="@PussycatHealth" address="〒064-0806</br> 北海道札幌市中央区南6条西5丁目" hours="9:00 ~ 0:00"
-                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。"
-                phone-background="linear-gradient(180deg, rgba(255, 242, 215, 0.8) 20.67%, rgba(189, 144, 47, 0.8) 100%)"
-                address-background="#160B00" />
+            <x-public.shops.contact-info phone-icon="assets/img/shops/pussycat/phone.png" phone-number="011-531-0965"
+                email="@PussycatHealth" address="〒064-0806</br> 札幌市中央区6条西5丁目第一旭観光ビル1F" hours="16:00 ~ 0:00"
+                credit-text="クレジット決済可能" note="電話予約の対応時間は16:00~となります。" phone-background="#F2138E"
+                address-background="#10040E" />
             <div class="register">
                 <x-public.shops.register-button text="新規会員登録はコチラ！" background-color="#FFF5FB" text-color="#FF3498" />
             </div>
@@ -64,19 +63,21 @@
                     ['title' => '料金システム', 'subtitle' => 'system', 'url' => '#'],
                     ['title' => '新人情報', 'subtitle' => 'new cast', 'url' => '#'],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => '#'],
-                ]" menu-button-id="mobileMenuButton" background-color="#160B00" />
+                ]" menu-button-id="mobileMenuButton" background-color="#F2138E" strokeColor='#F2138E' />
             <div class="home-schedule">
-                <x-public.shops.section-title text="schedule" background-color="#2A1A08" gradient-start="#FFF2D7"
-                    gradient-end="#BD902F" letter-spacing="6px" />
-                <x-public.shops.schedule-info icon-image="assets/img/shop/calender-g.png" icon-alt="出勤情報" title="出勤情報"
-                    description="本日出勤するキャスト一覧になります。" button-text="一覧を見る" background-color="#FFFFFF"
-                    border-color="#2A1A08" text-color="#2A1A08" underline-gradient-start="#FFF2D7"
-                    underline-gradient-end="#BD902F" responsive-variant="new-girl" />
+                <x-public.shops.section-title text="schedule" background-color="#10040E" :gradient="false"
+                    color="#05F2DB" letter-spacing="6px" />
+                <x-public.shops.schedule-info icon-image="assets/img/shops/pussycat/calender-g.png" icon-alt="出勤情報"
+                    title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る" background-color="#FFFFFF"
+                    border-color="#05F2DB" text-color="#10040E" underline-gradient-start="#FFF2D7"
+                    underline-gradient-end="#BD902F" responsive-variant="new-girl" :gradient="false"
+                    underlineColor='#05F2DB' />
                 <div class="home-schedule-cards">
                     @for ($i = 0; $i < 12; $i++)
                         <x-public.shops.schedule-card background-image="assets/img/shops/pussycat/coming-soon-card.png"
                             frame-image="assets/img/shops/pussycat/card-frame.png" badge-shift="本日出勤"
-                            badge-time="12:00〜24:00"
+                            badge-time="12:00〜24:00" contentGradientStart="#7E002A"
+                            contentGradientEnd="rgba(255, 0, 246, 0.20)" contentGradientStartPercent="48.08%"
                             status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
                             status-text="待機中" name="のんたん（20）" measurements="T.160 B.85(C) W.60 H.83"
                             message="キャストメッセージが出ます" />
@@ -120,7 +121,8 @@
                     @for ($i = 0; $i < 6; $i++)
                         <x-public.shops.new-girl-card background-image="assets/img/shops/pussycat/new-girl.png"
                             photo-image="assets/img/shops/pussycat/new-girl.png" date="2025.00.00 SUN" date-label="入店"
-                            name="名前名前" name-vertical="Name" age="00" measurements="T.000 B.000(C) W.00 H.00"
+                            name="名前名前" name-vertical="Name" age="00"
+                            measurements="T.000 B.000(C) W.00 H.00"
                             description="テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト"
                             gradient-id="calendar-gradient-{{ $i }}" gradient-start="#FFF2D7"
                             gradient-end="#BD902F" overlay-opacity="0.7" name-color="#FFFFFF"
@@ -494,8 +496,17 @@
     </div>
 
     <!-- Fixed Phone Button -->
-    <x-public.shops.fixed-phone-button phone-number="0115338988" phone-display="011-533-8988" hours="8:30〜24:00まで"
-        mobile-text="TEL" />
+    <x-public.shops.fixed-phone-button phone-number="0115310965" phone-display="011-531-0965" hours="16:00〜24:00まで"
+        mobile-text="TEL" mobileImage="assets/img/shops/pussycat/Vector.png"
+        iconSvg='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="url(#paint0_linear_202_2963)" fill-opacity="0.8"/>
+<defs>
+<linearGradient id="paint0_linear_202_2963" x1="12.4947" y1="0" x2="12.4947" y2="24.9894" gradientUnits="userSpaceOnUse">
+<stop offset="0.0432692" stop-color="white" stop-opacity="0"/>
+<stop offset="0.163462" stop-color="#10040E"/>
+</linearGradient>
+</defs>
+</svg>' />
 
     <!-- Fixed Side Buttons -->
     <x-public.shops.fixed-side-buttons />

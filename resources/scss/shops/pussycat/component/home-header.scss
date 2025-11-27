@@ -40,29 +40,30 @@
 }
 
 .menu-item h1{
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(12px, 16.95px);
-  font-weight: 600 !important;
+  font-weight: 700 !important;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
   color: #FFFFFF;
 }
 
 .menu-item p{
-  @include didot();
+  @include Caveat();
   @include responsive-font(10px, 12.96px);
   font-weight: 700;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
-  color: #A58C1B;
+  color: #EAF205;
   text-transform: uppercase;
 }
 
 .menu-button{
-  padding: 0 1.875rem;
+  padding: 1.875rem 1.875rem;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  
+  background-color: #160B00;
+  height: --webkit-fill-available;
   &:hover {
     opacity: 0.8;
   }
@@ -74,17 +75,18 @@
   line-height: 1.0625rem;
   text-align: center;
   letter-spacing: 0.07em;
-  color: #FFDA89;
+  color: #FFF;
   padding-top: 0.625rem;
   text-transform: uppercase;
 }
 
 .mobile-header-logo {
   display: none;
-  padding-left: 1.875rem;
+  // padding-left: 1.875rem;
+  padding-left: 0;
   
   img {
-    height: 2.5rem;
+    height: 4.75rem;
     width: auto;
     object-fit: contain;
   }
@@ -158,7 +160,8 @@
   .home-header {
     height: 75px;
     border-radius: 0;
-    padding: 0 1.875rem;
+    // padding: 0 1.875rem;
+    padding: 0;
     
     &.fixed-header {
       left: 0;
@@ -182,7 +185,10 @@
     justify-content: center;
     padding: 0;
     gap: 0.3125rem;
-    
+
+    padding: 1.075rem 1.075rem;
+    height: --webkit-fill-available;
+      
     svg {
       width: 39.131px;
       height: 18.833px;
