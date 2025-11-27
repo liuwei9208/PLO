@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuButton = document.getElementById('mobileMenuButton');
     const menuOverlay = document.getElementById('menuOverlay');
     const menuClose = document.getElementById('menuClose');
+    const menuCloseMobile = document.getElementById('menuCloseMobile');
     
     function openMenu() {
         if (menuOverlay) {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         menuClose.addEventListener('click', closeMenu);
-        
+        menuCloseMobile.addEventListener('click', closeMenu);
         // Close menu when clicking outside content
         menuOverlay.addEventListener('click', function(e) {
             if (e.target === menuOverlay) {
