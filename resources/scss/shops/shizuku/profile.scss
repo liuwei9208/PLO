@@ -40,7 +40,7 @@ transition: opacity 0.2s ease-out;
     .mobile-profile-content{
         display: flex !important;
         flex-direction: column !important;
-        padding: 0px 10px;
+        // padding: 0px 10px;
     }
     .profile-left-colum,
     .profile-right-column{
@@ -51,6 +51,7 @@ transition: opacity 0.2s ease-out;
     }
     .girl-basic-info{
         order: 1;
+        border-radius: 0px !important;
         margin-bottom: 1.5rem;
         display: block !important;
     }
@@ -66,46 +67,65 @@ transition: opacity 0.2s ease-out;
     }
     .girl-video{
         order: 4;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
         display: block !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
     }
     .girl-qa-section{
         order: 5;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
         display: block !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
     }
     .girl-message-section{
         order: 6;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
         display: block !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
     }
     .girl-diary-section{
         order: 7;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
         display: block !important;
     }
     .girl-schedule-section{
         order: 8;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
         display: block !important;
     }
     .girl-manager-comment-section{
         order: 9;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
         display: block !important;
     }
     .girl-sales-points-section{
         order: 10;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
         display: block !important;
     }
     .girl-reviews-section{
         order: 11;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.5rem !important;
+        width: 95% !important;
+        margin: 10px auto 0px;
         display: block !important;
     }
     .girl-review-text p{
         line-height: 24px;
+    }
+    p{
+        line-height: 20px;
     }
 }
 
@@ -251,13 +271,16 @@ transition: opacity 0.2s ease-out;
     text-align: center;
     border-bottom: 1px solid #E5D6B4;
 }
-
+@media screen and (max-width: 850px) {
+    .girl-basic-info-body{
+        padding: 15px 10px 15px;
+    }
+}
 .girl-basic-info-name{
     @include yu-mincho-regular();
     @include responsive-font(30px, 31px);
     font-weight: 600 !important;
     color: #2A1A08;
-    margin-bottom: 10px;
 }
 
 .girl-basic-info-meta{
@@ -274,7 +297,7 @@ transition: opacity 0.2s ease-out;
     font-weight: 600 !important;
     color: #2A1A08;
     text-align: center;
-    padding: 15px 20px 25px;
+    padding: 10px 10px 15px;
     margin: 0;
 }
 
@@ -394,8 +417,26 @@ transition: opacity 0.2s ease-out;
 }
 
 @media screen and (max-width: 850px) {
+    .girl-photo-gallery {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE/Edge
+        gap: 8px;
+        padding-bottom: 5px;
+        
+        &::-webkit-scrollbar {
+            display: none; // Chrome/Safari/Opera
+        }
+    }
+    
     .girl-photo-gallery-item{
-        width: calc(20% - 4px);
+        width: 80px;
+        min-width: 80px;
+        flex-shrink: 0;
     }
 }
 

@@ -72,7 +72,7 @@
             menu-button-id="mobileMenuButton"
             background-color="#160B00"
             />
-            <div class="flex w-full mt-6 mobile-profile-content">
+            <div class="flex w-full mt-6 mobile-profile-content max-md:mt-0">
                 <div class="profile-left-colum">
                     <div class="girl-info-section-wrapper">
                         <button class="profile-image-prev" type="button" aria-label="Previous image">
