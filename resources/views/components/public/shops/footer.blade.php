@@ -71,7 +71,7 @@
             </a>
             <a href="{{ $shops[1]['url'] ?? '#' }}" class="shop-info-card">
                 <div class="shop-info-card-image">
-                    <img src="{{ asset($shop[1]['image'] ?? '') }}" alt="{{ $shop['alt'] ?? '' }}">
+                    <img src="{{ asset($shops[1]['image'] ?? '') }}" alt="{{ $shop['alt'] ?? '' }}">
                 </div>
                 <div class="shop-info-card-text">
                     <p class="pc-only">女の子を見て選べる唯一無二の<br>エンターテインメントヘルス</p>
