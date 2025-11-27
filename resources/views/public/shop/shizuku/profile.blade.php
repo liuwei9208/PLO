@@ -1,194 +1,40 @@
 <x-shizuku-layout>
     <div class="home">
         <div class="home-gradient-overlay"></div>
-        <!-- Menu Overlay -->
-        <div class="menu-overlay" id="menuOverlay">
-            <div class="menu-overlay-content">
-                <button class="menu-close" id="menuClose">
-                    <svg width="50" height="50" viewBox="0 0 50 50" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M38.5 13.625L36.375 11.5L25 22.875L13.625 11.5L11.5 13.625L22.875 25L11.5 36.375L13.625 38.5L25 27.125L36.375 38.5L38.5 36.375L27.125 25L38.5 13.625Z"
-                            fill="#000000" />
-                    </svg>
-                </button>
-
-                <div class="menu-logo">
-                    <img src="{{ asset('assets/img/shops/shizuku/footer-logo-black.png') }}" alt="Shizuku Logo">
-                </div>
-
-                <div class="menu-grid">
-                    <div class="menu-column">
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M10 20V14H14V20H19V12H22L12 3L2 12H5V20H10Z" fill="#BD902F" />
-                            </svg>
-                            <span>TOPページ</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"
-                                    fill="#4CAF50" />
-                            </svg>
-                            <span>新人情報</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M17 12H12V17H17V12ZM16 1V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3H18V1H16ZM19 19H5V8H19V19Z"
-                                    fill="#FFA000" />
-                            </svg>
-                            <span>イベント情報</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M20 2H4C2.9 2 2.01 2.9 2.01 4L2 22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM6 9H18V11H6V9ZM14 14H6V12H14V14ZM18 8H6V6H18V8Z"
-                                    fill="#9C27B0" />
-                            </svg>
-                            <span>口コミ一覧</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z"
-                                    fill="#F44336" />
-                            </svg>
-                            <span>店舗一覧</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-column">
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M9 11H7V13H9V11ZM13 11H11V13H13V11ZM17 11H15V13H17V11ZM19 4H18V2H16V4H8V2H6V4H5C3.89 4 3.01 4.9 3.01 6L3 20C3 21.1 3.89 22 5 22H19C20.1 22 21 21.1 21 20V6C21 4.9 20.1 4 19 4ZM19 20H5V9H19V20Z"
-                                    fill="#2196F3" />
-                            </svg>
-                            <span>出勤情報</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M16 11C17.66 11 18.99 9.66 18.99 8C18.99 6.34 17.66 5 16 5C14.34 5 13 6.34 13 8C13 9.66 14.34 11 16 11ZM8 11C9.66 11 10.99 9.66 10.99 8C10.99 6.34 9.66 5 8 5C6.34 5 5 6.34 5 8C5 9.66 6.34 11 8 11ZM8 13C5.67 13 1 14.17 1 16.5V19H15V16.5C15 14.17 10.33 13 8 13ZM16 13C15.71 13 15.38 13.02 15.03 13.05C16.19 13.89 17 15.02 17 16.5V19H23V16.5C23 14.17 18.33 13 16 13Z"
-                                    fill="#E91E63" />
-                            </svg>
-                            <span>キャスト一覧</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z"
-                                    fill="#FF5722" />
-                            </svg>
-                            <span>写メ日記</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"
-                                    fill="#FFC107" />
-                            </svg>
-                            <span>女の子ランキング</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"
-                                    fill="#607D8B" />
-                            </svg>
-                            <span>ログイン</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M15 12C17.21 12 19 10.21 19 8C19 5.79 17.21 4 15 4C12.79 4 11 5.79 11 8C11 10.21 12.79 12 15 12ZM6 10V7H4V10H1V12H4V15H6V12H9V10H6ZM15 14C12.33 14 7 15.34 7 18V20H23V18C23 15.34 17.67 14 15 14Z"
-                                    fill="#009688" />
-                            </svg>
-                            <span>会員新規登録</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-column">
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.8 10.9C9.53 10.31 8.8 9.7 8.8 8.75C8.8 7.66 9.81 6.9 11.5 6.9C13.28 6.9 13.94 7.75 14 9H16.21C16.14 7.28 15.09 5.7 13 5.19V3H10V5.16C8.06 5.58 6.5 6.84 6.5 8.77C6.5 11.08 8.41 12.23 11.2 12.9C13.7 13.5 14.2 14.38 14.2 15.31C14.2 16 13.71 17.1 11.5 17.1C9.44 17.1 8.63 16.18 8.52 15H6.32C6.44 17.19 8.08 18.42 10 18.83V21H13V18.85C14.95 18.48 16.5 17.35 16.5 15.3C16.5 12.46 14.07 11.49 11.8 10.9Z"
-                                    fill="#4CAF50" />
-                            </svg>
-                            <span>料金システム</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 22C6.49 22 2 17.51 2 12C2 6.49 6.49 2 12 2C17.51 2 22 6.49 22 12C22 17.51 17.51 22 12 22ZM12 20C14.1217 20 16.1566 19.1571 17.6569 17.6569C19.1571 16.1566 20 14.1217 20 12C20 9.87827 19.1571 7.84344 17.6569 6.34315C16.1566 4.84285 14.1217 4 12 4C9.87827 4 7.84344 4.84285 6.34315 6.34315C4.84285 7.84344 4 9.87827 4 12C4 14.1217 4.84285 16.1566 6.34315 17.6569C7.84344 19.1571 9.87827 20 12 20ZM13 12H17V14H11V7H13V12Z"
-                                    fill="#FF9800" />
-                            </svg>
-                            <span>新着情報</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M17 10.5V7C17 4.24 14.76 2 12 2C9.24 2 7 4.24 7 7V10.5C5.9 10.5 5 11.4 5 12.5V20.5C5 21.6 5.9 22.5 7 22.5H17C18.1 22.5 19 21.6 19 20.5V12.5C19 11.4 18.1 10.5 17 10.5ZM12 17.5C10.9 17.5 10 16.6 10 15.5C10 14.4 10.9 13.5 12 13.5C13.1 13.5 14 14.4 14 15.5C14 16.6 13.1 17.5 12 17.5ZM15.1 10.5H8.9V7C8.9 5.29 10.29 3.9 12 3.9C13.71 3.9 15.1 5.29 15.1 7V10.5Z"
-                                    fill="#3F51B5" />
-                            </svg>
-                            <span>MOVIE一覧</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z"
-                                    fill="#009688" />
-                            </svg>
-                            <span>アクセス情報</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"
-                                    fill="#E91E63" />
-                            </svg>
-                            <span>女性求人</span>
-                        </a>
-                        <a href="#" class="menu-link">
-                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 5C13.66 5 15 6.34 15 8C15 9.66 13.66 11 12 11C10.34 11 9 9.66 9 8C9 6.34 10.34 5 12 5ZM12 19.2C9.5 19.2 7.29 17.92 6 15.98C6.03 13.99 10 12.9 12 12.9C13.99 12.9 17.97 13.99 18 15.98C16.71 17.92 14.5 19.2 12 19.2Z"
-                                    fill="#2196F3" />
-                            </svg>
-                            <span>男性求人</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="menu-bottom-buttons">
-                    <a href="#" class="menu-bottom-btn">
-                        <img src="{{ asset('assets/img/shops/shizuku/plo-group-btn.png') }}" alt="PLO Group">
-                    </a>
-                    <a href="#" class="menu-bottom-btn">
-                        <img src="{{ asset('assets/img/shops/shizuku/recruit-btn.png') }}" alt="女の子募集中">
-                    </a>
-                </div>
-            </div>
-        </div>
+        <!-- Menu Overlay Component -->
+        <x-public.shops.menu-overlay 
+            logo-image="assets/img/shops/shizuku/footer-logo-black.png"
+            logo-alt="Shizuku Logo"
+            :menu-links="[
+                'top' => '#',
+                'schedule' => '#',
+                'pricing' => '#',
+                'new' => '#',
+                'cast' => '#',
+                'news' => '#',
+                'event' => '#',
+                'diary' => '#',
+                'movie' => '#',
+                'review' => '#',
+                'ranking' => '#',
+                'shop' => '#',
+                'access' => '#',
+                'recruit-male' => '#',
+                'login' => '#',
+                'recruit-female' => '#',
+                'register' => '#',
+            ]"
+            :bottom-buttons="[
+                'group' => '#',
+                'recruit' => '#',
+            ]"
+            :bottom-button-images="[
+                'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
+                'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
+            ]"
+            mobile-image="assets/img/shops/shizuku/credit_system.png"
+            mobile-image-alt="女の子募集中"
+        />
         <div class="banner">
             <x-public.shops.contact-info
             phone-icon="assets/img/shops/shizuku/phone.png"
@@ -226,16 +72,31 @@
             menu-button-id="mobileMenuButton"
             background-color="#160B00"
             />
-            <div class="flex w-full mt-6 mobile-profile-content">
+            <div class="flex w-full mt-6 mobile-profile-content max-md:mt-0">
                 <div class="profile-left-colum">
-                    <div class="girl-info-section">
-                        <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1" class="cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame" class="cast-frame">
+                    <div class="girl-info-section-wrapper">
+                        <button class="profile-image-prev" type="button" aria-label="Previous image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="49" viewBox="0 0 26 49" fill="none">
+                                <path d="M24.5626 4.05219C24.7792 3.8229 24.9486 3.55318 25.0611 3.25843C25.1735 2.96368 25.2268 2.64967 25.2179 2.33433C25.2089 2.01898 25.138 1.70849 25.0091 1.42056C24.8802 1.13264 24.6958 0.872923 24.4665 0.65625C24.2372 0.439577 23.9675 0.270188 23.6727 0.157753C23.378 0.0453185 23.064 -0.00795991 22.7486 0.000960667C22.4333 0.00988125 22.1228 0.0808257 21.8349 0.209744C21.5469 0.338661 21.2872 0.523028 21.0706 0.752317L0.656475 22.3672C0.234897 22.8131 0 23.4035 0 24.0172C0 24.6308 0.234897 25.2212 0.656475 25.6671L21.0706 47.2844C21.2858 47.5187 21.5455 47.7079 21.8344 47.841C22.1234 47.9741 22.436 48.0485 22.7539 48.0598C23.0719 48.0711 23.3889 48.0191 23.6866 47.9068C23.9843 47.7946 24.2568 47.6243 24.4881 47.4058C24.7194 47.1874 24.9051 46.9252 25.0342 46.6344C25.1633 46.3436 25.2334 46.03 25.2403 45.712C25.2472 45.3939 25.1909 45.0776 25.0745 44.7814C24.9582 44.4853 24.7842 44.2152 24.5626 43.9869L5.70476 24.0172L24.5626 4.05219Z" fill="white"/>
+                            </svg>
+                        </button>
+                        
+                        <div class="girl-info-section">
+                            <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1" class="cast-image main-image" id="mainImage">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame.png') }}" alt="Frame" class="cast-frame">
+                        </div>
+                        
+                        <button class="profile-image-next" type="button" aria-label="Next image">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="49" viewBox="0 0 26 49" fill="none">
+                                <path d="M0.678404 4.05219C0.461731 3.8229 0.292343 3.55318 0.179909 3.25843C0.0674725 2.96368 0.0141945 2.64967 0.0231152 2.33433C0.0320358 2.01898 0.10298 1.70849 0.231897 1.42056C0.360815 1.13264 0.545181 0.872923 0.774469 0.65625C1.00376 0.439577 1.27348 0.270188 1.56823 0.157753C1.86299 0.0453185 2.17699 -0.00795991 2.49234 0.000960667C2.80768 0.00988125 3.11818 0.0808257 3.4061 0.209744C3.69403 0.338661 3.95374 0.523028 4.17041 0.752317L24.5845 22.3672C25.0061 22.8131 25.241 23.4035 25.241 24.0172C25.241 24.6308 25.0061 25.2212 24.5845 25.6671L4.17041 47.2844C3.95517 47.5187 3.69551 47.7079 3.40653 47.841C3.11755 47.9741 2.805 48.0485 2.48703 48.0598C2.16907 48.0711 1.85202 48.0191 1.55432 47.9068C1.25662 47.7946 0.984192 47.6243 0.752863 47.4058C0.521534 47.1874 0.335915 46.9252 0.206785 46.6344C0.0776577 46.3436 0.00759506 46.03 0.000667572 45.712C-0.00625992 45.3939 0.0500851 45.0776 0.166431 44.7814C0.282778 44.4853 0.456804 44.2152 0.678404 43.9869L19.5362 24.0172L0.678404 4.05219Z" fill="white"/>
+                              </svg>
+                        </button>
                     </div>
+                    
                     <div class="girl-photo-gallery">
                         @for ($i = 0; $i < 10; $i++)
-                            <div class="girl-photo-gallery-item">
-                                <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1" class="cast-image">
+                            <div class="girl-photo-gallery-item" data-index="{{ $i }}">
+                                <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast {{ $i + 1 }}" class="cast-image">
                             </div>
                         @endfor
                     </div>
@@ -467,7 +328,7 @@
                                 @for ($i = 0; $i < 12; $i++)
                                     <div class="girl-diary-card">
                                         <div class="girl-diary-image">
-                                            <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Diary {{ $i + 1 }}">
+                                            <img src="{{ asset('assets/img/shops/shizuku/diary-image.png') }}" alt="Diary {{ $i + 1 }}">
                                             <div class="girl-diary-overlay">日記タイトル日記</div>
                                         </div>
                                         <div class="girl-diary-body">
@@ -562,7 +423,7 @@
                                         <path d="M5.16406 3.83301C5.20703 5.83887 5.22852 6.98047 5.22852 7.25781C5.22852 7.41797 5.10645 7.49805 4.8623 7.49805C4.67871 7.49805 4.58691 7.43164 4.58691 7.29883C4.58691 7.23828 4.5957 6.83691 4.61328 6.09473C4.63086 5.43262 4.6416 4.87793 4.64551 4.43066C4.32715 4.97949 3.93652 5.45898 3.47363 5.86914C3.08105 6.2168 2.66016 6.49414 2.21094 6.70117C2.20898 6.70312 2.20605 6.7041 2.20215 6.7041C2.1748 6.7041 2.16113 6.68945 2.16113 6.66016C2.16113 6.65234 2.16406 6.64648 2.16992 6.64258C2.67773 6.24023 3.12891 5.75879 3.52344 5.19824C3.86914 4.71191 4.14941 4.19434 4.36426 3.64551H2.99023C2.84961 3.64551 2.67773 3.65723 2.47461 3.68066L2.40723 3.46094C2.61035 3.49219 2.80078 3.50781 2.97852 3.50781H4.61035V2.81934C4.61035 2.49707 4.59863 2.21875 4.5752 1.98438C4.90723 2.00977 5.12598 2.03516 5.23145 2.06055C5.3291 2.08594 5.37793 2.12012 5.37793 2.16309C5.37793 2.21582 5.31641 2.27441 5.19336 2.33887V3.50781H6.59082C6.81152 3.22852 6.94727 3.08887 6.99805 3.08887C7.03711 3.08887 7.18164 3.18652 7.43164 3.38184C7.55469 3.4834 7.61621 3.55176 7.61621 3.58691C7.61621 3.62598 7.59082 3.64551 7.54004 3.64551H5.25488C5.44238 4.17285 5.73633 4.63672 6.13672 5.03711C6.61133 5.49805 7.1875 5.83984 7.86523 6.0625C7.88086 6.06836 7.88867 6.07715 7.88867 6.08887C7.88867 6.10059 7.88086 6.10938 7.86523 6.11523C7.74219 6.15625 7.64941 6.21387 7.58691 6.28809C7.53418 6.35059 7.47949 6.45117 7.42285 6.58984C7.38965 6.66602 7.35352 6.7041 7.31445 6.7041C7.27148 6.7041 7.17871 6.65625 7.03613 6.56055C6.54004 6.21484 6.13184 5.7832 5.81152 5.26562C5.57324 4.87109 5.35742 4.39355 5.16406 3.83301Z" fill="#2A1A08"/>
                                         </svg>                                        
                                 </div>
-                                <div class="girl-schedule-time">お休み</div>
+                                <div class="girl-schedule-time girl-no-schedule">お休み</div>
                             </div>
                             <div class="girl-schedule-day">
                                 <div class="girl-schedule-label">
@@ -617,13 +478,13 @@
                     
                     <div class="girl-sales-points-section">
                         <div class="girl-sales-points-header">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="url(#salesPointsStarGradient)"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+                                <path d="M24.4926 12.2426C24.4954 12.6015 24.3863 12.9523 24.1804 13.2464C23.9746 13.5404 23.6823 13.763 23.3442 13.8832L16.4054 16.4065L13.8832 23.3441C13.7589 23.6791 13.5351 23.9679 13.2418 24.1719C12.9485 24.3758 12.5998 24.4852 12.2426 24.4852C11.8854 24.4852 11.5367 24.3758 11.2434 24.1719C10.9501 23.9679 10.7263 23.6791 10.602 23.3441L8.07978 16.4054L1.14103 13.8832C0.806116 13.7589 0.517273 13.5351 0.313302 13.2418C0.10933 12.9485 0 12.5998 0 12.2426C0 11.8854 0.10933 11.5367 0.313302 11.2434C0.517273 10.9501 0.806116 10.7263 1.14103 10.602L8.07978 8.07978L10.602 1.14103C10.7263 0.806116 10.9501 0.517273 11.2434 0.313302C11.5367 0.10933 11.8854 0 12.2426 0C12.5998 0 12.9485 0.10933 13.2418 0.313302C13.5351 0.517273 13.7589 0.806116 13.8832 1.14103L16.4065 8.07978L23.3442 10.602C23.6823 10.7222 23.9746 10.9448 24.1804 11.2388C24.3863 11.5328 24.4954 11.8837 24.4926 12.2426Z" fill="url(#paint0_linear_9_2133)"/>
                                 <defs>
-                                    <linearGradient id="salesPointsStarGradient" x1="12" y1="2" x2="12" y2="21.02" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0.206731" stop-color="#FFF2D7"/>
-                                        <stop offset="1" stop-color="#BD902F"/>
-                                    </linearGradient>
+                                  <linearGradient id="paint0_linear_9_2133" x1="12.2463" y1="0" x2="12.2463" y2="24.4852" gradientUnits="userSpaceOnUse">
+                                    <stop offset="0.206731" stop-color="#FFF2D7"/>
+                                    <stop offset="1" stop-color="#BD902F"/>
+                                  </linearGradient>
                                 </defs>
                             </svg>
                             <h3>セールスポイント</h3>
@@ -745,43 +606,43 @@
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 1',
-                    'text1' => '上品な空間、時を忘れる美貌と',
-                    'text2' => 'おもてなしが魅力のヘルス',
+                    'text1' => '上品な空間、時を忘れる美貌とおもてなしが魅力のヘルス',
+                    'text2' => '',
                     'url' => '#',
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 2',
-                    'text1' => 'すすきの屈指の人妻・痴女が在籍するヘルス',
-                    'text2' => 'エンターテインメントヘルス',
+                    'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
+                    'text2' => '',
                     'url' => '#',
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 3',
-                    'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
-                    'text2' => '在籍するヘルス',
+                    'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
+                    'text2' => '',
                     'url' => '#',
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 4',
-                    'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
-                    'text2' => '人妻ヘルス店',
+                    'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
+                    'text2' => '',
                     'url' => '#',
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 5',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
-                    'text2' => '丁寧な本格マッサージ店',
+                    'text2' => '',
                     'url' => '#',
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
                     'alt' => 'Shop 6',
                     'text1' => '容姿端麗なオトナ女性による丁寧な本格マッサージ店',
-                    'text2' => '育成型ヘルス',
+                    'text2' => '',
                     'url' => '#',
                 ],
             ]" 
@@ -854,5 +715,6 @@
     'resources/scss/shops/home-header.scss',
     'resources/js/shops/home-header.js',
     'resources/js/shops/profile-section.js',
+    'resources/js/shops/shizuku/profile.js',
 ])
 @endonce
