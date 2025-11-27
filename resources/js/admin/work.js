@@ -134,7 +134,7 @@ function generateCell(day) {
     let cellContent = '';
 
     if (day.attendance && day.attendance.start_datetime) {
-        const attendanceStartTime = convertDateTimeToTime(day.attendance.start_datetime);
+        let attendanceStartTime = convertDateTimeToTime(day.attendance.start_datetime);
         let attendanceEndTime = convertDateTimeToTime(day.attendance.end_datetime);
         if (attendanceEndTime === '00:00') {
             attendanceEndTime = '24:00';
