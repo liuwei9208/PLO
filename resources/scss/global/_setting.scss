@@ -1,0 +1,25 @@
+@use '../global/vars' as *;
+.sp-only {
+  // display: block;
+  @media #{media-query(sm)} {
+    display: block;
+  }
+  @media #{media-query(md)} {
+    display: none !important;
+  }
+  @media #{media-query(lg)} {
+    display: none !important;
+  }
+}
+.pc-only {
+  // display: block;
+  @media #{media-query(sm)} {
+    display: none !important;
+  }
+  @media #{media-query(md)} {
+    display: block;
+  }
+  @media #{media-query(lg)} {
+    display: block;
+  }
+}
