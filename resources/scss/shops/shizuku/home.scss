@@ -28,7 +28,6 @@ p{
 }
 .banner-image{
   background-image: url('/assets/img/shops/shizuku/home-banner.png');
-  background-attachment: fixed;
   background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;
@@ -42,6 +41,7 @@ p{
 @media screen and (max-width: 850px) {
   .banner-image{
     background-position: center;
+    background-attachment: scroll;
     // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
     background-image: url('/assets/img/shops/shizuku/home-banner-sp.jpg');
 
