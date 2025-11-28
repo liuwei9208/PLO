@@ -19,17 +19,25 @@
     'measurementsColor' => '#FFFFFF',
     'messageGradientStart' => '#FFF2D7',
     'messageGradientEnd' => '#BD902F',
+    'messageGradient' => true,
+    'messageColor' => '#FFFFFF',
     'contentGradientStart' => 'rgba(42, 26, 8, 0.80)',
     'contentGradientEnd' => 'rgba(0, 0, 0, 0.00)',
-    'variant' => 'schedule' // 'schedule' or 'castlist'
+    'contentGradientStartPercent' => '58.65%',
+    'contentGradientEndPercent' => '100%',
+    'variant' => 'schedule', // 'schedule' or 'castlist'
 ])
 
-<div class="schedule-card @if($variant === 'castlist') castlist-card @endif">
-    <div class="schedule-card-image @if($variant === 'castlist') castlist-card-image @endif">
+<div class="schedule-card @if ($variant === 'castlist') castlist-card @endif">
+    <div class="schedule-card-image @if ($variant === 'castlist') castlist-card-image @endif">
         <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg">
         <img src="{{ asset($frameImage) }}" alt="Frame" class="card-frame">
-        <div class="schedule-card-content @if($variant === 'castlist') castlist-card-content @endif" style="background: linear-gradient(90deg, {{ $contentGradientStart }} 58.65%, {{ $contentGradientEnd }} 100%);">
-            <div class="schedule-card-badge @if($variant === 'castlist') castlist-card-badge @endif" style="border-color: {{ $badgeBorderColor }};">
+        {{-- <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
+            style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});"> --}}
+        <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
+            style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
+            <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
+                style="border-color: {{ $badgeBorderColor }};">
                 <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
                     <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
                 </div>
@@ -39,14 +47,24 @@
             </div>
         </div>
     </div>
-    <div class="schedule-card-info @if($variant === 'castlist') castlist-card-info @endif">
-        <div class="schedule-card-status @if($variant === 'castlist') castlist-card-status @endif">
+    <div class="schedule-card-info @if ($variant === 'castlist') castlist-card-info @endif">
+        <div class="schedule-card-status @if ($variant === 'castlist') castlist-card-status @endif">
             {!! $statusIcon !!}
             <span class="status-text" style="color: {{ $statusTextColor }};">{{ $statusText }}</span>
         </div>
-        <p class="schedule-card-name @if($variant === 'castlist') castlist-card-name @endif" style="color: {{ $nameColor }};">{{ $name }}</p>
-        <p class="schedule-card-measurements @if($variant === 'castlist') castlist-card-measurements @endif" style="color: {{ $measurementsColor }};">{{ $measurements }}</p>
-        <p class="schedule-card-message @if($variant === 'castlist') castlist-card-message @endif" style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}</p>
+        <p class="schedule-card-name @if ($variant === 'castlist') castlist-card-name @endif"
+            style="color: {{ $nameColor }};">{{ $name }}</p>
+        <p class="schedule-card-measurements @if ($variant === 'castlist') castlist-card-measurements @endif"
+            style="color: {{ $measurementsColor }};">{{ $measurements }}</p>
+        @if ($messageGradient)
+            <p class="schedule-card-message @if ($variant === 'castlist') castlist-card-message @endif"
+                style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                {{ $message }}</p>
+        @else
+            <p class="schedule-card-message @if ($variant === 'castlist') castlist-card-message @endif"
+                style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }}; background-clip: text; -webkit-background-clip: text;">
+                {{ $message }}
+            </p>
+        @endif
     </div>
 </div>
-

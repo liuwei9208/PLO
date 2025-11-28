@@ -1,0 +1,58 @@
+// Import global variables and utilities
+@use '../../global/vars' as *;
+@use '../../mixins/font' as *;
+@use '../schedule-card' as *;
+
+.castlist-card-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    padding: 1.875rem;
+    background: var(---N, linear-gradient(90deg, rgba(42, 26, 8, 0.70) 58.65%, rgba(0, 0, 0, 0.00) 100%));
+}
+    
+  @media (max-width: 1400px) {
+    .castlist-card-list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .castlist-card-list {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+.castlist-top-page-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 0 1.875rem;
+}
+
+.top-page-link {
+    @include Hiragino_Mincho_Pro();
+    display: inline-block;
+    padding: 0.75rem 10rem;
+    background: #FFFFFF;
+    color: #2A1A08;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+    transition: all 0.3s ease;
+    
+    &:hover {
+        background: #F5F5F5;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .top-page-link {
+        padding: 0.75rem 5rem;
+    }
+}

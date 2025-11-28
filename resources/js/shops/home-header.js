@@ -53,8 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const overlay = document.querySelector('.home-gradient-overlay');
     const homeHeader = document.querySelector('.home-header');
     const homeContent = document.querySelector('.home-content');
-    const profileContent = document.querySelector('.profile-content');
-    const castlistContent = document.querySelector('.castlist-content');
+    const pageContent = document.querySelector('.page-content');
     const homeSchedule = document.querySelector('.home-schedule');
     const banner = document.querySelector('.banner');
     
@@ -95,8 +94,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Header should be fixed when schedule section reaches or passes the header bottom
                     shouldBeFixed = distanceToSchedule <= 0;
                 }
-                // For profile page: check banner section
-                else if (profileContent && banner) {
+                // For other pages (schedule, castlist, profile): check banner section
+                else if (pageContent && banner) {
                     const bannerRect = banner.getBoundingClientRect();
                     const headerHeight = homeHeader.offsetHeight;
                     
@@ -104,14 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     const distanceToBanner = bannerRect.bottom - headerHeight;
                     
                     // Header should be fixed when banner section passes the header bottom
-                    shouldBeFixed = distanceToBanner <= 0;
-                }
-                else if (castlistContent && banner) {
-                    const bannerRect = banner.getBoundingClientRect();
-                    const headerHeight = homeHeader.offsetHeight;
-                    
-                    // Calculate distance from bottom of header to bottom of banner section
-                    const distanceToBanner = bannerRect.bottom - headerHeight;
                     shouldBeFixed = distanceToBanner <= 0;
                 }
                 // Fallback: fix header when scrolling past a certain point

@@ -3,13 +3,22 @@
     'items' => [],
     'sliderId' => 'newsSlider',
     'titleBackgroundColor' => '#AB8942',
+    'titleGradient' => true,
     'titleGradientStart' => '#FFF2D7',
     'titleGradientEnd' => '#BD902F',
+    'titleColor' => '#FFFFFF',
     'prevButtonId' => null,
     'nextButtonId' => null,
     'variant' => 'news', // 'news' or 'diary'
     'defaultImage' => 'assets/img/shops/shizuku/news-image.png',
     'itemCount' => 10,
+    'titleBackgroundGradient' => true,
+    'titleBackgroundGradientStart' => '#B525CE',
+    'titleBackgroundGradientStartPercent' => '0%',
+    'titleBackgroundGradientMiddle' => '#FF00F2',
+    'titleBackgroundGradientMiddlePercent' => '50%',
+    'titleBackgroundGradientEnd' => '#B525CE',
+    'titleBackgroundGradientEndPercent' => '100%',
 ])
 
 @php
@@ -24,12 +33,28 @@
 @endphp
 
 <div class="news-section">
-    <div class="news-title" style="background: {{ $titleBackgroundColor }};">
-        <h1
-            style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            {{ $title }}
-        </h1>
-    </div>
+    @if ($titleBackgroundGradient)
+        <div class="news-title"
+            style="background: linear-gradient(180deg, {{ $titleBackgroundGradientStart }} {{ $titleBackgroundGradientStartPercent }}, {{ $titleBackgroundGradientMiddle }} {{ $titleBackgroundGradientMiddlePercent }}, {{ $titleBackgroundGradientEnd }} {{ $titleBackgroundGradientEndPercent }});">
+            @if ($titleGradient)
+                <h1
+                    style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    {{ $title }}
+                </h1>
+            @else
+                <h1 style="color: {{ $titleColor }}; -webkit-text-fill-color: {{ $titleColor }};">
+                    {{ $title }}
+                </h1>
+            @endif
+        </div>
+    @else
+        <div class="news-title" style="background: {{ $titleBackgroundColor }};">
+            <h1
+                style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                {{ $title }}
+            </h1>
+        </div>
+    @endif
     <div class="{{ $wrapperClass }}" id="{{ $sliderId }}">
         <button class="{{ $prevClass }}" id="{{ $prevButtonId ?? $sliderId . 'Prev' }}">
             <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">

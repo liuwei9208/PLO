@@ -23,7 +23,8 @@
     'frameImage' => 'assets/img/shops/shizuku/card-frame-2.png',
     'overlayOpacity' => '0.6',
     'badgeGradientStart' => '#FFF2D7',
-    'badgeGradientEnd' => '#BD902F'
+    'badgeGradientEnd' => '#BD902F',
+    'Colorchange' => false,
 ])
 
 <div class="home-pickup">
@@ -34,7 +35,18 @@
             <div class="pickup-header-shadow"></div>
         </div>
         <div class="pickup-header-content">
-            <h1 class="pickup-title-en">{{ $titleEn }}</h1>
+            @if ($Colorchange)
+                <div class="pickup-title-en-wrapper">
+                    <span class="pickup-title-en" style="color: #05F2DB;">P</span>
+                    <span class="pickup-title-en" style="color: #F2138E;">I</span>
+                    <span class="pickup-title-en" style="color: #EAF205;">C</span>
+                    <span class="pickup-title-en" style="color: #05F2DB;">K</span>
+                    <span class="pickup-title-en" style="color: #F2138E;">&nbsp;U</span>
+                    <span class="pickup-title-en" style="color: #EAF205;">P</span>
+                </div>
+            @else
+                <h1 class="pickup-title-en">{{ $titleEn }}</h1>
+            @endif
             <div class="pickup-title-ja-wrapper">
                 {!! $lightningIcon !!}
                 <h2 class="pickup-title-ja">{{ $titleJa }}</h2>
@@ -48,13 +60,12 @@
         </div>
         <p class="pickup-badge-text">{{ $badgeText }}</p>
     </div>
-    @foreach($castImages as $cast)
-    <div class="pickup-cast-card">
-        <div class="pickup-cast-image">
-            <img src="{{ asset($cast['image']) }}" alt="{{ $cast['alt'] }}" class="cast-image">
-            <img src="{{ asset($frameImage) }}" alt="Frame" class="cast-frame">
+    @foreach ($castImages as $cast)
+        <div class="pickup-cast-card">
+            <div class="pickup-cast-image">
+                <img src="{{ asset($cast['image']) }}" alt="{{ $cast['alt'] }}" class="cast-image">
+                <img src="{{ asset($frameImage) }}" alt="Frame" class="cast-frame">
+            </div>
         </div>
-    </div>
     @endforeach
 </div>
-
