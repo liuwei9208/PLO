@@ -181,3 +181,44 @@
     #{$max}
   );
 }
+
+@mixin responsive-line-clamp($min, $max, $min-vw: 375px, $max-vw: 850px) {
+  // Since line-clamp is an integer, we use media queries for responsive behavior
+  // Start with minimum value
+  -webkit-line-clamp: $min;
+  line-clamp: $min;
+  
+  // Calculate 5 breakpoints for smooth transition
+  $vw-range: $max-vw - $min-vw;
+  $value-range: $max - $min;
+  
+  // Breakpoint 1: 25% of range
+  $bp1-vw: $min-vw + ($vw-range * 0.25);
+  $bp1-value: round($min + ($value-range * 0.25));
+  @media (min-width: #{$bp1-vw}) {
+    -webkit-line-clamp: $bp1-value;
+    line-clamp: $bp1-value;
+  }
+  
+  // Breakpoint 2: 50% of range (midpoint)
+  $bp2-vw: $min-vw + ($vw-range * 0.5);
+  $bp2-value: round($min + ($value-range * 0.5));
+  @media (min-width: #{$bp2-vw}) {
+    -webkit-line-clamp: $bp2-value;
+    line-clamp: $bp2-value;
+  }
+  
+  // Breakpoint 3: 75% of range
+  $bp3-vw: $min-vw + ($vw-range * 0.75);
+  $bp3-value: round($min + ($value-range * 0.75));
+  @media (min-width: #{$bp3-vw}) {
+    -webkit-line-clamp: $bp3-value;
+    line-clamp: $bp3-value;
+  }
+  
+  // Breakpoint 4: Maximum value at large screens
+  @media (min-width: #{$max-vw}) {
+    -webkit-line-clamp: $max;
+    line-clamp: $max;
+  }
+}
