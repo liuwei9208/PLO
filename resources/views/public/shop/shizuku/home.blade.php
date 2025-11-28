@@ -58,7 +58,11 @@
                         'subtitle' => 'cast list',
                         'url' => route('public.shops.shop.castlist', ['shop' => 'shizuku']),
                     ],
-                    ['title' => '出勤情報', 'subtitle' => 'schedule', 'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku'])],
+                    [
+                        'title' => '出勤情報',
+                        'subtitle' => 'schedule',
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
+                    ],
                     ['title' => '写メ日記', 'subtitle' => 'photo diary', 'url' => '#'],
                     ['title' => 'イベント一覧', 'subtitle' => 'event', 'url' => '#'],
                     ['title' => '料金システム', 'subtitle' => 'system', 'url' => '#'],
@@ -93,9 +97,9 @@
             </div>
             <div class="home-news">
                 <x-public.shops.news-section title="news" slider-id="newsSlider"
-                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" />
+                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false' />
                 <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
-                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" />
+                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false' />
             </div>
             <x-public.shops.pickup-section header-background-image="assets/img/shops/shizuku/pickup-bg.png"
                 title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し" :cast-images="[

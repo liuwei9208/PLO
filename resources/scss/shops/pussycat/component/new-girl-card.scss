@@ -13,6 +13,7 @@
   overflow: hidden;
   position: relative;
   background: $white;
+  border: 2px solid #05F2DB;
 }
 
 .new-girl-card-left {
@@ -65,18 +66,22 @@
     fill: var(---h1, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
   }
   
+  img {
+    width: 26px;
+    height: 24px;
+  }
   .date-text {
-    @include times-new-roman();
+    @include YuGothic();
     @include responsive-font(16px, 31px);
-    font-weight: 700;
+    font-weight: 500;
     line-height: normal;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
     .date-label {
-      @include Hiragino_Mincho_Pro();
-      font-weight: 600;
+      @include YuGothic();
+      font-weight: 500;
     }
   }
 }
@@ -106,9 +111,9 @@
 }
 
 .card-name {
-  @include Hiragino_Mincho_Pro_NW6();
+  @include YuGothic();
   @include responsive-font(17px, 25px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   margin: 0;
 }

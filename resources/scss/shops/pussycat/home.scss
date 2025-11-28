@@ -169,7 +169,8 @@ p{
   border-top: 3px solid $white;
   border-bottom: 3px solid $white;
   align-items: center;
-  background-color: #2A1A08;
+  background-color: #FFF;
+  border: 6px solid #F2138E;
 }
 
 .castlist-info-header {
@@ -177,7 +178,7 @@ p{
   align-items: center;
   gap: 0.625rem;
   padding: 1.3125rem 4.0625rem;
-  background: #2A1A08;
+  background: #fff;
   // border: 6px solid $white;
   border-left: none !important;
   border-right: none !important;
@@ -192,11 +193,11 @@ p{
 }
 
 .castlist-info-title {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(18px, 35.5px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
-  color: $white;
+  color: #10040E;
   margin: 0;
   white-space: nowrap;
 }
@@ -207,21 +208,33 @@ p{
   padding: 0 0 0 3.75rem;
   height: 6.375rem;
   flex: 1;
-  background: #2A1A08;
+  background: #fff;
   // border: 6px solid $white;
   // border-right: none;
   border-top: none;
-  border-left: 3px solid $white;
+  border-left: 6px solid #F2138E;
 }
 
 .castlist-info-description p {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(16px, 24px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
-  color: $white;
+  color: #10040E;
   margin: 0;
   white-space: nowrap;
+}
+@media screen and (max-width: 850px) {
+  .home-castlist-info {
+    background-color: rgba(42, 26, 8, 0.75);
+    border: 3px solid #FFF;
+  }
+  .castlist-info-header, .castlist-info-description{
+    background-color: rgba(42, 26, 8, 0.75);
+  }
+  .castlist-info-description p, .castlist-info-title{
+    color: #FFF;
+  }
 }
 
 .castlist-info-button {
@@ -234,8 +247,8 @@ p{
   height: 6.375rem;
   width: 14.375rem;
   flex-shrink: 0;
-  background: #2A1A08;
-  border-left: 3px solid $white;
+  background: #fff;
+  border-left: 6px solid #F2138E;
   cursor: pointer;
   transition: opacity 0.2s ease;
   
@@ -244,11 +257,11 @@ p{
   }
   
   p {
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(16px, 24px);
-    font-weight: 600;
+    font-weight: 700;
     line-height: normal;
-    color: $white;
+    color: #10040E;
     margin: 0;
     text-align: center;
     white-space: nowrap;
@@ -258,7 +271,8 @@ p{
 .castlist-info-underline {
   width: 100%;
   height: 3px;
-  background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);
+  // background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);
+  background: #F2138E;
   margin-top: -3px;
 }
 
@@ -301,7 +315,7 @@ p{
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #B19D67; // Figma color: 雫カラー/N雫_ポイント２
+  background: #F2138E; // Figma color: 雫カラー/N雫_ポイント２
   color: $white;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -540,11 +554,11 @@ p{
 }
 
 .ranking-badge-text {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(16px, 27.8px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
-  color: #2A1A08;
+  color: #FFF;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -604,9 +618,9 @@ p{
   }
 }
 .ranking-title-en {
-  @include didot();
+  @include Caveat();
   @include responsive-font(41px, 86px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: 0.09rem;
   color: $white;
@@ -634,21 +648,21 @@ p{
 }
 
 .ranking-title-ja {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(17.2px, 43.3px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: -0.0875rem;
-  color: $white;
+  color: #EAF205;
   text-align: center;
   white-space: nowrap;
   margin: 0;
 }
 
 .ranking-description {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(15px, 26.7px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   color: $white;
   text-align: center;
@@ -697,7 +711,7 @@ p{
 // New Girl Slider Styles
 .home-new-girl-slider {
   width: 100%;
-  background: rgba(42, 26, 8, 0.75);
+  background: #10040E;
   padding: 1.875rem 0 0 0;
 }
 
@@ -743,7 +757,7 @@ p{
     padding: 0;
     
     &.active {
-      background: var(---N_, #B90000);
+      background: var(---N_, #F2138E);
       width: 0.875rem;
       height: 0.875rem;
     }
@@ -763,14 +777,14 @@ p{
 .new-girl-slider-prev,
 .new-girl-slider-next {
   border: none;
-  background: #B19D67;
+  background: #EAF205;
   width: 6.125rem;
   height: 6.125rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: $white;
+  color: $black;
   flex-shrink: 0;
   transition: all 0.3s ease;
   
@@ -946,7 +960,7 @@ p{
     flex-shrink: 0;
     transition: all 0.3s ease;
     padding: 0;
-    background: var(---N_, #B19D67);
+    background: var(---N_, #EAF205);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }
@@ -979,7 +993,7 @@ p{
     transition: all 0.3s ease;
     padding: 0;
     border-radius: 10px 0 0 10px;
-    background: var(---N_, #B19D67);
+    background: var(---N_, #EAF205);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }
