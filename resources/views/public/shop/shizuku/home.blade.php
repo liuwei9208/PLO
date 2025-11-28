@@ -1,5 +1,8 @@
 <x-shizuku-layout>
     <div class="home">
+        <div class="banner-image">
+
+        </div>
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->

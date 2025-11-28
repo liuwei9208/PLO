@@ -24,24 +24,26 @@ p{
 
 .home {
   // background-image: url('../../../img/shops/shizuku/home-banner.png');
-  background-image: url('/assets/img/shops/shizuku/home-banner.png');
+  position: relative;
+}
+.banner-image{
+  background-image: url('/assets/img/shops/pussycat/home-banner.png');
   background-attachment: fixed;
   background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  position: relative;
+  position: fixed;
   overflow: visible;
-}
-.banner-image{
 
+  
 }
 @media screen and (max-width: 850px) {
-  .home {
+  .banner-image{
     background-position: center;
     // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
-    background-image: url('/assets/img/shops/shizuku/home-banner-sp.jpg');
+    background-image: url('/assets/img/shops/pussycat/home-banner-sp.jpg');
 
   }
 }
