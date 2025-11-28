@@ -47,7 +47,8 @@
                 'group' => 'assets/img/shops/pussycat/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/pussycat/recruit-btn.png',
             ]"
-            mobile-image="assets/img/shops/pussycat/credit_system.png" mobile-image-alt="女の子募集中" menu-close-color="#FFF" />
+            mobile-image="assets/img/shops/pussycat/credit_system.png" mobile-image-alt="女の子募集中" menu-close-color="#FFF"
+            twitter-color="#EAF205" />
 
         <div class="banner">
             <x-public.shops.contact-info phone-icon="assets/img/shops/pussycat/phone.png" phone-number="011-531-0965"
