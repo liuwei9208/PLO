@@ -1,7 +1,9 @@
 <x-shizuku-layout>
     <div class="home">
-        <div class="home-gradient-overlay"></div>
+        <div class="banner-image">
 
+        </div>
+        <div class="home-gradient-overlay"></div>
         <!-- Menu Overlay Component -->
         <x-public.shops.menu-overlay logo-image="assets/img/shops/pussycat/footer-logo-black.png" logo-alt="Shizuku Logo"
             :menu-links="[

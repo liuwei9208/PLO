@@ -34,12 +34,15 @@ p{
   position: relative;
   overflow: visible;
 }
+.banner-image{
 
+}
 @media screen and (max-width: 850px) {
   .home {
     background-position: center;
     // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
     background-image: url('/assets/img/shops/shizuku/home-banner-sp.jpg');
+
   }
 }
 
