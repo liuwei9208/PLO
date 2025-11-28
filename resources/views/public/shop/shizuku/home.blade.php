@@ -1,7 +1,8 @@
 <x-shizuku-layout>
     <div class="home">
         <div class="banner-image">
-
+            <img class="pc-only" src="/assets/img/shops/shizuku/home-banner.png" alt="home gradient overlay">
+            <img class="sp-only" src="/assets/img/shops/shizuku/home-banner-sp.jpg" alt="home gradient overlay">
         </div>
         <div class="home-gradient-overlay"></div>
 

@@ -1,25 +1,37 @@
 @use '../global/vars' as *;
 .sp-only {
   // display: block;
-  @media #{media-query(sm)} {
+  @media screen and (max-width: 850px) {
     display: block;
   }
-  @media #{media-query(md)} {
-    display: none !important;
+  @media screen and (min-width: 851px) {
+    display: none;
   }
-  @media #{media-query(lg)} {
-    display: none !important;
-  }
+  // @media #{media-query(sm)} {
+  //   display: block;
+  // }
+  // @media #{media-query(md)} {
+  //   display: none !important;
+  // }
+  // @media #{media-query(lg)} {
+  //   display: none !important;
+  // }
 }
 .pc-only {
   // display: block;
-  @media #{media-query(sm)} {
-    display: none !important;
+  @media screen and (max-width: 850px) {
+    display: none;
   }
-  @media #{media-query(md)} {
+  @media screen and (min-width: 851px) {
     display: block;
   }
-  @media #{media-query(lg)} {
-    display: block;
-  }
+  // @media #{media-query(sm)} {
+  //   display: none !important;
+  // }
+  // @media #{media-query(md)} {
+  //   display: block;
+  // }
+  // @media #{media-query(lg)} {
+  //   display: block;
+  // }
 }
