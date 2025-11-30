@@ -128,7 +128,7 @@ p{
 }
 
 .top-page-link {
-    @include Hiragino_Mincho_Pro();
+    @include yu-mincho-regular();
     display: inline-block;
     padding: 0.75rem 10rem;
     background: #FFFFFF;
