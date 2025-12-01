@@ -123,6 +123,7 @@ export default defineConfig({
                 'resources/scss/shops/menu-overlay.scss',
                 'resources/scss/shops/shizuku/newcast.scss',
                 'resources/scss/shops/news-card.scss',
+                'resources/scss/shops/shizuku/news.scss',
                 'resources/scss/shops/shizuku/news-detail.scss',
             ],
             refresh: true,
