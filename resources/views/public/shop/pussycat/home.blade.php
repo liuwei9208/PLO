@@ -5,7 +5,7 @@
         </div>
         <div class="home-gradient-overlay"></div>
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/pussycat/footer-logo-black.png" logo-alt="Shizuku Logo"
+        {{-- <x-public.shops.menu-overlay logo-image="assets/img/shops/pussycat/footer-logo-black.png" logo-alt="Shizuku Logo"
             :menu-links="[
                 'top' => route('public.shops.shop.home', ['shop' => 'pussycat']),
                 'schedule' => '#',
@@ -50,7 +50,7 @@
                 'recruit' => 'assets/img/shops/pussycat/recruit-btn.png',
             ]"
             mobile-image="assets/img/shops/pussycat/credit_system.png" mobile-image-alt="女の子募集中" menu-close-color="#FFF"
-            twitter-color="#EAF205" />
+            twitter-color="#EAF205" /> --}}
 
         <div class="banner">
             <x-public.shops.contact-info phone-icon="assets/img/shops/pussycat/phone.png" phone-number="011-531-0965"
@@ -481,6 +481,53 @@
                     ['image' => 'assets/img/shops/pussycat/event-main.png', 'alt' => 'Event Sub Banner'],
                     ['image' => 'assets/img/shops/pussycat/event-second.png', 'alt' => 'Event Sub Banner'],
                 ]" />
+            <x-public.shops.menu-overlay logo-image="assets/img/shops/pussycat/footer-logo-black.png"
+                logo-alt="Shizuku Logo" :menu-links="[
+                    'top' => route('public.shops.shop.home', ['shop' => 'pussycat']),
+                    'schedule' => '#',
+                    'pricing' => '#',
+                    'new' => '#',
+                    'cast' => route('public.shops.shop.castlist', ['shop' => 'pussycat']),
+                    'news' => '#',
+                    'event' => '#',
+                    'diary' => '#',
+                    'movie' => '#',
+                    'review' => '#',
+                    'ranking' => '#',
+                    'shop' => '#',
+                    'access' => '#',
+                    'recruit-male' => '#',
+                    'login' => '#',
+                    'recruit-female' => '#',
+                    'register' => '#',
+                ]" :menu-icon-color="[
+                    'top' => '#F2138E',
+                    'schedule' => '#05F2DB',
+                    'pricing' => '#EAF205',
+                    'new' => '#52B845',
+                    'cast' => '#BF1B28',
+                    'news' => '#F2138E',
+                    'event' => '#EAF205',
+                    'diary' => '#A30ABA',
+                    'movie' => '#FFF',
+                    'review' => '#F2138E',
+                    'ranking' => '#EAF205',
+                    'shop' => '#F2138E',
+                    'access' => '#F2138E',
+                    'recruit-male' => '#05F2DB',
+                    'login' => '#FFF',
+                    'recruit-female' => '#D42032',
+                    'register' => '#FFF',
+                ]" :bottom-buttons="[
+                    'group' => '#',
+                    'recruit' => '#',
+                ]" :bottom-button-images="[
+                    'group' => 'assets/img/shops/pussycat/plo-group-btn.png',
+                    'recruit' => 'assets/img/shops/pussycat/recruit-btn.png',
+                ]"
+                mobile-image="assets/img/shops/pussycat/credit_system.png" mobile-image-alt="女の子募集中"
+                menu-close-color="#FFF" twitter-color="#EAF205" />
+
             <x-public.shops.footer :shops="[
                 [
                     'image' => 'assets/img/shops/pussycat/001.jpg',
