@@ -7,8 +7,14 @@
     ]"
 >
     <section class="event-section">
-        <div class="event-section-title">
-            <h2>イベント</h2>
+        <div class="event-card">
+            <div class="event-card-image">
+                <img src="{{ asset('assets/img/shops/shizuku/event-card-1.png') }}" alt="">
+            </div>
+            <div class="event-card-content">
+                <h3 class="event-card-title">イベントタイトルイベントタイトルイベントタイトル</h3>
+                <p class="event-card-text">本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文</p>
+            </div>
         </div>
     </section>
 </x-shizuku-page-layout>
