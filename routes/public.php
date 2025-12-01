@@ -100,6 +100,8 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
             Route::get('newcast', [ShizukuController::class, 'showNewcast'])->name('newcast');
             Route::get('news', [ShizukuController::class, 'showNews'])->name('news');
             Route::get('news/{id}', [ShizukuController::class, 'showNewsDetail'])->name('news.detail');
+            Route::get('event', [ShizukuController::class, 'showEvent'])->name('event');
+            Route::get('event/{id}', [ShizukuController::class, 'showEventDetail'])->name('event.detail');
         });
         // Route::prefix('shizuku')->name('shizuku.')->group(function () {
         //     Route::get('/', [ShizukuController::class, 'showHome'])->name('home');

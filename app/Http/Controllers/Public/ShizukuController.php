@@ -78,4 +78,18 @@ class ShizukuController extends Controller
             'shop' => $shop,
         ]);
     }
+
+    public function showEvent(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.event');
+    }
+
+    public function showEventDetail(Request $request, string $shop, $id): View
+    {
+        $event = Event::find($id);
+        return view('public.shop.' . $shop . '.event-detail', [
+            'event' => $event,
+        ]);
+    }
 }
