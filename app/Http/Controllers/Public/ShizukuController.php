@@ -87,9 +87,30 @@ class ShizukuController extends Controller
 
     public function showEventDetail(Request $request, string $shop, $id): View
     {
-        $event = Event::find($id);
+        // For now, we'll use mock data. In production, you'd fetch from database
+        $event = [
+            'id' => $id,
+            'title' => 'イベントタイトルイベントタイトルイベントタイトル',
+            'image' => 'assets/img/shops/' . $shop . '/event-card-' . $id . '.png',
+            'content' => '本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文',
+        ];
+        
+        // Mock previous and next event (in production, fetch from database)
+        $prevEvent = $id > 1 ? [
+            'id' => $id - 1,
+            'title' => '前のイベントのタイトル',
+        ] : null;
+        
+        $nextEvent = $id < 4 ? [
+            'id' => $id + 1,
+            'title' => '次のイベントのタイトル',
+        ] : null;
+        
         return view('public.shop.' . $shop . '.event-detail', [
             'event' => $event,
+            'prevEvent' => $prevEvent,
+            'nextEvent' => $nextEvent,
+            'shop' => $shop,
         ]);
     }
 }
