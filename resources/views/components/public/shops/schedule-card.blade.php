@@ -25,7 +25,7 @@
     'contentGradientEnd' => 'rgba(0, 0, 0, 0.00)',
     'contentGradientStartPercent' => '58.65%',
     'contentGradientEndPercent' => '100%',
-    'variant' => 'schedule', // 'schedule' or 'castlist'
+    'variant' => 'schedule', // 'schedule' or 'castlist' or 'topcastlist'
 ])
 
 <div class="schedule-card @if ($variant === 'castlist') castlist-card @endif">
