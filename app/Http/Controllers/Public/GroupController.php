@@ -399,7 +399,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
         ->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
         $newcomers = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subMonth(1))
+            ->where('joined_at', '>=', Carbon::now()->subMonth(1))
             ->where('is_public', 1)
             ->inRandomOrder()
             ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
@@ -681,7 +681,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             $point_pay = Point::where('user_id', $member->id)->where('type', 3)->sum('point');
             $point_use = Point::where('user_id', $member->id)->where('type', 5)->sum('point');
             $today_point = $point_pay - $point_use;
-            
+
             $histories = History::where('user_id', $member->id)
                           ->whereIn('name', ['来店', 'PT有効期限切れ'])
                           ->orderBy('created_at', 'desc')
@@ -722,10 +722,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
               size: 200,
               margin: 0,
             );
-      
+
             $writer = new PngWriter();
             $result = $writer->write($qrCode);
-      
+
             return view('public.mypage', [
                 'today_point' => $today_point,
                 'member' => $member,
@@ -860,7 +860,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             return redirect()->route('public.group.password')->withErrors($validator)->withInput();
         }
         $member = Auth::guard('member')->user();
-        if (Hash::check($request->password, $member->password)) {   
+        if (Hash::check($request->password, $member->password)) {
             $member->password = Hash::make($request->new_password);
             $member->save();
             return redirect()->route('public.group.password')->with('success', 'パスワードを変更しました。');
