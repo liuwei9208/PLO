@@ -44,6 +44,9 @@
   bottom: 0;
   padding: 1.25rem 0.625rem;
   border-radius: 0 0 0.9375rem 0.9375rem;
+  @media #{media-query(sm)} {
+    padding: 0.4375rem 0.025rem;
+  }
 }
 
 .schedule-card-badge {
@@ -81,9 +84,10 @@
   background: $white;
   
   .badge-time {
+    @include times-new-roman();
     @include responsive-font(14px, 20.5px);
     font-weight: 700;
-    font-family: 'Times New Roman', Times, serif;
+    // font-family: 'Times New Roman', Times, serif;
     letter-spacing: 0.07875rem;
     text-align: center;
     white-space: nowrap;
