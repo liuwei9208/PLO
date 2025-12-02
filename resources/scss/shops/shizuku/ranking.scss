@@ -1,0 +1,92 @@
+@use '../../global/vars' as *;
+@use '../../mixins/font' as *;
+
+.ranking-searchbar{
+    background-color: white;
+    width: 100%;
+    display: flex;
+    padding: 21px 20px;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #2A1A08;
+    border-bottom: 1px solid #2A1A08;
+}
+
+.ranking-filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: 3px solid #FFDA89;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    @include yu-mincho-regular();
+    @include responsive-font(19px, 19px);
+    font-weight: 600;
+    color: #A58C1B;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+    
+    span {
+        white-space: wrap;
+    }
+}
+
+.ranking-filter-btn-active {
+    background-color: #FFDA89;
+    border: none;
+    color: #2A1A08;
+}
+
+.ranking-no1-header{
+    display: flex;
+    background: var(---N__, #2A1A08);
+    gap: 50px;
+    justify-content: center;
+    padding: 40px 40px;
+}
+
+
+.no1-person-name{
+    @include yu-mincho-regular();
+    @include responsive-font(31px, 43.5px);
+    font-weight: 600;
+    line-height: normal;
+    text-align: center;
+    background: var(---h2, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.no1-person-details{
+    @include times-new-roman();
+    @include responsive-font(16px, 22px);
+    font-weight: 400;
+    background: var(---h1, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.no1-person-services{
+    color : $white;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+}
+
+.no1-person-services p {
+    @include yu-mincho-regular();
+    @include responsive-font(16px, 18.8px);
+    line-height: 29px;
+    color: var(---N___, #FFF);
+    font-style: normal;
+    font-weight: 400;
+}

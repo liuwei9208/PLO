@@ -113,4 +113,10 @@ class ShizukuController extends Controller
             'shop' => $shop,
         ]);
     }
+
+    public function showRanking(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.ranking');
+    }
 }
