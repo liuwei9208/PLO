@@ -41,13 +41,23 @@ class GroupController extends Controller
     public function showHome(Request $request): View
     {
         $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
+        // $newfaces_this_week = $cast_query
+        //     ->where('created_at', '>=', Carbon::now()->subWeek(2))
+        //     ->inRandomOrder()
+        //     ->get();
+        // // dd($newfaces_this_week);
+        // $newfaces_this_month = $cast_query
+        //     ->where('created_at', '>=', Carbon::now()->subMonth(1))
+        //     // ->where('created_at', '>=', Carbon::now()->subDays(30))
+        //     ->inRandomOrder()
+        //     ->get();
         $newfaces_this_week = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subWeek(2))
+            ->where('joined_at', '>=', Carbon::now()->subWeek(2))
             ->inRandomOrder()
             ->get();
         // dd($newfaces_this_week);
         $newfaces_this_month = $cast_query
-            ->where('created_at', '>=', Carbon::now()->subMonth(1))
+            ->where('joined_at', '>=', Carbon::now()->subMonth(1))
             // ->where('created_at', '>=', Carbon::now()->subDays(30))
             ->inRandomOrder()
             ->get();
