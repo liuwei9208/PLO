@@ -131,4 +131,10 @@ class ShizukuController extends Controller
         $shop = $request->route('shop', 'shizuku');
         return view('public.shop.' . $shop . '.review');
     }
+
+    public function showAccess(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.access');
+    }
 }
