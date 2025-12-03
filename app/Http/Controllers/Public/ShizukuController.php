@@ -119,4 +119,10 @@ class ShizukuController extends Controller
         $shop = $request->route('shop', 'shizuku');
         return view('public.shop.' . $shop . '.ranking');
     }
+
+    public function showPhotoDiary(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        return view('public.shop.' . $shop . '.photo-diary');
+    }
 }
