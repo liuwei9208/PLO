@@ -104,6 +104,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
             Route::get('event/{id}', [ShizukuController::class, 'showEventDetail'])->name('event.detail');
             Route::get('ranking', [ShizukuController::class, 'showRanking'])->name('ranking');
             Route::get('photo-diary', [ShizukuController::class, 'showPhotoDiary'])->name('photo-diary');
+            Route::get('review', [ShizukuController::class, 'showReview'])->name('review');
         });
         // Route::prefix('shizuku')->name('shizuku.')->group(function () {
         //     Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
