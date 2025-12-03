@@ -291,7 +291,8 @@
                                     <tr>
                                         <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
                                             style="width: 100px;">オプション</th>
-                                        <td class="p-1 border-b border-gray-400 flex gap-2">
+                                        {{-- <td class="p-1 border-b border-gray-400 flex gap-2"> --}}
+                                        <td class="p-1 border-b border-gray-400">
                                             <div class="flex items-center gap-2">
                                                 <select class="p-1 border border-gray-400 w-full bg-white"
                                                     name="option{{ $i }}" id="option{{ $i }}"
