@@ -47,6 +47,7 @@
                             <table class="w-full text-sm text-center">
                                 <thead class="bg-gray-100">
                                     <tr>
+                                        <th class="p-1 w-[100px] border-b border-r border-gray-400 hidden"></th>
                                         <th class="p-1 w-[120px] border-b border-r border-gray-400">来店日</th>
                                         <th class="p-1 w-[120px] border-b border-r border-gray-400">キャスト名</th>
                                         <th class="p-1 border-b border-r border-gray-400">コース</th>
@@ -54,25 +55,73 @@
                                         <th class="p-1 w-[80px] border-b border-r border-gray-400">料金</th>
                                         <th class="p-1 w-[100px] border-b border-r border-gray-400">利用ポイント</th>
                                         <th class="p-1 border-b border-r border-gray-400">会員メモ</th>
+                                        <th class="p-1 w-[100px] border-b border-r border-gray-400">延長編集</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($histories as $history)
                                         <tr>
+                                            <td class="p-1 border-b border-r border-gray-400 h-8 hidden">
+                                                {{ $history->id }}
+                                            </td>
                                             <td class="p-1 border-b border-r border-gray-400 h-8">
                                                 {{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400">
-                                                {{ $history->course_name_table }}</td>
-                                            <td class="p-1 border-b border-r border-gray-400">
-                                                {{ $history->extension_name }}</td>
+                                                @if ($history->course1_name_table && $history->course2_name_table)
+                                                    {{ $history->course1_name_table . ',' . $history->course2_name_table }}
+                                                @elseif ($history->course1_name_table)
+                                                    {{ $history->course1_name_table }}
+                                                @elseif ($history->course2_name_table)
+                                                    {{ $history->course2_name_table }}
+                                                @endif
+                                            </td>
+                                            <td class="p-1 border-b border-r border-gray-400"
+                                                id="extend_name_{{ $history->id }}">
+                                                <div id="extend_name_value_{{ $history->id }}">
+                                                    {{ $history->extend_name }}</div>
+                                                <div class="flex" style="display: none;"
+                                                    id="extend_edit_{{ $history->id }}">
+                                                    <select class="p-1 border border-gray-400 w-full bg-white"
+                                                        name="extend" id="extend_{{ $history->id }}" onchange="">
+                                                        <option value="" data-price="0">選択してください</option>
+                                                        @foreach ($extends as $extend)
+                                                            <option value="{{ $extend->id }}"
+                                                                data-price="{{ $extend->price }}">
+                                                                {{ $extend->extend . '(' . number_format($extend->price) . '円)' }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                    <span>X</span>
+                                                    <input type="number" value="0"
+                                                        class="p-1 border border-gray-400 text-right w-[50px]"
+                                                        name="extend_count" id="extend_count_{{ $history->id }}"
+                                                        onchange="">
+                                                </div>
+                                            </td>
                                             <td class="p-1 border-b border-r border-gray-400 text-right pr-2">
                                                 {{ number_format($history->price_new) . '円' }}</td>
                                             <td class="p-1 border-b border-r border-gray-400">
                                                 {{ number_format($history->point_use) . 'pt' }}</td>
                                             <td class="p-1 border-b border-r border-gray-400">{{ $history->memo }}</td>
+                                            <td class="p-1 border-b border-r border-gray-400">
+                                                <button
+                                                    class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                                    id="edit_extend_{{ $history->id }}"
+                                                    style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;"
+                                                    onclick="editExtend({{ $history->id }})">編集</button>
+                                                <button class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                                                    style="background-color: #dc2626; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px; display: none;"
+                                                    id="save_extend_{{ $history->id }}"
+                                                    onclick="saveExtend({{ $history->id }})">保存</button>
+                                                <button
+                                                    class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700"
+                                                    id="cancel_extend_{{ $history->id }}"
+                                                    style="background-color: #6b7280; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px; display: none;"
+                                                    onclick="cancelExtend({{ $history->id }})">キャンセル</button>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     {{-- @for ($i = 0; $i < 14; $i++)
@@ -168,7 +217,8 @@
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="appointment_count" id="appointment_count">
+                                                name="appointment_count" id="appointment_count"
+                                                onchange="updatePrice()">
                                         </div>
                                     </td>
                                 </tr>
@@ -182,14 +232,15 @@
                                                 <option value="" data-price="0">選択してください</option>
                                                 @foreach ($courses as $course)
                                                     <option value="{{ $course->id }}"
-                                                        data-price="{{ $course->price }}">{{ $course->course }}
+                                                        data-price="{{ $course->price }}">
+                                                        {{ $course->course }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="course1_count" id="course1_count">
+                                                name="course1_count" id="course1_count" onchange="updatePrice()">
                                         </div>
                                     </td>
                                 </tr>
@@ -210,7 +261,7 @@
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="course2_count" id="course2_count">
+                                                name="course2_count" id="course2_count" onchange="updatePrice()">
                                         </div>
                                     </td>
                                 </tr>
@@ -224,14 +275,15 @@
                                                 <option value="" data-price="0">選択してください</option>
                                                 @foreach ($extends as $extend)
                                                     <option value="{{ $extend->id }}"
-                                                        data-price="{{ $extend->price }}">{{ $extend->extend }}
+                                                        data-price="{{ $extend->price }}">
+                                                        {{ $extend->extend . '(' . number_format($extend->price) . '円)' }}
                                                     </option>
                                                 @endforeach
                                             </select>
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="extend_count" id="extend_count">
+                                                name="extend_count" id="extend_count" onchange="updatePrice()">
                                         </div>
                                     </td>
                                 </tr>
@@ -247,7 +299,8 @@
                                                     <option value="" data-price="0">選択してください</option>
                                                     @foreach ($options as $option)
                                                         <option value="{{ $option->id }}"
-                                                            data-price="{{ $option->price }}">{{ $option->name }}
+                                                            data-price="{{ $option->price }}">
+                                                            {{ $option->name . '(' . number_format($option->price) . '円)' }}
                                                         </option>
                                                     @endforeach
                                                 </select>
@@ -255,7 +308,7 @@
                                                 <input type="number" value="0"
                                                     class="p-1 border border-gray-400 text-right w-[50px]"
                                                     name="option{{ $i }}_count"
-                                                    id="option{{ $i }}_count">
+                                                    id="option{{ $i }}_count" onchange="updatePrice()">
                                             </div>
                                         </td>
                                     </tr>
@@ -265,7 +318,7 @@
                                         style="width: 100px;">割引</th>
                                     <td class="p-1 border-b border-gray-400">
                                         <select class="p-1 border border-gray-400 w-full bg-white" name="discount"
-                                            id="extend" onchange="updatePrice()">
+                                            id="discount" onchange="updatePrice()">
                                             <option value="" data-price="0">選択してください</option>
                                             @for ($i = -100; $i >= -50000; $i -= 100)
                                                 <option value="{{ $i }}"
@@ -303,39 +356,52 @@
 </x-admin-layout>
 <script>
     function updatePrice() {
-        const courseSelect = document.getElementById('course');
+        const course1Select = document.getElementById('course1');
+        const course1_count = document.getElementById('course1_count').value;
+        const course2Select = document.getElementById('course2');
+        const course2_count = document.getElementById('course2_count').value;
         const extendSelect = document.getElementById('extend');
+        const extend_count = document.getElementById('extend_count').value;
         const option1Select = document.getElementById('option1');
+        const option1_count = document.getElementById('option1_count').value;
         const option2Select = document.getElementById('option2');
+        const option2_count = document.getElementById('option2_count').value;
         const option3Select = document.getElementById('option3');
+        const option3_count = document.getElementById('option3_count').value;
         const option4Select = document.getElementById('option4');
+        const option4_count = document.getElementById('option4_count').value;
         const option5Select = document.getElementById('option5');
-        const appointmentRadios = document.getElementsByName('appointment');
-        let appointmentType = '';
-        let appointmentPrice = 0;
-        let appointmentID = '';
-        for (const radio of appointmentRadios) {
-            if (radio.checked) {
-                appointmentType = radio.value;
-                appointmentPrice = parseFloat(radio.dataset.price || 0);
-                appointmentID = radio.dataset.id;
-                break;
-            }
-        }
-        console.log({
-            appointmentPrice
-        });
-        // const appointment = document.getElementById('appointment').value;
-        const course_price = Number(courseSelect.options[courseSelect.selectedIndex]?.dataset?.price || 0);
-        const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0);
-        const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0);
-        const option2_price = Number(option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0);
-        const option3_price = Number(option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0);
-        const option4_price = Number(option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0);
-        const option5_price = Number(option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0);
+        const option5_count = document.getElementById('option5_count').value;
+        const appointmentSelect = document.getElementById('appointment');
+        const appointment_count = document.getElementById('appointment_count').value;
+        const appointmentType = appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset?.type || '';
+        const appointmentPrice = Number(appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset?.price ||
+                0) *
+            appointment_count;
+        const appointmentID = appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset?.id || '';
 
-        const price = course_price + extend_price + option1_price + option2_price + option3_price + option4_price +
-            option5_price + appointmentPrice;
+        const course1_price = Number(course1Select.options[course1Select.selectedIndex]?.dataset?.price || 0) *
+            course1_count;
+        const course2_price = Number(course2Select.options[course2Select.selectedIndex]?.dataset?.price || 0) *
+            course2_count;
+        const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0) *
+            extend_count;
+        const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0) *
+            option1_count;
+        const option2_price = Number(option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0) *
+            option2_count;
+        const option3_price = Number(option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0) *
+            option3_count;
+        const option4_price = Number(option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0) *
+            option4_count;
+        const option5_price = Number(option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0) *
+            option5_count;
+
+        const discount = Number(document.getElementById('discount').value);
+
+        const price = course1_price + course2_price + extend_price + option1_price + option2_price + option3_price +
+            option4_price +
+            option5_price + appointmentPrice + discount;
 
         const plo_day = document.getElementById('plo_day').checked;
         const point = plo_day ? price * 0.1 : price * 0.03;
@@ -351,66 +417,86 @@
         const point = document.getElementById('point').value;
         const price = document.getElementById('price').value;
         const cast = document.getElementById('cast').value;
-        const course = document.getElementById('course').value;
-        const courseSelect = document.getElementById('course');
-        const course_price = courseSelect.options[courseSelect.selectedIndex]?.dataset?.price || 0;
+        const course1 = document.getElementById('course1').value;
+        const course1Select = document.getElementById('course1');
+        const course1_count = document.getElementById('course1_count').value;
+        const course1_price = Number(course1Select.options[course1Select.selectedIndex]?.dataset?.price || 0);
+        const course2 = document.getElementById('course2').value;
+        const course2Select = document.getElementById('course2');
+        const course2_count = document.getElementById('course2_count').value;
+        const course2_price = Number(course2Select.options[course2Select.selectedIndex]?.dataset?.price || 0);
         const extend = document.getElementById('extend').value;
         const extendSelect = document.getElementById('extend');
-        const extend_price = extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0;
+        const extend_count = document.getElementById('extend_count').value;
+        const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0);
         const option1 = document.getElementById('option1').value;
         const option1Select = document.getElementById('option1');
-        const option1_price = option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0;
+        const option1_count = document.getElementById('option1_count').value;
+        const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0);
         const option2 = document.getElementById('option2').value;
         const option2Select = document.getElementById('option2');
-        const option2_price = option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0;
+        const option2_count = document.getElementById('option2_count').value;
+        const option2_price = Number(option2Select.options[option2Select.selectedIndex]?.dataset?.price || 0);
         const option3 = document.getElementById('option3').value;
         const option3Select = document.getElementById('option3');
-        const option3_price = option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0;
+        const option3_count = document.getElementById('option3_count').value;
+        const option3_price = Number(option3Select.options[option3Select.selectedIndex]?.dataset?.price || 0);
         const option4 = document.getElementById('option4').value;
         const option4Select = document.getElementById('option4');
-        const option4_price = option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0;
+        const option4_count = document.getElementById('option4_count').value;
+        const option4_price = Number(option4Select.options[option4Select.selectedIndex]?.dataset?.price || 0);
         const option5 = document.getElementById('option5').value;
         const option5Select = document.getElementById('option5');
-        const option5_price = option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0;
+        const option5_count = document.getElementById('option5_count').value;
+        const option5_price = Number(option5Select.options[option5Select.selectedIndex]?.dataset?.price || 0);
+
         const memo = document.getElementById('memo').value;
         // const member_id = document.getElementById('member_id').value;
-        const appointmentRadios = document.getElementsByName('appointment');
-        let appointmentType = '';
-        let appointmentPrice = 0;
-        let appointmentID = '';
-        for (const radio of appointmentRadios) {
-            if (radio.checked) {
-                appointmentType = radio.value;
-                appointmentPrice = parseFloat(radio.dataset.price || 0);
-                appointmentID = radio.dataset.id;
-                break;
-            }
-        }
+        const appointmentSelect = document.getElementById('appointment');
+        const appointment_count = document.getElementById('appointment_count').value;
+        const appointmentPrice = Number(appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset
+                ?.price || 0) *
+            appointment_count;
+        const appointmentID = appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset?.id || '';
+        const appointmentType = appointmentSelect.options[appointmentSelect.selectedIndex]?.dataset?.type || '';
+        const discount = Number(document.getElementById('discount').value);
+        const plo_day = document.getElementById('plo_day').checked;
 
         const formData = {
             point_use: point_use,
             point: point,
             price: price,
             cast: cast,
-            course: course,
-            course_price: course_price,
+            course1: course1,
+            course1_price: course1_price,
+            course2: course2,
+            course2_price: course2_price,
+            course2_count: course2_count,
             extend: extend,
             extend_price: extend_price,
+            extend_count: extend_count,
             option1: option1,
             option1_price: option1_price,
             option2: option2,
             option2_price: option2_price,
+            option2_count: option2_count,
             option3: option3,
             option3_price: option3_price,
+            option3_count: option3_count,
             option4: option4,
             option4_price: option4_price,
+            option4_count: option4_count,
             option5: option5,
             option5_price: option5_price,
+            option5_count: option5_count,
             memo: memo,
             member_id: member_id,
             appointmentType: appointmentType,
             appointmentID: appointmentID,
-            appointmentPrice: appointmentPrice
+            appointmentPrice: appointmentPrice,
+            appointment_count: appointment_count,
+            discount: discount,
+            plo_day: plo_day
         };
 
         try {
@@ -437,5 +523,94 @@
             console.error('エラーが発生しました:', error);
             alert('エラーが発生しました');
         }
+    }
+
+    function editExtend(id) {
+        try {
+            const editBtn = document.getElementById('edit_extend_' + id);
+            const saveBtn = document.getElementById('save_extend_' + id);
+            const cancelBtn = document.getElementById('cancel_extend_' + id);
+            const extendEdit = document.getElementById('extend_edit_' + id);
+            const extendNameValue = document.getElementById('extend_name_value_' + id);
+
+            if (!editBtn || !saveBtn || !cancelBtn || !extendEdit || !extendNameValue) {
+                console.error('要素が見つかりません。ID:', id);
+                alert('編集に必要な要素が見つかりません');
+                return;
+            }
+
+            editBtn.style.display = 'none';
+            saveBtn.style.display = 'block';
+            cancelBtn.style.display = 'block';
+            extendEdit.style.display = 'flex';
+            extendNameValue.style.display = 'none';
+        } catch (error) {
+            console.error('editExtend エラー:', error);
+            alert('編集モードの切り替えに失敗しました');
+        }
+    }
+
+    async function saveExtend(id) {
+        try {
+            const saveBtn = document.getElementById('save_extend_' + id);
+            const cancelBtn = document.getElementById('cancel_extend_' + id);
+            const editBtn = document.getElementById('edit_extend_' + id);
+            const extendNameValue = document.getElementById('extend_name_value_' + id);
+            const extendEdit = document.getElementById('extend_edit_' + id);
+            const extendSelect = document.getElementById('extend_' + id);
+            const extendCountInput = document.getElementById('extend_count_' + id);
+
+            if (!saveBtn || !cancelBtn || !editBtn || !extendNameValue || !extendEdit || !extendSelect || !
+                extendCountInput) {
+                console.error('要素が見つかりません。ID:', id);
+                alert('保存に必要な要素が見つかりません');
+                return;
+            }
+
+            const extend = extendSelect.value;
+            const extend_count = extendCountInput.value;
+            const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0);
+
+            const formData = {
+                id: id,
+                extend: extend,
+                extend_count: extend_count,
+                extend_price: extend_price
+            };
+            const token = '{{ $token }}';
+
+            const response = await fetch(`/api/member/extend_update`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute(
+                        'content'),
+                    'Accept': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                window.location.reload();
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                console.error('更新に失敗しました:', response.status, errorData);
+                alert('更新に失敗しました: ' + (errorData.message || response.statusText || '不明なエラー'));
+            }
+        } catch (error) {
+            console.error('エラーが発生しました:', error);
+            alert('エラーが発生しました: ' + error.message);
+        }
+    }
+
+    function cancelExtend(id) {
+        document.getElementById('save_extend_' + id).style.display = 'none';
+        document.getElementById('cancel_extend_' + id).style.display = 'none';
+        document.getElementById('edit_extend_' + id).style.display = 'block';
+        document.getElementById('extend_name_value_' + id).style.display = 'block';
+        document.getElementById('extend_edit_' + id).style.display = 'none';
     }
 </script>

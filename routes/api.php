@@ -38,6 +38,7 @@ Route::middleware('auth:sanctum')->prefix('member')->group(function () {
     Route::post('/update', [MemberController::class, 'update']);
     Route::post('/qrupdate', [MemberController::class, 'qrupdate']);
     Route::post('/getValues', [MemberController::class, 'getValues']);
+    Route::post('/extend_update', [MemberController::class, 'extendUpdate']);
 });
 
 Route::middleware(['auth:sanctum'])->prefix('cast')->group(function () {
