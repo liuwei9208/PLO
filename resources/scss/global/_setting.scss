@@ -2,10 +2,10 @@
 .sp-only {
   // display: block;
   @media screen and (max-width: 850px) {
-    display: block;
+    display: block !important;
   }
   @media screen and (min-width: 851px) {
-    display: none;
+    display: none !important;
   }
   // @media #{media-query(sm)} {
   //   display: block;
@@ -20,10 +20,10 @@
 .pc-only {
   // display: block;
   @media screen and (max-width: 850px) {
-    display: none;
+    display: none !important;
   }
   @media screen and (min-width: 851px) {
-    display: block;
+    display: block !important;
   }
   // @media #{media-query(sm)} {
   //   display: none !important;

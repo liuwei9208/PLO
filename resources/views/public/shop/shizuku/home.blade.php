@@ -87,7 +87,7 @@
                             badge-time="12:00~24:00"
                             status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
                             status-text="待機中" name="のんたん（20）" measurements="T.160 B.85(C) W.60 H.83"
-                            message="キャストメッセージが出ます" />
+                            message="キャストメッセージが出ます" variant="schedule" />
                     @endfor
                 </div>
                 <div class="home-schedule-button-mobile">
@@ -239,7 +239,7 @@
                                 badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF"
                                 measurements-color="#FFFFFF" message-gradient-start="#FFF2D7"
                                 message-gradient-end="#BD902F" content-gradient-start="rgba(42, 26, 8, 0.80)"
-                                content-gradient-end="rgba(0, 0, 0, 0.00)" variant="castlist" />
+                                content-gradient-end="rgba(0, 0, 0, 0.00)" variant="castlist_top" />
                         @endfor
                     </div>
                     <button class="castlist-slider-next">

@@ -45,6 +45,9 @@
   bottom: 0;
   padding: 1.25rem 0.625rem;
   border-radius: 0 0 0.9375rem 0.9375rem;
+  @media #{media-query(sm)} {
+    padding: 0.4375rem 0.225rem;
+  }
 }
 
 .schedule-card-badge {
