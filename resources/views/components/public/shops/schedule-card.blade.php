@@ -25,43 +25,67 @@
     'contentGradientEnd' => 'rgba(0, 0, 0, 0.00)',
     'contentGradientStartPercent' => '58.65%',
     'contentGradientEndPercent' => '100%',
-    'variant' => 'schedule', // 'schedule' or 'castlist' or 'topcastlist'
+    'variant' => 'schedule', // 'schedule' or 'castlist' or 'castlist_top'
 ])
 
-<div class="schedule-card @if ($variant === 'castlist') castlist-card @endif">
-    <div class="schedule-card-image @if ($variant === 'castlist') castlist-card-image @endif">
+<div class="schedule-card @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card @endif">
+    <div class="schedule-card-image @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-image @endif">
         <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg">
         <img src="{{ asset($frameImage) }}" alt="Frame" class="card-frame">
         {{-- <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
             style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});"> --}}
-        <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
-            style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
-            <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
-                style="border-color: {{ $badgeBorderColor }};">
-                <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
-                    <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
-                </div>
-                <div class="badge-content">
-                    <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+        @if ($variant === 'schedule' || $variant === 'castlist')
+            <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
+                style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
+                <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
+                    style="border-color: {{ $badgeBorderColor }};">
+                    <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                        <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                    </div>
+                    <div class="badge-content">
+                        <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
+        @elseif($variant === 'castlist_top')
+            <div class="castlist-top-card-content"
+                style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
+                <div class="schedule-card-badge @if ($variant === 'castlist_top') castlist-top-card-badge @endif"
+                    style="border-color: {{ $badgeBorderColor }};">
+                    <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                        <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                    </div>
+                    <div class="badge-content">
+                        <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                    </div>
+                </div>
+                <div class="castlist-top-card-info sp-only">
+                    <p class="schedule-card-name @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-name @endif"
+                        style="color: {{ $nameColor }};">{{ $name }}</p>
+                    <p class="schedule-card-measurements @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-measurements @endif"
+                        style="color: {{ $measurementsColor }};">{{ $measurements }}</p>
+                </div>
+            </div>
+        @endif
     </div>
-    <div class="schedule-card-info @if ($variant === 'castlist') castlist-card-info @endif">
-        <div class="schedule-card-status @if ($variant === 'castlist') castlist-card-status @endif">
-            {!! $statusIcon !!}
-            <span class="status-text" style="color: {{ $statusTextColor }};">{{ $statusText }}</span>
-        </div>
-        <p class="schedule-card-name @if ($variant === 'castlist') castlist-card-name @endif"
+    <div
+        class="schedule-card-info @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-info @endif @if ($variant === 'castlist_top') pc-only @endif">
+        @if ($variant === 'schedule')
+            <div class="schedule-card-status @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-status @endif">
+                {!! $statusIcon !!}
+                <span class="status-text" style="color: {{ $statusTextColor }};">{{ $statusText }}</span>
+            </div>
+        @endif
+        <p class="schedule-card-name @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-name @endif"
             style="color: {{ $nameColor }};">{{ $name }}</p>
-        <p class="schedule-card-measurements @if ($variant === 'castlist') castlist-card-measurements @endif"
+        <p class="schedule-card-measurements @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-measurements @endif"
             style="color: {{ $measurementsColor }};">{{ $measurements }}</p>
         @if ($messageGradient)
-            <p class="schedule-card-message @if ($variant === 'castlist') castlist-card-message @endif"
+            <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
                 {{ $message }}</p>
         @else
-            <p class="schedule-card-message @if ($variant === 'castlist') castlist-card-message @endif"
+            <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }}; background-clip: text; -webkit-background-clip: text;">
                 {{ $message }}
             </p>
