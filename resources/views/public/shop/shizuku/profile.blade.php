@@ -191,7 +191,122 @@
                 </div>
             </div>
         </div>
-
+        <div class="girl-play-section">
+            <div class="girl-play-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M14 0C17.713 0 21.274 1.475 23.8995 4.10051C26.525 6.72601 28 10.287 28 14C28 17.713 26.525 21.274 23.8995 23.8995C21.274 26.525 17.713 28 14 28C10.287 28 6.72601 26.525 4.10051 23.8995C1.475 21.274 0 17.713 0 14C0 10.287 1.475 6.72601 4.10051 4.10051C6.72601 1.475 10.287 0 14 0ZM15.8585 7.546C15.8585 7.08187 15.6741 6.63675 15.3459 6.30856C15.0177 5.98037 14.5726 5.796 14.1085 5.796C13.6444 5.796 13.1993 5.98037 12.8711 6.30856C12.5429 6.63675 12.3585 7.08187 12.3585 7.546V12.3585H7.546C7.08187 12.3585 6.63675 12.5429 6.30856 12.8711C5.98037 13.1993 5.796 13.6444 5.796 14.1085C5.796 14.5726 5.98037 15.0177 6.30856 15.3459C6.63675 15.6741 7.08187 15.8585 7.546 15.8585H12.3585V20.671C12.3585 21.1351 12.5429 21.5802 12.8711 21.9084C13.1993 22.2366 13.6444 22.421 14.1085 22.421C14.5726 22.421 15.0177 22.2366 15.3459 21.9084C15.6741 21.5802 15.8585 21.1351 15.8585 20.671V15.8585H20.671C21.1351 15.8585 21.5802 15.6741 21.9084 15.3459C22.2366 15.0177 22.421 14.5726 22.421 14.1085C22.421 13.6444 22.2366 13.1993 21.9084 12.8711C21.5802 12.5429 21.1351 12.3585 20.671 12.3585H15.8585V7.546Z" fill="#FFDA89"/>
+                </svg>
+                <h3>オプションプレイ</h3>
+            </div>
+            <div class="girl-play-content">
+                <div class="girl-play-item">
+                    <div class="girl-play-item-title">
+                        <h4>500円</h4>
+                    </div>
+                    <div class="girl-play-item-content">
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>ローター</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>ワイヤレスローター</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>電マ</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>コスプレ</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>オナニー観賞</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>パンスト</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="girl-play-item">
+                    <div class="girl-play-item-title">
+                        <h4>1,000円</h4>
+                    </div>
+                    <div class="girl-play-item-content">
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>ボディストッキング</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>電マ</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>即尺</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>生パンティお持ち帰り</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="girl-play-item">
+                    <div class="girl-play-item-title">
+                        <h4>2,000円</h4>
+                    </div>
+                    <div class="girl-play-item-content">
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>聖水</p>
+                        </div>
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>顔射</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="girl-play-item">
+                    <div class="girl-play-item-title">
+                        <h4>5,000円</h4>
+                    </div>
+                    <div class="girl-play-item-content">
+                        <div class="girl-play-item-details">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                                <circle cx="7.5" cy="7.5" r="7.5" fill="black"/>
+                              </svg>
+                            <p>FA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="girl-message-section">
             <div class="girl-message-header">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="21" viewBox="0 0 25 21" fill="none">
