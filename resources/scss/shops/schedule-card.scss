@@ -43,12 +43,12 @@
   z-index: 10;
   bottom: 0;
   padding: 1.25rem 0.625rem;
-  border-radius: 0 0 0.9375rem 0.9375rem;
+  border-radius: 0 0 7px 7px;
   @media #{media-query(sm)} {
     padding: 0.4375rem 0.425rem;
   }
   @media #{media-query(xs)} {
-    padding: 0.4375rem 0.225rem;
+    padding: 0.4375rem 0.025rem;
   }
 }
 
