@@ -170,6 +170,13 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@mixin Open_Sans() {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 // Formula: clamp(min, calc(min + (max - min) * ((100vw - min_vw) / (max_vw - min_vw))), max)
 // @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
 @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1920px) {

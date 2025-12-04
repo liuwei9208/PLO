@@ -19,6 +19,24 @@
                         <path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#B19D67"/>
                     </svg>',
     'strokeColor' => '#FFDA89',
+    'mobileMenuBttonItems' => [
+        [
+            'title' => 'トップページ',
+            'subtitle' => 'top page',
+            'url' => route('public.shops.shop.home', ['shop' => 'shizuku']),
+        ],
+        [
+            'title' => '出勤情報',
+            'subtitle' => 'schedule',
+            'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
+        ],
+        [
+            'title' => '料金システム',
+            'subtitle' => 'system',
+            'url' => route('public.shops.shop.system', ['shop' => 'shizuku']),
+        ],
+        ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
+    ],
 ])
 
 <div class="home-header" style="background: {{ $backgroundColor }};">
@@ -67,7 +85,7 @@
 
 <!-- Mobile Bottom Fixed Menu -->
 <div class="mobile-bottom-menu">
-    <div class="mobile-bottom-menu-item">
+    <a class="mobile-bottom-menu-item" href="{{ $mobileMenuBttonItems[0]['url'] }}">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="25" height="25" fill="url(#pattern0_201_646)" />
@@ -80,9 +98,9 @@
             </defs>
         </svg>
         <span>HOME</span>
-    </div>
+    </a>
     <div class="mobile-bottom-menu-divider"></div>
-    <div class="mobile-bottom-menu-item">
+    <a class="mobile-bottom-menu-item" href="{{ $mobileMenuBttonItems[1]['url'] }}">
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="26" height="26" fill="url(#pattern0_201_649)" />
@@ -95,9 +113,9 @@
             </defs>
         </svg>
         <span>出勤</span>
-    </div>
+    </a>
     <div class="mobile-bottom-menu-divider"></div>
-    <div class="mobile-bottom-menu-item">
+    <a class="mobile-bottom-menu-item" href="{{ $mobileMenuBttonItems[2]['url'] }}">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="25" height="25" fill="url(#pattern0_201_652)" />
@@ -110,9 +128,9 @@
             </defs>
         </svg>
         <span>システム</span>
-    </div>
+    </a>
     <div class="mobile-bottom-menu-divider"></div>
-    <div class="mobile-bottom-menu-item">
+    <a class="mobile-bottom-menu-item" href="{{ $mobileMenuBttonItems[3]['url'] }}">
         <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="25" height="25" fill="url(#pattern0_201_658)" />
@@ -126,5 +144,5 @@
             </defs>
         </svg>
         <span>ログイン</span>
-    </div>
+    </a>
 </div>
