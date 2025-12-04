@@ -46,42 +46,42 @@
     margin: 10px auto 0px;
   }
   .girl-message-section {
-    order: 6;
+    order: 7;
     margin-bottom: 1.5rem !important;
     display: block !important;
     width: 95% !important;
     margin: 10px auto 0px;
   }
   .girl-diary-section {
-    order: 7;
-    margin-bottom: 1.5rem !important;
-    width: 95% !important;
-    margin: 10px auto 0px;
-    display: block !important;
-  }
-  .girl-schedule-section {
     order: 8;
     margin-bottom: 1.5rem !important;
     width: 95% !important;
     margin: 10px auto 0px;
     display: block !important;
   }
-  .girl-manager-comment-section {
+  .girl-schedule-section {
     order: 9;
     margin-bottom: 1.5rem !important;
     width: 95% !important;
     margin: 10px auto 0px;
     display: block !important;
   }
-  .girl-sales-points-section {
+  .girl-manager-comment-section {
     order: 10;
     margin-bottom: 1.5rem !important;
     width: 95% !important;
     margin: 10px auto 0px;
     display: block !important;
   }
-  .girl-reviews-section {
+  .girl-sales-points-section {
     order: 11;
+    margin-bottom: 1.5rem !important;
+    width: 95% !important;
+    margin: 10px auto 0px;
+    display: block !important;
+  }
+  .girl-reviews-section {
+    order: 12;
     margin-bottom: 1.5rem !important;
     width: 95% !important;
     margin: 10px auto 0px;
@@ -591,6 +591,70 @@
   font-weight: 400;
   line-height: normal;
 }
+
+@media screen and (max-width: 850px) {
+  .girl-play-section {
+    order: 6;
+    padding: 0px 10px;
+    background: none !important;
+  }
+
+  .girl-play-header {
+    border-radius: 15px 15px 0 0;
+    background: var(
+      --d-90-d-32,
+      linear-gradient(180deg, #73071a 0%, #d90d32 100%)
+    );
+  }
+  .girl-play-header h3 {
+    font-size: 21px !important;
+    color: $white !important;
+  }
+  .girl-play-header svg {
+    width: 17px;
+    height: 17px;
+    path {
+      fill: #fefefe !important;
+    }
+  }
+
+  .girl-play-content {
+    padding: 15px !important;
+    border: 2px solid var(--d-90-d-32, #73071a);
+    border-radius: 0px 0px 20px 20px;
+  }
+
+  .girl-play-item-title {
+    display: flex;
+    width: 100px;
+    height: 58px;
+    padding: 5px 0;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background: var(--d-90-d-32, #d90d32);
+
+    h4 {
+      color: $white !important;
+      font-size: 17px;
+    }
+  }
+
+  .girl-play-item-details {
+    svg {
+      width: 11px;
+      height: 11px;
+      aspect-ratio: 1/1;
+      circle {
+        fill: #d90d32 !important;
+      }
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
 .girl-message-section {
   width: 100%;
   border-radius: 20px;
