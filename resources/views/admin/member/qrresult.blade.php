@@ -98,7 +98,7 @@
                                                     <input type="number" value="0"
                                                         class="p-1 border border-gray-400 text-right w-[50px]"
                                                         name="extend_count" id="extend_count_{{ $history->id }}"
-                                                        onchange="">
+                                                        onchange="" min="0" max="60">
                                                 </div>
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400 text-right pr-2">
