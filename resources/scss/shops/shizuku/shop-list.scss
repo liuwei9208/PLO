@@ -53,6 +53,7 @@
 
 .shop-list-details {
   overflow: hidden;
+  @include Open_Sans();
   color: var(---N__, #2a1a08);
   text-overflow: ellipsis;
   font-size: 17px;

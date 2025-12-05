@@ -1,5 +1,6 @@
 @use "../global/vars" as *;
 @use "../mixins/font" as *;
+@use "../global/setting" as *;
 
 .reivew-card-item {
   margin: 0 auto;
@@ -87,6 +88,35 @@
   flex-direction: column;
   gap: 0;
 }
+.review-card-name-mobile-section {
+  display: none !important;
+}
+.review-card-rating-mobile-section {
+  display: none !important;
+}
+@media screen and (max-width: 850px) {
+  .review-card-name-mobile-section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px;
+    align-items: center;
+
+    h3 {
+      flex-shrink: 0;
+    }
+  }
+
+  .review-card-rating-mobile-section {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 10px;
+    align-items: center;
+
+    .review-card-stars {
+      flex-shrink: 0;
+    }
+  }
+}
 
 .review-card-name {
   @include yu-mincho-regular();
@@ -168,6 +198,9 @@
   padding: 10px;
   min-height: 170px;
   position: relative;
+  @media screen and (max-width: 850px) {
+    min-height: 210px;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -198,7 +231,9 @@
   max-height: 120px;
   width: 100%;
   box-sizing: border-box;
-
+  @media screen and (max-width: 850px) {
+    max-height: 210px;
+  }
   &::-webkit-scrollbar {
     width: 5px;
   }
@@ -245,6 +280,9 @@
   min-height: 143px;
   height: auto;
 
+  @media screen and (max-width: 850px) {
+    min-height: 210px;
+  }
   &::-webkit-scrollbar {
     display: none;
   }
