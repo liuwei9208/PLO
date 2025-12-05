@@ -86,7 +86,6 @@
   font-style: normal;
 }
 
-
 @mixin lustria() {
   font-family: "Lustria", serif;
   font-weight: 400;
@@ -165,12 +164,28 @@
   font-weight: 400;
   font-style: normal;
 }
+
+@mixin M_PLUS_1() {
+  font-family: "M PLUS 1", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin Open_Sans() {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 // Formula: clamp(min, calc(min + (max - min) * ((100vw - min_vw) / (max_vw - min_vw))), max)
 // @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
 @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1920px) {
-    font-size: clamp(
+  font-size: clamp(
     #{$min},
-    calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    calc(
+      #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
     #{$max}
   );
 }
@@ -178,14 +193,20 @@
 @mixin responsive-width($min, $max, $min-vw: 375px, $max-vw: 1920px) {
   width: clamp(
     #{$min},
-    calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    calc(
+      #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
     #{$max}
   );
 }
 @mixin responsive-height($min, $max, $min-vw: 375px, $max-vw: 1920px) {
   height: clamp(
     #{$min},
-    calc(#{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) / (#{$max-vw} - #{$min-vw}))),
+    calc(
+      #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
     #{$max}
   );
 }
@@ -195,11 +216,11 @@
   // Start with minimum value
   -webkit-line-clamp: $min;
   line-clamp: $min;
-  
+
   // Calculate 5 breakpoints for smooth transition
   $vw-range: $max-vw - $min-vw;
   $value-range: $max - $min;
-  
+
   // Breakpoint 1: 25% of range
   $bp1-vw: $min-vw + ($vw-range * 0.25);
   $bp1-value: round($min + ($value-range * 0.25));
@@ -207,7 +228,7 @@
     -webkit-line-clamp: $bp1-value;
     line-clamp: $bp1-value;
   }
-  
+
   // Breakpoint 2: 50% of range (midpoint)
   $bp2-vw: $min-vw + ($vw-range * 0.5);
   $bp2-value: round($min + ($value-range * 0.5));
@@ -215,7 +236,7 @@
     -webkit-line-clamp: $bp2-value;
     line-clamp: $bp2-value;
   }
-  
+
   // Breakpoint 3: 75% of range
   $bp3-vw: $min-vw + ($vw-range * 0.75);
   $bp3-value: round($min + ($value-range * 0.75));
@@ -223,7 +244,7 @@
     -webkit-line-clamp: $bp3-value;
     line-clamp: $bp3-value;
   }
-  
+
   // Breakpoint 4: Maximum value at large screens
   @media (min-width: #{$max-vw}) {
     -webkit-line-clamp: $max;

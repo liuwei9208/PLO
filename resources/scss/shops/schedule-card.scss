@@ -1,6 +1,6 @@
 // Import global variables and utilities
-@use '../global/vars' as *;
-@use '../mixins/font' as *;
+@use "../global/vars" as *;
+@use "../mixins/font" as *;
 
 .schedule-card {
   display: flex;
@@ -15,7 +15,8 @@
   width: 100%;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  
+  border-radius: 7px;
+  // border-radius: 7px;
   .card-bg {
     position: absolute;
     width: 100%;
@@ -25,7 +26,7 @@
     left: 0;
     z-index: 1;
   }
-  
+
   .card-frame {
     position: absolute;
     width: 100%;
@@ -43,12 +44,12 @@
   z-index: 10;
   bottom: 0;
   padding: 1.25rem 0.625rem;
-  border-radius: 0 0 0.9375rem 0.9375rem;
+  border-radius: 0 0 7px 7px;
   @media #{media-query(sm)} {
     padding: 0.4375rem 0.425rem;
   }
   @media #{media-query(xs)} {
-    padding: 0.4375rem 0.225rem;
+    padding: 0.4375rem 0.025rem;
   }
 }
 
@@ -69,7 +70,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 1.875rem 0 0 1.875rem;
-  
+
   .badge-shift {
     @include yu-mincho-regular();
     @include responsive-font(11px, 18.5px);
@@ -85,7 +86,7 @@
   align-items: center;
   justify-content: center;
   background: $white;
-  
+
   .badge-time {
     @include times-new-roman();
     @include responsive-font(14px, 20.5px);
@@ -103,6 +104,25 @@
     @media #{media-query(md)} {
       padding: 0 0.86rem;
     }
+  }
+}
+
+@media (max-width: 850px) {
+  .schedule-card-info {
+    padding: 15px 0px !important;
+    gap: 5px !important;
+  }
+
+  .badge-time {
+    padding: 0px 2px !important;
+  }
+
+  .badge-red-bg {
+    padding: 3px 4px !important;
+  }
+
+  .schedule-card-message {
+    line-height: 20px !important;
   }
 }
 
@@ -125,10 +145,10 @@
   align-items: center;
   gap: 0.3125rem;
   width: fit-content;
-  
+
   .status-text {
     text-align: center;
-    @include Hiragino_Mincho_Pro_NW6(); 
+    @include Hiragino_Mincho_Pro_NW6();
     @include responsive-font(16px, 24px);
     font-weight: 600;
   }
@@ -144,7 +164,7 @@
 
 .schedule-card-measurements {
   // @include yu-mincho-pr6n();
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Times New Roman", Times, serif;
   @include responsive-font(15px, 16px);
   font-weight: 400;
   margin: 0;
@@ -168,18 +188,18 @@
   .castlist-card-name {
     @include responsive-font(14px, 16px);
   }
-  
+
   .schedule-card-measurements,
   .castlist-card-measurements {
     @include responsive-font(14px, 16px);
   }
-  
+
   .schedule-card-message,
   .castlist-card-message {
     @include responsive-font(14px, 16px);
     font-size: 1.1875rem;
   }
-  
+
   .schedule-card-status .status-text,
   .castlist-card-status .status-text {
     @include responsive-font(16px, 21px);

@@ -98,7 +98,7 @@
                                                     <input type="number" value="0"
                                                         class="p-1 border border-gray-400 text-right w-[50px]"
                                                         name="extend_count" id="extend_count_{{ $history->id }}"
-                                                        onchange="">
+                                                        onchange="" min="0" max="60">
                                                 </div>
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400 text-right pr-2">
@@ -218,7 +218,7 @@
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
                                                 name="appointment_count" id="appointment_count"
-                                                onchange="updatePrice()">
+                                                onchange="updatePrice()" min="0" max="60">
                                         </div>
                                     </td>
                                 </tr>
@@ -240,7 +240,8 @@
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="course1_count" id="course1_count" onchange="updatePrice()">
+                                                name="course1_count" id="course1_count" onchange="updatePrice()"
+                                                min="0" max="60">
                                         </div>
                                     </td>
                                 </tr>
@@ -261,7 +262,8 @@
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="course2_count" id="course2_count" onchange="updatePrice()">
+                                                name="course2_count" id="course2_count" onchange="updatePrice()"
+                                                min="0" max="60">
                                         </div>
                                     </td>
                                 </tr>
@@ -283,7 +285,8 @@
                                             <span>X</span>
                                             <input type="number" value="0"
                                                 class="p-1 border border-gray-400 text-right w-[50px]"
-                                                name="extend_count" id="extend_count" onchange="updatePrice()">
+                                                name="extend_count" id="extend_count" onchange="updatePrice()"
+                                                min="0" max="60">
                                         </div>
                                     </td>
                                 </tr>
@@ -309,7 +312,8 @@
                                                 <input type="number" value="0"
                                                     class="p-1 border border-gray-400 text-right w-[50px]"
                                                     name="option{{ $i }}_count"
-                                                    id="option{{ $i }}_count" onchange="updatePrice()">
+                                                    id="option{{ $i }}_count" onchange="updatePrice()"
+                                                    min="0" max="60">
                                             </div>
                                         </td>
                                     </tr>
@@ -323,7 +327,7 @@
                                             <option value="" data-price="0">選択してください</option>
                                             @for ($i = -100; $i >= -50000; $i -= 100)
                                                 <option value="{{ $i }}"
-                                                    data-price="{{ $i }}">{{ $i }}
+                                                    data-price="{{ $i }}">{{ number_format(abs($i)) }}円
                                                 </option>
                                             @endfor
                                         </select>

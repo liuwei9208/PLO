@@ -8,21 +8,21 @@
             :menu-links="[
                 'top' => route('public.shops.shop.home', ['shop' => 'shizuku']),
                 'schedule' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
-                'pricing' => '#',
-                'new' => '#',
+                'pricing' => route('public.shops.shop.system', ['shop' => 'shizuku']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'shizuku']),
                 'cast' => route('public.shops.shop.castlist', ['shop' => 'shizuku']),
-                'news' => '#',
-                'event' => '#',
-                'diary' => '#',
+                'news' => route('public.shops.shop.news', ['shop' => 'shizuku']),
+                'event' => route('public.shops.shop.event', ['shop' => 'shizuku']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shizuku']),
                 'movie' => '#',
-                'review' => '#',
-                'ranking' => '#',
-                'shop' => '#',
-                'access' => '#',
+                'review' => route('public.shops.shop.review', ['shop' => 'shizuku']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'shizuku']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'shizuku']),
+                'access' => route('public.shops.shop.access', ['shop' => 'shizuku']),
                 'recruit-male' => '#',
-                'login' => '#',
+                'login' => route('login'),
                 'recruit-female' => '#',
-                'register' => '#',
+                'register' => route('register'),
             ]" :bottom-buttons="[
                 'group' => '#',
                 'recruit' => '#',
@@ -63,12 +63,45 @@
                         'subtitle' => 'schedule',
                         'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
                     ],
-                    ['title' => '写メ日記', 'subtitle' => 'photo diary', 'url' => '#'],
-                    ['title' => 'イベント一覧', 'subtitle' => 'event', 'url' => '#'],
-                    ['title' => '料金システム', 'subtitle' => 'system', 'url' => '#'],
-                    ['title' => '新人情報', 'subtitle' => 'new cast', 'url' => '#'],
-                    ['title' => 'ログイン', 'subtitle' => 'login', 'url' => '#'],
-                ]" menu-button-id="mobileMenuButton" background-color="#160B00" />
+                    [
+                        'title' => '写メ日記',
+                        'subtitle' => 'photo diary',
+                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'shizuku']),
+                    ],
+                    [
+                        'title' => 'イベント一覧',
+                        'subtitle' => 'event',
+                        'url' => route('public.shops.shop.event', ['shop' => 'shizuku']),
+                    ],
+                    [
+                        'title' => '料金システム',
+                        'subtitle' => 'system',
+                        'url' => route('public.shops.shop.system', ['shop' => 'shizuku']),
+                    ],
+                    [
+                        'title' => '新人情報',
+                        'subtitle' => 'new cast',
+                        'url' => route('public.shops.shop.newcast', ['shop' => 'shizuku']),
+                    ],
+                    ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
+                ]" menu-button-id="mobileMenuButton" background-color="#160B00" :mobile-menu-button-items="[
+                    [
+                        'title' => 'トップページ',
+                        'subtitle' => 'top page',
+                        'url' => route('public.shops.shop.home', ['shop' => 'shizuku']),
+                    ],
+                    [
+                        'title' => '出勤情報',
+                        'subtitle' => 'schedule',
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
+                    ],
+                    [
+                        'title' => '料金システム',
+                        'subtitle' => 'system',
+                        'url' => route('public.shops.shop.system', ['shop' => 'shizuku']),
+                    ],
+                    ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
+                ]" />
             {{ $slot }}
             <div class="top-page-link-button">
                 <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="top-page-link">
