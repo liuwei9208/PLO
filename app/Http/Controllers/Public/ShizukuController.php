@@ -184,6 +184,7 @@ class ShizukuController extends Controller
         ->orderBy('rankings.rank', 'asc')
         ->limit(2)
         ->get();
+        // dd($rankings);
         return view('public.shop.' . $shop . '.home',[
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => $todayCasts,
