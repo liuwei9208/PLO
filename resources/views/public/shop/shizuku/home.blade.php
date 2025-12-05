@@ -300,7 +300,7 @@
                             </svg>
                         </button>
                         <div class="home-castlist-cards">
-                            @for ($i = 0; $i < 12; $i++)
+                            {{-- @for ($i = 0; $i < 12; $i++)
                                 <x-public.shops.schedule-card background-image="assets/img/shops/shizuku/castlist.png"
                                     frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                                     badge-time="12:00〜24:00" status-icon="" status-text="" name="かれん (20)"
@@ -310,7 +310,7 @@
                                     measurements-color="#FFFFFF" message-gradient-start="#FFF2D7"
                                     message-gradient-end="#BD902F" content-gradient-start="rgba(42, 26, 8, 0.80)"
                                     content-gradient-end="rgba(0, 0, 0, 0.00)" variant="castlist_top" />
-                            @endfor
+                            @endfor --}}
                             @foreach ($castlist as $cast)
                                 <x-public.shops.schedule-card
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
