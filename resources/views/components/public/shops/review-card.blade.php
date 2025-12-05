@@ -8,12 +8,32 @@
     'frameImage' => 'assets/img/shops/shizuku/card-frame.png',
     'girlImage' => 'assets/img/shops/shizuku/review1.png',
     'reviewerName' => '投稿者名',
-    'comment' => 'テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストストテキストストテキストストテキスト',
+    'comment' => 'テキストテキストテキストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストストテキストストテキストストテキスト',
     'shopReplyTitle' => 'お店からの返信コメント',
     'shopReply' => 'お店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメント',
 ])
 
 <div class="reivew-card-item">
+    <div class="review-card-name-mobile-section">
+        <h3 class="review-card-name">{{ $girlName }}</h3>
+        <p class="review-card-measurements">{{ $measurements }}</p>
+    </div>
+    <div class="review-card-rating-mobile-section">
+        <div class="review-card-stars">
+            @for ($i = 0; $i < $rating; $i++)
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFE500"/>
+                </svg>
+            @endfor
+            @for ($i = 0; $i < (5 - $rating); $i++)
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="#FFE500" stroke-width="1.5"/>
+                </svg>
+            @endfor
+            <span class="review-card-rating-number">{{ $rating }}</span>
+        </div>
+        <p class="review-card-tags">女の子 {{ $girlRating }}　プレイ {{ $playRating }}　スタッフ {{ $staffRating }}</p>
+    </div>
     <div class="review-card-info">
         <div class="review-card-image-wrapper">
             <img src="{{ asset($frameImage) }}" class="review-card-frame" alt="Frame">
@@ -21,11 +41,11 @@
         </div>
         <div class="review-card-content">
             <div class="review-card-header">
-                <div class="review-card-name-section">
+                <div class="review-card-name-section pc-only">
                     <h3 class="review-card-name">{{ $girlName }}</h3>
                     <p class="review-card-measurements">{{ $measurements }}</p>
                 </div>
-                <div class="review-card-rating-section">
+                <div class="review-card-rating-section pc-only">
                     <div class="review-card-stars">
                         @for ($i = 0; $i < $rating; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
