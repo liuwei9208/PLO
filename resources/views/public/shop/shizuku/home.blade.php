@@ -340,7 +340,7 @@
             <div class="home-ranking">
                 <div class="ranking-cast-card">
                     <div class="ranking-cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 1"
+                        <img src="{{ asset('storage/' . $rankings[0]->gallery_1) }}" alt="Cast 1"
                             class="cast-image">
                         <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
                             class="cast-frame">
@@ -394,7 +394,7 @@
                 </div>
                 <div class="ranking-cast-card">
                     <div class="ranking-cast-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/castlist.png') }}" alt="Cast 2"
+                        <img src="{{ asset('storage/' . $rankings[1]->gallery_1) }}" alt="Cast 2"
                             class="cast-image">
                         <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
                             class="cast-frame">
