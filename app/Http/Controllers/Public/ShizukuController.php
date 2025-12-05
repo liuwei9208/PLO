@@ -26,6 +26,7 @@ use App\Models\Appoint;
 use App\Models\Extend;
 use App\Models\OptionRS;
 use App\Models\Pickup;
+use App\Models\Rank;
 
 class ShizukuController extends Controller
 {
@@ -173,7 +174,17 @@ class ShizukuController extends Controller
         // ->limit(4)
         ->orderBy('published_at', 'desc')
         ->get();
-
+        $rank_id = Rank::where('is_public', 1)->orderBy('id', 'asc')->first()->id;
+        $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
+        ->where('rankings.shop_id', $shop_id)
+        ->where('rankings.rank_id', $rank_id)
+        ->select([
+            'casts.gallery_1 as cast_gallery_1',
+        ])
+        ->orderBy('rankings.rank', 'asc')
+        ->limit(2)
+        ->get();
+        // dd($rankings);
         return view('public.shop.' . $shop . '.home',[
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => $todayCasts,
@@ -185,7 +196,7 @@ class ShizukuController extends Controller
             'castlist' => $castlist,
             'news' => $news,
             'pickups' => $pickups,
-
+            'rankings' => $rankings,
         ]);
     }
 
