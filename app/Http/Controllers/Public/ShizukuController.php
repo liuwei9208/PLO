@@ -269,7 +269,41 @@ class ShizukuController extends Controller
     public function showNewcast(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.newcast');
+
+                $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where('joined_at', '>=', Carbon::now()->subWeek(2))
+            // ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
+            ->get();
+        if ($new_girls) {
+            $new_girls = $new_girls->map(function ($new_girl) {
+                $sql = "SELECT group_concat(personalities.name) AS personality FROM `" . env('DB_DATABASE') . "`.cast_personality
+    LEFT JOIN `" . env('DB_DATABASE') . "`.personalities
+    ON cast_personality.personality_id = personalities.id
+    WHERE cast_personality.cast_id = $new_girl->id;
+    ";
+                // dd($sql);
+                $results = DB::select($sql);
+                // dd($results[0]->personality);
+                $new_girl->pointpersonality = $results[0]->personality;
+                $sql = "SELECT GROUP_CONCAT(styles.name) AS style FROM `" . env('DB_DATABASE') . "`.cast_style
+    LEFT JOIN `" . env('DB_DATABASE') . "`.styles
+    ON cast_style.style_id = styles.id
+    WHERE cast_style.cast_id = $new_girl->id;";
+                $results = DB::select($sql);
+                // dd($results[0]->style);
+                $new_girl->style = $results[0]->style;
+                // $new_girl->appeal_pointpersonality = $new_girl->appeal_point ?? '';
+                return $new_girl;
+            });
+        }
+
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        return view('public.shop.' . $shop . '.newcast', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'new_girls' => $new_girls,
+            'banners' => $banners,
+        ]);
     }
 
     public function showNews(Request $request): View
@@ -317,11 +351,14 @@ class ShizukuController extends Controller
         $news = News::find($id);
         $prevNews = News::where('id', '<', $id)->orderBy('id', 'desc')->first();
         $nextNews = News::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
         return view('public.shop.' . $shop . '.news-detail', [
             'news' => $news,
             'prevNews' => $prevNews,
             'nextNews' => $nextNews,
             'shop' => Shop::where('slug', $shop)->get()->first(),
+            'banners' => $banners,
         ]);
     }
 

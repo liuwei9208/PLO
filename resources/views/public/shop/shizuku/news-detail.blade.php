@@ -1,7 +1,7 @@
 <x-shizuku-page-layout page-title="NEWS" page-subtitle="新着情報"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/shizuku/news-detail.scss']">
+    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/shizuku/news-detail.scss']" :banners="$banners">
     <section class="news-detail-section">
-        <p class="news-detail-title">{{ $news['title'] }}</p>
+        <p class="news-detail-title">{{ $news->title }}</p>
         <p class="news-detail-date">
             {{ $news->published_at ? \Carbon\Carbon::createFromTimeString($news->published_at)->format('y.m.d') : '' }}
         </p>
