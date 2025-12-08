@@ -127,6 +127,7 @@
                         @endfor --}}
                         @foreach ($todayCasts as $todayCast)
                             <x-public.shops.schedule-card
+                                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                 background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
                                 frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                                 badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
@@ -149,9 +150,11 @@
             @endif
             <div class="home-news">
                 <x-public.shops.news-section title="news" slider-id="newsSlider"
-                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false' />
+                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false'
+                    :items="$news" :shop="$shop" />
                 <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
-                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false' />
+                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false'
+                    :items="$diaries" :shop="$shop" />
             </div>
             @php
                 $pickupImages = [
