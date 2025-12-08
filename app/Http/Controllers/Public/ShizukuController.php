@@ -522,7 +522,13 @@ class ShizukuController extends Controller
     public function showAccess(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.access');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $shop_item = Shop::where('slug', $shop)->get()->first();
+        return view('public.shop.' . $shop . '.access', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'shop_item' => $shop_item,
+            'banners' => $banners,
+        ]);
     }
 
     public function showShopList(Request $request): View
