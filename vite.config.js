@@ -125,6 +125,7 @@ export default defineConfig({
                 'resources/scss/shops/news-card.scss',
                 'resources/scss/shops/shizuku/news.scss',
                 'resources/scss/shops/shizuku/news-detail.scss',
+                'resources/scss/shops/shizuku/photo-diary.scss'
             ],
             refresh: true,
         }),
