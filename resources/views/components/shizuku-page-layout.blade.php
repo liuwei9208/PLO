@@ -108,6 +108,27 @@
                     トップページはこちら
                 </a>
             </div>
+            @php
+                $banner_list = [];
+                if (
+                    !empty($banners) &&
+                    (is_array($banners) || (is_object($banners) && method_exists($banners, 'toArray')))
+                ) {
+                    $bannersArray = is_array($banners) ? $banners : $banners->toArray();
+                    $i = 0;
+                    foreach ($banners as $banner) {
+                        $banner_list[$i]['image'] = asset('storage/' . $banner->thumbnail);
+                        $banner_list[$i]['alt'] = $banner->title;
+                        if ($banner->link_url) {
+                            $banner_list[$i]['url'] = $banner->link_url;
+                        } else {
+                            $banner_list[$i]['url'] = '#';
+                        }
+                        $i += 1;
+                    }
+                }
+            @endphp
+
             <x-public.shops.footer :showExternalLink="false" :showExternalLinksGrid="true" :shops="[
                 [
                     'image' => 'assets/img/shops/shizuku/home-banner.png',
@@ -151,38 +172,7 @@
                     'text2' => '',
                     'url' => '#',
                 ],
-            ]" :external-links="[
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-1.png',
-                    'alt' => '全国 駅ちか人気！風俗ランキング',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-4.png',
-                    'alt' => 'VANILLA',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                    'url' => '#',
-                ],
-            ]"
+            ]" :external-links="$banner_list"
                 :menu-links="[
                     ['text' => '店舗TOP', 'url' => '#'],
                     ['text' => '出勤情報', 'url' => '#'],

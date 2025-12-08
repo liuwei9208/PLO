@@ -217,7 +217,46 @@ class ShizukuController extends Controller
     public function showCastlist(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.castlist');
+        $castlist = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+        // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->where('casts.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+        ->inRandomOrder()
+        ->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            'casts.created_at as created_at',
+            // 'attendances.start_datetime as start_datetime',
+            // 'attendances.end_datetime as end_datetime',
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+        ])
+        // ->limit(20)
+        ->get();
+
+        if ($castlist) {
+            $castlist = $castlist->map(function ($cast) {
+                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->start_datetime ?? '';
+                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->end_datetime ?? '';
+                return $cast;
+            });
+        }
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        // dd($banners);
+        return view('public.shop.' . $shop . '.castlist', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'castlist' => $castlist,
+            'banners' => $banners,
+        ]);
     }
 
     public function showSchedule(Request $request): View
