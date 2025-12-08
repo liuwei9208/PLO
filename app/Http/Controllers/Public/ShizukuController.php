@@ -393,8 +393,24 @@ class ShizukuController extends Controller
         // ] : null;
 
         $news = News::find($id);
-        $prevNews = News::where('id', '<', $id)->orderBy('id', 'desc')->first();
-        $nextNews = News::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        $prevNews = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('published_status', 1)
+        ->orWhere(function ($query) {
+            $query->where('published_status', 2)
+                ->where('published_at', '<=', now());
+        })
+        ->where('id', '<', $id)
+        ->orderBy('id', 'desc')
+        ->first();
+        $nextNews = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('published_status', 1)
+        ->orWhere(function ($query) {
+            $query->where('published_status', 2)
+                ->where('published_at', '<=', now());
+        })
+        ->where('id', '>', $id)
+        ->orderBy('id', 'asc')
+        ->first();
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
 
         return view('public.shop.' . $shop . '.news-detail', [
@@ -448,11 +464,34 @@ class ShizukuController extends Controller
         //     'id' => $id + 1,
         //     'title' => '次のイベントのタイトル',
         // ] : null;
-        
+
         $event = Event::find($id);
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
-        $prevEvent = Event::where('id', '<', $id)->orderBy('id', 'desc')->first();
-        $nextEvent = Event::where('id', '>', $id)->orderBy('id', 'asc')->first();
+        $prevEvent = Event::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where(function($query) {
+            $query->where('published_status', 1)
+                ->orWhere('published_status',4)
+                ->orWhere(function($query) {
+                    $query->where('published_status', 2)
+                        ->where('published_at', '<=', Carbon::now());
+                });
+        })
+        ->where('id', '<', $id)
+        ->orderBy('id', 'desc')
+        ->first();
+        // where('id', '<', $id)->orderBy('id', 'desc')->first();
+        $nextEvent = Event::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where(function($query) {
+            $query->where('published_status', 1)
+                ->orWhere('published_status',4)
+                ->orWhere(function($query) {
+                    $query->where('published_status', 2)
+                        ->where('published_at', '<=', Carbon::now());
+                });
+        })
+        ->where('id', '>', $id)
+        ->orderBy('id', 'asc')
+        ->first();
         return view('public.shop.' . $shop . '.event-detail', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'event' => $event,
