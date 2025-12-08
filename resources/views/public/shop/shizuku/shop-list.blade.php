@@ -1,7 +1,7 @@
 <x-shizuku-page-layout page-title="SHOP LIST" page-subtitle="店舗一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 店舗一覧"
     :assets="['resources/scss/shops/shizuku/shop-list.scss']" :banners="$banners">
     <section class="shop-list-section">
-        <div class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -36,8 +36,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-list-card">
+        </a>
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'pussycat']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -72,8 +72,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-list-card">
+        </a>
+        <a href="#" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -108,8 +108,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-list-card">
+        </a>
+        <a href="#" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -144,8 +144,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-list-card">
+        </a>
+        <a href="#" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/004.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -180,8 +180,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="shop-list-card">
+        </a>
+        <a href="#" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -216,6 +216,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     </section>
 </x-shizuku-page-layout>
