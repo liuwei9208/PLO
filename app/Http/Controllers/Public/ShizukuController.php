@@ -263,7 +263,51 @@ class ShizukuController extends Controller
     public function showSchedule(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.schedule');
+
+        $request_date = $request->get('date');
+        if ($request_date) {
+            $request_date = Carbon::now()->format('Y').'-'.Carbon::parse($request_date)->format('m-d');
+        } else {
+            $request_date = Carbon::now()->format('Y-m-d');
+        }
+        Carbon::setLocale('ja');
+        $days = array();
+        for ($i = 0; $i < 6; $i++) {
+            // $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            // $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
+            $weekDay = Carbon::now()->addDays($i)->format('m/d');
+            $days[$i] = $weekDay ;
+        }
+
+        $todayCasts = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+        ->where('casts.is_public', 1)
+        ->where('shops.slug', 'like', $shop)
+        ->whereRaw('DATE(attendances.start_datetime) = ?', [$request_date])
+        ->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            'casts.created_at as created_at',
+            'attendances.start_datetime as start_datetime',
+            'attendances.end_datetime as end_datetime',
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+        ]) // 必要に応じて明示的に
+        ->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        return view('public.shop.' . $shop . '.schedule', [
+            'banners' => $banners,
+            'days' => $days,
+            'todayCasts' => $todayCasts,
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+        ]);
     }
 
     public function showNewcast(Request $request): View

@@ -1,11 +1,5 @@
-<x-shizuku-page-layout
-    page-title="SCHEDULE"
-    page-subtitle="出勤情報"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 出勤情報"
-    :assets="[
-        'resources/scss/shops/shizuku/schedule.scss',
-    ]"
->
+<x-shizuku-page-layout page-title="SCHEDULE" page-subtitle="出勤情報" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 出勤情報"
+    :assets="['resources/scss/shops/shizuku/schedule.scss']" :banners="$banners">
     {{-- your custom page content here --}}
     <div class="schedule-menu">
         <div class="search-list">
@@ -19,54 +13,56 @@
                 </defs>
             </svg>          --}}
             <img src="{{ asset('assets/img/shops/shizuku/schedule-icon.png') }}" alt="出勤日で検索" class="schedule-icon">
-            <p>出勤日で検索</p>       
+            <p>出勤日で検索</p>
         </div>
-        <div class="search-buttons">
-            <button class="search-button">
-                <p>00/00</p>
+        <form action="{{ route('public.shops.shop.schedule', ['shop' => 'shizuku']) }}" method="get"
+            class="search-buttons" id="schedule-form">
+            <button class="search-button" name="date" value="{{ $days[0] }}">
+                <p>{{ $days[0] }}</p>
             </button>
-            <button class="search-button">
-                <p>00/00</p>
+            <button class="search-button" name="date" value="{{ $days[1] }}">
+                <p>{{ $days[1] }}</p>
             </button>
-            <button class="search-button">
-                <p>00/00</p>
+            <button class="search-button" name="date" value="{{ $days[2] }}">
+                <p>{{ $days[2] }}</p>
             </button>
-            <button class="search-button">
-                <p>00/00</p>
+            <button class="search-button" name="date" value="{{ $days[3] }}">
+                <p>{{ $days[3] }}</p>
             </button>
-            <button class="search-button">
-                <p>00/00</p>
+            <button class="search-button" name="date" value="{{ $days[4] }}">
+                <p>{{ $days[4] }}</p>
             </button>
-            <button class="search-button">
-                <p>00/00</p>
+            <button class="search-button" name="date" value="{{ $days[5] }}">
+                <p>{{ $days[5] }}</p>
             </button>
-        </div>
+        </form>
     </div>
     <div class="schedule-card-list">
-        @for ($i = 1; $i <= 20; $i++)
-            <x-public.shops.schedule-card
-                background-image="assets/img/shops/shizuku/castlist.png"
-                frame-image="assets/img/shops/shizuku/card-frame.png"
-                badge-shift="本日出勤"
-                badge-time="12:00〜24:00"
+        {{-- @for ($i = 1; $i <= 20; $i++)
+            <x-public.shops.schedule-card background-image="assets/img/shops/shizuku/castlist.png"
+                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤" badge-time="12:00〜24:00"
                 status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
-                status-text="待機中"
-                name="かれん（20）"
-                measurements="T.160 B.85(C) W.60 H.83"
-                message="キャストメッセージが出ますキャ"
-                badge-border-color="#B90000"
-                badge-bg-color="#B90000"
-                badge-text-color="#FFDA89"
-                badge-time-color="#2A1A08"
-                status-text-color="#FFE500"
-                name-color="#FFFFFF"
-                measurements-color="#FFFFFF"
-                message-gradient-start="#FFF2D7"
-                message-gradient-end="#BD902F"
-                content-gradient-start="rgba(42, 26, 8, 0.80)"
-                content-gradient-end="rgba(0, 0, 0, 0.00)"
-                variant="castlist"
-            />
-        @endfor
+                status-text="待機中" name="かれん（20）" measurements="T.160 B.85(C) W.60 H.83" message="キャストメッセージが出ますキャ"
+                badge-border-color="#B90000" badge-bg-color="#B90000" badge-text-color="#FFDA89"
+                badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF" measurements-color="#FFFFFF"
+                message-gradient-start="#FFF2D7" message-gradient-end="#BD902F"
+                content-gradient-start="rgba(42, 26, 8, 0.80)" content-gradient-end="rgba(0, 0, 0, 0.00)"
+                variant="castlist" />
+        @endfor --}}
+        @foreach ($todayCasts as $todayCast)
+            <x-public.shops.schedule-card
+                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
+                background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
+                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
+                status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
+                status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
+                measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
+                message="{{ $todayCast->appeal_point }}" badge-border-color="#B90000" badge-bg-color="#B90000"
+                badge-text-color="#FFDA89" badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF"
+                measurements-color="#FFFFFF" message-gradient-start="#FFF2D7" message-gradient-end="#BD902F"
+                content-gradient-start="rgba(42, 26, 8, 0.80)" content-gradient-end="rgba(0, 0, 0, 0.00)"
+                variant="schedule" />
+        @endforeach
     </div>
 </x-shizuku-page-layout>
