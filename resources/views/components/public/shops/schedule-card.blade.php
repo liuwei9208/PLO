@@ -1,4 +1,5 @@
 @props([
+    'href_cast_profile' => null,
     'backgroundImage' => 'assets/img/shops/shizuku/coming-soon-card.png',
     'frameImage' => 'assets/img/shops/shizuku/card-frame.png',
     'badgeShift' => '本日出勤',
@@ -28,7 +29,8 @@
     'variant' => 'schedule', // 'schedule' or 'castlist' or 'castlist_top'
 ])
 
-<div class="schedule-card @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card @endif">
+<a class="schedule-card @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card @endif"
+    @if ($href_cast_profile) href="{{ $href_cast_profile }}" @endif>
     <div class="schedule-card-image @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-image @endif">
         <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg">
         <img src="{{ asset($frameImage) }}" alt="Frame" class="card-frame">
@@ -37,28 +39,55 @@
         @if ($variant === 'schedule' || $variant === 'castlist')
             <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
                 style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
-                <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
-                    style="border-color: {{ $badgeBorderColor }};">
-                    <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
-                        <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                @if ($badgeTime != '')
+                    <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
+                        style="border-color: {{ $badgeBorderColor }};">
+                        <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                            <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                        </div>
                     </div>
-                    <div class="badge-content">
-                        <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                @else
+                    <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
+                        style="border-color: #fff;">
+                        <div class="badge-content">
+                            <span class="badge-time" style="color: {{ $badgeTimeColor }};">本日おやすみ</span>
+                        </div>
                     </div>
-                </div>
+                @endif
             </div>
         @elseif($variant === 'castlist_top')
             <div class="castlist-top-card-content"
                 style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
-                <div class="schedule-card-badge @if ($variant === 'castlist_top') castlist-top-card-badge @endif"
-                    style="border-color: {{ $badgeBorderColor }};">
-                    <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                @if ($badgeTime != '')
+                    <div class="schedule-card-badge @if ($variant === 'castlist_top') castlist-top-card-badge @endif"
+                        style="border-color: {{ $badgeBorderColor }};">
+                        <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                            <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                        </div>
+                        <div class="badge-content">
+                            <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                        </div>
+                        {{-- <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
                         <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
                     </div>
                     <div class="badge-content">
                         <span class="badge-time" style="color: {{ $badgeTimeColor }};">{{ $badgeTime }}</span>
+                    </div> --}}
                     </div>
-                </div>
+                @else
+                    <div class="schedule-card-badge @if ($variant === 'castlist_top') castlist-top-card-badge @endif"
+                        style="border-color: #fff;">
+                        {{-- <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
+                        <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
+                    </div> --}}
+                        <div class="badge-content">
+                            <span class="badge-time" style="color: {{ $badgeTimeColor }};">本日おやすみ</span>
+                        </div>
+                    </div>
+                @endif
                 <div class="castlist-top-card-info sp-only">
                     <p class="schedule-card-name @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-name @endif"
                         style="color: {{ $nameColor }};">{{ $name }}</p>
@@ -91,4 +120,5 @@
             </p>
         @endif
     </div>
-</div>
+
+</a>

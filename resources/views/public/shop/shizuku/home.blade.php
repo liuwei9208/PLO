@@ -127,6 +127,7 @@
                         @endfor --}}
                         @foreach ($todayCasts as $todayCast)
                             <x-public.shops.schedule-card
+                                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                 background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
                                 frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                                 badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
