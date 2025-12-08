@@ -5,26 +5,26 @@
     'url' => null,
 ])
 
-@if($url)
+@if ($url)
     <a href="{{ $url }}" class="event-card">
-@else
-    <div class="event-card">
+    @else
+        <div class="event-card">
 @endif
-    <div class="event-card-image">
-        <img src="{{ asset($image) }}" alt="{{ $imageAlt }}">
+<div class="event-card-image">
+    <img src="{{ asset($image) }}" alt="{{ $imageAlt }}">
+</div>
+<div class="event-card-content">
+    <h3 class="event-card-title">{{ $title }}</h3>
+    <div class="event-card-text">
+        {{ $slot }}
     </div>
-    <div class="event-card-content">
-        <h3 class="event-card-title">{{ $title }}</h3>
-        <p class="event-card-text">
-            {{ $slot }}
-        </p>
-        @if($url)
-            <div class="event-card-link">
-                <span class="event-card-link-text">詳しくはこちら</span>
-            </div>
-        @endif
-    </div>
-@if($url)
+    @if ($url)
+        <div class="event-card-link">
+            <span class="event-card-link-text">詳しくはこちら</span>
+        </div>
+    @endif
+</div>
+@if ($url)
     </a>
 @else
     </div>
@@ -33,4 +33,3 @@
 @once
     @vite('resources/scss/shops/event-card.scss')
 @endonce
-

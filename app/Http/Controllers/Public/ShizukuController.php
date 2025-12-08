@@ -409,35 +409,56 @@ class ShizukuController extends Controller
     public function showEvent(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.event');
+        $events = Event::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where(function($query) {
+            $query->where('published_status', 1)
+                ->orWhere('published_status',4)
+                ->orWhere(function($query) {
+                    $query->where('published_status', 2)
+                        ->where('published_at', '<=', Carbon::now());
+                });
+        })
+        ->orderBy('published_at', 'desc')
+        ->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        return view('public.shop.' . $shop . '.event', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'events' => $events,
+            'banners' => $banners,
+        ]);
     }
 
     public function showEventDetail(Request $request, string $shop, $id): View
     {
         // For now, we'll use mock data. In production, you'd fetch from database
-        $event = [
-            'id' => $id,
-            'title' => 'イベントタイトルイベントタイトルイベントタイトル',
-            'image' => 'assets/img/shops/' . $shop . '/event-card-' . $id . '.png',
-            'content' => '本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文',
-        ];
+        // $event = [
+        //     'id' => $id,
+        //     'title' => 'イベントタイトルイベントタイトルイベントタイトル',
+        //     'image' => 'assets/img/shops/' . $shop . '/event-card-' . $id . '.png',
+        //     'content' => '本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文',
+        // ];
 
-        // Mock previous and next event (in production, fetch from database)
-        $prevEvent = $id > 1 ? [
-            'id' => $id - 1,
-            'title' => '前のイベントのタイトル',
-        ] : null;
+        // // Mock previous and next event (in production, fetch from database)
+        // $prevEvent = $id > 1 ? [
+        //     'id' => $id - 1,
+        //     'title' => '前のイベントのタイトル',
+        // ] : null;
 
-        $nextEvent = $id < 4 ? [
-            'id' => $id + 1,
-            'title' => '次のイベントのタイトル',
-        ] : null;
-
+        // $nextEvent = $id < 4 ? [
+        //     'id' => $id + 1,
+        //     'title' => '次のイベントのタイトル',
+        // ] : null;
+        
+        $event = Event::find($id);
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $prevEvent = Event::where('id', '<', $id)->orderBy('id', 'desc')->first();
+        $nextEvent = Event::where('id', '>', $id)->orderBy('id', 'asc')->first();
         return view('public.shop.' . $shop . '.event-detail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
             'event' => $event,
             'prevEvent' => $prevEvent,
             'nextEvent' => $nextEvent,
-            'shop' => $shop,
+            'banners' => $banners,
         ]);
     }
 
