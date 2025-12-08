@@ -136,7 +136,7 @@ class ShizukuController extends Controller
             // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
             ->where('casts.is_public', 1)
             ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
-            ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+            // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
             ->inRandomOrder()
             ->select([
                 'casts.id as id',
@@ -149,8 +149,8 @@ class ShizukuController extends Controller
                 'casts.gallery_1 as gallery_1',
                 'casts.appeal_point as appeal_point',
                 'casts.created_at as created_at',
-                'attendances.start_datetime as start_datetime',
-                'attendances.end_datetime as end_datetime',
+                // 'attendances.start_datetime as start_datetime',
+                // 'attendances.end_datetime as end_datetime',
                 'shops.slug as shop_slug',
                 'shops.name as shop_name',
             ])
