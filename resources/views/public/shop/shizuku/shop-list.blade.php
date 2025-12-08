@@ -111,7 +111,7 @@
         </div>
         <div class="shop-list-card">
             <div class="shop-list-card-image">
-                <img src="{{ asset('assets/img/shops/shizuku/004.jpg') }}" alt="Shop List Card Image">
+                <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="Shop List Card Image">
             </div>
             <div class="shop-list-card-content">
                 <p class="shop-list-details">
@@ -147,7 +147,7 @@
         </div>
         <div class="shop-list-card">
             <div class="shop-list-card-image">
-                <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="Shop List Card Image">
+                <img src="{{ asset('assets/img/shops/shizuku/004.jpg') }}" alt="Shop List Card Image">
             </div>
             <div class="shop-list-card-content">
                 <p class="shop-list-details">
@@ -183,7 +183,7 @@
         </div>
         <div class="shop-list-card">
             <div class="shop-list-card-image">
-                <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="Shop List Card Image">
+                <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="Shop List Card Image">
             </div>
             <div class="shop-list-card-content">
                 <p class="shop-list-details">
