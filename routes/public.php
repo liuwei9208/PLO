@@ -97,6 +97,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
             Route::get('profile/{id}', [ShizukuController::class, 'showProfile'])->name('profile');
             Route::get('castlist', [ShizukuController::class, 'showCastlist'])->name('castlist');
             Route::get('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule');
+            // Route::post('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule.post');
             Route::get('newcast', [ShizukuController::class, 'showNewcast'])->name('newcast');
             Route::get('news', [ShizukuController::class, 'showNews'])->name('news');
             Route::get('news/{id}', [ShizukuController::class, 'showNewsDetail'])->name('news.detail');
