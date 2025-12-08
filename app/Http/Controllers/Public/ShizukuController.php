@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Public;
 
 use App\Http\Controllers\Controller;
@@ -35,15 +36,15 @@ class ShizukuController extends Controller
         $shop = $request->route('shop', 'shizuku');
 
         $events = Event::where('published_status', 1)
-        ->orWhere(function($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', Carbon::now());
-        })
-        ->orWhere('published_status',4)
-        ->where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->orderBy('published_at', 'desc')
-        ->get();
-        
+            ->orWhere(function ($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', Carbon::now());
+            })
+            ->orWhere('published_status', 4)
+            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->orderBy('published_at', 'desc')
+            ->get();
+
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         Log::info("todayCasts");
 
@@ -67,12 +68,11 @@ class ShizukuController extends Controller
                 'attendances.end_datetime as end_datetime',
                 'shops.slug as shop_slug',
                 'shops.name as shop_name',
-                ]) // 必要に応じて明示的に
+            ]) // 必要に応じて明示的に
             ->get();
         Log::info($todayCasts);
         $shop_id = Shop::where('slug', $shop)->first()->id;
-        $pickups = Pickup::
-            leftJoin('casts', 'casts.id', '=', 'pickups.cast_id')
+        $pickups = Pickup::leftJoin('casts', 'casts.id', '=', 'pickups.cast_id')
             ->where('casts.is_public', 1)
             ->where('casts.shop_id', $shop_id)
             ->select([
@@ -100,13 +100,13 @@ class ShizukuController extends Controller
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
             ->get();
         $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->where('joined_at', '>=', Carbon::now()->subWeek(2))
-        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
-        ->get();
+            ->where('joined_at', '>=', Carbon::now()->subWeek(2))
+            ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
+            ->get();
         if ($new_girls) {
             $new_girls = $new_girls->map(function ($new_girl) {
-                $sql = "SELECT group_concat(personalities.name) AS personality FROM `".env('DB_DATABASE')."`.cast_personality
-    LEFT JOIN `".env('DB_DATABASE')."`.personalities
+                $sql = "SELECT group_concat(personalities.name) AS personality FROM `" . env('DB_DATABASE') . "`.cast_personality
+    LEFT JOIN `" . env('DB_DATABASE') . "`.personalities
     ON cast_personality.personality_id = personalities.id
     WHERE cast_personality.cast_id = $new_girl->id;
     ";
@@ -114,8 +114,8 @@ class ShizukuController extends Controller
                 $results = DB::select($sql);
                 // dd($results[0]->personality);
                 $new_girl->pointpersonality = $results[0]->personality;
-                $sql = "SELECT GROUP_CONCAT(styles.name) AS style FROM `".env('DB_DATABASE')."`.cast_style
-    LEFT JOIN `".env('DB_DATABASE')."`.styles
+                $sql = "SELECT GROUP_CONCAT(styles.name) AS style FROM `" . env('DB_DATABASE') . "`.cast_style
+    LEFT JOIN `" . env('DB_DATABASE') . "`.styles
     ON cast_style.style_id = styles.id
     WHERE cast_style.cast_id = $new_girl->id;";
                 $results = DB::select($sql);
@@ -127,34 +127,34 @@ class ShizukuController extends Controller
         }
         // dd($new_girls);
         $new_girls_month = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->where('created_at', '>=', Carbon::now()->subMonth(1))
-        ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
-        ->get();
+            ->where('created_at', '>=', Carbon::now()->subMonth(1))
+            ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
+            ->get();
 
         $castlist = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
-        ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
-        // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
-        ->where('casts.is_public', 1)
-        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
-        ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
-        ->inRandomOrder()
-        ->select([
-            'casts.id as id',
-            'casts.name as name',
-            'casts.age as age',
-            'casts.height as height',
-            'casts.bust as bust',
-            'casts.waist as waist',
-            'casts.hip as hip',
-            'casts.gallery_1 as gallery_1',
-            'casts.appeal_point as appeal_point',
-            'casts.created_at as created_at',
-            'attendances.start_datetime as start_datetime',
-            'attendances.end_datetime as end_datetime',
-            'shops.slug as shop_slug',
-            'shops.name as shop_name',
-        ])
-        ->get();
+            ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+            // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+            ->where('casts.is_public', 1)
+            ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+            ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+            ->inRandomOrder()
+            ->select([
+                'casts.id as id',
+                'casts.name as name',
+                'casts.age as age',
+                'casts.height as height',
+                'casts.bust as bust',
+                'casts.waist as waist',
+                'casts.hip as hip',
+                'casts.gallery_1 as gallery_1',
+                'casts.appeal_point as appeal_point',
+                'casts.created_at as created_at',
+                'attendances.start_datetime as start_datetime',
+                'attendances.end_datetime as end_datetime',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ])
+            ->get();
 
         if ($castlist) {
             $castlist = $castlist->map(function ($cast) {
@@ -165,27 +165,28 @@ class ShizukuController extends Controller
         }
 
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->where('published_status', 1)
-        ->orWhere(function($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', now());
-        })
-        ->inRandomOrder()
-        // ->limit(4)
-        ->orderBy('published_at', 'desc')
-        ->get();
+            ->where('published_status', 1)
+            ->orWhere(function ($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', now());
+            })
+            ->inRandomOrder()
+            // ->limit(4)
+            ->orderBy('published_at', 'desc')
+            ->get();
         $rank_id = Rank::where('is_public', 1)->orderBy('id', 'asc')->first()->id;
         $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
-        ->where('rankings.shop_id', $shop_id)
-        ->where('rankings.rank_id', $rank_id)
-        ->select([
-            'casts.gallery_1 as cast_gallery_1',
-        ])
-        ->orderBy('rankings.rank', 'asc')
-        ->limit(2)
-        ->get();
+            ->where('rankings.shop_id', $shop_id)
+            ->where('rankings.rank_id', $rank_id)
+            ->select([
+                'casts.gallery_1 as cast_gallery_1',
+            ])
+            ->orderBy('rankings.rank', 'asc')
+            ->limit(2)
+            ->get();
         // dd($rankings);
-        return view('public.shop.' . $shop . '.home',[
+        // dd($banners);
+        return view('public.shop.' . $shop . '.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => $todayCasts,
             'events' => $events,
@@ -246,18 +247,18 @@ class ShizukuController extends Controller
             'image' => 'assets/img/shops/' . $shop . '/news-card-image' . $id . '.png',
             'content' => '本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文',
         ];
-        
+
         // Mock previous and next news (in production, fetch from database)
         $prevNews = $id > 1 ? [
             'id' => $id - 1,
             'title' => '前の記事のタイトル',
         ] : null;
-        
+
         $nextNews = $id < 4 ? [
             'id' => $id + 1,
             'title' => '次の記事のタイトル',
         ] : null;
-        
+
         return view('public.shop.' . $shop . '.news-detail', [
             'news' => $news,
             'prevNews' => $prevNews,
@@ -281,18 +282,18 @@ class ShizukuController extends Controller
             'image' => 'assets/img/shops/' . $shop . '/event-card-' . $id . '.png',
             'content' => '本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文',
         ];
-        
+
         // Mock previous and next event (in production, fetch from database)
         $prevEvent = $id > 1 ? [
             'id' => $id - 1,
             'title' => '前のイベントのタイトル',
         ] : null;
-        
+
         $nextEvent = $id < 4 ? [
             'id' => $id + 1,
             'title' => '次のイベントのタイトル',
         ] : null;
-        
+
         return view('public.shop.' . $shop . '.event-detail', [
             'event' => $event,
             'prevEvent' => $prevEvent,

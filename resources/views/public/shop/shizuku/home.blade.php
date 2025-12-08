@@ -461,7 +461,8 @@
                                 </defs>
                             </svg>
                         </div>
-                        <p class="ranking-badge-text">一覧を見る</p>
+                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'shizuku']) }}"
+                            class="ranking-badge-text">一覧を見る</a>
                     </div>
                     <div class="ranking-header">
                         <div class="ranking-header-bg">
@@ -493,6 +494,21 @@
                     ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
                     ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
                 ]" />
+            @php
+                $banner_list = [];
+                $i = 0;
+                foreach ($banners as $banner) {
+                    # code...
+                    $banner_list[$i]['image'] = asset('storage/' . $banner->thumbnail);
+                    $banner_list[$i]['alt'] = $banner->title;
+                    if ($banner->link_url) {
+                        $banner_list[$i]['url'] = $banner->link_url;
+                    } else {
+                        $banner_list[$i]['url'] = '#';
+                    }
+                    $i += 1;
+                }
+            @endphp
             <x-public.shops.footer :shops="[
                 [
                     'image' => 'assets/img/shops/shizuku/001.jpg',
@@ -536,37 +552,6 @@
                     'text2' => '',
                     'url' => '#',
                 ],
-            ]" :external-links="[
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-1.png',
-                    'alt' => '全国 駅ちか人気！風俗ランキング',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-4.png',
-                    'alt' => 'VANILLA',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-2.png',
-                    'alt' => '風俗求人情報 NO.1 Heaven すすきの求人',
-                    'url' => '#',
-                ],
-                [
-                    'image' => 'assets/img/shops/shizuku/external-link-3.png',
-                    'alt' => '女の子掲載数 NO.1 Heaven ネット すすきの風俗',
-                    'url' => '#',
-                ],
             ]" :menu-links="[
                 ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'shizuku'])],
                 ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku'])],
@@ -586,7 +571,7 @@
                 ['text' => '男性求人', 'url' => '#'],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-            ]" />
+            ]" :external-links="$banner_list" />
         </div>
 
         <!-- Fixed Phone Button -->
