@@ -6,22 +6,22 @@
     'url' => null,
 ])
 
-@if($url)
+@if ($url)
     <a href="{{ $url }}" class="news-card">
-@else
-    <div class="news-card">
+    @else
+        <div class="news-card">
 @endif
-    <div class="news-card-image">
-        <img src="{{ asset($image) }}" alt="{{ $imageAlt }}">
+<div class="news-card-image">
+    <img src="{{ asset($image) }}" alt="{{ $imageAlt }}">
+</div>
+<div class="news-card-content">
+    <p class="news-title">{{ $title }}</p>
+    <p class="news-date">{{ $date }}</p>
+    <div class="news-content">
+        {{ $slot }}
     </div>
-    <div class="news-card-content">
-        <p class="news-title">{{ $title }}</p>
-        <p class="news-date">{{ $date }}</p>
-        <p class="news-content">
-            {{ $slot }}
-        </p>
-    </div>
-@if($url)
+</div>
+@if ($url)
     </a>
 @else
     </div>
