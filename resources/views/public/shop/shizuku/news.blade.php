@@ -6,7 +6,7 @@
                 title="{{ $new->title }}"
                 date="{{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y.m.d') : '' }}"
                 :url="route('public.shops.shop.news.detail', ['shop' => 'shizuku', 'id' => $new->id])">
-                {!! $new->contents !!}
+                {!! nl2br($new->contents) !!}
             </x-public.shops.news-card>
         @endforeach
         {{-- <x-public.shops.news-card image="assets/img/shops/shizuku/news-card-image1.png" image-alt="news-image"
