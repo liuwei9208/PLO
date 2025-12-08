@@ -154,6 +154,7 @@ class ShizukuController extends Controller
                 'shops.slug as shop_slug',
                 'shops.name as shop_name',
             ])
+            ->limit(20)
             ->get();
 
         if ($castlist) {
