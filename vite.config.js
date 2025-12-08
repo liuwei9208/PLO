@@ -128,7 +128,8 @@ export default defineConfig({
                 'resources/scss/shops/shizuku/photo-diary.scss',
                 'resources/scss/shops/event-card.scss',
                 'resources/scss/shops/shizuku/event.scss',
-                'resources/scss/shops/shizuku/event-detail.scss'
+                'resources/scss/shops/shizuku/event-detail.scss',
+                'resources/js/shops/shizuku/photo-diary.js'
             ],
             refresh: true,
         }),
