@@ -19,6 +19,7 @@
     'titleBackgroundGradientMiddlePercent' => '50%',
     'titleBackgroundGradientEnd' => '#B525CE',
     'titleBackgroundGradientEndPercent' => '100%',
+    'shop' => 'shizuku',
 ])
 
 @if ($variant === 'news')
@@ -48,7 +49,8 @@
         @endif
         <div class="news-slider-wrapper" id="{{ $sliderId }}">
             <button class="news-slider-prev" id="{{ $prevButtonId ?? $sliderId . 'Prev' }}">
-                <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z"
                         fill="white" />
@@ -57,18 +59,20 @@
             <div class="news-content">
                 @if (count($items) > 0)
                     @foreach ($items as $item)
-                        <div class="news-content-card">
+                        <a class="news-content-card"
+                            href="{{ route('public.shops.shop.news.detail', ['shop' => $shop->slug, 'id' => $item->id]) }}">
                             <div class="news-content-card-image">
-                                <img src="{{ asset($item['image'] ?? $defaultImage) }}"
+                                <img src="{{ asset('storage/' . $item['thumbnail']) }}"
                                     alt="{{ $item['title'] ?? 'Card Image' }}">
                             </div>
                             <div class="news-content-card-date">
-                                <h2>{{ $item['date'] ?? '00.00' }}</h2>
+                                <h2>{{ $item['published_at'] ? \Carbon\Carbon::createFromTimeString($item['published_at'])->format('m.d') : '' }}
+                                </h2>
                             </div>
                             <div class="news-content-card-content">
                                 <p>{{ $item['title'] ?? 'タイトルタイトルタイトルタイトルタイ' }}</p>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 @else
                     @for ($i = 0; $i < $itemCount; $i++)
@@ -87,7 +91,8 @@
                 @endif
             </div>
             <button class="news-slider-next" id="{{ $nextButtonId ?? $sliderId . 'Next' }}">
-                <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z"
                         fill="white" />
@@ -122,7 +127,8 @@
         @endif
         <div class="diary-slider-wrapper" id="{{ $sliderId }}">
             <button class="diary-slider-prev" id="{{ $prevButtonId ?? $sliderId . 'Prev' }}">
-                <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M10.5052 0C10.6825 0 10.8639 0.0838379 10.9999 0.246558C11.2719 0.571997 11.2719 1.10454 10.9999 1.42998L1.68797 12.574L10.8639 23.5503C11.1359 23.8758 11.1359 24.4083 10.8639 24.7338C10.5918 25.0592 10.1466 25.0592 9.87457 24.7338L0.204043 13.1657C-0.0680143 12.8403 -0.0680143 12.3077 0.204043 11.9823L10.0106 0.246582C10.1466 0.0838623 10.328 4.88281e-05 10.5052 4.88281e-05L10.5052 0Z"
                         fill="white" />
@@ -131,23 +137,24 @@
             <div class="diary-content">
                 @if (count($items) > 0)
                     @foreach ($items as $item)
-                        <div class="diary-content-card">
+                        <a class="diary-content-card" {{-- href="{{ route('public.shops.shop.diarydetail', ['shop' => $shop->slug, 'id' => $item->id]) }}"> --}} href="#">
                             <div class="diary-content-card-image">
-                                <img src="{{ asset($item['image'] ?? $defaultImage) }}"
-                                    alt="{{ $item['title'] ?? 'Card Image' }}">
-                                @if (isset($item['imageText']) && !empty($item['imageText']))
+                                <img src="{{ asset('storage/diary/' . $item['photo']) }}"
+                                    alt="{{ $item['subject'] ?? 'Card Image' }}">
+                                @if (isset($item['subject']) && !empty($item['subject']))
                                     <div class="diary-content-card-image-text">
-                                        <span>{{ $item['imageText'] }}</span>
+                                        <span>{{ $item['subject'] }}</span>
                                     </div>
                                 @endif
                             </div>
                             <div class="diary-content-card-date">
-                                <h2>{{ $item['date'] ?? '投稿者名' }}</h2>
+                                <h2>{{ $item['cast_name'] ?? '投稿者名' }}</h2>
                             </div>
                             <div class="diary-content-card-content">
-                                <p>{{ $item['title'] ?? '0月0日(水) 00:00' }}</p>
+                                <p>{{ $item['created_at'] ? \Carbon\Carbon::createFromTimeString($item['created_at'])->format('m月d日 H:i') : '' }}
+                                </p>
                             </div>
-                        </div>
+                        </a>
                     @endforeach
                 @else
                     @for ($i = 0; $i < $itemCount; $i++)
@@ -169,7 +176,8 @@
                 @endif
             </div>
             <button class="diary-slider-next" id="{{ $nextButtonId ?? $sliderId . 'Next' }}">
-                <svg width="12" height="25" viewBox="0 0 12 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="12" height="25" viewBox="0 0 12 25" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M0.698697 0C0.521441 0 0.340063 0.0838379 0.204035 0.246558C-0.0680227 0.571997 -0.0680227 1.10454 0.204035 1.42998L9.51595 12.574L0.340064 23.5503C0.0680065 23.8758 0.0680065 24.4083 0.340064 24.7338C0.612122 25.0592 1.05729 25.0592 1.32935 24.7338L10.9999 13.1657C11.2719 12.8403 11.2719 12.3077 10.9999 11.9823L1.19332 0.246582C1.05729 0.0838623 0.875954 4.88281e-05 0.698678 4.88281e-05L0.698697 0Z"
                         fill="white" />

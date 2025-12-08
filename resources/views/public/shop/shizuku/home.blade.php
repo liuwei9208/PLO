@@ -150,9 +150,11 @@
             @endif
             <div class="home-news">
                 <x-public.shops.news-section title="news" slider-id="newsSlider"
-                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false' />
+                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false'
+                    :items="$news" :shop="$shop" />
                 <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
-                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false' />
+                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false'
+                    :items="$diaries" :shop="$shop" />
             </div>
             @php
                 $pickupImages = [

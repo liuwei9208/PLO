@@ -92,7 +92,7 @@ class ShizukuController extends Controller
                 'diaries.id',
                 'diaries.subject',
                 'diaries.created_at',
-                'casts.name',
+                'casts.name as cast_name',
                 'casts.shop_id',
                 'diaries.photo',
             ])
@@ -187,6 +187,7 @@ class ShizukuController extends Controller
             ->get();
         // dd($rankings);
         // dd($banners);
+        // dd($news);
         return view('public.shop.' . $shop . '.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => $todayCasts,
@@ -274,7 +275,21 @@ class ShizukuController extends Controller
     public function showNews(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.news');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where('published_status', 1)
+            ->orWhere(function ($query) {
+                $query->where('published_status', 2)
+                    ->where('published_at', '<=', now());
+            })
+            ->inRandomOrder()
+            ->orderBy('published_at', 'desc')
+            ->get();
+        return view('public.shop.' . $shop . '.news', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'banners' => $banners,
+            'news' => $news,
+        ]);
     }
 
     public function showNewsDetail(Request $request, string $shop, $id): View
