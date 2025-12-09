@@ -130,7 +130,11 @@ export default defineConfig({
                 'resources/scss/shops/shizuku/event.scss',
                 'resources/scss/shops/shizuku/event-detail.scss',
                 'resources/js/shops/shizuku/photo-diary.js',
-                'resources/scss/shops/shizuku/shop-list.scss'
+                'resources/scss/shops/shizuku/shop-list.scss',
+                'resources/scss/shops/shizuku/system.scss',
+                'resources/scss/shops/review-card.scss',
+                'resources/scss/shops/shizuku/ranking.scss',
+                
             ],
             refresh: true,
         }),
