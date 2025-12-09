@@ -2,6 +2,7 @@
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
 @use '../schedule-card' as *;
+@use '../pagination' as *;
 
 .castlist-card-list{
     display: grid;
@@ -24,4 +25,8 @@
     .castlist-card-list {
       grid-template-columns: repeat(2, 1fr);
     }
+  }
+  .castlist-pagination {
+    padding: 4rem 0rem;
+    text-align: center;
   }

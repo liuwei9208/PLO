@@ -39,4 +39,10 @@
                 variant="castlist" />
         @endforeach
     </div>
+    <div class="castlist-pagination">
+        {{ $castlist->links('pagination::shops') }}
+    </div>
 </x-shizuku-page-layout>
+{{-- @once
+    @vite(['resources/scss/shops/pagination.scss'])
+@endonce --}}
