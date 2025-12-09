@@ -22,10 +22,10 @@
             </form>
         </div>
         <div class="review-body">
-            @for ($i = 0; $i < 6; $i++)
+            {{-- @for ($i = 0; $i < 6; $i++)
                 <x-public.shops.review-card />
                 <div class="review-row-border" data-index="{{ $i }}"></div>
-            @endfor
+            @endfor --}}
             @foreach ($reviews as $review)
                 <x-public.shops.review-card girl-name="{{ $review->cast_name }}"
                     measurements="{{ $review->cast_age }}歳 / T.{{ $review->cast_height }} B.{{ $review->cast_bust }} ({{ $review->cast_cup }}) W.{{ $review->cast_waist }} H.{{ $review->cast_hip }}"
