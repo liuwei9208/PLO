@@ -134,7 +134,8 @@ export default defineConfig({
                 'resources/scss/shops/shizuku/system.scss',
                 'resources/scss/shops/review-card.scss',
                 'resources/scss/shops/shizuku/ranking.scss',
-                
+                'resources/scss/shops/shizuku/review.scss',
+                'resources/js/shops/shizuku/ranking.js',
             ],
             refresh: true,
         }),
