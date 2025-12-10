@@ -506,7 +506,30 @@ class ShizukuController extends Controller
     public function showRanking(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.ranking');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $shop_unit = Shop::where('slug', $shop)->get()->first();
+        $ranks = Rank::orderBy('id', 'asc')->get();
+        if ( $request->has('rank_id') ) {
+            $rank_id = $request->rank_id;
+        } else {
+            $rank_id = Rank::orderBy('id', 'asc')->first()->id;
+        }
+        $rankings = Ranking::leftJoin('casts', 'rankings.cast_id', '=', 'casts.id')
+        ->where('rankings.shop_id', $shop_unit->id)
+        ->where('casts.shop_id', $shop_unit->id)
+        ->where('casts.is_public',1)
+        ->where('rankings.rank_id', $rank_id)
+        ->select('rankings.*', 'casts.*','rankings.rank as ranking_rank')
+        ->orderBy('rankings.rank', 'asc')
+        ->get();
+        // dd($rankings);
+        return view('public.shop.' . $shop . '.ranking', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'banners' => $banners,
+            'ranks' => $ranks,
+            'rankings' => $rankings,
+            'rank_id' => $rank_id,
+        ]);
     }
 
     public function showPhotoDiary(Request $request): View
