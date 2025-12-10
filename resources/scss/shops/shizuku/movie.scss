@@ -1,0 +1,36 @@
+.movie-list {
+  background: rgba(42, 26, 8, 0.5);
+  display: flex;
+  width: 100%;
+  padding: 40px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.movie-list-item {
+  display: grid;
+  width: 100%;
+  padding: 0 30px;
+  row-gap: 40px;
+  column-gap: 40px;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  &-movie {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-list {
+    padding: 20px 0;
+  }
+  .movie-list-item {
+    row-gap: 30px;
+    padding: 0 15px;
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}

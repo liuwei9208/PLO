@@ -496,6 +496,10 @@
                     ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
                     ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
                     ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
                 ]" />
             @php
                 $banner_list = [];
