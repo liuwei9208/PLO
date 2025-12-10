@@ -137,6 +137,8 @@ export default defineConfig({
         "resources/scss/shops/shizuku/review.scss",
         "resources/js/shops/shizuku/ranking.js",
         // "resources/scss/shops/pagination.scss",
+        'resources/js/shops/event-section.js',
+        'resources/scss/shops/shizuku/movie.scss',
       ],
       refresh: true,
     }),
