@@ -1,28 +1,41 @@
-<x-shizuku-page-layout
-    page-title="RANKING"
-    page-subtitle="女の子ランキング"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 女の子ランキング"
-    :assets="[
-        'resources/scss/shops/shizuku/ranking.scss',
-        'resources/js/shops/shizuku/ranking.js',
-    ]"
->
+<x-shizuku-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
+    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shizuku/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
-        <div class="ranking-searchbar">
-            <button class="ranking-filter-btn-mobile ranking-filter-btn-active">
+        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'shizuku']) }}" method="get"
+            class="ranking-searchbar" name="ranking-searchbar">
+            <select name="rank_id" onchange="this.form.submit()"
+                class="ranking-filter-btn-mobile ranking-filter-btn-active">
+                @foreach ($ranks as $rank)
+                    <option value="{{ $rank->id }}" {{ $rank->id == $rank_id ? 'selected' : '' }}>
+                        {{ $rank->name }}</option>
+                @endforeach
+            </select>
+            {{-- <button class="ranking-filter-btn-mobile ranking-filter-btn-active">
                 <span>本指名ランキング</span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6 7L12 13L18 7L20 9L12 17L4 9L6 7Z" fill="#2A1A08"/>
                 </svg>
-            </button>
+            </button> --}}
             <div class="ranking-filter-buttons-desktop">
-                <button class="ranking-filter-btn ranking-filter-btn-active">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
-                        <path fill-rule="evenodd" clip-rule="evenodd" d="M2 0L8 6L14 0L16 2L8 10L0 2L2 0Z" fill="#2A1A08"/>
-                    </svg>
-                    <span>本指名ランキング</span>
-                </button>
-                <button class="ranking-filter-btn">
+                @foreach ($ranks as $rank)
+                    <button
+                        class="ranking-filter-btn {{ $rank->id == $rank_id ? 'ranking-filter-btn-active' : '' }} ranking-btn-{{ $rank->id }}"
+                        name="rank_id" value="{{ $rank->id }}"
+                        onclick="ranking_filter_btn_click({{ $rank->id }})">
+                        <span>{{ $rank->name }}</span>
+                    </button>
+                @endforeach
+                <script>
+                    function ranking_filter_btn_click(rank_id) {
+                        document.querySelectorAll('.ranking-filter-btn').forEach(btn => {
+                            btn.classList.remove('ranking-filter-btn-active');
+                        });
+                        document.querySelector('.ranking-btn-{{ $rank->id }}').classList.add('ranking-filter-btn-active');
+                        // document.querySelector('.ranking-filter-btn-active').classList.add('ranking-filter-btn');
+                        document.querySelector('form[name="ranking-searchbar"]').submit();
+                    }
+                </script>
+                {{-- <button class="ranking-filter-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6 7L12 13L18 7L20 9L12 17L4 9L6 7Z" fill="#A58C1B"/>
                       </svg>
@@ -45,9 +58,9 @@
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6 7L12 13L18 7L20 9L12 17L4 9L6 7Z" fill="#A58C1B"/>
                       </svg>
                     <span>〇〇ランキング</span>
-                </button>
+                </button> --}}
             </div>
-        </div>
+        </form>
         <div class="ranking-list-no1">
             <div class="ranking-no1-header">
                 <div class="ranking-no1-image">
@@ -55,50 +68,60 @@
                 </div>
                 <div class="no1-person-info pc-only">
                     <h2 class="no1-person-name">
-                        名前名前名前
+                        {{ $rankings[0]->cast->name }}
                     </h2>
                     <p class="no1-person-details">
-                        00歳／T.160 B.85(C) W.60 H.83
+                        {{ $rankings[0]->cast->age }}歳／T.{{ $rankings[0]->cast->height }}
+                        B.{{ $rankings[0]->cast->bust }}({{ $rankings[0]->cast->bust_cup }})
+                        W.{{ $rankings[0]->cast->waist }} H.{{ $rankings[0]->cast->hip }}
                     </p>
                 </div>
                 <div class="no1-person-services pc-only">
                     <p>
-                        女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                        {{ $rankings[0]->cast->appeal_point }}
                     </p>
                 </div>
             </div>
             <div class="rankig-no1-content">
                 <div class="ranking-no1-content-item">
                     <div class="ranking-no1-content-item-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                        <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                            class="ranking-frame">
+                        <img src="{{ asset('storage/' . $rankings[0]->cast->gallery_1) }}" alt="ranking-image"
+                            class="ranking-image">
                     </div>
                 </div>
                 <div class="ranking-no1-content-item">
                     <div class="ranking-no1-content-item-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                        <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                            class="ranking-frame">
+                        <img src="{{ asset('storage/' . $rankings[0]->cast->gallery_2) }}" alt="ranking-image"
+                            class="ranking-image">
                     </div>
                 </div>
                 <div class="ranking-no1-content-item">
                     <div class="ranking-no1-content-item-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                        <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                        <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                            class="ranking-frame">
+                        <img src="{{ asset('storage/' . $rankings[0]->cast->gallery_3) }}" alt="ranking-image"
+                            class="ranking-image">
                     </div>
                 </div>
             </div>
             <div class="no1-person-info-container sp-only">
                 <div class="no1-person-info">
                     <h2 class="no1-person-name">
-                        名前名前名前
+                        {{ $rankings[1]->cast->name }}
                     </h2>
                     <p class="no1-person-details">
-                        00歳／T.160 B.85(C) W.60 H.83
+                        {{ $rankings[1]->cast->age }}歳／T.{{ $rankings[1]->cast->height }}
+                        B.{{ $rankings[1]->cast->bust }}({{ $rankings[1]->cast->bust_cup }})
+                        W.{{ $rankings[1]->cast->waist }} H.{{ $rankings[1]->cast->hip }}
                     </p>
                 </div>
                 <div class="no1-person-services">
                     <p>
-                        女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                        {{ $rankings[1]->cast->appeal_point }}
                     </p>
                 </div>
             </div>
@@ -111,40 +134,48 @@
                     </div>
                     <div class="no23-person-info pc-only">
                         <h2 class="no23-person-name">
-                            名前名前名前
+                            {{ $rankings[1]->cast->name }}
                         </h2>
                         <p class="no23-person-details pc-only">
-                            00歳／T.160 B.85(C) W.60 H.83
+                            {{ $rankings[1]->cast->age }}歳／T.{{ $rankings[1]->cast->height }}
+                            B.{{ $rankings[1]->cast->bust }}({{ $rankings[1]->cast->bust_cup }})
+                            W.{{ $rankings[1]->cast->waist }} H.{{ $rankings[1]->cast->hip }}
                         </p>
                     </div>
                 </div>
                 <div class="ranking-no23-content">
                     <div class="ranking-no23-content-item">
                         <div class="ranking-no23-content-item-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                            <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                                class="ranking-frame">
+                            <img src="{{ asset('storage/' . $rankings[1]->cast->gallery_1) }}" alt="ranking-image"
+                                class="ranking-image">
                         </div>
                     </div>
                     <div class="ranking-no23-content-item pc-only">
                         <div class="ranking-no23-content-item-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                            <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                                class="ranking-frame">
+                            <img src="{{ asset('storage/' . $rankings[1]->cast->gallery_2) }}" alt="ranking-image"
+                                class="ranking-image">
                         </div>
                     </div>
                 </div>
                 <div class="no23-person-info-container sp-only">
                     <div class="no23-person-info">
                         <h2 class="no23-person-name">
-                            名前名前名前
+                            {{ $rankings[1]->cast->name }}
                         </h2>
                         <p class="no23-person-details">
-                            00歳／T.160 B.85(C) W.60 H.83
+                            {{ $rankings[1]->cast->age }}歳／T.{{ $rankings[1]->cast->height }}
+                            B.{{ $rankings[1]->cast->bust }}({{ $rankings[1]->cast->bust_cup }})
+                            W.{{ $rankings[1]->cast->waist }} H.{{ $rankings[1]->cast->hip }}
                         </p>
                     </div>
                 </div>
                 <div class="ranking-no23-services">
                     <p>
-                        女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                        {{ $rankings[1]->cast->appeal_point }}
                     </p>
                 </div>
             </div>
@@ -155,40 +186,48 @@
                     </div>
                     <div class="no23-person-info pc-only">
                         <h2 class="no23-person-name">
-                            名前名前名前
+                            {{ $rankings[2]->cast->name }}
                         </h2>
                         <p class="no23-person-details pc-only">
-                            00歳／T.160 B.85(C) W.60 H.83
+                            {{ $rankings[2]->cast->age }}歳／T.{{ $rankings[2]->cast->height }}
+                            B.{{ $rankings[2]->cast->bust }}({{ $rankings[2]->cast->bust_cup }})
+                            W.{{ $rankings[2]->cast->waist }} H.{{ $rankings[2]->cast->hip }}
                         </p>
                     </div>
                 </div>
                 <div class="ranking-no23-content">
                     <div class="ranking-no23-content-item">
                         <div class="ranking-no23-content-item-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                            <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                                class="ranking-frame">
+                            <img src="{{ asset('storage/' . $rankings[2]->cast->gallery_1) }}" alt="ranking-image"
+                                class="ranking-image">
                         </div>
                     </div>
                     <div class="ranking-no23-content-item pc-only">
                         <div class="ranking-no23-content-item-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                            <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
+                                class="ranking-frame">
+                            <img src="{{ asset('storage/' . $rankings[2]->cast->gallery_2) }}" alt="ranking-image"
+                                class="ranking-image">
                         </div>
                     </div>
                 </div>
                 <div class="no23-person-info-container sp-only">
                     <div class="no23-person-info">
                         <h2 class="no23-person-name">
-                            名前名前名前
+                            {{ $rankings[2]->cast->name }}
                         </h2>
                         <p class="no23-person-details">
-                            00歳／T.160 B.85(C) W.60 H.83
+                            {{ $rankings[2]->cast->age }}歳／T.{{ $rankings[2]->cast->height }}
+                            B.{{ $rankings[2]->cast->bust }}({{ $rankings[2]->cast->bust_cup }})
+                            W.{{ $rankings[2]->cast->waist }} H.{{ $rankings[2]->cast->hip }}
                         </p>
                     </div>
                 </div>
                 <div class="ranking-no23-services">
                     <p>
-                        女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                        {{ $rankings[2]->cast->appeal_point }}
                     </p>
                 </div>
             </div>
@@ -204,24 +243,28 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[3]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
                             </div>
                         </div>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
                             <h2 class="no4567-person-name">
-                                名前名前名前
+                                {{ $rankings[3]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                00歳／T.160 B.85(C) W.60 H.83
+                                {{ $rankings[3]->cast->age }}歳／T.{{ $rankings[3]->cast->height }}
+                                B.{{ $rankings[3]->cast->bust }}({{ $rankings[3]->cast->bust_cup }})
+                                W.{{ $rankings[3]->cast->waist }} H.{{ $rankings[3]->cast->hip }}
                             </p>
                         </div>
                         <hr class="ranking-no4567-hr pc-only">
                         <div class="ranking-no4567-services">
                             <p>
-                                女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                                {{ $rankings[3]->cast->appeal_point }}
                             </p>
                         </div>
                     </div>
@@ -237,29 +280,34 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[4]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
                             </div>
                         </div>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
                             <h2 class="no4567-person-name">
-                                名前名前名前
+                                {{ $rankings[4]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                00歳／T.160 B.85(C) W.60 H.83
+                                {{ $rankings[4]->cast->age }}歳／T.{{ $rankings[4]->cast->height }}
+                                B.{{ $rankings[4]->cast->bust }}({{ $rankings[4]->cast->bust_cup }})
+                                W.{{ $rankings[4]->cast->waist }} H.{{ $rankings[4]->cast->hip }}
                             </p>
                         </div>
                         <hr class="ranking-no4567-hr pc-only">
                         <div class="ranking-no4567-services">
                             <p>
-                                女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                                {{ $rankings[4]->cast->appeal_point }}
                             </p>
                         </div>
                     </div>
                 </div>
-            </div>            <div class="ranking-no4567-container">
+            </div>
+            <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
                         <img src="{{ asset('assets/img/shops/shizuku/no6.png') }}" alt="ranking-no4">
@@ -269,24 +317,28 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
                             </div>
                         </div>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
                             <h2 class="no4567-person-name">
-                                名前名前名前
+                                {{ $rankings[5]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                00歳／T.160 B.85(C) W.60 H.83
+                                {{ $rankings[5]->cast->age }}歳／T.{{ $rankings[5]->cast->height }}
+                                B.{{ $rankings[5]->cast->bust }}({{ $rankings[5]->cast->bust_cup }})
+                                W.{{ $rankings[5]->cast->waist }} H.{{ $rankings[5]->cast->hip }}
                             </p>
                         </div>
                         <hr class="ranking-no4567-hr pc-only">
                         <div class="ranking-no4567-services">
                             <p>
-                                女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                                {{ $rankings[5]->cast->appeal_point }}
                             </p>
                         </div>
                     </div>
@@ -302,24 +354,28 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('assets/img/shops/shizuku/ranking-image.png') }}" alt="ranking-image" class="ranking-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
                             </div>
                         </div>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
                             <h2 class="no4567-person-name">
-                                名前名前名前
+                                {{ $rankings[6]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                00歳／T.160 B.85(C) W.60 H.83
+                                {{ $rankings[6]->cast->age }}歳／T.{{ $rankings[6]->cast->height }}
+                                B.{{ $rankings[6]->cast->bust }}({{ $rankings[6]->cast->bust_cup }})
+                                W.{{ $rankings[6]->cast->waist }} H.{{ $rankings[6]->cast->hip }}
                             </p>
                         </div>
                         <hr class="ranking-no4567-hr pc-only">
                         <div class="ranking-no4567-services">
                             <p>
-                                女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります女の子メッセージが入ります
+                                {{ $rankings[6]->cast->appeal_point }}
                             </p>
                         </div>
                     </div>
