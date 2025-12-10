@@ -633,4 +633,15 @@ class ShizukuController extends Controller
             'shops' => $shops,
         ]);
     }
+    public function showMovie(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        // $movies = Video::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        // ->orderBy('updated_at', 'desc')
+        // ->get();
+        return view('public.shop.' . $shop . '.movie', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            // 'movies' => $movies,
+        ]);
+    }
 }
