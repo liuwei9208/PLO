@@ -489,18 +489,30 @@
                     </div>
                 </div>
             @endif
+            @php
+                $event_list = [];
+                $i = 0;
+                foreach ($events as $event) {
+                    $event_list[$i]['image'] = asset('storage/' . $event->thumbnail);
+                    $event_list[$i]['alt'] = $event->title;
+                    $i += 1;
+                }
+            @endphp
             <x-public.shops.event-section background-image="assets/img/shops/shizuku/event-bg.png"
-                background-alt="Event Background" main-banner-image="assets/img/shops/shizuku/event-main.png"
-                main-banner-alt="Main Banner Background" :sub-banner-images="[
-                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
-                    ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
-                ]" />
+                background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
+                :sub-banner-images="$event_list" />
+            {{-- <x-public.shops.event-section background-image="assets/img/shops/shizuku/event-bg.png"
+            background-alt="Event Background" main-banner-image="assets/img/shops/shizuku/event-main.png"
+            main-banner-alt="Main Banner Background" :sub-banner-images="[
+                ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-main.png', 'alt' => 'Event Sub Banner'],
+                ['image' => 'assets/img/shops/shizuku/event-second.png', 'alt' => 'Event Sub Banner'],
+            ]" /> --}}
             @php
                 $banner_list = [];
                 $i = 0;
