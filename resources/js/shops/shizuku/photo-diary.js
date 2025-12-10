@@ -33,12 +33,12 @@ function initializeCalendar(calendarEl, calendarInstance) {
           if (diarys_date[i].date == info.dateStr) {
             const shopSlug =
               typeof shop_slug !== "undefined" ? shop_slug : "shizuku";
-            const castId =
-              typeof cast_id !== "undefined" && cast_id ? cast_id : "";
-            if (castId) {
-              window.location.href = `/${shopSlug}/diarylist?cast_id=${castId}&date=${info.dateStr}`;
+            const date = info.dateStr;
+              // typeof date !== "undefined" ? info.dateStr : "";
+            if (date != '') {
+              window.location.href = `/shops/${shopSlug}/photo-diary?date=${date}`;
             } else {
-              window.location.href = `/${shopSlug}/diarylist?date=${info.dateStr}`;
+              window.location.href = `/shops/${shopSlug}/photo-diary`;
             }
             return;
           }

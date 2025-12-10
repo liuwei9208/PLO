@@ -1,6 +1,7 @@
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
 @use '../new-girl-card' as *;
+@use '../pagination' as *;
 
 .newcast-section{
     display: grid;
@@ -22,4 +23,8 @@
         min-width: unset;
         max-width: 100%;
     }
+}
+.newcast-pagination {
+    margin-top: 20px;
+    text-align: center;
 }

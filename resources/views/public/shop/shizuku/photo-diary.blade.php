@@ -3,7 +3,7 @@
 @endpush
 
 <x-shizuku-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記"
-    :assets="['resources/scss/shops/shizuku/photo-diary.scss']">
+    :assets="['resources/scss/shops/shizuku/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
@@ -11,7 +11,41 @@
         </div>
         <div class="diary-body-right-content">
             <div class="diary-post-cards">
-                @foreach (range(1, 4) as $index)
+                @foreach ($diarys as $diary)
+                    <div class="diary-post-card pc-only">
+                        <div class="diary-post-title">
+                            <h1>{{ $diary->cast_name }}</h1>
+                            <span>{{ $diary->subject }}</span>
+                            <hr>
+                            </hr>
+                            <p>{{ $diary->created_at->format('Y.m.d.') }}</p>
+                        </div>
+                        <div class="diary-post-image">
+                            <img src="{{ asset('storage/diary/' . $diary->photo) }}">
+                        </div>
+                        <div class="diary-post-content">
+                            <p>{!! nl2br($diary->body) !!}</p>
+                        </div>
+                    </div>
+                    <div class="sp-only">
+                        <div class="diary-post-sp-card">
+                            <div class="diary-post-image">
+                                <img src="{{ asset('storage/diary/' . $diary->photo) }}">
+                            </div>
+                            <div class="diary-post-title">
+                                <h1>{{ $diary->cast_name }}</h1>
+                                <span>{{ $diary->subject }}</span>
+                                <hr>
+                                </hr>
+                                <p>{{ $diary->created_at->format('Y.m.d.') }}</p>
+                                <div class="diary-post-content">
+                                    <p>{!! nl2br($diary->body) !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- @foreach (range(1, 4) as $index)
                     <div class="diary-post-card pc-only">
                         <div class="diary-post-title">
                             <h1>投稿者名</h1>
@@ -48,10 +82,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
             </div>
             <div class="diary-pagination pc-only">
-                <nav class="page-navigation">
+                {{ $diarys->links('pagination::shops') }}
+                {{-- <nav class="page-navigation">
                     <a href="#" class="page-nav-btn prev" aria-label="Previous">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             fill="none">
@@ -84,12 +119,13 @@
                             </defs>
                         </svg>
                     </a>
-                </nav>
+                </nav> --}}
             </div>
         </div>
     </section>
     <div class="diary-pagination sp-only">
-        <nav class="page-navigation">
+        {{ $diarys->links('pagination::shops') }}
+        {{-- <nav class="page-navigation">
             <a href="#" class="page-nav-btn prev" aria-label="Previous">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                     fill="none">
@@ -120,7 +156,7 @@
                     </defs>
                 </svg>
             </a>
-        </nav>
+        </nav> --}}
     </div>
     <div class="diary-body-mobile-calendar sp-only">
         <div class="diary-body-left-calendar-content" id="diary-calendar-mobile">
@@ -128,11 +164,11 @@
     </div>
 </x-shizuku-page-layout>
 <script>
-    let cast_id = "";
-    let shop_id = "";
-    let shop_slug = "shizuku";
-    let date = "";
-    let diarys_date = [];
+    // let cast_id = "";
+    let shop_id = "{{ $shop->id }}";
+    let shop_slug = "{{ $shop->slug }}";
+    let date = "{{ $date }}";
+    let diarys_date = {!! json_encode($diarys_date) !!};
 </script>
 @once
     @vite(['resources/scss/shops/shizuku/photo-diary.scss', 'resources/js/shops/shizuku/photo-diary.js'])

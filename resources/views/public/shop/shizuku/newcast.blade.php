@@ -21,4 +21,7 @@
                 measurements-color="#FFFFFF" />
         @endforeach
     </section>
+    <div class="newcast-pagination">
+        {{ $new_girls->links('pagination::shops') }}
+    </div>
 </x-shizuku-page-layout>

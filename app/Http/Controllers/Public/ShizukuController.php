@@ -302,7 +302,9 @@ class ShizukuController extends Controller
             'shops.slug as shop_slug',
             'shops.name as shop_name',
         ]) // 必要に応じて明示的に
-        ->get();
+        ->paginate(20)
+        ->onEachSide(0)
+        ->withPath('schedule');
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.shop.' . $shop . '.schedule', [
             'banners' => $banners,
@@ -319,9 +321,11 @@ class ShizukuController extends Controller
                 $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->where('joined_at', '>=', Carbon::now()->subWeek(2))
             // ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
-            ->get();
+            ->paginate(6)
+            ->onEachSide(0)
+            ->withPath('newcast');
         if ($new_girls) {
-            $new_girls = $new_girls->map(function ($new_girl) {
+            $new_girls->getCollection()->transform(function ($new_girl) {
                 $sql = "SELECT group_concat(personalities.name) AS personality FROM `" . env('DB_DATABASE') . "`.cast_personality
     LEFT JOIN `" . env('DB_DATABASE') . "`.personalities
     ON cast_personality.personality_id = personalities.id
@@ -364,7 +368,9 @@ class ShizukuController extends Controller
             })
             ->inRandomOrder()
             ->orderBy('published_at', 'desc')
-            ->get();
+            ->paginate(4)
+            ->onEachSide(0)
+            ->withPath('news');
         return view('public.shop.' . $shop . '.news', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'banners' => $banners,
@@ -437,7 +443,9 @@ class ShizukuController extends Controller
                 });
         })
         ->orderBy('published_at', 'desc')
-        ->get();
+        ->paginate(4)
+        ->onEachSide(0)
+        ->withPath('event');
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.shop.' . $shop . '.event', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
@@ -535,7 +543,55 @@ class ShizukuController extends Controller
     public function showPhotoDiary(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.photo-diary');
+
+        $query = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('diaries.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->select('diaries.*', 'casts.name as cast_name', 'casts.id as cast_id', 'shops.name as shop_name', 'shops.slug as shop_slug');
+
+        $query_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+        ->where('diaries.is_public', 1)
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
+
+        // if ($request->has('cast_id')) {
+        //     $cast_id = $request->cast_id;
+        //     if ($cast_id != '') {
+        //         $query->where('diaries.cast_id', $cast_id);
+        //         $query_date->where('diaries.cast_id', $cast_id);
+        //     }
+        // }
+        if ($request->has('date')) {
+            $date = $request->date;
+            if ($date != '') {
+                $query->whereDate('diaries.created_at', $date);
+            }
+        }
+        $diarys = $query->orderBy('diaries.created_at', 'desc')
+        // ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+        ->paginate(4)
+        ->onEachSide(0)
+        ->appends([
+            // 'cast_id' => $request->cast_id ?? '',
+            'date' => $request->date ?? '',
+        ])
+        ->withPath('photo-diary');
+
+        $diarys_date = $query_date->groupBy('date')
+        ->get();
+
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        return view('public.shop.' . $shop . '.photo-diary', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'diarys' => $diarys,
+            'diarys_date' => $diarys_date,
+            // 'cast_id' => $request->cast_id ?? '',
+            'date' => $request->date ?? '',
+            'banners' => $banners,
+        ]);
     }
 
     public function showReview(Request $request, string $shop, string $id = null): View

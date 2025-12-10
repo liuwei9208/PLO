@@ -1,7 +1,7 @@
 @use "../../global/vars" as *;
 @use "../../mixins/font" as *;
 @use "../../global/setting" as *;
-
+@use "../pagination.scss" as *;
 .photo-diary-section {
   background: rgba(42, 26, 8, 0.6);
   display: flex;
@@ -121,7 +121,7 @@
   padding: 20px 0 50px 0;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   //   gap: 2.78%; // ~40px at 1440px base
   gap: 40px;
   flex-shrink: 0;
@@ -284,6 +284,14 @@
   font-style: normal;
   font-weight: 400;
   line-height: 29px; /* 170.588% */
+
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+
 }
 
 .diary-pagination {
@@ -301,62 +309,62 @@
   }
 }
 
-.page-navigation {
-  display: flex;
-  justify-content: right;
-  align-items: right;
-  gap: 8px;
-  margin-right: 30px;
-}
+// .page-navigation {
+//   display: flex;
+//   justify-content: right;
+//   align-items: right;
+//   gap: 8px;
+//   margin-right: 30px;
+// }
 
-@media screen and (max-width: 850px) {
-  .page-navigation {
-    justify-content: center;
-    align-items: center;
-    margin-right: 0;
-    margin-left: 30px;
-  }
-}
+// @media screen and (max-width: 850px) {
+//   .page-navigation {
+//     justify-content: center;
+//     align-items: center;
+//     margin-right: 0;
+//     margin-left: 30px;
+//   }
+// }
 
-.page-nav-btn,
-.page-number {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-width: 40px;
-  height: 40px;
-  border-radius: 4px;
-  background: $white;
-  color: var(---N___, $black);
-  text-decoration: none;
-  @include yu-mincho-regular();
-  font-size: 16px;
-  font-weight: 400;
-  @media screen and (max-width: 850px) {
-    min-width: 36px;
-    height: 36px;
-    padding: 0 0px;
-    font-size: 14px;
-  }
-}
+// .page-nav-btn,
+// .page-number {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   min-width: 40px;
+//   height: 40px;
+//   border-radius: 4px;
+//   background: $white;
+//   color: var(---N___, $black);
+//   text-decoration: none;
+//   @include yu-mincho-regular();
+//   font-size: 16px;
+//   font-weight: 400;
+//   @media screen and (max-width: 850px) {
+//     min-width: 36px;
+//     height: 36px;
+//     padding: 0 0px;
+//     font-size: 14px;
+//   }
+// }
 
-.page-number.active {
-  background: var(---N_, #ffda89);
-  color: var(---N__, #2a1a08);
-  border-color: #ffda89;
-  font-weight: 600;
+// .page-number.active {
+//   background: var(---N_, #ffda89);
+//   color: var(---N__, #2a1a08);
+//   border-color: #ffda89;
+//   font-weight: 600;
 
-  &:hover {
-    background: #ffda89;
-    opacity: 1;
-  }
-}
+//   &:hover {
+//     background: #ffda89;
+//     opacity: 1;
+//   }
+// }
 
-.page-nav-btn.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
+// .page-nav-btn.disabled {
+//   opacity: 0.5;
+//   cursor: not-allowed;
+//   pointer-events: none;
+// }
 
 .diary-body-mobile-calendar {
   display: none;

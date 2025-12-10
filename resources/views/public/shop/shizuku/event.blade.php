@@ -7,5 +7,8 @@
                 {!! nl2br($event->contents) !!}
             </x-public.shops.event-card>
         @endforeach
+        <div class="event-pagination">
+            {{ $events->links('pagination::shops') }}
+        </div>
     </section>
 </x-shizuku-page-layout>
