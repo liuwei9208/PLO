@@ -1,6 +1,6 @@
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
-
+@use '../pagination' as *;
 .event-section {
     margin: 0px auto;
 }
@@ -11,4 +11,8 @@
         background: var(---N_, rgba(42, 26, 8, 0.75));
 
     }
+}
+.event-pagination {
+    margin-top: 20px;
+    text-align: center;
 }

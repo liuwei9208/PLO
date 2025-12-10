@@ -9,6 +9,9 @@
                 {!! nl2br($new->contents) !!}
             </x-public.shops.news-card>
         @endforeach
+        <div class="news-pagination">
+            {{ $news->links('pagination::shops') }}
+        </div>
         {{-- <x-public.shops.news-card image="assets/img/shops/shizuku/news-card-image1.png" image-alt="news-image"
             title="タイトルタイトルタイトルタイトルタイ" date="カテゴリ名 | 00.00.00" :url="route('public.shops.shop.news.detail', ['shop' => 'shizuku', 'id' => 1])">
             本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
