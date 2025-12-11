@@ -5,11 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuOverlay = document.getElementById('menuOverlay');
     const menuClose = document.getElementById('menuClose');
     const menuCloseMobile = document.getElementById('menuCloseMobile');
-    
+    const fixedSideButtons = document.querySelector('.fixed-side-buttons');
+
     function openMenu() {
         if (menuOverlay) {
             menuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
+            fixedSideButtons.style.display = 'none';
         }
     }
     
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (menuOverlay) {
             menuOverlay.classList.remove('active');
             document.body.style.overflow = '';
+            fixedSideButtons.style.display = 'flex';
         }
     }
     

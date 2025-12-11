@@ -862,6 +862,15 @@
   gap: 10px;
   align-self: stretch;
   background: var(---N___, #fff);
+  margin: 0;
+  color: #2a1a08;
+  @include yu-mincho-regular();
+  @include responsive-font(24px, 20px);
+  // font-size: 20px;
+  font-weight: 600;
+  line-height: normal;
+  text-align: center;
+  white-space: break-spaces;
 
   p {
     margin: 0;
