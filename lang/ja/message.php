@@ -21,5 +21,8 @@ return [
     'admin_option_rs_delete_success' => 'オプションを削除しました',
     'admin_extend_delete_success' => '延長を削除しました',
     'admin_appoint_delete_success' => '予約を削除しました',
+    'admin_system_update_success' => '料金システムを更新しました',
+    'admin_system_header_required' => 'ヘッター画像は必須です',
+    'admin_system_play_required' => 'プレイ画像は必須です',
 ];
 ?>

@@ -30,6 +30,7 @@ use App\Http\Controllers\Admin\AppointController;
 use App\Http\Controllers\Admin\IndividualityController;
 use App\Http\Controllers\Admin\PlaystyleController;
 use App\Http\Controllers\Admin\RankController;
+use App\Http\Controllers\Admin\SystemController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -268,7 +269,14 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::delete('{id}', [BannerController::class, 'destroy']);
     });
 
-
+    Route::prefix('system')->name('system.')->group(function () {
+        Route::get('/', [SystemController::class, 'index'])->name('index');
+        // Route::get('add', [SystemController::class, 'create'])->name('create');
+        Route::post('add', [SystemController::class, 'store']);
+        Route::get('{id}', [SystemController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+        Route::put('{id}', [SystemController::class, 'update']);
+        Route::delete('{id}', [SystemController::class, 'destroy']);
+    });
     /**
      * News
      *

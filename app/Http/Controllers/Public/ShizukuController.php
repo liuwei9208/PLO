@@ -29,6 +29,7 @@ use App\Models\Extend;
 use App\Models\OptionRS;
 use App\Models\Pickup;
 use App\Models\Rank;
+use App\Models\System;
 
 class ShizukuController extends Controller
 {
@@ -207,7 +208,15 @@ class ShizukuController extends Controller
     public function showSystem(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.system');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        $system = System::where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->first();
+
+        return view('public.shop.' . $shop . '.system', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'system' => $system,
+            'banners' => $banners,
+        ]);
     }
 
     public function showProfile(Request $request,string $shop,int $id): View
