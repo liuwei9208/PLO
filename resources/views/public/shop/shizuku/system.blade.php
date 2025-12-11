@@ -67,7 +67,7 @@
                 @if ($system && $system->play)
                     <img src="{{ asset('storage/' . $system->play) }}" alt="Basic Play Image">
                 @else
-                    <span class="basic-play-image-text">キス｜全身リップ｜フェラ｜玉舐め｜スマタ</span>
+                    <span class="basic-play-content">キス｜全身リップ｜フェラ｜玉舐め｜スマタ</span>
                 @endif
             </div>
             {{-- <div class="basic-play-content sp-only">
