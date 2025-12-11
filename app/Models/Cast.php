@@ -44,7 +44,8 @@ class Cast extends Model
         'is_public',
         'memo',
         'video1_id',
-        'video2_id'
+        'video2_id',
+        'catch_copy'
     ];
 
     /**

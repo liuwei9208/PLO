@@ -33,13 +33,14 @@
     'carddividerColor' => '#FFF',
     'carddividerverticalGradient' => true,
     'carddividerverticalColor' => '#05F2DB',
+    'href_cast_profile' => null,
 ])
 
 @php
     $uniqueId = $gradientId ?? 'calendar-gradient-' . uniqid();
 @endphp
 
-<div class="new-girl-card">
+<a class="new-girl-card" href="{{ $href_cast_profile }}">
     <div class="new-girl-card-left">
         <div class="new-girl-card-bg-left">
             <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg-image">
@@ -98,4 +99,4 @@
     <div class="new-girl-card-right">
         <img src="{{ asset($photoImage) }}" alt="Cast Photo" class="card-photo">
     </div>
-</div>
+</a>

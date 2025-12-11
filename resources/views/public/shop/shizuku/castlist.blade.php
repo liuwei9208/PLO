@@ -27,16 +27,14 @@
         />
     @endfor --}}
         @foreach ($castlist as $cast)
-            <x-public.shops.schedule-card background-image="{{ asset('storage/' . $cast->gallery_1) }}"
+            <x-public.shops.schedule-card
+                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
+                background-image="{{ asset('storage/' . $cast->gallery_1) }}"
                 frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                 badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                 status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                 measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
-                message="{{ $cast->appeal_point }}" badge-border-color="#B90000" badge-bg-color="#B90000"
-                badge-text-color="#FFDA89" badge-time-color="#2A1A08" status-text-color="#FFE500" name-color="#FFFFFF"
-                measurements-color="#FFFFFF" message-gradient-start="#FFF2D7" message-gradient-end="#BD902F"
-                content-gradient-start="rgba(42, 26, 8, 0.80)" content-gradient-end="rgba(0, 0, 0, 0.00)"
-                variant="castlist" />
+                message="{{ $cast->appeal_point }}" variant="castlist" />
         @endforeach
     </div>
     <div class="castlist-pagination">

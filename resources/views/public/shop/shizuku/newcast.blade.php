@@ -10,7 +10,9 @@
                 overlay-opacity="0.7" name-color="#FFFFFF" measurements-color="#FFFFFF" />
         @endfor --}}
         @foreach ($new_girls as $new_girl)
-            <x-public.shops.new-girl-card background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
+            <x-public.shops.new-girl-card
+                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"
+                background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                 photo-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                 date="{{ $new_girl->joined_at ? \Carbon\Carbon::parse($new_girl->joined_at)->format('Y.m.d D') : '' }}"
                 date-label="入店" name="{{ $new_girl->name }}" name-vertical="{{ $new_girl->name }}"
