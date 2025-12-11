@@ -193,7 +193,8 @@
                             d="M11.2928 17.541C12.14 17.2818 12.2245 18.5787 11.3691 18.4363C10.9325 18.3642 10.9352 17.6505 11.2928 17.541Z"
                             fill="{{ $menuIconColor['ranking'] ?? '#D6AD01' }}" />
                     </svg>
-                    <span>女の子ランキング</span>
+                    {{-- <span>女の子ランキング</span> --}}
+                    <span>ランキング</span>
                 </a>
                 <a href="{{ $menuLinks['login'] ?? '#' }}" class="menu-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="25" viewBox="0 0 21 25"
