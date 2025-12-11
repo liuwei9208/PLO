@@ -684,8 +684,8 @@
                             <ul :class="sidebarToggle ? 'lg:hidden' : 'flex'"
                                 class="flex flex-col gap-1 mt-2 menu-dropdown pl-9">
                                 <li>
-                                    <a href="{{ url('/admin/shop') }}" class="menu-dropdown-item group"
-                                        :class="page === 'shop' ? 'menu-dropdown-item-active' :
+                                    <a href="{{ url('/admin/system') }}" class="menu-dropdown-item group"
+                                        :class="page === 'system' ? 'menu-dropdown-item-active' :
                                             'menu-dropdown-item-inactive'">
                                         料金画面管理
                                     </a>
