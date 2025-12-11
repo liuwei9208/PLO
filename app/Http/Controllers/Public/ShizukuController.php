@@ -210,10 +210,140 @@ class ShizukuController extends Controller
         return view('public.shop.' . $shop . '.system');
     }
 
-    public function showProfile(Request $request): View
+    public function showProfile(Request $request,string $shop,int $id): View
     {
         $shop = $request->route('shop', 'shizuku');
-        return view('public.shop.' . $shop . '.profile');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        $cast = Cast::where('id', $id)->where('is_public', 1)->with('styles')->with('personalities')->with('options')->firstOrFail();
+        $gallerys = [];
+        $gallery_index = 0;
+        // dd($cast);
+        for ($i = 0; $i < 10; $i++) {
+            if ($cast['gallery_'. ($i + 1)] !== null && $cast['gallery_'. ($i + 1)] !== '') {
+                if (Storage::disk('public')->exists($cast['gallery_'. ($i + 1)])) {
+                    $gallerys[$gallery_index] = $cast['gallery_'. ($i + 1)];
+                    $gallery_index++;
+                }
+
+            }
+        }
+
+        // $diarys = Diary::where('cast_id', $id)->where('is_public', 1)->orderBy('created_at', 'desc')->limit(4)->get();
+        $diarys = Diary::where('cast_id', $id)->where('is_public', 1)->orderBy('created_at', 'desc')->get();
+        $qas = Qa::where('cast_id', $cast->id)->where('question_id', '!=', null)->with('question')->orderBy('rank', 'asc')->get();
+        $personalities = [];
+        $styles = [];
+        $individualities = [];
+        $playstyles = [];
+        foreach ($cast->personalities as $personality) {
+            $personalities[] = $personality->name;
+        }
+        // $personalities = implode(', ', $personalities);
+        foreach ($cast->styles as $style) {
+            $styles[] = $style->name;
+        }
+        // $styles = implode(', ', $styles);
+        // foreach ($cast->options as $option) {
+        //     $options[] = $option->name;
+        // }
+        foreach ($cast->individualities as $individuality) {
+            $individualities[] = $individuality->name;
+        }
+        foreach ($cast->playstyles as $playstyle) {
+            $playstyles[] = $playstyle->name;
+        }
+
+        $attendances = Attendance::where('attendances.cast_id', $cast->id)
+        ->where('attendances.is_public', 1)
+        ->whereDate('attendances.start_datetime', '>=', Carbon::now()->toDateString())
+        ->WhereDate('attendances.end_datetime', '<=', Carbon::now()->addWeek(1)->toDateString())
+        ->selectRaw("DATE_FORMAT(attendances.start_datetime, '%m/%d') as start_date,
+            DATE_FORMAT(attendances.end_datetime, '%m/%d') as end_date,
+            DATE_FORMAT(attendances.start_datetime, '%w') as week_day,
+            DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
+            DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_time")
+        ->get();
+
+        Carbon::setLocale('ja');
+        for ($i = 0; $i < 7; $i++) {
+            $date = Carbon::now()->addDays($i)->format('Y-m-d');
+            $weekDay = Carbon::now()->addDays($i)->format('m/d');
+            // $minDay = Carbon::now()->addDays($i)->getTranslatedMinDayName();
+            $minDay = Carbon::now()->addDays($i)->dayOfWeek;
+            $status = 'お休み';
+            foreach ($attendances as $attendance) {
+                if ($attendance->start_date == $date) {
+                    // $status =   '出勤中';
+                    $status = $attendance->start_time . '~' . $attendance->end_time;
+                }
+            }
+            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay, 'status'=>$status, 'minDay'=>$minDay] ;
+        }
+
+        $videos = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
+        ->where('videos.cast_id', $id)
+        ->where('videos.is_public', 1)
+        ->orderBy('videos.updated_at', 'desc')
+        ->limit(2)
+        ->select('videos.*','casts.*')
+        ->get();
+
+
+        $sql = 'SELECT `'.env("DB_DATABASE").'`.reviews.id as review_id,
+        `'.env("DB_DATABASE").'`.reviews.title as review_title,
+        `'.env("DB_DATABASE").'`.reviews.content as review_content,
+        `'.env("DB_DATABASE").'`.reviews.created_at as review_created_at,
+        `'.env("DB_DATABASE").'`.reviews.is_public as review_is_public,
+        `'.env("DB_DATABASE").'`.reviews.member_id as review_member_id,
+        `'.env("DB_DATABASE").'`.reviews.history_id as review_history_id,
+        `'.env("DB_DATABASE").'`.reviews.average_point as review_average_point,
+        `'.env("DB_DATABASE").'`.reviews.cast_point as review_cast_point,
+        `'.env("DB_DATABASE").'`.reviews.play_point as review_play_point,
+        `'.env("DB_DATABASE").'`.reviews.price_point as review_price_point,
+        `'.env("DB_DATABASE").'`.reviews.stuff_point as review_stuff_point,
+        `'.env("DB_DATABASE").'`.reviews.photo_point as review_photo_point,
+        `'.env("DB_DATABASE").'`.reviews.manager_comment as review_manager_comment,
+        `'.env("DB_DATABASE").'`.members.name as member_name,
+        `'.env("DB_DATABASE").'`.casts.id as cast_id,
+        `'.env("DB_DATABASE").'`.casts.name as cast_name,
+        `'.env("DB_DATABASE").'`.casts.age as cast_age,
+        `'.env("DB_DATABASE").'`.casts.height as cast_height,
+        `'.env("DB_DATABASE").'`.casts.bra_size as cast_cup,
+        `'.env("DB_DATABASE").'`.casts.bust as cast_bust,
+        `'.env("DB_DATABASE").'`.casts.waist as cast_waist,
+        `'.env("DB_DATABASE").'`.casts.hip as cast_hip,
+        `'.env("DB_DATABASE").'`.casts.gallery_1 as cast_gallery,
+        `'.env("DB_DATABASE").'`.casts.manager_comment as cast_manager_comment
+        FROM `'.env("DB_DATABASE").'`.reviews
+        LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.histories ON `'.env("DB_DATABASE").'`.reviews.history_id = `'.env("MEMBER_DB_DATABASE").'`.histories.id
+        LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("DB_DATABASE").'`.reviews.member_id = `'.env("DB_DATABASE").'`.members.id
+        LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
+        WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = '.Shop::where('slug', $shop)->first()->id.'
+        AND `'.env("DB_DATABASE").'`.casts.is_public = 1';
+
+        $sql .= ' AND `'.env("DB_DATABASE").'`.casts.id = '.$id;
+
+        $sql .= ' AND `'.env("DB_DATABASE").'`.reviews.is_public = 1 ORDER BY `'.env("DB_DATABASE").'`.reviews.created_at DESC LIMIT 2';
+        // dd($sql);
+        $reviews = DB::select($sql);
+
+        return view('public.shop.' . $shop . '.profile', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'cast' => $cast,
+            'gallerys' => $gallerys,
+            'diarys' => $diarys,
+            'qas' => $qas,
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'individualities' => $individualities,
+            'playstyles' => $playstyles,
+            'banners' => $banners,
+            'attendances' => $attendances,
+            'days' => $days,
+            'videos' => $videos,
+            'reviews' => $reviews,
+        ]);
     }
 
     public function showCastlist(Request $request): View

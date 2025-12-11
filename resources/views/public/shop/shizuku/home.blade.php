@@ -194,6 +194,7 @@
                             @endfor --}}
                             @foreach ($new_girls as $new_girl)
                                 <x-public.shops.new-girl-card
+                                    href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"
                                     background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                                     photo-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                                     date="{{ $new_girl->created_at->format('Y:m:d D') }}" date-label="入店"
@@ -316,6 +317,7 @@
                             @endfor --}}
                             @foreach ($castlist as $cast)
                                 <x-public.shops.schedule-card
+                                    href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
                                     frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
@@ -598,7 +600,8 @@
             hours="8:30〜24:00まで" mobile-text="TEL" />
 
         <!-- Fixed Side Buttons -->
-        <x-public.shops.fixed-side-buttons />
+        <x-public.shops.fixed-side-buttons
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shizuku']) }}" />
     </div>
 </x-shizuku-layout>
 

@@ -790,6 +790,12 @@
   @include inter();
   @include responsive-font(14px, 14px);
   font-weight: 400 !important;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .girl-diary-body {
@@ -941,7 +947,7 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
   .girl-schedule-date {
-    font-size: 13px !important;
+    font-size: 21px !important;
     font-weight: 600;
     color: #2a1a08;
   }
@@ -950,14 +956,17 @@
     height: 12px;
     flex-shrink: 0;
   }
-  .girl-schedule-time {
-    font-size: 14px !important;
+  .girl-schedule-time, .girl-schedule-rest {
+    font-size: 21px !important;
     text-align: left !important;
     color: #2a1a08;
     font-weight: 400;
     margin-left: 16px;
     flex: 1;
     max-width: 100% !important;
+  }
+  .girl-schedule-rest {
+    font-size: 17px !important;
   }
   .girl-no-schedule {
     padding-top: 0 !important;
@@ -1010,6 +1019,17 @@
   line-height: 0.8;
   max-width: 43px;
 }
+.girl-schedule-rest {
+  @include yu-mincho-regular();
+  @include responsive-font(14px, 14px);
+
+  font-weight: 600 !important;
+  color: #2a1a08;
+  text-align: center;
+  line-height: 0.8;
+  max-width: 43px;
+}
+
 .girl-no-schedule {
   @include responsive-font(14px, 14px);
   padding-top: 15px;
