@@ -1,3 +1,4 @@
+@use '../pagination' as *;
 .movie-list {
   background: rgba(42, 26, 8, 0.5);
   display: flex;
@@ -14,7 +15,7 @@
   padding: 0 30px;
   row-gap: 40px;
   column-gap: 40px;
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+  // grid-template-rows: repeat(3, minmax(0, 1fr));
   grid-template-columns: repeat(2, minmax(0, 1fr));
   &-movie {
     width: 100%;
@@ -33,4 +34,11 @@
     grid-template-rows: repeat(3, minmax(0, 1fr));
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+}
+
+.movie-list-pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

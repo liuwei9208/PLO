@@ -848,9 +848,22 @@ class ShizukuController extends Controller
         // $movies = Video::where('shop_id', Shop::where('slug', $shop)->first()->id)
         // ->orderBy('updated_at', 'desc')
         // ->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+
+        $movies = Video::join('casts', 'videos.cast_id', '=', 'casts.id')
+        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('casts.is_public', 1)
+        ->where('videos.is_public', 1)
+        ->orderBy('videos.updated_at', 'desc')
+        ->select('videos.*', 'casts.*')
+        ->paginate($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 5 : 6)
+        ->onEachSide(0)
+        ->withPath('movie');
+
         return view('public.shop.' . $shop . '.movie', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
-            // 'movies' => $movies,
+            'movies' => $movies,
+            'banners' => $banners,
         ]);
     }
 }

@@ -17,7 +17,7 @@
                 'news' => route('public.shops.shop.news', ['shop' => 'shizuku']),
                 'event' => route('public.shops.shop.event', ['shop' => 'shizuku']),
                 'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shizuku']),
-                'movie' => '#',
+                'movie' => route('public.shops.shop.movie', ['shop' => 'shizuku']),
                 'review' => route('public.shops.shop.review', ['shop' => 'shizuku']),
                 'ranking' => route('public.shops.shop.ranking', ['shop' => 'shizuku']),
                 'shop' => route('public.shops.shop.shop-list', ['shop' => 'shizuku']),
