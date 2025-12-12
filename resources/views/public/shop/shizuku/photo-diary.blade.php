@@ -12,7 +12,7 @@
         <div class="diary-body-right-content">
             <div class="diary-post-cards">
                 @foreach (range(1, 4) as $index)
-                    <div class="diary-post-card pc-only">
+                    <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $index]) }}" class="diary-post-card pc-only">
                         <div class="diary-post-title">
                             <h1>投稿者名</h1>
                             <span>ブログタイトル</span>
@@ -28,9 +28,9 @@
                                 ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本
                             </p>
                         </div>
-                    </div>
+                    </a>
                     <div class="sp-only">
-                        <div class="diary-post-sp-card">
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $index]) }}" class="diary-post-sp-card">
                             <div class="diary-post-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/diary-image2.png') }}">
                             </div>
@@ -46,7 +46,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
             </div>

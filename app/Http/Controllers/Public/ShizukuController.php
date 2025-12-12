@@ -515,6 +515,51 @@ class ShizukuController extends Controller
         return view('public.shop.' . $shop . '.photo-diary');
     }
 
+    public function showPhotoDiaryDetail(Request $request, string $shop, $id): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        $shop_id = Shop::where('slug', $shop)->first()->id;
+        
+        $diary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.id', $id)
+            ->where('diaries.is_public', 1)
+            ->where('casts.shop_id', $shop_id)
+            ->select('diaries.*')
+            ->first();
+        
+        // Get previous and next diaries
+        $prevDiary = null;
+        $nextDiary = null;
+        
+        if ($diary) {
+            // Get previous diary (older, lower id)
+            $prevDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+                ->where('diaries.is_public', 1)
+                ->where('casts.shop_id', $shop_id)
+                ->where('diaries.id', '<', $id)
+                ->select('diaries.*')
+                ->orderBy('diaries.id', 'desc')
+                ->first();
+            
+            // Get next diary (newer, higher id)
+            $nextDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+                ->where('diaries.is_public', 1)
+                ->where('casts.shop_id', $shop_id)
+                ->where('diaries.id', '>', $id)
+                ->select('diaries.*')
+                ->orderBy('diaries.id', 'asc')
+                ->first();
+        }
+        
+        return view('public.shop.' . $shop . '.photo-diary-detail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'id' => $id,
+            'diary' => $diary,
+            'prevDiary' => $prevDiary,
+            'nextDiary' => $nextDiary,
+        ]);
+    }
+
     public function showReview(Request $request, string $shop, string $id = null): View
     {
         $shop = $request->route('shop', 'shizuku');
