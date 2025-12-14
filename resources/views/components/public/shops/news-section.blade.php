@@ -137,7 +137,9 @@
             <div class="diary-content">
                 @if (count($items) > 0)
                     @foreach ($items as $item)
-                        <a class="diary-content-card" {{-- href="{{ route('public.shops.shop.diarydetail', ['shop' => $shop->slug, 'id' => $item->id]) }}"> --}} href="#">
+                        <a class="diary-content-card"
+                            href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => $shop->slug, 'id' => $item->id]) }}">
+                            href="#">
                             <div class="diary-content-card-image">
                                 <img src="{{ asset('storage/diary/' . $item['photo']) }}"
                                     alt="{{ $item['subject'] ?? 'Card Image' }}">

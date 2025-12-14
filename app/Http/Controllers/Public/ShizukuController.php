@@ -72,6 +72,19 @@ class ShizukuController extends Controller
                 'shops.name as shop_name',
             ]) // 必要に応じて明示的に
             ->get();
+
+            if ($todayCasts) {
+                // $todayCasts->getCollection()->transform(function ($cast) {
+                $todayCasts->transform(function ($cast) {
+                        $cast->reservation = Reservation::leftjoin('attendances','attendance_id','=','attendances.id')
+                    ->where('attendances.cast_id',$cast->id)
+                    ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+                    ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
+                    ->whereRaw('TIME(reservations.end_time) >= CURTIME()')->first()->end_time ?? '';
+                    return $cast;
+                });
+            }
+    
         Log::info($todayCasts);
         $shop_id = Shop::where('slug', $shop)->first()->id;
         $pickups = Pickup::leftJoin('casts', 'casts.id', '=', 'pickups.cast_id')
@@ -444,6 +457,26 @@ class ShizukuController extends Controller
         ->paginate(20)
         ->onEachSide(0)
         ->withPath('schedule');
+        // ->get();
+        
+        if ($todayCasts) {
+            $todayCasts->getCollection()->transform(function ($cast) {
+            // $todayCasts->transform(function ($cast) {
+                    $cast->reservation = Reservation::leftjoin('attendances','attendance_id','=','attendances.id')
+                ->where('attendances.cast_id',$cast->id)
+                ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+                ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
+                ->whereRaw('TIME(reservations.end_time) >= CURTIME()')->first()->end_time ?? '';
+                return $cast;
+            });
+        }
+        // dd($todayCasts);
+        // $reservation = Reservation::leftjoin('attendances','attendance_id','=','attendances.id')
+        //                 ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+        //                 ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
+        //                 ->whereRaw('TIME(reservations.end_time) >= CURTIME()')
+        //                 ->get()
+        // dd($todayCasts);
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         return view('public.shop.' . $shop . '.schedule', [
             'banners' => $banners,
@@ -730,6 +763,79 @@ class ShizukuController extends Controller
             // 'cast_id' => $request->cast_id ?? '',
             'date' => $request->date ?? '',
             'banners' => $banners,
+        ]);
+    }
+
+    public function showPhotoDiaryDetail(Request $request, string $shop, string $id=null): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        // dd($request);
+        $shop_id = Shop::where('slug', $shop)->first()->id;
+        if ( $id != null )
+        {
+            $diary = Diary::where('diaries.id', $id)
+                ->where('diaries.is_public', 1)
+                ->select('diaries.*')
+                ->first();
+        }
+        $date = null;
+        if ( $request->has('cast_id') && $request->has('date') ){
+            $date = $request->date;
+            $diary = Diary::where('cast_id', $request->cast_id)
+                ->whereDate('diaries.created_at',$date)
+                ->select('diaries.*')
+                ->first();
+
+        }
+        $schedule = Attendance::where('cast_id', $diary->cast_id)
+            ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+            ->selectRaw("DATE_FORMAT(attendances.start_datetime,'%H:%i') as start_time, DATE_FORMAT(attendances.end_datetime,'%H:%i') as end_time")
+            ->get();
+            
+        $diarys_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->where('diaries.is_public', 1)
+            ->where('diaries.cast_id',$diary->cast_id)
+            ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id")
+            ->groupby('date')
+            ->get();
+    
+
+            // Get previous and next diaries
+        $prevDiary = null;
+        $nextDiary = null;
+        
+        if ($diary) {
+            // Get previous diary (older, lower id)
+            $prevDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+                ->where('diaries.is_public', 1)
+                ->where('diaries.cast_id', $diary->cast_id)
+                ->where('diaries.id', '<', $diary->id)
+                ->select('diaries.*')
+                ->orderBy('diaries.id', 'desc')
+                ->first();
+            
+            // Get next diary (newer, higher id)
+            $nextDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+                ->where('diaries.is_public', 1)
+                ->where('diaries.cast_id', $diary->cast_id)
+                ->where('diaries.id', '>', $diary->id)
+                ->select('diaries.*')
+                ->orderBy('diaries.id', 'asc')
+                ->first();
+            // dd($prevDiary);
+        }
+
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        return view('public.shop.' . $shop . '.photo-diary-detail', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'id' => $id,
+            'diary' => $diary,
+            'prevDiary' => $prevDiary,
+            'nextDiary' => $nextDiary,
+            'diarys_date' => $diarys_date,
+            'banners' => $banners,
+            'schedule' => $schedule,
+            'date' => $date
         ]);
     }
 

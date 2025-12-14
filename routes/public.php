@@ -94,7 +94,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
             Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
             Route::get('system', [ShizukuController::class, 'showSystem'])->name('system');
-            Route::get('profile/{id}', [ShizukuController::class, 'showProfile'])->name('profile');
+            Route::get('profile/{id?}', [ShizukuController::class, 'showProfile'])->name('profile');
             Route::get('castlist', [ShizukuController::class, 'showCastlist'])->name('castlist');
             Route::get('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule');
             // Route::post('schedule', [ShizukuController::class, 'showSchedule'])->name('schedule.post');
@@ -105,6 +105,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
             Route::get('event/{id}', [ShizukuController::class, 'showEventDetail'])->name('event.detail');
             Route::get('ranking/{rank_id?}', [ShizukuController::class, 'showRanking'])->name('ranking');
             Route::get('photo-diary', [ShizukuController::class, 'showPhotoDiary'])->name('photo-diary');
+            Route::get('photo-diary/{id}', [ShizukuController::class, 'showPhotoDiaryDetail'])->name('photo-diary.detail');
             Route::get('review/{id?}', [ShizukuController::class, 'showReview'])->name('review');
             Route::get('access', [ShizukuController::class, 'showAccess'])->name('access');
             Route::get('shop-list', [ShizukuController::class, 'showShopList'])->name('shop-list');

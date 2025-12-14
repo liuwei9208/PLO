@@ -140,6 +140,14 @@
   align-items: center;
   width: 47.22%; // ~340px at 720px base, accounts for gap
   min-width: 280px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
 
   @media screen and (max-width: 768px) {
     width: 100%;
@@ -149,6 +157,14 @@
 
 .diary-post-sp-card {
   display: flex;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .diary-post-title {

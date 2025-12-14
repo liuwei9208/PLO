@@ -126,15 +126,31 @@
                                 message="キャストメッセージが出ます" variant="schedule" />
                         @endfor --}}
                         @foreach ($todayCasts as $todayCast)
-                            <x-public.shops.schedule-card
-                                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
-                                background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
-                                badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
-                                status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
-                                status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
-                                measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
-                                message="{{ $todayCast->appeal_point }}" variant="schedule" />
+                            @if ($todayCast->reservation == '')
+                                <x-public.shops.schedule-card
+                                    href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
+                                    background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
+                                    frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                    badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
+                                    status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
+                                    status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
+                                    measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule" />
+                            @else
+                                <x-public.shops.schedule-card
+                                    href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
+                                    background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
+                                    frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                    badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
+                                    status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#F5F5F5"/>
+</svg>'
+                                    status-text="{{ '次回' . \Carbon\Carbon::createFromTimeString($todayCast->reservation)->addMinutes(30)->format('H:i') . '~' }}"
+                                    name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
+                                    measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule"
+                                    status-text-color="#ffffff" />
+                            @endif
                         @endforeach
                     </div>
                     <div class="home-schedule-button-mobile">

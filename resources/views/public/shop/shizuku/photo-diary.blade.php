@@ -12,7 +12,8 @@
         <div class="diary-body-right-content">
             <div class="diary-post-cards">
                 @foreach ($diarys as $diary)
-                    <div class="diary-post-card pc-only">
+                    <a class="diary-post-card pc-only"
+                        href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => $shop->slug, 'id' => $diary->id]) }}">
                         <div class="diary-post-title">
                             <h1>{{ $diary->cast_name }}</h1>
                             <span>{{ $diary->subject }}</span>
@@ -26,9 +27,10 @@
                         <div class="diary-post-content">
                             <p>{!! nl2br($diary->body) !!}</p>
                         </div>
-                    </div>
+                    </a>
                     <div class="sp-only">
-                        <div class="diary-post-sp-card">
+                        <a class="diary-post-sp-card"
+                            href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => $shop->slug, 'id' => $diary->id]) }}">
                             <div class="diary-post-image">
                                 <img src="{{ asset('storage/diary/' . $diary->photo) }}">
                             </div>
@@ -42,7 +44,7 @@
                                     <p>{!! nl2br($diary->body) !!}</p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach
                 {{-- @foreach (range(1, 4) as $index)
@@ -62,9 +64,9 @@
                                 ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本
                             </p>
                         </div>
-                    </div>
+                    </a>
                     <div class="sp-only">
-                        <div class="diary-post-sp-card">
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $index]) }}" class="diary-post-sp-card">
                             <div class="diary-post-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/diary-image2.png') }}">
                             </div>
@@ -80,7 +82,7 @@
                                     </p>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 @endforeach --}}
             </div>

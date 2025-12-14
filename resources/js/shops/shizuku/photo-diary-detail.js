@@ -13,13 +13,19 @@ function initializeCalendar(calendarEl, calendarInstance) {
     return null;
   }
 
-  const cal = new Calendar(calendarEl, {
+  // Get date from global variable if available
+  const initialDate = typeof date !== "undefined" && date && date !== "null" && date !== "" ? date : null;
+
+  // Calculate content height for 30-31 days (5 weeks max)
+  // Assuming each week row is approximately 100px, header is ~50px
+  // 5 weeks = 5 rows, so contentHeight should accommodate 5 weeks
+  const calendarConfig = {
     locales: allLocales,
     locale: "ja",
     initialView: "dayGridMonth",
     plugins: [interactionPlugin, dayGridPlugin],
-    contentHeight: "auto",
     fixedWeekCount: false,
+    contentHeight: 'auto', // Height for approximately 5 weeks (30-31 days)
     selectable: true,
     headerToolbar: {
       left: "prev",
@@ -34,19 +40,26 @@ function initializeCalendar(calendarEl, calendarInstance) {
           if (diarys_date[i].date == info.dateStr) {
             const shopSlug =
               typeof shop_slug !== "undefined" ? shop_slug : "shizuku";
-            const date = info.dateStr;
-              // typeof date !== "undefined" ? info.dateStr : "";
-            if (date != '') {
-              window.location.href = `/shops/${shopSlug}/photo-diary?date=${date}`;
+            const castId =
+              typeof cast_id !== "undefined" && cast_id ? cast_id : "";
+            if (castId) {
+              window.location.href = `/shops/${shopSlug}/photo-diary/null?cast_id=${castId}&date=${info.dateStr}`;
             } else {
-              window.location.href = `/shops/${shopSlug}/photo-diary`;
+              window.location.href = `/shops/${shopSlug}/photo-diary/null?date=${info.dateStr}`;
             }
             return;
           }
         }
       }
     },
-  });
+  };
+
+  // Set initialDate if date is available
+  if (initialDate) {
+    calendarConfig.initialDate = initialDate;
+  }
+
+  const cal = new Calendar(calendarEl, calendarConfig);
 
   // Add events if diarys_date is available
   if (typeof diarys_date !== "undefined" && diarys_date.length > 0) {
@@ -65,32 +78,14 @@ function initializeCalendar(calendarEl, calendarInstance) {
 
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize desktop calendar
-  const calendarEl = document.getElementById("diary-calendar");
+  const calendarEl = document.getElementById(
+    "photo-diary-details-section-content-left-calendar"
+  );
+  const mobileEl = document.getElementById("diary-details-calendar-mobile");
   if (calendarEl) {
     calendar = initializeCalendar(calendarEl, calendar);
   }
-
-  // Initialize mobile calendar
-  const mobileCalendarEl = document.getElementById("diary-calendar-mobile");
-  if (mobileCalendarEl) {
-    mobileCalendar = initializeCalendar(mobileCalendarEl, mobileCalendar);
+  if (mobileEl) {
+    mobileCalendar = initializeCalendar(mobileEl, mobileCalendar);
   }
-
-  // Handle window resize to reinitialize calendars if needed
-  let resizeTimer;
-  window.addEventListener("resize", function () {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(function () {
-      // Check if mobile calendar element is visible and not initialized
-      const mobileEl = document.getElementById("diary-calendar-mobile");
-      if (mobileEl && window.innerWidth <= 850 && !mobileCalendar) {
-        mobileCalendar = initializeCalendar(mobileEl, mobileCalendar);
-      }
-      // Check if desktop calendar element is visible and not initialized
-      const desktopEl = document.getElementById("diary-calendar");
-      if (desktopEl && window.innerWidth > 850 && !calendar) {
-        calendar = initializeCalendar(desktopEl, calendar);
-      }
-    }, 250);
-  });
 });
