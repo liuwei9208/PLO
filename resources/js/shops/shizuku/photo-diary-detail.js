@@ -13,12 +13,19 @@ function initializeCalendar(calendarEl, calendarInstance) {
     return null;
   }
 
-  const cal = new Calendar(calendarEl, {
+  // Get date from global variable if available
+  const initialDate = typeof date !== "undefined" && date && date !== "null" && date !== "" ? date : null;
+
+  // Calculate content height for 30-31 days (5 weeks max)
+  // Assuming each week row is approximately 100px, header is ~50px
+  // 5 weeks = 5 rows, so contentHeight should accommodate 5 weeks
+  const calendarConfig = {
     locales: allLocales,
     locale: "ja",
     initialView: "dayGridMonth",
     plugins: [interactionPlugin, dayGridPlugin],
-    contentHeight: "auto",
+    fixedWeekCount: false,
+    contentHeight: 'auto', // Height for approximately 5 weeks (30-31 days)
     selectable: true,
     headerToolbar: {
       left: "prev",
@@ -36,16 +43,23 @@ function initializeCalendar(calendarEl, calendarInstance) {
             const castId =
               typeof cast_id !== "undefined" && cast_id ? cast_id : "";
             if (castId) {
-              window.location.href = `/${shopSlug}/diarylist?cast_id=${castId}&date=${info.dateStr}`;
+              window.location.href = `/shops/${shopSlug}/photo-diary/null?cast_id=${castId}&date=${info.dateStr}`;
             } else {
-              window.location.href = `/${shopSlug}/diarylist?date=${info.dateStr}`;
+              window.location.href = `/shops/${shopSlug}/photo-diary/null?date=${info.dateStr}`;
             }
             return;
           }
         }
       }
     },
-  });
+  };
+
+  // Set initialDate if date is available
+  if (initialDate) {
+    calendarConfig.initialDate = initialDate;
+  }
+
+  const cal = new Calendar(calendarEl, calendarConfig);
 
   // Add events if diarys_date is available
   if (typeof diarys_date !== "undefined" && diarys_date.length > 0) {

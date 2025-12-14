@@ -19,6 +19,7 @@ function initializeCalendar(calendarEl, calendarInstance) {
     initialView: "dayGridMonth",
     plugins: [interactionPlugin, dayGridPlugin],
     contentHeight: "auto",
+    fixedWeekCount: false,
     selectable: true,
     headerToolbar: {
       left: "prev",

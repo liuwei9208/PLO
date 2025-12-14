@@ -454,7 +454,8 @@
                     </button>
                     <div class="girl-diary-track">
                         @foreach ($diarys as $diary)
-                            <div class="girl-diary-card">
+                            <a class="girl-diary-card"
+                                href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => $shop->slug, 'id' => $diary->id]) }}">
                                 <div class="girl-diary-image">
                                     <img src="{{ asset('storage/diary/' . $diary->photo) }}"
                                         alt="{{ $diary->subject }}">
@@ -473,7 +474,7 @@
                                         {{ $carbonDate->format('H:i') }}
                                     </p>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                         {{-- @for ($i = 0; $i < 12; $i++)
                             <div class="girl-diary-card">
