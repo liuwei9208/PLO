@@ -139,6 +139,8 @@ export default defineConfig({
         // "resources/scss/shops/pagination.scss",
         'resources/js/shops/event-section.js',
         'resources/scss/shops/shizuku/movie.scss',
+        'resources/scss/shops/shizuku/photo-diary-detail.scss',
+        'resources/js/shops/shizuku/photo-diary-detail.js'
       ],
       refresh: true,
     }),
