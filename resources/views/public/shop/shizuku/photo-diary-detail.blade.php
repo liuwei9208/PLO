@@ -18,7 +18,7 @@
                             fill="white" />
                     </svg>
                 </a>
-                @if (count($schedule) > 0)
+                @if ($schedule)
                     <div class="today-work-content">
                         <div class="today-work-content-title">
                             <p>本日出勤</p>
