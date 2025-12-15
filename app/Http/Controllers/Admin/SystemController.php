@@ -8,6 +8,7 @@ use Illuminate\View\View;
 use App\Models\System;
 use App\Models\Shop;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 
 class SystemController extends Controller
 {
@@ -117,18 +118,84 @@ class SystemController extends Controller
 
         $file1 = $request->file('file_1');
         $file2 = $request->file('file_2');
-      //   if ( ($file1 == null && $request->path_1 == null) ) {
-      //     $system->header = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
-      //     // return redirect()->back()->with('error', __('message.admin_system_header_required'));
-      //   }
-      //   $file2 = $request->file('file_2');
-      //   if ( ($file2 == null && $request->path_2 == null) ) {
-      //     $system->play = $file2 ? $file2->store($file_path, 'public') : $request->path_2;
-      //     // return redirect()->back()->with('error', __('message.admin_system_play_required'));
-      // }
-        dd($file1,$file2,$request->path_1, $request->path_2);
-        $system->header = $file1 ? $file1->store($file_path, 'public') : (!empty($request->path_1) ? $request->path_1 : null);
-        $system->play = $file2 ? $file2->store($file_path, 'public') : (!empty($request->path_2) ? $request->path_2 : null);
+        
+        // ファイル1の処理: 有効なファイルがアップロードされた場合のみ保存
+        if ($file1) {
+            if ($file1->isValid()) {
+                $system->header = $file1->store($file_path, 'public');
+            } else {
+                // アップロードエラーの詳細を取得
+                $error = $file1->getError();
+                $errorMessages = [
+                    UPLOAD_ERR_INI_SIZE => 'ファイルサイズが upload_max_filesize の制限を超えています',
+                    UPLOAD_ERR_FORM_SIZE => 'ファイルサイズがフォームの MAX_FILE_SIZE の制限を超えています',
+                    UPLOAD_ERR_PARTIAL => 'ファイルが部分的にしかアップロードされていません',
+                    UPLOAD_ERR_NO_FILE => 'ファイルがアップロードされていません',
+                    UPLOAD_ERR_NO_TMP_DIR => '一時フォルダが見つかりません',
+                    UPLOAD_ERR_CANT_WRITE => 'ディスクへの書き込みに失敗しました',
+                    UPLOAD_ERR_EXTENSION => 'PHP拡張機能によってアップロードが停止されました',
+                ];
+                $errorMessage = $errorMessages[$error] ?? "不明なエラー (コード: {$error})";
+                
+                // エラーがある場合は既存のパスを保持（エラーメッセージはログに記録）
+                Log::warning("ファイルアップロードエラー (file_1): {$errorMessage}", [
+                    'error_code' => $error,
+                    'file_name' => $file1->getClientOriginalName(),
+                    'file_size' => $file1->getSize(),
+                ]);
+                
+                if (!empty($request->path_1) && trim($request->path_1) !== '') {
+                    $system->header = trim($request->path_1);
+                } else {
+                    $system->header = null;
+                }
+            }
+        } elseif (!empty($request->path_1) && trim($request->path_1) !== '') {
+            // ファイルがアップロードされていない場合は既存のパスを保持
+            $system->header = trim($request->path_1);
+        } else {
+            // パスが空の場合はnullに設定
+            $system->header = null;
+        }
+        
+        // ファイル2の処理: 有効なファイルがアップロードされた場合のみ保存
+        if ($file2) {
+            if ($file2->isValid()) {
+                $system->play = $file2->store($file_path, 'public');
+            } else {
+                // アップロードエラーの詳細を取得
+                $error = $file2->getError();
+                $errorMessages = [
+                    UPLOAD_ERR_INI_SIZE => 'ファイルサイズが upload_max_filesize の制限を超えています',
+                    UPLOAD_ERR_FORM_SIZE => 'ファイルサイズがフォームの MAX_FILE_SIZE の制限を超えています',
+                    UPLOAD_ERR_PARTIAL => 'ファイルが部分的にしかアップロードされていません',
+                    UPLOAD_ERR_NO_FILE => 'ファイルがアップロードされていません',
+                    UPLOAD_ERR_NO_TMP_DIR => '一時フォルダが見つかりません',
+                    UPLOAD_ERR_CANT_WRITE => 'ディスクへの書き込みに失敗しました',
+                    UPLOAD_ERR_EXTENSION => 'PHP拡張機能によってアップロードが停止されました',
+                ];
+                $errorMessage = $errorMessages[$error] ?? "不明なエラー (コード: {$error})";
+                
+                // エラーがある場合は既存のパスを保持（エラーメッセージはログに記録）
+                Log::warning("ファイルアップロードエラー (file_2): {$errorMessage}", [
+                    'error_code' => $error,
+                    'file_name' => $file2->getClientOriginalName(),
+                    'file_size' => $file2->getSize(),
+                ]);
+                
+                if (!empty($request->path_2) && trim($request->path_2) !== '') {
+                    $system->play = trim($request->path_2);
+                } else {
+                    $system->play = null;
+                }
+            }
+        } elseif (!empty($request->path_2) && trim($request->path_2) !== '') {
+            // ファイルがアップロードされていない場合は既存のパスを保持
+            $system->play = trim($request->path_2);
+        } else {
+            // パスが空の場合はnullに設定
+            $system->play = null;
+        }
         $system->save();
 
         return redirect(route('admin.system.index'))->with('success', __('message.admin_system_update_success'));
