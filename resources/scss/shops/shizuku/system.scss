@@ -119,7 +119,40 @@
     flex-shrink: 0;
   }
 }
-
+.system-item-cours-name {
+  @include yu-mincho-regular();
+  @include responsive-font(26px,41px);
+  // font-size: 26px;
+  font-weight: 600;
+  line-height: 81.2%;
+  // background-color: #000;
+  color: #fff;
+  position: relative;
+  svg {
+    width: 80px;
+    height: 80px;
+  }
+  span {
+    position: absolute;
+    top: 8px;
+    left:21px;
+  }
+  // border-radius: 50%;
+}
+@media screen and (max-width: 850px) {
+  .system-item-cours-name {
+    svg {
+      width: 63px;
+      height: 63px;
+    }
+  
+    span {
+      position: absolute;
+      top: 10px;
+      left:17px;
+    }
+  }
+}
 .system-all-time-content-item p {
   @include yu-mincho-regular();
   font-size: 42px;
