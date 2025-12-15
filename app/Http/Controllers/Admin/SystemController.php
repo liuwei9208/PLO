@@ -117,18 +117,28 @@ class SystemController extends Controller
 
         $file1 = $request->file('file_1');
         $file2 = $request->file('file_2');
-      //   if ( ($file1 == null && $request->path_1 == null) ) {
-      //     $system->header = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
-      //     // return redirect()->back()->with('error', __('message.admin_system_header_required'));
-      //   }
-      //   $file2 = $request->file('file_2');
-      //   if ( ($file2 == null && $request->path_2 == null) ) {
-      //     $system->play = $file2 ? $file2->store($file_path, 'public') : $request->path_2;
-      //     // return redirect()->back()->with('error', __('message.admin_system_play_required'));
-      // }
-        dd($file1,$file2,$request->path_1, $request->path_2);
-        $system->header = $file1 ? $file1->store($file_path, 'public') : (!empty($request->path_1) ? $request->path_1 : null);
-        $system->play = $file2 ? $file2->store($file_path, 'public') : (!empty($request->path_2) ? $request->path_2 : null);
+        
+        // ファイル1の処理: 有効なファイルがアップロードされた場合のみ保存
+        if ($file1 && $file1->isValid()) {
+            $system->header = $file1->store($file_path, 'public');
+        } elseif (!empty($request->path_1) && trim($request->path_1) !== '') {
+            // ファイルがアップロードされていない、またはエラーがある場合は既存のパスを保持
+            $system->header = trim($request->path_1);
+        } else {
+            // パスが空の場合はnullに設定
+            $system->header = null;
+        }
+        
+        // ファイル2の処理: 有効なファイルがアップロードされた場合のみ保存
+        if ($file2 && $file2->isValid()) {
+            $system->play = $file2->store($file_path, 'public');
+        } elseif (!empty($request->path_2) && trim($request->path_2) !== '') {
+            // ファイルがアップロードされていない、またはエラーがある場合は既存のパスを保持
+            $system->play = trim($request->path_2);
+        } else {
+            // パスが空の場合はnullに設定
+            $system->play = null;
+        }
         $system->save();
 
         return redirect(route('admin.system.index'))->with('success', __('message.admin_system_update_success'));
