@@ -78,9 +78,13 @@ class ShizukuController extends Controller
                 $todayCasts->transform(function ($cast) {
                         $cast->reservation = Reservation::leftjoin('attendances','attendance_id','=','attendances.id')
                     ->where('attendances.cast_id',$cast->id)
-                    ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
-                    ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
-                    ->whereRaw('TIME(reservations.end_time) >= CURTIME()')->first()->end_time ?? '';
+                    // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+                    // ->whereRaw('DATE(reservations.start_datetime) = CURDATE()')
+                    // ->whereRaw('DATE(reservations.end_datetime) = CURDATE()')
+                    // ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
+                    // ->whereRaw('TIME(reservations.end_time) >= CURTIME()')->first()->end_time ?? '';
+                    ->whereRaw('reservations.start_time <= NOW()')
+                    ->whereRaw('reservations.end_time >= NOW()')->first()->end_time ?? '';
                     return $cast;
                 });
             }
@@ -174,12 +178,14 @@ class ShizukuController extends Controller
 
         if ($castlist) {
             $castlist = $castlist->map(function ($cast) {
-                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->start_datetime ?? '';
-                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->end_datetime ?? '';
+                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->start_datetime ?? '';
+                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->end_datetime ?? '';
                 return $cast;
             });
         }
-
+        // $temp = Attendance::where('cast_id', 258)->where('is_public', 1)->where('start_datetime', '<=' ,'NOW()')->where('end_datetime', '>=' ,'NOW()')->first()->start_datetime;
+        // $temp = Attendance::where('cast_id', 258)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->start_datetime;
+        // dd($temp);
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->where('published_status', 1)
             ->orWhere(function ($query) {
@@ -400,8 +406,8 @@ class ShizukuController extends Controller
 
         if ($castlist) {
             $castlist->getCollection()->transform(function ($cast) {
-                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->start_datetime ?? '';
-                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->where('start_datetime', '<=', Carbon::now()->toDateString())->where('end_datetime', '>=', Carbon::now()->toDateString())->first()->end_datetime ?? '';
+                $cast->start_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->start_datetime ?? '';
+                $cast->end_datetime = Attendance::where('cast_id', $cast->id)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->end_datetime ?? '';
                 return $cast;
             });
         }
@@ -458,15 +464,17 @@ class ShizukuController extends Controller
         ->onEachSide(0)
         ->withPath('schedule');
         // ->get();
-        
         if ($todayCasts) {
-            $todayCasts->getCollection()->transform(function ($cast) {
+            $todayCasts->getCollection()->transform(function ($cast) use ($request_date) {
             // $todayCasts->transform(function ($cast) {
                     $cast->reservation = Reservation::leftjoin('attendances','attendance_id','=','attendances.id')
                 ->where('attendances.cast_id',$cast->id)
-                ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+                // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
+                ->whereRaw('DATE(reservations.start_time) = ?', [$request_date])
                 ->whereRaw('TIME(reservations.start_time) <= CURTIME()')
                 ->whereRaw('TIME(reservations.end_time) >= CURTIME()')->first()->end_time ?? '';
+                // ->whereRaw('reservations.start_time <= NOW()')
+                // ->whereRaw('reservations.end_time >= NOW()')->first()->end_time ?? '';
                 return $cast;
             });
         }
@@ -790,7 +798,7 @@ class ShizukuController extends Controller
         $schedule = Attendance::where('cast_id', $diary->cast_id)
             ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
             ->selectRaw("DATE_FORMAT(attendances.start_datetime,'%H:%i') as start_time, DATE_FORMAT(attendances.end_datetime,'%H:%i') as end_time")
-            ->get();
+            ->first();
             
         $diarys_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->where('diaries.is_public', 1)

@@ -26,7 +26,7 @@
             variant="castlist"
         />
     @endfor --}}
-        {{ dd($castlist) }}
+        {{-- {{ dd($castlist) }} --}}
         @foreach ($castlist as $cast)
             <x-public.shops.schedule-card
                 href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
