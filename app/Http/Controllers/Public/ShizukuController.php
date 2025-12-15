@@ -230,11 +230,17 @@ class ShizukuController extends Controller
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
 
         $system = System::where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->first();
+        $courses = CourseGroup::where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at','desc')->get();
+        $appoints = Appoint::where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at','desc')->get();
+        $extends = Extend::where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at','desc')->get();
 
         return view('public.shop.' . $shop . '.system', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'system' => $system,
             'banners' => $banners,
+            'courses' => $courses,
+            'appoints' => $appoints,
+            'extends' => $extends
         ]);
     }
 
