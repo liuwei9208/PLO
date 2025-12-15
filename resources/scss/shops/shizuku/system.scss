@@ -82,7 +82,11 @@
     font-weight: 600;
   }
 }
-
+@media screen and (max-width: 850px) {
+  .system-all-time{
+    padding: 1px 0px;
+  }
+}
 .system-all-time-content {
   padding-top: 10px;
   display: flex;
