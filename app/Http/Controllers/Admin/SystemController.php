@@ -126,7 +126,7 @@ class SystemController extends Controller
       //     $system->play = $file2 ? $file2->store($file_path, 'public') : $request->path_2;
       //     // return redirect()->back()->with('error', __('message.admin_system_play_required'));
       // }
-
+        dd($file1,$file2,$request->path_1, $request->path_2);
         $system->header = $file1 ? $file1->store($file_path, 'public') : (!empty($request->path_1) ? $request->path_1 : null);
         $system->play = $file2 ? $file2->store($file_path, 'public') : (!empty($request->path_2) ? $request->path_2 : null);
         $system->save();
