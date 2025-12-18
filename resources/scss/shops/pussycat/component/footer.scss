@@ -196,19 +196,22 @@
 // Footer External Link Section
 .footer-external-link {
   display: flex;
-  align-items: flex-start;
-  border-top: 3px solid $white;
-  border-bottom: 3px solid $white;
+  align-items: center;
+  // border-top: 3px solid $white;
+  // border-bottom: 3px solid $white;
   width: 100%;
   margin: 30px 0;
+  padding: 0rem 3.75rem;
+  // height: 6.4rem;
+
 }
 
 .footer-external-link-header {
   display: flex;
   align-items: center;
   gap: 0.625rem;
-  background: rgba(42, 26, 8, 0.75);
-  padding: 1.6875rem 4.0625rem;
+  background: #fff;
+  padding: 30px 4.0625rem;
   flex-shrink: 0;
   
   svg {
@@ -218,12 +221,12 @@
   }
   
   p {
-    @include yu-mincho-regular();
-    font-weight: 600;
+    @include YuGothic();
+    font-weight: 700;
     // font-size: 1.875rem;
     @include responsive-font(17.2px, 36px);
     line-height: normal;
-    color: $white;
+    color: #10040E;
     white-space: nowrap;
     margin: 0;
   }
@@ -231,20 +234,20 @@
 
 .footer-external-link-description {
   flex: 1;
-  background: rgba(42, 26, 8, 0.75);
-  border-left: 3px solid $white;
-  padding: 0 0 0 3.75rem;
+  background: #fff;
+  border-left: 3px solid #10040E;
+  padding: 2.4rem 3.75rem;
   display: flex;
   align-items: center;
-  height: 6.375rem;
+  // height: 6.375rem;
   
   p {
-    @include yu-mincho-regular();
-    font-weight: 600;
+    @include YuGothic();
+    font-weight: 700;
     // font-size: 1.25rem;
     @include responsive-font(14.6px, 23px);
     line-height: normal;
-    color: $white;
+    color: #10040E;
     margin: 0;
   }
 }
@@ -312,8 +315,8 @@
 }
 
 .footer-menu-link {
-  @include Hiragino_Mincho_Pro_N();
-  font-weight: 300;
+  @include YuGothic();
+  font-weight: 500;
   @include responsive-font(15px, 26px);
   line-height: 1.6875rem;
   color: $white;
@@ -326,8 +329,8 @@
 }
 
 .footer-menu-separator {
-  @include Hiragino_Mincho_Pro_N();
-  font-weight: 300;
+  @include YuGothic();
+  font-weight: 500;
   @include responsive-font(16px, 22px);
   line-height: 1.6875rem;
   color: $white;

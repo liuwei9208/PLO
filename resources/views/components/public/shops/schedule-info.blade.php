@@ -34,9 +34,13 @@
         <a href="{{ $buttonHref }}" class="schedule-info-button"
             style="background: {{ $backgroundColor }}; border-left-color: {{ $borderColor }};">
             <p style="color: {{ $textColor }};">{{ $buttonText }}</p>
-            <div class="schedule-info-underline"
-                style="background: linear-gradient(180deg, {{ $underlineGradientStart }} 20.67%, {{ $underlineGradientEnd }} 100%);">
-            </div>
+            @if ($gradient)
+                <div class="schedule-info-underline"
+                    style="background: linear-gradient(180deg, {{ $underlineGradientStart }} 20.67%, {{ $underlineGradientEnd }} 100%);">
+                </div>
+            @else
+                <div class="schedule-info-underline" style="background: {{ $underlineColor }};"></div>
+            @endif
         </a>
     @else
         <div class="schedule-info-button"

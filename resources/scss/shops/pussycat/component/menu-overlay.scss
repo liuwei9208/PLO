@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(249, 249, 249, 0.95);
+  background: rgba(16, 4, 14, 0.90);
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
@@ -82,6 +82,7 @@
     @include yu-mincho-regular();
     font-size: 15px;
     line-height: 45px;
+    color:#EAF205;
   }
 }
 
@@ -122,10 +123,10 @@
   }
   
   span {
-    @include yu-mincho-pr6n();
+    @include IBM_Plex_Mono();
     font-size: 1.25rem;
     line-height: 2.8125rem;
-    color: #000000;
+    color: #fff;
     font-weight: 400;
   }
 }
@@ -243,41 +244,41 @@
   }
   // Reorder items to match the image layout
   // Row 1
-  .menu-column:nth-child(1) .menu-link:nth-child(1) { order: 1; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // TOPページ
-  .menu-column:nth-child(2) .menu-link:nth-child(1) { order: 2; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 出勤情報
+  .menu-column:nth-child(1) .menu-link:nth-child(1) { order: 1; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // TOPページ
+  .menu-column:nth-child(2) .menu-link:nth-child(1) { order: 2; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 出勤情報
   
   // Row 2
-  .menu-column:nth-child(3) .menu-link:nth-child(1) { order: 3; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // 料金システム
-  .menu-column:nth-child(1) .menu-link:nth-child(2) { order: 4; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 新人情報
+  .menu-column:nth-child(3) .menu-link:nth-child(1) { order: 3; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // 料金システム
+  .menu-column:nth-child(1) .menu-link:nth-child(2) { order: 4; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 新人情報
   
   // Row 3
-  .menu-column:nth-child(2) .menu-link:nth-child(2) { order: 5; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // キャスト一覧
-  .menu-column:nth-child(3) .menu-link:nth-child(2) { order: 6; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 新着情報
+  .menu-column:nth-child(2) .menu-link:nth-child(2) { order: 5; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // キャスト一覧
+  .menu-column:nth-child(3) .menu-link:nth-child(2) { order: 6; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 新着情報
   
   // Row 4
-  .menu-column:nth-child(1) .menu-link:nth-child(3) { order: 7; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // イベント情報
-  .menu-column:nth-child(2) .menu-link:nth-child(3) { order: 8; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 写メ日記
+  .menu-column:nth-child(1) .menu-link:nth-child(3) { order: 7; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // イベント情報
+  .menu-column:nth-child(2) .menu-link:nth-child(3) { order: 8; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 写メ日記
   
   // Row 5
-  .menu-column:nth-child(3) .menu-link:nth-child(3) { order: 9; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // MOVIE一覧
-  .menu-column:nth-child(1) .menu-link:nth-child(4) { order: 10; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 口コミ一覧
+  .menu-column:nth-child(3) .menu-link:nth-child(3) { order: 9; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // MOVIE一覧
+  .menu-column:nth-child(1) .menu-link:nth-child(4) { order: 10; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 口コミ一覧
   
   // Row 6
-  .menu-column:nth-child(2) .menu-link:nth-child(4) { order: 11; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;} // 女の子ランキング
-  .menu-column:nth-child(1) .menu-link:nth-child(5) { order: 12; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 店舗一覧
+  .menu-column:nth-child(2) .menu-link:nth-child(4) { order: 11; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;} // 女の子ランキング
+  .menu-column:nth-child(1) .menu-link:nth-child(5) { order: 12; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 店舗一覧
   
   // Row 7
-  .menu-column:nth-child(3) .menu-link:nth-child(4) { order: 13; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;} // アクセス情報
-  .menu-column:nth-child(3) .menu-link:nth-child(6) { order: 14; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 男性求人
+  .menu-column:nth-child(3) .menu-link:nth-child(4) { order: 13; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;} // アクセス情報
+  .menu-column:nth-child(3) .menu-link:nth-child(6) { order: 14; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 男性求人
   
   // Row 8
-  .menu-column:nth-child(2) .menu-link:nth-child(5) { order: 15; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000;} // ログイン
-  .menu-column:nth-child(3) .menu-link:nth-child(5) { order: 16; border-right: 1px solid #000000;  border-top: 1px solid #000000; border-bottom: 1px solid #000000;} // 女性求人
+  .menu-column:nth-child(2) .menu-link:nth-child(5) { order: 15; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff; border-bottom: 1px solid #fff;} // ログイン
+  .menu-column:nth-child(3) .menu-link:nth-child(5) { order: 16; border-right: 1px solid #fff;  border-top: 1px solid #fff; border-bottom: 1px solid #fff;} // 女性求人
   
   // Row 9 - 会員新規登録 (half width - left column only with empty right)
   .menu-column:nth-child(2) .menu-link:nth-child(6) { 
     order: 17;
-    border: 1px solid #000000;
+    border: 1px solid #fff;
     border-top: none;
   }
   

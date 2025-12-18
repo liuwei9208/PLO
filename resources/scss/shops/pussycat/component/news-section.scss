@@ -36,9 +36,9 @@
 }
 
 .news-title h1{
-  @include Hiragino_Mincho_Pro_NW6();
+  @include Caveat();
   @include responsive-font(18px, 36px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   text-align: center;
   text-transform: uppercase;
@@ -180,7 +180,7 @@
     @include inter();
     @include responsive-font(14px, 19px);
     color: $white;
-    font-weight: 600;
+    font-weight: 700;
     margin: 0;
   }
 }
