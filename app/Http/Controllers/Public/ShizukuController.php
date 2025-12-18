@@ -363,7 +363,7 @@ class ShizukuController extends Controller
         $sql .= ' AND `'.env("DB_DATABASE").'`.reviews.is_public = 1 ORDER BY `'.env("DB_DATABASE").'`.reviews.created_at DESC LIMIT 2';
         // dd($sql);
         $reviews = DB::select($sql);
-
+        // dd(Shop::where('slug', $shop)->get()->first());
         return view('public.shop.' . $shop . '.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
