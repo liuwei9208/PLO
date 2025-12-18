@@ -1,6 +1,5 @@
 // Import global variables and utilities
 @use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
 @use '../../../mixins/font' as *;
 // Fixed Phone Button Styles
 .fixed-phone-button {
@@ -60,20 +59,20 @@
   
   .phone-number {
     @include Pacifico();
-    padding-bottom: 0.5rem;
-    font-size: 2.6875rem;
+    font-size: 2.775rem;
     line-height: 2.9375rem;
-    color: $black;
+    color: #0E3437;
     font-weight: 400;
     margin: 0;
     text-align: left;
+    padding-bottom: 0.8rem;
   }
   
   .phone-hours {
     @include IBM_Plex_Mono();
     font-size: 0.9375rem;
     line-height: 1.1875rem;
-    color: $black;
+    color: #0E3437;
     font-weight: 700;
     margin: 0;
     width: 100%;

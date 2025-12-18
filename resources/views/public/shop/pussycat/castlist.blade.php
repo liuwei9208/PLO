@@ -1,13 +1,7 @@
-<x-shizuku-page-layout
-    page-title="CAST LIST"
-    page-subtitle="キャスト一覧"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧"
-    :assets="[
-        'resources/scss/shops/shizuku/castlist.scss',
-    ]"
->
-<div class="castlist-card-list">
-    @for ($i = 1; $i <= 20; $i++)
+<x-shizuku-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧"
+    :assets="['resources/scss/shops/shizuku/castlist.scss']" :banners="$banners">
+    <div class="castlist-card-list">
+        {{-- @for ($i = 1; $i <= 20; $i++)
         <x-public.shops.schedule-card
             background-image="assets/img/shops/shizuku/castlist.png"
             frame-image="assets/img/shops/shizuku/card-frame.png"
@@ -31,11 +25,23 @@
             content-gradient-end="rgba(0, 0, 0, 0.00)"
             variant="castlist"
         />
-    @endfor
-</div>
-<div class="castlist-top-page-button">
-    <a href="{{ route('public.shop.home', ['shop' => 'shizuku']) }}" class="top-page-link">
-        トップページはこちら
-    </a>
-</div>
+    @endfor --}}
+        {{-- {{ dd($castlist) }} --}}
+        @foreach ($castlist as $cast)
+            <x-public.shops.schedule-card
+                href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
+                background-image="{{ asset('storage/' . $cast->gallery_1) }}"
+                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
+                status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
+                measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
+                message="{{ $cast->appeal_point }}" variant="castlist" />
+        @endforeach
+    </div>
+    <div class="castlist-pagination">
+        {{ $castlist->links('pagination::shops') }}
+    </div>
 </x-shizuku-page-layout>
+{{-- @once
+    @vite(['resources/scss/shops/pagination.scss'])
+@endonce --}}
