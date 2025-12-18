@@ -1,6 +1,5 @@
 // Menu Overlay Component Styles
 @use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
 @use '../../../mixins/font' as *;
 
 // Menu Overlay Styles
@@ -10,12 +9,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(16, 4, 14, 0.9);
+  background: rgba(249, 249, 249, 0.95);
   z-index: 2000;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   overflow-y: auto;
+  
   &.active {
     opacity: 1;
     visibility: visible;
@@ -25,7 +25,6 @@
 .menu-overlay-content {
   margin: 0 auto;
   position: relative;
-  // background: rgba(16, 4, 14, 0.90);
 }
 
 .menu-close {
@@ -80,11 +79,9 @@
     margin-bottom: 21px;
   }
   p{
-    @include YuGothic();
+    @include yu-mincho-regular();
     font-size: 15px;
     line-height: 45px;
-    font-weight: 400;
-    color:#EAF205;
   }
 }
 
@@ -134,10 +131,9 @@
 }
 
 .menu-link span {
-  @include IBM_Plex_Mono();
+  @include yu-mincho-regular();
   @include responsive-font(20px, 20px);
   font-weight: 400;
-  color: #fff;
 }
 
 .menu-bottom-buttons {
@@ -183,9 +179,9 @@
   }
 
   .menu-link span {
-    @include YuGothic();
+    @include Hiragino_Mincho_Pro_N();
     @include responsive-font(18px, 18px);
-    font-weight: 500;
+    font-weight: 400;
   }
   
   .menu-close {
@@ -247,36 +243,36 @@
   }
   // Reorder items to match the image layout
   // Row 1
-  .menu-column:nth-child(1) .menu-link:nth-child(1) { order: 1; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;}  // TOPページ
-  .menu-column:nth-child(2) .menu-link:nth-child(1) { order: 2; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;}  // 出勤情報
+  .menu-column:nth-child(1) .menu-link:nth-child(1) { order: 1; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // TOPページ
+  .menu-column:nth-child(2) .menu-link:nth-child(1) { order: 2; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 出勤情報
   
   // Row 2
-  .menu-column:nth-child(3) .menu-link:nth-child(1) { order: 3; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;}  // 料金システム
-  .menu-column:nth-child(1) .menu-link:nth-child(2) { order: 4; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;}  // 新人情報
+  .menu-column:nth-child(3) .menu-link:nth-child(1) { order: 3; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // 料金システム
+  .menu-column:nth-child(1) .menu-link:nth-child(2) { order: 4; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 新人情報
   
   // Row 3
-  .menu-column:nth-child(2) .menu-link:nth-child(2) { order: 5; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;}  // キャスト一覧
-  .menu-column:nth-child(3) .menu-link:nth-child(2) { order: 6; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;}  // 新着情報
+  .menu-column:nth-child(2) .menu-link:nth-child(2) { order: 5; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // キャスト一覧
+  .menu-column:nth-child(3) .menu-link:nth-child(2) { order: 6; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 新着情報
   
   // Row 4
-  .menu-column:nth-child(1) .menu-link:nth-child(3) { order: 7; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;}  // イベント情報
-  .menu-column:nth-child(2) .menu-link:nth-child(3) { order: 8; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;}  // 写メ日記
+  .menu-column:nth-child(1) .menu-link:nth-child(3) { order: 7; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // イベント情報
+  .menu-column:nth-child(2) .menu-link:nth-child(3) { order: 8; border-right: 1px solid #000000;  border-top: 1px solid #000000;}  // 写メ日記
   
   // Row 5
-  .menu-column:nth-child(3) .menu-link:nth-child(3) { order: 9; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;}  // MOVIE一覧
-  .menu-column:nth-child(1) .menu-link:nth-child(4) { order: 10; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;} // 口コミ一覧
+  .menu-column:nth-child(3) .menu-link:nth-child(3) { order: 9; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;}  // MOVIE一覧
+  .menu-column:nth-child(1) .menu-link:nth-child(4) { order: 10; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 口コミ一覧
   
   // Row 6
-  .menu-column:nth-child(2) .menu-link:nth-child(4) { order: 11; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;} // 女の子ランキング
-  .menu-column:nth-child(1) .menu-link:nth-child(5) { order: 12; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;} // 店舗一覧
+  .menu-column:nth-child(2) .menu-link:nth-child(4) { order: 11; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;} // 女の子ランキング
+  .menu-column:nth-child(1) .menu-link:nth-child(5) { order: 12; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 店舗一覧
   
   // Row 7
-  .menu-column:nth-child(3) .menu-link:nth-child(4) { order: 13; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF;} // アクセス情報
-  .menu-column:nth-child(3) .menu-link:nth-child(6) { order: 14; border-right: 1px solid #FFF;  border-top: 1px solid #FFF;} // 男性求人
+  .menu-column:nth-child(3) .menu-link:nth-child(4) { order: 13; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000;} // アクセス情報
+  .menu-column:nth-child(3) .menu-link:nth-child(6) { order: 14; border-right: 1px solid #000000;  border-top: 1px solid #000000;} // 男性求人
   
   // Row 8
-  .menu-column:nth-child(2) .menu-link:nth-child(5) { order: 15; border-right: 1px solid #FFF;  border-left: 1px solid #FFF; border-top: 1px solid #FFF; border-bottom: 1px solid #FFF;} // ログイン
-  .menu-column:nth-child(3) .menu-link:nth-child(5) { order: 16; border-right: 1px solid #FFF;  border-top: 1px solid #FFF; border-bottom: 1px solid #FFF;} // 女性求人
+  .menu-column:nth-child(2) .menu-link:nth-child(5) { order: 15; border-right: 1px solid #000000;  border-left: 1px solid #000000; border-top: 1px solid #000000; border-bottom: 1px solid #000000;} // ログイン
+  .menu-column:nth-child(3) .menu-link:nth-child(5) { order: 16; border-right: 1px solid #000000;  border-top: 1px solid #000000; border-bottom: 1px solid #000000;} // 女性求人
   
   // Row 9 - 会員新規登録 (half width - left column only with empty right)
   .menu-column:nth-child(2) .menu-link:nth-child(6) { 

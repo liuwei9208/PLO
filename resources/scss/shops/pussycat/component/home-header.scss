@@ -1,9 +1,8 @@
 // Import global variables and utilities
-@use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
-@use '../../../mixins/font' as *;
+@use "../../../global/vars" as *;
+@use "../../../mixins/font" as *;
 
-.home-header{
+.home-header {
   height: 6.25rem;
   display: flex;
   justify-content: space-between;
@@ -12,7 +11,7 @@
   position: relative;
   z-index: 10;
   transition: all 0.3s ease;
-  
+
   &.fixed-header {
     position: fixed;
     top: 0;
@@ -23,14 +22,14 @@
   }
 }
 
-.menu-list-container{
+.menu-list-container {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0 1.875rem;
 }
 
-.menu-item{
+.menu-item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,16 +38,16 @@
   gap: 0.3125rem;
 }
 
-.menu-item h1{
+.menu-item h1 {
   @include YuGothic();
   @include responsive-font(12px, 16.95px);
   font-weight: 700 !important;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.menu-item p{
+.menu-item p {
   @include Caveat();
   @include responsive-font(10px, 12.96px);
   font-weight: 700;
@@ -58,35 +57,33 @@
   text-transform: uppercase;
 }
 
-.menu-button{
-  padding: 1.575rem 1.875rem;
+.menu-button {
+  padding: 1.6rem 1.875rem;
   cursor: pointer;
   transition: opacity 0.3s ease;
   background-color: #160B00;
-  height: --webkit-fill-available;
   &:hover {
     opacity: 0.8;
   }
 }
 
-.menu-button p{
+.menu-button p {
   @include inter();
   @include responsive-font(12px, 14px);
   line-height: 1.0625rem;
   text-align: center;
   letter-spacing: 0.07em;
-  color: #FFF;
+  color: #fff;
   padding-top: 0.625rem;
   text-transform: uppercase;
 }
 
 .mobile-header-logo {
   display: none;
-  // padding-left: 1.875rem;
-  padding-left: 0;
-  
+  padding-left: 1.875rem;
+
   img {
-    height: 4.75rem;
+    // height: 2.5rem;
     width: auto;
     object-fit: contain;
   }
@@ -106,14 +103,14 @@
 .page-top-line {
   width: 0.0625rem;
   height: 9.0625rem;
-  background: #B19D67;
+  background: #b19d67;
 }
 
 .page-top-text {
   @include lustria();
   font-size: 1.0625rem;
   line-height: normal;
-  color: #B19D67;
+  color: #b19d67;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   margin: 0;
@@ -121,7 +118,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     color: #d4b76a;
     letter-spacing: 0.05em;
@@ -136,19 +133,19 @@
   justify-content: center;
   transition: all 0.3s ease;
   cursor: pointer;
-  
+
   &:hover {
     transform: scale(1.1);
-    
+
     svg path {
       fill: #d4b76a;
     }
   }
-  
+
   svg {
     width: 100%;
     height: 100%;
-    
+
     path {
       transition: fill 0.3s ease;
     }
@@ -161,23 +158,23 @@
     height: 75px;
     border-radius: 0;
     // padding: 0 1.875rem;
-    padding: 0;
-    
+    padding: 0 0 0 0rem;
+
     &.fixed-header {
       left: 0;
       width: 100%;
       border-radius: 0;
     }
   }
-  
+
   .mobile-header-logo {
     display: block;
   }
-  
+
   .menu-list-container {
     display: none;
   }
-  
+
   .menu-button {
     display: flex;
     flex-direction: column;
@@ -185,15 +182,13 @@
     justify-content: center;
     padding: 0;
     gap: 0.3125rem;
+    padding: 1.1rem 1.275rem;
 
-    padding: 1.075rem 1.075rem;
-    height: --webkit-fill-available;
-      
     svg {
       width: 39.131px;
       height: 18.833px;
     }
-    
+
     p {
       font-size: 10px;
       line-height: 17px;
@@ -202,7 +197,7 @@
       margin: 0;
     }
   }
-  
+
   .page-top-section {
     display: none;
   }
@@ -213,15 +208,15 @@
     left: 1rem;
     top: 30rem;
   }
-  
+
   .page-top-line {
     height: 6.25rem;
   }
-  
+
   .page-top-text {
     font-size: 0.875rem;
   }
-  
+
   .page-top-social {
     width: 2rem;
     height: 2rem;
@@ -249,7 +244,7 @@
     gap: 0.5rem;
     padding-right: 100px;
   }
-  
+
   .mobile-bottom-menu-item {
     display: flex;
     flex-direction: column;
@@ -257,26 +252,24 @@
     justify-content: center;
     gap: 0.25rem;
     width: 3.33rem;
-    
     svg {
       width: 24px;
       height: 24px;
     }
-    
+
     span {
       @include Hiragino_Mincho_Pro_W6();
       font-size: 13px;
       font-weight: 600;
       line-height: 1.2;
-      color: #FFFFFF;
+      color: #ffffff;
       text-align: center;
     }
   }
-  
+
   .mobile-bottom-menu-divider {
     width: 1px;
     height: 40px;
     background: rgba(255, 255, 255, 0.2);
   }
 }
-

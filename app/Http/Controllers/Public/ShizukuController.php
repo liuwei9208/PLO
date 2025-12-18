@@ -71,6 +71,7 @@ class ShizukuController extends Controller
                 'shops.slug as shop_slug',
                 'shops.name as shop_name',
             ]) // 必要に応じて明示的に
+            ->limit(20)
             ->get();
 
             if ($todayCasts) {
@@ -151,12 +152,13 @@ class ShizukuController extends Controller
             ->get();
 
         $castlist = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
-            ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
+            // ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
             // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
             ->where('casts.is_public', 1)
             ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
             // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
-            ->inRandomOrder()
+            // ->inRandomOrder()
+            ->orderBy('id','asc')
             ->select([
                 'casts.id as id',
                 'casts.name as name',

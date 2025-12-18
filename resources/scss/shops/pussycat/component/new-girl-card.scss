@@ -1,6 +1,5 @@
 // Import global variables and utilities
 @use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
 @use '../../../mixins/font' as *;
 
 .new-girl-card {
@@ -13,7 +12,6 @@
   overflow: hidden;
   position: relative;
   background: $white;
-  border: 2px solid #05F2DB;
 }
 
 .new-girl-card-left {
@@ -59,26 +57,23 @@
   gap: 0.625rem;
   position: relative;
   z-index: 1;
+  
   svg {
     fill: var(---h1, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
   }
   
-  img {
-    width: 26px;
-    height: 24px;
-  }
   .date-text {
-    @include YuGothic();
+    @include times-new-roman();
     @include responsive-font(16px, 31px);
-    font-weight: 500;
+    font-weight: 700;
     line-height: normal;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
     .date-label {
-      @include YuGothic();
-      font-weight: 500;
+      @include Hiragino_Mincho_Pro();
+      font-weight: 600;
     }
   }
 }
@@ -108,9 +103,9 @@
 }
 
 .card-name {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(17px, 25px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   margin: 0;
 }
@@ -224,14 +219,25 @@
     width: 100%;
     min-width: 100%;
     max-width: 100%;
-    height: 20rem;
+    height: 14rem;
     flex-shrink: 0;
     box-sizing: border-box;
     background: none;
-    padding: 0px 15px;
+    border-radius: 0.9375rem;
+    // padding: 0px 15px;
   }
   .new-girl-card-right{
-    width: 35%;
+    width: 36%;
+    height: 14rem;
+  }
+  .new-girl-card-divider-vertical{
+    width: 1.12rem;
+  }
+  .new-girl-card-left{
+    padding: 0.6rem 0.31rem;
+  }
+  .new-girl-card-info{
+    gap:0.12rem
   }
 }
 

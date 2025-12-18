@@ -1,6 +1,5 @@
 // Import global variables and utilities
 @use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
 @use '../../../mixins/font' as *;
 
 .news-section{
@@ -37,9 +36,9 @@
 }
 
 .news-title h1{
-  @include Caveat();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(18px, 36px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   text-align: center;
   text-transform: uppercase;
@@ -55,8 +54,6 @@
   display: flex;
   align-items: center;
   gap: 0.625rem;
-
-  background: var(---N_, rgba(42, 26, 8, 0.75));
   // padding: 0 0.625rem;
 }
 
@@ -165,6 +162,13 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  
+
   }
 }
 

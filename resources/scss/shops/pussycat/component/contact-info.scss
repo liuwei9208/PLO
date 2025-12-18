@@ -1,6 +1,5 @@
 // Import global variables and utilities
 @use '../../../global/vars' as *;
-@use '../../../global/setting' as *;
 @use '../../../mixins/font' as *;
 
 .contact-info{
@@ -23,7 +22,6 @@
 .contact-phone{
   padding: 0.625rem 0.9375rem;
   width: 45%;
-
 }
 
 .contact-phone-content {
@@ -57,20 +55,21 @@
   @include Pacifico();
   @include responsive-font(24px, 45px);
   line-height: 2.9375rem;
-  color: $white;
+  color: #fff;
   margin: 0;
   font-weight: 400;
+  padding-bottom: 0.8rem;
 }
 
 .contact-email {
   p {
     @include YuGothic();
     @include responsive-font(12px, 18px);
-    font-weight: 500 !important;
     line-height: 1rem;
-    color: $white;
+    color: #fff;
     margin: 0;
     text-align: center;
+    font-weight: 500;
   }
 }
 
@@ -111,16 +110,14 @@
   text-align: center;
   justify-content: center;
   gap: 0.3125rem;
-  p {
-    @include Pacifico();
-    font-weight: 400 !important;
-    color: $black;
-    @include responsive-font(12px, 18px);
-    margin: 0;
-    padding-bottom: 0.125rem;
-  }
 }
 
+.contact-button-hours p {
+  @include Pacifico;
+  @include responsive-font(12px,18px);
+  font-weight: 400;
+  padding-bottom: 0.2rem;
+}
 .contact-button-credit{
   background: none;
   border: 1px solid $white; 
@@ -132,8 +129,7 @@
 
 .contact-button-credit p {  
   @include YuGothic();
-  @include responsive-font(12px, 14.29px);
-  font-weight: 700 !important;
+  font-weight: 700;
   // @include Hiragino_Mincho_Pro();
   // font-weight: 500 !important;
 }
