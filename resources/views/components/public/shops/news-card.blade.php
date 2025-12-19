@@ -4,6 +4,7 @@
     'title' => 'タイトルタイトルタイトルタイトルタイ',
     'date' => 'カテゴリ名 | 00.00.00',
     'url' => null,
+    'scss' => 'resources/scss/shops/news-card.scss',
 ])
 
 @if ($url)
@@ -28,5 +29,5 @@
 @endif
 
 @once
-    @vite('resources/scss/shops/news-card.scss')
+    @vite($scss)
 @endonce

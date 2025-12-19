@@ -433,10 +433,13 @@ class ShizukuController extends Controller
         $shop = $request->route('shop', 'shizuku');
 
         $request_date = $request->get('date');
+        $select_day = '';
         if ($request_date) {
             $request_date = Carbon::now()->format('Y').'-'.Carbon::parse($request_date)->format('m-d');
+            $select_day = Carbon::parse($request_date)->format('m/d');
         } else {
             $request_date = Carbon::now()->format('Y-m-d');
+            $select_day = Carbon::now()->format('m/d');
         }
         Carbon::setLocale('ja');
         $days = array();
@@ -494,11 +497,13 @@ class ShizukuController extends Controller
         //                 ->get()
         // dd($todayCasts);
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        // dd($select_day);
         return view('public.shop.' . $shop . '.schedule', [
             'banners' => $banners,
             'days' => $days,
             'todayCasts' => $todayCasts,
             'shop' => Shop::where('slug', $shop)->get()->first(),
+            'select_day' => $select_day,
         ]);
     }
 
@@ -550,9 +555,12 @@ class ShizukuController extends Controller
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->where('published_status', 1)
-            ->orWhere(function ($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', now());
+            ->where(function ($query) {
+                $query->where('published_status', 1)
+                    ->orWhere(function ($q) {
+                        $q->where('published_status', 2)
+                            ->where('published_at', '<=', now());
+                    });
             })
             ->inRandomOrder()
             ->orderBy('published_at', 'desc')
@@ -590,25 +598,29 @@ class ShizukuController extends Controller
 
         $news = News::find($id);
         $prevNews = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->where('published_status', 1)
-        ->orWhere(function ($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', now());
+        ->where(function ($query) {
+            $query->where('published_status', 1)
+                ->orWhere(function ($q) {
+                    $q->where('published_status', 2)
+                        ->where('published_at', '<=', now());
+                });
         })
         ->where('id', '<', $id)
         ->orderBy('id', 'desc')
         ->first();
         $nextNews = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
-        ->where('published_status', 1)
-        ->orWhere(function ($query) {
-            $query->where('published_status', 2)
-                ->where('published_at', '<=', now());
+        ->where(function ($query) {
+            $query->where('published_status', 1)
+                ->orWhere(function ($q) {
+                    $q->where('published_status', 2)
+                        ->where('published_at', '<=', now());
+                });
         })
         ->where('id', '>', $id)
         ->orderBy('id', 'asc')
         ->first();
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
-
+        // dd($prevNews,$nextNews,$id);
         return view('public.shop.' . $shop . '.news-detail', [
             'news' => $news,
             'prevNews' => $prevNews,

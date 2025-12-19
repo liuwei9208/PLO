@@ -267,9 +267,9 @@
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"
                                     background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                                     photo-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
-                                    date="{{ $new_girl->created_at->format('Y:m:d D') }}" date-label="入店"
-                                    name="{{ $new_girl->name }}" name-vertical="{{ $new_girl->name }}"
-                                    age="{{ $new_girl->age }}"
+                                    date="{{ $new_girl->joined_at ? \Carbon\Carbon::parse($new_girl->joined_at)->format('Y:m:d D') : '' }}"
+                                    date-label="入店" name="{{ $new_girl->name }}"
+                                    name-vertical="{{ $new_girl->name }}" age="{{ $new_girl->age }}"
                                     measurements="{{ 'T.' . $new_girl->height . ' B.' . $new_girl->bust . ' W.' . $new_girl->waist . ' H.' . $new_girl->hip }}"
                                     description="{{ $new_girl->appeal_point }}"
                                     gradient-id="calendar-gradient-{{ $loop->index }}" :gradient=false

@@ -1,7 +1,7 @@
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
-@use '../new-girl-card' as *;
-@use '../pagination' as *;
+@use './component/new-girl-card' as *;
+@use './component/pagination' as *;
 
 .newcast-section{
     display: grid;

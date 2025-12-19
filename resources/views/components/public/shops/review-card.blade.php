@@ -8,9 +8,12 @@
     'frameImage' => 'assets/img/shops/shizuku/card-frame.png',
     'girlImage' => 'assets/img/shops/shizuku/review1.png',
     'reviewerName' => '投稿者名',
-    'comment' => 'テキストテキストテキストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストストテキストストテキストストテキスト',
+    'comment' =>
+        'テキストテキストテキストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストストテキストストテキストストテキスト',
     'shopReplyTitle' => 'お店からの返信コメント',
-    'shopReply' => 'お店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメント',
+    'shopReply' =>
+        'お店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメントお店からの返信コメント',
+    'scss' => 'resources/scss/shops/review-card.scss',
 ])
 
 <div class="reivew-card-item">
@@ -22,12 +25,17 @@
         <div class="review-card-stars">
             @for ($i = 0; $i < $rating; $i++)
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFE500"/>
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                        fill="#FFE500" />
                 </svg>
             @endfor
-            @for ($i = 0; $i < (5 - $rating); $i++)
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="#FFE500" stroke-width="1.5"/>
+            @for ($i = 0; $i < 5 - $rating; $i++)
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none">
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                        fill="none" stroke="#FFE500" stroke-width="1.5" />
                 </svg>
             @endfor
             <span class="review-card-rating-number">{{ $rating }}</span>
@@ -48,18 +56,25 @@
                 <div class="review-card-rating-section pc-only">
                     <div class="review-card-stars">
                         @for ($i = 0; $i < $rating; $i++)
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="#FFE500"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    fill="#FFE500" />
                             </svg>
                         @endfor
-                        @for ($i = 0; $i < (5 - $rating); $i++)
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="none" stroke="#FFE500" stroke-width="1.5"/>
+                        @for ($i = 0; $i < 5 - $rating; $i++)
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <path
+                                    d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                    fill="none" stroke="#FFE500" stroke-width="1.5" />
                             </svg>
                         @endfor
                         <span class="review-card-rating-number">{{ $rating }}</span>
                     </div>
-                    <p class="review-card-tags">女の子 {{ $girlRating }}　プレイ {{ $playRating }}　スタッフ {{ $staffRating }}</p>
+                    <p class="review-card-tags">女の子 {{ $girlRating }}　プレイ {{ $playRating }}　スタッフ
+                        {{ $staffRating }}</p>
                 </div>
             </div>
             <div class="review-card-comment-section">
@@ -81,6 +96,5 @@
 </div>
 
 @once
-    @vite('resources/scss/shops/review-card.scss')
+    @vite($scss)
 @endonce
-

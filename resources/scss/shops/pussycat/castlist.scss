@@ -1,8 +1,8 @@
 // Import global variables and utilities
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
-@use '../schedule-card' as *;
-@use '../pagination' as *;
+@use './component/schedule-card' as *;
+@use './component/pagination' as *;
 
 .castlist-card-list{
     display: grid;
