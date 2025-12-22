@@ -1,5 +1,5 @@
-<x-shizuku-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 動画一覧"
-    :assets="['resources/scss/shops/shizuku/movie.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 動画一覧"
+    :assets="['resources/scss/shops/pussycat/movie.scss']" :banners="$banners">
     <section class="movie-list">
 
         <div class="movie-list-item">
@@ -19,4 +19,4 @@
             {{ $movies->links('pagination::shops') }}
         </div>
     </section>
-</x-shizuku-page-layout>
+    </x-shizuku-page-layout>
