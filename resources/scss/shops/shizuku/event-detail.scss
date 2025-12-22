@@ -78,7 +78,7 @@
     }
 }
 
-.event-detail-body {
+.event-detail-body p {
     @include yu-mincho-regular();
     @include responsive-font(16px, 16px);
     font-weight: 600;

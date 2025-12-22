@@ -12,11 +12,13 @@
   background: rgba(16, 4, 14, 0.90);
   z-index: 2000;
   opacity: 0;
+  display: none !important;
   visibility: hidden;
   transition: all 0.3s ease;
   overflow-y: auto;
   
   &.active {
+    display: block !important;
     opacity: 1;
     visibility: visible;
   }

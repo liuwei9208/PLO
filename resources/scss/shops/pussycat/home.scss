@@ -133,9 +133,13 @@ p {
   }
   gap: 1.25rem;
   padding: 1.875rem;
+  // background: var(
+  //   ---N,
+  //   linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
+  // );
   background: var(
     ---N,
-    linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
+    rgba(0, 0, 0, 0.6)
   );
 }
 
@@ -303,7 +307,7 @@ p {
   padding: 1.875rem;
   background: var(
     ---N,
-    linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
+    rgba(0, 0, 0, 0.6)
   );
 }
 
@@ -467,7 +471,7 @@ p {
   width: 100%;
   margin-top: 20px;
   padding-bottom: 20px !important;
-  background: var(---N_, rgba(42, 26, 8, 0.75));
+  background: var(---N_, rgba(0, 0, 0, 0.6));
 }
 
 @media screen and (max-width: 850px) {
@@ -728,7 +732,7 @@ p {
 // New Girl Slider Styles
 .home-new-girl-slider {
   width: 100%;
-  background: rgba(42, 26, 8, 0.75);
+  background: rgba(0, 0, 0, 0.6);
   padding: 1.875rem 0 0 0;
 }
 

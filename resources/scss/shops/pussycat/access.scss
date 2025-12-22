@@ -3,7 +3,7 @@
 @use "../../global/setting" as *;
 
 .access-section {
-  background: rgba(42, 26, 8, 0.6);
+  background: rgba(0, 0, 0, 0.6);
   padding: 30px 0px;
 }
 
@@ -14,14 +14,16 @@
 }
 
 .access-title {
-  @include Hiragino_Mincho_Pro_W6();
+  @include Caveat();
+  font-weight: 700;
   color: $white;
   @include responsive-font(38px, 40px);
   text-align: center;
 }
 
 .map-title {
-  @include Hiragino_Mincho_Pro_W6();
+  @include Caveat();
+  font-weight: 700;
   color: $white;
   @include responsive-font(38px, 40px);
   text-align: center;
@@ -67,16 +69,18 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  color: var(---N__, #2a1a08);
-  background: var(---N_, #b19d67);
-  @include Hiragino_Mincho_Pro_W6();
+  color: var(---N__, #2A1A08);
+  background: var(---N_, #05F2DB);
+  @include YuGothic();
   @include responsive-font(20px, 20px);
+  font-weight: 700;
 }
 
 .access-content-item p {
   color: var(---N___, #fff);
-  @include Hiragino_Mincho_Pro_W6();
+  @include YuGothic();
   @include responsive-font(20px, 20px);
+  font-weight: 700;
 }
 
 .map-content {

@@ -1,7 +1,7 @@
-<x-shizuku-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shizuku/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
+<x-pussycat-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
+    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/pussycat/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
-        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'shizuku']) }}" method="get"
+        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'pussycat']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
             <select name="rank_id" onchange="this.form.submit()"
                 class="ranking-filter-btn-mobile ranking-filter-btn-active">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="no1-person-services">
                     <p>
-                        {{ $rankings[1]->cast->appeal_point }}
+                        {!! nl2br($rankings[1]->cast->appeal_point) }
                     </p>
                 </div>
             </div>
@@ -383,4 +383,4 @@
             </div>
         </div>
     </section>
-</x-shizuku-page-layout>
+</x-pussycat-page-layout>

@@ -97,9 +97,13 @@
   }
   gap: 1.25rem;
   padding: 1.875rem;
+  // background: var(
+  //   ---N,
+  //   linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
+  // );
   background: var(
     ---N,
-    linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
+    rgba(0,0,0,0.6)
   );
 }
 

@@ -12,7 +12,7 @@
   background: rgba(249, 249, 249, 0.95);
   z-index: 2000;
   opacity: 0;
-  display: none;
+  display: none !important;
   visibility: hidden;
   transition: all 0.3s ease;
   overflow-y: auto;

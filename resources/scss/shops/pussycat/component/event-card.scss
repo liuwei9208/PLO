@@ -62,14 +62,14 @@
 }
 
 .event-card-title {
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(25px, 25px);
     font-weight: 600;
     color: var(---N__, #2A1A08);
 }   
 
 .event-card-text{
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(15px, 16px);
     font-style: normal;
     font-weight: 600;
@@ -77,7 +77,16 @@
     color: var(---N__, #2A1A08);
     white-space: pre-line;
 }
+.event-card-text p {
+    @include YuGothic();
+    @include responsive-font(15px, 16px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: 31px;
+    color: var(---N__, #2A1A08);
+    white-space: pre-line;
 
+}
 @media screen and (max-width: 850px) {
     .event-card-text{
         line-height: 27px;

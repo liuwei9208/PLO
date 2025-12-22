@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-shizuku-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/shizuku/photo-diary-detail.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
+    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/pussycat/photo-diary-detail.scss']" :banners="$banners">
     <section class="photo-diary-details-section">
         <h1 class="photo-diary-details-section-title">写メ日記詳細</h1>
         <div class="photo-diary-details-section-content">
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-</x-shizuku-page-layout>
+</x-pussycat-page-layout>
 <script>
     let cast_id = "{{ $diary->cast_id }}";
     let shop_id = "{{ $shop->id }}";
@@ -106,5 +106,5 @@
     let diarys_date = {!! json_encode($diarys_date) !!};
 </script>
 @once
-    @vite(['resources/scss/shops/shizuku/photo-diary-detail.scss', 'resources/js/shops/shizuku/photo-diary-detail.js'])
+    @vite(['resources/scss/shops/pussycat/photo-diary-detail.scss', 'resources/js/shops/pussycat/photo-diary-detail.js'])
 @endonce

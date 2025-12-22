@@ -119,8 +119,8 @@
 }
 
 .review-card-name {
-  @include yu-mincho-regular();
-  font-weight: 600;
+  @include YuGothic();
+  font-weight: 700;
   font-size: 26px;
   @include responsive-font(18.5px, 29px);
   color: white;
@@ -256,8 +256,8 @@
 }
 
 .review-card-comment-textarea {
-  @include yu-mincho-regular();
-  font-weight: 600;
+  @include YuGothic();
+  font-weight: 700;
   font-size: 15px;
   color: white;
   background: transparent;
@@ -328,8 +328,8 @@
 }
 
 .review-card-shop-reply-title {
-  @include yu-mincho-regular();
-  font-weight: 600;
+  @include YuGothic();
+  font-weight: 700;
   font-size: 18px;
   color: white;
   margin: 0;
@@ -338,7 +338,8 @@
 }
 
 .review-card-shop-reply-text {
-  @include yu-mincho-regular();
+  @include YuGothic();
+  font-weight: 500;
   font-size: 16px;
   color: white;
   margin: 0;
