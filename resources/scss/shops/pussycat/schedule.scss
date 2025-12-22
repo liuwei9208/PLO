@@ -65,11 +65,16 @@
   border: 2px solid var(---N_, #05F2DB);
   background: var(---N___, #fff);
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
+
+  &.active {
+
+    background-color: #05F2DB;
+  }
 }
 
-.active {
-  background-color: #05F2DB;
-}
+// .search-button .active {
+//   background-color: #05F2DB;
+// }
 
 .search-button p {
   @include YuGothic();
