@@ -24,9 +24,9 @@
   cursor: pointer;
   transition: all 0.3s ease;
 
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(19px, 19px);
-  font-weight: 600;
+  font-weight: 700;
   color: #a58c1b;
 
   &:hover {
@@ -56,16 +56,16 @@
 
 .ranking-no1-header {
   display: flex;
-  background: var(---N__, #2a1a08);
+  background: var(---N__, #10040E);
   gap: 50px;
   justify-content: center;
   padding: 40px 40px;
 }
 
 .no1-person-name {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(31px, 43.5px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   text-align: center;
   background: var(---h2, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
@@ -75,9 +75,9 @@
 }
 
 .no1-person-details {
-  @include times-new-roman();
+  @include YuGothic();
   @include responsive-font(16px, 22px);
-  font-weight: 400;
+  font-weight: 500;
   background: var(---h1, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   background-clip: text;
   -webkit-background-clip: text;
@@ -92,12 +92,12 @@
 }
 
 .no1-person-services p {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(16px, 18.8px);
   line-height: 29px;
   color: var(---N___, #fff);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .rankig-no1-content {
@@ -287,7 +287,7 @@
 .ranking-list-no23 {
   width: 100%;
   display: flex;
-  background: var(---N__, #2a1a08);
+  background: var(---N__, #10040E);
 }
 
 .ranking-no23-container {
@@ -303,20 +303,20 @@
 .no23-person-name {
   color: var(---N___, #fff);
   text-align: center;
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 37px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   text-align: left;
 }
 
 .no23-person-details {
   color: var(---N___, #fff);
-  @include times-new-roman();
+  @include YuGothic();
   font-size: 19px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   text-align: left;
 }
@@ -372,10 +372,10 @@
 
 .ranking-no23-services p {
   color: var(---N___, #fff);
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 29px; /* 161.111% */
 }
 
@@ -444,7 +444,7 @@
 
 .ranking-no4567-container {
   width: 25%;
-  background: var(---N__, #2a1a08);
+  background: var(---N__, #10040E);
 }
 
 .ranking-no4567-header {
@@ -510,30 +510,33 @@
 .no4567-person-name {
   color: var(---N___, #fff);
   text-align: center;
-  font-family: "Yu Mincho";
+  // font-family: "Yu Mincho";
+  @include YuGothic();
   font-size: 37px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   text-align: center;
 }
 
 .no4567-person-details {
   color: var(---N___, #fff);
-  font-family: "Times New Roman";
+  @include YuGothic();
+  // font-family: "Times New Roman";
   font-size: 19px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   text-align: center;
 }
 
-.ranking-no4567-services {
+.ranking-no4567-services p {
   color: var(---N___, #fff);
-  font-family: "Yu Mincho";
+  // font-family: "Yu Mincho";
+  @include YuGothic();
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 29px; /* 161.111% */
   padding: 0px 20px 30px 20px;
 }

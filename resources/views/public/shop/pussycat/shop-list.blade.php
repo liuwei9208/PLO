@@ -1,5 +1,5 @@
-<x-shizuku-page-layout page-title="SHOP LIST" page-subtitle="店舗一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 店舗一覧"
-    :assets="['resources/scss/shops/shizuku/shop-list.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="SHOP LIST" page-subtitle="店舗一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 店舗一覧"
+    :assets="['resources/scss/shops/pussycat/shop-list.scss']" :banners="$banners">
     <section class="shop-list-section">
         <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
@@ -218,4 +218,4 @@
             </div>
         </a>
     </section>
-</x-shizuku-page-layout>
+</x-pussycat-page-layout>

@@ -72,9 +72,9 @@
   border-radius: 1.875rem 0 0 1.875rem;
 
   .badge-shift {
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(11px, 18.5px);
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.05rem;
     text-align: center;
     white-space: nowrap;
@@ -88,16 +88,16 @@
   background: $white;
 
   .badge-time {
-    @include times-new-roman();
+    @include Pacifico();
     @include responsive-font(14px, 20.5px);
-    font-weight: 700;
+    font-weight: 400;
     // font-family: 'Times New Roman', Times, serif;
     letter-spacing: 0.07875rem;
     text-align: center;
     white-space: nowrap;
     // padding: 0 0.625rem;
     // padding: 0 0.125rem;
-    padding: 0 1.27rem;
+    padding: 0 1.27rem 0.3rem 1.27rem;
     @media #{media-query(sm)} {
       padding: 0 0.08rem;
     }
@@ -155,29 +155,29 @@
 }
 
 .schedule-card-name {
-  @include Hiragino_Mincho_Pro_W6();
+  @include YuGothic();
   @include responsive-font(16px, 16px);
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   line-height: 1.4;
 }
 
 .schedule-card-measurements {
-  // @include yu-mincho-pr6n();
-  font-family: "Times New Roman", Times, serif;
+  @include YuGothic();
+  // font-family: "Times New Roman", Times, serif;
   @include responsive-font(15px, 16px);
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   line-height: 1.4;
 }
 
 .schedule-card-message {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(17px, 20.6px);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;

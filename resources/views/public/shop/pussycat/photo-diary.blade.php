@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-shizuku-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記"
-    :assets="['resources/scss/shops/shizuku/photo-diary.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記"
+    :assets="['resources/scss/shops/pussycat/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
@@ -64,26 +64,28 @@
                                 ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本
                             </p>
                         </div>
-                    </a>
-                    <div class="sp-only">
-                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $index]) }}" class="diary-post-sp-card">
-                            <div class="diary-post-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/diary-image2.png') }}">
-                            </div>
-                            <div class="diary-post-title">
-                                <h1>投稿者名</h1>
-                                <span>ブログタイトル</span>
-                                <hr>
-                                </hr>
-                                <p>00.00.00.</p>
-                                <div class="diary-post-content">
-                                    <p>ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります<br><br>
-                                        ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本
-                                    </p>
-                                </div>
-                            </div>
                         </a>
-                    </div>
+                        <div class="sp-only">
+                            <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $index]) }}"
+                                class="diary-post-sp-card">
+                                <div class="diary-post-image">
+                                    <img src="{{ asset('assets/img/shops/shizuku/diary-image2.png') }}">
+                                </div>
+                                <div class="diary-post-title">
+                                    <h1>投稿者名</h1>
+                                    <span>ブログタイトル</span>
+                                    <hr>
+                                    </hr>
+                                    <p>00.00.00.</p>
+                                    <div class="diary-post-content">
+                                        <p>ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります<br><br>
+                                            ブログ本文が入りますブログ本文が入りますブログ本文が入りますブログ本文が入ります ブログ本文が入ります ブログ本文が入ります ブログ本文が入ります
+                                            ブログ本
+                                        </p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
                 @endforeach --}}
             </div>
             <div class="diary-pagination pc-only">
@@ -164,14 +166,14 @@
         <div class="diary-body-left-calendar-content" id="diary-calendar-mobile">
         </div>
     </div>
-</x-shizuku-page-layout>
-<script>
-    // let cast_id = "";
-    let shop_id = "{{ $shop->id }}";
-    let shop_slug = "{{ $shop->slug }}";
-    let date = "{{ $date }}";
-    let diarys_date = {!! json_encode($diarys_date) !!};
-</script>
-@once
-    @vite(['resources/scss/shops/shizuku/photo-diary.scss', 'resources/js/shops/shizuku/photo-diary.js'])
-@endonce
+    </x-shizuku-page-layout>
+    <script>
+        // let cast_id = "";
+        let shop_id = "{{ $shop->id }}";
+        let shop_slug = "{{ $shop->slug }}";
+        let date = "{{ $date }}";
+        let diarys_date = {!! json_encode($diarys_date) !!};
+    </script>
+    @once
+        @vite(['resources/scss/shops/pussycat/photo-diary.scss', 'resources/js/shops/pussycat/photo-diary.js'])
+    @endonce

@@ -23,7 +23,7 @@
   background: $white;
   color: var(---N___, $black);
   text-decoration: none;
-  @include yu-mincho-regular();
+  @include Caveat();
   font-size: 16px;
   font-weight: 400;
 
@@ -36,9 +36,9 @@
 }
 
 .page-number.active {
-  background: var(---N_, #ffda89);
-  color: var(---N__, #2a1a08);
-  border-color: #ffda89;
+  background: var(---N_, #EAF205);
+  color: var(---N__, #10040E);
+  border-color: #EAF205;
   font-weight: 600;
 
   &:hover {

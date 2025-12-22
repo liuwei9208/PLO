@@ -11,7 +11,7 @@ p{
     position: relative;
 }
 .banner-image{
-    background-image: url('/assets/img/shops/shizuku/system-banner.png');
+    background-image: url('/assets/img/shops/pussycat/system-banner.png');
     background-attachment: scroll;
     background-repeat: no-repeat;
     width: 100%;
@@ -28,7 +28,7 @@ p{
       background-position: center;
       background-attachment: scroll;
       // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
-      background-image: url('/assets/img/shops/shizuku/system-banner.png');
+      background-image: url('/assets/img/shops/pussycat/system-banner.png');
   
     }
   }
@@ -52,31 +52,32 @@ p{
     width: 100%;
     margin: 2rem auto;
     text-align: center;
-    background: rgba(0, 0, 0, 0.70);
+    background: rgba(#F2138E,0.7);
     padding: 15px 1.25rem;
 
     @media screen and (max-width: 850px) {
         margin: 0rem auto;
+        padding: 0.75rem 1.25rem;
     }
 
     h1 {
-        @include times-new-roman();
+        @include Caveat();
         @include responsive-font(47px, 95px);
         font-style: normal;
-        font-weight: 400;
+        font-weight: 700;
         line-height: normal;
         letter-spacing: 1.6px;
-        background: var(---N_, linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%));
+        background: #fff;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     p {
-        @include yu-mincho-regular();
+        @include YuGothic();
         @include responsive-font(19px, 25px);
         font-style: normal;
-        font-weight: 600 !important;
+        font-weight: 700 !important;
         line-height: normal;
         color: $white;
     }
@@ -100,6 +101,8 @@ p{
         background: var(--menu_ber, #160B00);
         margin-left: 15px;
         padding: 5px 20px;
+        margin-top: 4.19rem;
+        margin-bottom: 0.75rem;
 
         p {
             color: #FFFFFF !important;
@@ -107,8 +110,9 @@ p{
     }
 
     p {
-        @include Hiragino_Mincho_Pro_W6();
+        @include IBM_Plex_Mono();
         @include responsive-font(12px, 15px);
+        font-weight: 700;
         font-style: normal;
         line-height: normal;
         color: $black;
@@ -129,7 +133,7 @@ p{
 // Banner padding adjustment for mobile
 @media screen and (max-width: 850px) {
     .banner {
-        padding-top: 10rem;
+        padding-top: 5rem;
     }
 }
 
@@ -142,11 +146,11 @@ p{
 }
 
 .top-page-link {
-    @include yu-mincho-regular();
+    @include YuGothic();
     display: inline-block;
     padding: 0.75rem 10rem;
     background: #FFFFFF;
-    color: #2A1A08;
+    color: #10040E;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1rem;

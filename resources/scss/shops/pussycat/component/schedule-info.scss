@@ -18,6 +18,7 @@
   
   // New-girl variant: different responsive behavior
   &.schedule-info-new-girl {
+    border: 6px solid #05F2DB;
     @media (max-width: 1200px) {
       flex-wrap: wrap;
     }
@@ -81,12 +82,13 @@
 }
 
 .schedule-info-title {
-  @include yu-mincho-regular();
+  @include YuGothic();
   @include responsive-font(25px, 33px);
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   margin: 0;
   white-space: nowrap;
+  
 }
 
 .schedule-info-description {
@@ -132,9 +134,9 @@
   }
   
   p {
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(21px, 21px);
-    font-weight: 600;
+    font-weight: 700;
     line-height: normal;
     margin: 0;
     text-align: center;

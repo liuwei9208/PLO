@@ -68,7 +68,7 @@
     color: var(---N__, #2A1A08);
 }   
 
-.event-card-text{
+.event-card-text p{
     @include yu-mincho-regular();
     @include responsive-font(15px, 16px);
     font-style: normal;

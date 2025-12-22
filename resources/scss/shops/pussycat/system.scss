@@ -49,7 +49,7 @@
 }
 
 .system-board {
-  padding-top: 35px;
+  // padding-top: 35px;
   background: var(---N__, #2a1a08);
   width: 100%;
   box-sizing: border-box;
@@ -531,7 +531,7 @@
 .option-divider {
   width: 100%;
   height: 60px;
-  background: var(---N__, #2a1a08);
+  background: var(---N__, #10040E);
 }
 
 @media screen and (max-width: 850px) {
@@ -557,9 +557,9 @@
 
 .option-method-item p {
   color: var(---N__, #2a1a08);
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 31px;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 81.2%;
 }
 
@@ -650,7 +650,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #b19d67);
+  background: var(---N_, #05F2DB);
 }
 
 @media screen and (max-width: 850px) {
@@ -665,10 +665,10 @@
 
 .credit-system p {
   color: var(---N__, #2a1a08);
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 30px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 81.2%; /* 24.36px */
 }
 
@@ -701,10 +701,10 @@
 }
 .system-ban-header p {
   color: var(---N___, #fff);
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 27px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
   line-height: normal;
   max-width: 968px;
 }
@@ -764,7 +764,7 @@
 .system-ban-content-item p {
   color: var(---N__, #2a1a08);
   text-align: center;
-  @include yu-mincho-regular();
+  @include YuGothic();
   font-size: 23px;
   font-style: normal;
   font-weight: 600;

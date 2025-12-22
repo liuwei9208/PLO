@@ -1,5 +1,5 @@
-<x-shizuku-page-layout page-title="REVIEW" page-subtitle="口コミ一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 口コミ一覧"
-    :assets="['resources/scss/shops/shizuku/review.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="REVIEW" page-subtitle="口コミ一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 口コミ一覧"
+    :assets="['resources/scss/shops/pussycat/review.scss']" :banners="$banners">
     <section class="review-section">
         <div class="review-header">
             <h2 class="review-header-label">名前で検索 </h2>
@@ -75,13 +75,13 @@
             </nav> --}}
         </div>
     </section>
-</x-shizuku-page-layout>
-<script>
-    function cast_change(value) {
-        if (value) {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shizuku']) }}/" + value;
-        } else {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shizuku']) }}";
+    </x-shizuku-page-layout>
+    <script>
+        function cast_change(value) {
+            if (value) {
+                window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'pussycat']) }}/" + value;
+            } else {
+                window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'pussycat']) }}";
+            }
         }
-    }
-</script>
+    </script>

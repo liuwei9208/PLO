@@ -3,6 +3,7 @@
     'imageAlt' => 'event-image',
     'title' => 'イベントタイトルイベントタイトルイベントタイトル',
     'url' => null,
+    'scss' => 'resources/scss/shops/event-card.scss',
 ])
 
 @if ($url)
@@ -31,5 +32,5 @@
 @endif
 
 @once
-    @vite('resources/scss/shops/event-card.scss')
+    @vite($scss)
 @endonce

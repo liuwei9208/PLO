@@ -64,8 +64,8 @@
     }
 }
 
-.event-detail-title {
-    @include yu-mincho-regular();
+.event-detail-title  {
+    @include YuGothic();
     @include responsive-font(25px, 25px);
     font-weight: 600;
     color: var(---N__, #2A1A08);
@@ -78,8 +78,8 @@
     }
 }
 
-.event-detail-body {
-    @include yu-mincho-regular();
+.event-detail-body p {
+    @include YuGothic();
     @include responsive-font(16px, 16px);
     font-weight: 600;
     color: var(---N__, #2A1A08);
@@ -139,7 +139,7 @@
 }
 
 .event-detail-pagination a {
-    @include yu-mincho-regular();
+    @include YuGothic();
     @include responsive-font(14px, 16px);
     color: $white;
     text-decoration: none;

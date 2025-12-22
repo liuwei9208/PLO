@@ -7,21 +7,21 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/shizuku/footer-logo-black.png" logo-alt="Shizuku Logo"
+        <x-public.shops.menu-overlay logo-image="assets/img/shops/pussycat/footer-logo-black.png" logo-alt="Shizuku Logo"
             :menu-links="[
-                'top' => route('public.shops.shop.home', ['shop' => 'shizuku']),
-                'schedule' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),
-                'pricing' => route('public.shops.shop.system', ['shop' => 'shizuku']),
-                'new' => route('public.shops.shop.newcast', ['shop' => 'shizuku']),
-                'cast' => route('public.shops.shop.castlist', ['shop' => 'shizuku']),
-                'news' => route('public.shops.shop.news', ['shop' => 'shizuku']),
-                'event' => route('public.shops.shop.event', ['shop' => 'shizuku']),
-                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shizuku']),
-                'movie' => route('public.shops.shop.movie', ['shop' => 'shizuku']),
-                'review' => route('public.shops.shop.review', ['shop' => 'shizuku']),
-                'ranking' => route('public.shops.shop.ranking', ['shop' => 'shizuku']),
-                'shop' => route('public.shops.shop.shop-list', ['shop' => 'shizuku']),
-                'access' => route('public.shops.shop.access', ['shop' => 'shizuku']),
+                'top' => route('public.shops.shop.home', ['shop' => 'pussycat']),
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'pussycat']),
+                'pricing' => route('public.shops.shop.system', ['shop' => 'pussycat']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'pussycat']),
+                'cast' => route('public.shops.shop.castlist', ['shop' => 'pussycat']),
+                'news' => route('public.shops.shop.news', ['shop' => 'pussycat']),
+                'event' => route('public.shops.shop.event', ['shop' => 'pussycat']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'pussycat']),
+                'movie' => route('public.shops.shop.movie', ['shop' => 'pussycat']),
+                'review' => route('public.shops.shop.review', ['shop' => 'pussycat']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'pussycat']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'pussycat']),
+                'access' => route('public.shops.shop.access', ['shop' => 'pussycat']),
                 'recruit-male' => '#',
                 'login' => route('login'),
                 'recruit-female' => '#',
@@ -33,7 +33,26 @@
                 'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
             ]"
-            mobile-image="assets/img/shops/shizuku/credit_system.png" mobile-image-alt="女の子募集中" />
+            mobile-image="assets/img/shops/shizuku/credit_system.png" mobile-image-alt="女の子募集中" menuCloseColor="#fff"
+            twitterColor="#EAF205" :menuIconColor="[
+                'top' => '#F2138E',
+                'new' => '#52B845',
+                'event' => '#EAF205',
+                'review' => '#F2138E',
+                'shop' => '#F2138E',
+                'schedule' => '#05F2DB',
+                'cast' => '#F2138E',
+                'diary' => '#B525CE',
+                'ranking' => '#EAF205',
+                'login' => '#FFF',
+                'register' => '#FFF',
+                'pricing' => '#EAF205',
+                'news' => '#F2138E',
+                'movie' => '#FFF',
+                'access' => '#F2138E',
+                'recruit-female' => '#D42032',
+                'recruit-male' => '#05F2DB',
+            ]" />
 
         <div class="banner">
             <x-public.shops.contact-info phone-icon="assets/img/shops/pussycat/phone.png" phone-number="011-533-8988"
@@ -105,16 +124,19 @@
                         'url' => route('public.shops.shop.system', ['shop' => 'pussycat']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
-                ]" />
+                ]"
+                social-svg='<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#EAF205"/>
+                    </svg>' />
             @if ($todayCasts->count() > 0)
                 <div class="home-schedule">
-                    <x-public.shops.section-title text="schedule" background-color="#2A1A08" gradient-start="#FFF2D7"
-                        gradient-end="#BD902F" letter-spacing="6px" />
-                    <x-public.shops.schedule-info icon-image="assets/img/shop/calender-g.png" icon-alt="出勤情報"
+                    <x-public.shops.section-title text="schedule" background-color="#10040E" :gradient=false
+                        letter-spacing="6px" color="#05F2DB" />
+                    <x-public.shops.schedule-info icon-image="assets/img/shops/pussycat/calender-g.png" icon-alt="出勤情報"
                         title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る" background-color="#FFFFFF"
-                        border-color="#2A1A08" text-color="#2A1A08" underline-gradient-start="#FFF2D7"
-                        underline-gradient-end="#BD902F" responsive-variant="new-girl"
-                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'shizuku']) }}" />
+                        text-color="#10040E" border-color="#05F2DB" text-color="#10040E" underlineColor="#05F2DB"
+                        responsive-variant="new-girl" :gradient='false'
+                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'pussycat']) }}" />
                     <div class="home-schedule-cards">
                         {{-- @for ($i = 0; $i < 12; $i++)
                             <x-public.shops.schedule-card
@@ -130,17 +152,21 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/pussycat/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
                                     status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
-                                    message="{{ $todayCast->appeal_point }}" variant="schedule" />
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule"
+                                    contentGradientStart="#7E002A" contentGradientStartPercent="48.08%"
+                                    contentGradientEnd="rgba(255, 0, 246, 0.20)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#F2138E" badgeBgColor="#F2138E" badgeTextColor="#FFDA89"
+                                    badgeTimeColor="#10040E" :messageGradient=false measurementsColor="#FFFFFF" />
                             @else
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/pussycat/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#F5F5F5"/>
@@ -149,7 +175,11 @@
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
                                     message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    status-text-color="#ffffff" />
+                                    status-text-color="#ffffff" contentGradientStart="#7E002A"
+                                    contentGradientStart="#7E002A" contentGradientStartPercent="48.08%"
+                                    contentGradientEnd="rgba(255, 0, 246, 0.20)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#F2138E" badgeBgColor="#F2138E" badgeTextColor="#FFDA89"
+                                    badgeTimeColor="#10040E" :messageGradient=false measurementsColor="#FFFFFF" />
                             @endif
                         @endforeach
                     </div>
@@ -158,19 +188,28 @@
                             href="{{ route('public.shops.shop.schedule', ['shop' => 'shizuku']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
                             <p style="color: #2A1A08;">一覧を見る</p>
-                            <div class="schedule-info-underline"
-                                style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                            <div class="schedule-info-underline" style="background: #05F2DB;"></div>
                         </a>
                     </div>
                 </div>
             @endif
             <div class="home-news">
-                <x-public.shops.news-section title="news" slider-id="newsSlider"
-                    default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false'
-                    :items="$news" :shop="$shop" />
-                <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
-                    default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false'
-                    :items="$diaries" :shop="$shop" />
+                @if (count($news) > 0)
+                    <x-public.shops.news-section title="news" slider-id="newsSlider"
+                        default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='true'
+                        :items="$news" :shop="$shop" titleBackgroundGradientStart="#B525CE"
+                        titleBackgroundGradientStartPercent="0%" titleBackgroundGradientMiddle="#FF00F2"
+                        titleBackgroundGradientMiddlePercent="50%" titleBackgroundGradientEnd="#B525CE"
+                        titleBackgroundGradientEndPercent="100%" :titleGradient=false titleColor="#FFF" />
+                @endif
+                @if (count($diaries) > 0)
+                    <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
+                        default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='true'
+                        :items="$diaries" :shop="$shop" titleBackgroundGradientStart="#B525CE"
+                        titleBackgroundGradientStartPercent="0%" titleBackgroundGradientMiddle="#FF00F2"
+                        titleBackgroundGradientMiddlePercent="50%" titleBackgroundGradientEnd="#B525CE"
+                        titleBackgroundGradientEndPercent="100%" :titleGradient=false titleColor="#FFF" />
+                @endif
             </div>
             @php
                 $pickupImages = [
@@ -178,22 +217,40 @@
                     ['image' => asset('storage/' . $pickups[1]->gallery_1), 'alt' => 'Cast 2'],
                 ];
             @endphp
-            <x-public.shops.pickup-section header-background-image="assets/img/shops/shizuku/pickup-bg.png"
-                title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し" :cast-images="$pickupImages"
-                frame-image="assets/img/shops/shizuku/card-frame-2.png" />
+            <x-public.shops.pickup-section header-background-image="assets/img/shops/pussycat/pickup-bg.png"
+                title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
+                :cast-images="$pickupImages" frame-image="assets/img/shops/pussycat/card-frame-2.png" Colorchange=true
+                badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="228" height="228" viewBox="0 0 228 228" fill="none">
+<g filter="url(#filter0_d_202_743)">
+<path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="#F2138E"/>
+</g>
+<defs>
+<filter id="filter0_d_202_743" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="10"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_202_743"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_202_743" result="shape"/>
+</filter>
+</defs>
+</svg>' />
             @if ($new_girls->count() > 0)
                 <div class="home-new-girl-section">
-                    <x-public.shops.section-title text="NEW GIRL" background-color="#2A1A08" gradient-start="#FFF2D7"
-                        gradient-end="#BD902F" letter-spacing="0.375rem" opacity="0.7" small="true" />
+                    <x-public.shops.section-title text="NEW GIRL" background-color="#10040E" color="#05F2DB"
+                        letter-spacing="0.375rem" opacity="0.7" small="true" :gradient=false />
                     @php
-                        $newGirlIconSvg =
-                            '<svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><rect width="35" height="35" fill="url(#pattern0_8_1967)"/><defs><pattern id="pattern0_8_1967" patternContentUnits="objectBoundingBox" width="1" height="1"><use xlink:href="#image0_8_1967" transform="scale(0.00390625)"/></pattern><image id="image0_8_1967" width="256" height="256" preserveAspectRatio="none" xlink:href="data:image/png;base64,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"/></svg>';
+                        $newGirlIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="35" viewBox="0 0 26 35" fill="none">
+<path d="M3.48938 0L5.03394 0.68188L12.8051 8.17029L20.4795 0.68188L22.0241 0H22.6956C24.5021 0.486863 25.226 1.46741 25.3791 3.34258C25.0769 9.26539 25.7887 15.6069 25.3872 21.4806C25.1991 24.2313 24.3167 24.5872 22.6244 26.311C20.3573 28.6212 17.5878 31.7183 15.1756 33.7476C14.5014 34.3149 13.8849 34.6818 13.0253 34.9055C12.8507 34.8905 12.6587 34.9286 12.4881 34.9055C11.7212 34.7991 11.055 34.3709 10.4721 33.884C8.13514 31.9325 5.48791 28.9472 3.29195 26.7202C1.48415 24.8873 0.327746 24.4331 0.126282 21.4806C-0.275302 15.6069 0.436537 9.26539 0.134341 3.34258C0.284767 1.49195 1.05167 0.492318 2.81784 0H3.48938ZM12.7567 29.9959C14.304 28.8122 15.5974 27.2834 16.9834 25.9019C17.7691 25.1205 20.7978 22.5471 21.0208 21.6824L21.014 7.50205C20.7051 7.00837 20.2042 6.95382 19.7475 7.30157L12.7581 14.2486L12.7567 29.9959Z" fill="#05F2DB"/>
+</svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
                         description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#FFFFFF"
-                        border-color="#2A1A08" text-color="#2A1A08" underline-gradient-start="#FFF2D7"
+                        border-color="#05F2DB" text-color="#textColor" :gradient=false underlineColor="#EAF205"
                         underline-gradient-end="#BD902F" responsive-variant="new-girl"
-                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'shizuku']) }}" />
+                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'pussycat']) }}" />
                 </div>
                 <div class="home-new-girl-slider">
                     <div class="new-girl-slider-cards">
@@ -213,14 +270,18 @@
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"
                                     background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                                     photo-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
-                                    date="{{ $new_girl->created_at->format('Y:m:d D') }}" date-label="入店"
-                                    name="{{ $new_girl->name }}" name-vertical="{{ $new_girl->name }}"
-                                    age="{{ $new_girl->age }}"
+                                    date="{{ $new_girl->joined_at ? \Carbon\Carbon::parse($new_girl->joined_at)->format('Y:m:d D') : '' }}"
+                                    date-label="入店" name="{{ $new_girl->name }}"
+                                    name-vertical="{{ $new_girl->name }}" age="{{ $new_girl->age }}"
                                     measurements="{{ 'T.' . $new_girl->height . ' B.' . $new_girl->bust . ' W.' . $new_girl->waist . ' H.' . $new_girl->hip }}"
                                     description="{{ $new_girl->appeal_point }}"
-                                    gradient-id="calendar-gradient-{{ $loop->index }}" gradient-start="#FFF2D7"
-                                    gradient-end="#BD902F" overlay-opacity="0.7" name-color="#FFFFFF"
-                                    measurements-color="#FFFFFF" />
+                                    gradient-id="calendar-gradient-{{ $loop->index }}" :gradient=false
+                                    datetextColor="#EAF205" overlay-opacity="0.7" name-color="#FFFFFF"
+                                    measurements-color="#FFFFFF" :cardGradient=false carddividerColor="#ffffff"
+                                    :carddividerverticalGradient=false carddividerverticalColor="#05F2DB"
+                                    iconSvg='<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none">
+<path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#EAF205"/>
+</svg>' />
                             @endforeach
                         </div>
                     </div>
@@ -236,7 +297,7 @@
                                     viewBox="0 0 61 61" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M60.5 30.5C60.5 31.4283 60.1313 32.3185 59.4749 32.9749C58.8185 33.6313 57.9283 34 57 34H11.5L23.75 46.25C24.0948 46.5948 24.3688 47.0038 24.556 47.4542C24.7432 47.9046 24.8401 48.3879 24.8413 48.8762C24.8426 49.3645 24.7482 49.8483 24.5634 50.2996C24.3786 50.7509 24.1069 51.1613 23.7638 51.5081C23.4207 51.855 23.0129 52.1311 22.5631 52.3203C22.1133 52.5095 21.6304 52.6084 21.1421 52.6118C20.6538 52.6151 20.1696 52.5228 19.7171 52.3398C19.2646 52.1568 18.8527 51.8867 18.5042 51.5458L0.979167 34.0208C0.32282 33.3645 -0.0457764 32.4748 -0.0457764 31.5466C-0.0457764 30.6185 0.32282 29.7288 0.979167 29.0725L18.5042 11.5475C19.1708 10.9236 20.0465 10.5793 20.9543 10.5859C21.8621 10.5925 22.7326 10.9496 23.3901 11.5828C24.0476 12.216 24.4417 13.0759 24.4919 13.9828C24.5421 14.8898 24.2444 15.7866 23.6625 16.4875L11.5 28.5H57C57.9283 28.5 58.8185 28.8687 59.4749 29.5251C60.1313 30.1815 60.5 31.0717 60.5 32V30.5Z"
-                                        fill="white" />
+                                        fill="black" />
                                 </svg>
                             </button>
                             <button class="new-girl-slider-next">
@@ -244,7 +305,7 @@
                                     viewBox="0 0 61 61" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
                                         d="M0.5 30.5C0.5 31.4283 0.868749 32.3185 1.52513 32.9749C2.1815 33.6313 3.07174 34 4 34H49.5L37.25 46.25C36.9052 46.5948 36.6312 47.0038 36.444 47.4542C36.2568 47.9046 36.1599 48.3879 36.1587 48.8762C36.1574 49.3645 36.2518 49.8483 36.4366 50.2996C36.6214 50.7509 36.8931 51.1613 37.2362 51.5081C37.5793 51.855 37.9871 52.1311 38.4369 52.3203C38.8867 52.5095 39.3696 52.6084 39.8579 52.6118C40.3462 52.6151 40.8304 52.5228 41.2829 52.3398C41.7354 52.1568 42.1473 51.8867 42.4958 51.5458L60.0208 34.0208C60.6772 33.3645 61.0458 32.4748 61.0458 31.5466C61.0458 30.6185 60.6772 29.7288 60.0208 29.0725L42.4958 11.5475C41.8292 10.9236 40.9535 10.5793 40.0457 10.5859C39.1379 10.5925 38.2674 10.9496 37.6099 11.5828C36.9524 12.216 36.5583 13.0759 36.5081 13.9828C36.4579 14.8898 36.7556 15.7866 37.3375 16.4875L49.5 28.5H4C3.07174 28.5 2.1815 28.8687 1.52513 29.5251C0.868749 30.1815 0.5 31.0717 0.5 32V30.5Z"
-                                        fill="white" />
+                                        fill="black" />
                                 </svg>
                             </button>
                         </div>
@@ -255,7 +316,7 @@
                                 viewBox="0 0 61 61" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M60.5 30.5C60.5 31.4283 60.1313 32.3185 59.4749 32.9749C58.8185 33.6313 57.9283 34 57 34H11.5L23.75 46.25C24.0948 46.5948 24.3688 47.0038 24.556 47.4542C24.7432 47.9046 24.8401 48.3879 24.8413 48.8762C24.8426 49.3645 24.7482 49.8483 24.5634 50.2996C24.3786 50.7509 24.1069 51.1613 23.7638 51.5081C23.4207 51.855 23.0129 52.1311 22.5631 52.3203C22.1133 52.5095 21.6304 52.6084 21.1421 52.6118C20.6538 52.6151 20.1696 52.5228 19.7171 52.3398C19.2646 52.1568 18.8527 51.8867 18.5042 51.5458L0.979167 34.0208C0.32282 33.3645 -0.0457764 32.4748 -0.0457764 31.5466C-0.0457764 30.6185 0.32282 29.7288 0.979167 29.0725L18.5042 11.5475C19.1708 10.9236 20.0465 10.5793 20.9543 10.5859C21.8621 10.5925 22.7326 10.9496 23.3901 11.5828C24.0476 12.216 24.4417 13.0759 24.4919 13.9828C24.5421 14.8898 24.2444 15.7866 23.6625 16.4875L11.5 28.5H57C57.9283 28.5 58.8185 28.8687 59.4749 29.5251C60.1313 30.1815 60.5 31.0717 60.5 32V30.5Z"
-                                    fill="white" />
+                                    fill="black" />
                             </svg>
                         </button>
                         <button class="new-girl-slider-mobile-next">
@@ -263,7 +324,7 @@
                                 viewBox="0 0 61 61" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M0.5 30.5C0.5 31.4283 0.868749 32.3185 1.52513 32.9749C2.1815 33.6313 3.07174 34 4 34H49.5L37.25 46.25C36.9052 46.5948 36.6312 47.0038 36.444 47.4542C36.2568 47.9046 36.1599 48.3879 36.1587 48.8762C36.1574 49.3645 36.2518 49.8483 36.4366 50.2996C36.6214 50.7509 36.8931 51.1613 37.2362 51.5081C37.5793 51.855 37.9871 52.1311 38.4369 52.3203C38.8867 52.5095 39.3696 52.6084 39.8579 52.6118C40.3462 52.6151 40.8304 52.5228 41.2829 52.3398C41.7354 52.1568 42.1473 51.8867 42.4958 51.5458L60.0208 34.0208C60.6772 33.3645 61.0458 32.4748 61.0458 31.5466C61.0458 30.6185 60.6772 29.7288 60.0208 29.0725L42.4958 11.5475C41.8292 10.9236 40.9535 10.5793 40.0457 10.5859C39.1379 10.5925 38.2674 10.9496 37.6099 11.5828C36.9524 12.216 36.5583 13.0759 36.5081 13.9828C36.4579 14.8898 36.7556 15.7866 37.3375 16.4875L49.5 28.5H4C3.07174 28.5 2.1815 28.8687 1.52513 29.5251C0.868749 30.1815 0.5 31.0717 0.5 32V30.5Z"
-                                    fill="white" />
+                                    fill="black" />
                             </svg>
                         </button>
                     </div>
@@ -276,28 +337,26 @@
                     @if ($newGirlButtonHref)
                         <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
-                            <p style="color: #2A1A08;">一覧を見る</p>
-                            <div class="schedule-info-underline"
-                                style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                            <p style="color: #10040E;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #EAF205;"></div>
                         </a>
                     @else
                         <div class="schedule-info-button schedule-info-button-mobile"
                             style="background: #FFFFFF; border-left-color: #2A1A08;"
                             @if ($newGirlButtonOnClick) onclick="{{ $newGirlButtonOnClick }}" @endif>
-                            <p style="color: #2A1A08;">一覧を見る</p>
-                            <div class="schedule-info-underline"
-                                style="background: linear-gradient(180deg, #FFF2D7 20.67%, #BD902F 100%);"></div>
+                            <p style="color: #10040E;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #EAF205;"></div>
                         </div>
                     @endif
                 </div>
             @endif
             @if (count($castlist) > 0)
                 <div class="home-castlist">
-                    <x-public.shops.section-title text="cast list" background-color="#2A1A08"
-                        gradient-start="#FFF2D7" gradient-end="#BD902F" letter-spacing="0.375rem" opacity="0.7" />
+                    <x-public.shops.section-title text="cast list" background-color="#10040E" :gradient=false
+                        color="#F2138E" letter-spacing="0.375rem" opacity="0.7" />
                     <div class="home-castlist-info">
                         <div class="castlist-info-header">
-                            <img src="{{ asset('assets/img/shops/shizuku/girl-icon.png') }}" alt="出勤情報"
+                            <img src="{{ asset('assets/img/shops/pussycat/girl-icon.png') }}" alt="出勤情報"
                                 class="castlist-info-icon">
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
@@ -335,16 +394,16 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/pussycat/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                                     status-icon="" status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                                     measurements=" {{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
-                                    message="{{ $cast->appeal_point }}" badge-border-color="#B90000"
-                                    badge-bg-color="#B90000" badge-text-color="#FFDA89" badge-time-color="#2A1A08"
-                                    status-text-color="#FFE500" name-color="#FFFFFF" measurements-color="#FFFFFF"
-                                    message-gradient-start="#FFF2D7" message-gradient-end="#BD902F"
-                                    content-gradient-start="rgba(42, 26, 8, 0.80)"
-                                    content-gradient-end="rgba(0, 0, 0, 0.00)" variant="castlist_top" />
+                                    message="{{ $cast->appeal_point }}" badge-border-color="#F2138E"
+                                    badge-bg-color="#F2138E" badge-text-color="#FFDA89" badge-time-color="#2A1A08"
+                                    status-text-color="#FFE500" name-color="#FFFFFF" variant="castlist_top"
+                                    contentGradientStart="#7E002A" contentGradientStartPercent="48.08%"
+                                    contentGradientEnd="rgba(255, 0, 246, 0.20)" contentGradientEndPercent="100%"
+                                    badgeTimeColor="#10040E" :messageGradient=false measurementsColor="#FFFFFF" />
                             @endforeach
                         </div>
                         <button class="castlist-slider-next">
@@ -364,7 +423,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[0]->cast_gallery_1) }}" alt="Cast 1"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/pussycat/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="154"
@@ -418,7 +477,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[1]->cast_gallery_1) }}" alt="Cast 2"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/pussycat/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no2">
                                 <svg width="220" height="137" viewBox="0 0 220 137" fill="none"
@@ -470,14 +529,34 @@
                     </div>
                     <div class="ranking-badge-button">
                         <div class="ranking-badge-diamond">
-                            <svg width="188" height="188" viewBox="0 0 188 188" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M94 0L188 94L94 188L0 94L94 0Z" fill="url(#paint0_linear_ranking_badge)" />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="228" height="228"
+                                viewBox="0 0 228 228" fill="none">
+                                <g filter="url(#filter0_d_202_760)">
+                                    <path
+                                        d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z"
+                                        fill="url(#paint0_linear_202_760)" />
+                                </g>
                                 <defs>
-                                    <linearGradient id="paint0_linear_ranking_badge" x1="94" y1="0"
-                                        x2="94" y2="188" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#FFF2D7" />
-                                        <stop offset="1" stop-color="#BD902F" />
+                                    <filter id="filter0_d_202_760" x="0" y="0" width="228" height="228"
+                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" type="matrix"
+                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                                        <feOffset />
+                                        <feGaussianBlur stdDeviation="10" />
+                                        <feComposite in2="hardAlpha" operator="out" />
+                                        <feColorMatrix type="matrix"
+                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+                                        <feBlend mode="normal" in2="BackgroundImageFix"
+                                            result="effect1_dropShadow_202_760" />
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_202_760"
+                                            result="shape" />
+                                    </filter>
+                                    <linearGradient id="paint0_linear_202_760" x1="20" y1="114"
+                                        x2="208" y2="114" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#B525CE" />
+                                        <stop offset="0.5" stop-color="#FF00F2" />
+                                        <stop offset="1" stop-color="#B525CE" />
                                     </linearGradient>
                                 </defs>
                             </svg>
@@ -487,18 +566,21 @@
                     </div>
                     <div class="ranking-header">
                         <div class="ranking-header-bg">
-                            <img src="{{ asset('assets/img/shops/shizuku/ranking.png') }}" alt="Background">
+                            <img src="{{ asset('assets/img/shops/pussycat/ranking.png') }}" alt="Background">
                             <div class="ranking-header-overlay"></div>
                             <div class="ranking-header-shadow"></div>
                         </div>
                         <div class="ranking-header-content">
-                            <h1 class="ranking-title-en">RANKING</h1>
+                            <h1 class="ranking-title-en"><span style="color:#F2138E">R</span><span
+                                    style="color:#05F2DB">A</span><span style="color:#EAF205">N</span><span
+                                    style="color:#F2138E">K</span><span style="color:#05F2DB">I</span><span
+                                    style="color:#EAF205">N</span><span style="color:#F2138E">G</span></h1>
                             <div class="ranking-title-ja-wrapper">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30"
                                     viewBox="0 0 34 30" fill="none">
                                     <path
                                         d="M5 30V26.6667H28.3333V30H5ZM5 24.1667L2.875 10.7917C2.81945 10.7917 2.75667 10.7989 2.68667 10.8133C2.61667 10.8278 2.55445 10.8344 2.5 10.8333C1.80556 10.8333 1.21556 10.59 0.730004 10.1033C0.244448 9.61667 0.0011149 9.02667 3.78788e-06 8.33334C-0.00110732 7.64 0.242226 7.05 0.730004 6.56334C1.21778 6.07667 1.80778 5.83334 2.5 5.83334C3.19223 5.83334 3.78278 6.07667 4.27167 6.56334C4.76056 7.05 5.00334 7.64 5 8.33334C5 8.52778 4.97889 8.70834 4.93667 8.875C4.89445 9.04167 4.84612 9.19445 4.79167 9.33334L10 11.6667L15.2083 4.54167C14.9028 4.31945 14.6528 4.02778 14.4583 3.66667C14.2639 3.30556 14.1667 2.91667 14.1667 2.5C14.1667 1.80556 14.41 1.215 14.8967 0.728337C15.3833 0.241671 15.9733 -0.00110731 16.6667 3.79651e-06C17.36 0.00111491 17.9506 0.244448 18.4383 0.730004C18.9261 1.21556 19.1689 1.80556 19.1667 2.5C19.1667 2.91667 19.0695 3.30556 18.875 3.66667C18.6806 4.02778 18.4306 4.31945 18.125 4.54167L23.3333 11.6667L28.5417 9.33334C28.4861 9.19445 28.4372 9.04167 28.395 8.875C28.3528 8.70834 28.3322 8.52778 28.3333 8.33334C28.3333 7.63889 28.5767 7.04834 29.0633 6.56167C29.55 6.075 30.14 5.83223 30.8333 5.83334C31.5267 5.83445 32.1172 6.07778 32.605 6.56334C33.0928 7.04889 33.3356 7.63889 33.3333 8.33334C33.3311 9.02778 33.0883 9.61834 32.605 10.105C32.1217 10.5917 31.5311 10.8344 30.8333 10.8333C30.7778 10.8333 30.7156 10.8267 30.6467 10.8133C30.5778 10.8 30.515 10.7928 30.4583 10.7917L28.3333 24.1667H5Z"
-                                        fill="white" />
+                                        fill="#EAF205" />
                                 </svg>
                                 <h2 class="ranking-title-ja">ランキング</h2>
                             </div>
@@ -590,13 +672,13 @@
                     'url' => '#',
                 ],
             ]" :menu-links="[
-                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'shizuku'])],
-                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'shizuku'])],
-                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'shizuku'])],
-                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'shizuku'])],
-                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'shizuku'])],
+                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'pussycat'])],
+                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'pussycat'])],
+                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'pussycat'])],
+                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'pussycat'])],
+                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'pussycat'])],
                 ['text' => 'SNS', 'url' => '#'],
-                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'shizuku'])],
+                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'pussycat'])],
                 ['text' => 'ログイン', 'url' => route('login')],
                 ['text' => '新規会員登録', 'url' => route('register')],
                 [
@@ -608,19 +690,21 @@
                 ['text' => '男性求人', 'url' => '#'],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-            ]" :external-links="$banner_list" />
+            ]" :external-links="$banner_list"
+                footerLogo="{{ asset('assets/img/shops/pussycat/footer-logo.png') }}" svgIconColor="#F2138E" />
         </div>
 
         <!-- Fixed Phone Button -->
         <x-public.shops.fixed-phone-button phone-number="0115310965" phone-display="011-531-0965"
             hours="16:00〜24:00まで" mobile-text="TEL"
             icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-                    <path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="#0E3437"/>
-                  </svg>' />
+                    <path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="#0E3437" />
+                  </svg>'
+            mobileImage="{{ asset('assets/img/shops/pussycat/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons
-            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shizuku']) }}" />
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'pussycat']) }}" />
     </div>
 </x-shizuku-layout>
 

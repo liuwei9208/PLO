@@ -1,5 +1,5 @@
-<x-shizuku-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧"
-    :assets="['resources/scss/shops/shizuku/castlist.scss']" :banners="$banners">
+<x-pussycat-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧"
+    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧" :assets="['resources/scss/shops/pussycat/castlist.scss']" :banners="$banners">
     <div class="castlist-card-list">
         {{-- @for ($i = 1; $i <= 20; $i++)
         <x-public.shops.schedule-card
@@ -31,17 +31,22 @@
             <x-public.shops.schedule-card
                 href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                 background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
+                frame-image="assets/img/shops/pussycat/card-frame.png" badge-shift="本日出勤"
                 badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                 status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                 measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
-                message="{{ $cast->appeal_point }}" variant="castlist" />
+                message="{{ $cast->appeal_point }}" variant="castlist" badge-border-color="#F2138E"
+                badge-bg-color="#F2138E" badge-text-color="#FFDA89" badge-time-color="#2A1A08"
+                status-text-color="#FFE500" name-color="#FFFFFF" contentGradientStart="#7E002A"
+                contentGradientStartPercent="48.08%" contentGradientEnd="rgba(255, 0, 246, 0.20)"
+                contentGradientEndPercent="100%" badgeTimeColor="#10040E" :messageGradient=false
+                measurementsColor="#FFFFFF" />
         @endforeach
     </div>
     <div class="castlist-pagination">
         {{ $castlist->links('pagination::shops') }}
     </div>
-</x-shizuku-page-layout>
-{{-- @once
+    </x-shizuku-page-layout>
+    {{-- @once
     @vite(['resources/scss/shops/pagination.scss'])
 @endonce --}}
