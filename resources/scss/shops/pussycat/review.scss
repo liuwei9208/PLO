@@ -1,6 +1,6 @@
 @use "../../global/vars" as *;
 @use "../../mixins/font" as *;
-@use "../pagination" as *;
+@use "./component/pagination" as *;
 
 .review-header {
   background: $white;

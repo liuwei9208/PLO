@@ -1,7 +1,7 @@
 @use "../../global/vars" as *;
 @use "../../mixins/font" as *;
 @use "../../global/setting" as *;
-@use "../pagination.scss" as *;
+@use "./component/pagination.scss" as *;
 .photo-diary-section {
   // background: rgba(42, 26, 8, 0.6);
   background: rgba(0, 0, 0, 0.6);
