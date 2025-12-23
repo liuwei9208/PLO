@@ -112,15 +112,19 @@
         @if ($messageGradient)
             <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                <span
+                {{-- <span
                     class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
+                    style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}　{{ $message }}</span> --}}
+                <span class="schedule-card-message-text"
                     style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}　{{ $message }}</span>
             </p>
         @else
             <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">
-                <span
+                {{-- <span
                     class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
+                    style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span> --}}
+                <span class="schedule-card-message-text"
                     style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span>
             </p>
         @endif
