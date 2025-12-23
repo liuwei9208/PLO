@@ -234,6 +234,7 @@
             newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'pussycat']) }}" />
     </div>
     @push('styles')
-        @vite(['resources/scss/shops/pussycat/page-layout.scss', 'resources/js/shops/home-header.js'])
+        @vite(['resources/scss/shops/pussycat/page-layout.scss', ...$assets])
+        @vite(['resources/js/shops/home-header.js'])
     @endpush
 </x-shizuku-layout>
