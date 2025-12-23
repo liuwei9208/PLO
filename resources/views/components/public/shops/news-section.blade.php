@@ -66,7 +66,7 @@
                                     alt="{{ $item['title'] ?? 'Card Image' }}">
                             </div>
                             <div class="news-content-card-date">
-                                <h2>{{ $item['published_at'] ? \Carbon\Carbon::createFromTimeString($item['published_at'])->format('m.d') : '' }}
+                                <h2>{{ $item['published_at'] ? \Carbon\Carbon::createFromTimeString($item['published_at'])->format('m/d') : '' }}
                                 </h2>
                             </div>
                             <div class="news-content-card-content">
@@ -139,7 +139,6 @@
                     @foreach ($items as $item)
                         <a class="diary-content-card"
                             href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => $shop->slug, 'id' => $item->id]) }}">
-                            href="#">
                             <div class="diary-content-card-image">
                                 <img src="{{ asset('storage/diary/' . $item['photo']) }}"
                                     alt="{{ $item['subject'] ?? 'Card Image' }}">

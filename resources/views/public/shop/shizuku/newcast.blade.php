@@ -14,7 +14,7 @@
                 href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $new_girl->id]) }}"
                 background-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
                 photo-image="{{ asset('storage/' . $new_girl->gallery_1) }}"
-                date="{{ $new_girl->joined_at ? \Carbon\Carbon::parse($new_girl->joined_at)->format('Y.m.d D') : '' }}"
+                date="{{ $new_girl->joined_at ? \Carbon\Carbon::parse($new_girl->joined_at)->format('m/d') : '' }}"
                 date-label="入店" name="{{ $new_girl->name }}" name-vertical="{{ $new_girl->name }}"
                 age="{{ $new_girl->age }}"
                 measurements="T.{{ $new_girl->height }} B.{{ $new_girl->bust }}(C) W.{{ $new_girl->waist }} H.{{ $new_girl->hip }}"

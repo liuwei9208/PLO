@@ -39,7 +39,7 @@
                                 <span>{{ $diary->subject }}</span>
                                 <hr>
                                 </hr>
-                                <p>{{ $diary->created_at->format('Y.m.d.') }}</p>
+                                <p>{{ $diary->created_at->format('Y/m/d') }}</p>
                                 <div class="diary-post-content">
                                     <p>{!! nl2br($diary->body) !!}</p>
                                 </div>

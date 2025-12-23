@@ -51,7 +51,7 @@
                     <hr>
                 </div>
                 <div class="blog-time">
-                    <p class="pc-only">{{ $diary->created_at->format('Y.m.d H:i:s') }}</p>
+                    <p class="pc-only">{{ $diary->created_at->format('Y/m/d H:i:s') }}</p>
                     <p class="sp-only">{{ $diary->created_at->format('y/m/d') }}</p>
                 </div>
                 <div class="photo-diary-image pc-only">

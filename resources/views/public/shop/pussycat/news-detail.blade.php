@@ -3,7 +3,7 @@
     <section class="news-detail-section">
         <p class="news-detail-title">{{ $news->title }}</p>
         <p class="news-detail-date">
-            {{ $news->published_at ? \Carbon\Carbon::createFromTimeString($news->published_at)->format('y.m.d') : '' }}
+            {{ $news->published_at ? \Carbon\Carbon::createFromTimeString($news->published_at)->format('y/m/d') : '' }}
         </p>
         <div class="news-detail-card">
             <div class="news-detail-image">

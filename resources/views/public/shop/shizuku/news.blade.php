@@ -4,7 +4,7 @@
         @foreach ($news as $new)
             <x-public.shops.news-card image="{{ asset('storage/' . $new->thumbnail) }}" image-alt="news-image"
                 title="{{ $new->title }}"
-                date="{{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y.m.d') : '' }}"
+                date="{{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y/m/d') : '' }}"
                 :url="route('public.shops.shop.news.detail', ['shop' => 'shizuku', 'id' => $new->id])">
                 {!! nl2br($new->contents) !!}
             </x-public.shops.news-card>
