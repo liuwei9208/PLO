@@ -201,21 +201,21 @@
     }
   }
 
-  .schedule-card-message-text-castlist {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    line-clamp: 3;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-box-orient: vertical;
-    white-space: normal;
-    word-break: break-word;
-  }
+  // .schedule-card-message-text-castlist {
+  //   display: -webkit-box;
+  //   -webkit-line-clamp: 3;
+  //   line-clamp: 3;
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  //   -webkit-box-orient: vertical;
+  //   white-space: normal;
+  //   word-break: break-word;
+  // }
   
-  // castlistバリアントの場合、親要素のwhite-space: nowrapを上書き
-  &.castlist-card-message {
-    white-space: normal;
-  }
+  // // castlistバリアントの場合、親要素のwhite-space: nowrapを上書き
+  // &.castlist-card-message {
+  //   white-space: normal;
+  // }
 }
 
 // Castlist card variant - uses larger font sizes
