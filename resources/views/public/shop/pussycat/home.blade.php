@@ -107,7 +107,7 @@
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]" menu-button-id="mobileMenuButton" background-color="#F2138E"
-                :mobile-menu-button-items="[
+                :mobileMenuBttonItems="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
