@@ -31,7 +31,14 @@
                                 fill="none">
                                 <circle cx="31.5" cy="31.5" r="31.5" fill="#2A1A08" />
                             </svg>
-                            <span>{{ $cours->course }}<span>
+                            @php
+                                $pattern = '/^\s*(\d+)\s*(分|min)\s*$/u';
+                                preg_match($pattern, $cours->course, $matches);
+                            @endphp
+                            <div class="system-item-cours-name-flex">
+                                <span>{{ $matches[1] }}</span>
+                                <span>{{ $matches[2] }}</span>
+                            </div>
                         </div>
                         <p>￥{{ number_format($cours->price) }}-</p>
                     </div>
