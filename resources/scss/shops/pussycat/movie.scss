@@ -1,4 +1,6 @@
-@use '../pagination' as *;
+@use '../../global/vars' as *;
+@use '../../mixins/font' as *;
+@use './component/pagination' as *;
 .movie-list {
   background: rgba(0, 0, 0, 0.6);
   display: flex;
