@@ -112,13 +112,46 @@
         @if ($messageGradient)
             <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                {{ $message }}</p>
+                <span
+                    class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
+                    style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}　{{ $message }}</span>
+            </p>
         @else
             <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
-                style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }}; background-clip: text; -webkit-background-clip: text;">
-                {{ $message }}
+                style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">
+                <span
+                    class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
+                    style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span>
             </p>
         @endif
     </div>
 
 </a>
+
+@once
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const messageElements = document.querySelectorAll('.schedule-card-message');
+                const scrollSpeed = 50; // ピクセル/秒の固定速度
+
+                messageElements.forEach(function(messageEl) {
+                    const textSpan = messageEl.querySelector('.schedule-card-message-text');
+                    // castlistバリアントの場合はスライドアニメーションを適用しない
+                    if (!textSpan || textSpan.classList.contains('schedule-card-message-text-castlist')) return;
+
+                    // メッセージの幅を取得（2回繰り返しているので、実際の幅は scrollWidth）
+                    const messageWidth = textSpan.scrollWidth;
+
+                    // メッセージを2回繰り返しているので、50%移動すれば1周
+                    const distance = messageWidth / 2;
+                    // 一定の速度で移動するためのアニメーション時間を計算
+                    const duration = distance / scrollSpeed;
+
+                    // 常にアニメーションを適用（メッセージの長さに関係なく）
+                    textSpan.style.animation = `scroll-left ${duration}s linear infinite`;
+                });
+            });
+        </script>
+    @endpush
+@endonce

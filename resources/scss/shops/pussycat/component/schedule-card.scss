@@ -174,16 +174,48 @@
 .schedule-card-message {
   @include YuGothic();
   @include responsive-font(17px, 20.6px);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
   font-weight: 700;
   margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
+  // display: -webkit-box;
+  // -webkit-line-clamp: 3;
+  // -webkit-box-orient: vertical;
+  // overflow: hidden;
+  // text-overflow: ellipsis;
+  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  position: relative;
+
+  .schedule-card-message-text {
+    display: inline-block;
+  }
+  
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .schedule-card-message-text-castlist {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    word-break: break-word;
+  }
+  
+  // castlistバリアントの場合、親要素のwhite-space: nowrapを上書き
+  &.castlist-card-message {
+    white-space: normal;
+  }
 }
 
 // Castlist card variant - uses larger font sizes
