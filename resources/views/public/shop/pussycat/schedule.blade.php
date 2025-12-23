@@ -93,4 +93,4 @@
     <div class="schedule-pagination">
         {{ $todayCasts->links('pagination::shops') }}
     </div>
-    </x-shizuku-page-layout>
+</x-pussycat-page-layout>
