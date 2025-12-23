@@ -1002,7 +1002,8 @@ class ShizukuController extends Controller
         ->paginate($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 5 : 6)
         ->onEachSide(0)
         ->withPath('movie');
-
+        // ->get();
+        // dd($movies);
         return view('public.shop.' . $shop . '.movie', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'movies' => $movies,
