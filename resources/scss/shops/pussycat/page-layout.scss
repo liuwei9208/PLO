@@ -1,6 +1,13 @@
 // Import global variables and utilities
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
+@use './component/contact-info.scss';
+@use './component/home-header.scss';
+@use './component/footer.scss';
+@use './component/fixed-phone-button.scss';
+@use './component/fixed-side-buttons.scss';
+@use './component/menu-overlay.scss';
+
 
 // Common home container styles
 p{

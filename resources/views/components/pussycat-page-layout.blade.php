@@ -233,24 +233,7 @@
         <x-public.shops.fixed-side-buttons
             newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'pussycat']) }}" />
     </div>
+    @push('styles')
+        @vite(['resources/scss/shops/pussycat/page-layout.scss', 'resources/js/shops/home-header.js'])
+    @endpush
 </x-shizuku-layout>
-
-@once
-    @php
-        // Common assets that are used on all pages
-        $commonAssets = [
-            'resources/scss/shops/pussycat/page-layout.scss',
-            'resources/scss/shops/pussycat/component/contact-info.scss',
-            'resources/scss/shops/pussycat/component/home-header.scss',
-            'resources/js/shops/home-header.js',
-            'resources/scss/shops/pussycat/component/footer.scss',
-            'resources/scss/shops/pussycat/component/fixed-phone-button.scss',
-            'resources/scss/shops/pussycat/component/fixed-side-buttons.scss',
-            'resources/scss/shops/pussycat/component/menu-overlay.scss',
-        ];
-
-        // Merge common assets with page-specific assets
-        $allAssets = array_merge($commonAssets, $assets ?? []);
-    @endphp
-    @vite($allAssets)
-@endonce
