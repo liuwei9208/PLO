@@ -205,24 +205,8 @@
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons />
     </div>
+    @push('styles')
+        @vite(['resources/scss/shops/shizuku/page-layout.scss', ...$assets])
+        @vite(['resources/js/shops/home-header.js'])
+    @endpush
 </x-shizuku-layout>
-
-@once
-    @php
-        // Common assets that are used on all pages
-        $commonAssets = [
-            'resources/scss/shops/shizuku/page-layout.scss',
-            'resources/scss/shops/contact-info.scss',
-            'resources/scss/shops/home-header.scss',
-            'resources/js/shops/home-header.js',
-            'resources/scss/shops/footer.scss',
-            'resources/scss/shops/fixed-phone-button.scss',
-            'resources/scss/shops/fixed-side-buttons.scss',
-            'resources/scss/shops/menu-overlay.scss',
-        ];
-
-        // Merge common assets with page-specific assets
-        $allAssets = array_merge($commonAssets, $assets ?? []);
-    @endphp
-    @vite($allAssets)
-@endonce

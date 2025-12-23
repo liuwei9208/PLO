@@ -2,6 +2,13 @@
 @use '../../global/vars' as *;
 @use '../../mixins/font' as *;
 
+@use '../contact-info.scss';
+@use '../home-header.scss';
+@use '../footer.scss';
+@use '../fixed-phone-button.scss';
+@use '../fixed-side-buttons.scss';
+@use '../menu-overlay.scss';
+
 // Common home container styles
 p{
     @include lustria();

@@ -619,8 +619,7 @@
         <x-public.shops.fixed-side-buttons
             newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shizuku']) }}" />
     </div>
+    @push('styles')
+        @vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
+    @endpush
 </x-shizuku-layout>
-
-@once
-    @vite(['resources/scss/shops/shizuku/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
-@endonce
