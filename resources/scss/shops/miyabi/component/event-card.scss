@@ -3,7 +3,7 @@
 
 .event-card{
     padding: 30px;
-    border-bottom: 1px solid #EAF205;
+    border-bottom: 1px solid #D90D32;
     display: flex;
     gap: 80px;
     text-decoration: none;
@@ -62,14 +62,14 @@
 }
 
 .event-card-title {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(25px, 25px);
     font-weight: 600;
     color: var(---N__, #2A1A08);
 }   
 
 .event-card-text{
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(15px, 16px);
     font-style: normal;
     font-weight: 600;
@@ -78,7 +78,7 @@
     white-space: pre-line;
 }
 .event-card-text p {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(15px, 16px);
     font-style: normal;
     font-weight: 600;

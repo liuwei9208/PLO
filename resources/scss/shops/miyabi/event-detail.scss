@@ -4,13 +4,14 @@
 .event-detail-section {
     width: 100%;
     padding: 30px 30px 50px 30px;
-    border-bottom: 1px solid #EAF205;
+    border-bottom: 1px solid #D90D32;
+    background: #590202;
 }
 
 @media (max-width: 850px) {
     .event-detail-section {
         padding: 20px;
-        background: var(---N_, rgba(42, 26, 8, 0.75));
+        // background: var(---N_, rgba(42, 26, 8, 0.75));
     }
 }
 
@@ -65,10 +66,10 @@
 }
 
 .event-detail-title  {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(25px, 25px);
     font-weight: 600;
-    color: var(---N__, #2A1A08);
+    color: var(---N__, #0F0002);
     margin-bottom: 30px;
 }
 
@@ -79,10 +80,10 @@
 }
 
 .event-detail-body p {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(16px, 16px);
     font-weight: 600;
-    color: var(---N__, #2A1A08);
+    color: var(---N__, #0F0002);
     line-height: 33px;
 }
 
@@ -139,11 +140,12 @@
 }
 
 .event-detail-pagination a {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(14px, 16px);
-    color: $white;
+    color: #EBEBEB;
     text-decoration: none;
     transition: opacity 0.3s ease;
+    font-weight: 600;
     
     &:hover {
         opacity: 0.7;

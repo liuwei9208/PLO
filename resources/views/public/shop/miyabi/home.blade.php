@@ -603,9 +603,11 @@
                     $i += 1;
                 }
             @endphp
-            <x-public.shops.event-section background-image="assets/img/shops/miyabi/event-bg.png"
-                background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
-                :sub-banner-images="$event_list" />
+            @if (count($events) > 0)
+                <x-public.shops.event-section background-image="assets/img/shops/miyabi/event-bg.png"
+                    background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
+                    :sub-banner-images="$event_list" />
+            @endif
             {{-- <x-public.shops.event-section background-image="assets/img/shops/shizuku/event-bg.png"
             background-alt="Event Background" main-banner-image="assets/img/shops/shizuku/event-main.png"
             main-banner-alt="Main Banner Background" :sub-banner-images="[

@@ -1,5 +1,5 @@
-<x-pussycat-page-layout page-title="EVENT" page-subtitle="イベント情報"
-    breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ イベント情報 ＞ {{ $event->title }}" :assets="['resources/scss/shops/pussycat/event-detail.scss']" :banners="$banners">
+<x-miyabi-page-layout page-title="EVENT" page-subtitle="イベント情報"
+    breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ イベント情報 ＞ {{ $event->title }}" :assets="['resources/scss/shops/miyabi/event-detail.scss']" :banners="$banners">
     <section class="event-detail-section">
         <div class="event-detail-card">
             <div class="event-detail-image">
@@ -65,4 +65,4 @@
             @endif
         </div>
     </div>
-</x-pussycat-page-layout>
+</x-miyabi-page-layout>
