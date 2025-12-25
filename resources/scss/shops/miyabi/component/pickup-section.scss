@@ -61,9 +61,9 @@
   }
 }
 .pickup-title-en {
-  @include Caveat();
+  @include didot();
   @include responsive-font(41px, 86px);
-  font-weight: 700;
+  font-weight: 400;
   line-height: normal;
   letter-spacing: 0.09rem;
   color: $white;
@@ -95,9 +95,9 @@
 }
 
 .pickup-title-ja {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(18px, 43px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   letter-spacing: -0.0875rem;
   color: $white;
@@ -107,9 +107,9 @@
 }
 
 .pickup-description {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 26.4px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   color: $white;
   text-align: center;

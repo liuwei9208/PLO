@@ -221,8 +221,8 @@
   }
   
   p {
-    @include YuGothic();
-    font-weight: 700;
+    @include yu-mincho-regular();
+    font-weight: 400;
     // font-size: 1.875rem;
     @include responsive-font(17.2px, 36px);
     line-height: normal;
@@ -242,8 +242,8 @@
   // height: 6.375rem;
   
   p {
-    @include YuGothic();
-    font-weight: 700;
+    @include yu-mincho-regular();
+    font-weight: 400;
     // font-size: 1.25rem;
     @include responsive-font(14.6px, 23px);
     line-height: normal;

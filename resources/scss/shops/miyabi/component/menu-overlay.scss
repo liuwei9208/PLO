@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(16, 4, 14, 0.90);
+  background: rgba(15, 0, 2, 0.80);
   z-index: 2000;
   opacity: 0;
   display: none !important;
@@ -80,12 +80,12 @@
     justify-items: center;
     margin-bottom: 21px;
   }
-  // p{
-  //   @include yu-mincho-regular();
-  //   font-size: 15px;
-  //   line-height: 45px;
-  //   color:#EAF205;
-  // }
+  p{
+    @include yu-mincho-regular();
+    font-size: 15px;
+    line-height: 45px;
+    color:#FEFEFE;
+  }
 }
 
 

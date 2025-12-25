@@ -52,24 +52,24 @@
 }
 
 .contact-phone-number {
-  @include Pacifico();
+  @include lustria();
   @include responsive-font(24px, 45px);
   line-height: 2.9375rem;
   color: #fff;
   margin: 0;
   font-weight: 400;
-  padding-bottom: 0.8rem;
+  // padding-bottom: 0.8rem;
 }
 
 .contact-email {
   p {
-    @include YuGothic();
+    @include lustria();
     @include responsive-font(12px, 18px);
     line-height: 1rem;
     color: #fff;
     margin: 0;
     text-align: center;
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 
@@ -86,8 +86,8 @@
 }
 
 .contact-address-text {
-  @include YuGothic();
-  font-weight: 500 !important;
+  @include Hiragino_Mincho_Pro();
+  font-weight: 300 !important;
   color: $white;
   @include responsive-font(12px, 18px);
   line-height: 1.25rem;
@@ -113,10 +113,10 @@
 }
 
 .contact-button-hours p {
-  @include Pacifico;
+  @include lustria;
   @include responsive-font(12px,18px);
   font-weight: 400;
-  padding-bottom: 0.2rem;
+  // padding-bottom: 0.2rem;
 }
 .contact-button-credit{
   background: none;
@@ -128,8 +128,8 @@
 }
 
 .contact-button-credit p {  
-  @include YuGothic();
-  font-weight: 700;
+  @include Hiragino_Mincho_Pro();
+  font-weight: 600;
   // @include Hiragino_Mincho_Pro();
   // font-weight: 500 !important;
 }
@@ -141,7 +141,7 @@
   padding: 0.3125rem;
   p {
     @include responsive-font(12px, 19.95px);
-    @include YuGothic();
+    @include Hiragino_Mincho_Pro_W6();
     font-weight: 600 !important;
     color: $black;
     margin: 0;

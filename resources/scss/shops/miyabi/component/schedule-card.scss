@@ -72,9 +72,9 @@
   border-radius: 1.875rem 0 0 1.875rem;
 
   .badge-shift {
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(11px, 18.5px);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: 0.05rem;
     text-align: center;
     white-space: nowrap;
@@ -88,9 +88,9 @@
   background: $white;
 
   .badge-time {
-    @include Pacifico();
+    @include times-new-roman();
     @include responsive-font(14px, 20.5px);
-    font-weight: 400;
+    font-weight: 700;
     // font-family: 'Times New Roman', Times, serif;
     letter-spacing: 0.07875rem;
     text-align: center;
@@ -155,29 +155,33 @@
 }
 
 .schedule-card-name {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(16px, 16px);
-  font-weight: 700;
+  font-weight: 600;
   margin: 0;
   line-height: 1.4;
 }
-
+.castlist-card-name {
+  color: #0F0002 !important;
+}
 .schedule-card-measurements {
-  @include YuGothic();
+  @include times-new-roman();
   // font-family: "Times New Roman", Times, serif;
   @include responsive-font(15px, 16px);
-  font-weight: 500;
+  font-weight: 400;
   margin: 0;
   line-height: 1.4;
 }
-
+.castlist-card-measurements{
+  color: #0F0002 !important;
+}
 .schedule-card-message {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(17px, 20.6px);
   // background-clip: text;
   // -webkit-background-clip: text;
   // -webkit-text-fill-color: transparent;
-  font-weight: 700;
+  font-weight: 600;
   margin: 0;
   // display: -webkit-box;
   // -webkit-line-clamp: 3;

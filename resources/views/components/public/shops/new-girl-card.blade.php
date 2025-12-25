@@ -34,6 +34,7 @@
     'carddividerverticalGradient' => true,
     'carddividerverticalColor' => '#05F2DB',
     'href_cast_profile' => null,
+    'newGirlCardBgLeftColor' => 'rgba(0,0,0,0.7)',
 ])
 
 @php
@@ -44,7 +45,7 @@
     <div class="new-girl-card-left">
         <div class="new-girl-card-bg-left">
             <img src="{{ asset($backgroundImage) }}" alt="Background" class="card-bg-image">
-            <div class="card-bg-overlay" style="background: rgba(0, 0, 0, {{ $overlayOpacity }});"></div>
+            <div class="card-bg-overlay" style="background: {{ $newGirlCardBgLeftColor }};"></div>
         </div>
         <div class="new-girl-card-date">
             @if ($iconSvg)

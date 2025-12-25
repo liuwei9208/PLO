@@ -12,7 +12,7 @@
   overflow: hidden;
   position: relative;
   background: $white;
-  border: 2px solid #05F2DB;
+  border: 2px solid #FEFEFE;
 }
 
 .new-girl-card-left {
@@ -174,11 +174,11 @@
 }
 
 .divider-name-text {
-  @include Caveat();
+  @include times-new-roman();
   @include responsive-font(16px, 25px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
-  color: #2A1A08;
+  color: #FEFEFE;
   margin: 0;
   white-space: nowrap;
   transform: rotate(90deg);

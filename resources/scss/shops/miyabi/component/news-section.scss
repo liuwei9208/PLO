@@ -36,9 +36,9 @@
 }
 
 .news-title h1{
-  @include Caveat();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(18px, 36px);
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   text-align: center;
   text-transform: uppercase;
@@ -179,7 +179,7 @@
   h2{
     @include inter();
     @include responsive-font(14px, 19px);
-    color: $white;
+    color: #0F0002;
     font-weight: 700;
     margin: 0;
   }
@@ -191,7 +191,7 @@
   p{
     @include inter();
     @include responsive-font(13px, 19px);
-    color: $white;
+    color: #0F0002;
     font-weight: 500;
     margin: 0;
     line-height: 1.4;
@@ -203,7 +203,7 @@
   p{
     @include inter();
     @include responsive-font(12px, 14px);
-    color: $white;
+    color: #0F0002;
     font-weight: 600;
     margin: 0;
     line-height: 1.4;
