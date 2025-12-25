@@ -177,11 +177,12 @@
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
                                     message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    status-text-color="#ffffff" contentGradientStart="#9C0909"
-                                    contentGradientStartPercent="45.67%" contentGradientEnd="rgba(156, 9, 9, 0.30)"
-                                    contentGradientEndPercent="100%" badgeBorderColor="#D90D32" badgeBgColor="#D90D32"
-                                    badgeTextColor="#F2FF00" badgeTimeColor="#0F0002" :messageGradient=false
-                                    measurementsColor="#FEFEFE" nameColor="#FEFEFE" messageColor="#F2FF00" />
+                                    status-text-color="#ffffff" status-text-color="#ffffff"
+                                    contentGradientStart="#9C0909" contentGradientStartPercent="45.67%"
+                                    contentGradientEnd="rgba(156, 9, 9, 0.30)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#D90D32" badgeBgColor="#D90D32" badgeTextColor="#F2FF00"
+                                    badgeTimeColor="#0F0002" :messageGradient=false measurementsColor="#FEFEFE"
+                                    nameColor="#FEFEFE" messageColor="#F2FF00" />
                             @endif
                         @endforeach
                     </div>
