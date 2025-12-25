@@ -20,9 +20,10 @@
 }
 
 .review-header-label {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 21px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
+  color: #2A1A08;
 }
 
 .review-header-search {
@@ -45,10 +46,10 @@
 }
 
 .review-header-search-input {
-  @include YuGothic();
-  font-weight: 700;
+  @include yu-mincho-regular();
+  font-weight: 600;
   font-size: 16px;
-  color: #2a1a08;
+  color: #2A1A08;
   // border: none;
   // background: transparent;
   // outline: none;
@@ -91,7 +92,7 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
-  background: rgba(0, 0, 0, 0.6);
+  background: #590202;
 
   @media screen and (min-width: 851px) {
     grid-template-columns: repeat(2, 1fr);
@@ -108,7 +109,7 @@
 .review-row-border {
   grid-column: 1 / -1;
   height: 2px;
-  background: #EAF205;
+  background: #F2FF00;
   @media screen and (max-width: 850px) {
     margin: 0px -20px;
   }
