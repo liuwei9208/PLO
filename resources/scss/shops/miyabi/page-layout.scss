@@ -18,7 +18,7 @@ p{
     position: relative;
 }
 .banner-image{
-    background-image: url('/assets/img/shops/pussycat/system-banner.png');
+    background-image: url('/assets/img/shops/miyabi/system-banner.png');
     background-attachment: scroll;
     background-repeat: no-repeat;
     width: 100%;
@@ -35,7 +35,7 @@ p{
       background-position: center;
       background-attachment: scroll;
       // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
-      background-image: url('/assets/img/shops/pussycat/system-banner.png');
+      background-image: url('/assets/img/shops/miyabi/system-banner.png');
   
     }
   }
@@ -59,7 +59,7 @@ p{
     width: 100%;
     margin: 2rem auto;
     text-align: center;
-    background: rgba(#F2138E,0.7);
+    background: rgba(#000,0.7);
     padding: 15px 1.25rem;
 
     @media screen and (max-width: 850px) {
@@ -68,12 +68,13 @@ p{
     }
 
     h1 {
-        @include Caveat();
+        @include times-new-roman();
         @include responsive-font(47px, 95px);
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
         line-height: normal;
         letter-spacing: 1.6px;
+        color: #FEFEFE;
         background: #fff;
         background-clip: text;
         -webkit-background-clip: text;
@@ -81,19 +82,19 @@ p{
     }
 
     p {
-        @include YuGothic();
+        @include yu-mincho-regular();
         @include responsive-font(19px, 25px);
         font-style: normal;
-        font-weight: 700 !important;
+        font-weight: 600 !important;
         line-height: normal;
-        color: $white;
+        color: #FEFEFE;
     }
 }
 
 // Common breadcrumb styles
 .page-breadcrumb {
     border-radius: 30px;
-    background: var(---N___, #FFFFFF);
+    background: var(---N___, #0F0002);
     display: inline-flex;
     padding: 5px 40px;
     justify-content: center;
@@ -117,9 +118,9 @@ p{
     }
 
     p {
-        @include IBM_Plex_Mono();
+        @include Hiragino_Mincho_Pro_W6();
         @include responsive-font(12px, 15px);
-        font-weight: 700;
+        font-weight: 600;
         font-style: normal;
         line-height: normal;
         color: $black;

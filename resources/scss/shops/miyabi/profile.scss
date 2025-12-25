@@ -51,6 +51,7 @@
     display: block !important;
     width: 95% !important;
     margin: 10px auto 0px;
+    // background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   }
   .girl-diary-section {
     order: 8;
@@ -124,11 +125,12 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: $white;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  // border: 5px solid var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
 }
 
 .girl-basic-info-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,10 +139,10 @@
 }
 
 .girl-basic-info-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 35px);
-  font-weight: 700 !important;
-  color: #05F2DB;
+  font-weight: 600 !important;
+  color: #FEFEFE;
   margin: 0;
   letter-spacing: 0.08em;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
@@ -150,9 +152,11 @@
 }
 
 .girl-basic-info-body {
-  padding: 25px 40px 20px;
+  // margin: 25px 40px 20px;
+  margin: 0px 6px;
   text-align: center;
   border-bottom: 1px solid #e5d6b4;
+  background: #FEFEFE;
 }
 @media screen and (max-width: 850px) {
   .girl-basic-info-body {
@@ -160,28 +164,30 @@
   }
 }
 .girl-basic-info-name {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(30px, 31px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 600 !important;
+  color: #0F0002;
 }
 
 .girl-basic-info-meta {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(18px, 19px);
-  font-weight: 500 !important;
-  color: #10040E;
+  font-weight: 400 !important;
+  color: #0F0002;
   margin: 0;
 }
 
 .girl-basic-info-caption {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(18px, 23px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 600 !important;
+  color: #0F0002;
   text-align: center;
-  padding: 10px 10px 15px;
-  margin: 0;
+  // padding: 10px 10px 15px;
+  margin: 3px 6px 6px 6px;
+  background: #FEFEFE;
+  border-radius: 0px 0px 16px 16px;
 }
 
 .girl-info-section-wrapper {
@@ -194,7 +200,7 @@
 .profile-image-prev,
 .profile-image-next {
   position: absolute;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(#FEFEFE, 0.8);
   border: none;
   width: 57px;
   height: 139px;
@@ -327,7 +333,7 @@
   width: 100%;
   // border-radius: 15px 15px 0 0;
   border-radius: 15px;
-  background: var(---N__, #10040E);
+  background: var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
   margin-top: 10px;
   padding-bottom: 10px;
 }
@@ -340,10 +346,10 @@
   padding: 0px 20px;
 }
 .girl-video-title h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
-  color: #05F2DB;
+  font-weight: 600 !important;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -381,12 +387,12 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   overflow: hidden;
 }
 
 .girl-qa-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -399,12 +405,12 @@
 }
 
 .girl-qa-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -417,6 +423,7 @@
   border-top: none;
   border-radius: 0 0 20px 20px;
   overflow: hidden;
+  margin: 0px 6px 6px 6px;
 }
 
 .girl-qa-row {
@@ -449,7 +456,7 @@
 }
 
 .girl-qa-question {
-  background: #fffdf0;
+  background: #FFEAED;
   border-right: 1px solid #e5d6b4;
 }
 
@@ -458,18 +465,18 @@
 }
 
 .girl-qa-question .girl-qa-label {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
-  font-weight: 700 !important;
-  color: #2a1a08;
+  font-weight: 600 !important;
+  color: #2A1A08;
   flex-shrink: 0;
 }
 
 .girl-qa-answer .girl-qa-label {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 400 !important;
+  color: #2A1A08;
   flex-shrink: 0;
 }
 
@@ -494,11 +501,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-play-header {
-  background: linear-gradient(180deg, #3c230a 0%, #2a1a08 100%);
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -516,7 +523,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FEFEFE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -530,9 +537,9 @@
   gap: 15px;
   align-self: stretch;
   justify-content: center;
-  margin: 0px auto;
-  border-radius: 15px;
-  border: 5px solid var(---N__, #2a1a08);
+  margin: 0px 6px 6px 6px;
+  border-radius: 0px 0px 16px 16px;
+  // border: 5px solid var(---N__, #2a1a08);
   background: var(---N___, #fff);
   padding: 15px 30px 30px 30px;
 }
@@ -557,17 +564,15 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #D90D32);
 }
 
 .girl-play-item-title h4 {
-  color: var(---N__, #2a1a08);
+  color: #FEFEFE;
   text-align: center;
-  font-family: Lustria;
-  font-size: 21px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  @include lustria();
+  @include responsive-font(21px, 21px);
+  font-weight: 400 !important;
   flex-shrink: 0;
 }
 
@@ -591,7 +596,7 @@
   height: 15px;
 }
 .girl-play-item-details p {
-  color: var(---N__, #2a1a08);
+  color: var(---N__, #0F0002);
   @include yu-mincho-regular();
   font-size: 16px;
   font-style: normal;
@@ -667,11 +672,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-message-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -684,12 +689,12 @@
 }
 
 .girl-message-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -698,14 +703,15 @@
 
 .girl-message-content {
   background: #ffffff;
-  border: 1px solid #8b6f47;
-  border-top: none;
+  margin: 0px 6px 6px 6px;
+  // border: 1px solid #8b6f47;
+  // border-top: none;
   border-radius: 0 0 20px 20px;
   padding: 20px 24px;
 }
 
 .girl-message-content p {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro();
   @include responsive-font(18px, 18px);
   color: #10040E;
   line-height: 1.8;
@@ -717,11 +723,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-diary-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -730,12 +736,12 @@
 }
 
 .girl-diary-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -751,6 +757,7 @@
   padding: 20px 10px;
   overflow: hidden;
   padding-bottom: 40px;
+  margin: 0px 6px 6px 6px;
 }
 
 .girl-diary-track {
@@ -858,11 +865,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-schedule-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -875,12 +882,12 @@
 }
 
 .girl-schedule-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -889,12 +896,14 @@
 
 .girl-schedule-content {
   background: #fff;
-  border: 1px solid #10040E;
+  // border: 1px solid #10040E;
   border-top: none;
   border-radius: 0 0 20px 20px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   padding: 20px 0;
+  margin: 0px 6px 6px 6px;
+
   // flex-wrap: wrap;
   // display: flex;
 }
@@ -910,7 +919,7 @@
   .girl-schedule-section {
     border-radius: 15px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    background: #2a1a08;
+    // background: #2a1a08;
   }
   .girl-schedule-header {
     padding: 12px 16px;
@@ -929,6 +938,7 @@
     padding: 0;
     border-radius: 0 0 15px 15px;
     background: #fff;
+    margin: 0px 6px 6px 6px;
   }
   .girl-schedule-day {
     display: flex;
@@ -944,7 +954,7 @@
     border-bottom: none;
   }
   .girl-schedule-label {
-    background: #05F2DB;
+    background: #F2F2F2;
     border-radius: 8px;
     padding: 8px 14px;
     margin-bottom: 0 !important;
@@ -996,7 +1006,7 @@
 }
 
 .girl-schedule-label {
-  background: #05F2DB;
+  background: #F2F2F2;
   border-radius: 4px;
   padding: 6px 10px;
   display: flex;
@@ -1008,9 +1018,9 @@
 }
 
 .girl-schedule-date {
-  @include YuGothic();
+  @include times-new-roman();
   @include responsive-font(18px, 18px);
-  font-weight: 500;
+  font-weight: 700;
   color: #10040E;
 }
 
@@ -1021,20 +1031,20 @@
 }
 
 .girl-schedule-time {
-  @include YuGothic();
+  @include times-new-roman();
   @include responsive-font(18px, 18px);
   font-weight: 700 !important;
-  color: #10040E;
+  color: #0F0002;
   text-align: center;
   line-height: 0.8;
   max-width: 43px;
 }
 .girl-schedule-rest {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
 
   font-weight: 600 !important;
-  color: #10040E;
+  color: #0F0002;
   text-align: center;
   line-height: 0.8;
   max-width: 43px;
@@ -1050,11 +1060,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-manager-comment-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1067,12 +1077,12 @@
 }
 
 .girl-manager-comment-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1081,14 +1091,15 @@
 
 .girl-manager-comment-content {
   background: #fff;
-  border: 1px solid #8b6f47;
+  // border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
   padding: 24px 30px;
+  margin: 0px 6px 6px 6px;
 }
 
 .girl-manager-comment-content p {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro();
   @include responsive-font(18px, 18px);
   font-weight: 300;
   color: #10040E;
@@ -1101,11 +1112,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-sales-points-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1118,12 +1129,12 @@
 }
 
 .girl-sales-points-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1132,10 +1143,11 @@
 
 .girl-sales-points-content {
   background: #ffffff;
-  border: 1px solid #8b6f47;
+  // border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
   padding: 20px 24px;
+  margin: 0px 6px 6px 6px;
 }
 
 .girl-sales-points-row {
@@ -1149,11 +1161,11 @@
 }
 
 .girl-sales-points-label {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
-  font-weight: 700;
-  color: #10040E;
-  background: #EAF205;
+  font-weight: 600;
+  color: #0F0002;
+  background: #EBEBEB;
   padding: 6px 12px;
   min-width: 100px;
   text-align: center;
@@ -1179,12 +1191,12 @@
 }
 
 .girl-sales-points-tag {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 600 !important;
+  color: #0F0002;
   background: #ffffff;
-  border: 1px solid #05F2DB;
+  border: 1px solid #D90D32;
   border-radius: 4px;
   padding: 6px 12px;
   white-space: nowrap;
@@ -1195,11 +1207,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #2a1a08;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .girl-reviews-header {
-  background: #10040E;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1212,12 +1224,12 @@
 }
 
 .girl-reviews-header h3 {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #05F2DB;
+  color: #FEFEFE;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1226,10 +1238,11 @@
 
 .girl-reviews-content {
   background: #ffffff;
-  border: 1px solid #8b6f47;
+  // border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
   padding: 20px 24px;
+  margin: 0px 6px 6px 6px;
 }
 
 @media screen and (max-width: 850px) {
@@ -1272,10 +1285,10 @@
 }
 
 .girl-review-rating {
-  @include YuGothic();
+  @include times-new-roman();
   @include responsive-font(17px, 17px);
-  font-weight: 700;
-  color: #10040E;
+  font-weight: 400;
+  color: #0F0002;
   margin-left: 4px;
 }
 
@@ -1285,10 +1298,10 @@
 }
 
 .girl-review-meta span {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
-  font-weight: 500;
-  color: #10040E;
+  font-weight: 400;
+  color: #0F0002;
 }
 
 .girl-review-body {
@@ -1298,10 +1311,10 @@
 }
 
 .girl-review-text {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(15px, 16px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 600 !important;
+  color: #0F0002;
   line-height: 1.8;
   max-height: 100px;
   overflow-y: auto;
@@ -1327,10 +1340,10 @@
 }
 
 .girl-review-author {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(18px, 18px);
   font-weight: 700;
-  color: #10040E;
+  color: #0F0002;
   margin-bottom: 10px;
 }
 
@@ -1351,10 +1364,10 @@
 }
 
 .girl-reviews-more-btn {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
-  font-weight: 700 !important;
-  color: #10040E;
+  font-weight: 600 !important;
+  color: #0F0002;
   background: #ffffff;
   border: 1px solid #10040E;
   border-radius: 24px;

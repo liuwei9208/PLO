@@ -23,7 +23,7 @@
   background: $white;
   color: var(---N___, $black);
   text-decoration: none;
-  @include Caveat();
+  @include times-new-roman();
   font-size: 16px;
   font-weight: 400;
 
@@ -36,9 +36,9 @@
 }
 
 .page-number.active {
-  background: var(---N_, #EAF205);
+  background: var(---N_, #F2FF00);
   color: var(---N__, #10040E);
-  border-color: #EAF205;
+  border-color: #0F0002;
   font-weight: 600;
 
   &:hover {

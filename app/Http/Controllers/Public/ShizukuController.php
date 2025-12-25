@@ -364,6 +364,16 @@ class ShizukuController extends Controller
         // dd($sql);
         $reviews = DB::select($sql);
         // dd(Shop::where('slug', $shop)->get()->first());
+
+        $options = DB::table('cast_option')
+            ->leftJoin('options', 'cast_option.option_id', '=', 'options.id')
+            ->where('cast_option.cast_id', $id)
+            ->selectRaw(
+                'options.price as option_price , GROUP_CONCAT(options.name) AS option_names'
+            )
+            ->groupBy('options.price')
+            ->get();
+                    
         return view('public.shop.' . $shop . '.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
@@ -379,6 +389,7 @@ class ShizukuController extends Controller
             'days' => $days,
             'videos' => $videos,
             'reviews' => $reviews,
+            'options' => $options,
         ]);
     }
 
