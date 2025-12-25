@@ -2,7 +2,7 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-miyabi-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 写メ日記"
+<x-miyabi-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 写メ日記"
     :assets="['resources/scss/shops/miyabi/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">

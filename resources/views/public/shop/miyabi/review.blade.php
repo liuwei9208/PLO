@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="REVIEW" page-subtitle="口コミ一覧" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 口コミ一覧"
+<x-miyabi-page-layout page-title="REVIEW" page-subtitle="口コミ一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 口コミ一覧"
     :assets="['resources/scss/shops/miyabi/review.scss']" :banners="$banners">
     <section class="review-section">
         <div class="review-header">

@@ -1,5 +1,5 @@
 <x-miyabi-page-layout -page-layout page-title="NEWS" page-subtitle="新着情報"
-    breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/miyabi/news-detail.scss']" :banners="$banners">
+    breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/miyabi/news-detail.scss']" :banners="$banners">
     <section class="news-detail-section">
         <p class="news-detail-title">{{ $news->title }}</p>
         <p class="news-detail-date">

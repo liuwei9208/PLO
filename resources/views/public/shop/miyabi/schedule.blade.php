@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="SCHEDULE" page-subtitle="出勤情報" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 出勤情報"
+<x-miyabi-page-layout page-title="SCHEDULE" page-subtitle="出勤情報" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 出勤情報"
     :assets="['resources/scss/shops/miyabi/schedule.scss']" :banners="$banners">
     {{-- your custom page content here --}}
     <div class="schedule-menu">

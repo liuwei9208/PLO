@@ -1,4 +1,4 @@
-<x-pussycat-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 動画一覧"
+<x-pussycat-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 動画一覧"
     :assets="['resources/scss/shops/pussycat/movie.scss']" :banners="$banners">
     <section class="movie-list">
 

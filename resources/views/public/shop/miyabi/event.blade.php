@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="EVENT" page-subtitle="イベント情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ イベント情報"
+<x-miyabi-page-layout page-title="EVENT" page-subtitle="イベント情報" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ イベント情報"
     :assets="['resources/scss/shops/miyabi/event.scss']" :banners="$banners">
     <section class="event-section">
         @foreach ($events as $event)

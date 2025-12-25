@@ -3,7 +3,7 @@
 @endpush
 
 <x-miyabi-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
-    breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/miyabi/photo-diary-detail.scss']" :banners="$banners">
+    breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/miyabi/photo-diary-detail.scss']" :banners="$banners">
     <section class="photo-diary-details-section">
         <h1 class="photo-diary-details-section-title">写メ日記詳細</h1>
         <div class="photo-diary-details-section-content">

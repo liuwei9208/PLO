@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="ACCESS" page-subtitle="アクセス情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ アクセス情報"
+<x-miyabi-page-layout page-title="ACCESS" page-subtitle="アクセス情報" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ アクセス情報"
     :assets="['resources/scss/shops/miyabi/access.scss']" :banners="$banners">
     <section class="access-section">
         <h1 class="access-title">ABOUT</h1>

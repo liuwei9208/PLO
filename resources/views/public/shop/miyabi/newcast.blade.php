@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="NEW CAST" page-subtitle="新人情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 新人情報"
+<x-miyabi-page-layout page-title="NEW CAST" page-subtitle="新人情報" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 新人情報"
     :assets="['resources/scss/shops/miyabi/newcast.scss']" :banners="$banners">
     <section class="newcast-section">
         {{-- @for ($i = 0; $i < 6; $i++)

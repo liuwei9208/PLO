@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール" breadcrumb="すすきのエンターテインメントヘルス 雅 ＞ トップページ ＞ 女の子プロフィール"
+<x-miyabi-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 女の子プロフィール"
     :assets="['resources/scss/shops/miyabi/profile.scss', 'resources/js/shops/shizuku/profile.js']" :banners="$banners">
     <div class="flex w-full mt-6 mobile-profile-content max-md:mt-0">
         <div class="profile-left-colum">

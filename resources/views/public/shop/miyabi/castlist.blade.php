@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ キャスト一覧"
+<x-miyabi-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ キャスト一覧"
     :assets="['resources/scss/shops/miyabi/castlist.scss']" :banners="$banners">
     <div class="castlist-card-list">
         {{-- @for ($i = 1; $i <= 20; $i++)

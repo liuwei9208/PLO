@@ -1,4 +1,4 @@
-<x-miyabi-page-layout page-title="NEWS" page-subtitle="新着情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 新着情報"
+<x-miyabi-page-layout page-title="NEWS" page-subtitle="新着情報" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 新着情報"
     :assets="['resources/scss/shops/miyabi/news.scss']" :banners="$banners">
     <section class="news-section">
         @foreach ($news as $new)

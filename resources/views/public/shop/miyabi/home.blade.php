@@ -66,7 +66,7 @@
         <div class="home-content">
             <!-- Breadcrumb Navigation -->
             <div class="breadcrumb-navigation">
-                <p>すすきのエンターテインメントヘルス プッシーキャット ＞ トップページ</p>
+                <p>すすきの Luxury Room 雅 ＞ トップページ</p>
             </div>
             <x-public.shops.home-header logo-image="assets/img/shops/miyabi/footer-logo.png" logo-alt="Shizuku Logo"
                 stroke-color="#FEFEFE" :menu-items="[
