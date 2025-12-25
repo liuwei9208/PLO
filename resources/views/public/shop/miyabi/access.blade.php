@@ -1,5 +1,5 @@
-<x-pussycat-page-layout page-title="ACCESS" page-subtitle="アクセス情報" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ アクセス情報"
-    :assets="['resources/scss/shops/pussycat/access.scss']" :banners="$banners">
+<x-miyabi-page-layout page-title="ACCESS" page-subtitle="アクセス情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ アクセス情報"
+    :assets="['resources/scss/shops/miyabi/access.scss']" :banners="$banners">
     <section class="access-section">
         <h1 class="access-title">ABOUT</h1>
         <div class="access-content">
@@ -38,4 +38,4 @@
             <img src="{{ asset('assets/img/shops/shizuku/map-sp.png') }}" alt="Map" class="sp-only"> --}}
         </div>
     </section>
-</x-pussycat-page-layout>
+</x-miyabi-page-layout>
