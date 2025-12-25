@@ -4,7 +4,7 @@
 @use "./component/pagination.scss" as *;
 .photo-diary-section {
   // background: rgba(42, 26, 8, 0.6);
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(89, 2, 2, 0.80);
   display: flex;
   gap: 20px;
 
@@ -185,22 +185,22 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #EAF205);
-  color: var(---N__, #10040E);
-  @include YuGothic();
+  background: var(---N_, #F2FF00);
+  color: var(---N__, #0F0002);
+  @include yu-mincho-regular();
   @include responsive-font(19px, 24.4px);
   // font-size: 23px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
 }
 
 .diary-post-title span {
-  color: var(---N___, #fff);
-  @include YuGothic();
+  color: var(---N___, #FEFEFE);
+  @include yu-mincho-regular();
   font-size: 22px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -208,15 +208,15 @@
   // width: 82.35%; // ~280px relative to 340px card width
   width: 280px;
   height: 1px;
-  border-color: #EAF205;
+  border-color: #F2FF00;
 }
 
 .diary-post-title p {
-  color: var(---N___, #fff);
-  @include YuGothic();
+  color: var(---N___, #FEFEFE);
+  @include yu-mincho-regular();
   font-size: 16px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -295,11 +295,11 @@
 
 .diary-post-content p {
   width: 82.35%; // ~280px relative to 340px card width
-  color: var(---N___, #fff);
-  @include YuGothic();
+  color: var(---N___, #FEFEFE);
+  @include yu-mincho-regular();
   @include responsive-font(15px, 18px);
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 29px; /* 170.588% */
 
   display: -webkit-box;
@@ -474,9 +474,9 @@
 }
 
 .fc .fc-daygrid-day-number{
-  @include Pacifico();
+  @include times-new-roman();
 }
 .fc .fc-day-other {
-  color: #F2138E;        /* グレー */
+  color: #D90D32;        /* グレー */
   // background-color: #f9fafb;
 }
