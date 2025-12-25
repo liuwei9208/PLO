@@ -1,12 +1,15 @@
 @use '../../../global/vars' as *;
 @use '../../../mixins/font' as *;
 
+.news-section{
+    background: rgba(89, 2, 2, 0.80);
+}
 .news-card{
     display: flex;
     width: 100%;
     gap: 40px;
     padding: 50px 30px;
-    border-bottom: 1px solid #EAF205;
+    border-bottom: 1px solid #F2FF00;
     text-decoration: none;
     color: inherit;
     transition: opacity 0.3s ease;
@@ -58,10 +61,10 @@
 }
 
 .news-title{
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(22.8px, 26px);
-    font-weight: 700;
-    color: $white;
+    font-weight: 600;
+    color: #FEFEFE;
 }
 
 @media screen and (max-width: 850px) {
@@ -70,10 +73,10 @@
     }
 }
 .news-date{
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(16.8px, 21.3px);
-    font-weight: 700;
-    color: $white;
+    font-weight: 600;
+    color: #FEFEFE;
 }
 @media screen and (max-width: 850px) {
     .news-date{
@@ -82,10 +85,10 @@
 }
 
 .news-content{
-    @include YuGothic();
+    @include yu-mincho-regular();
     @include responsive-font(16px, 16px);
-    font-weight: 700;
-    color: $white;
+    font-weight: 600;
+    color: #FEFEFE;
     line-height: 31px;
     white-space: pre-line;
 }

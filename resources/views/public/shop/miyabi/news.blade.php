@@ -1,11 +1,11 @@
-<x-pussycat-page-layout page-title="NEWS" page-subtitle="新着情報" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 新着情報"
-    :assets="['resources/scss/shops/pussycat/news.scss']" :banners="$banners">
+<x-miyabi-page-layout page-title="NEWS" page-subtitle="新着情報" breadcrumb="すすきのhigh grade health 雅 ＞ トップページ ＞ 新着情報"
+    :assets="['resources/scss/shops/miyabi/news.scss']" :banners="$banners">
     <section class="news-section">
         @foreach ($news as $new)
             <x-public.shops.news-card image="{{ asset('storage/' . $new->thumbnail) }}" image-alt="news-image"
                 title="{{ $new->title }}"
                 date="{{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y/m/d') : '' }}"
-                :url="route('public.shops.shop.news.detail', ['shop' => 'pussycat', 'id' => $new->id])" scss="resources/scss/shops/pussycat/component/news-card.scss">
+                :url="route('public.shops.shop.news.detail', ['shop' => 'miyabi', 'id' => $new->id])" scss="resources/scss/shops/miyabi/component/news-card.scss">
                 {!! nl2br($new->contents) !!}
             </x-public.shops.news-card>
         @endforeach
@@ -31,4 +31,4 @@
             本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
         </x-public.shops.news-card> --}}
     </section>
-</x-pussycat-page-layout>
+</x-miyabi-page-layout>
