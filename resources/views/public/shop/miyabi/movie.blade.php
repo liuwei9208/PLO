@@ -1,5 +1,5 @@
-<x-pussycat-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 動画一覧"
-    :assets="['resources/scss/shops/pussycat/movie.scss']" :banners="$banners">
+<x-miyabi-page-layout page-title="MOVIE" page-subtitle="動画一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 動画一覧"
+    :assets="['resources/scss/shops/miyabi/movie.scss']" :banners="$banners">
     <section class="movie-list">
 
         <div class="movie-list-item">
