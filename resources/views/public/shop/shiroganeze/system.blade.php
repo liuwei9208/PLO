@@ -1,5 +1,5 @@
-<x- -page-layout page-title="SYSTEM" page-subtitle="料金システム" breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 料金システム"
-    :assets="['resources/scss/shops/shiroganeze/system.scss']" :banners="$banners">
+<x-shiroganeze-page-layout page-title="SYSTEM" page-subtitle="料金システム"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 料金システム" :assets="['resources/scss/shops/shiroganeze/system.scss']" :banners="$banners">
     <section class="system-section">
         <div class="system-card">
             <div class="system-card-image">
