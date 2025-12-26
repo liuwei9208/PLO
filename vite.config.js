@@ -166,7 +166,8 @@ export default defineConfig({
         'resources/scss/shops/pussycat/event-detail.scss',
         'resources/scss/shops/pussycat/photo-diary-detail.scss',
         'resources/js/shops/pussycat/photo-diary-detail.js',
-
+        
+        'resources/scss/shops/shiroganeze/home.scss',
         'resources/scss/shops/miyabi/page-layout.scss',
         'resources/scss/shops/miyabi/component/home-header.scss',
         'resources/scss/shops/miyabi/component/footer.scss',
@@ -192,6 +193,7 @@ export default defineConfig({
         'resources/scss/shops/miyabi/photo-diary-detail.scss',
         'resources/js/shops/miyabi/photo-diary-detail.js',
 
+        'resources/scss/shops/shiroganeze/home.scss',
         'resources/scss/shops/shiroganeze/page-layout.scss',
         'resources/scss/shops/shiroganeze/component/home-header.scss',
         'resources/scss/shops/shiroganeze/component/footer.scss',
