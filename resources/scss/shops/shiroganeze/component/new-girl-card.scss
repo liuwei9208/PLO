@@ -64,17 +64,17 @@
   }
   
   .date-text {
-    @include YuGothic();
+    @include times-new-roman();
     @include responsive-font(16px, 31px);
-    font-weight: 500;
+    font-weight: 700;
     line-height: normal;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     
     .date-label {
-      @include YuGothic();
-      font-weight: 500;
+      @include times-new-roman();
+      font-weight: 700;
     }
   }
 }
@@ -104,7 +104,7 @@
 }
 
 .card-name {
-  @include YuGothic();
+  @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(17px, 25px);
   font-weight: 700;
   line-height: normal;
@@ -151,7 +151,7 @@
     @include responsive-font(14px, 17.6px);
     font-weight: 400;
     line-height: 1.6875rem;
-    color: #2A1A08;
+    color: #132126;
     margin: 0;
     text-align: justify;
     word-wrap: break-word;

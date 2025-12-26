@@ -44,7 +44,7 @@
   font-weight: 600 !important;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
-  color: #FEFEFE;
+  color: #E2EAF5;
 }
 
 .menu-item p {
@@ -53,7 +53,7 @@
   font-weight: 700;
   line-height: 1.1875rem;
   letter-spacing: 0.04em;
-  color: #D90D32;
+  color: #E2EAF5;
   text-transform: uppercase;
 }
 
@@ -61,7 +61,7 @@
   padding: 1.6rem 1.875rem;
   cursor: pointer;
   transition: opacity 0.3s ease;
-  background-color: #160B00;
+  background-color: #132126;
   &:hover {
     opacity: 0.8;
   }
@@ -73,7 +73,7 @@
   line-height: 1.0625rem;
   text-align: center;
   letter-spacing: 0.07em;
-  color: #fff;
+  color: #E2EAF5;
   padding-top: 0.625rem;
   text-transform: uppercase;
 }
@@ -105,14 +105,14 @@
 .page-top-line {
   width: 0.0625rem;
   height: 9.0625rem;
-  background: #D90D32;
+  background: #BF5A75;
 }
 
 .page-top-text {
   @include lustria();
   font-size: 1.0625rem;
   line-height: normal;
-  color: #D90D32;
+  color: #BF5A75;
   writing-mode: vertical-rl;
   text-orientation: mixed;
   margin: 0;

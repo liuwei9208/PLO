@@ -561,7 +561,7 @@
                                 </defs>
                             </svg>
                         </div>
-                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'shizuku']) }}"
+                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'pussycat']) }}"
                             class="ranking-badge-text">一覧を見る</a>
                     </div>
                     <div class="ranking-header">

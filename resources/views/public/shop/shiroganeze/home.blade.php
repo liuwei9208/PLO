@@ -7,21 +7,21 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/miyabi/footer-logo-black.png" logo-alt="Shizuku Logo"
-            :menu-links="[
-                'top' => route('public.shops.shop.home', ['shop' => 'miyabi']),
-                'schedule' => route('public.shops.shop.schedule', ['shop' => 'miyabi']),
-                'pricing' => route('public.shops.shop.system', ['shop' => 'miyabi']),
-                'new' => route('public.shops.shop.newcast', ['shop' => 'miyabi']),
-                'cast' => route('public.shops.shop.castlist', ['shop' => 'miyabi']),
-                'news' => route('public.shops.shop.news', ['shop' => 'miyabi']),
-                'event' => route('public.shops.shop.event', ['shop' => 'miyabi']),
-                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'miyabi']),
-                'movie' => route('public.shops.shop.movie', ['shop' => 'miyabi']),
-                'review' => route('public.shops.shop.review', ['shop' => 'miyabi']),
-                'ranking' => route('public.shops.shop.ranking', ['shop' => 'miyabi']),
-                'shop' => route('public.shops.shop.shop-list', ['shop' => 'miyabi']),
-                'access' => route('public.shops.shop.access', ['shop' => 'miyabi']),
+        <x-public.shops.menu-overlay logo-image="assets/img/shops/shiroganeze/footer-logo-black.png"
+            logo-alt="Shizuku Logo" :menu-links="[
+                'top' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
+                'pricing' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
+                'cast' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
+                'news' => route('public.shops.shop.news', ['shop' => 'shiroganeze']),
+                'event' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
+                'movie' => route('public.shops.shop.movie', ['shop' => 'shiroganeze']),
+                'review' => route('public.shops.shop.review', ['shop' => 'shiroganeze']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'shiroganeze']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze']),
+                'access' => route('public.shops.shop.access', ['shop' => 'shiroganeze']),
                 'recruit-male' => '#',
                 'login' => route('login'),
                 'recruit-female' => '#',
@@ -55,10 +55,11 @@
             ]" />
 
         <div class="banner">
-            <x-public.shops.contact-info phone-icon="assets/img/shops/miyabi/phone.png" phone-number="011-511-0930"
-                email="@heaithmiyabi" address="〒064-0806</br> 札幌市中央区南6条西5丁目 第1旭観光ビル3F" hours="9:00 ~ 0:00"
-                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。"
-                phone-background="linear-gradient(180deg, #73071A 0%, #D90D32 100%)" address-background="#0F0002" />
+            <x-public.shops.contact-info phone-icon="assets/img/shops/shiroganeze/phone.png" phone-number="011-521-3593"
+                email="@EstheSiroganeze" address="〒064-0805</br> 
+北海道札幌市中央区南5条西5丁目 第8旭観光ビル2F" hours="9:00 ~ 0:00"
+                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。" phone-background="#132126"
+                address-background="#fff" />
             <div class="register">
                 <x-public.shops.register-button text="新規会員登録はコチラ！" background-color="#FFF5FB" text-color="#FF3498" />
             </div>
@@ -66,77 +67,76 @@
         <div class="home-content">
             <!-- Breadcrumb Navigation -->
             <div class="breadcrumb-navigation">
-                <p>すすきの Luxury Room 雅 ＞ トップページ</p>
+                <p>すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ</p>
             </div>
-            <x-public.shops.home-header logo-image="assets/img/shops/miyabi/footer-logo.png" logo-alt="Shizuku Logo"
-                stroke-color="#FEFEFE" :menu-items="[
+            <x-public.shops.home-header logo-image="assets/img/shops/shiroganeze/footer-logo.png"
+                logo-alt="Shizuku Logo" stroke-color="#E2EAF5" :menu-items="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => 'キャスト一覧',
                         'subtitle' => 'cast list',
-                        'url' => route('public.shops.shop.castlist', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '写メ日記',
                         'subtitle' => 'photo diary',
-                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => 'イベント一覧',
                         'subtitle' => 'event',
-                        'url' => route('public.shops.shop.event', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '新人情報',
                         'subtitle' => 'new cast',
-                        'url' => route('public.shops.shop.newcast', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
-                ]" menu-button-id="mobileMenuButton" background-color="#0F0002"
-                :mobileMenuBttonItems="[
+                ]" menu-button-id="mobileMenuButton"
+                background-color="#132126" :mobileMenuBttonItems="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'miyabi']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]"
                 social-svg='<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-<path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#D90D32"/>
+<path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#BF5A75"/>
 </svg>' />
             @if ($todayCasts->count() > 0)
                 <div class="home-schedule">
                     <x-public.shops.section-title text="schedule" letter-spacing="6px" color="#F2F2F2" :gradient=false
-                        :backgroundGradient=true color="#F2F2F2"
-                        backgroundColor="linear-gradient(180deg, #73071A 0%, #D90D32 100%)" />
-                    <x-public.shops.schedule-info icon-image="assets/img/shops/miyabi/calender-g.png" icon-alt="出勤情報"
-                        title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る" background-color="#F2F2F2"
-                        text-color="#0D0A0C" border-color="#3A2640" underlineColor="#D90D32"
-                        responsive-variant="new-girl" :gradient='false'
+                        :backgroundGradient=false color="#394022" backgroundColor="rgba(255, 255, 255, 0.90)" />
+                    <x-public.shops.schedule-info icon-image="assets/img/shops/shiroganeze/calender-g.png"
+                        icon-alt="出勤情報" title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る"
+                        background-color="rgba(255, 255, 255, 0.90)" text-color="#132126" border-color="#132126"
+                        underlineColor="#132126" responsive-variant="new-girl" :gradient='false'
                         buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'miyabi']) }}" />
                     <div class="home-schedule-cards">
                         {{-- @for ($i = 0; $i < 12; $i++)
@@ -153,22 +153,24 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/miyabi/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
-                                    status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
+                                    status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+<path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#BF5A75"/>
+</svg>'
                                     status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
-                                    message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    contentGradientStart="#9C0909" contentGradientStartPercent="45.67%"
-                                    contentGradientEnd="rgba(156, 9, 9, 0.30)" contentGradientEndPercent="100%"
-                                    badgeBorderColor="#D90D32" badgeBgColor="#D90D32" badgeTextColor="#F2FF00"
-                                    badgeTimeColor="#0F0002" :messageGradient=false measurementsColor="#FEFEFE"
-                                    nameColor="#FEFEFE" messageColor="#F2FF00" />
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule" statusTextColor="BF5A75"
+                                    contentGradientStart="#FFF " contentGradientStartPercent="50%"
+                                    contentGradientEnd="rgba(255, 255, 255, 0.00)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#171923" badgeBgColor="#171923" badgeTextColor="#FFF"
+                                    badgeTimeColor="#000" :messageGradient=false measurementsColor="#000"
+                                    nameColor="#000" messageColor="#000" />
                             @else
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/miyabi/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#F5F5F5"/>
@@ -177,12 +179,15 @@
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
                                     message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    status-text-color="#ffffff" status-text-color="#ffffff"
-                                    contentGradientStart="#9C0909" contentGradientStartPercent="45.67%"
-                                    contentGradientEnd="rgba(156, 9, 9, 0.30)" contentGradientEndPercent="100%"
-                                    badgeBorderColor="#D90D32" badgeBgColor="#D90D32" badgeTextColor="#F2FF00"
-                                    badgeTimeColor="#0F0002" :messageGradient=false measurementsColor="#FEFEFE"
-                                    nameColor="#FEFEFE" messageColor="#F2FF00" />
+                                    status-text-color="#BFA893"
+                                    statusIcon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#BFA893"/>
+</svg>'
+                                    contentGradientStart="#FFF " contentGradientStartPercent="50%"
+                                    contentGradientEnd="rgba(255, 255, 255, 0.00)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#171923" badgeBgColor="#171923" badgeTextColor="#FFF"
+                                    badgeTimeColor="#000" :messageGradient=false measurementsColor="#000"
+                                    nameColor="#000" messageColor="#000" />
                             @endif
                         @endforeach
                     </div>
@@ -190,8 +195,8 @@
                         <a class="schedule-info-button schedule-info-button-mobile"
                             href="{{ route('public.shops.shop.schedule', ['shop' => 'miyabi']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
-                            <p style="color: #0F0002;">一覧を見る</p>
-                            <div class="schedule-info-underline" style="background: #D90D32;"></div>
+                            <p style="color: #2A1A08;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #BF5A75;"></div>
                         </a>
                     </div>
                 </div>
@@ -200,15 +205,13 @@
                 @if (count($news) > 0)
                     <x-public.shops.news-section title="news" slider-id="newsSlider"
                         default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false'
-                        :items="$news" :shop="$shop"
-                        titleBackgroundColor="linear-gradient(180deg, #73071A 0%, #D90D32 100%)" :titleGradient=false
+                        :items="$news" :shop="$shop" titleBackgroundColor="#132126" :titleGradient=false
                         titleColor="#FEFEFE" />
                 @endif
                 @if (count($diaries) > 0)
                     <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
                         default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false'
-                        :items="$diaries" :shop="$shop"
-                        titleBackgroundColor="linear-gradient(180deg, #73071A 0%, #D90D32 100%)" :titleGradient=false
+                        :items="$diaries" :shop="$shop" titleBackgroundColor="#132126" :titleGradient=false
                         titleColor="#FEFEFE" />
                 @endif
             </div>
@@ -218,46 +221,41 @@
                     ['image' => asset('storage/' . $pickups[1]->gallery_1), 'alt' => 'Cast 2'],
                 ];
             @endphp
-            <x-public.shops.pickup-section header-background-image="assets/img/shops/miyabi/pickup-bg.png"
+            <x-public.shops.pickup-section header-background-image="assets/img/shops/shiroganeze/pickup-bg.png"
                 title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
-                :cast-images="$pickupImages" frame-image="assets/img/shops/miyabi/card-frame-2.png" :Colorchange=false
+                :cast-images="$pickupImages" frame-image="assets/img/shops/shiroganeze/card-frame-2.png" :Colorchange=false
                 badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="228" height="228" viewBox="0 0 228 228" fill="none">
-<g filter="url(#filter0_d_668_7398)">
-<path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="url(#paint0_linear_668_7398)"/>
+<g filter="url(#filter0_d_701_11446)">
+<path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="#132126"/>
 </g>
 <defs>
-<filter id="filter0_d_668_7398" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_d_701_11446" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset/>
 <feGaussianBlur stdDeviation="10"/>
 <feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_668_7398"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_668_7398" result="shape"/>
+<feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_701_11446"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_701_11446" result="shape"/>
 </filter>
-<linearGradient id="paint0_linear_668_7398" x1="114" y1="20" x2="114" y2="208" gradientUnits="userSpaceOnUse">
-<stop stop-color="#73071A"/>
-<stop offset="1" stop-color="#D90D32"/>
-</linearGradient>
 </defs>
 </svg>' />
             @if ($new_girls->count() > 0)
                 <div class="home-new-girl-section">
-                    <x-public.shops.section-title text="NEW GIRL" color="#F2F2F2" :gradient=false
-                        :backgroundGradient=true color="#F2F2F2"
-                        backgroundColor="linear-gradient(180deg, #73071A 0%, #D90D32 100%)" letter-spacing="0.375rem"
-                        opacity="1.0" small="true" />
+                    <x-public.shops.section-title text="NEW GIRL" color="#132126" :gradient=false
+                        :backgroundGradient=true backgroundColor="#FFF" letter-spacing="0.375rem" opacity="1.0"
+                        small="true" />
                     @php
                         $newGirlIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="35" viewBox="0 0 26 35" fill="none">
-<path d="M3.48938 0L5.03394 0.68188L12.8051 8.17029L20.4795 0.68188L22.0241 0H22.6956C24.5021 0.486863 25.226 1.46741 25.3791 3.34258C25.0769 9.26539 25.7887 15.6069 25.3872 21.4806C25.1991 24.2313 24.3167 24.5872 22.6244 26.311C20.3573 28.6212 17.5878 31.7183 15.1756 33.7476C14.5014 34.3149 13.8849 34.6818 13.0253 34.9055C12.8507 34.8905 12.6587 34.9286 12.4881 34.9055C11.7212 34.7991 11.055 34.3709 10.4721 33.884C8.13514 31.9325 5.48791 28.9472 3.29195 26.7202C1.48415 24.8873 0.327746 24.4331 0.126282 21.4806C-0.275302 15.6069 0.436537 9.26539 0.134341 3.34258C0.284767 1.49195 1.05167 0.492318 2.81784 0H3.48938ZM12.7567 29.9959C14.304 28.8122 15.5974 27.2834 16.9834 25.9019C17.7691 25.1205 20.7978 22.5471 21.0208 21.6824L21.014 7.50205C20.7051 7.00837 20.2042 6.95382 19.7475 7.30157L12.7581 14.2486L12.7567 29.9959Z" fill="#D90D32"/>
+<path d="M3.48938 0L5.03394 0.68188L12.8051 8.17029L20.4795 0.68188L22.0241 0H22.6956C24.5021 0.486863 25.226 1.46741 25.3791 3.34258C25.0769 9.26539 25.7887 15.6069 25.3872 21.4806C25.1991 24.2313 24.3167 24.5872 22.6244 26.311C20.3573 28.6212 17.5878 31.7183 15.1756 33.7476C14.5014 34.3149 13.8849 34.6818 13.0253 34.9055C12.8507 34.8905 12.6587 34.9286 12.4881 34.9055C11.7212 34.7991 11.055 34.3709 10.4721 33.884C8.13514 31.9325 5.48791 28.9472 3.29195 26.7202C1.48415 24.8873 0.327746 24.4331 0.126282 21.4806C-0.275302 15.6069 0.436537 9.26539 0.134341 3.34258C0.284767 1.49195 1.05167 0.492318 2.81784 0H3.48938ZM12.7567 29.9959C14.304 28.8122 15.5974 27.2834 16.9834 25.9019C17.7691 25.1205 20.7978 22.5471 21.0208 21.6824L21.014 7.50205C20.7051 7.00837 20.2042 6.95382 19.7475 7.30157L12.7581 14.2486L12.7567 29.9959Z" fill="#545928"/>
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#FEFEFE"
-                        text-color="#0D0A0C" border-color="#D90D32" underlineColor="#D90D32"
+                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
+                        text-color="#0B0B07" border-color="#394022" underlineColor="#132126"
                         responsive-variant="new-girl" :gradient=false
-                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'miyabi']) }}" />
+                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
                 </div>
                 <div class="home-new-girl-slider">
                     <div class="new-girl-slider-cards">
@@ -283,12 +281,12 @@
                                     measurements="{{ 'T.' . $new_girl->height . ' B.' . $new_girl->bust . ' W.' . $new_girl->waist . ' H.' . $new_girl->hip }}"
                                     description="{{ $new_girl->appeal_point }}"
                                     gradient-id="calendar-gradient-{{ $loop->index }}" :gradient=false
-                                    datetextColor="#8C0712" newGirlCardBgLeftColor="rgba(255,255,255,0.7)"
-                                    name-color="#0F0002" measurements-color="#0F0002" :cardGradient=false
-                                    carddividerColor="#8C0712" :carddividerverticalGradient=false
-                                    carddividerverticalColor="linear-gradient(180deg, #73071A 0%, #D90D32 100%)"
+                                    datetextColor="#48593F" newGirlCardBgLeftColor="rgba(255,255,255,0.7)"
+                                    name-color="#132126" measurements-color="#132126" :cardGradient=false
+                                    carddividerColor="#E2EAF5" :carddividerverticalGradient=false
+                                    carddividerverticalColor="#48593F"
                                     iconSvg='<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none">
-<path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#8C0712"/>
+<path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#48593F"/>
 </svg>' />
                             @endforeach
                         </div>
@@ -312,8 +310,8 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="52" height="37"
                                     viewBox="0 0 52 37" fill="none">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M51.4662 18.038C51.4662 18.7964 51.165 19.5237 50.6287 20.0599C50.0925 20.5962 49.3652 20.8974 48.6069 20.8974H9.75748L20.1275 31.2674C20.4084 31.5292 20.6337 31.8449 20.79 32.1956C20.9463 32.5464 21.0303 32.925 21.0371 33.3089C21.0439 33.6929 20.9733 34.0742 20.8295 34.4303C20.6856 34.7863 20.4716 35.1097 20.2001 35.3813C19.9285 35.6528 19.6051 35.8668 19.2491 36.0106C18.893 36.1545 18.5117 36.2251 18.1277 36.2183C17.7438 36.2115 17.3652 36.1275 17.0144 35.9712C16.6637 35.8149 16.348 35.5896 16.0862 35.3087L0.836234 20.0587C0.300767 19.5225 0 18.7958 0 18.038C0 17.2803 0.300767 16.5536 0.836234 16.0174L16.0862 0.767425C16.6283 0.262345 17.3452 -0.0126246 18.086 0.000445479C18.8267 0.0135156 19.5335 0.313605 20.0574 0.837492C20.5813 1.36138 20.8814 2.06816 20.8945 2.80893C20.9075 3.54971 20.6326 4.26663 20.1275 4.80868L9.75748 15.1787H48.6069C49.3652 15.1787 50.0925 15.4799 50.6287 16.0162C51.165 16.5524 51.4662 17.2797 51.4662 18.038Z"
-                                        fill="#F2F2F2" />
+                                        d="M-4.57764e-05 18.038C-4.57764e-05 18.7964 0.301212 19.5237 0.837448 20.0599C1.37368 20.5962 2.10098 20.8974 2.85933 20.8974H41.7087L31.3387 31.2674C31.0578 31.5292 30.8324 31.8449 30.6762 32.1956C30.5199 32.5464 30.4358 32.925 30.4291 33.3089C30.4223 33.6929 30.4929 34.0742 30.6367 34.4303C30.7805 34.7863 30.9946 35.1097 31.2661 35.3813C31.5376 35.6528 31.8611 35.8668 32.2171 36.0106C32.5732 36.1545 32.9545 36.2251 33.3384 36.2183C33.7224 36.2115 34.101 36.1275 34.4518 35.9712C34.8025 35.8149 35.1182 35.5896 35.38 35.3087L50.63 20.0587C51.1654 19.5225 51.4662 18.7958 51.4662 18.038C51.4662 17.2803 51.1654 16.5536 50.63 16.0174L35.38 0.767425C34.8379 0.262345 34.121 -0.0126246 33.3802 0.000445479C32.6394 0.0135156 31.9327 0.313605 31.4088 0.837492C30.8849 1.36138 30.5848 2.06816 30.5717 2.80893C30.5587 3.54971 30.8336 4.26663 31.3387 4.80868L41.7087 15.1787H2.85933C2.10098 15.1787 1.37368 15.4799 0.837448 16.0162C0.301212 16.5524 -4.57764e-05 17.2797 -4.57764e-05 18.038Z"
+                                        fill="white" />
                                 </svg>
                             </button>
                         </div>
@@ -707,13 +705,13 @@
             icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="#0F0002"/>
 </svg>'
-            mobileImage="{{ asset('assets/img/shops/miyabi/TEL-y1.png') }}" />
+            mobileImage="{{ asset('assets/img/shops/shiroganeze/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons
-            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'miyabi']) }}" />
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
     </div>
     @push('styles')
-        @vite(['resources/scss/shops/miyabi/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
+        @vite(['resources/scss/shops/shiroganeze/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
     @endpush
 </x-shizuku-layout>
