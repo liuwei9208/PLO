@@ -4,8 +4,8 @@
 .event-detail-section {
     width: 100%;
     padding: 30px 30px 50px 30px;
-    border-bottom: 1px solid #D90D32;
-    background: #590202;
+    border-bottom: 1px solid #171923;
+    background: rgba(255, 249, 254, 0.80);
 }
 
 @media (max-width: 850px) {
@@ -105,7 +105,7 @@
 @media (max-width: 850px) {
     .event-detail-pagination {
         margin: 0px;
-        background: var(---N_, rgba(42, 26, 8, 0.75));
+        // background: var(---N_, rgba(42, 26, 8, 0.75));
     }
 
     .event-detail-pagination-center{
@@ -142,7 +142,7 @@
 .event-detail-pagination a {
     @include yu-mincho-regular();
     @include responsive-font(14px, 16px);
-    color: #EBEBEB;
+    color: #010307;
     text-decoration: none;
     transition: opacity 0.3s ease;
     font-weight: 600;

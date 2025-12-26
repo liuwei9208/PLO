@@ -10,11 +10,12 @@
         </button>
         <button class="menu-close-mobile" id="menuCloseMobile">
             <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61" viewBox="0 0 61 61" fill="none">
-                <rect width="60.5424" height="60.5424" transform="translate(0 -0.000359654)" fill="#160B00" />
-                <path d="M48.028 13.4996L14.028 45.4996" stroke="#FFDA89" stroke-linecap="round"
-                    stroke-linejoin="round" />
-                <path d="M15.028 13.4996L48.028 45.4996" stroke="#FFDA89" stroke-linecap="round"
-                    stroke-linejoin="round" />
+                <rect width="60.5424" height="60.5424" transform="translate(0 -0.000359654)"
+                    fill="{{ $menuRectColor ?? '#160B00' }}" />
+                <path d="M48.028 13.4996L14.028 45.4996" stroke="{{ $menuCloseColor ?? '#000000' }}"
+                    stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M15.028 13.4996L48.028 45.4996" stroke="{{ $menuCloseColor ?? '#000000' }}"
+                    stroke-linecap="round" stroke-linejoin="round" />
             </svg>
         </button>
         <div class="menu-logo">

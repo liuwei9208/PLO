@@ -7,8 +7,8 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/shiroganeze/footer-logo-black.png"
-            logo-alt="Shizuku Logo" :menu-links="[
+        <x-public.shops.menu-overlay logo-image="assets/img/shops/shiroganeze/footer-logo.png" logo-alt="Shizuku Logo"
+            :menu-links="[
                 'top' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
                 'schedule' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
                 'pricing' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
@@ -33,23 +33,23 @@
                 'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
             ]"
-            mobile-image="assets/img/shops/shizuku/credit_system.png" mobile-image-alt="女の子募集中" menuCloseColor="#fff"
-            twitterColor="#FEFEFE" :menuIconColor="[
-                'top' => '#D58BAC',
+            mobile-image="assets/img/shops/shizuku/credit_system.png" mobile-image-alt="女の子募集中" menuCloseColor="#0B0B07"
+            twitterColor="#2A1A08" menuRectColor="rgba(255, 255, 255, 0.9)" :menuIconColor="[
+                'top' => '#BF848F',
                 'new' => '#52B845',
                 'event' => '#FFD775',
-                'review' => '#D58BAC',
-                'shop' => '#D58BAC',
+                'review' => '#BF848F',
+                'shop' => '#BF848F',
                 'schedule' => '#525CF6',
                 'cast' => '#B31723',
-                'diary' => '#D58BAC',
+                'diary' => '#BF848F',
                 'ranking' => '#D6AD01',
-                'login' => '#F2F2F2',
-                'register' => '#F2F2F2',
+                'login' => '#0B0B07',
+                'register' => '#0B0B07',
                 'pricing' => '#DCC305',
-                'news' => '#D58BAC',
-                'movie' => '#F2F2F2',
-                'access' => '#D58BAC',
+                'news' => '#BF848F',
+                'movie' => '#0B0B07',
+                'access' => '#BF848F',
                 'recruit-female' => '#D42032',
                 'recruit-male' => '#525CF6',
             ]" />
@@ -69,7 +69,7 @@
             <div class="breadcrumb-navigation">
                 <p>すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ</p>
             </div>
-            <x-public.shops.home-header logo-image="assets/img/shops/shiroganeze/footer-logo.png"
+            <x-public.shops.home-header logo-image="assets/img/shops/shiroganeze/footer-logo-black.png"
                 logo-alt="Shizuku Logo" stroke-color="#E2EAF5" :menu-items="[
                     [
                         'title' => 'トップページ',
@@ -160,21 +160,18 @@
 </svg>'
                                     status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
-                                    message="{{ $todayCast->appeal_point }}" variant="schedule" statusTextColor="BF5A75"
-                                    contentGradientStart="#FFF " contentGradientStartPercent="50%"
-                                    contentGradientEnd="rgba(255, 255, 255, 0.00)" contentGradientEndPercent="100%"
-                                    badgeBorderColor="#171923" badgeBgColor="#171923" badgeTextColor="#FFF"
-                                    badgeTimeColor="#000" :messageGradient=false measurementsColor="#000"
-                                    nameColor="#000" messageColor="#000" />
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule"
+                                    statusTextColor="#BF5A75" contentGradientStart="#FFF "
+                                    contentGradientStartPercent="50%" contentGradientEnd="rgba(255, 255, 255, 0.00)"
+                                    contentGradientEndPercent="100%" badgeBorderColor="#171923" badgeBgColor="#171923"
+                                    badgeTextColor="#FFF" badgeTimeColor="#000" :messageGradient=false
+                                    measurementsColor="#000" nameColor="#000" messageColor="#000" />
                             @else
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
                                     frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
-                                    status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#F5F5F5"/>
-</svg>'
                                     status-text="{{ '次回' . \Carbon\Carbon::createFromTimeString($todayCast->reservation)->format('H:i') . '~' }}"
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
@@ -243,7 +240,7 @@
 </svg>' />
             @if ($new_girls->count() > 0)
                 <div class="home-new-girl-section">
-                    <x-public.shops.section-title text="NEW GIRL" color="#132126" :gradient=false
+                    <x-public.shops.section-title text="NEW GIRL" color="#394022" :gradient=false
                         :backgroundGradient=true backgroundColor="#FFF" letter-spacing="0.375rem" opacity="1.0"
                         small="true" />
                     @php
@@ -283,7 +280,7 @@
                                     gradient-id="calendar-gradient-{{ $loop->index }}" :gradient=false
                                     datetextColor="#48593F" newGirlCardBgLeftColor="rgba(255,255,255,0.7)"
                                     name-color="#132126" measurements-color="#132126" :cardGradient=false
-                                    carddividerColor="#E2EAF5" :carddividerverticalGradient=false
+                                    carddividerColor="#48593F" :carddividerverticalGradient=false
                                     carddividerverticalColor="#48593F"
                                     iconSvg='<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none">
 <path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#48593F"/>
@@ -318,19 +315,19 @@
                     </div>
                     <div class="new-girl-slider-mobile-controls">
                         <button class="new-girl-slider-mobile-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61"
-                                viewBox="0 0 61 61" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12"
+                                viewBox="0 0 16 12" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M60.5 30.5C60.5 31.4283 60.1313 32.3185 59.4749 32.9749C58.8185 33.6313 57.9283 34 57 34H11.5L23.75 46.25C24.0948 46.5948 24.3688 47.0038 24.556 47.4542C24.7432 47.9046 24.8401 48.3879 24.8413 48.8762C24.8426 49.3645 24.7482 49.8483 24.5634 50.2996C24.3786 50.7509 24.1069 51.1613 23.7638 51.5081C23.4207 51.855 23.0129 52.1311 22.5631 52.3203C22.1133 52.5095 21.6304 52.6084 21.1421 52.6118C20.6538 52.6151 20.1696 52.5228 19.7171 52.3398C19.2646 52.1568 18.8527 51.8867 18.5042 51.5458L0.979167 34.0208C0.32282 33.3645 -0.0457764 32.4748 -0.0457764 31.5466C-0.0457764 30.6185 0.32282 29.7288 0.979167 29.0725L18.5042 11.5475C19.1708 10.9236 20.0465 10.5793 20.9543 10.5859C21.8621 10.5925 22.7326 10.9496 23.3901 11.5828C24.0476 12.216 24.4417 13.0759 24.4919 13.9828C24.5421 14.8898 24.2444 15.7866 23.6625 16.4875L11.5 28.5H57C57.9283 28.5 58.8185 28.8687 59.4749 29.5251C60.1313 30.1815 60.5 31.0717 60.5 32V30.5Z"
-                                    fill="black" />
+                                    d="M15.755 5.52184C15.755 5.75399 15.6628 5.97663 15.4986 6.14078C15.3344 6.30494 15.1118 6.39716 14.8797 6.39716H2.98699L6.16148 9.57164C6.24747 9.65178 6.31645 9.74841 6.36429 9.85578C6.41214 9.96316 6.43786 10.0791 6.43993 10.1966C6.44201 10.3141 6.42039 10.4309 6.37636 10.5399C6.33234 10.6488 6.26681 10.7479 6.18369 10.831C6.10058 10.9141 6.00157 10.9796 5.89257 11.0236C5.78358 11.0677 5.66684 11.0893 5.54931 11.0872C5.43178 11.0851 5.31587 11.0594 5.2085 11.0116C5.10113 10.9637 5.00449 10.8948 4.92436 10.8088L0.25599 6.1404C0.0920714 5.97628 0 5.7538 0 5.52184C0 5.28988 0.0920714 5.06741 0.25599 4.90328L4.92436 0.234926C5.09029 0.0803095 5.30976 -0.00386466 5.53652 0.000136371C5.76329 0.00413741 5.97965 0.0960014 6.14003 0.256375C6.3004 0.416748 6.39226 0.633109 6.39627 0.859876C6.40027 1.08664 6.31609 1.30611 6.16148 1.47204L2.98699 4.64652H14.8797C15.1118 4.64652 15.3344 4.73874 15.4986 4.9029C15.6628 5.06705 15.755 5.28969 15.755 5.52184Z"
+                                    fill="white" />
                             </svg>
                         </button>
                         <button class="new-girl-slider-mobile-next">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="61" height="61"
-                                viewBox="0 0 61 61" fill="none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="12"
+                                viewBox="0 0 16 12" fill="none">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M0.5 30.5C0.5 31.4283 0.868749 32.3185 1.52513 32.9749C2.1815 33.6313 3.07174 34 4 34H49.5L37.25 46.25C36.9052 46.5948 36.6312 47.0038 36.444 47.4542C36.2568 47.9046 36.1599 48.3879 36.1587 48.8762C36.1574 49.3645 36.2518 49.8483 36.4366 50.2996C36.6214 50.7509 36.8931 51.1613 37.2362 51.5081C37.5793 51.855 37.9871 52.1311 38.4369 52.3203C38.8867 52.5095 39.3696 52.6084 39.8579 52.6118C40.3462 52.6151 40.8304 52.5228 41.2829 52.3398C41.7354 52.1568 42.1473 51.8867 42.4958 51.5458L60.0208 34.0208C60.6772 33.3645 61.0458 32.4748 61.0458 31.5466C61.0458 30.6185 60.6772 29.7288 60.0208 29.0725L42.4958 11.5475C41.8292 10.9236 40.9535 10.5793 40.0457 10.5859C39.1379 10.5925 38.2674 10.9496 37.6099 11.5828C36.9524 12.216 36.5583 13.0759 36.5081 13.9828C36.4579 14.8898 36.7556 15.7866 37.3375 16.4875L49.5 28.5H4C3.07174 28.5 2.1815 28.8687 1.52513 29.5251C0.868749 30.1815 0.5 31.0717 0.5 32V30.5Z"
-                                    fill="black" />
+                                    d="M1.90735e-06 5.52183C1.90735e-06 5.75398 0.0922232 5.97662 0.256377 6.14077C0.420531 6.30493 0.643171 6.39715 0.87532 6.39715H12.768L9.5935 9.57163C9.5075 9.65176 9.43852 9.7484 9.39068 9.85577C9.34284 9.96314 9.31711 10.079 9.31504 10.1966C9.31297 10.3141 9.33459 10.4309 9.37861 10.5398C9.42263 10.6488 9.48816 10.7478 9.57128 10.831C9.6544 10.9141 9.75341 10.9796 9.8624 11.0236C9.97139 11.0677 10.0881 11.0893 10.2057 11.0872C10.3232 11.0851 10.4391 11.0594 10.5465 11.0116C10.6538 10.9637 10.7505 10.8947 10.8306 10.8087L15.499 6.14039C15.6629 5.97627 15.755 5.75379 15.755 5.52183C15.755 5.28987 15.6629 5.0674 15.499 4.90328L10.8306 0.234925C10.6647 0.0803094 10.4452 -0.00386466 10.2185 0.000136371C9.99168 0.0041374 9.77532 0.0960012 9.61495 0.256374C9.45457 0.416747 9.36271 0.633108 9.35871 0.859874C9.35471 1.08664 9.43888 1.30611 9.5935 1.47204L12.768 4.64652H0.87532C0.643171 4.64652 0.420531 4.73874 0.256377 4.90289C0.0922232 5.06705 1.90735e-06 5.28969 1.90735e-06 5.52183Z"
+                                    fill="white" />
                             </svg>
                         </button>
                     </div>
@@ -343,35 +340,34 @@
                     @if ($newGirlButtonHref)
                         <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
-                            <p style="color: #10040E;">一覧を見る</p>
-                            <div class="schedule-info-underline" style="background: #EAF205;"></div>
+                            <p style="color: #48593F;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #48593F;"></div>
                         </a>
                     @else
                         <div class="schedule-info-button schedule-info-button-mobile"
                             style="background: #FFFFFF; border-left-color: #2A1A08;"
                             @if ($newGirlButtonOnClick) onclick="{{ $newGirlButtonOnClick }}" @endif>
-                            <p style="color: #10040E;">一覧を見る</p>
-                            <div class="schedule-info-underline" style="background: #EAF205;"></div>
+                            <p style="color: #48593F;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #48593F;"></div>
                         </div>
                     @endif
                 </div>
             @endif
             @if (count($castlist) > 0)
                 <div class="home-castlist">
-                    <x-public.shops.section-title text="cast list" background-color="#FEFEFE" opacity="1.0"
-                        :gradient=true gradientStart="#73071A" gradientEnd="#D90D32" color="#F2138E"
-                        letter-spacing="0.375rem" />
+                    <x-public.shops.section-title text="cast list" background-color="#fff" opacity="1.0"
+                        :gradient=false color="#48593F" letter-spacing="0.375rem" />
                     <div class="home-castlist-info">
                         <div class="castlist-info-header">
-                            <img src="{{ asset('assets/img/shops/miyabi/girl-icon.png') }}" alt="出勤情報"
+                            <img src="{{ asset('assets/img/shops/shiroganeze/girl-icon.png') }}" alt="出勤情報"
                                 class="castlist-info-icon">
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>ヴィラコート雫のキャスト一覧です。</p>
+                            <p>シロガネーゼのキャスト一覧になります。</p>
                         </div>
                         <a class="castlist-info-button"
-                            href="{{ route('public.shops.shop.castlist', ['shop' => 'miyabi']) }}">
+                            href="{{ route('public.shops.shop.castlist', ['shop' => 'shiroganeze']) }}">
                             <p>一覧を見る</p>
                             <div class="castlist-info-underline"></div>
                         </a>
@@ -401,16 +397,17 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                                    frame-image="assets/img/shops/miyabi/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                                     status-icon="" status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                                     measurements=" {{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
-                                    message="{{ $cast->appeal_point }}" contentGradientStart="#9C0909"
-                                    contentGradientStartPercent="45.67%" contentGradientEnd="rgba(156, 9, 9, 0.30)"
-                                    contentGradientEndPercent="100%" badgeBorderColor="#D90D32"
-                                    badgeBgColor="#D90D32" badgeTextColor="#F2FF00" badgeTimeColor="#0F0002"
-                                    :messageGradient=false measurementsColor="#FEFEFE" nameColor="#FEFEFE"
-                                    messageColor="#D90D32" variant="castlist_top" />
+                                    message="{{ $cast->appeal_point }}"
+                                    contentGradientStart="rgba(255, 255, 255, 0.80)"
+                                    contentGradientStartPercent="58.65%"
+                                    contentGradientEnd="rgba(255, 255, 255, 0.00)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#171923" badgeBgColor="#171923" badgeTextColor="#FFF"
+                                    badgeTimeColor="#000" :messageGradient=false measurementsColor="#132126"
+                                    nameColor="#132126" messageColor="#132126" variant="castlist_top" />
                             @endforeach
                         </div>
                         <button class="castlist-slider-next">
@@ -430,7 +427,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[0]->cast_gallery_1) }}" alt="Cast 1"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/pussycat/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="154"
@@ -484,7 +481,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[1]->cast_gallery_1) }}" alt="Cast 2"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/pussycat/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no2">
                                 <svg width="220" height="137" viewBox="0 0 220 137" fill="none"
@@ -538,13 +535,13 @@
                         <div class="ranking-badge-diamond">
                             <svg xmlns="http://www.w3.org/2000/svg" width="228" height="228"
                                 viewBox="0 0 228 228" fill="none">
-                                <g filter="url(#filter0_d_668_7572)">
+                                <g filter="url(#filter0_d_701_11478)">
                                     <path
                                         d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z"
-                                        fill="url(#paint0_linear_668_7572)" />
+                                        fill="#BF5A75" />
                                 </g>
                                 <defs>
-                                    <filter id="filter0_d_668_7572" x="0" y="0" width="228" height="228"
+                                    <filter id="filter0_d_701_11478" x="0" y="0" width="228" height="228"
                                         filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                                         <feFlood flood-opacity="0" result="BackgroundImageFix" />
                                         <feColorMatrix in="SourceAlpha" type="matrix"
@@ -553,26 +550,21 @@
                                         <feGaussianBlur stdDeviation="10" />
                                         <feComposite in2="hardAlpha" operator="out" />
                                         <feColorMatrix type="matrix"
-                                            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" />
+                                            values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" />
                                         <feBlend mode="normal" in2="BackgroundImageFix"
-                                            result="effect1_dropShadow_668_7572" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_668_7572"
+                                            result="effect1_dropShadow_701_11478" />
+                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_701_11478"
                                             result="shape" />
                                     </filter>
-                                    <linearGradient id="paint0_linear_668_7572" x1="114" y1="20"
-                                        x2="114" y2="208" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="#73071A" />
-                                        <stop offset="1" stop-color="#D90D32" />
-                                    </linearGradient>
                                 </defs>
                             </svg>
                         </div>
-                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'miyabi']) }}"
+                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'shiroganeze']) }}"
                             class="ranking-badge-text">一覧を見る</a>
                     </div>
                     <div class="ranking-header">
                         <div class="ranking-header-bg">
-                            <img src="{{ asset('assets/img/shops/miyabi/ranking.png') }}" alt="Background">
+                            <img src="{{ asset('assets/img/shops/shiroganeze/ranking.png') }}" alt="Background">
                             <div class="ranking-header-overlay"></div>
                             <div class="ranking-header-shadow"></div>
                         </div>
@@ -583,7 +575,7 @@
                                     viewBox="0 0 34 30" fill="none">
                                     <path
                                         d="M5 30V26.6667H28.3333V30H5ZM5 24.1667L2.875 10.7917C2.81945 10.7917 2.75667 10.7989 2.68667 10.8133C2.61667 10.8278 2.55445 10.8344 2.5 10.8333C1.80556 10.8333 1.21556 10.59 0.730004 10.1033C0.244448 9.61667 0.0011149 9.02667 3.78788e-06 8.33334C-0.00110732 7.64 0.242226 7.05 0.730004 6.56334C1.21778 6.07667 1.80778 5.83334 2.5 5.83334C3.19223 5.83334 3.78278 6.07667 4.27167 6.56334C4.76056 7.05 5.00334 7.64 5 8.33334C5 8.52778 4.97889 8.70834 4.93667 8.875C4.89445 9.04167 4.84612 9.19445 4.79167 9.33334L10 11.6667L15.2083 4.54167C14.9028 4.31945 14.6528 4.02778 14.4583 3.66667C14.2639 3.30556 14.1667 2.91667 14.1667 2.5C14.1667 1.80556 14.41 1.215 14.8967 0.728337C15.3833 0.241671 15.9733 -0.00110731 16.6667 3.79651e-06C17.36 0.00111491 17.9506 0.244448 18.4383 0.730004C18.9261 1.21556 19.1689 1.80556 19.1667 2.5C19.1667 2.91667 19.0695 3.30556 18.875 3.66667C18.6806 4.02778 18.4306 4.31945 18.125 4.54167L23.3333 11.6667L28.5417 9.33334C28.4861 9.19445 28.4372 9.04167 28.395 8.875C28.3528 8.70834 28.3322 8.52778 28.3333 8.33334C28.3333 7.63889 28.5767 7.04834 29.0633 6.56167C29.55 6.075 30.14 5.83223 30.8333 5.83334C31.5267 5.83445 32.1172 6.07778 32.605 6.56334C33.0928 7.04889 33.3356 7.63889 33.3333 8.33334C33.3311 9.02778 33.0883 9.61834 32.605 10.105C32.1217 10.5917 31.5311 10.8344 30.8333 10.8333C30.7778 10.8333 30.7156 10.8267 30.6467 10.8133C30.5778 10.8 30.515 10.7928 30.4583 10.7917L28.3333 24.1667H5Z"
-                                        fill="#F2F2F2" />
+                                        fill="#132126" />
                                 </svg>
                                 <h2 class="ranking-title-ja">ランキング</h2>
                             </div>
@@ -602,7 +594,7 @@
                 }
             @endphp
             @if (count($events) > 0)
-                <x-public.shops.event-section background-image="assets/img/shops/miyabi/event-bg.png"
+                <x-public.shops.event-section background-image="assets/img/shops/shiroganeze/event-bg.png"
                     background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
                     :sub-banner-images="$event_list" />
             @endif
@@ -677,13 +669,13 @@
                     'url' => '#',
                 ],
             ]" :menu-links="[
-                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'miyabi'])],
-                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'miyabi'])],
-                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'miyabi'])],
-                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'miyabi'])],
-                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'miyabi'])],
+                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze'])],
+                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze'])],
+                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze'])],
+                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze'])],
+                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze'])],
                 ['text' => 'SNS', 'url' => '#'],
-                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'miyabi'])],
+                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze'])],
                 ['text' => 'ログイン', 'url' => route('login')],
                 ['text' => '新規会員登録', 'url' => route('register')],
                 [
@@ -696,14 +688,16 @@
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"
-                footerLogo="{{ asset('assets/img/shops/miyabi/footer-logo-black.png') }}" svgIconColor="#F2138E" />
+                footerLogo="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}" svgIconColor="#132126"
+                ploLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}" />
         </div>
 
         <!-- Fixed Phone Button -->
-        <x-public.shops.fixed-phone-button phone-number="0115110930" phone-display="011-511-0930"
+        <x-public.shops.fixed-phone-button phone-number="0115213593" phone-display="011-521-3593"
             hours="8:30〜24:00まで" mobile-text="TEL"
             icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-<path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="#0F0002"/>
+<path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="white"/>
 </svg>'
             mobileImage="{{ asset('assets/img/shops/shiroganeze/TEL-y1.png') }}" />
 

@@ -124,8 +124,8 @@
 
 .shop-info-area-text {
   width: 100%;
-  border-top: 1px solid $white;
-  border-bottom: 1px solid $white;
+  border-top: 1px solid #0F0002;
+  border-bottom: 1px solid #0F0002;
   padding: 1.875rem 0;
   margin-top: 1rem;
   display: flex;
@@ -139,7 +139,7 @@
     font-weight: 600;
     @include responsive-font(30px, 53.6px);
     line-height: normal;
-    color: $white;
+    color: #0F0002;
     text-align: center;
     white-space: nowrap;
     margin: 0;
@@ -152,7 +152,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid $white;
+  border: 3px solid #0F0002;
   transition: opacity 0.3s ease;
   margin-top: 1rem;
   display: block;
@@ -188,7 +188,7 @@
   // font-size: 2.8125rem;
   @include responsive-font(25.2px, 54.8px);
   line-height: normal;
-  color: $white;
+  color: #0F0002;
   text-align: center;
   margin: 0;
 }
@@ -319,7 +319,7 @@
   font-weight: 500;
   @include responsive-font(15px, 26px);
   line-height: 1.6875rem;
-  color: $white;
+  color: #0F0002;
   text-decoration: none;
   transition: opacity 0.3s ease;
   
@@ -333,7 +333,7 @@
   font-weight: 500;
   @include responsive-font(16px, 22px);
   line-height: 1.6875rem;
-  color: $white;
+  color: #0F0002;
   display: inline-block;
   margin: 0;
 }
@@ -343,7 +343,7 @@
   font-weight: 300;
   @include responsive-font(14px, 17px);
   line-height: normal;
-  color: $white;
+  color: #0F0002;
   text-align: center;
   p {
     padding: 1.875rem 0;

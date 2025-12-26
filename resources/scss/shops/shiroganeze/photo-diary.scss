@@ -4,7 +4,7 @@
 @use "./component/pagination.scss" as *;
 .photo-diary-section {
   // background: rgba(42, 26, 8, 0.6);
-  background: rgba(89, 2, 2, 0.80);
+  background: rgba(255, 249, 254, 0.80);
   display: flex;
   gap: 20px;
 
@@ -185,8 +185,8 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #F2FF00);
-  color: var(---N__, #0F0002);
+  background: var(---N_, #394022);
+  color: var(---N__, #FFF);
   @include yu-mincho-regular();
   @include responsive-font(19px, 24.4px);
   // font-size: 23px;
@@ -196,7 +196,7 @@
 }
 
 .diary-post-title span {
-  color: var(---N___, #FEFEFE);
+  color: var(---N___, #171923);
   @include yu-mincho-regular();
   font-size: 22px;
   font-style: normal;
@@ -208,11 +208,11 @@
   // width: 82.35%; // ~280px relative to 340px card width
   width: 280px;
   height: 1px;
-  border-color: #F2FF00;
+  border-color: #394022;
 }
 
 .diary-post-title p {
-  color: var(---N___, #FEFEFE);
+  color: var(---N___, #171923);
   @include yu-mincho-regular();
   font-size: 16px;
   font-style: normal;
@@ -295,7 +295,7 @@
 
 .diary-post-content p {
   width: 82.35%; // ~280px relative to 340px card width
-  color: var(---N___, #FEFEFE);
+  color: var(---N___, #171923);
   @include yu-mincho-regular();
   @include responsive-font(15px, 18px);
   font-style: normal;
@@ -477,6 +477,6 @@
   @include times-new-roman();
 }
 .fc .fc-day-other {
-  color: #D90D32;        /* グレー */
+  color: #394022;        /* グレー */
   // background-color: #f9fafb;
 }

@@ -1,5 +1,5 @@
-<x-miyabi-page-layout page-title="SHOP LIST" page-subtitle="店舗一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 店舗一覧"
-    :assets="['resources/scss/shops/miyabi/shop-list.scss']" :banners="$banners">
+<x-shiroganeze-page-layout -page-layout page-title="SHOP LIST" page-subtitle="店舗一覧"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 店舗一覧" :assets="['resources/scss/shops/shiroganeze/shop-list.scss']" :banners="$banners">
     <section class="shop-list-section">
         <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
@@ -218,4 +218,4 @@
             </div>
         </a>
     </section>
-</x-miyabi-page-layout>
+</x-shiroganeze-page-layout>

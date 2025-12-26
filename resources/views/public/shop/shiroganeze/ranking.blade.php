@@ -1,7 +1,7 @@
-<x-miyabi-page-layout page-title="RANKING" page-subtitle="女の子ランキング" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 女の子ランキング"
-    :assets="['resources/scss/shops/miyabi/ranking.scss', 'resources/js/shops/shziuku/ranking.js']" :banners="$banners">
+<x-shiroganeze-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shiroganeze/ranking.scss', 'resources/js/shops/shziuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
-        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'miyabi']) }}" method="get"
+        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'shiroganeze']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
             <select name="rank_id" onchange="this.form.submit()"
                 class="ranking-filter-btn-mobile ranking-filter-btn-active">
@@ -121,7 +121,7 @@
                 </div>
                 <div class="no1-person-services">
                     <p>
-                        {!! nl2br($rankings[1]->cast->appeal_point) }
+                        {!! nl2br($rankings[1]->cast->appeal_point) !!}
                     </p>
                 </div>
             </div>
@@ -236,14 +236,14 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no4.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/shiroganeze/no4.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[3]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -273,14 +273,14 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no5.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/shiroganeze/no5.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[4]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -310,14 +310,14 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no6.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/shiroganeze/no6.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -347,14 +347,14 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no7.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/shiroganeze/no7.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -383,4 +383,4 @@
             </div>
         </div>
     </section>
-</x-miyabi-page-layout>
+</x-shiroganeze-page-layout>

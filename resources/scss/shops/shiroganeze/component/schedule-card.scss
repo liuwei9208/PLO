@@ -160,9 +160,11 @@
   font-weight: 600;
   margin: 0;
   line-height: 1.4;
+  // color: #132126 ;
 }
 .castlist-card-name {
-  color: #0F0002 !important;
+  @include Hiragino_Mincho_Pro_W6() ; 
+  // color: #132126 !important;
 }
 .schedule-card-measurements {
   @include times-new-roman();
@@ -173,7 +175,7 @@
   line-height: 1.4;
 }
 .castlist-card-measurements{
-  color: #0F0002 !important;
+  // color: #132126 !important;
 }
 .schedule-card-message {
   @include yu-mincho-regular();
@@ -191,7 +193,7 @@
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-
+  // color: #132126 !important;
   .schedule-card-message-text {
     display: inline-block;
   }

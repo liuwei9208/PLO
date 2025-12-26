@@ -62,13 +62,13 @@
   align-items: center;
   gap: 10px;
   border-radius: 6px;
-  border: 2px solid var(---N_, #D90D32);
+  border: 2px solid var(---N_, #BF5A75);
   background: var(---N___, #fff);
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.1);
 
   &.active {
 
-    background-color: #D90D32;
+    background-color: #BF5A75;
     p {
       color: #FEFEFE !important;
     }
@@ -111,7 +111,7 @@
   // );
   background: var(
     ---N,
-    #590202
+    rgba(255, 249, 254, 0.70)
   );
 }
 

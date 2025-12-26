@@ -3,7 +3,7 @@
 
 .event-card{
     padding: 30px;
-    border-bottom: 1px solid #D90D32;
+    border-bottom: 1px solid #171923;
     display: flex;
     gap: 80px;
     text-decoration: none;
@@ -65,7 +65,7 @@
     @include yu-mincho-regular();
     @include responsive-font(25px, 25px);
     font-weight: 600;
-    color: var(---N__, #2A1A08);
+    color: var(---N__, #010307);
 }   
 
 .event-card-text{
@@ -74,7 +74,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 31px;
-    color: var(---N__, #2A1A08);
+    color: var(---N__, #010307);
     white-space: pre-line;
 }
 .event-card-text p {
@@ -83,7 +83,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 31px;
-    color: var(---N__, #2A1A08);
+    color: var(---N__, #010307);
     white-space: pre-line;
 
 }

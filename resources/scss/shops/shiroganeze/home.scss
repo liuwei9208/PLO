@@ -59,11 +59,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0) 4.33%,
-    rgba(36, 36, 36, 0.8) 16.35%
-  );
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.80) 16.35%);
   pointer-events: none;
   z-index: 1;
   opacity: 0;
@@ -201,7 +197,7 @@ p {
   border-bottom: 3px solid $white;
   align-items: center;
   background-color: #fff;
-  border: 6px solid #d90d32;
+  border: 6px solid #132126;
 }
 
 .castlist-info-header {
@@ -243,7 +239,7 @@ p {
   // border: 6px solid $white;
   // border-right: none;
   border-top: none;
-  border-left: 6px solid #d90d32;
+  border-left: 6px solid #132126;
 }
 
 .castlist-info-description p {
@@ -267,7 +263,7 @@ p {
   width: 14.375rem;
   flex-shrink: 0;
   background: #fff;
-  border-left: 6px solid #d90d32;
+  border-left: 6px solid #132126;
   cursor: pointer;
   transition: opacity 0.2s ease;
 
@@ -290,7 +286,7 @@ p {
 .castlist-info-underline {
   width: 100%;
   height: 3px;
-  background: #d90d32;
+  background: #132126;
   margin-top: -3px;
 }
 
@@ -335,7 +331,7 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #D90D32; // Figma color: 雫カラー/N雫_ポイント２
+  background: #48593F; // Figma color: 雫カラー/N雫_ポイント２
   color: $white;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -616,7 +612,12 @@ p {
 .ranking-header-shadow {
   position: absolute;
   inset: 0;
-  box-shadow: 0 0.25rem 0.25rem 0.25rem rgba(0, 0, 0, 0.25) inset;
+  // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") lightgray -251px 1.44px / 150.701% 117.723% no-repeat;
+
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") no-repeat;
+  background-size: contain;
+  background-position: center;
+  box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.25) inset;
 }
 
 .ranking-header-content {
@@ -642,7 +643,7 @@ p {
   font-weight: 400;
   line-height: normal;
   letter-spacing: 0.09rem;
-  color: #F2F2F2;
+  color: #132126;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -672,7 +673,7 @@ p {
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.0875rem;
-  color: #F2F2F2;
+  color: #132126;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -683,7 +684,7 @@ p {
   @include responsive-font(15px, 26.7px);
   font-weight: 600;
   line-height: normal;
-  color: #F2F2F2;
+  color: #132126;
   text-align: center;
   white-space: nowrap;
   margin: 25px 0 0 0;
@@ -889,7 +890,7 @@ p {
       display: none;
     }
     p {
-      border-bottom: 3px solid #d90d32;
+      border-bottom: 3px solid #48593F;
     }
   }
 
@@ -978,7 +979,7 @@ p {
     flex-shrink: 0;
     transition: all 0.3s ease;
     padding: 0;
-    background: var(---N_, #eaf205);
+    background: var(---N_, #132126);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }
@@ -1011,7 +1012,7 @@ p {
     transition: all 0.3s ease;
     padding: 0;
     border-radius: 10px 0 0 10px;
-    background: var(---N_, #eaf205);
+    background: var(---N_, #132126);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }
