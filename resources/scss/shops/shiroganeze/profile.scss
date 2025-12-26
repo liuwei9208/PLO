@@ -125,12 +125,12 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   // border: 5px solid var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
 }
 
 .girl-basic-info-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,7 +142,7 @@
   @include yu-mincho-regular();
   @include responsive-font(21px, 35px);
   font-weight: 600 !important;
-  color: #FEFEFE;
+  color: #fff;
   margin: 0;
   letter-spacing: 0.08em;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
@@ -167,14 +167,14 @@
   @include yu-mincho-regular();
   @include responsive-font(30px, 31px);
   font-weight: 600 !important;
-  color: #0F0002;
+  color: #010307;
 }
 
 .girl-basic-info-meta {
   @include yu-mincho-regular();
   @include responsive-font(18px, 19px);
   font-weight: 400 !important;
-  color: #0F0002;
+  color: #010307;
   margin: 0;
 }
 
@@ -182,7 +182,7 @@
   @include yu-mincho-regular();
   @include responsive-font(18px, 23px);
   font-weight: 600 !important;
-  color: #0F0002;
+  color: #010307;
   text-align: center;
   // padding: 10px 10px 15px;
   margin: 3px 6px 6px 6px;
@@ -200,7 +200,7 @@
 .profile-image-prev,
 .profile-image-next {
   position: absolute;
-  background: rgba(#FEFEFE, 0.8);
+  background: rgba(19, 33, 38, 0.50);
   border: none;
   width: 57px;
   height: 139px;
@@ -333,7 +333,7 @@
   width: 100%;
   // border-radius: 15px 15px 0 0;
   border-radius: 15px;
-  background: var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
+  background: var(---N__, #010307);
   margin-top: 10px;
   padding-bottom: 10px;
 }
@@ -387,12 +387,12 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   overflow: hidden;
 }
 
 .girl-qa-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -410,7 +410,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -456,7 +456,7 @@
 }
 
 .girl-qa-question {
-  background: #FFEAED;
+  background: #FFFDF0;
   border-right: 1px solid #e5d6b4;
 }
 
@@ -481,17 +481,17 @@
 }
 
 .girl-qa-question .girl-qa-text {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
-  font-weight: 700 !important;
+  font-weight: 600 !important;
   color: #10040E;
   line-height: 1.6;
 }
 
 .girl-qa-answer .girl-qa-text {
-  @include YuGothic();
+  @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
-  font-weight: 500 !important;
+  font-weight: 400 !important;
   color: #10040E;
   line-height: 1.6;
 }
@@ -672,11 +672,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-message-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -723,11 +723,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-diary-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -865,11 +865,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-schedule-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1060,11 +1060,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-manager-comment-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1112,11 +1112,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-sales-points-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1164,8 +1164,8 @@
   @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
   font-weight: 600;
-  color: #0F0002;
-  background: #EBEBEB;
+  color: #010307;
+  background: #E2EAF5;
   padding: 6px 12px;
   min-width: 100px;
   text-align: center;
@@ -1194,9 +1194,9 @@
   @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
   font-weight: 600 !important;
-  color: #0F0002;
+  color: #010307;
   background: #ffffff;
-  border: 1px solid #D90D32;
+  border: 1px solid #171923;
   border-radius: 4px;
   padding: 6px 12px;
   white-space: nowrap;
@@ -1207,11 +1207,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
 }
 
 .girl-reviews-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: #010307;
   display: flex;
   align-items: center;
   justify-content: center;
