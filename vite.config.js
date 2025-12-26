@@ -192,6 +192,7 @@ export default defineConfig({
         'resources/scss/shops/miyabi/event-detail.scss',
         'resources/scss/shops/miyabi/photo-diary-detail.scss',
         'resources/js/shops/miyabi/photo-diary-detail.js',
+        'resources/scss/shops/miyabi/castlist.scss',
 
         'resources/scss/shops/shiroganeze/home.scss',
         'resources/scss/shops/shiroganeze/page-layout.scss',
@@ -217,7 +218,8 @@ export default defineConfig({
         'resources/scss/shops/shiroganeze/news-detail.scss',
         'resources/scss/shops/shiroganeze/event-detail.scss',
         'resources/scss/shops/shiroganeze/photo-diary-detail.scss',
-        'resources/js/shops/shiroganeze/photo-diary-detail.js'
+        'resources/scss/shops/shiroganeze/castlist.scss',
+        'resources/js/shops/shiroganeze/photo-diary-detail.js',
       ],
       refresh: true,
     }),
