@@ -1,5 +1,5 @@
-<x-miyabi-page-layout page-title="REVIEW" page-subtitle="口コミ一覧" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 口コミ一覧"
-    :assets="['resources/scss/shops/miyabi/review.scss']" :banners="$banners">
+<x-shiroganeze-page-layout page-title="REVIEW" page-subtitle="口コミ一覧"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 口コミ一覧" :assets="['resources/scss/shops/shiroganeze/review.scss']" :banners="$banners">
     <section class="review-section">
         <div class="review-header">
             <h2 class="review-header-label">名前で検索 </h2>
@@ -23,7 +23,8 @@
         </div>
         <div class="review-body">
             {{-- @for ($i = 0; $i < 6; $i++)
-                <x-public.shops.review-card />
+                <x-public.shops.review-card scss="resources/scss/shops/shiroganeze/component/review-card.scss"
+                    fillStarColor="#DF8E70" emptyStarColor="none" />
                 <div class="review-row-border" data-index="{{ $i }}"></div>
             @endfor --}}
             @foreach ($reviews as $review)
@@ -31,11 +32,13 @@
                     measurements="{{ $review->cast_age }}歳 / T.{{ $review->cast_height }} B.{{ $review->cast_bust }} ({{ $review->cast_cup }}) W.{{ $review->cast_waist }} H.{{ $review->cast_hip }}"
                     rating="{{ $review->review_average_point }}" girl-rating="{{ $review->review_cast_point }}"
                     play-rating="{{ $review->review_play_point }}" staff-rating="{{ $review->review_stuff_point }}"
-                    frame-image="assets/img/shops/miyabi/card-frame.png"
+                    frame-image="assets/img/shops/shiroganeze/card-frame.png"
                     girl-image="{{ asset('storage/' . $review->cast_gallery) }}"
                     reviewer-name="{{ $review->member_name }}" comment="{{ $review->review_content }}"
-                    shop-reply-title="お店からの返信コメント" shop-reply="{{ $review->review_manager_comment }}" />
-                <div class="review-row-border" data-index="{{ $loop->index }}"></div>
+                    shop-reply-title="お店からの返信コメント" shop-reply="{{ $review->review_manager_comment }}"
+                    fillStarColor="#DF8E70" emptyStarColor="none"
+                    scss="resources/scss/shops/shiroganeze/component/review-card.scss" />
+                <div class="review-row-border" data-index="{{ $loop->index }}"　></div>
             @endforeach
         </div>
         <div class="review-pagination">
@@ -75,13 +78,13 @@
             </nav> --}}
         </div>
     </section>
-    </x-shizuku-page-layout>
-    <script>
-        function cast_change(value) {
-            if (value) {
-                window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'miyabi']) }}/" + value;
-            } else {
-                window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'miyabi']) }}";
-            }
+</x-shiroganeze-page-layout>
+<script>
+    function cast_change(value) {
+        if (value) {
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}/" + value;
+        } else {
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}";
         }
-    </script>
+    }
+</script>

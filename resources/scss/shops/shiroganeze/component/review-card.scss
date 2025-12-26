@@ -119,11 +119,11 @@
 }
 
 .review-card-name {
-  @include YuGothic();
-  font-weight: 700;
+  @include yu-mincho-regular();
+  font-weight: 600;
   font-size: 26px;
   @include responsive-font(18.5px, 29px);
-  color: white;
+  color: #010307;
   margin: 0;
   line-height: normal;
 }
@@ -131,7 +131,7 @@
 .review-card-measurements {
   @include lustria();
   @include responsive-font(12.8px, 17.5px);
-  color: white;
+  color: #010307;
   line-height: normal;
 }
 
@@ -165,7 +165,7 @@
 .review-card-rating-number {
   @include times-new-roman();
   font-size: 17px;
-  color: white;
+  color: #010307;
   margin-left: 0;
   width: 24px;
   height: 24px;
@@ -178,11 +178,11 @@
 .review-card-tags {
   @include lustria();
   @include responsive-font(12px, 15px);
-  color: white;
+  color: #010307;
   margin: 0;
   line-height: normal;
   text-align: justify;
-  white-space: pre-wrap;
+  // white-space: pre-wrap;
 }
 
 .review-card-comment-section {
@@ -212,7 +212,7 @@
 .review-card-comment-author {
   @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(15.8px, 19px);
-  color: white;
+  color: #010307;
   margin: 0;
   line-height: normal;
   width: 100%;
@@ -256,10 +256,10 @@
 }
 
 .review-card-comment-textarea {
-  @include YuGothic();
-  font-weight: 700;
+  @include yu-mincho-regular();
+  font-weight: 400;
   font-size: 15px;
-  color: white;
+  color: #010307;
   background: transparent;
   border: none;
   outline: none;
@@ -328,20 +328,20 @@
 }
 
 .review-card-shop-reply-title {
-  @include YuGothic();
-  font-weight: 700;
+  @include yu-mincho-pr6n();
+  font-weight: 600;
   font-size: 18px;
-  color: white;
+  color: #010307;
   margin: 0;
   line-height: normal;
   flex-shrink: 0;
 }
 
 .review-card-shop-reply-text {
-  @include YuGothic();
-  font-weight: 500;
+  @include yu-mincho-regular();
+  font-weight: 400;
   font-size: 16px;
-  color: white;
+  color: #010307;
   margin: 0;
   line-height: normal;
   flex: 1;

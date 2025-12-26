@@ -34,7 +34,8 @@
                     frame-image="assets/img/shops/miyabi/card-frame.png"
                     girl-image="{{ asset('storage/' . $review->cast_gallery) }}"
                     reviewer-name="{{ $review->member_name }}" comment="{{ $review->review_content }}"
-                    shop-reply-title="お店からの返信コメント" shop-reply="{{ $review->review_manager_comment }}" />
+                    shop-reply-title="お店からの返信コメント" shop-reply="{{ $review->review_manager_comment }}"
+                    scss="resources/scss/shops/miyabi/component/review-card.scss" />
                 <div class="review-row-border" data-index="{{ $loop->index }}"></div>
             @endforeach
         </div>

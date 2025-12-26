@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-miyabi-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 写メ日記"
-    :assets="['resources/scss/shops/miyabi/photo-diary.scss']" :banners="$banners">
+<x-shiroganeze-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/shiroganeze/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
@@ -166,14 +166,14 @@
         <div class="diary-body-left-calendar-content" id="diary-calendar-mobile">
         </div>
     </div>
-</x-miyabi-page-layout>
-<script>
-    // let cast_id = "";
-    let shop_id = "{{ $shop->id }}";
-    let shop_slug = "{{ $shop->slug }}";
-    let date = "{{ $date }}";
-    let diarys_date = {!! json_encode($diarys_date) !!};
-</script>
-@once
-    @vite(['resources/scss/shops/miyabi/photo-diary.scss', 'resources/js/shops/miyabi/photo-diary.js'])
-@endonce
+    </x-miyabi-page-layout>
+    <script>
+        // let cast_id = "";
+        let shop_id = "{{ $shop->id }}";
+        let shop_slug = "{{ $shop->slug }}";
+        let date = "{{ $date }}";
+        let diarys_date = {!! json_encode($diarys_date) !!};
+    </script>
+    @once
+        @vite(['resources/scss/shops/shiroganeze/photo-diary.scss', 'resources/js/shops/shiroganeze/photo-diary.js'])
+    @endonce
