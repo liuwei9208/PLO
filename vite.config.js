@@ -167,7 +167,7 @@ export default defineConfig({
         'resources/scss/shops/pussycat/photo-diary-detail.scss',
         'resources/js/shops/pussycat/photo-diary-detail.js',
         
-        'resources/scss/shops/shiroganeze/home.scss',
+        'resources/scss/shops/miyabi/home.scss',
         'resources/scss/shops/miyabi/page-layout.scss',
         'resources/scss/shops/miyabi/component/home-header.scss',
         'resources/scss/shops/miyabi/component/footer.scss',
