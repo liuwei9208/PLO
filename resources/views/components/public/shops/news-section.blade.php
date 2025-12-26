@@ -41,10 +41,16 @@
             </div>
         @else
             <div class="news-title" style="background: {{ $titleBackgroundColor }};">
-                <h1
-                    style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    {{ $title }}
-                </h1>
+                @if ($titleGradient)
+                    <h1
+                        style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {{ $title }}
+                    </h1>
+                @else
+                    <h1 style="color: {{ $titleColor }}; -webkit-text-fill-color: {{ $titleColor }};">
+                        {{ $title }}
+                    </h1>
+                @endif
             </div>
         @endif
         <div class="news-slider-wrapper" id="{{ $sliderId }}">
@@ -119,10 +125,16 @@
             </div>
         @else
             <div class="news-title" style="background: {{ $titleBackgroundColor }};">
-                <h1
-                    style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    {{ $title }}
-                </h1>
+                @if ($titleGradient)
+                    <h1
+                        style="background: linear-gradient(180deg, {{ $titleGradientStart }} 20.67%, {{ $titleGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        {{ $title }}
+                    </h1>
+                @else
+                    <h1 style="color: {{ $titleColor }}; -webkit-text-fill-color: {{ $titleColor }};">
+                        {{ $title }}
+                    </h1>
+                @endif
             </div>
         @endif
         <div class="diary-slider-wrapper" id="{{ $sliderId }}">
