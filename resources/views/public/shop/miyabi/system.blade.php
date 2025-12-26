@@ -1,5 +1,5 @@
-<x-pussycat-page-layout page-title="SYSTEM" page-subtitle="料金システム" breadcrumb="すすすきの Luxury Room 雅 ＞ トップページ ＞ 料金システム"
-    :assets="['resources/scss/shops/pussycat/system.scss']" :banners="$banners">
+<x-miyabi-page-layout page-title="SYSTEM" page-subtitle="料金システム" breadcrumb="すすすきの Luxury Room 雅 ＞ トップページ ＞ 料金システム"
+    :assets="['resources/scss/shops/miyabi/system.scss']" :banners="$banners">
     <section class="system-section">
         <div class="system-card">
             <div class="system-card-image">
@@ -330,4 +330,4 @@
             </div>
         </div>
     </section>
-</x-pussycat-page-layout>
+    </x-pussycat-page-layout>

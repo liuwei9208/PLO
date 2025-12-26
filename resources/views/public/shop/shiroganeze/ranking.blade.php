@@ -1,5 +1,5 @@
 <x-shiroganeze-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shiroganeze/ranking.scss', 'resources/js/shops/shziuku/ranking.js']" :banners="$banners">
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shiroganeze/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
         <form action="{{ route('public.shops.shop.ranking', ['shop' => 'shiroganeze']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">

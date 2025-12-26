@@ -1,5 +1,5 @@
 <x-miyabi-page-layout page-title="RANKING" page-subtitle="女の子ランキング" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 女の子ランキング"
-    :assets="['resources/scss/shops/miyabi/ranking.scss', 'resources/js/shops/shziuku/ranking.js']" :banners="$banners">
+    :assets="['resources/scss/shops/miyabi/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
         <form action="{{ route('public.shops.shop.ranking', ['shop' => 'miyabi']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
