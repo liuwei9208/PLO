@@ -688,7 +688,9 @@
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"
-                footerLogo="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}" svgIconColor="#132126" />
+                footerLogo="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}" svgIconColor="#132126"
+                ploLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}" />
         </div>
 
         <!-- Fixed Phone Button -->

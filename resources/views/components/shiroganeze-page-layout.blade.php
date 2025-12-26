@@ -220,7 +220,8 @@
                         'target' => '_blank',
                     ],
                     ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-                ]" />
+                ]" ploLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}" />
         </div>
         <!-- Fixed Phone Button -->
         <x-public.shops.fixed-phone-button phone-number="0115213593" phone-display="011-521-3593" hours="8:30〜24:00まで"
