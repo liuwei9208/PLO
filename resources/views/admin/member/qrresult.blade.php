@@ -12,36 +12,36 @@
             <div class="p-4">
                 <div class="flex gap-4 flex-col w-full">
                     <!-- Left side -->
-                    <div class="w-2/3" style="width: 70%;">
-                        <!-- Member Info -->
-                        <table class="w-full border-collapse border-t border-l border-gray-400">
-                            <tbody>
-                                <tr>
-                                    <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
-                                        style="width: 140px;">会員番号</th>
-                                    <td class="p-1 border-b border-r border-gray-400" id="member_id">{{ $member->id }}
-                                    </td>
-                                    <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
-                                        style="width: 140px;">ニックネーム</th>
-                                    <td class="p-1 border-b border-r border-gray-400">{{ $member->name }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
-                                        style="width: 140px;">携帯番号</th>
-                                    <td class="p-1 border-b border-r border-gray-400">{{ $member->tel }}</td>
-                                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
-                                        style="width: 140px;">会員名</th>
-                                    <td class="p-1 border-b border-r border-gray-400">{{ $member->subname }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
-                                        style="width: 140px;">現在のポイント</th>
-                                    <td class="p-1 border-b border-r border-gray-400" colspan="3">
-                                        {{ number_format($member->pay) . 'pt' }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                      </div>
+                      <div class="w-2/3" style="width: 70%;">
+                          <!-- Member Info -->
+                          <table class="w-full border-collapse border-t border-l border-gray-400">
+                              <tbody>
+                                  <tr>
+                                      <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
+                                          style="width: 140px;">会員番号</th>
+                                      <td class="p-1 border-b border-r border-gray-400" id="member_id">{{ $member->id }}
+                                      </td>
+                                      <th class="p-1 w-[120px] text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
+                                          style="width: 140px;">ニックネーム</th>
+                                      <td class="p-1 border-b border-r border-gray-400">{{ $member->name }}</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
+                                          style="width: 140px;">携帯番号</th>
+                                      <td class="p-1 border-b border-r border-gray-400">{{ $member->tel }}</td>
+                                      <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
+                                          style="width: 140px;">会員名</th>
+                                      <td class="p-1 border-b border-r border-gray-400">{{ $member->subname }}</td>
+                                  </tr>
+                                  <tr>
+                                      <th class="p-1 text-left font-semibold bg-gray-100 border-b border-r border-gray-400"
+                                          style="width: 140px;">現在のポイント</th>
+                                      <td class="p-1 border-b border-r border-gray-400" colspan="3">
+                                          {{ number_format($member->pay) . 'pt' }}</td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
                       <div class="w-full flex flex-row gap-4" >
                         {{-- <div class="text-right mb-2 font-semibold">{{ \Carbon\Carbon::now()->format('Y年m月d日') }}</div> --}}
                         <table class="w-1/3 text-sm border-collapse border border-gray-400">
