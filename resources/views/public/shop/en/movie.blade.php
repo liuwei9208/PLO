@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="MOVIE" page-subtitle="動画一覧"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/shiroganeze/movie.scss']" :banners="$banners">
+<x-en-page-layout page-title="MOVIE" page-subtitle="動画一覧"
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/shiroganeze/movie.scss']" :banners="$banners">
     <section class="movie-list">
 
         <div class="movie-list-item">
@@ -34,4 +34,4 @@
             {{ $movies->links('pagination::shops') }}
         </div>
     </section>
-    </x-shizuku-page-layout>
+</x-en-page-layout>
