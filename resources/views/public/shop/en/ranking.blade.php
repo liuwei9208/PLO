@@ -1,7 +1,7 @@
-<x-shiroganeze-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shiroganeze/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
+<x-en-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/en/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
-        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'shiroganeze']) }}" method="get"
+        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'en']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
             <select name="rank_id" onchange="this.form.submit()"
                 class="ranking-filter-btn-mobile ranking-filter-btn-active">
@@ -243,7 +243,7 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[3]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -280,7 +280,7 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[4]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -317,7 +317,7 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -354,7 +354,7 @@
                     <div class="ranking-no4567-content">
                         <div class="ranking-no4567-content-item">
                             <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-2.png') }}"
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
@@ -383,4 +383,4 @@
             </div>
         </div>
     </section>
-</x-shiroganeze-page-layout>
+</x-en-page-layout>
