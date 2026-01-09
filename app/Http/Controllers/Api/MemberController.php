@@ -112,6 +112,8 @@ class MemberController extends Controller
         // $floatValue = (float) $stringValue;
         $course1_id = $request->input('course1') == '' ? null :  $request->input('course1');
         $course2_id = $request->input('course2') == '' ? null :  $request->input('course2');
+        $course3_id = $request->input('course3') == '' ? null :  $request->input('course3');
+        $course4_id = $request->input('course4') == '' ? null :  $request->input('course4');
         $extend_id = $request->input('extend') == '' ? null :  $request->input('extend');
         $option1_id = $request->input('option1') == '' ? null :  $request->input('option1');
         $option2_id = $request->input('option2') == '' ? null :  $request->input('option2');
@@ -127,8 +129,12 @@ class MemberController extends Controller
         Log::info($option2_id);
         $course1_price = is_numeric($request->input('course1_price')) ? floatval($request->input('course1_price')) : 0;
         $course2_price = is_numeric($request->input('course2_price')) ? floatval($request->input('course2_price')) : 0;
+        $course3_price = is_numeric($request->input('course3_price')) ? floatval($request->input('course3_price')) : 0;
+        $course4_price = is_numeric($request->input('course4_price')) ? floatval($request->input('course4_price')) : 0;
         $course1_count = is_numeric($request->input('course1_count')) ? floatval($request->input('course1_count')) : 0;
         $course2_count = is_numeric($request->input('course2_count')) ? floatval($request->input('course2_count')) : 0;
+        $course3_count = is_numeric($request->input('course3_count')) ? floatval($request->input('course3_count')) : 0;
+        $course4_count = is_numeric($request->input('course4_count')) ? floatval($request->input('course4_count')) : 0;
         $extend_price = is_numeric($request->input('extend_price')) ? floatval($request->input('extend_price')) : 0;
         $extend_count = is_numeric($request->input('extend_count')) ? floatval($request->input('extend_count')) : 0;
         $option1_price = is_numeric($request->input('option1_price')) ? floatval($request->input('option1_price')) : 0;
@@ -144,7 +150,7 @@ class MemberController extends Controller
         $appointment_price = is_numeric($request->input('appointmentPrice')) ? floatval($request->input('appointmentPrice')) : 0;
         $discount = is_numeric($request->input('discount')) ? floatval($request->input('discount')) : 0;
         $plo_day = $request->input('plo_day') == 'on' ? true : false;
-        
+
         $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $shop_manager->id)->first();
         if (!$shop_user) {
             return response()->json([
@@ -164,6 +170,12 @@ class MemberController extends Controller
         $history->course2_price = $course2_price;
         $history->course1_count = $course1_count;
         $history->course2_count = $course2_count;
+        $history->course3_id = $course3_id;
+        $history->course3_price = $course3_price;
+        $history->course3_count = $course3_count;
+        $history->course4_id = $course4_id;
+        $history->course4_price = $course4_price;
+        $history->course4_count = $course4_count;
         $history->price_new = is_numeric($request->input('price')) ? floatval($request->input('price')) : 0;
         $history->extend_id = $extend_id;
         $history->extend_price = $extend_price;
@@ -244,7 +256,7 @@ class MemberController extends Controller
     public function extendUpdate(Request $request): JsonResponse
     {
         $history = History::find($request->input('id'));
-        
+
         if (!$history) {
             return response()->json([
                 'message' => '履歴が見つかりません'
@@ -255,17 +267,17 @@ class MemberController extends Controller
         $extend_price = is_numeric($request->input('extend_price')) ? floatval($request->input('extend_price')) : 0;
         $extend_count = is_numeric($request->input('extend_count')) ? floatval($request->input('extend_count')) : 0;
 
-        $price = ($history->course1_price ?? 0) * ($history->course1_count ?? 0) 
-                + ($history->course2_price ?? 0) * ($history->course2_count ?? 0) 
-                + $extend_price * $extend_count 
-                + ($history->option1_price ?? 0) * ($history->option1_count ?? 0) 
-                + ($history->option2_price ?? 0) * ($history->option2_count ?? 0) 
-                + ($history->option3_price ?? 0) * ($history->option3_count ?? 0) 
-                + ($history->option4_price ?? 0) * ($history->option4_count ?? 0) 
-                + ($history->option5_price ?? 0) * ($history->option5_count ?? 0) 
-                + ($history->appoint_price ?? 0) * ($history->appoint_count ?? 0) 
+        $price = ($history->course1_price ?? 0) * ($history->course1_count ?? 0)
+                + ($history->course2_price ?? 0) * ($history->course2_count ?? 0)
+                + $extend_price * $extend_count
+                + ($history->option1_price ?? 0) * ($history->option1_count ?? 0)
+                + ($history->option2_price ?? 0) * ($history->option2_count ?? 0)
+                + ($history->option3_price ?? 0) * ($history->option3_count ?? 0)
+                + ($history->option4_price ?? 0) * ($history->option4_count ?? 0)
+                + ($history->option5_price ?? 0) * ($history->option5_count ?? 0)
+                + ($history->appoint_price ?? 0) * ($history->appoint_count ?? 0)
                 + ($history->discount ?? 0);
-        
+
         $point = $plo_day ? $price * 0.1 : $price * 0.03;
 
         $history->extend_id = $request->input('extend') ?: null;
@@ -283,13 +295,13 @@ class MemberController extends Controller
             'shop_id' => $history->shop_id,
             'point' => $point,
         ]);
-        
+
         $extend_name = '';
         if ($history->extend_id) {
             $extend = Extend::where('id', $history->extend_id)->first();
             $extend_name = $extend->extend ?? '';
         }
-        
+
         return response()->json([
             'message' => '延長更新しました',
             'extend_name' => $extend_name,
