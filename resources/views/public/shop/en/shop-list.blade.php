@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout -page-layout page-title="SHOP LIST" page-subtitle="店舗一覧"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 店舗一覧" :assets="['resources/scss/shops/shiroganeze/shop-list.scss']" :banners="$banners">
+<x-en-page-layout -page-layout page-title="SHOP LIST" page-subtitle="店舗一覧"
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 店舗一覧" :assets="['resources/scss/shops/en/shop-list.scss']" :banners="$banners">
     <section class="shop-list-section">
         <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
@@ -218,4 +218,4 @@
             </div>
         </a>
     </section>
-</x-shiroganeze-page-layout>
+</x-en-page-layout>
