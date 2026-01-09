@@ -3,7 +3,7 @@
     <section class="review-section">
         <div class="review-header">
             <h2 class="review-header-label">名前で検索 </h2>
-            <form action="{{ route('public.shops.shop.review', ['shop' => 'miyabi', 'id' => null]) }}" method="get"
+            <form action="{{ route('public.shops.shop.review', ['shop' => 'shiroganeze', 'id' => null]) }}" method="get"
                 class="review-header-search">
                 <select class="review-header-search-input" name="cast_id" onchange="cast_change(this.value)">
                     <option value="">女の子の名前</option>

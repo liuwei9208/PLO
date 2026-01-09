@@ -3,13 +3,15 @@
 @use "./component/pagination" as *;
 
 .review-header {
-  background: $white;
+  background: #A68692;
   padding: 36px 48px;
   display: flex;
   align-items: center;
   justify-content: left;
   gap: 34px;
-  border-bottom: 6px solid #010307;
+  border-bottom: 6px solid #2A1A08;
+  border-top: 6px solid #2A1A08;
+
 
   @media screen and (max-width: 850px) {
     flex-direction: column;
@@ -24,7 +26,7 @@
   @include yu-mincho-regular();
   @include responsive-font(21px, 21px);
   font-weight: 600 !important;
-  color: #2A1A08;
+  color: #FFF9FE;
 }
 
 .review-header-search {
@@ -110,7 +112,7 @@
 .review-row-border {
   grid-column: 1 / -1;
   height: 2px;
-  background: #BF5A75;
+  background: #7A5086;
   @media screen and (max-width: 850px) {
     margin: 0px -20px;
   }

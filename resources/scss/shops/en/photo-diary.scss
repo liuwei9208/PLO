@@ -185,7 +185,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #394022);
+  background: var(---N_, #6F56A6);
   color: var(---N__, #FFF);
   @include yu-mincho-regular();
   @include responsive-font(19px, 24.4px);
@@ -208,7 +208,7 @@
   // width: 82.35%; // ~280px relative to 340px card width
   width: 280px;
   height: 1px;
-  border-color: #394022;
+  border-color: #6F56A6;
 }
 
 .diary-post-title p {
@@ -477,6 +477,6 @@
   @include times-new-roman();
 }
 .fc .fc-day-other {
-  color: #394022;        /* グレー */
+  color: #A68692;        /* グレー */
   // background-color: #f9fafb;
 }

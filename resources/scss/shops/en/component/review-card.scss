@@ -243,16 +243,16 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(---N_, #b19d67);
+    background: var(---N_, #7A5086);
     border-radius: 2.5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(---N_, #b19d67);
+    background: var(---N_, #7A5086);
   }
 
   scrollbar-width: thin;
-  scrollbar-color: var(---N_, #b19d67) transparent;
+  scrollbar-color: var(---N_, #7A5086) transparent;
 }
 
 .review-card-comment-textarea {

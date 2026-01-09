@@ -16,6 +16,10 @@
     'scss' => 'resources/scss/shops/review-card.scss',
     'fillStarColor' => '#FFE500',
     'emptyStarColor' => 'none',
+    'fillStarColorFull' => '#FFE500',
+    'emptyStarColorFull' => 'none',
+    'fillStarColorEmpty' => '#D9D9D9',
+    'emptyStarColorEmpty' => 'none',
 ])
 
 <div class="reivew-card-item">
@@ -27,18 +31,18 @@
         <div class="review-card-stars">
             @for ($i = 0; $i < $rating; $i++)
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="{{ $emptyStarColor }}">
+                    fill="{{ $emptyStarColorFull }}">
                     <path
                         d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                        fill="{{ $fillStarColor }}" />
+                        fill="{{ $fillStarColorFull }}" />
                 </svg>
             @endfor
             @for ($i = 0; $i < 5 - $rating; $i++)
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="{{ $emptyStarColor }}">
+                    fill="{{ $emptyStarColorEmpty }}">
                     <path
                         d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                        fill="{{ $emptyStarColor }}" stroke="{{ $fillStarColor }}" stroke-width="1.5" />
+                        fill="{{ $emptyStarColorEmpty }}" stroke="{{ $fillStarColorEmpty }}" stroke-width="1.5" />
                 </svg>
             @endfor
             <span class="review-card-rating-number">{{ $rating }}</span>
@@ -60,18 +64,18 @@
                     <div class="review-card-stars">
                         @for ($i = 0; $i < $rating; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="{{ $emptyStarColor }}">
+                                fill="{{ $emptyStarColorFull }}">
                                 <path
                                     d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                                    fill="{{ $fillStarColor }}" />
+                                    fill="{{ $fillStarColorFull }}" />
                             </svg>
                         @endfor
                         @for ($i = 0; $i < 5 - $rating; $i++)
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="{{ $emptyStarColor }}">
+                                fill="{{ $emptyStarColorEmpty }}">
                                 <path
                                     d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                                    fill="{{ $emptyStarColor }}" stroke="{{ $fillStarColor }}" stroke-width="1.5" />
+                                    fill="{{ $emptyStarColorEmpty }}" stroke="{{ $fillStarColorEmpty }}" stroke-width="1.5" />
                             </svg>
                         @endfor
                         <span class="review-card-rating-number">{{ $rating }}</span>

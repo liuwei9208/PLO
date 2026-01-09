@@ -66,7 +66,7 @@ function initializeCalendar(calendarEl, calendarInstance) {
     for (let i = 0; i < diarys_date.length; i++) {
       cal.addEvent({
         start: diarys_date[i].date,
-        color: "#D90D32",
+        color: "#A68692",
         display: "background",
       });
     }
