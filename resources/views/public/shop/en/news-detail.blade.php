@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout -page-layout page-title="NEWS" page-subtitle="新着情報"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/shiroganeze/news-detail.scss']"
+<x-en-page-layout -page-layout page-title="NEWS" page-subtitle="新着情報"
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 新着情報 ＞ {{ $news['title'] }}" :assets="['resources/scss/shops/en/news-detail.scss']"
     :banners="$banners">
     <section class="news-detail-section">
         <p class="news-detail-title">{{ $news->title }}</p>
@@ -71,4 +71,4 @@
             @endif
         </div>
     </div>
-</x-shiroganeze-page-layout>
+</x-en-page-layout>

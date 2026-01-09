@@ -1,11 +1,11 @@
-<x-shiroganeze-page-layout page-title="NEWS" page-subtitle="新着情報"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 新着情報" :assets="['resources/scss/shops/shiroganeze/news.scss']" :banners="$banners">
+<x-en-page-layout page-title="NEWS" page-subtitle="新着情報"
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 新着情報" :assets="['resources/scss/shops/en/news.scss']" :banners="$banners">
     <section class="news-section">
         @foreach ($news as $new)
             <x-public.shops.news-card image="{{ asset('storage/' . $new->thumbnail) }}" image-alt="news-image"
                 title="{{ $new->title }}"
                 date="{{ $new->published_at ? \Carbon\Carbon::createFromTimeString($new->published_at)->format('y/m/d') : '' }}"
-                :url="route('public.shops.shop.news.detail', ['shop' => 'shiroganeze', 'id' => $new->id])" scss="resources/scss/shops/shiroganeze/component/news-card.scss">
+                :url="route('public.shops.shop.news.detail', ['shop' => 'en', 'id' => $new->id])" scss="resources/scss/shops/en/component/news-card.scss">
                 {!! nl2br($new->contents) !!}
             </x-public.shops.news-card>
         @endforeach
@@ -31,4 +31,4 @@
             本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文本文
         </x-public.shops.news-card> --}}
     </section>
-</x-shiroganeze-page-layout>
+</x-en-page-layout>
