@@ -79,6 +79,20 @@
   font-style: normal;
   font-display: swap;
 }
+// @font-face {
+//   font-family: "Advent Pro";
+//   src: url("/assets/fonts/times.ttf") format("truetype");
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }
+// @font-face {
+//   font-family: "Open Sans";
+//   src: url("/assets/fonts/times.ttf") format("truetype");
+//   font-weight: 400;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 @mixin serif() {
   font-family: "Bentham", serif;
@@ -173,6 +187,22 @@
 
 @mixin Open_Sans() {
   font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin Advent_Pro() {
+  font-family: "Advent Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin Open_Sans() {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+@mixin Kulim_Park() {
+  font-family: "Kulim Park", sans-serif;
   font-weight: 400;
   font-style: normal;
 }
