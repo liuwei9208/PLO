@@ -330,4 +330,4 @@
             </div>
         </div>
     </section>
-    </x-pussycat-page-layout>
+</x-shiroganeze-page-layout>
