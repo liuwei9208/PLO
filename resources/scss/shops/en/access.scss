@@ -16,7 +16,7 @@
 .access-title {
   @include Hiragino_Mincho_Pro_W6();
   font-weight: 600;
-  color: #394022;
+  color: #0D0709;
   @include responsive-font(38px, 40px);
   text-align: center;
 }
@@ -24,7 +24,7 @@
 .map-title {
   @include Hiragino_Mincho_Pro_W6();
   font-weight: 600;
-  color: #394022;
+  color: #0D0709;
   @include responsive-font(38px, 40px);
   text-align: center;
   margin-top: 60px;
@@ -70,14 +70,14 @@
   align-items: center;
   gap: 10px;
   color: var(---N__, #FFF);
-  background: var(---N_, #BF5A75);
+  background: var(---N_, #6F56A6);
   @include Hiragino_Mincho_Pro_W6();
   @include responsive-font(20px, 20px);
   font-weight: 700;
 }
 
 .access-content-item p {
-  color: var(---N___, #010307);
+  color: var(---N___, #0D0709);
   @include Hiragino_Mincho_Pro_W6();
   @include responsive-font(20px, 20px);
   font-weight: 700;
