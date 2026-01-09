@@ -44,7 +44,7 @@
                       </div>
                       <div class="w-full flex flex-row gap-4" >
                         {{-- <div class="text-right mb-2 font-semibold">{{ \Carbon\Carbon::now()->format('Y年m月d日') }}</div> --}}
-                        <table class="w-full text-sm border-collapse border border-gray-400">
+                        <table class="w-1/3 text-sm border-collapse border border-gray-400">
                             <tbody>
                                 {{-- <tr>
                                     <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
@@ -276,7 +276,7 @@
                                 </tr> --}}
                             </tbody>
                         </table>
-                        <div class="w-1/3 flex flex-col gap-4">
+                        <div class="w-full flex flex-col gap-4">
                         <table class="w-full text-sm border-collapse border border-gray-400">
                           <tbody>
                             <tr>
