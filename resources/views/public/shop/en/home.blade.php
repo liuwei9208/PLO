@@ -69,7 +69,7 @@
             <div class="breadcrumb-navigation">
                 <p>fashion health 艶 ＞ トップページ</p>
             </div>
-            <x-public.shops.home-header logo-image="assets/img/shops/en/footer-logo-black.png"
+            <x-public.shops.home-header logo-image="assets/img/shops/en/footer-logo.png"
                 logo-alt="En Logo" stroke-color="#FFF" :menu-items="[
                     [
                         'title' => 'トップページ',
