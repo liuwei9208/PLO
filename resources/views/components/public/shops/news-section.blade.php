@@ -81,7 +81,7 @@
                         </a>
                     @endforeach
                 @else
-                    @for ($i = 0; $i < $itemCount; $i++)
+                    {{-- @for ($i = 0; $i < $itemCount; $i++)
                         <div class="news-content-card">
                             <div class="news-content-card-image">
                                 <img src="{{ asset($defaultImage) }}" alt="Card Image">
@@ -93,7 +93,7 @@
                                 <p>タイトルタイトルタイトルタイトルタイ</p>
                             </div>
                         </div>
-                    @endfor
+                    @endfor --}}
                 @endif
             </div>
             <button class="news-slider-next" id="{{ $nextButtonId ?? $sliderId . 'Next' }}">

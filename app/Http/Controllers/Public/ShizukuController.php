@@ -89,7 +89,7 @@ class ShizukuController extends Controller
                     return $cast;
                 });
             }
-    
+
         Log::info($todayCasts);
         $shop_id = Shop::where('slug', $shop)->first()->id;
         $pickups = Pickup::leftJoin('casts', 'casts.id', '=', 'pickups.cast_id')
@@ -123,6 +123,7 @@ class ShizukuController extends Controller
             ->where('joined_at', '>=', Carbon::now()->subWeek(2))
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
             ->get();
+        // dd($new_girls);
         if ($new_girls) {
             $new_girls = $new_girls->map(function ($new_girl) {
                 $sql = "SELECT group_concat(personalities.name) AS personality FROM `" . env('DB_DATABASE') . "`.cast_personality
@@ -189,15 +190,18 @@ class ShizukuController extends Controller
         // $temp = Attendance::where('cast_id', 258)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->start_datetime;
         // dd($temp);
         $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
-            ->where('published_status', 1)
-            ->orWhere(function ($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', now());
+            ->where(function ($query) {
+                $query->where('published_status', 1)
+                    ->orWhere(function ($q) {
+                        $q->where('published_status', 2)
+                            ->where('published_at', '<=', now());
+                    });
             })
             ->inRandomOrder()
             // ->limit(4)
             ->orderBy('published_at', 'desc')
             ->get();
+        // dd($news);
         $rank_id = Rank::where('is_public', 1)->orderBy('id', 'asc')->first()->id;
         $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
             ->where('rankings.shop_id', $shop_id)
@@ -373,7 +377,7 @@ class ShizukuController extends Controller
             )
             ->groupBy('options.price')
             ->get();
-                    
+
         return view('public.shop.' . $shop . '.profile', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'cast' => $cast,
@@ -830,19 +834,19 @@ class ShizukuController extends Controller
             ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
             ->selectRaw("DATE_FORMAT(attendances.start_datetime,'%H:%i') as start_time, DATE_FORMAT(attendances.end_datetime,'%H:%i') as end_time")
             ->first();
-            
+
         $diarys_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->where('diaries.is_public', 1)
             ->where('diaries.cast_id',$diary->cast_id)
             ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id")
             ->groupby('date')
             ->get();
-    
+
 
             // Get previous and next diaries
         $prevDiary = null;
         $nextDiary = null;
-        
+
         if ($diary) {
             // Get previous diary (older, lower id)
             $prevDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
@@ -852,7 +856,7 @@ class ShizukuController extends Controller
                 ->select('diaries.*')
                 ->orderBy('diaries.id', 'desc')
                 ->first();
-            
+
             // Get next diary (newer, higher id)
             $nextDiary = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
                 ->where('diaries.is_public', 1)
@@ -881,7 +885,7 @@ class ShizukuController extends Controller
     public function showReview(Request $request, string $shop, string $id = null): View
     {
         $shop = $request->route('shop', 'shizuku');
-        
+
         $sql = 'SELECT `'.env("DB_DATABASE").'`.reviews.id as review_id,
         `'.env("DB_DATABASE").'`.reviews.title as review_title,
         `'.env("DB_DATABASE").'`.reviews.content as review_content,
@@ -930,17 +934,17 @@ class ShizukuController extends Controller
         $page = request()->get('page', 1);
         $perPage = 20;
         $offset = ($page - 1) * $perPage;
-    
+
         // 件数カウント
         $countSql = "SELECT COUNT(*) AS count FROM ({$sql}) AS base";
         $total = DB::select($countSql)[0]->count;
-    
+
         // ページ付き SQL
         $paginatedSql = $sql . " LIMIT {$perPage} OFFSET {$offset}";
-    
+
         // 該当ページのデータ取得
         $items = DB::select($paginatedSql);
-    
+
         // paginator に変換 → Blade の links() が使える！
         $reviews = new LengthAwarePaginator(
             $items,
@@ -958,7 +962,7 @@ class ShizukuController extends Controller
         ->where('is_public', 1)
         ->orderBy('rank', 'asc')
         ->get();
-        
+
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         // dd($reviews);
         return view('public.shop.' . $shop . '.review', [

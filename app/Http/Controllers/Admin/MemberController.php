@@ -222,6 +222,8 @@ class MemberController extends Controller{
           $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
           $history->course1_name_table = CourseGroup::where('id', $history->course1_id)->first()->course ?? '';
           $history->course2_name_table = CourseGroup::where('id', $history->course2_id)->first()->course ?? '';
+          $history->course3_name_table = CourseGroup::where('id', $history->course3_id)->first()->course ?? '';
+          $history->course4_name_table = CourseGroup::where('id', $history->course4_id)->first()->course ?? '';
           $history->extend_name = Extend::where('id', $history->extend_id)->first()->extend ?? '';
           return $history;
         });
