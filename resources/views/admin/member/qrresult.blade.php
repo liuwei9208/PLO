@@ -10,7 +10,7 @@
         <div
             class="bg-white rounded-lg shadow-xl overflow-auto border border-gray-200 dark:border-gray-800 dark:bg-white/[0.03]">
             <div class="p-4">
-                <div class="flex gap-4">
+                <div class="flex gap-4 flex-col w-full">
                     <!-- Left side -->
                     <div class="w-2/3" style="width: 70%;">
                         <!-- Member Info -->
@@ -41,8 +41,315 @@
                                 </tr>
                             </tbody>
                         </table>
+                      </div>
+                      <div class="w-full flex flex-row gap-4" >
+                        {{-- <div class="text-right mb-2 font-semibold">{{ \Carbon\Carbon::now()->format('Y年m月d日') }}</div> --}}
+                        <table class="w-full text-sm border-collapse border border-gray-400">
+                            <tbody>
+                                {{-- <tr>
+                                    <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">利用ポイント</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="number" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full" name="point_use"
+                                            id="point_use"></td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">取得ポイント</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="number" name="point"
+                                            id="point" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full" readonly></td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">PLOの日</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="checkbox" name="plo_day"
+                                            id="plo_day" value="1"
+                                            class="p-1 border border-gray-400 text-right w-full"
+                                            onchange="updatePrice()"></td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">料金</th>
+                                    <td class="p-1 border-b border-gray-400"><input name="price" readonly
+                                            id="price" type="number" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full"></td>
+                                </tr> --}}
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">キャスト名</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <select class="p-1 border border-gray-400 w-full bg-white" name="cast"
+                                            id="cast">
+                                            <option value=""></option>
+                                            @foreach ($casts as $cast)
+                                                <option value="{{ $cast->id }}">{{ $cast->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">指名</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <div class="flex items-center gap-2">
+                                            <select class="p-1 border border-gray-400 w-full bg-white"
+                                                name="appointment" id="appointment" onchange="updatePrice()">
+                                                <option value="" data-price="0">選択してください</option>
+                                                <option value="0" data-price="{{ $appoints[0]->panel_price }}"
+                                                    data-id="{{ $appoints[0]->id }}">パネル指名</option>
+                                                <option value="1" data-price="{{ $appoints[0]->repeat_price }}"
+                                                    data-id="{{ $appoints[0]->id }}">本指名</option>
+                                            </select>
+                                            <span>X</span>
+                                            <input type="number" value="0"
+                                                class="p-1 border border-gray-400 text-right w-[50px]"
+                                                name="appointment_count" id="appointment_count"
+                                                onchange="updatePrice()" min="0" max="60">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">コース</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <div class="flex items-center gap-2">
+                                            <select class="p-1 border border-gray-400 w-full bg-white" name="course1"
+                                                id="course1" onchange="updatePrice()">
+                                                <option value="" data-price="0">選択してください</option>
+                                                @foreach ($courses as $course)
+                                                    <option value="{{ $course->id }}"
+                                                        data-price="{{ $course->price }}">
+                                                        {{ $course->course }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <span>X</span>
+                                            <input type="number" value="0"
+                                                class="p-1 border border-gray-400 text-right w-[50px]"
+                                                name="course1_count" id="course1_count" onchange="updatePrice()"
+                                                min="0" max="60">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">コース</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <div class="flex items-center gap-2">
+                                            <select class="p-1 border border-gray-400 w-full bg-white" name="course2"
+                                                id="course2" onchange="updatePrice()">
+                                                <option value="" data-price="0">選択してください</option>
+                                                @foreach ($courses as $course)
+                                                    <option value="{{ $course->id }}"
+                                                        data-price="{{ $course->price }}">{{ $course->course }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <span>X</span>
+                                            <input type="number" value="0"
+                                                class="p-1 border border-gray-400 text-right w-[50px]"
+                                                name="course2_count" id="course2_count" onchange="updatePrice()"
+                                                min="0" max="60">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                  <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                      style="width: 100px;">コース</th>
+                                  <td class="p-1 border-b border-gray-400">
+                                      <div class="flex items-center gap-2">
+                                          <select class="p-1 border border-gray-400 w-full bg-white" name="course3"
+                                              id="course3" onchange="updatePrice()">
+                                              <option value="" data-price="0">選択してください</option>
+                                              @foreach ($courses as $course)
+                                                  <option value="{{ $course->id }}"
+                                                      data-price="{{ $course->price }}">{{ $course->course }}
+                                                  </option>
+                                              @endforeach
+                                          </select>
+                                          <span>X</span>
+                                          <input type="number" value="0"
+                                              class="p-1 border border-gray-400 text-right w-[50px]"
+                                              name="course3_count" id="course3_count" onchange="updatePrice()"
+                                              min="0" max="60">
+                                      </div>
+                                  </td>
+                              </tr>
+                              <tr>
+                                <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                    style="width: 100px;">コース</th>
+                                <td class="p-1 border-b border-gray-400">
+                                    <div class="flex items-center gap-2">
+                                        <select class="p-1 border border-gray-400 w-full bg-white" name="course4"
+                                            id="course4" onchange="updatePrice()">
+                                            <option value="" data-price="0">選択してください</option>
+                                            @foreach ($courses as $course)
+                                                <option value="{{ $course->id }}"
+                                                    data-price="{{ $course->price }}">{{ $course->course }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <span>X</span>
+                                        <input type="number" value="0"
+                                            class="p-1 border border-gray-400 text-right w-[50px]"
+                                            name="course4_count" id="course4_count" onchange="updatePrice()"
+                                            min="0" max="60">
+                                    </div>
+                                </td>
+                            </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">延長</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <div class="flex items-center gap-2">
+                                            <select class="p-1 border border-gray-400 w-full bg-white" name="extend"
+                                                id="extend" onchange="updatePrice()">
+                                                <option value="" data-price="0">選択してください</option>
+                                                @foreach ($extends as $extend)
+                                                    <option value="{{ $extend->id }}"
+                                                        data-price="{{ $extend->price }}">
+                                                        {{ $extend->extend . '(' . number_format($extend->price) . '円)' }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                            <span>X</span>
+                                            <input type="number" value="0"
+                                                class="p-1 border border-gray-400 text-right w-[50px]"
+                                                name="extend_count" id="extend_count" onchange="updatePrice()"
+                                                min="0" max="60">
+                                        </div>
+                                    </td>
+                                </tr>
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <tr>
+                                        <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                            style="width: 100px;">オプション</th>
+                                        {{-- <td class="p-1 border-b border-gray-400 flex gap-2"> --}}
+                                        <td class="p-1 border-b border-gray-400">
+                                            <div class="flex items-center gap-2">
+                                                <select class="p-1 border border-gray-400 w-full bg-white"
+                                                    name="option{{ $i }}" id="option{{ $i }}"
+                                                    onchange="updatePrice()">
+                                                    <option value="" data-price="0">選択してください</option>
+                                                    @foreach ($options as $option)
+                                                        <option value="{{ $option->id }}"
+                                                            data-price="{{ $option->price }}">
+                                                            {{ $option->name . '(' . number_format($option->price) . '円)' }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                                <span>X</span>
+                                                <input type="number" value="0"
+                                                    class="p-1 border border-gray-400 text-right w-[50px]"
+                                                    name="option{{ $i }}_count"
+                                                    id="option{{ $i }}_count" onchange="updatePrice()"
+                                                    min="0" max="60">
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endfor
+                                {{-- <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">割引</th>
+                                    <td class="p-1 border-b border-gray-400">
+                                        <select class="p-1 border border-gray-400 w-full bg-white" name="discount"
+                                            id="discount" onchange="updatePrice()">
+                                            <option value="" data-price="0">選択してください</option>
+                                            @for ($i = -100; $i >= -50000; $i -= 100)
+                                                <option value="{{ $i }}"
+                                                    data-price="{{ $i }}">{{ number_format(abs($i)) }}円
+                                                </option>
+                                            @endfor
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left"
+                                        style="width: 100px;">メモ</th>
+                                </tr>
+                                <tr>
+                                    <td class="p-1" colspan="2">
+                                        <textarea class="p-1 border border-gray-400 w-full" style="width: 100%; height: 100px;" name="memo"
+                                            id="memo"></textarea>
+                                    </td>
+                                </tr> --}}
+                            </tbody>
+                        </table>
+                        <div class="w-1/3 flex flex-col gap-4">
+                        <table class="w-full text-sm border-collapse border border-gray-400">
+                          <tbody>
+                            <tr>
+                                    <th class="p-1 w-[100px] font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">利用ポイント</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="number" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full" name="point_use"
+                                            id="point_use"></td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">取得ポイント</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="number" name="point"
+                                            id="point" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full" readonly></td>
+                                </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">PLOの日</th>
+                                    <td class="p-1 border-b border-gray-400"><input type="checkbox" name="plo_day"
+                                            id="plo_day" value="1"
+                                            class="p-1 border border-gray-400 text-right w-full"
+                                            onchange="updatePrice()"></td>
+                                </tr>
+                                <tr>
+                                  <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                      style="width: 100px;">割引</th>
+                                  <td class="p-1 border-b border-gray-400">
+                                      <select class="p-1 border border-gray-400 w-full bg-white" name="discount"
+                                          id="discount" onchange="updatePrice()">
+                                          <option value="" data-price="0">選択してください</option>
+                                          @for ($i = -100; $i >= -50000; $i -= 100)
+                                              <option value="{{ $i }}"
+                                                  data-price="{{ $i }}">{{ number_format(abs($i)) }}円
+                                              </option>
+                                          @endfor
+                                      </select>
+                                  </td>
+                              </tr>
+                                <tr>
+                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
+                                        style="width: 100px;">料金</th>
+                                    <td class="p-1 border-b border-gray-400"><input name="price" readonly
+                                            id="price" type="number" value="0"
+                                            class="p-1 border border-gray-400 text-right w-full"></td>
+                                </tr>
+                                <tr>
+                                  <th class="p-1 font-semibold bg-gray-100 border-r border-gray-400 text-left"
+                                      style="width: 100px;">メモ</th>
+                              </tr>
+                              <tr>
+                                  <td class="p-1" colspan="2">
+                                      <textarea class="p-1 border border-gray-400 w-full" style="width: 100%; height: 100px;" name="memo"
+                                          id="memo"></textarea>
+                                  </td>
+                              </tr>
+                          </tbody>
+                        </table>
+                        <div class="w-full">
+                          <div class="mt-4 flex justify-end gap-4">
+                            <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                                style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;"
+                                onclick="saveInfo(event)">保存</button>
+                            <a href="{{ route('admin.member.qrcode') }}"
+                                class="px-6 py-2 bg-gray-300 rounded hover:bg-gray-400 text-center"
+                                style="border-radius: 0.375rem; width: 100px; display: inline-block; text-decoration: none; color: inherit;">戻る</a>
+                        </div>
 
+                        </div>
+                      </div>
+                      </div>
                         <!-- Visit History -->
+                      <div class="w-full" >
                         <div class="mt-4 border border-gray-400 border-b-0" style="margin-top: 40px;">
                             <table class="w-full text-sm text-center">
                                 <thead class="bg-gray-100">
@@ -70,12 +377,28 @@
                                             <td class="p-1 border-b border-r border-gray-400">{{ $history->casts_name }}
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400">
-                                                @if ($history->course1_name_table && $history->course2_name_table)
-                                                    {{ $history->course1_name_table . ',' . $history->course2_name_table }}
+                                                @if ($history->course1_name_table && $history->course2_name_table && $history->course3_name_table && $history->course4_name_table)
+                                                    {{ $history->course1_name_table . ',' . $history->course2_name_table . ',' . $history->course3_name_table . ',' . $history->course4_name_table }}
+                                                @elseif ($history->course1_name_table && $history->course2_name_table && $history->course3_name_table)
+                                                    {{ $history->course1_name_table . ',' . $history->course2_name_table . ',' . $history->course3_name_table }}
+                                                @elseif ($history->course1_name_table && $history->course2_name_table && $history->course4_name_table)
+                                                    {{ $history->course1_name_table . ',' . $history->course2_name_table . ',' . $history->course4_name_table }}
+                                                @elseif ($history->course1_name_table && $history->course3_name_table && $history->course4_name_table)
+                                                    {{ $history->course1_name_table . ',' . $history->course3_name_table . ',' . $history->course4_name_table }}
+                                                @elseif ($history->course2_name_table && $history->course3_name_table && $history->course4_name_table)
+                                                    {{ $history->course2_name_table . ',' . $history->course3_name_table . ',' . $history->course4_name_table }}
                                                 @elseif ($history->course1_name_table)
                                                     {{ $history->course1_name_table }}
+                                                @elseif ($history->course2_name_table && $history->course3_name_table)
+                                                    {{ $history->course2_name_table . ',' . $history->course3_name_table }}
+                                                @elseif ($history->course2_name_table && $history->course4_name_table)
+                                                    {{ $history->course2_name_table . ',' . $history->course4_name_table }}
+                                                @elseif ($history->course3_name_table && $history->course4_name_table)
+                                                    {{ $history->course3_name_table . ',' . $history->course4_name_table }}
                                                 @elseif ($history->course2_name_table)
                                                     {{ $history->course2_name_table }}
+                                                @elseif ($history->course3_name_table)
+                                                    {{ $history->course3_name_table }}
                                                 @endif
                                             </td>
                                             <td class="p-1 border-b border-r border-gray-400"
@@ -138,9 +461,10 @@
                                 </tbody>
                             </table>
                         </div>
+                      </div>
                     </div>
                     <!-- Right side -->
-                    <div class="w-1/3" style="width: 30%;">
+                    {{-- <div class="w-1/3" style="width: 30%;">
                         <div class="text-right mb-2 font-semibold">{{ \Carbon\Carbon::now()->format('Y年m月d日') }}</div>
                         <table class="w-full text-sm border-collapse border border-gray-400">
                             <tbody>
@@ -186,21 +510,6 @@
                                         </select>
                                     </td>
                                 </tr>
-                                {{-- <tr>
-                                    <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
-                                        style="width: 100px;">指名</th>
-                                    <td class="p-1 border-b border-gray-400 flex gap-2"><label><input type="radio"
-                                                name="appointment" id="appointment" value="0"
-                                                data-price="{{ $appoints[0]->panel_price }}"
-                                                data-id="{{ $appoints[0]->id }}"
-                                                class="p-1 border border-gray-400 text-right w-full"
-                                                onchange="updatePrice()">パネル指名</label><label><input type="radio"
-                                                name="appointment" id="appointment" value="1"
-                                                data-price="{{ $appoints[0]->repeat_price }}"
-                                                data-id="{{ $appoints[0]->id }}"
-                                                class="p-1 border border-gray-400 text-right w-full"
-                                                onchange="updatePrice()">本指名</label></td>
-                                </tr> --}}
                                 <tr>
                                     <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
                                         style="width: 100px;">指名</th>
@@ -294,7 +603,6 @@
                                     <tr>
                                         <th class="p-1 font-semibold bg-gray-100 border-b border-r border-gray-400 text-left"
                                             style="width: 100px;">オプション</th>
-                                        {{-- <td class="p-1 border-b border-gray-400 flex gap-2"> --}}
                                         <td class="p-1 border-b border-gray-400">
                                             <div class="flex items-center gap-2">
                                                 <select class="p-1 border border-gray-400 w-full bg-white"
@@ -345,16 +653,16 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="mt-4 flex justify-end gap-4">
+                {{-- <div class="mt-4 flex justify-end gap-4">
                     <button class="px-8 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
                         style="background-color: #2563eb; color: white; border-radius: 0.375rem; border: none; cursor: pointer; width: 100px;"
                         onclick="saveInfo(event)">保存</button>
                     <a href="{{ route('admin.member.qrcode') }}"
                         class="px-6 py-2 bg-gray-300 rounded hover:bg-gray-400 text-center"
                         style="border-radius: 0.375rem; width: 100px; display: inline-block; text-decoration: none; color: inherit;">戻る</a>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -365,6 +673,10 @@
         const course1_count = document.getElementById('course1_count').value;
         const course2Select = document.getElementById('course2');
         const course2_count = document.getElementById('course2_count').value;
+        const course3Select = document.getElementById('course3');
+        const course3_count = document.getElementById('course3_count').value;
+        const course4Select = document.getElementById('course4');
+        const course4_count = document.getElementById('course4_count').value;
         const extendSelect = document.getElementById('extend');
         const extend_count = document.getElementById('extend_count').value;
         const option1Select = document.getElementById('option1');
@@ -389,6 +701,10 @@
             course1_count;
         const course2_price = Number(course2Select.options[course2Select.selectedIndex]?.dataset?.price || 0) *
             course2_count;
+        const course3_price = Number(course3Select.options[course3Select.selectedIndex]?.dataset?.price || 0) *
+            course3_count;
+        const course4_price = Number(course4Select.options[course4Select.selectedIndex]?.dataset?.price || 0) *
+            course4_count;
         const extend_price = Number(extendSelect.options[extendSelect.selectedIndex]?.dataset?.price || 0) *
             extend_count;
         const option1_price = Number(option1Select.options[option1Select.selectedIndex]?.dataset?.price || 0) *
@@ -404,7 +720,7 @@
 
         const discount = Number(document.getElementById('discount').value);
 
-        const price = course1_price + course2_price + extend_price + option1_price + option2_price + option3_price +
+        const price = course1_price + course2_price + course3_price + course4_price + extend_price + option1_price + option2_price + option3_price +
             option4_price +
             option5_price + appointmentPrice + discount;
 
@@ -430,6 +746,14 @@
         const course2Select = document.getElementById('course2');
         const course2_count = document.getElementById('course2_count').value;
         const course2_price = Number(course2Select.options[course2Select.selectedIndex]?.dataset?.price || 0);
+        const course3 = document.getElementById('course3').value;
+        const course3Select = document.getElementById('course3');
+        const course3_count = document.getElementById('course3_count').value;
+        const course3_price = Number(course3Select.options[course3Select.selectedIndex]?.dataset?.price || 0);
+        const course4 = document.getElementById('course4').value;
+        const course4Select = document.getElementById('course4');
+        const course4_count = document.getElementById('course4_count').value;
+        const course4_price = Number(course4Select.options[course4Select.selectedIndex]?.dataset?.price || 0);
         const extend = document.getElementById('extend').value;
         const extendSelect = document.getElementById('extend');
         const extend_count = document.getElementById('extend_count').value;
@@ -477,6 +801,12 @@
             course2: course2,
             course2_price: course2_price,
             course2_count: course2_count,
+            course3: course3,
+            course3_price: course3_price,
+            course3_count: course3_count,
+            course4: course4,
+            course4_price: course4_price,
+            course4_count: course4_count,
             extend: extend,
             extend_price: extend_price,
             extend_count: extend_count,
