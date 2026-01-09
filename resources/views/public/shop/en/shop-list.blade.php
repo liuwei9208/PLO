@@ -73,7 +73,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'miyabi']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -109,7 +109,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'lovestory']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -145,7 +145,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'en']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/004.jpg') }}" alt="Shop List Card Image">
             </div>
@@ -181,7 +181,7 @@
                 </div>
             </div>
         </a>
-        <a href="#" class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'shiroganeze']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="Shop List Card Image">
             </div>
