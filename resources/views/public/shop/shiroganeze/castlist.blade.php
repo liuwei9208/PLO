@@ -45,7 +45,7 @@
     <div class="castlist-pagination">
         {{ $castlist->links('pagination::shops') }}
     </div>
-    </x-miyabi-page-layout>
+    </x-shiroganeze-page-layout>
     {{-- @once
     @vite(['resources/scss/shops/pagination.scss'])
 @endonce --}}
