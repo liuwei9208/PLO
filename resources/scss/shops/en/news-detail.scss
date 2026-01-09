@@ -4,14 +4,15 @@
 .news-detail-section {
     width: 100%;
     padding: 30px 30px 50px 30px;
-    border-bottom: 1px solid #48593F;
-    background: rgba(255, 249, 254, 0.70);
+    border-bottom: 1px solid #D9D9D9;
+    // background: rgba(255, 249, 254, 0.70);
 }
 
 @media (max-width: 850px) {
     .news-detail-section {
         padding: 20px;
-        background: rgba(255, 249, 254, 0.70);
+        background: #FFF9FE;
+        border-bottom: 1px solid #674BD7;
     }
 }
 
@@ -68,20 +69,24 @@
     @include yu-mincho-regular();
     @include responsive-font(22.8px, 26px);
     font-weight: 600;
-    color: #0B0B07;
+    color: #FFF;
 }
 
 .news-detail-date {
     @include yu-mincho-regular();
     @include responsive-font(16.8px, 21.3px);
     font-weight: 600;
-    color: #0B0B07;
+    color: #FFF;
     margin-bottom: 30px
 }
 
 @media (max-width: 850px) {
+    .news-detail-title {
+        color: #0D0709;
+    }
     .news-detail-date {
         margin-bottom: 0px;
+        color: #0D0709;
     }
 }
 
@@ -89,21 +94,26 @@
     @include yu-mincho-regular();
     @include responsive-font(16px, 16px);
     font-weight: 600;
-    color: #0B0B07;
+    color: #FFF;
     line-height: 33px;
 
     p {
         @include yu-mincho-regular();
         @include responsive-font(16px, 16px);
         font-weight: 600;
-        color: #0B0B07;
-    
+        color: #FFF;
+
     }
 }
 
 @media (max-width: 850px) {
     .news-detail-body {
         line-height: 27px;
+        color: #0D0709;
+
+        & p {
+          color: #0D0709;
+        }
     }
 }
 
@@ -119,7 +129,7 @@
 @media (max-width: 850px) {
     .news-detail-pagination {
         margin: 0px;
-        background: var(---N_, rgba(42, 26, 8, 0.75));
+        background: #FFF9FE;
     }
 
     .news-detail-pagination-center{
@@ -138,7 +148,7 @@
     align-items: center;
 }
 .news-detail-pagination-center a {
-    color: #010307 !important;
+    color: #FFF !important;
 }
 .news-detail-pagination-left {
     flex: 1;
@@ -158,12 +168,15 @@
 .news-detail-pagination a {
     @include yu-mincho-regular();
     @include responsive-font(14px, 16px);
-    color: #010307;
+    color: #FFF;
     text-decoration: none;
     transition: opacity 0.3s ease;
-    
+
     &:hover {
         opacity: 0.7;
+    }
+    @media (max-width: 850px) {
+      color: #0D0709 !important;
     }
 }
 a {
