@@ -221,7 +221,7 @@
   }
 
   p {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     font-weight: 400;
     // font-size: 1.875rem;
     @include responsive-font(17.2px, 36px);
@@ -242,7 +242,7 @@
   // height: 6.375rem;
 
   p {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     font-weight: 400;
     // font-size: 1.25rem;
     @include responsive-font(14.6px, 23px);
