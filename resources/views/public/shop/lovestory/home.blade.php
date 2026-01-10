@@ -7,21 +7,21 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/en/footer-logo-black.png" logo-alt="En Logo"
+        <x-public.shops.menu-overlay logo-image="assets/img/shops/lovestory/footer-logo-black.png" logo-alt="Lovestory Logo"
             :menu-links="[
-                'top' => route('public.shops.shop.home', ['shop' => 'en']),
-                'schedule' => route('public.shops.shop.schedule', ['shop' => 'en']),
-                'pricing' => route('public.shops.shop.system', ['shop' => 'en']),
-                'new' => route('public.shops.shop.newcast', ['shop' => 'en']),
-                'cast' => route('public.shops.shop.castlist', ['shop' => 'en']),
-                'news' => route('public.shops.shop.news', ['shop' => 'en']),
-                'event' => route('public.shops.shop.event', ['shop' => 'en']),
-                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'en']),
-                'movie' => route('public.shops.shop.movie', ['shop' => 'en']),
-                'review' => route('public.shops.shop.review', ['shop' => 'en']),
-                'ranking' => route('public.shops.shop.ranking', ['shop' => 'en']),
-                'shop' => route('public.shops.shop.shop-list', ['shop' => 'en']),
-                'access' => route('public.shops.shop.access', ['shop' => 'en']),
+                'top' => route('public.shops.shop.home', ['shop' => 'lovestory']),
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'lovestory']),
+                'pricing' => route('public.shops.shop.system', ['shop' => 'lovestory']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'lovestory']),
+                'cast' => route('public.shops.shop.castlist', ['shop' => 'lovestory']),
+                'news' => route('public.shops.shop.news', ['shop' => 'lovestory']),
+                'event' => route('public.shops.shop.event', ['shop' => 'lovestory']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'lovestory']),
+                'movie' => route('public.shops.shop.movie', ['shop' => 'lovestory']),
+                'review' => route('public.shops.shop.review', ['shop' => 'lovestory']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'lovestory']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'lovestory']),
+                'access' => route('public.shops.shop.access', ['shop' => 'lovestory']),
                 'recruit-male' => '#',
                 'login' => route('login'),
                 'recruit-female' => '#',
@@ -39,27 +39,27 @@
                 'new' => '#52B845',
                 'event' => '#FFD775',
                 'review' => '#8A6B20',
-                'shop' => '#590202',
+                'shop' => '#1C2D48',
                 'schedule' => '#1D47AA',
-                'cast' => '#9668B6',
+                'cast' => '#F2387C',
                 'diary' => '#A30ABA',
                 'ranking' => '#D6AD01',
-                'login' => '#260101',
-                'register' => '#260101',
+                'login' => '#1C2D48',
+                'register' => '#1C2D48',
                 'pricing' => '#DCC305',
                 'news' => '#8A6620',
-                'movie' => '#260101',
+                'movie' => '#1C2D48',
                 'access' => '#8A6B20',
                 'recruit-female' => '#D42032',
                 'recruit-male' => '#363B8D',
             ]" />
 
         <div class="banner">
-            <x-public.shops.contact-info phone-icon="assets/img/shops/en/phone.png" phone-number="011-563-6969"
-                email="@sapporoenn0219" address="〒064-0806</br>
-北海道札幌市中央区南5条西5丁目 第8旭観光ビル2F" hours="9:00 ~ 0:00"
-                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。" phone-background="#905148"
-                address-background="#FFF9FE" />
+            <x-public.shops.contact-info phone-icon="assets/img/shops/lovestory/phone.png" phone-number="011-530-0050"
+                email="@lovestory" address="〒064-0805</br>
+札幌市中央区南5条西5丁目3-3 第8旭観光ビル1F" hours="9:00 ~ 0:00"
+                credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。" phone-background="#F2BBCF"
+                address-background="rgba(11, 158, 217, 0.80)" />
             <div class="register">
                 <x-public.shops.register-button text="新規会員登録はコチラ！" background-color="#FFF5FB" text-color="#FF3498" />
             </div>
@@ -67,77 +67,77 @@
         <div class="home-content">
             <!-- Breadcrumb Navigation -->
             <div class="breadcrumb-navigation">
-                <p>fashion health 艶 ＞ トップページ</p>
+                <p>エッチな女の子育成ヘルス ラブストーリー ＞ トップページ</p>
             </div>
-            <x-public.shops.home-header logo-image="assets/img/shops/en/footer-logo.png"
-                logo-alt="En Logo" stroke-color="#FFF" :menu-items="[
+            <x-public.shops.home-header logo-image="assets/img/shops/lovestory/footer-logo.png"
+                logo-alt="Lovestory Logo" stroke-color="#FFF" :menu-items="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => 'キャスト一覧',
                         'subtitle' => 'cast list',
-                        'url' => route('public.shops.shop.castlist', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.castlist', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '写メ日記',
                         'subtitle' => 'photo diary',
-                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => 'イベント一覧',
                         'subtitle' => 'event',
-                        'url' => route('public.shops.shop.event', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.event', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '新人情報',
                         'subtitle' => 'new cast',
-                        'url' => route('public.shops.shop.newcast', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.newcast', ['shop' => 'lovestory']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]" menu-button-id="mobileMenuButton"
-                background-color="#3A2D35" :mobileMenuBttonItems="[
+                background-color="#fff" :mobileMenuBttonItems="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'lovestory']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'en']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'lovestory']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]"
                 social-svg='<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
-<path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#FFF9FE"/>
+<path d="M5.71429 0C2.5625 0 0 2.5625 0 5.71429V34.2857C0 37.4375 2.5625 40 5.71429 40H34.2857C37.4375 40 40 37.4375 40 34.2857V5.71429C40 2.5625 37.4375 0 34.2857 0H5.71429ZM32.2411 7.5L22.9732 18.0893L33.875 32.5H25.3393L18.6607 23.7589L11.0089 32.5H6.76786L16.6786 21.1696L6.22321 7.5H14.9732L21.0179 15.4911L28 7.5H32.2411ZM28.8661 29.9643L13.6964 9.90179H11.1696L26.5089 29.9643H28.8571H28.8661Z" fill="#F2387C"/>
 </svg>' />
             @if ($todayCasts->count() > 0)
                 <div class="home-schedule">
                     <x-public.shops.section-title text="schedule" letter-spacing="6px" :gradient=false
-                        :backgroundGradient=false color="#7A5086" backgroundColor="#FFF9FE" />
-                    <x-public.shops.schedule-info icon-image="assets/img/shops/en/calender-g.png"
+                        :backgroundGradient=false color="#F2387C" backgroundColor="#F2BBCF" />
+                    <x-public.shops.schedule-info icon-image="assets/img/shops/lovestory/calender-g.png"
                         icon-alt="出勤情報" title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る"
-                        background-color="#FFF9FE" text-color="#0D0709" border-color="#6F56A6"
-                        underlineColor="linear-gradient(180deg, #BA0EA8 0%, #830376 100%)" responsive-variant="new-girl" :gradient='false'
-                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'en']) }}" />
+                        background-color="#fff" text-color="#1C2D48" border-color="#F2387C"
+                        underlineColor="#F2387C" responsive-variant="new-girl" :gradient='false'
+                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'lovestory']) }}" />
                     <div class="home-schedule-cards">
                         {{-- @for ($i = 0; $i < 12; $i++)
                             <x-public.shops.schedule-card
@@ -153,19 +153,19 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/en/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/lovestory/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-<path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#D90D32"/>
+<path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#F2387C"/>
 </svg>'
                                     status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
                                     message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    statusTextColor="#D90D32" contentGradientStart="#FFFDFF "
-                                    contentGradientStartPercent="48.08%" contentGradientEnd="rgba(255, 255, 255, 0.00)"
-                                    contentGradientEndPercent="100%" badgeBorderColor="#523C47" badgeBgColor="#523C47"
-                                    badgeTextColor="#F2FF00" badgeTimeColor="#000" :messageGradient=false
-                                    measurementsColor="#000" nameColor="#000" messageColor="#000" />
+                                    statusTextColor="#F2387C" contentGradientStart="#F2387C"
+                                    contentGradientStartPercent="41.35%" contentGradientEnd="rgba(255, 220, 233, 0.30)"
+                                    contentGradientEndPercent="100%" badgeBorderColor="#FFDE32" badgeBgColor="#FFDE32"
+                                    badgeTextColor="#F2387C" badgeTimeColor="#10040E" :messageGradient=false
+                                    measurementsColor="#1C2D48" nameColor="#1C2D48" messageColor="#1C2D48" />
                             @else
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
@@ -176,23 +176,24 @@
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
                                     message="{{ $todayCast->appeal_point }}" variant="schedule"
-                                    status-text-color="#0D0709"
+                                    status-text-color="#0B9ED9"
                                     statusIcon='<svg xmlns="http://www.w3.org/2000/svg" width="15" height="25" viewBox="0 0 15 25" fill="none">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#0D0709"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M15 0V6.76622L9.26748 12.5L15 18.2313V25H0V18.2313L5.73123 12.5L0 6.76622V0H15ZM7.5 14.2675L2.50002 19.2675V21.875L7.5 18.75L12.5 21.875V19.2675L7.5 14.2675ZM12.5 2.50002H2.50002V5.73123L4.27166 7.50333L10.7435 7.4881L12.5 5.73123V2.50002Z" fill="#0B9ED9"/>
 </svg>'
-contentGradientStartPercent="48.08%" contentGradientEnd="rgba(255, 255, 255, 0.00)"
-contentGradientEndPercent="100%" badgeBorderColor="#523C47" badgeBgColor="#523C47"
-badgeTextColor="#F2FF00" badgeTimeColor="#000" :messageGradient=false
-measurementsColor="#000" nameColor="#000" messageColor="#000" />
+contentGradientStart="#F2387C"
+                                    contentGradientStartPercent="41.35%" contentGradientEnd="rgba(255, 220, 233, 0.30)"
+                                    contentGradientEndPercent="100%" badgeBorderColor="#FFDE32" badgeBgColor="#FFDE32"
+                                    badgeTextColor="#F2387C" badgeTimeColor="#10040E" :messageGradient=false
+                                    measurementsColor="#1C2D48" nameColor="#1C2D48" messageColor="#1C2D48" />
                             @endif
                         @endforeach
                     </div>
                     <div class="home-schedule-button-mobile">
                         <a class="schedule-info-button schedule-info-button-mobile"
-                            href="{{ route('public.shops.shop.schedule', ['shop' => 'miyabi']) }}"
+                            href="{{ route('public.shops.shop.schedule', ['shop' => 'lovestory']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
-                            <p style="color: #2A1A08;">一覧を見る</p>
-                            <div class="schedule-info-underline" style="background: #BF5A75;"></div>
+                            <p style="color: #1C2D48;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #F2387C;"></div>
                         </a>
                     </div>
                 </div>
@@ -201,13 +202,13 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                 @if (count($news) > 0)
                     <x-public.shops.news-section title="news" slider-id="newsSlider"
                         default-image="assets/img/shops/shizuku/news-image.png" variant="news" :titleBackgroundGradient='false'
-                        :items="$news" :shop="$shop" titleBackgroundColor="#523C47" :titleGradient=false
+                        :items="$news" :shop="$shop" titleBackgroundColor="#F2BBCF" :titleGradient=false
                         titleColor="#FFF" />
                 @endif
                 @if (count($diaries) > 0)
                     <x-public.shops.news-section title="photo diary" slider-id="diarySlider"
                         default-image="assets/img/shops/shizuku/diary-image.png" variant="diary" :titleBackgroundGradient='false'
-                        :items="$diaries" :shop="$shop" titleBackgroundColor="#523C47" :titleGradient=false
+                        :items="$diaries" :shop="$shop" titleBackgroundColor="#F2BBCF" :titleGradient=false
                         titleColor="#FFF" />
                 @endif
             </div>
@@ -217,41 +218,29 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                     ['image' => asset('storage/' . $pickups[1]->gallery_1), 'alt' => 'Cast 2'],
                 ];
             @endphp
-            <x-public.shops.pickup-section header-background-image="assets/img/shops/en/pickup-bg.png"
+            <x-public.shops.pickup-section header-background-image="assets/img/shops/lovestory/pickup-bg.png"
                 title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
-                :cast-images="$pickupImages" frame-image="assets/img/shops/en/card-frame-2.png" :Colorchange=false
-                badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="228" height="228" viewBox="0 0 228 228" fill="none">
-<g filter="url(#filter0_d_690_22059)">
-<path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="white"/>
-</g>
-<defs>
-<filter id="filter0_d_690_22059" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="10"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_690_22059"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_690_22059" result="shape"/>
-</filter>
-</defs>
-</svg>' />
+                :cast-images="$pickupImages" frame-image="assets/img/shops/lovestory/card-frame-2.png" :Colorchange=false overlay="linear-gradient(0deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.30) 100%), url('/assets/img/shops/shiroganeze/ranking-bg.png') lightgray 50% / no-repeat"
+                badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="188" height="188" viewBox="0 0 188 188" fill="none">
+<path d="M94 0L141.525 46.4754L188 94L141.525 141.525L94 188L46.4754 141.525L0 94L46.4754 46.4754L94 0Z" fill="#FFDE32"/>
+</svg>' lightningIcon='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" viewBox="0 0 18 32" fill="none">
+<path d="M17.4396 14.9991L9.51595 12.8759L12.966 7.80923e-05L-2.36381e-06 16.6955L7.92361 18.8187L4.47353 31.6945L17.4396 14.9991Z" fill="#F2387C"/>
+</svg>'/>
             @if ($new_girls->count() > 0)
                 <div class="home-new-girl-section">
-                    <x-public.shops.section-title text="NEW GIRL" color="#7A5086" :gradient=false
-                        :backgroundGradient=true backgroundColor="#FFF" letter-spacing="0.375rem" opacity="0.95"
+                    <x-public.shops.section-title text="NEW GIRL" color="#F2387C" :gradient=false
+                        :backgroundGradient=true backgroundColor="#F2BBCF" letter-spacing="0.375rem" opacity="0.95"
                         small="true" />
                     @php
                         $newGirlIconSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="35" viewBox="0 0 26 35" fill="none">
-<path d="M3.48938 0L5.03394 0.68188L12.8051 8.17029L20.4795 0.68188L22.0241 0H22.6956C24.5021 0.486863 25.226 1.46741 25.3791 3.34258C25.0769 9.26539 25.7887 15.6069 25.3872 21.4806C25.1991 24.2313 24.3167 24.5872 22.6244 26.311C20.3573 28.6212 17.5878 31.7183 15.1756 33.7476C14.5014 34.3149 13.8849 34.6818 13.0253 34.9055C12.8507 34.8905 12.6587 34.9286 12.4881 34.9055C11.7212 34.7991 11.055 34.3709 10.4721 33.884C8.13514 31.9325 5.48791 28.9472 3.29195 26.7202C1.48415 24.8873 0.327746 24.4331 0.126282 21.4806C-0.275302 15.6069 0.436537 9.26539 0.134341 3.34258C0.284767 1.49195 1.05167 0.492318 2.81784 0H3.48938ZM12.7567 29.9959C14.304 28.8122 15.5974 27.2834 16.9834 25.9019C17.7691 25.1205 20.7978 22.5471 21.0208 21.6824L21.014 7.50205C20.7051 7.00837 20.2042 6.95382 19.7475 7.30157L12.7581 14.2486L12.7567 29.9959Z" fill="#7A5086"/>
+<path d="M3.48938 0L5.03394 0.68188L12.8051 8.17029L20.4795 0.68188L22.0241 0H22.6956C24.5021 0.486863 25.226 1.46741 25.3791 3.34258C25.0769 9.26539 25.7887 15.6069 25.3872 21.4806C25.1991 24.2313 24.3167 24.5872 22.6244 26.311C20.3573 28.6212 17.5878 31.7183 15.1756 33.7476C14.5014 34.3149 13.8849 34.6818 13.0253 34.9055C12.8507 34.8905 12.6587 34.9286 12.4881 34.9055C11.7212 34.7991 11.055 34.3709 10.4721 33.884C8.13514 31.9325 5.48791 28.9472 3.29195 26.7202C1.48415 24.8873 0.327746 24.4331 0.126282 21.4806C-0.275302 15.6069 0.436537 9.26539 0.134341 3.34258C0.284767 1.49195 1.05167 0.492318 2.81784 0H3.48938ZM12.7567 29.9959C14.304 28.8122 15.5974 27.2834 16.9834 25.9019C17.7691 25.1205 20.7978 22.5471 21.0208 21.6824L21.014 7.50205C20.7051 7.00837 20.2042 6.95382 19.7475 7.30157L12.7581 14.2486L12.7567 29.9959Z" fill="#F2387C"/>
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪  艶の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
-                        text-color="#000" border-color="#0D0709" underlineColor="#6F56A6"
+                        description="新入デビュー♪  ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
+                        text-color="#1C2D48" border-color="#F2BBCF" underlineColor="#EAF205"
                         responsive-variant="new-girl" :gradient=false
-                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
+                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'lovestory']) }}" />
                 </div>
                 <div class="home-new-girl-slider">
                     <div class="new-girl-slider-cards">
@@ -277,12 +266,12 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                                     measurements="{{ 'T.' . $new_girl->height . ' B.' . $new_girl->bust . ' W.' . $new_girl->waist . ' H.' . $new_girl->hip }}"
                                     description="{{ $new_girl->appeal_point }}"
                                     gradient-id="calendar-gradient-{{ $loop->index }}" :gradient=false
-                                    datetextColor="#A24395" newGirlCardBgLeftColor="rgba(255,255,255,0.7)"
-                                    name-color="#132126" measurements-color="#132126" :cardGradient=false
-                                    carddividerColor="#A24395" :carddividerverticalGradient=false
-                                    carddividerverticalColor="linear-gradient(180deg, #3A2640 0%, #9663A6 100%)"
+                                    datetextColor="#F2387C" newGirlCardBgLeftColor="rgba(255,255,255,0.7)"
+                                    name-color="#1C2D48" measurements-color="#1C2D48" :cardGradient=false
+                                    carddividerColor="#F2387C" :carddividerverticalGradient=false
+                                    carddividerverticalColor="#FFDE32"
                                     iconSvg='<svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25" fill="none">
-<path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#A24395"/>
+<path d="M22.0836 20.2H17.6669V16.16H22.0836V20.2ZM15.4585 10.1H11.0418V14.14H15.4585V10.1ZM22.0836 10.1H17.6669V14.14H22.0836V10.1ZM8.83343 16.16H4.41671V20.2H8.83343V16.16ZM15.4585 16.16H11.0418V20.2H15.4585V16.16ZM8.83343 10.1H4.41671V14.14H8.83343V10.1ZM26.5003 2.02V24.24H0V2.02H3.31253V3.03C3.31253 4.141 4.3063 5.05 5.52089 5.05C6.73549 5.05 7.72925 4.141 7.72925 3.03V2.02H18.771V3.03C18.771 4.141 19.7648 5.05 20.9794 5.05C22.194 5.05 23.1877 4.141 23.1877 3.03V2.02H26.5003ZM24.2919 8.08H2.20836V22.22H24.2919V8.08ZM22.0836 1.01C22.0836 0.404 21.6419 0 20.9794 0C20.3169 0 19.8752 0.404 19.8752 1.01V3.03C19.8752 3.636 20.3169 4.04 20.9794 4.04C21.6419 4.04 22.0836 3.636 22.0836 3.03V1.01ZM6.62507 3.03C6.62507 3.636 6.1834 4.04 5.52089 4.04C4.85838 4.04 4.41671 3.636 4.41671 3.03V1.01C4.41671 0.404 4.85838 0 5.52089 0C6.1834 0 6.62507 0.404 6.62507 1.01V3.03Z" fill="#F2387C"/>
 </svg>' />
                             @endforeach
                         </div>
@@ -332,15 +321,15 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                     </div>
                 </div>
                 @php
-                    $newGirlButtonHref = route('public.shops.shop.newcast', ['shop' => 'en']); // Add href if needed
+                    $newGirlButtonHref = route('public.shops.shop.newcast', ['shop' => 'lovestory']); // Add href if needed
                     $newGirlButtonOnClick = null; // Add onClick if needed
                 @endphp
                 <div class="home-new-girl-button-mobile">
                     @if ($newGirlButtonHref)
                         <a href="{{ $newGirlButtonHref }}" class="schedule-info-button schedule-info-button-mobile"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
-                            <p style="color: #48593F;">一覧を見る</p>
-                            <div class="schedule-info-underline" style="background: #48593F;"></div>
+                            <p style="color: #1C2D48;">一覧を見る</p>
+                            <div class="schedule-info-underline" style="background: #F2387C;"></div>
                         </a>
                     @else
                         <div class="schedule-info-button schedule-info-button-mobile"
@@ -354,19 +343,19 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
             @endif
             @if (count($castlist) > 0)
                 <div class="home-castlist">
-                    <x-public.shops.section-title text="cast list" background-color="#3A2D35" opacity="1.0"
-                        :gradient=false color="#FFF9FE" letter-spacing="0.375rem" />
+                    <x-public.shops.section-title text="cast list" background-color="rgba(255, 255, 255, 0.80)" opacity="0.8"
+                        :gradient=false color="#F2387C" letter-spacing="0.375rem" />
                     <div class="home-castlist-info">
                         <div class="castlist-info-header">
-                            <img src="{{ asset('assets/img/shops/en/girl-icon.png') }}" alt="出勤情報"
+                            <img src="{{ asset('assets/img/shops/lovestory/girl-icon.png') }}" alt="出勤情報"
                                 class="castlist-info-icon">
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>艶のキャスト一覧になります。</p>
+                            <p>ラブストーリーのキャスト一覧になります。</p>
                         </div>
                         <a class="castlist-info-button"
-                            href="{{ route('public.shops.shop.castlist', ['shop' => 'en']) }}">
+                            href="{{ route('public.shops.shop.castlist', ['shop' => 'lovestory']) }}">
                             <p>一覧を見る</p>
                             <div class="castlist-info-underline"></div>
                         </a>
@@ -396,17 +385,17 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                                    frame-image="assets/img/shops/en/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/lovestory/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                                     status-icon="" status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                                     measurements=" {{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
                                     message="{{ $cast->appeal_point }}"
-                                    contentGradientStart="rgba(255, 255, 255, 0.00)"
-                                    contentGradientStartPercent="4.33%"
-                                    contentGradientEnd="rgba(255, 255, 255, 0.85)" contentGradientEndPercent="36.06%"
-                                    badgeBorderColor="#523C47" badgeBgColor="#523C47" badgeTextColor="#F2FF00"
-                                    badgeTimeColor="#2A1A08" :messageGradient=false measurementsColor="#132126"
-                                    nameColor="#132126" messageColor="#132126" variant="castlist_top" />
+                                    contentGradientStart="#F2387C"
+                                    contentGradientStartPercent="41.35%"
+                                    contentGradientEnd="rgba(255, 255, 255, 0.3)" contentGradientEndPercent="100%"
+                                    badgeBorderColor="#FFDE32" badgeBgColor="#FFDE32" badgeTextColor="#F2387C"
+                                    badgeTimeColor="#1C2D48" :messageGradient=false measurementsColor="#1C2D48"
+                                    nameColor="#1C2D48" messageColor="#1C2D48" variant="castlist_top" />
                             @endforeach
                         </div>
                         <button class="castlist-slider-next">
@@ -426,7 +415,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[0]->cast_gallery_1) }}" alt="Cast 1"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/en/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/lovestory/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="154"
@@ -480,7 +469,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[1]->cast_gallery_1) }}" alt="Cast 2"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/en/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/lovestory/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no2">
                                 <svg width="220" height="137" viewBox="0 0 220 137" fill="none"
@@ -533,40 +522,37 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                     <div class="ranking-badge-button">
                         <div class="ranking-badge-diamond">
                           <svg xmlns="http://www.w3.org/2000/svg" width="228" height="228" viewBox="0 0 228 228" fill="none">
-                            <g filter="url(#filter0_d_690_22084)">
-                            <path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="#F2F2F2"/>
+                            <g filter="url(#filter0_d_690_399)">
+                            <path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="#F2387C"/>
                             </g>
                             <defs>
-                            <filter id="filter0_d_690_22084" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <filter id="filter0_d_690_399" x="0" y="0" width="228" height="228" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
                             <feFlood flood-opacity="0" result="BackgroundImageFix"/>
                             <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
                             <feOffset/>
                             <feGaussianBlur stdDeviation="10"/>
                             <feComposite in2="hardAlpha" operator="out"/>
-                            <feColorMatrix type="matrix" values="0 0 0 0 0.478431 0 0 0 0 0.313726 0 0 0 0 0.52549 0 0 0 1 0"/>
-                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_690_22084"/>
-                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_690_22084" result="shape"/>
+                            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0"/>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_690_399"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_690_399" result="shape"/>
                             </filter>
                             </defs>
                             </svg>
                         </div>
-                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'en']) }}"
+                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'lovestory']) }}"
                             class="ranking-badge-text">一覧を見る</a>
                     </div>
                     <div class="ranking-header">
                         <div class="ranking-header-bg">
-                            <img src="{{ asset('assets/img/shops/en/ranking.png') }}" alt="Background">
+                            <img src="{{ asset('assets/img/shops/lovestory/ranking.png') }}" alt="Background">
                             <div class="ranking-header-overlay"></div>
                             <div class="ranking-header-shadow"></div>
                         </div>
                         <div class="ranking-header-content">
                             <h1 class="ranking-title-en">RANKING</h1>
                             <div class="ranking-title-ja-wrapper">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30"
-                                    viewBox="0 0 34 30" fill="none">
-                                    <path
-                                        d="M5 30V26.6667H28.3333V30H5ZM5 24.1667L2.875 10.7917C2.81945 10.7917 2.75667 10.7989 2.68667 10.8133C2.61667 10.8278 2.55445 10.8344 2.5 10.8333C1.80556 10.8333 1.21556 10.59 0.730004 10.1033C0.244448 9.61667 0.0011149 9.02667 3.78788e-06 8.33334C-0.00110732 7.64 0.242226 7.05 0.730004 6.56334C1.21778 6.07667 1.80778 5.83334 2.5 5.83334C3.19223 5.83334 3.78278 6.07667 4.27167 6.56334C4.76056 7.05 5.00334 7.64 5 8.33334C5 8.52778 4.97889 8.70834 4.93667 8.875C4.89445 9.04167 4.84612 9.19445 4.79167 9.33334L10 11.6667L15.2083 4.54167C14.9028 4.31945 14.6528 4.02778 14.4583 3.66667C14.2639 3.30556 14.1667 2.91667 14.1667 2.5C14.1667 1.80556 14.41 1.215 14.8967 0.728337C15.3833 0.241671 15.9733 -0.00110731 16.6667 3.79651e-06C17.36 0.00111491 17.9506 0.244448 18.4383 0.730004C18.9261 1.21556 19.1689 1.80556 19.1667 2.5C19.1667 2.91667 19.0695 3.30556 18.875 3.66667C18.6806 4.02778 18.4306 4.31945 18.125 4.54167L23.3333 11.6667L28.5417 9.33334C28.4861 9.19445 28.4372 9.04167 28.395 8.875C28.3528 8.70834 28.3322 8.52778 28.3333 8.33334C28.3333 7.63889 28.5767 7.04834 29.0633 6.56167C29.55 6.075 30.14 5.83223 30.8333 5.83334C31.5267 5.83445 32.1172 6.07778 32.605 6.56334C33.0928 7.04889 33.3356 7.63889 33.3333 8.33334C33.3311 9.02778 33.0883 9.61834 32.605 10.105C32.1217 10.5917 31.5311 10.8344 30.8333 10.8333C30.7778 10.8333 30.7156 10.8267 30.6467 10.8133C30.5778 10.8 30.515 10.7928 30.4583 10.7917L28.3333 24.1667H5Z"
-                                        fill="#fff" />
+                              <svg xmlns="http://www.w3.org/2000/svg" width="34" height="30" viewBox="0 0 34 30" fill="none">
+                                <path d="M5 30V26.6667H28.3333V30H5ZM5 24.1667L2.875 10.7917C2.81945 10.7917 2.75667 10.7989 2.68667 10.8133C2.61667 10.8278 2.55445 10.8344 2.5 10.8333C1.80556 10.8333 1.21556 10.59 0.730004 10.1033C0.244448 9.61667 0.0011149 9.02667 3.78788e-06 8.33334C-0.00110732 7.64 0.242226 7.05 0.730004 6.56334C1.21778 6.07667 1.80778 5.83334 2.5 5.83334C3.19223 5.83334 3.78278 6.07667 4.27167 6.56334C4.76056 7.05 5.00334 7.64 5 8.33334C5 8.52778 4.97889 8.70834 4.93667 8.875C4.89445 9.04167 4.84612 9.19445 4.79167 9.33334L10 11.6667L15.2083 4.54167C14.9028 4.31945 14.6528 4.02778 14.4583 3.66667C14.2639 3.30556 14.1667 2.91667 14.1667 2.5C14.1667 1.80556 14.41 1.215 14.8967 0.728337C15.3833 0.241671 15.9733 -0.00110731 16.6667 3.79651e-06C17.36 0.00111491 17.9506 0.244448 18.4383 0.730004C18.9261 1.21556 19.1689 1.80556 19.1667 2.5C19.1667 2.91667 19.0695 3.30556 18.875 3.66667C18.6806 4.02778 18.4306 4.31945 18.125 4.54167L23.3333 11.6667L28.5417 9.33334C28.4861 9.19445 28.4372 9.04167 28.395 8.875C28.3528 8.70834 28.3322 8.52778 28.3333 8.33334C28.3333 7.63889 28.5767 7.04834 29.0633 6.56167C29.55 6.075 30.14 5.83223 30.8333 5.83334C31.5267 5.83445 32.1172 6.07778 32.605 6.56334C33.0928 7.04889 33.3356 7.63889 33.3333 8.33334C33.3311 9.02778 33.0883 9.61834 32.605 10.105C32.1217 10.5917 31.5311 10.8344 30.8333 10.8333C30.7778 10.8333 30.7156 10.8267 30.6467 10.8133C30.5778 10.8 30.515 10.7928 30.4583 10.7917L28.3333 24.1667H5Z" fill="#F2387C"/>
                                 </svg>
                                 <h2 class="ranking-title-ja">ランキング</h2>
                             </div>
@@ -585,7 +571,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                 }
             @endphp
             @if (count($events) > 0)
-                <x-public.shops.event-section background-image="assets/img/shops/en/event-bg.png"
+                <x-public.shops.event-section background-image="assets/img/shops/lovestory/event-bg.png"
                     background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
                     :sub-banner-images="$event_list" />
             @endif
@@ -660,13 +646,13 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                     'url' => '#',
                 ],
             ]" :menu-links="[
-                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'en'])],
-                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'en'])],
-                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'en'])],
-                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'en'])],
-                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'en'])],
+                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'lovestory'])],
+                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'lovestory'])],
+                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'lovestory'])],
+                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'lovestory'])],
+                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'lovestory'])],
                 ['text' => 'SNS', 'url' => '#'],
-                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'en'])],
+                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'lovestory'])],
                 ['text' => 'ログイン', 'url' => route('login')],
                 ['text' => '新規会員登録', 'url' => route('register')],
                 [
@@ -679,24 +665,25 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"
-                footerLogo="{{ asset('assets/img/shops/en/footer-logo.png') }}" svgIconColor="#A24395"
-                ploLogo="{{ asset('assets/img/shops/en/plo-logo.png') }}"
-                groupSiteLogo="{{ asset('assets/img/shops/en/plo-logo.png') }}" />
+                footerLogo="{{ asset('assets/img/shops/lovestory/footer-logo.png') }}" svgIconColor="#F2387C"
+                ploLogo="{{ asset('assets/img/shops/lovestory/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/lovestory/plo-logo.png') }}" />
         </div>
 
         <!-- Fixed Phone Button -->
-        <x-public.shops.fixed-phone-button phone-number="0115636969" phone-display="011-563-6969"
+        <x-public.shops.fixed-phone-button phone-number="0115300050" phone-display="011-530-0050"
             hours="8:30〜24:00まで" mobile-text="TEL"
-            icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
-<path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="white"/>
+            icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 34 34" fill="none">
+<rect x="0.5" y="0.5" width="32.3191" height="32.3191" stroke="#FFE355"/>
+<path d="M27.6966 29.1543C24.8043 29.1543 21.9411 28.5295 19.1072 27.2801C16.2732 26.0306 13.6988 24.249 11.3841 21.9351C9.06931 19.6213 7.28766 17.0529 6.03912 14.2301C4.79058 11.4072 4.16584 8.53806 4.16492 5.62263V4.16492H12.3559L13.64 11.1411L9.6834 15.1325C10.1924 16.0349 10.7593 16.891 11.3841 17.7008C12.0088 18.5107 12.6798 19.2627 13.3971 19.9568C14.0681 20.6278 14.803 21.2701 15.6017 21.8838C16.4004 22.4974 17.2621 23.0698 18.1867 23.6011L22.2128 19.575L29.1543 20.998V29.1543H27.6966Z" fill="#F2387C"/>
 </svg>'
-            mobileImage="{{ asset('assets/img/shops/en/TEL-y1.png') }}" />
+            mobileImage="{{ asset('assets/img/shops/lovestory/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons
-            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'en']) }}" />
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'lovestory']) }}" />
     </div>
     @push('styles')
-        @vite(['resources/scss/shops/en/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
+        @vite(['resources/scss/shops/lovestory/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
     @endpush
 </x-shizuku-layout>

@@ -6,9 +6,9 @@
   position: fixed;
   bottom: 0.625rem;
   right: 0.625rem;
-  width: 22.9375rem;
+  width: 24.9375rem;
   height: 6.0625rem;
-  background: #BD5EA1;
+  background: #FFE355;
   border-radius: 1.875rem 0 0 0;
   display: flex;
   flex-direction: column;
@@ -52,28 +52,28 @@
   }
 
   svg {
-    width: 1.5625rem;
-    height: 1.5625rem;
+    width: 2.2625rem;
+    height: 2.2625rem;
     flex-shrink: 0;
   }
 
   .phone-number {
-    @include lustria();
+    @include Kulim_Park();
     font-size: 2.775rem;
     line-height: 2.9375rem;
-    color: #fff;
-    font-weight: 400;
+    color: #F2387C;
+    font-weight: 600;
     margin: 0;
     text-align: left;
     // padding-bottom: 0.8rem;
   }
 
   .phone-hours {
-    @include Hiragino_Mincho_Pro_W6();
+    @include M_PLUS_1();
     font-size: 0.9375rem;
     line-height: 1.1875rem;
-    color: #fff;
-    font-weight: 700;
+    color: #F2387C;
+    font-weight: 600;
     margin: 0;
     width: 100%;
     text-align: center;

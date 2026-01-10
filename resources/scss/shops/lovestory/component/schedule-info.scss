@@ -18,8 +18,8 @@
 
   // New-girl variant: different responsive behavior
   &.schedule-info-new-girl {
-    border-top: 6px solid #0D0709;
-    border-bottom: 6px solid #0D0709;
+    // border-top: 6px solid #0D0709;
+    // border-bottom: 6px solid #0D0709;
     @media (max-width: 1200px) {
       flex-wrap: wrap;
     }
@@ -83,9 +83,9 @@
 }
 
 .schedule-info-title {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(25px, 33px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   margin: 0;
   white-space: nowrap;
@@ -95,16 +95,16 @@
 .schedule-info-description {
   display: flex;
   align-items: center;
-  border-left: 6px solid;
+  border-left: 3px solid;
   padding: 0 0 0 3.75rem;
   height: 6.375rem;
   flex: 1;
 }
 
 .schedule-info-description p {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 26px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   margin: 0;
 
@@ -121,7 +121,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.3125rem;
-  border-left: 6px solid;
+  border-left: 3px solid;
   padding: 0 3.75rem;
   height: 6.375rem;
   width: 14.375rem;
@@ -135,9 +135,9 @@
   }
 
   p {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     @include responsive-font(21px, 21px);
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
     margin: 0;
     text-align: center;

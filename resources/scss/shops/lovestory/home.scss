@@ -28,7 +28,7 @@ p {
   position: relative;
 }
 .banner-image {
-  background-image: url("/assets/img/shops/en/home-banner.png");
+  background-image: url("/assets/img/shops/lovestory/home-banner.png");
   background-attachment: scroll;
   background-repeat: no-repeat;
   width: 100%;
@@ -49,7 +49,7 @@ p {
     background-position: center;
     background-attachment: scroll;
     // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
-    background-image: url("/assets/img/shops/en/home-banner-sp.jpg");
+    background-image: url("/assets/img/shops/lovestory/home-banner-sp.jpg");
   }
 }
 
@@ -59,7 +59,7 @@ p {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(0deg, rgba(89, 70, 102, 0.85) 80%, rgba(255, 255, 255, 0.00) 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 4.33%, rgba(255, 255, 255, 0.90) 16.35%);
   pointer-events: none;
   z-index: 1;
   opacity: 0;
@@ -98,11 +98,11 @@ p {
   margin-top: 530px;
   margin-bottom: 20px;
   p {
-    @include Hiragino_Mincho_Pro_W6();
+    @include M_PLUS_1();
     @include responsive-font(12px, 15px);
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
-    color: #000;
+    color: #260101;
   }
 }
 
@@ -133,7 +133,7 @@ p {
   //   ---N,
   //   linear-gradient(90deg, rgba(42, 26, 8, 0.7) 58.65%, rgba(0, 0, 0, 0) 100%)
   // );
-  background: var(---N, #fff);
+  background: var(---N, #F2BBCF);
 }
 
 @media (max-width: 850px) {
@@ -193,11 +193,11 @@ p {
   align-items: flex-start;
   gap: 0;
   padding: 0;
-  border-top: 3px solid $white;
-  border-bottom: 3px solid $white;
+  border-top: 6px solid #F2138E;
+  border-bottom: 6px solid #F2138E;
   align-items: center;
   background-color: #fff;
-  border: 6px solid #0D0709;
+  // border: 6px solid #0D0709;
 }
 
 .castlist-info-header {
@@ -220,11 +220,11 @@ p {
 }
 
 .castlist-info-title {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(18px, 35.5px);
   font-weight: 600;
   line-height: normal;
-  color: #10040e;
+  color: #1C2D48;
   margin: 0;
   white-space: nowrap;
 }
@@ -239,15 +239,15 @@ p {
   // border: 6px solid $white;
   // border-right: none;
   border-top: none;
-  border-left: 6px solid #0D0709;
+  border-left: 6px solid #F2138E;
 }
 
 .castlist-info-description p {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 24px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
-  color: #10040e;
+  color: #1C2D48;
   margin: 0;
   white-space: nowrap;
 }
@@ -263,7 +263,7 @@ p {
   width: 14.375rem;
   flex-shrink: 0;
   background: #fff;
-  border-left: 6px solid #0D0709;
+  border-left: 6px solid #F2138E;
   cursor: pointer;
   transition: opacity 0.2s ease;
 
@@ -272,11 +272,11 @@ p {
   }
 
   p {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     @include responsive-font(16px, 24px);
     font-weight: 600;
     line-height: normal;
-    color: #10040e;
+    color: #1C2D48;
     margin: 0;
     text-align: center;
     white-space: nowrap;
@@ -286,7 +286,7 @@ p {
 .castlist-info-underline {
   width: 100%;
   height: 3px;
-  background: linear-gradient(180deg, #BA0EA8 0%, #830376 100%);
+  background: #F2138E;
   margin-top: -3px;
 }
 
@@ -331,7 +331,7 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  background: #7A5086; // Figma color: 雫カラー/N雫_ポイント２
+  background: #0B9ED9; // Figma color: 雫カラー/N雫_ポイント２
   color: $white;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -388,7 +388,7 @@ p {
     padding: 20px 1rem;
     -webkit-overflow-scrolling: touch;
     flex: 1;
-    background: var(---N_, rgba(42, 26, 8, 0.75));
+    background: var(---N_, #fff);
 
     // Hide scrollbar
     scrollbar-width: none;
@@ -416,7 +416,8 @@ p {
     inline-size: -webkit-fill-available;
     text-align: center;
     padding: 1.25rem 2.5rem;
-    border: 3px solid #fff;
+    border-bottom: 3px solid #F2138E;
+    border-top: 3px solid #F2138E;
   }
 
   .castlist-info-description {
@@ -425,7 +426,7 @@ p {
     border: none;
     height: auto;
     justify-content: center;
-    border-bottom: 3px solid #fff;
+    // border-bottom: 6px solid #F2138E;
   }
 
   .castlist-info-description p {
@@ -569,11 +570,11 @@ p {
 }
 
 .ranking-badge-text {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 27.8px);
   font-weight: 600;
   line-height: normal;
-  color: #132240;
+  color: #FFF;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -606,7 +607,7 @@ p {
 .ranking-header-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  // background: rgba(0, 0, 0, 0.3);
 }
 
 .ranking-header-shadow {
@@ -615,7 +616,7 @@ p {
   // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") lightgray -251px 1.44px / 150.701% 117.723% no-repeat;
 
   // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") no-repeat;
-  background: linear-gradient(0deg, rgba(106, 40, 119, 0.40) 0%, rgba(106, 40, 119, 0.40) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") no-repeat;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.28) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") lightgray 50% / no-repeat;
   background-size: contain;
   background-position: center;
   box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.25) inset;
@@ -639,12 +640,12 @@ p {
   }
 }
 .ranking-title-en {
-  @include didot();
+  @include Kulim_Park();
   @include responsive-font(41px, 86px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: normal;
   letter-spacing: 0.09rem;
-  color: #FFF;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -669,23 +670,23 @@ p {
 }
 
 .ranking-title-ja {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(17.2px, 43.3px);
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
   letter-spacing: -0.0875rem;
-  color: #FFF;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 0;
 }
 
 .ranking-description {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(15px, 26.7px);
   font-weight: 600;
   line-height: normal;
-  color: #FFF;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 25px 0 0 0;
@@ -729,7 +730,7 @@ p {
 // New Girl Slider Styles
 .home-new-girl-slider {
   width: 100%;
-  background: #fefefe;
+  background: #F2BBCF;
   padding: 1.875rem 0 0 0;
 }
 
@@ -768,14 +769,14 @@ p {
     width: 0.75rem;
     height: 0.75rem;
     border-radius: 50%;
-    background: #d9d9d9;
+    background: #D9D9D9;
     cursor: pointer;
     transition: all 0.3s ease;
     border: none;
     padding: 0;
 
     &.active {
-      background: var(---N_, #7A5086);
+      background: var(---N_, #F2387C);
       width: 0.875rem;
       height: 0.875rem;
     }
@@ -795,7 +796,7 @@ p {
 .new-girl-slider-prev,
 .new-girl-slider-next {
   border: none;
-  background: #7A5086;
+  background: #1C2D48;
   width: 6.125rem;
   height: 6.125rem;
   display: flex;
@@ -891,7 +892,7 @@ p {
       display: none;
     }
     p {
-      border-bottom: 3px solid #48593F;
+      border-bottom: 3px solid #F2387C;
     }
   }
 
@@ -916,7 +917,7 @@ p {
       display: none;
     }
     p {
-      border-bottom: 3px solid #d90d32;
+      border-bottom: 3px solid #F2387C;
     }
   }
 
@@ -980,7 +981,7 @@ p {
     flex-shrink: 0;
     transition: all 0.3s ease;
     padding: 0;
-    background: var(---N_, #7A5086);
+    background: var(---N_, #0B9ED9);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }
@@ -1013,7 +1014,7 @@ p {
     transition: all 0.3s ease;
     padding: 0;
     border-radius: 10px 0 0 10px;
-    background: var(---N_, #7A5086);
+    background: var(---N_, #0B9ED9);
     &:hover:not(:disabled) {
       opacity: 0.8;
     }

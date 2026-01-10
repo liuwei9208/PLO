@@ -36,7 +36,7 @@
 }
 
 .news-title h1{
-  @include Hiragino_Mincho_Pro_NW6();
+  @include Kulim_Park();
   @include responsive-font(18px, 36px);
   font-weight: 600;
   line-height: normal;
@@ -72,16 +72,16 @@
   flex-shrink: 0;
   transition: all 0.3s ease;
   z-index: 10;
-  
+
   &:hover{
     opacity: 0.7;
     background: var(---N__, #2A1A08);
   }
-  
+
   &:active{
     transform: scale(0.95);
   }
-  
+
   &:disabled{
     opacity: 0.3;
     cursor: not-allowed;
@@ -89,7 +89,7 @@
       background: none;
     }
   }
-  
+
   svg{
     width: 0.75rem;
     height: 1.5625rem;
@@ -111,7 +111,7 @@
   flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
-  
+
   &:hover{
     transform: translateY(-0.3125rem);
   }
@@ -132,7 +132,7 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  
+
   img{
     width: 100%;
     height: auto;
@@ -167,7 +167,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-  
+
 
   }
 }
@@ -175,7 +175,7 @@
 .news-content-card-date,
 .diary-content-card-date{
   margin-top: 0.625rem;
-  
+
   h2{
     @include inter();
     @include responsive-font(14px, 19px);
@@ -187,7 +187,7 @@
 
 .news-content-card-content{
   margin-top: 0.3125rem;
-  
+
   p{
     @include inter();
     @include responsive-font(13px, 19px);
@@ -199,7 +199,7 @@
 }
 .diary-content-card-content{
   margin-top: 0.3125rem;
-  
+
   p{
     @include inter();
     @include responsive-font(12px, 14px);
@@ -214,7 +214,7 @@
   .news-section{
     width: 100%;
   }
-  
+
   // Hide arrow buttons
   .news-slider-prev,
   .news-slider-next,
@@ -222,7 +222,7 @@
   .diary-slider-next {
     display: none !important;
   }
-  
+
   // Enable scrollbar for news and diary content
   .news-content,
   .diary-content {
@@ -230,7 +230,7 @@
     overflow-y: hidden;
     // -webkit-overflow-scrolling: touch;
     padding-bottom: 0.625rem;
-    
+
     // CSS Variables for scrollbar styling
     // --scrollbar-color-thumb: red;
     // --scrollbar-color-track: blue;
@@ -253,7 +253,7 @@
       border-right: 0;
       // height: 0.68rem;
 
-      
+
     }
     &::-webkit-scrollbar-track {
       // background: rgba(235, 235, 235, 0.69);
@@ -286,14 +286,14 @@
     //   -webkit-appearance: none !important;
     //   appearance: none !important;
     // }
-    
+
     // &::-webkit-scrollbar-track {
     //   background: var(--scrollbar-color-track) !important;
     //   border-radius: 0.3125rem !important; // 5px - half of height for fully rounded
     //   -webkit-border-radius: 0.3125rem !important;
     //   -moz-border-radius: 0.3125rem !important;
     // }
-    
+
     // &::-webkit-scrollbar-thumb {
     //   background: var(--scrollbar-color-thumb) !important;
     //   border-radius: 0.3125rem !important; // 5px - half of height for fully rounded
@@ -302,16 +302,16 @@
     //   border: none !important;
     //   min-height: var(--scrollbar-width-legacy) !important;
     // }
-    
+
     // &::-webkit-scrollbar-thumb:hover {
     //   background: var(--scrollbar-color-thumb) !important;
     // }
-    
+
     // &::-webkit-scrollbar-thumb:active {
     //   background: var(--scrollbar-color-thumb) !important;
     // }
   }
-  
+
   // Add padding to slider wrapper when arrows are hidden
 }
 

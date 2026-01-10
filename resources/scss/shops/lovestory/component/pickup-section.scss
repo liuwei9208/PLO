@@ -61,12 +61,12 @@
   }
 }
 .pickup-title-en {
-  @include didot();
+  @include Advent_Pro();
   @include responsive-font(41px, 86px);
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
   letter-spacing: 0.09rem;
-  color: $white;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 0;
@@ -95,23 +95,23 @@
 }
 
 .pickup-title-ja {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(18px, 43px);
   font-weight: 600;
   line-height: normal;
   letter-spacing: -0.0875rem;
-  color: $white;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 0;
 }
 
 .pickup-description {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 26.4px);
   font-weight: 600;
   line-height: normal;
-  color: $white;
+  color: #F2387C;
   text-align: center;
   white-space: nowrap;
   margin: 25px 0 0 0;
@@ -152,7 +152,7 @@
   margin: 0;
   position: relative;
   z-index: 1;
-  background: var(--d-9-d-9-d-9, linear-gradient(180deg, #BA0EA8 0%, #830376 100%));
+  background: var(--d-9-d-9-d-9, #F2387C);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

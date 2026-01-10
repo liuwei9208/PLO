@@ -315,11 +315,11 @@
 }
 
 .footer-menu-link {
-  @include YuGothic();
-  font-weight: 500;
+  @include M_PLUS_1();
+  font-weight: 400;
   @include responsive-font(15px, 26px);
   line-height: 1.6875rem;
-  color: #FFF;
+  color: #1C2D48;
   text-decoration: none;
   transition: opacity 0.3s ease;
 
@@ -329,11 +329,11 @@
 }
 
 .footer-menu-separator {
-  @include YuGothic();
-  font-weight: 500;
+  @include M_PLUS_1();
+  font-weight: 400;
   @include responsive-font(16px, 22px);
   line-height: 1.6875rem;
-  color: #FFF;
+  color: #1C2D48;
   display: inline-block;
   margin: 0;
 }

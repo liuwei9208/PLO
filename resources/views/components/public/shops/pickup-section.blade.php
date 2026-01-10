@@ -25,13 +25,14 @@
     'badgeGradientStart' => '#FFF2D7',
     'badgeGradientEnd' => '#BD902F',
     'Colorchange' => false,
+    'overlay' => 'rgba(0,0,0,0.6)',
 ])
 
 <div class="home-pickup">
     <div class="pickup-header">
         <div class="pickup-header-bg">
             <img src="{{ asset($headerBackgroundImage) }}" alt="Background">
-            <div class="pickup-header-overlay" style="background: rgba(0, 0, 0, {{ $overlayOpacity }});"></div>
+            <div class="pickup-header-overlay" style="background: {{ $overlay }};"></div>
             <div class="pickup-header-shadow"></div>
         </div>
         <div class="pickup-header-content">

@@ -189,7 +189,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                     </div>
                     <div class="home-schedule-button-mobile">
                         <a class="schedule-info-button schedule-info-button-mobile"
-                            href="{{ route('public.shops.shop.schedule', ['shop' => 'miyabi']) }}"
+                            href="{{ route('public.shops.shop.schedule', ['shop' => 'en']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
                             <p style="color: #2A1A08;">一覧を見る</p>
                             <div class="schedule-info-underline" style="background: #BF5A75;"></div>
@@ -251,7 +251,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                         description="新入デビュー♪  艶の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
                         text-color="#000" border-color="#0D0709" underlineColor="#6F56A6"
                         responsive-variant="new-girl" :gradient=false
-                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
+                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'en']) }}" />
                 </div>
                 <div class="home-new-girl-slider">
                     <div class="new-girl-slider-cards">
