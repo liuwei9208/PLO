@@ -95,4 +95,4 @@
     <div class="schedule-pagination">
         {{ $todayCasts->links('pagination::shops') }}
     </div>
-    </x-miyabi-page-layout>
+    </x-en-page-layout>

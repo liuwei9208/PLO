@@ -190,7 +190,7 @@
                     </div>
                     <div class="home-schedule-button-mobile">
                         <a class="schedule-info-button schedule-info-button-mobile"
-                            href="{{ route('public.shops.shop.schedule', ['shop' => 'miyabi']) }}"
+                            href="{{ route('public.shops.shop.schedule', ['shop' => 'shiroganeze']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
                             <p style="color: #2A1A08;">一覧を見る</p>
                             <div class="schedule-info-underline" style="background: #BF5A75;"></div>
