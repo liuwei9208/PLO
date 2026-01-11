@@ -1,5 +1,5 @@
-<x-en-page-layout page-title="SYSTEM" page-subtitle="料金システム"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 料金システム" :assets="['resources/scss/shops/en/system.scss']" :banners="$banners">
+<x-lovestory-page-layout page-title="SYSTEM" page-subtitle="料金システム"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 料金システム" :assets="['resources/scss/shops/lovestory/system.scss']" :banners="$banners">
     <section class="system-section">
         <div class="system-card">
             <div class="system-card-image">
@@ -330,4 +330,4 @@
             </div>
         </div>
     </section>
-</x-en-page-layout>
+</x-lovestory-page-layout>
