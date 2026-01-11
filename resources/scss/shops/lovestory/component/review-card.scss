@@ -119,20 +119,21 @@
 }
 
 .review-card-name {
-  @include yu-mincho-regular();
-  font-weight: 600;
+  @include M_PLUS_1();
+  font-weight: 400;
   font-size: 26px;
   @include responsive-font(18.5px, 29px);
-  color: #010307;
+  color: #1C2D48;
   margin: 0;
   line-height: normal;
 }
 
 .review-card-measurements {
-  @include lustria();
+  @include M_PLUS_1();
   @include responsive-font(12.8px, 17.5px);
-  color: #010307;
+  color: #1C2D48;
   line-height: normal;
+  font-weight: 400;
 }
 
 .review-card-rating-section {
@@ -176,9 +177,10 @@
 }
 
 .review-card-tags {
-  @include lustria();
+  @include M_PLUS_1();
   @include responsive-font(12px, 15px);
-  color: #010307;
+  color: #1C2D48;
+  font-weight: 400;
   margin: 0;
   line-height: normal;
   text-align: justify;
@@ -210,9 +212,10 @@
 }
 
 .review-card-comment-author {
-  @include Hiragino_Mincho_Pro_NW6();
+  @include Kulim_Park();
   @include responsive-font(15.8px, 19px);
-  color: #010307;
+  color: #1C2D48;
+  font-weight: 600;
   margin: 0;
   line-height: normal;
   width: 100%;
@@ -243,23 +246,24 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(---N_, #7A5086);
+    background: var(---N_, #FFDE32);
     border-radius: 2.5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(---N_, #7A5086);
+    background: var(---N_, #FFDE32);
   }
 
   scrollbar-width: thin;
-  scrollbar-color: var(---N_, #7A5086) transparent;
+  scrollbar-color: var(---N_, #FFDE32) transparent;
 }
 
 .review-card-comment-textarea {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   font-weight: 400;
   font-size: 15px;
-  color: #010307;
+  color: #1C2D48;
+  font-weight: 400;
   background: transparent;
   border: none;
   outline: none;
@@ -328,20 +332,21 @@
 }
 
 .review-card-shop-reply-title {
-  @include yu-mincho-pr6n();
-  font-weight: 600;
+  @include M_PLUS_1();
+  font-weight: 400;
   font-size: 18px;
-  color: #010307;
+  color: #1C2D48;
+  font-weight: 400;
   margin: 0;
   line-height: normal;
   flex-shrink: 0;
 }
 
 .review-card-shop-reply-text {
-  @include yu-mincho-regular();
-  font-weight: 400;
+  @include M_PLUS_1();
+  font-weight: 300;
   font-size: 16px;
-  color: #010307;
+  color: #1C2D48;
   margin: 0;
   line-height: normal;
   flex: 1;

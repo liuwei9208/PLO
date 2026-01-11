@@ -1,7 +1,7 @@
-<x-en-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/en/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
+<x-lovestory-page-layout page-title="RANKING" page-subtitle="女の子ランキング"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/lovestory/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
-        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'en']) }}" method="get"
+        <form action="{{ route('public.shops.shop.ranking', ['shop' => 'lovestory']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
             <select name="rank_id" onchange="this.form.submit()"
                 class="ranking-filter-btn-mobile ranking-filter-btn-active">
@@ -383,4 +383,4 @@
             </div>
         </div>
     </section>
-</x-en-page-layout>
+</x-lovestory-page-layout>

@@ -1,5 +1,5 @@
-<x-en-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ キャスト一覧" :assets="['resources/scss/shops/en/castlist.scss']" :banners="$banners">
+<x-lovestory-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ キャスト一覧" :assets="['resources/scss/shops/lovestory/castlist.scss']" :banners="$banners">
     <div class="castlist-card-list">
         {{-- @for ($i = 1; $i <= 20; $i++)
         <x-public.shops.schedule-card
@@ -31,22 +31,22 @@
             <x-public.shops.schedule-card
                 href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                 background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                frame-image="assets/img/shops/en/card-frame.png" badge-shift="本日出勤"
+                frame-image="assets/img/shops/lovestory/card-frame.png" badge-shift="本日出勤"
                 badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                 status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                 measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
-                message="{{ $cast->appeal_point }}" variant="castlist"                                     contentGradientStart="rgba(255, 255, 255, 0.00)"
-                contentGradientStartPercent="4.33%"
-                contentGradientEnd="rgba(255, 255, 255, 0.85)" contentGradientEndPercent="36.06%"
-                badgeBorderColor="#523C47" badgeBgColor="#523C47" badgeTextColor="#F2FF00"
-                badgeTimeColor="#2A1A08" :messageGradient=false measurementsColor="#132126"
-                nameColor="#132126" messageColor="#132126" />
+                message="{{ $cast->appeal_point }}" variant="castlist"                                     contentGradientStart="#F2387C"
+                contentGradientStartPercent="41.35%"
+                contentGradientEnd="rgba(255, 255, 255, 0.3)" contentGradientEndPercent="100%"
+                badgeBorderColor="#FFDE32" badgeBgColor="#FFDE32" badgeTextColor="#F2387C"
+                badgeTimeColor="#1C2D48" :messageGradient=false measurementsColor="#1C2D48"
+                nameColor="#1C2D48" messageColor="#1C2D48" />
         @endforeach
     </div>
     <div class="castlist-pagination">
         {{ $castlist->links('pagination::shops') }}
     </div>
-    </x-en-page-layout>
+</x-lovestory-page-layout>
     {{-- @once
     @vite(['resources/scss/shops/pagination.scss'])
 @endonce --}}

@@ -185,22 +185,22 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #6F56A6);
+  background: var(---N_, #F2387C);
   color: var(---N__, #FFF);
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(19px, 24.4px);
   // font-size: 23px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
 }
 
 .diary-post-title span {
-  color: var(---N___, #171923);
-  @include yu-mincho-regular();
+  color: var(---N___, #1C2D48);
+  @include M_PLUS_1();
   font-size: 22px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: normal;
 }
 
@@ -208,12 +208,12 @@
   // width: 82.35%; // ~280px relative to 340px card width
   width: 280px;
   height: 1px;
-  border-color: #6F56A6;
+  border-color: #F2387C;
 }
 
 .diary-post-title p {
-  color: var(---N___, #171923);
-  @include yu-mincho-regular();
+  color: var(---N___, #1C2D48);
+  @include Kulim_Park();
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -295,11 +295,11 @@
 
 .diary-post-content p {
   width: 82.35%; // ~280px relative to 340px card width
-  color: var(---N___, #171923);
-  @include yu-mincho-regular();
+  color: var(---N___, #1C2D48);
+  @include M_PLUS_1();
   @include responsive-font(15px, 18px);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 29px; /* 170.588% */
 
   display: -webkit-box;
@@ -477,6 +477,6 @@
   @include times-new-roman();
 }
 .fc .fc-day-other {
-  color: #A68692;        /* グレー */
+  color: #F2387C;        /* グレー */
   // background-color: #f9fafb;
 }

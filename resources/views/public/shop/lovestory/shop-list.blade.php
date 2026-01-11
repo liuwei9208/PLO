@@ -1,5 +1,5 @@
-<x-en-page-layout -page-layout page-title="SHOP LIST" page-subtitle="店舗一覧"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 店舗一覧" :assets="['resources/scss/shops/en/shop-list.scss']" :banners="$banners">
+<x-lovestory-page-layout -page-layout page-title="SHOP LIST" page-subtitle="店舗一覧"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 店舗一覧" :assets="['resources/scss/shops/lovestory/shop-list.scss']" :banners="$banners">
     <section class="shop-list-section">
         <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
@@ -218,4 +218,4 @@
             </div>
         </a>
     </section>
-</x-en-page-layout>
+</x-lovestory-page-layout>

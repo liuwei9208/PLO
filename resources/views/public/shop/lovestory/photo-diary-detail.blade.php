@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-en-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/en/photo-diary-detail.scss']" :banners="$banners">
+<x-lovestory-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/lovestory/photo-diary-detail.scss']" :banners="$banners">
     <section class="photo-diary-details-section">
         <h1 class="photo-diary-details-section-title">写メ日記詳細</h1>
         <div class="photo-diary-details-section-content">
@@ -64,7 +64,7 @@
                 <hr>
                 <div class="blog-pagination">
                     @if ($prevDiary)
-                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'en', 'id' => $prevDiary->id]) }}"
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'lovestory', 'id' => $prevDiary->id]) }}"
                             class="blog-pagination-btn blog-pagination-prev">
                             <p>前の投稿</p>
                         </a>
@@ -73,12 +73,12 @@
                             <p>前の投稿</p>
                         </div>
                     @endif
-                    <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'en']) }}"
+                    <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'lovestory']) }}"
                         class="blog-pagination-btn blog-pagination-list">
                         <p>一覧へ</p>
                     </a>
                     @if ($nextDiary)
-                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'en', 'id' => $nextDiary->id]) }}"
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'lovestory', 'id' => $nextDiary->id]) }}"
                             class="blog-pagination-btn blog-pagination-next">
                             <p>次の投稿</p>
                         </a>
@@ -97,7 +97,7 @@
             </div>
         </div>
     </div>
-</x-en-page-layout>
+</x-lovestory-page-layout>
 <script>
     let cast_id = "{{ $diary->cast_id }}";
     let shop_id = "{{ $shop->id }}";
@@ -106,5 +106,5 @@
     let diarys_date = {!! json_encode($diarys_date) !!};
 </script>
 @once
-    @vite(['resources/scss/shops/en/photo-diary-detail.scss', 'resources/js/shops/en/photo-diary-detail.js'])
+    @vite(['resources/scss/shops/lovestory/photo-diary-detail.scss', 'resources/js/shops/lovestory/photo-diary-detail.js'])
 @endonce

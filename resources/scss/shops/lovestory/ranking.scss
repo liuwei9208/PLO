@@ -19,15 +19,15 @@
   gap: 10px;
   padding: 10px 25px;
   border-radius: 25px;
-  border: 3px solid #7A5086;
+  border: 3px solid #F2387C;
   background-color: white;
   cursor: pointer;
   transition: all 0.3s ease;
 
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(19px, 19px);
   font-weight: 600;
-  color: #6F56A6;
+  color: #F2387C;
 
   &:hover {
     opacity: 0.8;
@@ -39,9 +39,9 @@
 }
 
 .ranking-filter-btn-active {
-  background-color: #7A5086;
-  border: none;
-  color: #FFF9FE;
+  background-color: #F2387C;
+  border: 3px solid #F2387C;
+  color: #FFF;
 }
 
 .ranking-filter-btn-mobile {
@@ -56,29 +56,29 @@
 
 .ranking-no1-header {
   display: flex;
-  background: var(---N__, #FFF9FE);
+  background: var(---N__, rgba(242, 242, 242, 0.70));
   gap: 50px;
   justify-content: center;
   padding: 40px 40px;
 }
 
 .no1-person-name {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(31px, 43.5px);
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   text-align: center;
-  background: linear-gradient(0deg, rgba(86, 65, 112, 0.85) 70.19%, rgba(255, 255, 255, 0.00) 100%);
+  background: linear-gradient(180deg, #654500 20.67%, #BD902F 64.42%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .no1-person-details {
-  @include times-new-roman();
+  @include Kulim_Park();
   @include responsive-font(16px, 22px);
   font-weight: 400;
-  background: linear-gradient(0deg, rgba(86, 65, 112, 0.85) 70.19%, rgba(255, 255, 255, 0.00) 100%);
+  background: linear-gradient(180deg, #654500 20.67%, #BD902F 64.42%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -92,12 +92,12 @@
 }
 
 .no1-person-services p {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 18.8px);
   line-height: 29px;
-  color: var(---N___, #010307);
+  color: var(---N___, #1C2D48);
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .rankig-no1-content {
@@ -176,17 +176,17 @@
     gap: 10px;
     padding: 10px 25px;
     border-radius: 25px;
-    border: 3px solid #ffda89;
-    background-color: #ffda89;
+    border: 3px solid #F2387C;
+    background-color: #F2387C;
     cursor: pointer;
     transition: all 0.3s ease;
     width: 100%;
     max-width: 355px;
 
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     font-size: 18px;
-    font-weight: 600;
-    color: #2a1a08;
+    font-weight: 400;
+    color: #FFF;
     text-align: center;
 
     span {
@@ -287,8 +287,8 @@
 .ranking-list-no23 {
   width: 100%;
   display: flex;
-  background: var(---N__, #FFF9FE);
-  border-bottom: 2px solid #7A5086;
+  background: var(---N__, rgba(242, 242, 242, 0.70));
+  border-bottom: 2px solid #F2387C;
 }
 
 .ranking-no23-container {
@@ -299,24 +299,24 @@
   padding: 20px 30px;
   display: flex;
   gap: 40px;
-  border-right: 2px solid #7A5086;
+  // border-right: 2px solid #7A5086;
   // border-bottom: 1px solid #7A5086;
 }
 
 .no23-person-name {
-  color: var(---N___, #010307);
+  color: var(---N___, #1C2D48);
   text-align: center;
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   font-size: 37px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   text-align: left;
 }
 
 .no23-person-details {
-  color: var(---N___, #010307);
-  @include times-new-roman();
+  color: var(---N___, #1C2D48);
+  @include Kulim_Park();
   font-size: 19px;
   font-style: normal;
   font-weight: 400;
@@ -374,11 +374,11 @@
 }
 
 .ranking-no23-services p {
-  color: var(---N___, #010307);
-  @include yu-mincho-regular();
+  color: var(---N___, #1C2D48);
+  @include M_PLUS_1();
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 29px; /* 161.111% */
 }
 
@@ -506,40 +506,40 @@
 }
 
 .ranking-no4567-hr {
-  border: 1px solid #7A5086;
+  border: 1px solid #F2387C;
   margin: 15px 20px;
 }
 
 .no4567-person-name {
-  color: var(---N___, #010307);
+  color: var(---N___, #1C2D48);
   text-align: center;
   // font-family: "Yu Mincho";
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   font-size: 37px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   text-align: center;
 }
 
 .no4567-person-details {
-  color: var(---N___, #010307);
-  @include times-new-roman();
+  color: var(---N___, #1C2D48);
+  @include Kulim_Park();
   // font-family: "Times New Roman";
   font-size: 19px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
   text-align: center;
 }
 
 .ranking-no4567-services p {
-  color: var(---N___, #010307);
+  color: var(---N___, #1C2D48);
   // font-family: "Yu Mincho";
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 29px; /* 161.111% */
   padding: 0px 20px 30px 20px;
 }

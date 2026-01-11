@@ -78,13 +78,13 @@
             </nav> --}}
         </div>
     </section>
-</x-shiroganeze-page-layout>
+</x-en-page-layout>
 <script>
     function cast_change(value) {
         if (value) {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}/" + value;
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'en']) }}/" + value;
         } else {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}";
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'en']) }}";
         }
     }
 </script>

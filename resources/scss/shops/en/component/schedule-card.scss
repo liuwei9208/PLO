@@ -155,7 +155,7 @@
 }
 
 .schedule-card-name {
-  @include Hiragino_Mincho_Pro_NW6();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 600;
   margin: 0;
@@ -163,14 +163,14 @@
   // color: #132126 ;
 }
 .castlist-card-name {
-  @include Hiragino_Mincho_Pro_W6() ;
+  @include M_PLUS_1() ;
   // color: #132126 !important;
 }
 .schedule-card-measurements {
-  @include times-new-roman();
+  @include YuGothic();
   // font-family: "Times New Roman", Times, serif;
   @include responsive-font(15px, 16px);
-  font-weight: 400;
+  font-weight: 500;
   margin: 0;
   line-height: 1.4;
 }
@@ -178,7 +178,7 @@
   // color: #132126 !important;
 }
 .schedule-card-message {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(17px, 20.6px);
   // background-clip: text;
   // -webkit-background-clip: text;

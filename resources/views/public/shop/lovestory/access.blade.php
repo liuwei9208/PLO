@@ -1,5 +1,5 @@
-<x-en-page-layout page-title="ACCESS" page-subtitle="アクセス情報"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ アクセス情報" :assets="['resources/scss/shops/en/access.scss']" :banners="$banners">
+<x-lovestory-page-layout page-title="ACCESS" page-subtitle="アクセス情報"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ アクセス情報" :assets="['resources/scss/shops/lovestory/access.scss']" :banners="$banners">
     <section class="access-section">
         <h1 class="access-title">ABOUT</h1>
         <div class="access-content">
@@ -38,4 +38,4 @@
             <img src="{{ asset('assets/img/shops/shizuku/map-sp.png') }}" alt="Map" class="sp-only"> --}}
         </div>
     </section>
-</x-en-page-layout>
+</x-lovestory-page-layout>

@@ -118,12 +118,12 @@ p{
     }
 
     p {
-        @include Hiragino_Mincho_Pro_W6();
+        @include M_PLUS_1();
         @include responsive-font(12px, 15px);
-        font-weight: 600;
+        font-weight: 400;
         font-style: normal;
         line-height: normal;
-        color: #2A1A08;
+        color: #260101;
     }
 }
 

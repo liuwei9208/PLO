@@ -163,7 +163,8 @@
   // color: #132126 ;
 }
 .castlist-card-name {
-  @include Hiragino_Mincho_Pro_W6() ;
+  @include M_PLUS_1() ;
+  font-weight: 600;
   // color: #132126 !important;
 }
 .schedule-card-measurements {

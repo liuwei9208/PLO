@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-en-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/en/photo-diary.scss']" :banners="$banners">
+<x-lovestory-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/lovestory/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
@@ -166,7 +166,7 @@
         <div class="diary-body-left-calendar-content" id="diary-calendar-mobile">
         </div>
     </div>
-    </x-miyabi-page-layout>
+    </x-lovestory-page-layout>
     <script>
         // let cast_id = "";
         let shop_id = "{{ $shop->id }}";
@@ -175,5 +175,5 @@
         let diarys_date = {!! json_encode($diarys_date) !!};
     </script>
     @once
-        @vite(['resources/scss/shops/en/photo-diary.scss', 'resources/js/shops/en/photo-diary.js'])
+        @vite(['resources/scss/shops/lovestory/photo-diary.scss', 'resources/js/shops/lovestory/photo-diary.js'])
     @endonce

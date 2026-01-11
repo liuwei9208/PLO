@@ -36,13 +36,13 @@
 }
 
 .page-number.active {
-  background: var(---N_, #6F56A6);
+  background: var(---N_, #F2387C);
   color: var(---N__, #ffffff);
-  border-color: #6F56A6;
+  border-color: #F2387C;
   font-weight: 600;
 
   &:hover {
-    background: #6F56A6;
+    background: #F2387C;
     opacity: 1;
     color: #ffffff;
   }

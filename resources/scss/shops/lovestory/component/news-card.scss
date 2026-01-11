@@ -2,14 +2,14 @@
 @use '../../../mixins/font' as *;
 
 .news-section{
-    // background: rgba(255, 249, 254, 0.70);
+    background: rgba(255, 249, 254, 0.70);
 }
 .news-card{
     display: flex;
     width: 100%;
     gap: 40px;
     padding: 50px 30px;
-    border-bottom: 1px solid #FFF9FE;
+    border-bottom: 1px solid #FFDA89;
     text-decoration: none;
     color: inherit;
     transition: opacity 0.3s ease;
@@ -65,7 +65,7 @@
     @include yu-mincho-regular();
     @include responsive-font(22.8px, 26px);
     font-weight: 600;
-    color: #FFF9FE;
+    color: #1C2D48;
 }
 
 @media screen and (max-width: 850px) {
@@ -78,7 +78,7 @@
     @include yu-mincho-regular();
     @include responsive-font(16.8px, 21.3px);
     font-weight: 600;
-    color: #FFF9FE;
+    color: #1C2D48;
 }
 @media screen and (max-width: 850px) {
     .news-date{
@@ -91,7 +91,7 @@
     @include yu-mincho-regular();
     @include responsive-font(16px, 16px);
     font-weight: 600;
-    color: #FFF9FE;
+    color: #1C2D48;
     line-height: 31px;
     white-space: pre-line;
 }
