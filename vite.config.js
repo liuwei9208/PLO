@@ -195,6 +195,7 @@ export default defineConfig({
         'resources/scss/shops/miyabi/photo-diary-detail.scss',
         'resources/js/shops/miyabi/photo-diary-detail.js',
         'resources/scss/shops/miyabi/castlist.scss',
+        'resources/scss/shops/miyabi/profile.scss',
 
         'resources/scss/shops/shiroganeze/home.scss',
         'resources/scss/shops/shiroganeze/page-layout.scss',
@@ -223,6 +224,7 @@ export default defineConfig({
         'resources/scss/shops/shiroganeze/photo-diary-detail.scss',
         'resources/scss/shops/shiroganeze/castlist.scss',
         'resources/js/shops/shiroganeze/photo-diary-detail.js',
+        'resources/scss/shops/shiroganeze/profile.scss',
 
         'resources/scss/shops/en/home.scss',
         'resources/scss/shops/en/page-layout.scss',
@@ -251,6 +253,7 @@ export default defineConfig({
         'resources/scss/shops/en/photo-diary-detail.scss',
         'resources/scss/shops/en/castlist.scss',
         'resources/js/shops/en/photo-diary-detail.js',
+        'resources/scss/shops/en/profile.scss',
 
         'resources/scss/shops/lovestory/home.scss',
         'resources/scss/shops/lovestory/page-layout.scss',
@@ -279,6 +282,7 @@ export default defineConfig({
         'resources/scss/shops/lovestory/photo-diary-detail.scss',
         'resources/scss/shops/lovestory/castlist.scss',
         'resources/js/shops/lovestory/photo-diary-detail.js',
+        'resources/scss/shops/lovestory/profile.scss',
       ],
       refresh: true,
     }),
