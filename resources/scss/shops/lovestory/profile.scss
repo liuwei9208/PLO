@@ -125,12 +125,12 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
   // border: 5px solid var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
 }
 
 .girl-basic-info-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,9 +139,9 @@
 }
 
 .girl-basic-info-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 35px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   color: #fff;
   margin: 0;
   letter-spacing: 0.08em;
@@ -164,25 +164,25 @@
   }
 }
 .girl-basic-info-name {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(30px, 31px);
   font-weight: 600 !important;
-  color: #3A2D35;
+  color: #1C2D48;
 }
 
 .girl-basic-info-meta {
-  @include yu-mincho-regular();
+  @include Kulim_Park();
   @include responsive-font(18px, 19px);
-  font-weight: 400 !important;
-  color: #3A2D35;
+  font-weight: 300 !important;
+  color: #0D0A0C;
   margin: 0;
 }
 
 .girl-basic-info-caption {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(18px, 23px);
   font-weight: 600 !important;
-  color: #3A2D35;
+  color: #1C2D48;
   text-align: center;
   // padding: 10px 10px 15px;
   margin: 3px 6px 6px 6px;
@@ -333,7 +333,7 @@
   width: 100%;
   // border-radius: 15px 15px 0 0;
   border-radius: 15px;
-  background: var(---N__, #3A2D35);
+  background: var(---N__, #F2387C);
   margin-top: 10px;
   padding-bottom: 10px;
 }
@@ -346,10 +346,10 @@
   padding: 0px 20px;
 }
 .girl-video-title h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
-  color: #FEFEFE;
+  font-weight: 400 !important;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -387,12 +387,12 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
   overflow: hidden;
 }
 
 .girl-qa-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,9 +405,9 @@
 }
 
 .girl-qa-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
   color: #fff;
@@ -429,7 +429,7 @@
 .girl-qa-row {
   display: grid;
   grid-template-columns: 45% 55%;
-  border-bottom: 1px solid #e5d6b4;
+  border-bottom: 1px solid #1C2D48;
 }
 
 @media screen and (max-width: 850px) {
@@ -456,8 +456,8 @@
 }
 
 .girl-qa-question {
-  background: #FFFDF0;
-  border-right: 1px solid #e5d6b4;
+  background: #FFF0F0;
+  border-right: 1px solid #1C2D48;
 }
 
 .girl-qa-answer {
@@ -465,34 +465,34 @@
 }
 
 .girl-qa-question .girl-qa-label {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
-  font-weight: 600 !important;
-  color: #2A1A08;
+  font-weight: 400 !important;
+  color: #1C2D48;
   flex-shrink: 0;
 }
 
 .girl-qa-answer .girl-qa-label {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #2A1A08;
+  color: #1C2D48;
   flex-shrink: 0;
 }
 
 .girl-qa-question .girl-qa-text {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
-  font-weight: 600 !important;
-  color: #10040E;
+  font-weight: 400 !important;
+  color: #1C2D48;
   line-height: 1.6;
 }
 
 .girl-qa-answer .girl-qa-text {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #10040E;
+  color: #1C2D48;
   line-height: 1.6;
 }
 
@@ -501,11 +501,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-play-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -518,12 +518,12 @@
 }
 
 .girl-play-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  background: var(---N_, #FEFEFE);
+  background: var(---N_, #FFF);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -564,13 +564,13 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  background: var(---N_, #9668B6);
+  background: var(---N_, #F2387C);
 }
 
 .girl-play-item-title h4 {
-  color: #FEFEFE;
+  color: #FFF;
   text-align: center;
-  @include lustria();
+  @include M_PLUS_1();
   @include responsive-font(21px, 21px);
   font-weight: 400 !important;
   flex-shrink: 0;
@@ -596,8 +596,8 @@
   height: 15px;
 }
 .girl-play-item-details p {
-  color: var(---N__, #0F0002);
-  @include yu-mincho-regular();
+  color: var(---N__, #1C2D48);
+  @include M_PLUS_1();
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -672,11 +672,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-message-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -689,12 +689,12 @@
 }
 
 .girl-message-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF9FE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -711,9 +711,9 @@
 }
 
 .girl-message-content p {
-  @include Hiragino_Mincho_Pro();
+  @include M_PLUS_1();
   @include responsive-font(18px, 18px);
-  color: #3A2D35;
+  color: #1C2D48;
   line-height: 1.8;
   margin: 0;
 }
@@ -723,11 +723,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-diary-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -736,12 +736,12 @@
 }
 
 .girl-diary-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -865,11 +865,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-schedule-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -882,12 +882,12 @@
 }
 
 .girl-schedule-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1018,10 +1018,10 @@
 }
 
 .girl-schedule-date {
-  @include times-new-roman();
+  @include Kulim_Park();
   @include responsive-font(18px, 18px);
   font-weight: 700;
-  color: #10040E;
+  color: #1C2D48;
 }
 
 .girl-schedule-label svg {
@@ -1031,23 +1031,23 @@
 }
 
 .girl-schedule-time {
-  @include times-new-roman();
+  @include Kulim_Park();
   @include responsive-font(18px, 18px);
   font-weight: 700 !important;
   color: #0F0002;
   text-align: center;
   line-height: 0.8;
-  max-width: 43px;
+  // max-width: 46px;
 }
 .girl-schedule-rest {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(14px, 14px);
 
-  font-weight: 600 !important;
-  color: #0F0002;
+  font-weight: 400 !important;
+  color: #1C2D48;
   text-align: center;
   line-height: 0.8;
-  max-width: 43px;
+  // max-width: 43px;
 }
 
 .girl-no-schedule {
@@ -1060,11 +1060,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-manager-comment-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1077,12 +1077,12 @@
 }
 
 .girl-manager-comment-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1099,10 +1099,10 @@
 }
 
 .girl-manager-comment-content p {
-  @include Hiragino_Mincho_Pro();
+  @include M_PLUS_1();
   @include responsive-font(18px, 18px);
-  font-weight: 300;
-  color: #3A2D35;
+  font-weight: 400;
+  color: #1C2D48;
   line-height: 1.8;
   margin: 0;
 }
@@ -1112,11 +1112,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-sales-points-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1129,12 +1129,12 @@
 }
 
 .girl-sales-points-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1161,11 +1161,11 @@
 }
 
 .girl-sales-points-label {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 600;
-  color: #3A2D35;
-  background: #EBEBEB;
+  color: #F2387C;
+  background: #F2BBCF;
   padding: 6px 12px;
   min-width: 100px;
   text-align: center;
@@ -1191,12 +1191,12 @@
 }
 
 .girl-sales-points-tag {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 600 !important;
-  color: #3A2D35;
+  color: #F2387C;
   background: #ffffff;
-  border: 1px solid #6F56A6;
+  border: 1px solid #F2BBCF;
   border-radius: 4px;
   padding: 6px 12px;
   white-space: nowrap;
@@ -1207,11 +1207,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #3A2D35;
+  background: #F2387C;
 }
 
 .girl-reviews-header {
-  background: #3A2D35;
+  background: #F2387C;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1224,12 +1224,12 @@
 }
 
 .girl-reviews-header h3 {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
-  font-weight: 600 !important;
+  font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #FFF;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1285,10 +1285,10 @@
 }
 
 .girl-review-rating {
-  @include times-new-roman();
+  @include Kulim_Park();
   @include responsive-font(17px, 17px);
   font-weight: 400;
-  color: #3A2D35;
+  color: #1C2D48;
   margin-left: 4px;
 }
 
@@ -1298,10 +1298,10 @@
 }
 
 .girl-review-meta span {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 400;
-  color: #3A2D35;
+  color: #1C2D48;
 }
 
 .girl-review-body {
@@ -1311,10 +1311,10 @@
 }
 
 .girl-review-text {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(15px, 16px);
-  font-weight: 600 !important;
-  color: #3A2D35;
+  font-weight: 400 !important;
+  color: #1C2D48;
   line-height: 1.8;
   max-height: 100px;
   overflow-y: auto;
@@ -1340,10 +1340,10 @@
 }
 
 .girl-review-author {
-  @include Hiragino_Mincho_Pro_NW6();
+  @include M_PLUS_1();
   @include responsive-font(18px, 18px);
-  font-weight: 700;
-  color: #3A2D35;
+  font-weight: 500;
+  color: #1C2D48;
   margin-bottom: 10px;
 }
 
@@ -1364,12 +1364,12 @@
 }
 
 .girl-reviews-more-btn {
-  @include yu-mincho-regular();
+  @include M_PLUS_1();
   @include responsive-font(16px, 16px);
-  font-weight: 600 !important;
-  color: #3A2D35;
+  font-weight: 400 !important;
+  color: #1C2D48;
   background: #ffffff;
-  border: 1px solid #3A2D35;
+  border: 1px solid #1C2D48;
   border-radius: 24px;
   padding: 10px 32px;
   text-decoration: none;
@@ -1378,6 +1378,6 @@
 }
 
 .girl-reviews-more-btn:hover {
-  background: #2a1a08;
+  background: #1C2D48;
   color: #ffffff;
 }

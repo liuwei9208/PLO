@@ -68,26 +68,26 @@ p{
     }
 
     h1 {
-        @include times-new-roman();
+        @include Advent_Pro();
         @include responsive-font(47px, 95px);
         font-style: normal;
-        font-weight: 400;
+        font-weight: 700;
         line-height: normal;
         letter-spacing: 1.6px;
-        color: #7A5086;
-        background: #7A5086;
+        color: #F2387C;
+        background: #F2387C;
         background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     p {
-        @include yu-mincho-regular();
+        @include M_PLUS_1();
         @include responsive-font(19px, 25px);
         font-style: normal;
-        font-weight: 600 !important;
+        font-weight: 400 !important;
         line-height: normal;
-        color: #7A5086;
+        color: #F2387C;
     }
 }
 
@@ -154,24 +154,24 @@ p{
 }
 
 .top-page-link {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     display: inline-block;
     padding: 0.75rem 10rem;
-    background: #FFF9FE;
-    color: #0D0709;
+    background: #F2387C;
+    color: #FFF;
     text-decoration: none;
     border-radius: 50px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
     transition: all 0.3s ease;
     width: 37.5rem;
 
     &:hover {
-        background: #3A2D35;
+        background: #FFF;
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        color: #FFF9FE;
+        color: #F2387C;
     }
 }
 

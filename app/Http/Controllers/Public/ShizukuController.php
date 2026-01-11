@@ -304,7 +304,7 @@ class ShizukuController extends Controller
             DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_time,
             DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_time")
         ->get();
-
+        // dd($attendances);
         Carbon::setLocale('ja');
         for ($i = 0; $i < 7; $i++) {
             $date = Carbon::now()->addDays($i)->format('Y-m-d');
@@ -313,7 +313,8 @@ class ShizukuController extends Controller
             $minDay = Carbon::now()->addDays($i)->dayOfWeek;
             $status = 'お休み';
             foreach ($attendances as $attendance) {
-                if ($attendance->start_date == $date) {
+                // dd($attendance->start_date, $weekDay);
+                if ($attendance->start_date == $weekDay) {
                     // $status =   '出勤中';
                     $status = $attendance->start_time . '~' . $attendance->end_time;
                 }

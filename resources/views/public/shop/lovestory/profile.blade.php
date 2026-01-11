@@ -1,5 +1,5 @@
-<x-en-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 女の子プロフィール" :assets="['resources/scss/shops/en/profile.scss', 'resources/js/shops/shizuku/profile.js']" :banners="$banners">
+<x-lovestory-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール"
+    breadcrumb="エッチな女の子育成ヘルス ラブストーリー ＞ トップページ ＞ 女の子プロフィール" :assets="['resources/scss/shops/lovestory/profile.scss', 'resources/js/shops/shizuku/profile.js']" :banners="$banners">
     <div class="flex w-full mt-6 mobile-profile-content max-md:mt-0">
         <div class="profile-left-colum">
             <div class="girl-info-section-wrapper">
@@ -15,7 +15,7 @@
                 <div class="girl-info-section">
                     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}"
                         class="cast-image main-image" id="mainImage">
-                    <img src="{{ asset('assets/img/shops/en/card-frame.png') }}" alt="Frame"
+                    <img src="{{ asset('assets/img/shops/lovestory/card-frame.png') }}" alt="Frame"
                         class="cast-frame">
                 </div>
 
@@ -798,4 +798,4 @@
             @endif
         </div>
     </div>
-</x-en-page-layout>
+</x-lovestory-page-layout>
