@@ -72,7 +72,7 @@
   border-radius: 1.875rem 0 0 1.875rem;
 
   .badge-shift {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     @include responsive-font(11px, 18.5px);
     font-weight: 600;
     letter-spacing: 0.05rem;
@@ -88,7 +88,7 @@
   background: $white;
 
   .badge-time {
-    @include times-new-roman();
+    @include Open_Sans();
     @include responsive-font(14px, 20.5px);
     font-weight: 700;
     // font-family: 'Times New Roman', Times, serif;
@@ -148,7 +148,7 @@
 
   .status-text {
     text-align: center;
-    @include Hiragino_Mincho_Pro_NW6();
+    @include M_PLUS_1();
     @include responsive-font(16px, 24px);
     font-weight: 600;
   }
@@ -164,6 +164,7 @@
 }
 .castlist-card-name {
   @include M_PLUS_1() ;
+  font-weight: 600;
   // color: #132126 !important;
 }
 .schedule-card-measurements {
