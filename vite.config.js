@@ -254,6 +254,7 @@ export default defineConfig({
         'resources/scss/shops/en/castlist.scss',
         'resources/js/shops/en/photo-diary-detail.js',
         'resources/scss/shops/en/profile.scss',
+        'resources/js/shops/en/home.js'
 
         'resources/scss/shops/lovestory/home.scss',
         'resources/scss/shops/lovestory/page-layout.scss',
