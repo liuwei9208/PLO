@@ -140,7 +140,8 @@ $media-query: (
   sm: '(min-width: 376px) and (max-width: 767px)',
   md: '(min-width: 768px) and (max-width: 1439px)',
   lg: '(min-width: 1440px) and (max-width: 1919px)',
-  xl: '(min-width: 1920px)'
+  xl: '(min-width: 1920px) and (max-width: 2559px)',
+  xxl: '(min-width: 2560px)'
 );
 @function media-query($width) {
   @return map.get($media-query, $width);

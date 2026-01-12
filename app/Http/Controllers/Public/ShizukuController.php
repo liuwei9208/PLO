@@ -1026,4 +1026,29 @@ class ShizukuController extends Controller
             'banners' => $banners,
         ]);
     }
+
+    public function showTrans(Request $request): View
+    {
+        $shop = $request->route('shop', 'shizuku');
+        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $lang = $request->lang;
+        // Map language codes to locale codes
+        $locale = match($lang) {
+            'en' => 'en',
+            'zh-CN' => 'zh-CN',
+            'zh-TW' => 'zh-TW',
+            'ko' => 'ko',
+            default => $lang,
+        };
+        app()->setLocale($locale);
+        session(['locale' => $locale]);
+
+        $shop_item = Shop::where('slug', $shop)->get()->first();
+        return view('public.shop.' . $shop . '.trans', [
+            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'banners' => $banners,
+            'lang' => $lang,
+            'shop_item' => $shop_item,
+        ]);
+    }
 }
