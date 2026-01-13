@@ -1137,6 +1137,10 @@ p {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+
+  @media #{media-query(xs)} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 
 .trans-dialog-content-btn-link {

@@ -229,11 +229,65 @@
             mobileImage="{{ asset('assets/img/shops/lovestory/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
+        <div class="fixed-side-trans-button">
+          <img src="{{ asset('assets/img/shops/lovestory/trans.png') }}" alt="Transparent BG">
+        </div>
+        <div class="trans-dialog">
+          <div class="trans-dialog-header">
+          </div>
+          <div class="trans-dialog-content">
+            <div class="trans-dialog-content-header">
+              <button class="trans-dialog-close"> close </button>
+            </div>
+            <h3>Translation Page</h3>
+            <div class="trans-dialog-content-btns">
+              <a href="{{ route('public.shops.shop.trans', ['shop' => 'lovestory', 'lang' => 'en']) }}" class="trans-dialog-content-btn-link">
+                <span>English
+                </span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 24C5.36471 24 0 18.6353 0 12C0 5.36471 5.36471 0 12 0C18.6353 0 24 5.36471 24 12C24 18.6353 18.6353 24 12 24ZM12 1.41176C6.14118 1.41176 1.41176 6.14118 1.41176 12C1.41176 17.8588 6.14118 22.5882 12 22.5882C17.8588 22.5882 22.5882 17.8588 22.5882 12C22.5882 6.14118 17.8588 1.41176 12 1.41176Z" fill="white"/>
+                  <path d="M11.7883 18.8471L10.8 17.8588L16.6589 12L10.8 6.14117L11.7883 5.15293L18.6353 12L11.7883 18.8471Z" fill="white"/>
+                  <path d="M5.64706 11.2941H17.6471V12.7059H5.64706V11.2941Z" fill="white"/>
+                </svg>
+              </a>
+                <a href="{{ route('public.shops.shop.trans', ['shop' => 'lovestory', 'lang' => 'zh-CN']) }}" class="trans-dialog-content-btn-link">
+                  <span>简体字
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 24C5.36471 24 0 18.6353 0 12C0 5.36471 5.36471 0 12 0C18.6353 0 24 5.36471 24 12C24 18.6353 18.6353 24 12 24ZM12 1.41176C6.14118 1.41176 1.41176 6.14118 1.41176 12C1.41176 17.8588 6.14118 22.5882 12 22.5882C17.8588 22.5882 22.5882 17.8588 22.5882 12C22.5882 6.14118 17.8588 1.41176 12 1.41176Z" fill="white"/>
+                    <path d="M11.7883 18.8471L10.8 17.8588L16.6589 12L10.8 6.14117L11.7883 5.15293L18.6353 12L11.7883 18.8471Z" fill="white"/>
+                    <path d="M5.64706 11.2941H17.6471V12.7059H5.64706V11.2941Z" fill="white"/>
+                    </svg>
+              </a>
+                <a href="{{ route('public.shops.shop.trans', ['shop' => 'lovestory', 'lang' => 'zh-TW']) }}" class="trans-dialog-content-btn-link">
+                  <span>台湾語
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 24C5.36471 24 0 18.6353 0 12C0 5.36471 5.36471 0 12 0C18.6353 0 24 5.36471 24 12C24 18.6353 18.6353 24 12 24ZM12 1.41176C6.14118 1.41176 1.41176 6.14118 1.41176 12C1.41176 17.8588 6.14118 22.5882 12 22.5882C17.8588 22.5882 22.5882 17.8588 22.5882 12C22.5882 6.14118 17.8588 1.41176 12 1.41176Z" fill="white"/>
+                    <path d="M11.7883 18.8471L10.8 17.8588L16.6589 12L10.8 6.14117L11.7883 5.15293L18.6353 12L11.7883 18.8471Z" fill="white"/>
+                    <path d="M5.64706 11.2941H17.6471V12.7059H5.64706V11.2941Z" fill="white"/>
+                    </svg>
+              </a>
+                <a href="{{ route('public.shops.shop.trans', ['shop' => 'lovestory', 'lang' => 'ko']) }}" class="trans-dialog-content-btn-link">
+                  <span>한국어
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 24C5.36471 24 0 18.6353 0 12C0 5.36471 5.36471 0 12 0C18.6353 0 24 5.36471 24 12C24 18.6353 18.6353 24 12 24ZM12 1.41176C6.14118 1.41176 1.41176 6.14118 1.41176 12C1.41176 17.8588 6.14118 22.5882 12 22.5882C17.8588 22.5882 22.5882 17.8588 22.5882 12C22.5882 6.14118 17.8588 1.41176 12 1.41176Z" fill="white"/>
+                    <path d="M11.7883 18.8471L10.8 17.8588L16.6589 12L10.8 6.14117L11.7883 5.15293L18.6353 12L11.7883 18.8471Z" fill="white"/>
+                    <path d="M5.64706 11.2941H17.6471V12.7059H5.64706V11.2941Z" fill="white"/>
+                    </svg>
+              </a>
+            </div>
+            <div class="trans-dialog-content-footer">
+              <span>Opne in a new window</span>
+            </div>
+          </div>
+        </div>
         <x-public.shops.fixed-side-buttons
             newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'lovestory']) }}" />
     </div>
     @push('styles')
         @vite(['resources/scss/shops/lovestory/page-layout.scss', ...$assets])
-        @vite(['resources/js/shops/home-header.js'])
+        @vite(['resources/js/shops/home-header.js','resources/js/shops/en/home.js'])
     @endpush
 </x-shizuku-layout>
