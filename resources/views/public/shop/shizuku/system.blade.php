@@ -1,21 +1,18 @@
 <x-shizuku-page-layout page-title="SYSTEM" page-subtitle="料金システム" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 料金システム"
     :assets="['resources/scss/shops/shizuku/system.scss']" :banners="$banners">
     <section class="system-section">
-        <div class="system-card">
+        {{-- <div class="system-card">
             <div class="system-card-image">
                 @if ($system && $system->header)
                     <img src="{{ asset('storage/' . $system->header) }}" alt="System Image" class="pc-only">
                     <img src="{{ asset('storage/' . $system->header) }}" alt="System Image" class="sp-only">
                 @endif
-                {{-- <img src="{{ asset('assets/img/shops/shizuku/system-image.png') }}" alt="System Image" class="pc-only">
-                <img src="{{ asset('assets/img/shops/shizuku/system-image-sp.png') }}" alt="System Image"
-                    class="sp-only"> --}}
             </div>
         </div>
         <div class="system-card-content pc-only">
             <p>当店の利用料金システムになります。オプションをご希望の方はフロントスタッフにお伝えください。</p>
-        </div>
-        <div class="basic-price sp-only">
+        </div> --}}
+        <div class="basic-price">
             <p>BASIC PRICE</p>
             <h2>基本料金</h2>
         </div>
@@ -24,7 +21,7 @@
                 <p>オールタイム</p>
             </div>
             <div class="system-all-time-content">
-                @foreach ($courses as $cours)
+                {{-- @foreach ($courses as $cours)
                     <div class="system-all-time-content-item">
                         <div class="system-item-cours-name">
                             <svg xmlns="http://www.w3.org/2000/svg" width="63" height="63" viewBox="0 0 63 63"
@@ -42,10 +39,10 @@
                         </div>
                         <p>￥{{ number_format($cours->price) }}-</p>
                     </div>
-                @endforeach
-                {{-- <div class="system-all-time-content-item">
-                    <div class="cours-name">{{}} --}}
-                {{-- <svg width="63" height="63" viewBox="0 0 63 63" fill="none"
+                @endforeach --}}
+                <div class="system-all-time-content-item">
+                    {{-- <div class="cours-name"> --}}
+                <svg width="63" height="63" viewBox="0 0 63 63" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="31.5" cy="31.5" r="31.5" fill="#2A1A08" />
                         <path
@@ -53,8 +50,8 @@
                             fill="white" />
                     </svg>
                 <p>￥17,000-</p>
-            </div> --}}
-                {{-- <div class="system-all-time-content-item">
+            </div>
+                <div class="system-all-time-content-item">
                 <svg width="63" height="63" viewBox="0 0 63 63" fill="none"
                         xmlns="http://www.w3.org/2000/svg">
                         <circle cx="31.5" cy="31.5" r="31.5" fill="#2A1A08" />
@@ -63,10 +60,10 @@
                             fill="white" />
                     </svg>
                 <p>￥22,000-</p>
-            </div> --}}
+            </div>
             </div>
             <div class="system-all-time-fee">
-                @foreach ($appoints as $appoint)
+                {{-- @foreach ($appoints as $appoint)
                     <div class="system-all-time-fee-item">
                         <div class="fee-item-header">
                             <p>指名料</p>
@@ -81,8 +78,8 @@
                         </div>
                         <span>￥{{ number_format($extend->price) }}-</span>
                     </div>
-                @endforeach
-                {{-- <div class="system-all-time-fee-item">
+                @endforeach --}}
+                <div class="system-all-time-fee-item">
                     <div class="fee-item-header">
                         <p>指名料</p>
                     </div>
@@ -93,7 +90,7 @@
                         <p>延長30分</p>
                     </div>
                     <span>￥11,000-</span>
-                </div> --}}
+                </div>
             </div>
             <div class="basic-play">
                 <p>BASIC PLAY</p>
@@ -103,7 +100,8 @@
                 @if ($system && $system->play)
                     <img src="{{ asset('storage/' . $system->play) }}" alt="Basic Play Image">
                 @else
-                    <span class="basic-play-content">キス｜全身リップ｜フェラ｜玉舐め｜スマタ</span>
+                    <span class="basic-play-content pc-only">キス｜全身リップ｜フェラ｜玉舐め｜スマタ</span>
+                    <span class="basic-play-content sp-only">キス｜全身リップ<br>フェラ｜玉舐め｜スマタ</span>
                 @endif
             </div>
             {{-- <div class="basic-play-content sp-only">
