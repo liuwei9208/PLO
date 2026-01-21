@@ -3,13 +3,13 @@
     <section class="system-section">
         <div class="system-card">
             <div class="system-card-image">
-                @if ($system && $system->header)
+                {{-- @if ($system && $system->header)
                     <img src="{{ asset('storage/' . $system->header) }}" alt="System Image" class="pc-only">
                     <img src="{{ asset('storage/' . $system->header) }}" alt="System Image" class="sp-only">
-                @endif
-                {{-- <img src="{{ asset('assets/img/shops/shizuku/system-image.png') }}" alt="System Image" class="pc-only">
-                <img src="{{ asset('assets/img/shops/shizuku/system-image-sp.png') }}" alt="System Image"
-                    class="sp-only"> --}}
+                @endif --}}
+                <img src="{{ asset('assets/img/shops/pussycat/system-image.png') }}" alt="System Image" class="pc-only">
+                <img src="{{ asset('assets/img/shops/pussycat/system-image-sp.png') }}" alt="System Image"
+                    class="sp-only">
             </div>
         </div>
         {{-- <div class="system-card-content pc-only">
@@ -190,7 +190,7 @@
                     </svg>
                     <p>カード利用OK</p>
                 </div>
-                <div class="option-method-item">
+                {{-- <div class="option-method-item">
                     <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27"
                         fill="none">
                         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -198,7 +198,7 @@
                             fill="#2A1A08" />
                     </svg>
                     <p>身体障害者サポート可</p>
-                </div>
+                </div> --}}
             </div>
             <div class="credit-system">
                 <p>クレジット決済可能</p>

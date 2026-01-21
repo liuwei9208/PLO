@@ -34,17 +34,21 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  background: #f2bbcf;
+  background: #FFF9FE;
   padding: 35px 20px;
   text-align: center;
 
   p {
     margin: 0;
-    color: #fff;
-    @include M_PLUS_1();
+    color: #3A2640;
+    @include yu-mincho-regular();
     font-size: 21px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
+
+    @media screen and (max-width: 850px) {
+      font-size: 16px !important;
+    }
   }
 }
 
@@ -88,7 +92,7 @@
   }
 }
 .system-all-time-content {
-  padding-top: 10px;
+  // padding-top: 10px;
   display: flex;
 }
 
@@ -149,7 +153,7 @@
       width: 63px;
       height: 63px;
     }
-  
+
     span {
       position: absolute;
       top: 10px;
@@ -171,6 +175,7 @@
 .system-all-time-fee {
   display: flex;
   padding-top: 60px;
+  background: rgba(58, 45, 53, 0.80);
 }
 
 @media screen and (max-width: 850px) {
@@ -181,7 +186,7 @@
 }
 
 .system-all-time-fee-item {
-  width: 50%;
+  width: 100%;
   display: flex;
   padding: 30px;
   justify-content: center;
@@ -204,7 +209,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 20px;
-  background: var(---N_, #a58c1b);
+  background: var(---N_, #6F56A6);
 }
 
 .fee-item-header p {
@@ -309,6 +314,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #3A2D35;
 }
 
 .option p {
@@ -318,7 +324,7 @@
   font-weight: 600;
   line-height: normal;
   color: var(---N__, #2a1a08);
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -331,7 +337,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -339,7 +345,7 @@
 
 @media screen and (max-width: 850px) {
   .option {
-    background: linear-gradient(180deg, #73071a 0%, #d90d32 100%);
+    background: #3A2D35;
     padding: 10px 80px;
     gap: 7px;
   }
@@ -384,7 +390,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  background: #a58c1b;
+  background: #6F56A6;
 }
 
 .option-list-header p {
@@ -436,7 +442,7 @@
     height: auto;
     padding: 20px;
     border-radius: 10px;
-    background: #d90d32;
+    background: #6F56A6;
     flex-shrink: 0;
     box-sizing: border-box;
   }
@@ -531,7 +537,7 @@
 .option-divider {
   width: 100%;
   height: 60px;
-  background: var(---N__, #10040E);
+  background: var(---N__, rgba(58, 45, 53, 0.60));
 }
 
 @media screen and (max-width: 850px) {
@@ -551,7 +557,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 33.3333%;
+  width: 100%;
   background: var(---N___, #fff);
 }
 
@@ -650,7 +656,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #05F2DB);
+  background: var(---N_, #9668B6);
 }
 
 @media screen and (max-width: 850px) {
@@ -664,7 +670,7 @@
 }
 
 .credit-system p {
-  color: var(---N__, #2a1a08);
+  color: var(---N__, #F2F2F2);
   @include YuGothic();
   font-size: 30px;
   font-style: normal;
@@ -764,7 +770,7 @@
 .system-ban-content-item p {
   color: var(---N__, #2a1a08);
   text-align: center;
-  @include YuGothic();
+  @include yu-mincho-regular();
   font-size: 23px;
   font-style: normal;
   font-weight: 600;
@@ -859,8 +865,8 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-bottom: 5px solid var(---N__, #2a1a08);
-  background: var(---N__, #2a1a08);
+  border-bottom: 5px solid var(---N__, #3A2D35);
+  background: var(---N__, #3A2D35);
   padding: 10px 0;
 }
 
@@ -871,7 +877,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FFF9FE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -884,7 +890,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FFF9FE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
