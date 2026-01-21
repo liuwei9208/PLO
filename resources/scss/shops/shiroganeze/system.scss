@@ -88,7 +88,7 @@
   }
 }
 .system-all-time-content {
-  padding-top: 10px;
+  // padding-top: 10px;
   display: flex;
 }
 
@@ -149,7 +149,7 @@
       width: 63px;
       height: 63px;
     }
-  
+
     span {
       position: absolute;
       top: 10px;
@@ -171,6 +171,7 @@
 .system-all-time-fee {
   display: flex;
   padding-top: 60px;
+  background: #171923;
 }
 
 @media screen and (max-width: 850px) {
@@ -204,7 +205,7 @@
   align-items: center;
   gap: 10px;
   border-radius: 20px;
-  background: var(---N_, #a58c1b);
+  background: var(---N_, #BF5A75);
 }
 
 .fee-item-header p {
@@ -242,6 +243,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #171923;
 }
 
 .basic-play p {
@@ -251,7 +253,7 @@
   font-weight: 600;
   line-height: normal;
   color: var(---N__, #2a1a08);
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -264,7 +266,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -293,6 +295,7 @@
 @media screen and (max-width: 850px) {
   .basic-play-image {
     // display: none;
+    padding: 0 0;
   }
 }
 
@@ -650,7 +653,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #05F2DB);
+  background: var(---N_, #48593F);
 }
 
 @media screen and (max-width: 850px) {
@@ -664,8 +667,8 @@
 }
 
 .credit-system p {
-  color: var(---N__, #2a1a08);
-  @include YuGothic();
+  color: var(---N__, #FFF);
+  @include yu-mincho-regular();
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
@@ -687,7 +690,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: var(---tel_btn, linear-gradient(90deg, #cf2b0e 0%, #f32621 100%));
+  background: var(---tel_btn, #BF5A75);
 }
 
 @media screen and (max-width: 850px) {
@@ -701,7 +704,7 @@
 }
 .system-ban-header p {
   color: var(---N___, #fff);
-  @include YuGothic();
+  @include yu-mincho-regular();
   font-size: 27px;
   font-style: normal;
   font-weight: 700;
@@ -859,19 +862,19 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-bottom: 5px solid var(---N__, #2a1a08);
-  background: var(---N__, #2a1a08);
+  border-bottom: 5px solid var(---N__, #171923);
+  background: var(---N__, #171923);
   padding: 10px 0;
 }
 
 .basic-price p {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 12px;
+  @include responsive-font(12px, 16px);
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FFF);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -880,11 +883,12 @@
 .basic-price h2 {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 31px;
+  @include responsive-font(31px, 44px);
+  // font-size: 31px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FFF);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -905,17 +909,21 @@
   @include responsive-font(24px, 20px);
   // font-size: 20px;
   font-weight: 600;
-  line-height: normal;
+  line-height: 1.2rem;
   text-align: center;
   white-space: break-spaces;
 
+
+  @media screen and (max-width: 850px) {
+    padding: 0 0;
+  }
   p {
     margin: 0;
-    color: #2a1a08;
+    color: #0B0B07;
     @include yu-mincho-regular();
     font-size: 20px;
     font-weight: 600;
-    line-height: normal;
+    line-height: 0.2rem;
     text-align: center;
     white-space: nowrap;
   }
