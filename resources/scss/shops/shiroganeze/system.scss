@@ -243,6 +243,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: #171923;
 }
 
 .basic-play p {
@@ -252,7 +253,7 @@
   font-weight: 600;
   line-height: normal;
   color: var(---N__, #2a1a08);
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -265,7 +266,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: #fff;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -294,6 +295,7 @@
 @media screen and (max-width: 850px) {
   .basic-play-image {
     // display: none;
+    padding: 0 0;
   }
 }
 
@@ -907,17 +909,21 @@
   @include responsive-font(24px, 20px);
   // font-size: 20px;
   font-weight: 600;
-  line-height: normal;
+  line-height: 1.2rem;
   text-align: center;
   white-space: break-spaces;
 
+
+  @media screen and (max-width: 850px) {
+    padding: 0 0;
+  }
   p {
     margin: 0;
-    color: #2a1a08;
+    color: #0B0B07;
     @include yu-mincho-regular();
     font-size: 20px;
     font-weight: 600;
-    line-height: normal;
+    line-height: 0.2rem;
     text-align: center;
     white-space: nowrap;
   }

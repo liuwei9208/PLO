@@ -231,6 +231,24 @@
                     <p>身体障害者サポート可</p>
                 </div>
             </div>
+            <div class="basic-play">
+              <p>BASIC PLAY</p>
+              <h2>基本プレイ</h2>
+            </div>
+            <div class="basic-play-image">
+                {{-- @if ($system && $system->play)
+                    <img src="{{ asset('storage/' . $system->play) }}" alt="Basic Play Image">
+                @else --}}
+                    <span class="basic-play-content pc-only">オイルマッサージ・回春マッサージ・鼠径部マッサージ・ハンドフィニッシ</span>
+                {{-- @endif --}}
+            </div>
+            <div class="basic-play-content sp-only">
+                <p>オイルマッサージ・回春マッサージ</p>
+                <p>鼠径部マッサージ・ハンドフィニッシ</p>
+            </div>
+            <div class="option-divider">
+            </div>
+
             <div class="credit-system">
                 <p>クレジット決済可能</p>
             </div>
