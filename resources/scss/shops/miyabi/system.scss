@@ -72,12 +72,13 @@
   align-items: center;
   gap: 10px;
   align-self: stretch;
-  background: var(---N_, #ab8942);
+  background: var(---N_, #A45C72);
 
   p {
     color: #f2f2f2;
     @include yu-mincho-regular();
-    font-size: 30px;
+    @include responsive-font(20px, 35px);
+    // font-size: 30px;
     line-height: 81.2%;
     font-weight: 600;
   }
@@ -88,8 +89,9 @@
   }
 }
 .system-all-time-content {
-  padding-top: 10px;
+  // padding-top: 10px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 850px) {
@@ -107,6 +109,10 @@
   width: 50%;
   border: 1px solid var(---N__, #2a1a08);
   background: var(---N___, #fff);
+
+  &:nth-child(3) {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 850px) {
@@ -149,7 +155,7 @@
       width: 63px;
       height: 63px;
     }
-  
+
     span {
       position: absolute;
       top: 10px;
@@ -170,7 +176,7 @@
 
 .system-all-time-fee {
   display: flex;
-  padding-top: 60px;
+  // padding-top: 60px;
 }
 
 @media screen and (max-width: 850px) {
@@ -234,37 +240,96 @@
   font-weight: 600;
   line-height: 81.2%;
 }
+.course {
+  display: flex;
+  width: 100%;
+  // padding: 10px 80px;
+  flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+}
 
-.basic-play {
+.course-header {
   display: flex;
   width: 100%;
   padding: 10px 80px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: var(---N__, #A45C72);
+  h2 {
+    @include yu-mincho-regular();
+    @include responsive-font(20px, 33px);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: #F2F2F2;
+  }
+}
+
+.course-content {
+  display: flex;
+  width: 100%;
+  // padding: 10px 80px;
+  // flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: #FEFEFE;
+}
+.course-content-item {
+  display: flex;
+  width: 50%;
+  padding: 3.12rem 1.88rem;
+  // flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #0F0002;
+  column-gap: 0.62rem;
+  @include yu-mincho-regular();
+  @include responsive-font(32px, 45px);
+  font-weight: 600;
+  line-height: normal;
+  color: #2A1A08;
+  @media screen and (max-width: 850px) {
+    width: 100%;
+    padding: 1.53rem 0;
+  }
+}
+
+.basic-play {
+  display: flex;
+  width: 100%;
+  padding: 0.63rem 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .basic-play p {
   text-align: center;
   @include yu-mincho-regular();
+  @include responsive-font(12px, 16px);
   font-size: 14px;
   font-weight: 600;
   line-height: normal;
-  color: var(---N__, #2a1a08);
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(---N__, #FEFEFE);
+  // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  // background-clip: text;
+  // -webkit-background-clip: text;
+  // -webkit-text-fill-color: transparent;
 }
 
 .basic-play h2 {
   text-align: center;
   @include yu-mincho-regular();
+  @include responsive-font(31px, 43px);
   font-size: 40px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FEFEFE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -282,17 +347,19 @@
 .basic-play-image {
   display: flex;
   width: 100%;
-  padding: 30px 0;
+  padding: 1.88rem 3.12rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   background: var(---N___, #fff);
 }
 
 @media screen and (max-width: 850px) {
   .basic-play-image {
     // display: none;
+    padding: 1.56rem;
+    gap:1.25rem;
   }
 }
 
@@ -309,16 +376,18 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
 }
 
 .option p {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 14px;
-  font-weight: 600;
+  @include responsive-font(12px, 16px);
+  // font-size: 14px;
+  font-weight: 400;
   line-height: normal;
   color: var(---N__, #2a1a08);
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -327,11 +396,12 @@
 .option h2 {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 40px;
+  @include responsive-font(31px, 44px);
+  // font-size: 40px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -384,13 +454,14 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  background: #a58c1b;
+  background: #D90D32;
 }
 
 .option-list-header p {
   color: #fff;
   text-align: center;
   @include times-new-roman();
+  @include responsive-font(21px, 31px);
   font-size: 28px;
   font-weight: 400;
   line-height: normal;
@@ -409,9 +480,10 @@
 }
 
 .option-list-item p {
-  color: var(---_, #1c2d48);
+  color: var(---_, #1C2D48);
   @include yu-mincho-regular();
-  font-size: 23px;
+  @include responsive-font(18px, 26px);
+  // font-size: 23px;
   font-weight: 400;
   line-height: normal;
 }
@@ -551,7 +623,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  width: 33.3333%;
+  width: 100%;
   background: var(---N___, #fff);
 }
 
@@ -650,7 +722,7 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
-  background: var(---N_, #05F2DB);
+  background: var(---N_, #D90D32);
 }
 
 @media screen and (max-width: 850px) {
@@ -664,12 +736,14 @@
 }
 
 .credit-system p {
-  color: var(---N__, #2a1a08);
-  @include YuGothic();
-  font-size: 30px;
+  color: var(---N__, #FEFEFE);
+  @include yu-mincho-regular();
+  @include responsive-font(24px, 32px);
+  // font-size: 30px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 81.2%; /* 24.36px */
+
 }
 
 .credit-card-image {
@@ -687,7 +761,7 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
-  background: var(---tel_btn, linear-gradient(90deg, #cf2b0e 0%, #f32621 100%));
+  background: var(---tel_btn, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
 }
 
 @media screen and (max-width: 850px) {
@@ -701,10 +775,11 @@
 }
 .system-ban-header p {
   color: var(---N___, #fff);
-  @include YuGothic();
-  font-size: 27px;
+  @include yu-mincho-regular();
+  @include responsive-font(20px, 29px);
+  // font-size: 27px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: normal;
   max-width: 968px;
 }
@@ -764,8 +839,9 @@
 .system-ban-content-item p {
   color: var(---N__, #2a1a08);
   text-align: center;
-  @include YuGothic();
-  font-size: 23px;
+  @include yu-mincho-regular();
+  @include responsive-font(23px, 23px);
+  // font-size: 23px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
@@ -773,7 +849,7 @@
 
 @media screen and (max-width: 850px) {
   .system-ban-content-item p {
-    font-size: 22px;
+    // font-size: 22px;
     text-align: left;
   }
 }
@@ -859,19 +935,20 @@
   justify-content: center;
   align-items: center;
   align-self: stretch;
-  border-bottom: 5px solid var(---N__, #2a1a08);
-  background: var(---N__, #2a1a08);
+  border-bottom: 5px solid var(---N__, #D90D32);
+  background:  linear-gradient(180deg, #73071A 0%, #D90D32 100%);
   padding: 10px 0;
 }
 
 .basic-price p {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 12px;
+  @include responsive-font(12px, 16px);
+  // font-size: 12px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FEFEFE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -880,33 +957,34 @@
 .basic-price h2 {
   text-align: center;
   @include yu-mincho-regular();
-  font-size: 31px;
+  @include responsive-font(31px, 44px);
+  // font-size: 31px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
+  background: var(---N_, #FEFEFE);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .basic-play-content {
-  display: flex;
-  padding: 15px 0;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: block;
+  // padding: 1.88rem 3.12rem;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
   gap: 10px;
   align-self: stretch;
   background: var(---N___, #fff);
   margin: 0;
-  color: #2a1a08;
+  color: #0F0002;
   @include yu-mincho-regular();
-  @include responsive-font(24px, 20px);
+  @include responsive-font(23px, 24px);
   // font-size: 20px;
   font-weight: 600;
   line-height: normal;
-  text-align: center;
+  text-align: left;
   white-space: break-spaces;
 
   p {
