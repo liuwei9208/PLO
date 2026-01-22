@@ -42,14 +42,6 @@
           <span>マイページ</span>
         </a>
       </div>
-      @elseif (Auth::guard('web')->check())
-      <div class="header-user-logbox-last">
-        <span></span>
-        <a href="{{ route('admin.home') }}">
-          <small>MANAGER</small>
-          <span>管理者</span>
-        </a>
-      </div>
       @endif
     @else
       <a href="{{ route('login') }}">
@@ -125,14 +117,6 @@
         <a href="{{ route('public.group.mypage') }}">
           <small>MYPAGE</small>
           <span>マイページ</span>
-        </a>
-      {{-- </div> --}}
-      @elseif (Auth::guard('web')->check())
-      {{-- <div class="header-child-user-logbox-last"> --}}
-        <span></span>
-        <a href="{{ route('admin.home') }}">
-          <small>MANAGER</small>
-          <span>管理者</span>
         </a>
       {{-- </div> --}}
       @endif

@@ -1173,7 +1173,7 @@
   width: 48px;
   height: 48px;
   background: #000;
-  border-radius: 50%;
+  border-radius: 0;
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   border: none;
   cursor: pointer;
@@ -1191,14 +1191,14 @@
     height: 70px;
     top: 35px;
     right: 15px;
-    border-radius: 50%;
+    border-radius: 0;
   }
   @media #{media-query(lg)} {
     width: 70px;
     height: 70px;
     top: 43px;
     right: 20px;
-    border-radius: 50%;
+    border-radius: 0;
   }
   .drawer-toggle-bars {
     display: flex;
