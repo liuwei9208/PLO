@@ -18,7 +18,7 @@
     opacity: 1 !important;
     animation: none !important;
     
-    @media (min-width: 1440px) {
+    @media (min-width: 1024px) {
         display: block !important;
         visibility: visible !important;
         opacity: 1 !important;
@@ -40,10 +40,9 @@
 }
 
 .pg-fixed-sidebar__logo {
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    padding: 20px 15px;
-    background: #fff;
+    width: 280px;
+    height: 89px;
+    aspect-ratio: 280/89;
 }
 
 .pg-fixed-sidebar__logo img {
@@ -59,14 +58,21 @@
 }
 
 .pg-fixed-sidebar__shop {
+    // display: flex;
+    // align-items: center;
+    // padding: 15px 15px;
+    // gap: 12px;
+    // text-decoration: none;
+    // border-bottom: 1px solid #e0e0e0;
+    // background: #fff;
+    // transition: background-color 0.2s ease;
+
     display: flex;
+    width: 280px;
+    height: 60px;
+    padding: 5px 10px;
     align-items: center;
-    padding: 15px 15px;
-    gap: 12px;
-    text-decoration: none;
-    border-bottom: 1px solid #e0e0e0;
-    background: #fff;
-    transition: background-color 0.2s ease;
+    gap: 10px;
     
     &:hover {
         background-color: #f5f5f5;
@@ -119,7 +125,7 @@
 .pg-phone { 
     position: relative; 
     width: 100%;
-    max-width: 250px;
+    max-width: 281px;
     margin: 0 auto;
     opacity: 1 !important;
     animation: none !important;
@@ -191,7 +197,7 @@
 
 /* xlink button removed */
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
     body .main {
         margin-left: 300px; 
     }

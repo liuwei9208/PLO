@@ -67,7 +67,7 @@
   <div class="pg-fixed-sidebar__inner">
     <div class="pg-fixed-sidebar__logo">
       <a href="{{ route('public.group.home') }}">
-        <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="PLO Group"/>
+        <img src="{{ asset('assets/img/group/header/plo-new-black.png') }}" alt="PLO Group"/>
       </a>
     </div>
 
