@@ -156,14 +156,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <footer class="footer" id="footer">
-  <div class="footer__nav-wrapper">
+  <div class="footer__top">
     <nav class="footer__nav">
-      <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">TOP</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.newcomer') }}">新人情報</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.pickup') }}">ピックアップ</a></div>
+      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント情報</a></div>
       <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.search') }}">女の子検索</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント一覧</a></div>
+      <div class="footer__nav-item"><a href="#">SNS</a></div>
       @if (Auth::guard('web')->check() || Auth::guard('member')->check())
       <div class="footer__nav-item"><a href="{{ route('logoutAll') }}">ログアウト</a></div>
       @else
@@ -181,18 +181,21 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="footer__nav-item"><a href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a></div>
       <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">女性求人</a></div>
       <div class="footer__nav-item"><a href="">男性求人</a></div>
-      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div> --}}
       <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">個人情報保護方針</a></div>
-      <div class="footer__nav-item"><a href="mailto:mail@example.com">お問い合わせ</a></div>
-      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div> --}}
     </nav>
-    <div class="footer__nav_logo">
-      <img src="{{ asset('assets/img/group/header/plo-logo-w.png') }}" alt="logo">
+  </div>
+  
+  <div class="footer__main">
+    <div class="footer__logo-section">
+      <div class="footer__logo-image">
+        <img src="{{ asset('assets/img/group/header/plo-new.png') }}" alt="PLO Logo">
+      </div>
+      <div class="footer__company-name-jp">
+        株式会社 パッション・レジャー・オフィス
+      </div>
     </div>
   </div>
-  {{-- <div class="footer__nav">
-    <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div>
-  </div> --}}
+
   <div class="footer__copyright">
     Copyright © PLO Group All Rights Reserved.
   </div>
