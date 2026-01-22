@@ -114,9 +114,6 @@
         <div class="footer__logo-image">
           <img src="{{ asset('assets/img/group/header/plo-new.png') }}" alt="PLO Logo">
         </div>
-        <div class="footer__company-name-jp">
-          株式会社 パッション・レジャー・オフィス
-        </div>
       </div>
     </div>
   </div>
