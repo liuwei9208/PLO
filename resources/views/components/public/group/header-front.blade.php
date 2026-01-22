@@ -144,7 +144,7 @@
     <span class="drawer-toggle-bar"></span>
     <span class="drawer-toggle-bar"></span>
   </div>
-  <span class="drawer-toggle-menu rainbow-text">MENU</span>
+  <span class="drawer-toggle-menu">MENU</span>
 </button>
 @else
 <button class="drawer-toggle-child" id="drawer-toggle" data-pushbar-target="right">
@@ -153,6 +153,6 @@
     <span class="drawer-toggle-bar"></span>
     <span class="drawer-toggle-bar"></span>
   </div>
-  <span class="drawer-toggle-menu rainbow-text">MENU</span>
+  <span class="drawer-toggle-menu">MENU</span>
 </button>
 @endif

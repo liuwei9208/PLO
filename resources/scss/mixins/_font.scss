@@ -79,6 +79,15 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Elina";
+  src: url("/assets/fonts/elina.otf") format("opentype"),
+       url("/assets/fonts/elina.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 // @font-face {
 //   font-family: "Advent Pro";
 //   src: url("/assets/fonts/times.ttf") format("truetype");
