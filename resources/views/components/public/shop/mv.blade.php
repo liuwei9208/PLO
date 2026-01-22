@@ -1,7 +1,5 @@
 <div class="mv">
   <div class="mv-main">
-    {{-- <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-sm.jpg') }}" alt="" class="sp-only">
-    <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-lg.jpg') }}" alt="" class="pc-only"> --}}
     @if(request()->routeIs('public.shop.newslist') || request()->routeIs('public.shop.newsdetail'))
     <img src="{{ asset('assets/img/shop/mv/news.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/news.jpg') }}" alt="" class="pc-only">
@@ -27,8 +25,8 @@
     <img src="{{ asset('assets/img/shop/mv/review.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/review.jpg') }}" alt="" class="pc-only">
     @else
-    <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-sm.jpg') }}" alt="" class="sp-only">
-    <img src="{{ asset('assets/img/shop/mv/'.$shop->slug.'-lg.jpg') }}" alt="" class="pc-only">
+    <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-sm.jpg') }}" alt="" class="sp-only">
+    <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-lg.jpg') }}" alt="" class="pc-only">
     @endif
   </div>
 </div>

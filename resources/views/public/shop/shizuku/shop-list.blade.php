@@ -3,7 +3,7 @@
     <section class="shop-list-section">
         <a href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
-                <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="Shop List Card Image">
+                <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="Shop List Card Image">
             </div>
             <div class="shop-list-card-content">
                 <p class="shop-list-details">
@@ -39,7 +39,7 @@
         </a>
         <a href="{{ route('public.shops.shop.home', ['shop' => 'pussycat']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
-                <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="Shop List Card Image">
+                <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="Shop List Card Image">
             </div>
             <div class="shop-list-card-content">
                 <p class="shop-list-details">

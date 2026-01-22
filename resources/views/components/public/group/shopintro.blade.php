@@ -1,72 +1,66 @@
 <div class="shopintro">
   <div class="shopintro-logo">
-    <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="logo">
+    <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="Passion Leisure Office">
   </div>
   <div class="shopintro-contents content-wrapper">
     <a href="{{ route('public.shop.home', ['shop' => 'shizuku']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/shizuku-logo.png') }}" alt="logo">
+          <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="しずく">
         </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>
       <div class="shopintro-contents-item-text">
-        上品な空間、時を忘れる美貌とおもてなしが魅力のヘルス
-      </div>
-    </a>
-    <a href="{{ route('public.shop.home', ['shop' => 'miyabi']) }}" class="shopintro-contents-item">
-      <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/miyabi-logo-m.png') }}" alt="logo">
-        </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
-      </div>
-      <div class="shopintro-contents-item-text">
-        雅は、すすきの屈指の人妻・痴女が左籍するヘルス
-      </div>
-    </a>
-    <a href="{{ route('public.shop.home', ['shop' => 'pussycat']) }}" class="shopintro-contents-item">
-      <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --pussycat">
-          <img src="{{ asset('assets/img/logo/pussycat-logo.png') }}" alt="logo">
-        </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
-      </div>
-      <div class="shopintro-contents-item-text">
-        女の子を見て選べる唯一無ニのエンターテイメントヘルス
-      </div>
-    </a>
-    <a href="{{ route('public.shop.home', ['shop' => 'en']) }}" class="shopintro-contents-item">
-      <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/en-logo-m.png') }}" alt="logo">
-        </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
-      </div>
-      <div class="shopintro-contents-item-text">
-        若妻、人妻、淫乱妻など大人にエロさ嗌れる人妻ヘルス店
-      </div>
-    </a>
-    <a href="{{ route('public.shop.home', ['shop' => 'shiroganeze']) }}" class="shopintro-contents-item">
-      <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --shiroganeze">
-          <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="logo">
-        </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
-      </div>
-      <div class="shopintro-contents-item-text">
-        容姿端麗なオトナ女性による丁寧な本格マッサージ店
+        北海道札幌市中央区南6条西5丁目1-1
       </div>
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'lovestory']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <div class="shopintro-contents-item-photo-logo --lovestory">
-          <img src="{{ asset('assets/img/logo/lovestory-logo.png') }}" alt="logo">
+          <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="ラブストーリー">
         </div>
-        <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>
       <div class="shopintro-contents-item-text">
-        アナタ色のエッチな女の子に育てられる育成型ヘルス
+        北海道札幌市中央区南5条西5丁目3-3<br>第8招観光ビル1F
+      </div>
+    </a>
+    <a href="{{ route('public.shop.home', ['shop' => 'shiroganeze']) }}" class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo --shiroganeze">
+          <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="白金ぜ">
+        </div>
+      </div>
+      <div class="shopintro-contents-item-text">
+        北海道札幌市中央区南5条西5丁目<br>第8招観光ビル2F
+      </div>
+    </a>
+    <a href="{{ route('public.shop.home', ['shop' => 'miyabi']) }}" class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="雅">
+        </div>
+      </div>
+      <div class="shopintro-contents-item-text">
+        北海道札幌市中央区南5条西5丁目<br>第8招観光ビル2F
+      </div>
+    </a>
+    <a href="#" class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo">
+          <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="やすらぎの椅子">
+        </div>
+      </div>
+      <div class="shopintro-contents-item-text">
+        北海道札幌市中央区南6条西5丁目<br>第1招観光ビル3F-1
+      </div>
+    </a>
+    <a href="{{ route('public.shop.home', ['shop' => 'pussycat']) }}" class="shopintro-contents-item">
+      <div class="shopintro-contents-item-photo">
+        <div class="shopintro-contents-item-photo-logo --pussycat">
+          <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="プッシーキャット">
+        </div>
+      </div>
+      <div class="shopintro-contents-item-text">
+        北海道札幌市中央区南6条西5丁目<br>第一招観光ビル1F-1
       </div>
     </a>
   </div>
