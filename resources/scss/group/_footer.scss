@@ -7,30 +7,42 @@
 .footer {
   margin: 0 auto;
   background-color: #003A40;
-  padding: 60px 0 40px;
+  padding: 40px 0 40px;
   color: #fff;
 
-  &__top {
+  &__main {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 40px 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0 40px;
 
     @media #{media-query(sm)} {
-      padding: 0 20px 30px;
+      padding: 0 20px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+
+    @media #{media-query(sm)} {
+      flex-direction: column;
+      gap: 30px;
     }
   }
 
   &__nav {
+    flex: 1;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 15px 30px;
     margin: 0;
+    max-width: 700px;
 
     @media #{media-query(sm)} {
       gap: 10px 15px;
-      justify-content: flex-start;
+      max-width: 100%;
     }
 
     @media #{media-query(md)} {
@@ -81,25 +93,17 @@
     }
   }
 
-  &__main {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 60px 40px 40px;
-
-    @media #{media-query(sm)} {
-      padding: 40px 20px 30px;
-    }
-  }
-
   &__logo-section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
 
     @media #{media-query(sm)} {
-      gap: 15px;
+      align-items: center;
+      gap: 8px;
     }
   }
 
@@ -125,52 +129,18 @@
     }
   }
 
-  &__company-name {
-    font-size: 48px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-align: center;
-    line-height: 1.2;
-    font-family: Arial, sans-serif;
-
-    @media #{media-query(sm)} {
-      font-size: 24px;
-      letter-spacing: 1px;
-    }
-    @media #{media-query(md)} {
-      font-size: 36px;
-    }
-
-    .letter-red {
-      color: #DC143C;
-    }
-
-    .letter-white {
-      color: #fff;
-      margin-right: 15px;
-
-      @media #{media-query(sm)} {
-        margin-right: 8px;
-      }
-      @media #{media-query(md)} {
-        margin-right: 12px;
-      }
-    }
-  }
-
   &__company-name-jp {
-    font-size: 16px;
+    font-size: 12px;
     color: #fff;
     text-align: center;
-    letter-spacing: 1px;
-    margin-top: 10px;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
 
     @media #{media-query(sm)} {
-      font-size: 12px;
-      letter-spacing: 0.5px;
+      font-size: 10px;
     }
     @media #{media-query(md)} {
-      font-size: 14px;
+      font-size: 11px;
     }
   }
 

@@ -156,47 +156,31 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <footer class="footer" id="footer">
-  <div class="footer__top">
-    <nav class="footer__nav">
-      <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">TOP</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.pickup') }}">ピックアップ</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント情報</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
-      <div class="footer__nav-item"><a href="#">SNS</a></div>
-      @if (Auth::guard('web')->check() || Auth::guard('member')->check())
-      <div class="footer__nav-item"><a href="{{ route('logoutAll') }}">ログアウト</a></div>
-      @else
-      <div class="footer__nav-item"><a href="{{ route('login') }}">ログイン</a></div>
-      @endif
-      @if (Auth::guard('web')->check() || Auth::guard('member')->check())
-      @if (Auth::guard('web')->check())
-      <div class="footer__nav-item"><a href="{{ route('admin.home') }}">管理画面</a></div>
-      @elseif (Auth::guard('member')->check())
-      <div class="footer__nav-item"><a href="{{ route('public.group.mypage') }}">マイページ</a></div>
-      @endif
-      @else
-      <div class="footer__nav-item"><a href="{{ route('terms.show') }}">新規会員登録</a></div>
-      @endif
-      <div class="footer__nav-item"><a href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a></div>
-      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">女性求人</a></div>
-      <div class="footer__nav-item"><a href="">男性求人</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">個人情報保護方針</a></div>
-    </nav>
-  </div>
-  
   <div class="footer__main">
-    <div class="footer__logo-section">
-      <div class="footer__logo-image">
-        <img src="{{ asset('assets/img/group/header/plo-new.png') }}" alt="PLO Logo">
-      </div>
-      <div class="footer__company-name-jp">
-        株式会社 パッション・レジャー・オフィス
+    <div class="footer__content">
+      <nav class="footer__nav">
+        <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">TOP</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.group.schedule') }}">出勤情報</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.group.pickup') }}">ピックアップ</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.group.event') }}">イベント情報</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.group.shop') }}">店舗一覧</a></div>
+        <div class="footer__nav-item"><a href="#">SNS</a></div>
+        <div class="footer__nav-item"><a href="{{ route('login') }}">ログイン</a></div>
+        <div class="footer__nav-item"><a href="{{ route('terms.show') }}">新規会員登録</a></div>
+        <div class="footer__nav-item"><a href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a></div>
+        <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">女性求人</a></div>
+        <div class="footer__nav-item"><a href="">男性求人</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">個人情報保護方針</a></div>
+      </nav>
+      
+      <div class="footer__logo-section">
+        <div class="footer__logo-image">
+          <img src="{{ asset('assets/img/group/header/plo-new.png') }}" alt="PLO Logo">
+        </div>
+        <div class="footer__company-name-jp">
+          株式会社 パッション・レジャー・オフィス
+        </div>
       </div>
     </div>
-  </div>
-
-  <div class="footer__copyright">
-    Copyright © PLO Group All Rights Reserved.
   </div>
 </footer>
