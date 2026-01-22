@@ -5,9 +5,7 @@
   <div class="shopintro-contents content-wrapper">
     <a href="{{ route('public.shop.home', ['shop' => 'shizuku']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="しずく">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="しずく">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南6条西5丁目1-1
@@ -15,9 +13,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'lovestory']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --lovestory">
-          <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="ラブストーリー">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/006.jpg') }}" alt="ラブストーリー">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南5条西5丁目3-3<br>第8招観光ビル1F
@@ -25,9 +21,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'shiroganeze']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --shiroganeze">
-          <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="白金ぜ">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="白金ぜ">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南5条西5丁目<br>第8招観光ビル2F
@@ -35,9 +29,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'miyabi']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="雅">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="雅">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南5条西5丁目<br>第8招観光ビル2F
@@ -45,9 +37,7 @@
     </a>
     <a href="#" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="やすらぎの椅子">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/003.jpg') }}" alt="やすらぎの椅子">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南6条西5丁目<br>第1招観光ビル3F-1
@@ -55,9 +45,7 @@
     </a>
     <a href="{{ route('public.shop.home', ['shop' => 'pussycat']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --pussycat">
-          <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="プッシーキャット">
-        </div>
+        <img src="{{ asset('assets/img/shops/shizuku/001.jpg') }}" alt="プッシーキャット">
       </div>
       <div class="shopintro-contents-item-text">
         北海道札幌市中央区南6条西5丁目<br>第一招観光ビル1F-1
