@@ -92,69 +92,6 @@
     </div>
   </div>
 </div> --}}
-<div class="scroll-top">
-  <a href="#top" id="scroll-top-btn">
-    <span class="scroll-top-arrow">↑</span>
-  </a>
-</div>
-<a href="{{ route('public.group.search') }}" class="search-girl">
-  <div class="search-girl-content">
-    <img src="{{ asset('assets/img/search.png') }}" alt="search">
-    <div class="search-girl-content-text">
-      <h2>女の子検索</h2>
-    </div>
-  </div>
-</a>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Scroll to top functionality
-  const scrollTopBtn = document.getElementById('scroll-top-btn');
-
-  if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-
-      // Smooth scroll to top with strong animation
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-
-      // Add click animation
-      this.style.transform = 'scale(0.9)';
-      setTimeout(() => {
-        this.style.transform = '';
-      }, 150);
-    });
-  }
-
-  // Show/hide scroll-top button based on scroll position
-  window.addEventListener('scroll', function() {
-    const scrollTopBtn_1 = document.querySelector('.scroll-top');
-    if (scrollTopBtn_1) {
-      if (window.pageYOffset > 300) {
-        scrollTopBtn_1.style.opacity = '1';
-        scrollTopBtn_1.style.visibility = 'visible';
-        scrollTopBtn_1.style.transform = 'translateY(0)';
-      } else {
-        scrollTopBtn_1.style.opacity = '0';
-        scrollTopBtn_1.style.visibility = 'hidden';
-        scrollTopBtn_1.style.transform = 'translateY(20px)';
-      }
-    }
-  });
-
-  // Initialize scroll-top button state
-  const scrollTopBtn_2 = document.querySelector('.scroll-top');
-  if (scrollTopBtn_2) {
-    scrollTopBtn_2.style.opacity = '0';
-    scrollTopBtn_2.style.visibility = 'hidden';
-    scrollTopBtn_2.style.transform = 'translateY(20px)';
-    scrollTopBtn_2.style.transition = 'all 0.3s ease';
-  }
-});
-</script>
 <footer class="footer" id="footer">
   <div class="footer__main">
     <div class="footer__content">
