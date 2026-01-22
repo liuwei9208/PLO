@@ -1,7 +1,7 @@
 @php
   $shopNavs = [
     'shizuku' => [
-      'name' => 'Shizuku',
+      'name' => 'SHIZUKU',
       'japanese' => '雫',
       'description' => 'ハイグレードヘルス',
       'logo' => 'shizuku-logo.png',
@@ -10,38 +10,8 @@
       'xlink' => 'http://localhost/shizuku'
       // 'xlink' => 'https://plo-group.jp/shizuku'
     ],
-    'miyabi' => [
-      'name' => 'Miyabi',
-      'japanese' => '雅',
-      'description' => '人妻ヘルス',
-      'logo' => 'miyabi-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'miyabi']),
-      'banner' => 'miyabi.png',
-      'xlink' => 'http://localhost/miyabi'
-      // 'xlink' => 'https://plo-group.jp/miyabi'
-    ],
-    'pussycat' => [
-      'name' => 'Pussycat',
-      'japanese' => 'プッシーキャット',
-      'description' => 'エンターテイメントヘルス',
-      'logo' => 'pussycat-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'pussycat']),
-      'banner' => 'pussycat.png',
-      'xlink' => 'http://localhost/pussycat'
-      // 'xlink' => 'https://plo-group.jp/pussycat'
-    ],
-    'en' => [
-      'name' => 'En',
-      'japanese' => '艶',
-      'description' => '素人系人妻ヘルス',
-      'logo' => 'en-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'en']),
-      'banner' => 'en.png',
-      'xlink' => 'http://localhost/en'
-      // 'xlink' => 'https://plo-group.jp/en'
-    ],
     'shiroganeze' => [
-      'name' => 'Siroganeze',
+      'name' => 'SHIROGANEZE',
       'japanese' => 'シロガネーゼ',
       'description' => '大人の回春メンズエステ',
       'logo' => 'shiroganeze-logo.png',
@@ -51,7 +21,7 @@
       // 'xlink' => 'https://plo-group.jp/shiroganeze'
     ],
     'lovestory' => [
-      'name' => 'Love Story',
+      'name' => 'LOVE STORY',
       'japanese' => 'ラブストーリー',
       'description' => '育成型ヘルス',
       'logo' => 'lovestory-logo.png',
@@ -59,6 +29,36 @@
       'banner' => 'lovestory.png',
       'xlink' => 'http://localhost/lovestory'
       // 'xlink' => 'https://plo-group.jp/lovestory'
+    ],
+    'pussycat' => [
+      'name' => 'PUSSYCAT',
+      'japanese' => 'プッシーキャット',
+      'description' => 'エンターテイメントヘルス',
+      'logo' => 'pussycat-logo.png',
+      'link' => route('public.shop.home', ['shop' => 'pussycat']),
+      'banner' => 'pussycat.png',
+      'xlink' => 'http://localhost/pussycat'
+      // 'xlink' => 'https://plo-group.jp/pussycat'
+    ],
+    'miyabi' => [
+      'name' => 'MIYABI',
+      'japanese' => '雅',
+      'description' => '人妻ヘルス',
+      'logo' => 'miyabi-logo.png',
+      'link' => route('public.shop.home', ['shop' => 'miyabi']),
+      'banner' => 'miyabi.png',
+      'xlink' => 'http://localhost/miyabi'
+      // 'xlink' => 'https://plo-group.jp/miyabi'
+    ],
+    'en' => [
+      'name' => 'EN',
+      'japanese' => '艶',
+      'description' => '素人系人妻ヘルス',
+      'logo' => 'en-logo.png',
+      'link' => route('public.shop.home', ['shop' => 'en']),
+      'banner' => 'en.png',
+      'xlink' => 'http://localhost/en'
+      // 'xlink' => 'https://plo-group.jp/en'
     ],
   ];
 @endphp
@@ -76,9 +76,9 @@
           <a class="pg-fixed-sidebar__shop" href="{{ $shopNav['link'] }}">
             <img src="{{ asset('assets/img/logo/' . $shopNav['logo']) }}" alt="{{ $shopNav['name'] }}"/>
             <div class="pg-fixed-sidebar__shop-label">
-                <span class="pg-fixed-sidebar__shop-label-name">{{ strtoupper($shopNav['name']) }}</span>
+                <span class="pg-fixed-sidebar__shop-label-name">{{ $shopNav['name'] }}</span>
                 <span class="pg-fixed-sidebar__shop-label-japanese">{{ $shopNav['japanese'] }}</span>
-                <span class="pg-fixed-sidebar__shop-label-name">{{ $shopNav['description'] }}</span>
+                <span class="pg-fixed-sidebar__shop-label-description">{{ $shopNav['description'] }}</span>
             </div>
           </a>
         @endforeach
@@ -133,7 +133,7 @@
         const items = track.children;
         if(items.length === 0) return;
         index = (index + 1) % items.length;
-        const itemWidth = items[0].getBoundingClientRect().width + 8; // width + gap
+        const itemWidth = items[0].getBoundingClientRect().width + 10; // width + gap
         const x = -index * itemWidth;
         track.style.transform = `translateX(${x}px)`;
         updateCurrent();

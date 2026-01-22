@@ -8,7 +8,7 @@
 @use 'group/_shopintro.scss';
 @use 'group/_bottom-nav.scss';
 @use 'group/_pushbar.scss';
-// @use 'group/_sidebar.scss';
+@use 'group/sidebar.scss';
 
 // Body fade-in animation
 @keyframes fadeInBody {
@@ -31,6 +31,12 @@ body {
   animation: fadeInBody 2.5s ease-out forwards;
   animation-delay: 2.5s; // Wait a bit before starting the animation
   font-family: $font-gothic;
+}
+
+// Override body animation for sidebar - make it always visible
+.pg-fixed-sidebar {
+  opacity: 1 !important;
+  animation: none !important;
 }
 
 // html.wf-loading body {

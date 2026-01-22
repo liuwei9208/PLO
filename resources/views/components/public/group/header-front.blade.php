@@ -1,8 +1,6 @@
 @if (request()->routeIs('public.group.home'))
 <header class="header" id="header">
-  <a href="{{ route('public.group.home') }}" class="header-logo sm">
-    <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
-  </a>
+
   <div class="header-user md lg">
     <div class="header-user-menu">
       <a href="{{ route('public.group.newcomer') }}">
