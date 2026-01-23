@@ -1,8 +1,8 @@
 <div class="shopintro">
   <div class="shopintro-logo">
-    <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="Passion Leisure Office">
+    <img src="{{ asset('assets/img/group/header/plo-new-black.png') }}" alt="Passion Leisure Office">
   </div>
-  <div class="shopintro-contents content-wrapper">
+  <div class="shopintro-contents">
     <a href="{{ route('public.shop.home', ['shop' => 'shizuku']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <img src="{{ asset('assets/img/shops/shizuku/002.jpg') }}" alt="しずく">
