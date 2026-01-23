@@ -4,7 +4,7 @@
   
   <div class="mv-content-container" style="position: relative; margin-top: -30vh; z-index: 5; pointer-events: none;">
     <!-- SUSUKINO ENTERTAINMENT Text -->
-    <div style="position: relative; text-align: center; padding-top: 40px; font-family: Arial, sans-serif; font-size: 80px; font-weight: 700; line-height: 1.2; letter-spacing: 2px;">
+    <div style="position: relative; text-align: center; padding-top: 40px; font-family: Arial, sans-serif; font-size: 80px; font-weight: 700; line-height: 1.2; letter-spacing: 2px; background-color: rgba(255, 255, 255, 0.9);">
       <div style="display: inline-block;">
         <span style="color: #B5B17C;">S</span><span style="color: #D4A89A;">U</span><span style="color: #F08EA1;">S</span><span style="color: #E58FA8;">U</span><span style="color: #8B5E83;">K</span><span style="color: #7B9E89;">I</span><span style="color: #6FA8DC;">N</span><span style="color: #FFB347;">O</span>
       </div>
@@ -14,7 +14,7 @@
     </div>
     
     <!-- SUSUKINO ENTERTAINMENT Text (Duplicate) -->
-    <div style="position: relative; text-align: center; padding-top: 0px; font-family: Arial, sans-serif; font-size: 80px; font-weight: 700; line-height: 1.2; letter-spacing: 2px;">
+    <div style="position: relative; text-align: center; padding-top: 0px; font-family: Arial, sans-serif; font-size: 80px; font-weight: 700; line-height: 1.2; letter-spacing: 2px; background-color: rgba(255, 255, 255, 0.9);">
       <div style="display: inline-block;">
         <span style="color: #B5B17C;">S</span><span style="color: #D4A89A;">U</span><span style="color: #F08EA1;">S</span><span style="color: #E58FA8;">U</span><span style="color: #8B5E83;">K</span><span style="color: #7B9E89;">I</span><span style="color: #6FA8DC;">N</span><span style="color: #FFB347;">O</span>
       </div>
