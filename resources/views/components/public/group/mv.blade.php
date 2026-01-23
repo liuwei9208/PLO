@@ -1,5 +1,6 @@
-<div class="mv">
-  <div class="mv-main">
+<div class="mv" style="min-height: 100vh;">
+  <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: url('{{ asset('assets/img/group/header/plo-head-bg.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.3; pointer-events: none;"></div>
+  <div class="mv-main" style="position: relative; z-index: 1;">
     @if(request()->routeIs('public.group.search') || request()->routeIs('public.group.searchResult'))
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/search-girl.jpg') }}">
