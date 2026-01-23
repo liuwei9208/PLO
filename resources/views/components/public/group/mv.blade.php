@@ -51,9 +51,6 @@
       <img src="{{ asset('assets/img/group/mv/text-lg.png') }}" alt="">
     </picture>
   </div> --}}
-  <div class="mv-scroll md lg">
-    <img src="{{ asset('assets/img/group/mv/scroll.svg') }}" alt="">
-  </div>
   {{-- @if(request()->routeIs('public.group.home'))
   <div class="mv-member">
     <div class="pc-only mv-member-pc">
