@@ -219,6 +219,10 @@ p {
   height: 2.1875rem;
   flex-shrink: 0;
   object-fit: cover;
+  @media #{media-query(xs)}, #{media-query(sm)} {
+    width: 24px;
+    height: 24px;
+  }
 }
 
 .castlist-info-title {

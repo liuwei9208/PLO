@@ -132,10 +132,12 @@
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
                                     frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
-                                    status-icon='<svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#FFE600"/></svg>'
+                                    status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 17 17" fill="none">
+<path d="M8.5 0C3.8131 0 0 3.8131 0 8.5C0 13.1869 3.8131 17 8.5 17C13.1869 17 17 13.1869 17 8.5C17 3.8131 13.1869 0 8.5 0ZM13.3875 9.35H7.65V3.4H9.35V7.65H13.3875V9.35Z" fill="#00D095"/>
+</svg>'
                                     status-text="待機中" name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
                                     measurements="{{ ' T' . $todayCast->height . ' B' . $todayCast->bust . ' W' . $todayCast->waist . ' H' . $todayCast->hip }}"
-                                    message="{{ $todayCast->appeal_point }}" variant="schedule" />
+                                    message="{{ $todayCast->appeal_point }}" variant="schedule" statusTextColor="#00D095" />
                             @else
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"

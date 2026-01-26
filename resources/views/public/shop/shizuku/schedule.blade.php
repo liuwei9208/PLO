@@ -17,22 +17,22 @@
         </div>
         <form action="{{ route('public.shops.shop.schedule', ['shop' => 'shizuku']) }}" method="get"
             class="search-buttons" id="schedule-form">
-            <button class="search-button" name="date" value="{{ $days[0] }}">
+            <button class="search-button @if ($select_day == $days[0]) active @endif" name="date" value="{{ $days[0] }}">
                 <p>{{ $days[0] }}</p>
             </button>
-            <button class="search-button" name="date" value="{{ $days[1] }}">
+            <button class="search-button @if ($select_day == $days[1]) active @endif" name="date" value="{{ $days[1] }}">
                 <p>{{ $days[1] }}</p>
             </button>
-            <button class="search-button" name="date" value="{{ $days[2] }}">
+            <button class="search-button @if ($select_day == $days[2]) active @endif" name="date" value="{{ $days[2] }}">
                 <p>{{ $days[2] }}</p>
             </button>
-            <button class="search-button" name="date" value="{{ $days[3] }}">
+            <button class="search-button @if ($select_day == $days[3]) active @endif" name="date" value="{{ $days[3] }}">
                 <p>{{ $days[3] }}</p>
             </button>
-            <button class="search-button" name="date" value="{{ $days[4] }}">
+            <button class="search-button @if ($select_day == $days[4]) active @endif" name="date" value="{{ $days[4] }}">
                 <p>{{ $days[4] }}</p>
             </button>
-            <button class="search-button" name="date" value="{{ $days[5] }}">
+            <button class="search-button @if ($select_day == $days[5]) active @endif" name="date" value="{{ $days[5] }}">
                 <p>{{ $days[5] }}</p>
             </button>
         </form>

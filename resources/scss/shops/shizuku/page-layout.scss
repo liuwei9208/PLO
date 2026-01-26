@@ -28,7 +28,7 @@ p{
     position: fixed;
     overflow: visible;
     z-index: -100;
-    
+
   }
   @media screen and (max-width: 850px) {
     .banner-image{
@@ -36,10 +36,10 @@ p{
       background-attachment: scroll;
       // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
       background-image: url('/assets/img/shops/shizuku/system-banner.png');
-  
+
     }
   }
-  
+
 // Common gradient overlay
 .home-gradient-overlay {
     position: fixed;
@@ -69,7 +69,7 @@ p{
 
     h1 {
         @include times-new-roman();
-        @include responsive-font(47px, 95px);
+        @include responsive-font(43px, 95px);
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -110,7 +110,7 @@ p{
         padding: 5px 20px;
         margin-top: 4.19rem;
         margin-bottom: 0.75rem;
-    
+
         p {
             color: #FFFFFF !important;
         }
@@ -148,7 +148,8 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 2rem 0;
+    // margin: 2rem 0;
+    margin: 100px 0;
     padding: 0 1.875rem;
 }
 
@@ -165,7 +166,7 @@ p{
     text-align: center;
     transition: all 0.3s ease;
     width: 37.5rem;
-    
+
     &:hover {
         background: #F5F5F5;
         transform: translateY(-2px);
@@ -181,4 +182,8 @@ p{
         padding: 0.75rem 5rem;
         // width: 21.87rem;
     }
+}
+
+.footer-external-links-grid {
+  display: none;
 }

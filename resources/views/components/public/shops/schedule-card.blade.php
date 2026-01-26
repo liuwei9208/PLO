@@ -83,7 +83,7 @@
                         {{-- <div class="badge-red-bg" style="background: {{ $badgeBgColor }};">
                         <span class="badge-shift" style="color: {{ $badgeTextColor }};">{{ $badgeShift }}</span>
                     </div> --}}
-                        <div class="badge-content">
+                        <div class="badge-content-empty">
                             <span class="badge-time" style="color: {{ $badgeTimeColor }};">本日おやすみ</span>
                         </div>
                     </div>
@@ -110,23 +110,18 @@
         <p class="schedule-card-measurements @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-measurements @endif"
             style="color: {{ $measurementsColor }};">{{ $measurements }}</p>
         @if ($messageGradient)
-            <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
-                style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                {{-- <span
-                    class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
-                    style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}　{{ $message }}</span> --}}
-                <span class="schedule-card-message-text"
-                    style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{{ $message }}　{{ $message }}</span>
-            </p>
+          <div class="schedule-card-message-container">
+            <textarea class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif" style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{!! $message !!}</textarea>
+          </div>
         @else
-            <p class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
+            <textarea class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
                 style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">
                 {{-- <span
                     class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
                     style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span> --}}
                 <span class="schedule-card-message-text"
                     style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span>
-            </p>
+            </textarea>
         @endif
     </div>
 
