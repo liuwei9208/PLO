@@ -80,7 +80,7 @@
 
 .mobile-header-logo {
   display: none;
-  padding-left: 1.875rem;
+  // padding-left: 1.875rem;
 
   img {
     height: 2.5rem;
@@ -155,9 +155,9 @@
 // Mobile responsive styles
 @media (max-width: 850px) {
   .home-header {
-    height: 75px;
+    height: 70px;
     border-radius: 0;
-    padding: 0 1.875rem;
+    padding: 0 1px;
 
     &.fixed-header {
       left: 0;

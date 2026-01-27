@@ -220,7 +220,7 @@
 .today-work-content-empty {
   display: block;
   border-radius: 30px;
-  border: 2px solid var(---N_, #b90000);
+  border: 2px solid var(---N_, #fff);
   background: var(---N___, #fff);
   @media screen and (max-width: 850px) {
     height: 27px;
@@ -252,7 +252,8 @@
 
   @media screen and (max-width: 850px) {
     font-size: 11px;
-    color: #ffe500 !important;
+    // color: #ffe500 !important;
+    color: #000 !important;
   }
 }
 

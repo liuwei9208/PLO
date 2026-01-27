@@ -35,7 +35,7 @@
                     <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="Next">
                 </button>
             @else
-                <img src="{{ asset($mainBannerImage) }}" alt="{{ $mainBannerAlt }}" class="event-main-image">
+                <img src="{{ asset($mainBannerImages[0]['image']) }}" alt="{{ $mainBannerAlt }}" class="event-main-image">
             @endif
         </div>
     </div>

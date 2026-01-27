@@ -46,7 +46,7 @@ class ShizukuController extends Controller
             ->where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->orderBy('published_at', 'desc')
             ->get();
-
+        // dd($events);
         $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
         Log::info("todayCasts");
 

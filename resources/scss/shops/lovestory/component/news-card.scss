@@ -104,7 +104,7 @@
         display: -webkit-box;
         @include responsive-line-clamp(5, 14, 450px, 850px);
         -webkit-box-orient: vertical;
-
+        width: 100%;
         & p {
           color: #0D0709 !important;
         }

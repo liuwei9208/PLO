@@ -10,12 +10,12 @@
     text-decoration: none;
     color: inherit;
     transition: opacity 0.3s ease;
-    
+
     &:hover {
         opacity: 0.8;
         cursor: pointer;
     }
-    
+
     &:visited {
         color: inherit;
     }
@@ -33,7 +33,7 @@
 }
 @media (max-width: 850px) {
     .news-card-image{
-        width: 45%;
+      width: 45%;
     }
 }
 .news-card-image img{
@@ -52,8 +52,8 @@
 }
 @media screen and (max-width: 850px) {
     .news-card-content{
-        width: 55%;
-        gap: 5px;
+      width: 55%;
+      gap: 5px;
     }
 }
 
@@ -98,6 +98,7 @@
         display: -webkit-box;
         @include responsive-line-clamp(5, 14, 450px, 850px);
         -webkit-box-orient: vertical;
+        width: 100%;
     }
 }
 

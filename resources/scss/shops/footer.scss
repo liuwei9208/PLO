@@ -12,7 +12,7 @@
 }
 
 .shop-info-logo-section {
-  width: 50%;
+  width: 40%;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@
 }
 
 .shop-info-grid {
-  width: 50%;
+  width: 60%;
   flex-shrink: 0;
   display: flex;
   flex-wrap: wrap;
@@ -36,7 +36,7 @@
   border-bottom: 3px solid #FFFFFF;
   padding: 15px 0;
   text-align: center;
-  
+
   p {
     @include yu-mincho-regular();
     @include responsive-font(19px, 20px);
@@ -55,7 +55,7 @@
   width: calc(50% - 2.8125rem);
   cursor: pointer;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     opacity: 0.9;
   }
@@ -63,11 +63,11 @@
 
 .shop-info-card-image {
   width: 100%;
-  height: 6.625rem;
+  height: 113.5px;
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
-  
+
   img {
     width: 100%;
     height: 6.625rem;
@@ -84,12 +84,12 @@
   padding: 0.3125rem 0;
   flex: 1;
   width: 100%;
-  
+
   p {
     @include inter();
     font-weight: 500;
     @include responsive-font(13px, 13px);
-    
+
     @media #{media-query(sm)} {
       font-weight: 400;
       @include responsive-font(14px, 14px);
@@ -102,7 +102,7 @@
     color: #2A1A08;
     text-align: center;
     margin: 0;
-    
+
     &:first-child {
       margin-bottom: 0;
     }
@@ -113,7 +113,7 @@
   width: 100%;
   height: auto;
   margin: 0 auto;
-  
+
   img {
     margin: 0 auto;
     display: block;
@@ -133,7 +133,7 @@
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
-  
+
   p {
     @include Hiragino_Mincho_Pro_NW6();
     font-weight: 600;
@@ -159,10 +159,14 @@
   &:hover {
     opacity: 0.9;
   }
+  @media #{media-query(sm)} , #{media-query(xs)} {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 
 .shop-info-group-site-logo {
-  width: 70%;
+  width: 50%;
   // height: 8.3125rem;
   margin: 0 auto;
 
@@ -210,13 +214,13 @@
   background: rgba(42, 26, 8, 0.75);
   padding: 1.6875rem 4.0625rem;
   flex-shrink: 0;
-  
+
   svg {
     width: 1.5625rem;
     height: 1.5625rem;
     flex-shrink: 0;
   }
-  
+
   p {
     @include yu-mincho-regular();
     font-weight: 600;
@@ -237,7 +241,7 @@
   display: flex;
   align-items: center;
   height: 6.375rem;
-  
+
   p {
     @include yu-mincho-regular();
     font-weight: 600;
@@ -266,12 +270,12 @@
   overflow: hidden;
   border-radius: 0.3125rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-0.3125rem);
     box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.3);
   }
-  
+
   img {
     width: 100%;
     height: auto;
@@ -319,7 +323,7 @@
   color: $white;
   text-decoration: none;
   transition: opacity 0.3s ease;
-  
+
   &:hover {
     opacity: 0.8;
   }
@@ -345,6 +349,9 @@
   p {
     padding: 1.875rem 0;
   }
+  @media #{media-query(sm)} , #{media-query(xs)} {
+    margin-bottom: 45px;
+  }
 }
 
 .footer-logo {
@@ -352,9 +359,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   img {
-    width: 70%;
+    width: 50%;
     height: auto;
     flex-shrink: 0;
   }
@@ -378,12 +385,12 @@
     margin-bottom: 1.875rem;
     padding: 0px;
   }
-  
+
   .home-shop-info {
     flex-direction: column;
     padding: 0 15px;
   }
-  
+
   .shop-info-grid {
     width: 100%;
     margin: 0 auto;
@@ -396,43 +403,43 @@
     padding: 10px;
     max-width: 100%;
   }
-  
+
   .shop-info-grid-header {
     display: block;
   }
-  
+
   .shop-info-card {
     width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid #FFFFFF;
-    border-radius: 0;
+    // border: 1px solid #FFFFFF;
+    // border-radius: 0;
     background: transparent;
     margin: 0 auto;
-    
+
     &:hover {
       opacity: 1;
       transform: none;
     }
   }
-  
+
   .shop-info-card-image {
     width: 200px;
     height: 94px;
     flex-shrink: 0;
-    
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
-  
+
   .shop-info-card-text {
     display: block;
     padding: 10px;
-    
+
     p {
       width: 100%;
       font-family: 'Inter', 'Noto Sans JP', sans-serif;
@@ -445,30 +452,30 @@
       margin: 0;
     }
   }
-  
+
   .footer-external-link {
     border-bottom: none;
     text-align: center;
     display: block;
   }
-  
+
   .footer-external-link-description {
     border-left: none;
     border-top: 3px solid $white;
   }
-  
+
   .footer-external-links-grid {
     grid-template-columns: 1fr;
     padding: 0px 15px;
     gap: 0.625rem;
     margin-top: 15px;
   }
-  
+
   .footer-menu {
     padding: 0 15px;
     display: block;
   }
-  
+
   .footer-logo {
     width: 70%;
     margin: 3rem auto;
@@ -491,7 +498,7 @@
   }
   .footer-external-link-header svg{
     fill: #906E2B;
-    
+
     path {
       fill: #906E2B;
     }

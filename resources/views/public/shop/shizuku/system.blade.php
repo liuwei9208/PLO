@@ -101,7 +101,7 @@
                     <img src="{{ asset('storage/' . $system->play) }}" alt="Basic Play Image">
                 @else
                     <span class="basic-play-content pc-only">キス｜全身リップ｜フェラ｜玉舐め｜スマタ</span>
-                    <span class="basic-play-content sp-only">キス｜全身リップ<br>フェラ｜玉舐め｜スマタ</span>
+                    <span class="basic-play-content sp-only">キス｜全身リップ｜フェラ<br>玉舐め｜スマタ</span>
                 @endif
             </div>
             {{-- <div class="basic-play-content sp-only">
@@ -332,25 +332,48 @@
                         </svg>
                         <p>当店スタッフがそれと判断された方</p>
                     </div>
-                    <div class="system-ban-alert">
-                        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M12.875 24.5C19.2953 24.5 24.5 19.2953 24.5 12.875C24.5 6.45469 19.2953 1.25 12.875 1.25C6.45469 1.25 1.25 6.45469 1.25 12.875C1.25 19.2953 6.45469 24.5 12.875 24.5Z"
-                                stroke="#FFDA89" stroke-width="2.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
-                            <path d="M12.875 18.0415H12.885V18.0515H12.875V18.0415Z" stroke="#FFDA89"
-                                stroke-width="3.75" stroke-linejoin="round" />
-                            <path d="M12.875 12.8752V7.7085" stroke="#FFDA89" stroke-width="2.5"
-                                stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                        <p>当店は外国人の方のご利用、入店はお断りしております。</p>
+                    <div class="system-ban-alert pc-only">
+                      <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <path
+                              d="M12.875 24.5C19.2953 24.5 24.5 19.2953 24.5 12.875C24.5 6.45469 19.2953 1.25 12.875 1.25C6.45469 1.25 1.25 6.45469 1.25 12.875C1.25 19.2953 6.45469 24.5 12.875 24.5Z"
+                              stroke="#FFDA89" stroke-width="2.5" stroke-linecap="round"
+                              stroke-linejoin="round" />
+                          <path d="M12.875 18.0415H12.885V18.0515H12.875V18.0415Z" stroke="#FFDA89"
+                              stroke-width="3.75" stroke-linejoin="round" />
+                          <path d="M12.875 12.8752V7.7085" stroke="#FFDA89" stroke-width="2.5"
+                              stroke-linecap="round" stroke-linejoin="round" />
+                      </svg>
+                      <p>当店は外国人の方のご利用、入店はお断りしております。</p>
                     </div>
+                    <div class="system-ban-details pc-only">
+                      <p class="pc-only">尚、入店後発覚した場合はただちに退店していただき、</p>
+                      <p class="pc-only">料金の返金もいたしません。</p>
+                      <p class="sp-only">尚、入店後発覚した場合はただちに退店していただき、料金の返金もいたしません。</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="system-ban-alert sp-only">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.875 24.5C19.2953 24.5 24.5 19.2953 24.5 12.875C24.5 6.45469 19.2953 1.25 12.875 1.25C6.45469 1.25 1.25 6.45469 1.25 12.875C1.25 19.2953 6.45469 24.5 12.875 24.5Z"
+                            stroke="#FFDA89" stroke-width="2.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <path d="M12.875 18.0415H12.885V18.0515H12.875V18.0415Z" stroke="#FFDA89"
+                            stroke-width="3.75" stroke-linejoin="round" />
+                        <path d="M12.875 12.8752V7.7085" stroke="#FFDA89" stroke-width="2.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <p>当店は外国人の方のご利用、入店はお断りしております。</p>
+                </div>
+                <div class="system-ban-content sp-only">
+                  <div class="system-ban-content-details">
                     <div class="system-ban-details">
-                        <p class="pc-only">尚、入店後発覚した場合はただちに退店していただき、</p>
-                        <p class="pc-only">料金の返金もいたしません。</p>
-                        <p class="sp-only">尚、入店後発覚した場合はただちに退店していただき、料金の返金もいたしません。</p>
-                    </div>
+                      <p class="pc-only">尚、入店後発覚した場合はただちに退店していただき、</p>
+                      <p class="pc-only">料金の返金もいたしません。</p>
+                      <p class="sp-only">尚、入店後発覚した場合はただちに退店していただき、料金の返金もいたしません。</p>
+                  </div>
                 </div>
             </div>
         </div>

@@ -1,3 +1,16 @@
+@props([
+    'menuRectColor' => '#ff0000',
+    'menuCloseColor' => '#000000',
+    'logoImage',
+    'logoAlt' => 'Shop Logo',
+    'menuLinks' => [],
+    'menuIconColor' => [],
+    'bottomButtons' => [],
+    'bottomButtonImages' => [],
+    'mobileImage',
+    'mobileImageAlt' => '女の子募集中',
+    'twitterColor' => 'black',
+])
 <!-- Menu Overlay Component -->
 <div class="menu-overlay" id="menuOverlay" style="display:none">
     <div class="menu-overlay-content">
