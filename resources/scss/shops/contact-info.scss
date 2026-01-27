@@ -6,7 +6,8 @@
   @media screen and (max-width: 850px) {
     display: none;
   }
-  @include responsive-width(40.375rem, 53.698rem);
+  // @include responsive-width(40.375rem, 40.375rem);
+  width: 637px;
   // width: 40.375rem;
   // max-width: 40.375rem;
   margin: 0;
@@ -21,7 +22,8 @@
 
 .contact-phone{
   padding: 0.625rem 0.9375rem;
-  width: 45%;
+  width: 48%;
+  // width: 303px;
 }
 
 .contact-phone-content {
@@ -42,7 +44,7 @@
   @include responsive-height(2.4375rem, 3.241rem);
   // height: 2.4375rem;
   flex-shrink: 0;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -92,7 +94,8 @@
 
 .contact-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap:10px;
 }
 
 .contact-button-hours {
@@ -110,14 +113,14 @@
 
 .contact-button-credit{
   background: none;
-  border: 1px solid $white; 
+  border: 1px solid $white;
   border-radius: 1.25rem;
   padding: 0.125rem 1.25rem;
   color: $white;
   @include responsive-font(12px, 14.29px);
 }
 
-.contact-button-credit p {  
+.contact-button-credit p {
   @include Hiragino_Mincho_Pro_W6();
   // @include Hiragino_Mincho_Pro();
   // font-weight: 500 !important;

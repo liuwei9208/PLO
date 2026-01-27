@@ -82,7 +82,7 @@
                     </p>
                 </div>
             </div>
-            <div class="rankig-no1-content">
+            <a class="rankig-no1-content" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[0]->cast_id]) }}">
                 <div class="ranking-no1-content-item">
                     <div class="ranking-no1-content-item-image">
                         <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
@@ -107,7 +107,7 @@
                             class="ranking-image">
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="no1-person-info-container sp-only">
                 <div class="no1-person-info">
                     <h2 class="no1-person-name">
@@ -143,7 +143,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="ranking-no23-content">
+                <a class="ranking-no23-content" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[1]->cast_id]) }}">
                     <div class="ranking-no23-content-item">
                         <div class="ranking-no23-content-item-image">
                             <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
@@ -160,7 +160,7 @@
                                 class="ranking-image">
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="no23-person-info-container sp-only">
                     <div class="no23-person-info">
                         <h2 class="no23-person-name">
@@ -195,7 +195,7 @@
                         </p>
                     </div>
                 </div>
-                <div class="ranking-no23-content">
+                <a class="ranking-no23-content" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[2]->cast_id]) }}">
                     <div class="ranking-no23-content-item">
                         <div class="ranking-no23-content-item-image">
                             <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}" alt="ranking-frame"
@@ -212,7 +212,7 @@
                                 class="ranking-image">
                         </div>
                     </div>
-                </div>
+                </a>
                 <div class="no23-person-info-container sp-only">
                     <div class="no23-person-info">
                         <h2 class="no23-person-name">
@@ -241,14 +241,14 @@
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
-                        <div class="ranking-no4567-content-item">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[3]->cast_id]) }}">
                             <div class="ranking-no4567-content-item-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[3]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
@@ -256,7 +256,7 @@
                                 {{ $rankings[3]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[3]->cast->age }}歳／T.{{ $rankings[3]->cast->height }}
+                                {{ $rankings[3]->cast->age }}歳<br>T.{{ $rankings[3]->cast->height }}
                                 B.{{ $rankings[3]->cast->bust }}({{ $rankings[3]->cast->bust_cup }})
                                 W.{{ $rankings[3]->cast->waist }} H.{{ $rankings[3]->cast->hip }}
                             </p>
@@ -278,14 +278,14 @@
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
-                        <div class="ranking-no4567-content-item">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[4]->cast_id]) }}">
                             <div class="ranking-no4567-content-item-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[4]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
@@ -293,7 +293,7 @@
                                 {{ $rankings[4]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[4]->cast->age }}歳／T.{{ $rankings[4]->cast->height }}
+                                {{ $rankings[4]->cast->age }}歳<br>T.{{ $rankings[4]->cast->height }}
                                 B.{{ $rankings[4]->cast->bust }}({{ $rankings[4]->cast->bust_cup }})
                                 W.{{ $rankings[4]->cast->waist }} H.{{ $rankings[4]->cast->hip }}
                             </p>
@@ -315,14 +315,14 @@
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
-                        <div class="ranking-no4567-content-item">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[5]->cast_id]) }}">
                             <div class="ranking-no4567-content-item-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
@@ -330,7 +330,7 @@
                                 {{ $rankings[5]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[5]->cast->age }}歳／T.{{ $rankings[5]->cast->height }}
+                                {{ $rankings[5]->cast->age }}歳<br>T.{{ $rankings[5]->cast->height }}
                                 B.{{ $rankings[5]->cast->bust }}({{ $rankings[5]->cast->bust_cup }})
                                 W.{{ $rankings[5]->cast->waist }} H.{{ $rankings[5]->cast->hip }}
                             </p>
@@ -352,14 +352,14 @@
                 </div>
                 <div class="ranking-no4567-content-container">
                     <div class="ranking-no4567-content">
-                        <div class="ranking-no4567-content-item">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[6]->cast_id]) }}">
                             <div class="ranking-no4567-content-item-image">
                                 <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
                                     alt="ranking-frame" class="ranking-frame">
                                 <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
                                     alt="ranking-image" class="ranking-image">
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div class="ranking-no4567-info-container">
                         <div class="ranking-no4567-info">
@@ -367,7 +367,7 @@
                                 {{ $rankings[6]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[6]->cast->age }}歳／T.{{ $rankings[6]->cast->height }}
+                                {{ $rankings[6]->cast->age }}歳<br>T.{{ $rankings[6]->cast->height }}
                                 B.{{ $rankings[6]->cast->bust }}({{ $rankings[6]->cast->bust_cup }})
                                 W.{{ $rankings[6]->cast->waist }} H.{{ $rankings[6]->cast->hip }}
                             </p>

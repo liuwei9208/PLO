@@ -13,12 +13,12 @@
     text-decoration: none;
     color: inherit;
     transition: opacity 0.3s ease;
-    
+
     &:hover {
         opacity: 0.8;
         cursor: pointer;
     }
-    
+
     &:visited {
         color: inherit;
     }
@@ -101,6 +101,7 @@
         display: -webkit-box;
         @include responsive-line-clamp(5, 14, 450px, 850px);
         -webkit-box-orient: vertical;
+        width: 100%;
     }
 }
 

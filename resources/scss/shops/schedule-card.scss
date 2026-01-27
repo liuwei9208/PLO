@@ -107,6 +107,32 @@
   }
 }
 
+.badge-content-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
+  padding: 0 15px;
+  .badge-time {
+    @include times-new-roman();
+    @include responsive-font(14px, 20.5px);
+    font-weight: 700;
+    // font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 0.07875rem;
+    text-align: center;
+    white-space: nowrap;
+    // padding: 0 0.625rem;
+    // padding: 0 0.125rem;
+    padding: 0 1.27rem;
+    @media #{media-query(sm)} {
+      padding: 0 0.08rem;
+    }
+    @media #{media-query(md)} {
+      padding: 0 0.86rem;
+    }
+  }
+}
+
 @media (max-width: 850px) {
   .schedule-card-info {
     padding: 15px 0px !important;
@@ -159,7 +185,7 @@
   @include responsive-font(16px, 16px);
   font-weight: 600;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1;
 }
 
 .schedule-card-measurements {
@@ -170,20 +196,71 @@
   margin: 0;
   line-height: 1.4;
 }
+.schedule-card-message-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 0 0px 0px 0px;
+  border-radius: 9px;
+  min-height: 0;
+  max-height: 75px;
+  width: 100%;
+  box-sizing: border-box;
 
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(---N_, #b19d67);
+    border-radius: 2.5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(---N_, #b19d67);
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: var(---N_, #b19d67) transparent;
+}
 .schedule-card-message {
   @include yu-mincho-regular();
   @include responsive-font(17px, 20.6px);
   font-weight: 600;
   margin: 0;
-  white-space: nowrap;
+  // white-space: nowrap;
+  // overflow: hidden;
+  // position: relative;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  margin: 0;
+  padding: 5.5px 3px 0 3px;
+  line-height: 19px;
+  text-align: left;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
-  position: relative;
-  
+  min-height: 120px;
+  height: auto;
+
   .schedule-card-message-text {
     display: inline-block;
   }
-  
+
   @keyframes scroll-left {
     0% {
       transform: translateX(0);
@@ -203,7 +280,7 @@
   //   white-space: normal;
   //   word-break: break-word;
   // }
-  
+
   // // castlistバリアントの場合、親要素のwhite-space: nowrapを上書き
   // &.castlist-card-message {
   //   white-space: normal;
