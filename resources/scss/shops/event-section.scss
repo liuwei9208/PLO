@@ -216,6 +216,20 @@
   overflow: hidden;
   border-radius: 0.25rem;
   flex-shrink: 0;
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.event-sub-banner-one {
+  width: 13.4375rem;
+  // width: 30%;
+  overflow: hidden;
+  border-radius: 0.25rem;
+  flex-shrink: 0;
 
   img {
     width: 100%;
