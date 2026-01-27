@@ -52,7 +52,7 @@
                 @else
                     <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
                         style="border-color: #fff;">
-                        <div class="badge-content">
+                        <div class="badge-content-empty">
                             <span class="badge-time" style="color: {{ $badgeTimeColor }};">本日おやすみ</span>
                         </div>
                     </div>

@@ -16,7 +16,7 @@
   visibility: hidden;
   transition: all 0.3s ease;
   overflow-y: auto;
-  
+
   &.active {
     display: block !important;
     opacity: 1;
@@ -42,11 +42,11 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
-  
+
   &:hover {
     transform: rotate(90deg);
   }
-  
+
   svg {
     width: 100%;
     height: 100%;
@@ -61,7 +61,7 @@
   width: 9.375rem;
   height: 5.4375rem;
   margin: 2rem auto 2rem;
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -112,18 +112,18 @@
   transition: all 0.3s ease;
   padding: 0.625rem;
   border-radius: 0.5rem;
-  
+
   &:hover {
     background: rgba(189, 144, 47, 0.1);
     transform: translateX(0.3125rem);
   }
-  
+
   svg {
     width: 1.5625rem;
     height: 1.5625rem;
     flex-shrink: 0;
   }
-  
+
   span {
     @include IBM_Plex_Mono();
     font-size: 1.25rem;
@@ -151,12 +151,12 @@
   width: 13.23rem;
   height: 9.26rem;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateY(-0.3125rem);
     filter: brightness(1.1);
   }
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -186,11 +186,11 @@
     @include responsive-font(18px, 18px);
     font-weight: 400;
   }
-  
+
   .menu-close {
     display: none;
   }
-  
+
   .menu-close-mobile {
     display: block;
     position: absolute;
@@ -200,13 +200,13 @@
     height: 2.5rem;
     z-index: 2;
   }
-  
+
   .menu-logo {
     width: 25%;
     margin: 1.5rem auto 1.5rem;
     margin-bottom: 0px;
   }
-  
+
   .menu-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -218,26 +218,26 @@
     max-width: 100%;
     margin: 0px 0;
   }
-  
+
   .menu-column {
     display: contents;
   }
-  
+
   .menu-link {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 10px 15px;
     gap: 0.625rem;
     border: none;
     border-radius: 0;
     text-decoration: none;
     transition: background 0.2s ease;
-    
+
     &:hover {
       background: rgba(189, 144, 47, 0.05);
       transform: none;
     }
-    
+
     svg {
       width: 1.5625rem;
       height: 1.5625rem;
@@ -248,48 +248,48 @@
   // Row 1
   .menu-column:nth-child(1) .menu-link:nth-child(1) { order: 1; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // TOPページ
   .menu-column:nth-child(2) .menu-link:nth-child(1) { order: 2; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 出勤情報
-  
+
   // Row 2
   .menu-column:nth-child(3) .menu-link:nth-child(1) { order: 3; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // 料金システム
   .menu-column:nth-child(1) .menu-link:nth-child(2) { order: 4; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 新人情報
-  
+
   // Row 3
   .menu-column:nth-child(2) .menu-link:nth-child(2) { order: 5; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // キャスト一覧
   .menu-column:nth-child(3) .menu-link:nth-child(2) { order: 6; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 新着情報
-  
+
   // Row 4
   .menu-column:nth-child(1) .menu-link:nth-child(3) { order: 7; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // イベント情報
   .menu-column:nth-child(2) .menu-link:nth-child(3) { order: 8; border-right: 1px solid #fff;  border-top: 1px solid #fff;}  // 写メ日記
-  
+
   // Row 5
   .menu-column:nth-child(3) .menu-link:nth-child(3) { order: 9; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;}  // MOVIE一覧
   .menu-column:nth-child(1) .menu-link:nth-child(4) { order: 10; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 口コミ一覧
-  
+
   // Row 6
   .menu-column:nth-child(2) .menu-link:nth-child(4) { order: 11; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;} // 女の子ランキング
   .menu-column:nth-child(1) .menu-link:nth-child(5) { order: 12; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 店舗一覧
-  
+
   // Row 7
   .menu-column:nth-child(3) .menu-link:nth-child(4) { order: 13; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff;} // アクセス情報
   .menu-column:nth-child(3) .menu-link:nth-child(6) { order: 14; border-right: 1px solid #fff;  border-top: 1px solid #fff;} // 男性求人
-  
+
   // Row 8
   .menu-column:nth-child(2) .menu-link:nth-child(5) { order: 15; border-right: 1px solid #fff;  border-left: 1px solid #fff; border-top: 1px solid #fff; border-bottom: 1px solid #fff;} // ログイン
   .menu-column:nth-child(3) .menu-link:nth-child(5) { order: 16; border-right: 1px solid #fff;  border-top: 1px solid #fff; border-bottom: 1px solid #fff;} // 女性求人
-  
+
   // Row 9 - 会員新規登録 (half width - left column only with empty right)
-  .menu-column:nth-child(2) .menu-link:nth-child(6) { 
+  .menu-column:nth-child(2) .menu-link:nth-child(6) {
     order: 17;
     border: 1px solid #fff;
     border-top: none;
   }
-  
+
   // Add empty cell in right column for row 9 (no borders at all)
   .menu-grid::after {
     content: '';
     order: 18;
   }
-  
+
   .menu-bottom-buttons {
     gap: 0px;
     flex-direction: row;
@@ -298,7 +298,7 @@
     padding: 0 25px;
     justify-content: space-between;
   }
-  
+
   .menu-bottom-btn {
     width: 100%;
     max-width: 20rem;

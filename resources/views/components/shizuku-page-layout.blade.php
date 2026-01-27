@@ -4,7 +4,7 @@
 
         <div class="home-gradient-overlay"></div>
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="{{ asset('assets/img/shops/shizuku/footer-logo-black.png') }}"
+        <x-public.shops.menu-overlay logo-image="{{ asset('assets/img/shops/shizuku/footer-logo-black.png') }}" menuRectColor="#ffffff" menuCloseColor="#000000"
             logo-alt="Shizuku Logo" :menu-links="[
                 'top' => route('public.shops.shop.home', ['shop' => 'shizuku']),
                 'schedule' => route('public.shops.shop.schedule', ['shop' => 'shizuku']),

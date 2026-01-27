@@ -33,7 +33,7 @@
                 background-image="{{ asset('storage/' . $cast->gallery_1) }}"
                 frame-image="assets/img/shops/shizuku/card-frame.png" badge-shift="本日出勤"
                 badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
-                status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
+                status-icon='' status-text="" name="{{ $cast->name . '(' . $cast->age . ')' }}"
                 measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
                 message="{{ $cast->appeal_point }}" variant="castlist" />
         @endforeach

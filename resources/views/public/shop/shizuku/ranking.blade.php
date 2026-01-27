@@ -256,7 +256,7 @@
                                 {{ $rankings[3]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[3]->cast->age }}歳／T.{{ $rankings[3]->cast->height }}
+                                {{ $rankings[3]->cast->age }}歳<br>T.{{ $rankings[3]->cast->height }}
                                 B.{{ $rankings[3]->cast->bust }}({{ $rankings[3]->cast->bust_cup }})
                                 W.{{ $rankings[3]->cast->waist }} H.{{ $rankings[3]->cast->hip }}
                             </p>
@@ -293,7 +293,7 @@
                                 {{ $rankings[4]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[4]->cast->age }}歳／T.{{ $rankings[4]->cast->height }}
+                                {{ $rankings[4]->cast->age }}歳<br>T.{{ $rankings[4]->cast->height }}
                                 B.{{ $rankings[4]->cast->bust }}({{ $rankings[4]->cast->bust_cup }})
                                 W.{{ $rankings[4]->cast->waist }} H.{{ $rankings[4]->cast->hip }}
                             </p>
@@ -330,7 +330,7 @@
                                 {{ $rankings[5]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[5]->cast->age }}歳／T.{{ $rankings[5]->cast->height }}
+                                {{ $rankings[5]->cast->age }}歳<br>T.{{ $rankings[5]->cast->height }}
                                 B.{{ $rankings[5]->cast->bust }}({{ $rankings[5]->cast->bust_cup }})
                                 W.{{ $rankings[5]->cast->waist }} H.{{ $rankings[5]->cast->hip }}
                             </p>
@@ -367,7 +367,7 @@
                                 {{ $rankings[6]->cast->name }}
                             </h2>
                             <p class="no4567-person-details">
-                                {{ $rankings[6]->cast->age }}歳／T.{{ $rankings[6]->cast->height }}
+                                {{ $rankings[6]->cast->age }}歳<br>T.{{ $rankings[6]->cast->height }}
                                 B.{{ $rankings[6]->cast->bust }}({{ $rankings[6]->cast->bust_cup }})
                                 W.{{ $rankings[6]->cast->waist }} H.{{ $rankings[6]->cast->hip }}
                             </p>

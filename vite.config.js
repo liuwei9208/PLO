@@ -141,6 +141,7 @@ export default defineConfig({
         'resources/scss/shops/shizuku/movie.scss',
         'resources/scss/shops/shizuku/photo-diary-detail.scss',
         'resources/js/shops/shizuku/photo-diary-detail.js',
+        'resources/scss/shops/shizuku/access.scss',
 
         'resources/scss/shops/pussycat/page-layout.scss',
         'resources/scss/shops/pussycat/component/home-header.scss',
@@ -167,6 +168,7 @@ export default defineConfig({
         'resources/scss/shops/pussycat/event-detail.scss',
         'resources/scss/shops/pussycat/photo-diary-detail.scss',
         'resources/js/shops/pussycat/photo-diary-detail.js',
+
 
         'resources/scss/shops/miyabi/home.scss',
         'resources/scss/shops/miyabi/page-layout.scss',
