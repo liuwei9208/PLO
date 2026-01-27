@@ -62,7 +62,7 @@
             @else
                 <div class="event-sub-banners-static">
                     @foreach($subBannerImages as $subBanner)
-                        <div class="event-sub-banner">
+                        <div class="event-sub-banner-one">
                             <img src="{{ asset($subBanner['image'] ?? $subBanner) }}" alt="{{ $subBanner['alt'] ?? 'Event Sub Banner' }}">
                         </div>
                     @endforeach
