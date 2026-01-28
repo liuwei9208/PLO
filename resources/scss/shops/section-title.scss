@@ -12,7 +12,8 @@
 
 .section-title h2,
 .section-title-text{
-  @include didot();
+  @include AWConqueror_Std_Didot();
+  // @include didot();
   font-style: normal;
   font-weight: 400;
   line-height: normal;
