@@ -79,6 +79,14 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "AWConqueror-Std-Didot";
+  src: url("/assets/fonts/AWConqueror-Std-Didot.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 // @font-face {
 //   font-family: "Advent Pro";
 //   src: url("/assets/fonts/times.ttf") format("truetype");
@@ -206,7 +214,12 @@
   font-weight: 400;
   font-style: normal;
 }
-
+@mixin AWConqueror_Std_Didot() {
+  // font-family: "AWConqueror-Std-Didot", serif;
+  font-family: "aw-conqueror-didot", serif;
+  font-weight: 400;
+  font-style: normal;
+}
 // Formula: clamp(min, calc(min + (max - min) * ((100vw - min_vw) / (max_vw - min_vw))), max)
 // @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1440px) {
 @mixin responsive-font($min, $max, $min-vw: 375px, $max-vw: 1920px) {
