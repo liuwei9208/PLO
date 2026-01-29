@@ -175,6 +175,13 @@
                                             店舗キャスト並び替え管理
                                         </a>
                                     </li>
+                                    <li>
+                                      <a href="{{ url('/admin/cast/add') }}" class="menu-dropdown-item group"
+                                          :class="page === 'option' ? 'menu-dropdown-item-active' :
+                                              'menu-dropdown-item-inactive'">
+                                          キャスト追加
+                                      </a>
+                                  </li>
 
                                     <li>
                                         <a href="{{ url('/admin/touchvip-cast') }}" class="menu-dropdown-item group"
@@ -227,7 +234,14 @@
                                             店舗キャスト並び替え管理
                                         </a>
                                     </li>
-                                </ul>
+                                    <li>
+                                      <a href="{{ url('/admin/cast/add') }}" class="menu-dropdown-item group"
+                                          :class="page === 'cast-sort' ? 'menu-dropdown-item-active' :
+                                              'menu-dropdown-item-inactive'">
+                                          キャスト追加
+                                      </a>
+                                  </li>
+                              </ul>
                             </div>
                             <!-- Dropdown Menu End -->
                         @endhasexactroles
