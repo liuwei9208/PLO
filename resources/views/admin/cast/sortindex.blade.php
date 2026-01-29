@@ -7,12 +7,12 @@
           class="text-xl font-semibold text-gray-800 dark:text-white/90"
           x-text="pageName"
         ></h2>
-        <a
+        {{-- <a
           href="{{ url('/admin/cast/add?redirect=/admin/cast/sort') }}"
           class="flex items-center px-4 py-3 text-sm font-medium text-gray-700 transition ring-1 ring-inset ring-gray-300 rounded-lg bg-white shadow-theme-xs hover:bg-gray-50 dark:bg-gray-800 dark:text-gray-400 dark:ring-gray-700 dark:hover:bg-white/[0.03]"
         >
           キャストを追加
-        </a>
+        </a> --}}
       </div>
     </div>
 
