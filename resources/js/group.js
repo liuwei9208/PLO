@@ -274,7 +274,7 @@ window.addEventListener('load', () => {
   //   if (draw) {
   //     const draw_height = draw.offsetHeight;
   //     console.log({draw_height});
-      
+
   //     if (logo_height > draw_height) {
   //       draw.style.top = `${logo_height - draw_height}px`;
   //     }
@@ -368,7 +368,7 @@ function resizeModule() {
     if (draw) {
       const draw_height = draw.offsetHeight;
       console.log({draw_height});
-      
+
       // if (logo_height > draw_height) {
       //   draw.style.top = `${logo_height - draw_height}px`;
       // }
@@ -397,7 +397,7 @@ function resizeModule() {
         main.style.marginTop = `${mv.offsetHeight}px`;
       }
     }
-    
+
     if (mv.style.top != draw.getBoundingClientRect().bottom && body.clientWidth < 768) {
       // console.log('aaa');
       // console.log(mv.style.top);
