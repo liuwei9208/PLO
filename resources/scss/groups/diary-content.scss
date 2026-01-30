@@ -1,0 +1,163 @@
+@use '../global/vars' as *;
+@use '../global/reset';
+@use '../global/base' as *;
+@use '../global/utils';
+@use '../mixins/button';
+@use '../mixins/font' as *;
+@use '../mixins/text';
+
+.diary {
+  background: url('/assets/img/groups/bg-photo.jpg');
+  padding: 64.5px 70px 40px 70px;
+  & .section-title {
+    background: rgba(255,255,255,0);
+  }
+
+  &-contents{
+    padding: 40px;
+
+    &-border{
+      padding: 30px;
+      background: rgba(231, 225, 219, 0.80);
+      border-radius: 30px;
+
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+      align-items: center;
+      justify-content: center;
+
+      &-item {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        // align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.90);
+        box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+        &-img  {
+          width: 100%;
+          height: auto;
+
+          & img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+
+        &-title {
+          @include inter();
+          font-size: 22px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+          color: #021A21;
+        }
+
+        &-datetime {
+          @include inter();
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          color: #021A21;
+
+        }
+
+        &-detail {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: center;
+          background: #FFE7F9;
+          border-bottom: 1px solid #FF048E;
+          padding: 10px;
+          width: 100%;
+          gap: 10px;
+          &-castphoto {
+            width: 63px;
+            height: 63px;
+            border-radius: 63px;
+            background: url('/assets/img/groups/castphoto.png') lightgray 50% / cover no-repeat;
+          }
+
+          &-contents {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 5px;
+
+            &-name {
+              @include inter();
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              color: #021A21;
+            }
+
+            &-measure {
+              @include YuGothic();
+              font-size: 15px;
+              font-style: normal;
+              font-weight: 500;
+              line-height: normal;
+              letter-spacing: -0.6px;
+              color: #021A21;
+            }
+          }
+        }
+        &-shop {
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          // justify-content: center;
+          @include YuGothic();
+          font-size: 19px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          color: #021A21;
+          text-align: center;
+
+          // & span {
+          //   @include YuGothic();
+          //   font-size: 19px;
+          //   font-style: normal;
+          //   font-weight: 700;
+          //   line-height: normal;
+          //   color: #021A21;
+          //   // text-align: center;
+          // }
+        }
+      }
+
+
+    }
+  }
+
+  &-button {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-more {
+      @include YuGothic();
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: -0.8px;
+      color: #fff;
+      background: #021A21;
+      padding: 15px 0;
+      border-radius: 30px;
+      width: 225px;
+      z-index: 1;
+    }
+  }
+}

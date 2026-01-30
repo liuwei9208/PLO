@@ -1,7 +1,7 @@
 <x-public-groups-layout>
-  <x-public.group.sidebar />
+  <x-public.groups.sidebar />
   <!-- Main Visual -->
-  <x-public.group.mv />
+  <x-public.groups.mv />
 
 
   <div class="section-title">
@@ -253,11 +253,86 @@
       <a href="#" class="pickup-button-more">もっと見る</a>
     </div>
   </div>
+  <div class="diary">
+    <div class="section-title">
+      <h1 class="section-title-en">Photo Diary</h1>
+      <div class="section-title-jp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+          <path d="M18.2649 1C18.7446 1.12039 19.207 1.16082 19.673 1.35578C20.7946 1.82387 21.6025 2.86336 21.8691 4.02055C22.1311 8.88738 21.9053 13.7955 21.9869 18.6777L21.8963 18.9463L16.9049 23.9075C13.6661 23.6891 10.032 24.1995 6.84043 23.9075C5.09412 23.7475 3.63342 22.585 3.23628 20.8869C3.29159 15.6984 2.77567 10.05 3.11841 4.88844C3.25895 2.77441 4.65437 1.19945 6.84043 1H18.2649ZM16.3608 22.4754V19.9247C16.3608 19.4243 17.4326 18.3587 17.9476 18.3587H20.4863L20.6223 18.2248V4.80309C20.6223 3.73395 19.5824 2.5534 18.4916 2.43121H6.61375C5.21652 2.69445 4.58092 3.73754 4.47937 5.06812C4.11578 9.8568 4.75773 15.0893 4.4839 19.9238C4.5646 20.7575 4.85747 21.5715 5.57648 22.0666C5.68529 22.142 6.35988 22.4754 6.43241 22.4754H16.3608Z" fill="#A30ABA"/>
+          <path d="M16.633 15.9437H8.47267C8.41283 14.3346 9.67677 12.5871 11.3524 12.3877C11.8483 12.3284 12.2745 12.482 12.7831 12.4569C13.4505 12.4245 13.5167 12.2323 14.2738 12.5009C15.7145 13.0112 16.6693 14.4406 16.633 15.9437Z" fill="#A30ABA"/>
+          <path d="M12.1684 6.7509C15.4398 6.29449 15.6656 11.3599 12.9536 11.73C9.6677 12.1784 9.4238 7.13363 12.1684 6.7509Z" fill="#A30ABA"/>
+        </svg>
+        <h2 class="section-title-jp-text">最新写メ日記</h2>
+      </div>
+    </div>
+    <div class="diary-contents">
+      <div class="diary-contents-border">
+        @for($i=1; $i<10 ; $i++)
+        <div class="diary-contents-border-item">
+          <div class="diary-contents-border-item-img">
+            <img src="{{ asset('assets/img/groups/diary1.jpg') }}">
+          </div>
+          <span class="diary-contents-border-item-title">日記タイトル日記タイ</span>
+          <span class="diary-contents-border-item-datetime">0月0日(水) 00:00</span>
+          <div class="diary-contents-border-item-detail">
+            <div class="diary-contents-border-item-detail-castphoto"></div>
+            <div class="diary-contents-border-item-detail-contents">
+              <span class="diary-contents-border-item-detail-contents-name">投稿者名(00)</span>
+              <span class="diary-contents-border-item-detail-contents-measure">T.160 B.85(C) W.60 H.83</span>
+
+            </div>
+          </div>
+          <span class="diary-contents-border-item-shop">
+            シロガネーゼ
+            {{-- <span class="diary-contents-border-item-shop-text">シロガネーゼ</span> --}}
+          </span>
+        </div>
+        @endfor
+      </div>
+      <div class="diary-button">
+        <a href="#" class="diary-button-more">もっと見る</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="movie">
+    <div class="movie-bgs">
+      {{-- <div class="movie-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"></div>
+      <div class="movie-bgs-bg2" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"></div> --}}
+    </div>
+    <div class="section-title">
+      <h1 class="section-title-en">Shop Movie</h1>
+      <div class="section-title-jp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">
+          <path d="M25 0V18H0V0H25ZM3.78516 1.724C3.58984 1.524 2.16406 1.515 2.00098 1.799C1.92578 1.93 1.91406 3.881 1.94922 4.155C1.96973 4.316 1.9873 4.47 2.14844 4.551C2.38184 4.667 3.64648 4.669 3.80176 4.443C3.96973 4.199 3.97461 1.919 3.78516 1.724ZM21.2148 1.724C21.0244 1.919 21.0312 4.199 21.1992 4.443C21.3545 4.669 22.6191 4.667 22.8525 4.551C23.0137 4.47 23.0312 4.316 23.0518 4.155C23.0859 3.881 23.0752 1.93 23 1.799C22.8359 1.515 21.4092 1.524 21.2148 1.724ZM9.92969 5.113C9.69043 5.24 9.68555 5.503 9.66406 5.745C9.47559 7.877 9.81738 10.291 9.66406 12.454C9.66602 12.783 9.89258 12.947 10.1953 12.899L16.3975 9.236C16.5615 9.007 16.4658 8.766 16.2451 8.614L10.4893 5.21L9.92969 5.112V5.113ZM2.2168 7.32C2.05859 7.368 1.98438 7.494 1.95605 7.653C1.90918 7.909 1.92285 9.835 2.00195 10.001C2.13379 10.279 3.4668 10.273 3.71191 10.151C3.87305 10.07 3.89062 9.916 3.91113 9.755C3.94727 9.467 3.94141 7.675 3.8584 7.5C3.72754 7.224 2.4873 7.239 2.21777 7.321L2.2168 7.32ZM21.3574 7.32C21.1992 7.368 21.125 7.494 21.0967 7.653C21.0498 7.909 21.0635 9.835 21.1426 10.001C21.2744 10.279 22.6074 10.273 22.8525 10.151C23.0137 10.07 23.0312 9.916 23.0518 9.755C23.0879 9.467 23.082 7.675 22.999 7.5C22.8682 7.224 21.6279 7.239 21.3584 7.321L21.3574 7.32ZM3.78516 13.524C3.46289 13.359 2.16016 13.267 2.00098 13.6C1.91797 13.774 1.91113 15.661 1.94824 15.955C1.96875 16.116 1.98633 16.27 2.14746 16.351C2.37012 16.462 3.67578 16.461 3.81543 16.234C3.9668 15.99 3.96973 13.713 3.78516 13.524ZM21.2148 16.276C21.4102 16.476 22.8359 16.485 22.999 16.201C23.0742 16.07 23.0859 14.119 23.0508 13.845C23.0303 13.684 23.0127 13.53 22.8516 13.449C22.6182 13.333 21.3535 13.331 21.1982 13.557C21.0303 13.801 21.0254 16.081 21.2148 16.276Z" fill="#021A21"/>
+        </svg>
+        <h2 class="section-title-jp-text">各お店の最新動画</h2>
+      </div>
+    </div>
+    <div class="movie-contents">
+      @foreach ($videos as $video)
+      <div class="movie-contents-item">
+        <video class="movie-list-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+          <source src="{{ $video->video_url }}" type="video/mp4">
+        </video>
+        <div class="movie-contents-item-detail">
+          <span class="movie-contents-item-detail-date">00/00 UP</span>
+          <span class="movie-contents-item-detail-name">女の子の名前</span>
+          <div class="movie-contents-item-detail-shop">
+            <span class="movie-contents-item-detail-shop-text">シロガネーゼ</span>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </div>
+  </div>
+
+  <x-public.groups.footer />
 </x-public-group-layout>
 
 @once
   {{-- @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss','resources/scss/group/newstop.scss']) --}}
-  @vite(['resources/scss/groups/section-title.scss','resources/scss/groups/schedule-content.scss','resources/scss/groups/event-content.scss','resources/scss/groups/newface-content.scss','resources/scss/groups/pickup-content.scss'])
+  @vite(['resources/scss/groups/section-title.scss','resources/scss/groups/schedule-content.scss','resources/scss/groups/event-content.scss','resources/scss/groups/newface-content.scss','resources/scss/groups/pickup-content.scss','resources/scss/groups/diary-content.scss','resources/scss/groups/movie-content.scss'])
 @endonce
 {{-- <script>
 document.addEventListener('DOMContentLoaded', function() {
