@@ -188,6 +188,9 @@ a {
 
 .sp-only {
   // display: block;
+  @media #{media-query(xs)} {
+    display: block;
+  }
   @media #{media-query(sm)} {
     display: block;
   }
@@ -195,11 +198,20 @@ a {
     display: none !important;
   }
   @media #{media-query(lg)} {
+    display: none !important;
+  }
+  @media #{media-query(xl)} {
+    display: none !important;
+  }
+  @media #{media-query(xxl)} {
     display: none !important;
   }
 }
 .pc-only {
   // display: block;
+  @media #{media-query(xs)} {
+    display: none !important;
+  }
   @media #{media-query(sm)} {
     display: none !important;
   }
@@ -207,6 +219,12 @@ a {
     display: block;
   }
   @media #{media-query(lg)} {
+    display: block;
+  }
+  @media #{media-query(xl)} {
+    display: block;
+  }
+  @media #{media-query(xxl)} {
     display: block;
   }
 }
