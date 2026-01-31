@@ -286,6 +286,16 @@ export default defineConfig({
         'resources/scss/shops/lovestory/castlist.scss',
         'resources/js/shops/lovestory/photo-diary-detail.js',
         'resources/scss/shops/lovestory/profile.scss',
+
+        'resources/scss/groups.scss',
+        'resources/js/groups.js',
+        'resources/scss/groups/section-title.scss',
+        'resources/scss/groups/schedule-content.scss',
+        'resources/scss/groups/event-content.scss',
+        'resources/scss/groups/newface-content.scss',
+        'resources/scss/groups/pickup-content.scss',
+        'resources/scss/groups/diary-content.scss',
+        'resources/scss/groups/movie-content.scss'
       ],
       refresh: true,
     }),

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Middleware\AuthenticateMultiple;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\Public\ShizukuController;
+use App\Http\Controllers\Public\GroupsController;
 
 // Route::middleware([AuthenticateMultiple::class])->group(function () {
 
@@ -60,7 +61,31 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
-
+    Route::prefix('groups')->name('groups.')->group(function () {
+        Route::get('/', [GroupsController::class, 'showHome'])->name('home');
+        Route::get('/front', [GroupController::class, 'showFront'])->name('front');
+        Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
+        Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
+        Route::get('event', [GroupController::class, 'showEvent'])->name('event');
+        Route::get('event/{id}', [GroupController::class, 'showEventDetail'])->name('event.detail');
+        Route::get('search', [GroupController::class, 'showSearch'])->name('search');
+        Route::post('search', [GroupController::class, 'searchResult']);
+        Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
+        Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
+        Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
+        Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+        Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
+        Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
+        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
+        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
+        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
+        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
+        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
+        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
+        Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
+        Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
+        // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
+    });
     /**
      * Shop routes
      *
