@@ -50,8 +50,8 @@
 
       @endfor
     </div>
-    <div class="schedule-button">
-      <a href="#" class="schedule-button-more">もっと見る</a>
+    <div class="groups-button-more">
+      <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
 
@@ -163,8 +163,8 @@
         </button>
       </div> --}}
     </div>
-    <div class="newface-button">
-      <a href="#" class="newface-button-more">もっと見る</a>
+    <div class="groups-button-more">
+      <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
 
   </div>
@@ -190,7 +190,7 @@
         <h2 class="section-title-jp-text">ピックアップ</h2>
       </div>
     </div>
-    <div class="pickup-contents"> {{--flex col--}}
+    <div class="pickup-contents pc-only"> {{--flex col--}}
         <div class="pickup-slider swiper content-wrapper">
           <div class="swiper-wrapper">
           @foreach($pickups as $pickup)
@@ -249,8 +249,8 @@
         </button> --}}
       </div>
     </div>
-    <div class="pickup-button">
-      <a href="#" class="pickup-button-more">もっと見る</a>
+    <div class="groups-button-more">
+      <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
   <div class="diary">
@@ -289,8 +289,8 @@
         </div>
         @endfor
       </div>
-      <div class="diary-button">
-        <a href="#" class="diary-button-more">もっと見る</a>
+      <div class="groups-button-more">
+        <a href="#" class="groups-button-more-btn">もっと見る</a>
       </div>
     </div>
   </div>
@@ -325,6 +325,10 @@
       </div>
       @endforeach
     </div>
+    <div class="groups-button-more">
+      <a href="#" class="groups-button-more-btn">もっと見る</a>
+    </div>
+
   </div>
 
   <x-public.groups.footer />

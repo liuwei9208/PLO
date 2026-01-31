@@ -36,7 +36,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
      *
      * @see \App\Http\Controllers\Public\GroupController
      */
-    Route::prefix('group')->name('group.')->group(function () {
+    Route::prefix('/')->name('group.')->group(function () {
         Route::get('/', [GroupController::class, 'showHome'])->name('home');
         Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
@@ -61,7 +61,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
-    Route::prefix('/')->name('groups.')->group(function () {
+    Route::prefix('groups')->name('groups.')->group(function () {
         Route::get('/', [GroupsController::class, 'showHome'])->name('home');
         Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
