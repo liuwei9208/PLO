@@ -56,7 +56,7 @@
   </div>
 
   <div class="footer-bottom">
-    <div class="footer-bottom-menu">
+    <div class="footer-bottom-menu pc-only">
       <div class="footer-bottom-menu-items">
         <a class="footer-bottom-menu-items-item" href="#">TOP</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
@@ -85,7 +85,39 @@
         <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
       </div>
     </div>
-    <div class="footer-bottom-logo">
+    <div class="footer-bottom-menu sp-only">
+      <div class="footer-bottom-menu-items">
+        <a class="footer-bottom-menu-items-item" href="#">TOP</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">出勤情報</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">料金システム</a>
+      </div>
+      <div class="footer-bottom-menu-items">
+        <a class="footer-bottom-menu-items-item" href="#">キャスト一覧</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">最新情報</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">SNS</a>
+      </div>
+      <div class="footer-bottom-menu-items">
+        <a class="footer-bottom-menu-items-item" href="#">店舗一覧</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">ログイン</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">新規会員登録</a>
+      </div>
+      <div class="footer-bottom-menu-items">
+        <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
+        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
+      </div>
+      <div class="footer-bottom-menu-items">
+        <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
+      </div>
+    </div>    <div class="footer-bottom-logo">
       <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}"
     </div>
   </div>

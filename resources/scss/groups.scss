@@ -18,7 +18,8 @@
   justify-content: center;
   &-btn {
     @include YuGothic();
-    font-size: 20px;
+    @include responsive-font(16px,20px);
+    // font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -29,5 +30,12 @@
     border-radius: 30px;
     width: 225px;
     z-index: 1;
+
+    @media #{media-query(sm)}, #{media-query(xs)} {
+      width: 200px;
+      padding: 10px 0;
+      letter-spacing: -0.64px;
+
+    }
   }
 }

@@ -33,6 +33,33 @@
       background-color: #fff;
       padding: 10px 20px;
       // border-radius: 25px;
+      @media #{media-query(sm)}, #{media-query(xs)} {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px 0;
+        background-color: rgba(255,255,255,0);
+      }
+
+      &-date {
+        @include YuGothic();
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.8px;
+        color: #021A21;
+        border-bottom: 1px solid #EB8E9B;
+      }
+
+      &-title {
+        @include YuGothic();
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: -0.68px;
+        color: #021A21;
+      }
     }
 
     &-date {

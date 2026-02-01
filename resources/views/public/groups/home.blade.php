@@ -28,7 +28,7 @@
           <img class="schedule-grid-content-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
         </div>
         <div class="schedule-grid-content-contents">{{-- flex col--}}
-          <div class="schedule-grid-content-contents-top">{{-- flex row--}}
+          <div class="schedule-grid-content-contents-top pc-only">{{-- flex row--}}
             <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
@@ -39,8 +39,23 @@
               <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
             </div>
           </div>
-          <div class="schedule-grid-content-contents-measure">
+          <div class="schedule-grid-content-contents-top sp-ony">{{-- flex row--}}
+            <div class="schedule-grid-content-contents-top-shop">
+              <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
+            </div>
+            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
+              </svg>
+              <span class="schedule-grid-content-contents-top-times-text">00:00 - 00:00</span>
+            </div>
+          </div>
+          <div class="schedule-grid-content-contents-measure pc-only">
             <span class="schedule-grid-content-contents-measure-text">キャスト名(00)／T.160 B.85(C) W.60 H.83</span>
+          </div>
+          <div class="schedule-grid-content-contents-measure sp-only">
+            <span class="schedule-grid-content-contents-measure-name">キャスト名(00)</span>
+            <span class="schedule-grid-content-contents-measure-text">T.160 B.85(C) W.60 H.83</span>
           </div>
           <div class="schedule-grid-content-contents-message">
             <textarea class="schedule-grid-content-contents-message-text">メッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージ</textarea>
@@ -73,8 +88,12 @@
         @foreach($events as $event)
           <div class="swiper-slide">
             <div class="event-main">
-              <div class="event-main-content">
-                <h3 class="event-main-title">{{ $event->published_at->format('y.m.d')."  |  " .$event->title}}</h3>
+              <div class="event-main-content pc-only">
+                <h3 class="event-main-title">{{ $event->published_at->format('y/m/d')."  |  " .$event->title}}</h3>
+              </div>
+              <div class="event-main-content sp-only">
+                <h3 class="event-main-content-date">{{ $event->published_at->format('y/m/d') }}</h3>
+                <h3 class="event-main-content-title">{{ $event->title }}</h3>
               </div>
               <div class="event-main-image">
                 <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
@@ -96,12 +115,6 @@
           @endforeach
         </div>
       </div>
-      {{-- <button class="event-slide-prev">
-        <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
-      </button>
-      <button class="event-slide-next">
-        <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-      </button> --}}
     </div>
   </div>
   <div class="newface">
@@ -155,14 +168,6 @@
           </div>
         @endforeach
       </div>
-      {{-- <div class="newface-slide-nav">
-        <button class="newface-slide-prev">
-          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
-        </button>
-        <button class="newface-slide-next">
-          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-        </button>
-      </div> --}}
     </div>
     <div class="groups-button-more">
       <a href="#" class="groups-button-more-btn">もっと見る</a>
@@ -250,6 +255,44 @@
         </button> --}}
       </div>
     </div>
+    <div class="pickup-contents sp-only">
+      <div class="pickup-contents-sp-img">
+        <img class="pickup-contents-sp-img-photo" src="{{ asset('assets/img/groups/castphoto.png') }}">
+        <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+      </div>
+      <div class="pickup-contents-sp-contents">
+        <span class="pickup-contents-sp-contents-name">キャスト名</span>
+        <span class="pickup-contents-sp-contents-measure">T.160 B.85(C) W.60 H.83</span>
+        <span class="pickup-contents-sp-contents-shop">プッシーキャット</span>
+        <div class="pickup-contents-sp-contents-schedule">
+          <span class="pickup-contents-sp-contents-schedule-text">
+            本日出勤中
+          </span>
+        </div>
+        <div class="pickup-contents-sp-contents-manager">
+          <textarea class="pickup-contents-sp-contents-manager-text">店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッ</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="pickup-list sp-only">
+      @for( $i=1 ; $i < 10 ; $i++)
+      <div class="pickup-list-item">
+        <div class="pickup-list-item-img">
+          <img class="pickup-list-item-img-photo" src="{{ asset('assets/img/groups/castphoto.png') }}">
+          <img class="pickup-list-item-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+        </div>
+        <div class="pickup-list-item-contents">
+          <span class="pickup-list-item-contents-name">キャスト名</span>
+          <span class="pickup-list-item-contents-measure">T.160 B.85(C) W.60 H.83</span>
+          <span class="pickup-list-item-contents-shop">プッシーキャット</span>
+          <div class="pickup-list-item-contents-schedule">
+            <span class="pickup-list-item-contents-schedule-text">本日出勤中</span>
+          </div>
+          <span class="pickup-list-item-contents-message">女の子メッセージ女の子メ</span>
+        </div>
+      </div>
+      @endfor
+    </div>
     <div class="groups-button-more">
       <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
@@ -267,7 +310,7 @@
       </div>
     </div>
     <div class="diary-contents">
-      <div class="diary-contents-border">
+      <div class="diary-contents-border pc-only">
         @for($i=1; $i<10 ; $i++)
         <div class="diary-contents-border-item">
           <div class="diary-contents-border-item-img">
@@ -276,7 +319,9 @@
           <span class="diary-contents-border-item-title">日記タイトル日記タイ</span>
           <span class="diary-contents-border-item-datetime">0月0日(水) 00:00</span>
           <div class="diary-contents-border-item-detail">
-            <div class="diary-contents-border-item-detail-castphoto"></div>
+            <div class="diary-contents-border-item-detail-castphoto">
+              <img class="diary-contents-border-item-detail-castphoto-img" src="{{ asset('assets/img/groups/castphoto.png') }}">
+            </div>
             <div class="diary-contents-border-item-detail-contents">
               <span class="diary-contents-border-item-detail-contents-name">投稿者名(00)</span>
               <span class="diary-contents-border-item-detail-contents-measure">T.160 B.85(C) W.60 H.83</span>
@@ -289,6 +334,34 @@
           </span>
         </div>
         @endfor
+      </div>
+      <div class="diary-contents-slide content-wrapper sp-only">
+        <div class="swiper-wrapper">
+          @for($i=1; $i<10 ; $i++)
+          <div class="swiper-slide">
+            <div class="diary-contents-slide-item">
+              <div class="diary-contents-slide-item-img">
+                <img src="{{ asset('assets/img/groups/diary1.jpg') }}">
+              </div>
+              <span class="diary-contents-slide-item-title">日記タイトル日記タイ</span>
+              <span class="diary-contents-slide-item-datetime">0月0日(水) 00:00</span>
+              <div class="diary-contents-slide-item-detail">
+                <div class="diary-contents-slide-item-detail-castphoto">
+                  <img class="diary-contents-slide-item-detail-castphoto-img" src="{{ asset('assets/img/groups/castphoto.png') }}">
+                </div>
+                <div class="diary-contents-slide-item-detail-contents">
+                  <span class="diary-contents-slide-item-detail-contents-name">投稿者名(00)</span>
+                  <span class="diary-contents-slide-item-detail-contents-measure">T.160 B.85(C) W.60 H.83</span>
+
+                </div>
+              </div>
+              <span class="diary-contents-slide-item-shop">
+                シロガネーゼ
+              </span>
+            </div>
+              </div>
+          @endfor
+        </div>
       </div>
       <div class="groups-button-more">
         <a href="#" class="groups-button-more-btn">もっと見る</a>
@@ -317,11 +390,21 @@
         <video class="movie-contents-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
           <source src="{{ $video->video_url }}" type="video/mp4">
         </video>
-        <div class="movie-contents-item-detail">
+        <div class="movie-contents-item-detail pc-only">
           <span class="movie-contents-item-detail-date">00/00 UP</span>
           <span class="movie-contents-item-detail-name">女の子の名前</span>
           <div class="movie-contents-item-detail-shop">
             <span class="movie-contents-item-detail-shop-text">シロガネーゼ</span>
+          </div>
+        </div>
+        <div class="movie-contents-item-details sp-only">
+          <div class="movie-contents-item-details-row">
+          <span class="movie-contents-item-details-date">00/00 UP</span>
+          <span class="movie-contents-item-details-name">女の子の名前</span>
+          </div>
+
+          <div class="movie-contents-item-details-shop">
+            <span class="movie-contents-item-details-shop-text">シロガネーゼ</span>
           </div>
         </div>
       </div>

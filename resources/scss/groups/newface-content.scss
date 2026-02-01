@@ -25,6 +25,11 @@
       // width: 100%;
       // height: 100%;
       object-fit: cover;
+
+      @media #{media-query(sm)},#{media-query(xs)} {
+        top: -165px;
+        height: 1090px;
+      }
     }
     // &-bg1 {
     //   position: absolute;
@@ -211,7 +216,8 @@
       row-gap: 12px;
       &-date {
         @include Elina();
-        font-size: 35px;
+        @include responsive-font(28px,35px);
+        // font-size: 35px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
@@ -220,7 +226,8 @@
 
       &-new {
         @include Elina();
-        font-size: 37px;
+        @include responsive-font(28px,37px);
+        // font-size: 37px;
         font-style: normal;
         font-weight: 400;
         line-height: normal;
