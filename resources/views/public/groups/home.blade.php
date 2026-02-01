@@ -106,6 +106,7 @@
   </div>
   <div class="newface">
     <div class="newface-bgs">
+      <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/aaa.png') }}">
       {{-- <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.jpg') }}">
       <img class="newface-bgs-bg2" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"> --}}
     </div>
@@ -297,6 +298,7 @@
 
   <div class="movie">
     <div class="movie-bgs">
+      <img class="movie-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.png') }}"></img>
       {{-- <div class="movie-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"></div>
       <div class="movie-bgs-bg2" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"></div> --}}
     </div>
@@ -312,7 +314,7 @@
     <div class="movie-contents">
       @foreach ($videos as $video)
       <div class="movie-contents-item">
-        <video class="movie-list-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+        <video class="movie-contents-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
           <source src="{{ $video->video_url }}" type="video/mp4">
         </video>
         <div class="movie-contents-item-detail">

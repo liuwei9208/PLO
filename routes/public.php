@@ -63,7 +63,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
     });
     Route::prefix('/')->name('groups.')->group(function () {
         Route::get('/', [GroupsController::class, 'showHome'])->name('home');
-        Route::get('/front', [GroupController::class, 'showFront'])->name('front');
+        // Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
         Route::get('event', [GroupController::class, 'showEvent'])->name('event');
