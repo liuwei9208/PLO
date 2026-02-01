@@ -35,7 +35,7 @@
     </main>
 
     <!-- Footer -->
-    <x-public.groups.footer />
+    {{-- <x-public.groups.footer /> --}}
     @stack('scripts')
   </body>
 </html>

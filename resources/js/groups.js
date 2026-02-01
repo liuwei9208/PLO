@@ -40,6 +40,38 @@ new Swiper('.newface-slide', {
 })
 
 
+new Swiper('.diary-contents-slide', {
+  modules: [ Autoplay, Navigation ],
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  speed: 1000,
+  breakpoints: {
+    0: {
+      centeredSlides: true,
+      slidesPerView: 1.4,
+      spaceBetween: 30,
+    },
+    768: {
+      centeredSlides: true,
+      slidesPerView: 1.3,
+      spaceBetween: 30,
+    },
+    1366: {
+      centeredSlides: true,
+      slidesPerView: 1.6,
+      spaceBetween: 45,
+    }
+  },
+  // navigation: {
+  //   prevEl: '.newface-slide-prev',
+  //   nextEl: '.newface-slide-next',
+  // },
+})
+
+
 // Create thumbnail swiper for pagination
 const thumbsSwiper = new Swiper('.event-pagination', {
   slidesPerView: 'auto',
