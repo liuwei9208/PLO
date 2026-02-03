@@ -26,11 +26,11 @@
       // height: 100%;
       object-fit: fill;
       // @include responsive-height(1295px,2180px,1440px,2560px);
-      @include responsive-height(1320px,2000px,1440px,2560px);
+      @include responsive-height(1260px,1950px,1440px,2560px);
       @include responsive-top(-295px,-190px,1440px,2560px);
       @media #{media-query(sm)},#{media-query(xs)} {
-        top: -165px;
-        height: 1090px;
+        top: -160px;
+        height: 1035px;
         object-fit: cover;
       }
       @media #{media-query(lg)} {
@@ -50,7 +50,7 @@
       }
       @media screen and (width:1920px) {
         top: -240px;
-        height: 1600px;
+        height: 1570px;
 
       }
     }
