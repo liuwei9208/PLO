@@ -163,7 +163,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ->where('videos.is_public', 1)
         ->where('casts.is_public', 1)
         ->orderBy('videos.updated_at', 'desc')
-        ->limit(4)
+        ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 3 : 6)
         ->select('videos.*','casts.*','shops.slug as shop_slug','shops.name as shop_name')
         ->get();
         // dd($videos);
