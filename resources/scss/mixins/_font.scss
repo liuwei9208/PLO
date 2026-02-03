@@ -259,7 +259,7 @@
     #{$max}
   );
 }
-@mixin responsive-height($min, $max, $min-vw, $max-vw) {
+@mixin responsive-height($min, $max, $min-vw: 375px, $max-vw: 1920px) {
   height: clamp(
     #{$min},
     calc(
