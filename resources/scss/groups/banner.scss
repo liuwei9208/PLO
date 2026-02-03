@@ -1,0 +1,119 @@
+@use '../global/vars' as *;
+@use '../mixins/text';
+@use '../mixins/font' as *;
+
+// Main section - scrolls over fixed banner (similar to shizuku .page-content)
+.banner-photodiary ~ .main {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: white; // Fallback color
+  opacity: 0.8;
+}
+
+// Vector logo container - scrolls with content
+.banner-vector-scroll {
+  position: relative;
+  width: 100%;
+  z-index: 2;
+  margin-top: 58vh; // Push it below the fixed banner
+  opacity: 0.95;
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+// Fixed banner background - similar to shizuku .banner-image pattern
+.banner-photodiary {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  z-index: -100;
+  overflow: visible;
+  pointer-events: none;
+
+  .banner-photodiary-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    .banner-photodiary-bg-image {
+      position: absolute;
+      max-width: none;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .banner-photodiary-overlay {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.25);
+      inset: 0;
+      mix-blend-mode: overlay;
+    }
+  }
+
+
+  // Content that stays fixed with banner
+  .banner-photodiary-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    width: 100%;
+    padding: 23px 0 15px;
+    pointer-events: none;
+  }
+
+  .banner-photodiary-title-en {
+    color: var(--b, #021A21);
+    leading-trim: both;
+    text-edge: cap;
+    text-shadow: 0 0 12px #FFF, 0 0 10px #FFF, 0 0 10px #FFF, 0 0 30px #FFF;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: var(--b, #021A21);
+    font-family: Elina;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 0.9px;
+  }
+
+  .banner-photodiary-title-ja-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+
+  .banner-photodiary-title-ja {
+    color: var(--b, #021A21);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: YuGothic;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+}

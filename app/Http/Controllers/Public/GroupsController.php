@@ -868,4 +868,12 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             return redirect()->route('public.group.password')->withErrors(['password' => '以前のパスワードが間違っています。']);
         }
     }
+
+    /**
+     * Display the photo diary page.
+     */
+    public function showPhotoDiary(Request $request): View
+    {
+        return view('public.groups.photodiary');
+    }
 }
