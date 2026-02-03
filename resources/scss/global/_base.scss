@@ -195,7 +195,7 @@ a {
     display: block;
   }
   @media #{media-query(md)} {
-    display: none !important;
+    display: block;
   }
   @media #{media-query(lg)} {
     display: none !important;
@@ -216,7 +216,7 @@ a {
     display: none !important;
   }
   @media #{media-query(md)} {
-    display: block;
+    display: none !important;
   }
   @media #{media-query(lg)} {
     display: block;

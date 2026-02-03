@@ -39,7 +39,7 @@
               <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
             </div>
           </div>
-          <div class="schedule-grid-content-contents-top sp-ony">{{-- flex row--}}
+          <div class="schedule-grid-content-contents-top sp-only">{{-- flex row--}}
             <div class="schedule-grid-content-contents-top-shop">
               <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
             </div>
@@ -119,7 +119,7 @@
   </div>
   <div class="newface">
     <div class="newface-bgs">
-      <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/aaa.png') }}">
+      <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/bg-pickup.png') }}">
       {{-- <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.jpg') }}">
       <img class="newface-bgs-bg2" src="{{ asset('assets/img/groups/bg-newface.jpg') }}"> --}}
     </div>

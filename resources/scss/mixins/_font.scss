@@ -259,7 +259,7 @@
     #{$max}
   );
 }
-@mixin responsive-height($min, $max, $min-vw: 375px, $max-vw: 1920px) {
+@mixin responsive-height($min, $max, $min-vw, $max-vw) {
   height: clamp(
     #{$min},
     calc(
@@ -269,6 +269,38 @@
     #{$max}
   );
 }
+
+// @mixin responsive-top($min, $max, $min-vw, $max-vw) {
+//   top: clamp(
+//     #{$min},
+//     calc(
+//       #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+//             (#{$max-vw} - #{$min-vw}))
+//     ),
+//     #{$max}
+//   );
+// }
+@mixin responsive-top($min, $max, $min-vw, $max-vw) {
+  top: clamp(
+    #{$min},
+    calc(
+      #{$max} + (#{$min} - #{$max}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
+    #{$max}
+  );
+}
+
+// @mixin responsive-size($min, $max, $min-vw, $max-vw) {
+//   height: clamp(
+//     #{$min},
+//     calc(
+//       #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+//             (#{$max-vw} - #{$min-vw}))
+//     ),
+//     #{$max}
+//   );
+// }
 
 @mixin responsive-line-clamp($min, $max, $min-vw: 375px, $max-vw: 850px) {
   // Since line-clamp is an integer, we use media queries for responsive behavior

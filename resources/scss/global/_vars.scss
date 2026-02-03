@@ -146,5 +146,14 @@ $media-query: (
 @function media-query($width) {
   @return map.get($media-query, $width);
 }
-
+@function responsive-size($min, $max, $min-vw, $max-vw) {
+  @return clamp(
+    #{$min},
+    calc(
+      #{$min} + (#{$max} - #{$min}) * ((100vw - #{$min-vw}) /
+            (#{$max-vw} - #{$min-vw}))
+    ),
+    #{$max}
+  );
+}
 

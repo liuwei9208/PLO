@@ -5,47 +5,17 @@
       'japanese' => '雫',
       'description' => 'ハイグレードヘルス',
       'logo' => 'shizuku-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'shizuku']),
+      'link' => route('public.shops.shop.home', ['shop' => 'shizuku']),
       'banner' => 'shizuku.png',
       'xlink' => 'http://localhost/shizuku'
       // 'xlink' => 'https://plo-group.jp/shizuku'
-    ],
-    'miyabi' => [
-      'name' => 'Miyabi',
-      'japanese' => '雅',
-      'description' => '人妻ヘルス',
-      'logo' => 'miyabi-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'miyabi']),
-      'banner' => 'miyabi.png',
-      'xlink' => 'http://localhost/miyabi'
-      // 'xlink' => 'https://plo-group.jp/miyabi'
-    ],
-    'pussycat' => [
-      'name' => 'Pussycat',
-      'japanese' => 'プッシーキャット',
-      'description' => 'エンターテイメントヘルス',
-      'logo' => 'pussycat-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'pussycat']),
-      'banner' => 'pussycat.png',
-      'xlink' => 'http://localhost/pussycat'
-      // 'xlink' => 'https://plo-group.jp/pussycat'
-    ],
-    'en' => [
-      'name' => 'En',
-      'japanese' => '艶',
-      'description' => '素人系人妻ヘルス',
-      'logo' => 'en-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'en']),
-      'banner' => 'en.png',
-      'xlink' => 'http://localhost/en'
-      // 'xlink' => 'https://plo-group.jp/en'
     ],
     'shiroganeze' => [
       'name' => 'Siroganeze',
       'japanese' => 'シロガネーゼ',
       'description' => '大人の回春メンズエステ',
       'logo' => 'shiroganeze-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'shiroganeze']),
+      'link' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
       'banner' => 'shiroganeze.png',
       'xlink' => 'http://localhost/shiroganeze'
       // 'xlink' => 'https://plo-group.jp/shiroganeze'
@@ -55,19 +25,51 @@
       'japanese' => 'ラブストーリー',
       'description' => '育成型ヘルス',
       'logo' => 'lovestory-logo.png',
-      'link' => route('public.shop.home', ['shop' => 'lovestory']),
+      'link' => route('public.shops.shop.home', ['shop' => 'lovestory']),
       'banner' => 'lovestory.png',
       'xlink' => 'http://localhost/lovestory'
       // 'xlink' => 'https://plo-group.jp/lovestory'
     ],
+    'pussycat' => [
+      'name' => 'Pussycat',
+      'japanese' => 'プッシーキャット',
+      'description' => 'エンターテイメントヘルス',
+      'logo' => 'pussycat-logo.png',
+      'link' => route('public.shops.shop.home', ['shop' => 'pussycat']),
+      'banner' => 'pussycat.png',
+      'xlink' => 'http://localhost/pussycat'
+      // 'xlink' => 'https://plo-group.jp/pussycat'
+    ],
+
+    'miyabi' => [
+      'name' => 'Miyabi',
+      'japanese' => '雅',
+      'description' => '人妻ヘルス',
+      'logo' => 'miyabi-logo.png',
+      'link' => route('public.shops.shop.home', ['shop' => 'miyabi']),
+      'banner' => 'miyabi.png',
+      'xlink' => 'http://localhost/miyabi'
+      // 'xlink' => 'https://plo-group.jp/miyabi'
+    ],
+    'en' => [
+      'name' => 'En',
+      'japanese' => '艶',
+      'description' => '素人系人妻ヘルス',
+      'logo' => 'en-logo.png',
+      'link' => route('public.shops.shop.home', ['shop' => 'en']),
+      'banner' => 'en.png',
+      'xlink' => 'http://localhost/en'
+      // 'xlink' => 'https://plo-group.jp/en'
+    ],
+
   ];
 @endphp
 
 <aside class="pg-fixed-sidebar">
   <div class="pg-fixed-sidebar__inner">
     <div class="pg-fixed-sidebar__logo">
-      <a href="{{ route('public.group.home') }}">
-        <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="PLO Group"/>
+      <a href="{{ route('public.groups.home') }}">
+        <img src="{{ asset('assets/img/groups/plo-logo-black.png') }}" alt="PLO Group"/>
       </a>
     </div>
 
