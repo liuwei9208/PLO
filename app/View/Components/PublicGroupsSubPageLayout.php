@@ -7,6 +7,35 @@ use Illuminate\View\View;
 
 class PublicGroupsSubPageLayout extends Component
 {
+    public ?string $titleEn;
+    public ?string $titleJa;
+    public ?string $bannerImage;
+    public ?string $vectorImage;
+    public bool $showButtonGroup;
+    public ?array $buttonGroup;
+    public bool $showLoadMore;
+
+    /**
+     * Create a new component instance.
+     */
+    public function __construct(
+        ?string $titleEn = null,
+        ?string $titleJa = null,
+        ?string $bannerImage = null,
+        ?string $vectorImage = null,
+        bool $showButtonGroup = true,
+        ?array $buttonGroup = null,
+        bool $showLoadMore = true
+    ) {
+        $this->titleEn = $titleEn ?? 'Photo Diary';
+        $this->titleJa = $titleJa ?? '写メ日記';
+        $this->bannerImage = $bannerImage ?? asset('assets/img/groups/banner.jpg');
+        $this->vectorImage = $vectorImage ?? asset('assets/img/groups/Vector.png');
+        $this->showButtonGroup = $showButtonGroup;
+        $this->buttonGroup = $buttonGroup;
+        $this->showLoadMore = $showLoadMore;
+    }
+
     /**
      * Get the view / contents that represents the component.
      */
