@@ -4,6 +4,7 @@
 @use '../global/utils';
 @use '../mixins/button';
 @use '../mixins/font' as *;
+@use '../mixins/text';
 
 .schedule {
   display: flex;
@@ -61,14 +62,14 @@
       padding: 12px 0px;
       row-gap: 10px;
       &-top {
-        display: flex;
+        display: flex !important;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         width: 100%;
 
         @media #{media-query(sm)}, #{media-query(xs)}{
-          display: flex;
+          display: flex !important;
           flex-direction: column;
           align-items: center;
           justify-content: space-between;

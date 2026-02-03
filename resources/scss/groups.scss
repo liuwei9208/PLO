@@ -30,7 +30,7 @@
     border-radius: 30px;
     width: 225px;
     z-index: 1;
-
+    padding: 10px;
     @media #{media-query(sm)}, #{media-query(xs)} {
       width: 200px;
       padding: 10px 0;

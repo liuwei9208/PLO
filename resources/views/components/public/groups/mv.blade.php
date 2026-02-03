@@ -42,6 +42,14 @@
       <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
       {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
     </picture>
+    <div class="mv-banner-bottom">
+      <div class="mv-banner-bottom-wrapper">
+        <div class="mv-banner-bottom-slide">
+          <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
+          <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
+        </div>
+      </div>
+    </div>
     @endif
   </div>
 
@@ -51,9 +59,11 @@
       <img src="{{ asset('assets/img/group/mv/text-lg.png') }}" alt="">
     </picture>
   </div> --}}
-  <div class="mv-scroll md lg">
+
+  {{-- <div class="mv-scroll md lg">
     <img src="{{ asset('assets/img/group/mv/scroll.svg') }}" alt="">
-  </div>
+  </div> --}}
+
   {{-- @if(request()->routeIs('public.group.home'))
   <div class="mv-member">
     <div class="pc-only mv-member-pc">

@@ -17,7 +17,7 @@
     height: 100%;
 }
 
-@media #{media-query(lg)} {
+@media #{media-query(lg)},#{media-query(xl)},#{media-query(xxl)} {
     .pg-fixed-sidebar {
         display: block;
     }
@@ -39,13 +39,15 @@
     text-align: center;
     border-bottom: 1px dotted #333;
     // padding: 15px 10px 20px;
-    padding: 15px 20px;
+    // padding: 15px 20px;
 }
 
 .pg-fixed-sidebar__logo img {
-    // max-width: 160px;
-    height: auto;
-    width: 100%
+    height: 80px;
+  // max-width: 160px;
+    // height: auto;
+    width: 100%;
+    object-fit: fill;
 }
 
 .pg-fixed-sidebar__shops {
@@ -144,7 +146,7 @@
 
 /* xlink button removed */
 
-@media #{media-query(lg)} {
+@media #{media-query(lg)},#{media-query(xl)},#{media-query(xxl)} {
     body .main {
         margin-left: 300px;
     }
