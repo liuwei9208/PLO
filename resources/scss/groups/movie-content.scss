@@ -164,7 +164,7 @@
 
       &-details {
         display: flex ;
-        flex-direction: row;
+        flex-direction: column;
         gap:5px;
         padding: 6px 7px;
         align-items: center;
@@ -173,6 +173,11 @@
         width: 100%;
         @media #{media-query(sm)},#{media-query(xs)} {
           flex-direction: column;
+        }
+        &-row {
+          display: flex;
+          flex-direction: row;
+
         }
         &-date {
           @include YuGothic();

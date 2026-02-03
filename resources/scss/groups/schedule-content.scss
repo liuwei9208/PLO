@@ -104,6 +104,8 @@
           background: #021A21;
           border-radius: 13px;
           padding: 0px 10px;
+          width: 150px;
+          text-align: center;
           &-name {
             @include YuGothic();
             font-weight: 700;

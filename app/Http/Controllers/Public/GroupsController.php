@@ -40,7 +40,8 @@ class GroupsController extends Controller
      */
     public function showHome(Request $request): View
     {
-        $cast_query = Cast::whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
+        $cast_query = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)->whereNot('shop_id', Shop::where('slug', 'headquarter')->first()->id);
         // $newfaces_this_week = $cast_query
         //     ->where('created_at', '>=', Carbon::now()->subWeek(2))
         //     ->inRandomOrder()
@@ -53,6 +54,20 @@ class GroupsController extends Controller
         //     ->get();
         $newfaces_this_week = $cast_query
             ->where('joined_at', '>=', Carbon::now()->subWeek(2))
+            ->select([
+                'casts.id as id',
+                'casts.name as name',
+                'casts.age as age',
+                'casts.height as height',
+                'casts.bust as bust',
+                'casts.waist as waist',
+                'casts.hip as hip',
+                'casts.gallery_1 as gallery_1',
+                'casts.joined_at as joined_at',
+                'casts.appeal_point as appeal_point',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ]) // 必要に応じて明示
             ->inRandomOrder()
             ->get();
         // dd($newfaces_this_week);
@@ -84,14 +99,22 @@ class GroupsController extends Controller
         ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 7 : 9)
         ->orderBy('published_at', 'desc')
         ->get();
+
         $diaries_sql = 'SELECT
         `'.env('DB_DATABASE').'`.diaries.id,
         `'.env('DB_DATABASE').'`.diaries.subject,
-        DATE_FORMAT(`'.env("DB_DATABASE").'`.diaries.updated_at, "%y.%m.%d") as updated_at,
+        DATE_FORMAT(`'.env("DB_DATABASE").'`.diaries.updated_at, "%m/%d %H:%i") as updated_at,
         `'.env('DB_DATABASE').'`.casts.name,
         `'.env('DB_DATABASE').'`.diaries.photo,
         `'.env('DB_DATABASE').'`.casts.id as cast_id,
-        `'.env('DB_DATABASE').'`.shops.slug as shop_slug
+        `'.env('DB_DATABASE').'`.casts.gallery_1 as gallery_1,
+        `'.env('DB_DATABASE').'`.casts.age as cast_age,
+        `'.env('DB_DATABASE').'`.casts.height as cast_height,
+        `'.env('DB_DATABASE').'`.casts.bust as cast_bust,
+        `'.env('DB_DATABASE').'`.casts.waist as cast_waist,
+        `'.env('DB_DATABASE').'`.casts.hip as cast_hip,
+        `'.env('DB_DATABASE').'`.shops.slug as shop_slug,
+        `'.env('DB_DATABASE').'`.shops.name as shop_name
         FROM `'.env('DB_DATABASE').'`.diaries
 LEFT JOIN `'.env('DB_DATABASE').'`.casts
 ON `'.env('DB_DATABASE').'`.diaries.`cast_id` = `'.env('DB_DATABASE').'`.casts.`id`
@@ -110,7 +133,9 @@ WHERE `'.env('DB_DATABASE').'`.diaries.`is_public` = 1 AND `'.env('DB_DATABASE')
 AND `'.env('DB_DATABASE').'`.shops.`slug` != "touchvip" AND `'.env('DB_DATABASE').'`.shops.`slug` != "headquarter"
 ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         // dd($diaries_sql);
-        $diaries = DB::select($diaries_sql);
+        // DB::select() returns a plain array, so wrap it in a Collection
+        // to keep Blade code using ->count() and collection helpers working.
+        $diaries = collect(DB::select($diaries_sql));
         // dd($diaries);
         // $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
         //     ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
@@ -145,10 +170,46 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get();
         // dd($diaries);
         $pickups = Pickup::leftJoin('casts', 'pickups.cast_id', '=', 'casts.id')
+        ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+        // ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
         ->where('casts.is_public', 1)
+        // ->where('attendances.is_public', 1)
         ->inRandomOrder()
-        ->limit(9)
+        // ->limit(9)
+        ->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            'casts.manager_comment as manager_comment',
+            // 'attendances.start_datetime as start_datetime',
+            // 'attendances.end_datetime as end_datetime',
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+            ])
+        ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
         ->get();
+        if ($pickups) {
+            $pickups = $pickups->map(function ($pickup) {
+                $attendance = Attendance::where('cast_id', $pickup->id)
+                    ->where('is_public', 1)
+                    ->whereRaw('DATE(start_datetime) = CURDATE()')
+                    ->first();
+
+                $pickup->schedule_status = $attendance && $attendance->start_datetime
+                    ? '本日出勤中'
+                    : '本日お休み';
+
+                // $pickup->end_datetime = Attendance::where('cast_id', $pickup->id)->where('is_public', 1)->whereRaw('start_datetime <= NOW()')->whereRaw('end_datetime >= NOW()')->first()->end_datetime ?? '';
+
+                return $pickup;
+            });
+        }
 
         $todayCasts = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
         ->leftJoin('attendances', 'attendances.cast_id', '=', 'casts.id')
@@ -171,13 +232,15 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shops.name as shop_name',
             ]) // 必要に応じて明示的に
         ->inRandomOrder()
-        ->limit(9)
+        // ->limit(9)
+        ->limit($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 8 : 9)
         ->get();
         // dd($todayCasts);
         // $url = 'https://x.com/ShizukuHealth';
         // $response = Http::withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1')
         //     ->get($url);
         // $shizukuX = $response->body();
+        // dd($diaries);
         return view('public.groups.home', [
             'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
