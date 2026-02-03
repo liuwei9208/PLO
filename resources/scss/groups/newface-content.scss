@@ -358,6 +358,7 @@
         line-height: normal;
         letter-spacing: -0.6px;
         color: #021A21;
+        @include text.multiline-ellipsis(1);
       }
     }
   }
