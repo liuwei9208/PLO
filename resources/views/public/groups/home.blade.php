@@ -3,7 +3,7 @@
   <!-- Main Visual -->
   <x-public.groups.mv />
 
-
+  @if($todayCasts->count() > 0)
   <div class="section-title">
     <h1 class="section-title-en">Today Schecule</h1>
     <div class="section-title-jp">
@@ -21,15 +21,15 @@
 
   <div class="schedule"> {{-- grid --}}
     <div class="schedule-grid">
-      @for ($i=1 ; $i <= 10 ; $i++)
-      <div class="schedule-grid-content">{{-- flex col--}}
+      {{-- @for ($i=1 ; $i <= 10 ; $i++)
+      <div class="schedule-grid-content">
         <div class="schedule-grid-content-img">
           <img class="schedule-grid-content-img-photo" src="{{ asset('assets/img/groups/pickup-cast-1.png') }}">
           <img class="schedule-grid-content-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
         </div>
-        <div class="schedule-grid-content-contents">{{-- flex col--}}
-          <div class="schedule-grid-content-contents-top pc-only">{{-- flex row--}}
-            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
+        <div class="schedule-grid-content-contents">
+          <div class="schedule-grid-content-contents-top pc-only">
+            <div class="schedule-grid-content-contents-top-times">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
               </svg>
@@ -39,11 +39,11 @@
               <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
             </div>
           </div>
-          <div class="schedule-grid-content-contents-top sp-only">{{-- flex row--}}
+          <div class="schedule-grid-content-contents-top sp-only">
             <div class="schedule-grid-content-contents-top-shop">
               <span class="schedule-grid-content-contents-top-shop-name">プッシーキャット</span>
             </div>
-            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
+            <div class="schedule-grid-content-contents-top-times">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                 <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
               </svg>
@@ -63,13 +63,57 @@
         </div>
       </div>
 
-      @endfor
+      @endfor --}}
+      @foreach($todayCasts as $todayCast)
+      <div class="schedule-grid-content">{{-- flex col--}}
+        <div class="schedule-grid-content-img">
+          <img class="schedule-grid-content-img-photo" src="{{ asset('storage/' . $todayCast->gallery_1) }}">
+          <img class="schedule-grid-content-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$todayCast->shop_slug.'.png') }}">
+        </div>
+        <div class="schedule-grid-content-contents">{{-- flex col--}}
+          <div class="schedule-grid-content-contents-top pc-only">{{-- flex row--}}
+            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
+              </svg>
+              <span class="schedule-grid-content-contents-top-times-text">{{ date('H:i', strtotime($todayCast->start_datetime)) }} - {{ date('H:i', strtotime($todayCast->end_datetime)) }}</span>
+            </div>
+            <div class="schedule-grid-content-contents-top-shop">
+              <span class="schedule-grid-content-contents-top-shop-name">{{ $todayCast->shop_name }}</span>
+            </div>
+          </div>
+          <div class="schedule-grid-content-contents-top sp-only">{{-- flex row--}}
+            <div class="schedule-grid-content-contents-top-shop">
+              <span class="schedule-grid-content-contents-top-shop-name">{{ $todayCast->shop_name }}</span>
+            </div>
+            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
+              </svg>
+              <span class="schedule-grid-content-contents-top-times-text">{{ date('H:i', strtotime($todayCast->start_datetime)) }} - {{ date('H:i', strtotime($todayCast->end_datetime)) }}</span>
+            </div>
+          </div>
+          <div class="schedule-grid-content-contents-measure pc-only">
+            <span class="schedule-grid-content-contents-measure-text">{{ $todayCast->name }} ({{ $todayCast->age }})／T.{{ $todayCast->height }} B.{{ $todayCast->bust }}(C) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
+          </div>
+          <div class="schedule-grid-content-contents-measure sp-only">
+            <span class="schedule-grid-content-contents-measure-name">{{ $todayCast->name }} ({{ $todayCast->age }})</span>
+            <span class="schedule-grid-content-contents-measure-text">T.{{ $todayCast->height }} B.{{ $todayCast->bust }}(C) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
+          </div>
+          <div class="schedule-grid-content-contents-message">
+            <textarea class="schedule-grid-content-contents-message-text">{{ $todayCast->appeal_point }}</textarea>
+          </div>
+        </div>
+      </div>
+
+      @endforeach
     </div>
     <div class="groups-button-more">
       <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
-
+  @endif
+  @if($events->count() > 0)
   <div class="event">
     <div class="section-title">
       <h1 class="section-title-en">Event Info</h1>
@@ -117,6 +161,8 @@
       </div>
     </div>
   </div>
+  @endif
+  @if($newfaces_this_week->count() > 0)
   <div class="newface">
     <div class="newface-bgs">
       <img class="newface-bgs-bg1" src="{{ asset('assets/img/groups/bg-pickup.png') }}">
@@ -141,27 +187,27 @@
             <div class="newface-content">
               <div class="newface-content-top">
                 <div class="newface-content-top-newdate">
-                  <span class="newface-content-top-newdate-date">12/25</span>
+                  <span class="newface-content-top-newdate-date">{{ \Carbon\Carbon::parse($cast->joined_at)->format('m/d') }}</span>
                   <span class="newface-content-top-newdate-new">New</span>
                 </div>
                 <div class="newface-content-top-underbar"></div>
               </div>
               <div class="newface-content-img">
-                <img class="newface-content-img-photo" src="{{ asset('assets/img/groups/pickup-cast-1.png') }}">
-                <img class="newface-content-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+                <img class="newface-content-img-photo" src="{{ asset('storage/' . $cast->gallery_1) }}">
+                <img class="newface-content-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$cast->shop_slug.'.png') }}">
               </div>
               <div class="newface-content-contents">
                 <div class="newface-content-contents-top">
-                  <span class="newface-content-contents-top-name">キャスト名</span>
+                  <span class="newface-content-contents-top-name">{{ $cast->name }}</span>
                   <div class="newface-content-contents-top-shop">
-                    <span class="newface-content-contents-top-shop-text">プッシーキャット</span>
+                    <span class="newface-content-contents-top-shop-text">{{ $cast->shop_name }}</span>
                   </div>
                 </div>
                 <div class="newface-content-contents-measure">
-                  <span class="newface-content-contents-measure-text">00歳／T.160 B.85(C) W.60 H.83</span>
+                  <span class="newface-content-contents-measure-text">{{ $cast->age }}歳／T.{{ $cast->height }} B.{{ $cast->bust }}(C) W.{{ $cast->waist }} H.{{ $cast->hip }}</span>
                 </div>
                 <div class="newface-content-contents-message">
-                  <span class="newface-content-contents-message-text">女の子メッセージ女の子メッセージ女の子メ</span>
+                  <span class="newface-content-contents-message-text">{{ $cast->appeal_point }}</span>
                 </div>
               </div>
             </div>
@@ -172,9 +218,10 @@
     <div class="groups-button-more">
       <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
-
   </div>
+  @endif
 
+  @if($pickups->count() > 0)
   <div class="pickup">
     <div class="section-title">
       <h1 class="section-title-en">Pickup Girl</h1>
@@ -204,18 +251,18 @@
               <div class="pickup-main">
                 <div class="pickup-main-border">
                   <div class="pickup-main-border-img">
-                    <img class="pickup-main-border-img-photo" src="{{ asset('assets/img/groups/pickup-cast-1.png') }}">
-                    <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+                    <img class="pickup-main-border-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
+                    <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
                   </div>
                   <div class="pickup-main-border-contents">
-                    <span class="pickup-main-border-contents-name">キャスト名</span>
-                    <span class="pickup-main-border-contents-measure">T.160 B.85(C) W.60 H.83</span>
-                    <span class="pickup-main-border-contents-shop">プッシーキャット</span>
+                    <span class="pickup-main-border-contents-name">{{ $pickup->name }}</span>
+                    <span class="pickup-main-border-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                    <span class="pickup-main-border-contents-shop">{{ $pickup->shop_name }}</span>
                     <div class="pickup-main-border-contents-schedule">
-                      <span class="pickup-main-border-contents-schedule-text">本日出勤中 | 本日お休み</span>
+                      <span class="pickup-main-border-contents-schedule-text">{{ $pickup->schedule_status }}</span>
                     </div>
                     <div class="pickup-main-border-contents-manager">
-                      <textarea class="pickup-main-border-contents-manager-text">店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ 店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ</textarea>
+                      <textarea class="pickup-main-border-contents-manager-text">{{ $pickup->manager_comment }}</textarea>
                       </div>
                   </div>
                 </div>
@@ -229,17 +276,17 @@
               <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
                 <div class="pickup-slide-contents">
                   <div class="pickup-slide-contents-img">
-                    <img class="pickup-slide-contents-img-photo" src="{{ asset('assets/img/groups/pickup-cast-1.png') }}">
-                    <img class="pickup-slide-contents-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+                    <img class="pickup-slide-contents-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
+                    <img class="pickup-slide-contents-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
                   </div>
                   <div class="pickup-slide-contents-detail">
-                    <span class="pickup-slide-contents-detail-name">キャスト名</span>
-                    <span class="pickup-slide-contents-detail-measure">T.160 B.85(C) W.60 H.83</span>
-                    <span class="pickup-slide-contents-detail-shop">プッシーキャット</span>
+                    <span class="pickup-slide-contents-detail-name">{{ $pickup->name }}</span>
+                    <span class="pickup-slide-contents-detail-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                    <span class="pickup-slide-contents-detail-shop">{{ $pickup->shop_name }}</span>
                     <div class="pickup-slide-contents-detail-schedule">
-                      <span class="pickup-slide-contents-detail-schedule-text">本日出勤中</span>
+                      <span class="pickup-slide-contents-detail-schedule-text">{{ $pickup->schedule_status }}</span>
                     </div>
-                    <span class="pickup-slide-contents-detail-message">女の子メッセージ女の子メッセージ</span>
+                    <span class="pickup-slide-contents-detail-message">{{ $pickup->appeal_point }}</span>
 
                   </div>
                 </div>
@@ -257,25 +304,25 @@
     </div>
     <div class="pickup-contents sp-only">
       <div class="pickup-contents-sp-img">
-        <img class="pickup-contents-sp-img-photo" src="{{ asset('assets/img/groups/castphoto.png') }}">
-        <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
+        <img class="pickup-contents-sp-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
+        <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
       </div>
       <div class="pickup-contents-sp-contents">
-        <span class="pickup-contents-sp-contents-name">キャスト名</span>
-        <span class="pickup-contents-sp-contents-measure">T.160 B.85(C) W.60 H.83</span>
-        <span class="pickup-contents-sp-contents-shop">プッシーキャット</span>
+        <span class="pickup-contents-sp-contents-name">{{ $pickup->name }}</span>
+        <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+        <span class="pickup-contents-sp-contents-shop">{{ $pickup->shop_name }}</span>
         <div class="pickup-contents-sp-contents-schedule">
           <span class="pickup-contents-sp-contents-schedule-text">
-            本日出勤中
+            {{ $pickup->schedule_status }}
           </span>
         </div>
         <div class="pickup-contents-sp-contents-manager">
-          <textarea class="pickup-contents-sp-contents-manager-text">店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッ</textarea>
+          <textarea class="pickup-contents-sp-contents-manager-text">{{ $pickup->manager_comment }}</textarea>
         </div>
       </div>
     </div>
     <div class="pickup-list sp-only">
-      @for( $i=1 ; $i < 10 ; $i++)
+      {{-- @for( $i=1 ; $i < 10 ; $i++)
       <div class="pickup-list-item">
         <div class="pickup-list-item-img">
           <img class="pickup-list-item-img-photo" src="{{ asset('assets/img/groups/castphoto.png') }}">
@@ -291,12 +338,31 @@
           <span class="pickup-list-item-contents-message">女の子メッセージ女の子メ</span>
         </div>
       </div>
-      @endfor
+      @endfor --}}
+      @foreach($pickups as $pickup)
+      <div class="pickup-list-item">
+        <div class="pickup-list-item-img">
+          <img class="pickup-list-item-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
+          <img class="pickup-list-item-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
+        </div>
+        <div class="pickup-list-item-contents">
+          <span class="pickup-list-item-contents-name">{{ $pickup->name }}</span>
+          <span class="pickup-list-item-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+          <span class="pickup-list-item-contents-shop">{{ $pickup->shop_name }}</span>
+          <div class="pickup-list-item-contents-schedule">
+            <span class="pickup-list-item-contents-schedule-text">{{ $pickup->schedule_status }}</span>
+          </div>
+          <span class="pickup-list-item-contents-message">{{ $pickup->appeal_point }}</span>
+        </div>
+      </div>
+      @endforeach
     </div>
     <div class="groups-button-more">
       <a href="#" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
+  @endif
+  @if($diaries->count() > 0)
   <div class="diary">
     <div class="section-title">
       <h1 class="section-title-en">Photo Diary</h1>
@@ -311,7 +377,7 @@
     </div>
     <div class="diary-contents">
       <div class="diary-contents-border pc-only">
-        @for($i=1; $i<10 ; $i++)
+        {{-- @for($i=1; $i<10 ; $i++)
         <div class="diary-contents-border-item">
           <div class="diary-contents-border-item-img">
             <img src="{{ asset('assets/img/groups/diary1.jpg') }}">
@@ -330,14 +396,36 @@
           </div>
           <span class="diary-contents-border-item-shop">
             シロガネーゼ
+          </span>
+        </div>
+        @endfor --}}
+        @foreach($diaries as $diary)
+        <div class="diary-contents-border-item">
+          <div class="diary-contents-border-item-img">
+            <img src="{{ asset('storage/diary/' . $diary->photo) }}">
+          </div>
+          <span class="diary-contents-border-item-title">{{ $diary->subject }}</span>
+          <span class="diary-contents-border-item-datetime">{{ $diary->updated_at }}</span>
+          <div class="diary-contents-border-item-detail">
+            <div class="diary-contents-border-item-detail-castphoto">
+              <img class="diary-contents-border-item-detail-castphoto-img" src="{{ asset('storage/' . $diary->gallery_1) }}">
+            </div>
+            <div class="diary-contents-border-item-detail-contents">
+              <span class="diary-contents-border-item-detail-contents-name">{{ $diary->name."(".$diary->cast_age.")" }}</span>
+              <span class="diary-contents-border-item-detail-contents-measure">T.{{ $diary->cast_height }} B.{{ $diary->cast_bust }}(C) W.{{ $diary->cast_waist }} H.{{ $diary->cast_hip }}</span>
+
+            </div>
+          </div>
+          <span class="diary-contents-border-item-shop">
+            {{ $diary->shop_name }}
             {{-- <span class="diary-contents-border-item-shop-text">シロガネーゼ</span> --}}
           </span>
         </div>
-        @endfor
+        @endforeach
       </div>
       <div class="diary-contents-slide content-wrapper sp-only">
         <div class="swiper-wrapper">
-          @for($i=1; $i<10 ; $i++)
+          {{-- @for($i=1; $i<10 ; $i++)
           <div class="swiper-slide">
             <div class="diary-contents-slide-item">
               <div class="diary-contents-slide-item-img">
@@ -360,7 +448,31 @@
               </span>
             </div>
               </div>
-          @endfor
+          @endfor --}}
+          @foreach($diaries as $diary)
+          <div class="swiper-slide">
+            <div class="diary-contents-slide-item">
+              <div class="diary-contents-slide-item-img">
+                <img src="{{ asset('storage/diary/' . $diary->photo) }}">
+              </div>
+              <span class="diary-contents-slide-item-title">{{ $diary->subject }}</span>
+              <span class="diary-contents-slide-item-datetime">{{ $diary->updated_at }}</span>
+              <div class="diary-contents-slide-item-detail">
+                <div class="diary-contents-slide-item-detail-castphoto">
+                  <img class="diary-contents-slide-item-detail-castphoto-img" src="{{ asset('storage/' . $diary->gallery_1) }}">
+                </div>
+                <div class="diary-contents-slide-item-detail-contents">
+                  <span class="diary-contents-slide-item-detail-contents-name">{{ $diary->name."(".$diary->cast_age.")" }}</span>
+                  <span class="diary-contents-slide-item-detail-contents-measure">T.{{ $diary->cast_height }} B.{{ $diary->cast_bust }}(C) W.{{ $diary->cast_waist }} H.{{ $diary->cast_hip }}</span>
+
+                </div>
+              </div>
+              <span class="diary-contents-slide-item-shop">
+                {{ $diary->shop_name }}
+              </span>
+            </div>
+              </div>
+          @endforeach
         </div>
       </div>
       <div class="groups-button-more">
@@ -368,7 +480,8 @@
       </div>
     </div>
   </div>
-
+  @endif
+  @if($videos->count() > 0)
   <div class="movie">
     <div class="movie-bgs">
       <img class="movie-bgs-bg1" src="{{ asset('assets/img/groups/bg-newface.png') }}"></img>
@@ -391,20 +504,20 @@
           <source src="{{ $video->video_url }}" type="video/mp4">
         </video>
         <div class="movie-contents-item-detail pc-only">
-          <span class="movie-contents-item-detail-date">00/00 UP</span>
-          <span class="movie-contents-item-detail-name">女の子の名前</span>
+          <span class="movie-contents-item-detail-date">{{ \Carbon\Carbon::parse($video->updated_at)->format('m/d') }} UP</span>
+          <span class="movie-contents-item-detail-name">{{ $video->name }}</span>
           <div class="movie-contents-item-detail-shop">
-            <span class="movie-contents-item-detail-shop-text">シロガネーゼ</span>
+            <span class="movie-contents-item-detail-shop-text">{{ $video->shop_name }}</span>
           </div>
         </div>
         <div class="movie-contents-item-details sp-only">
           <div class="movie-contents-item-details-row">
-          <span class="movie-contents-item-details-date">00/00 UP</span>
-          <span class="movie-contents-item-details-name">女の子の名前</span>
+          <span class="movie-contents-item-details-date">{{ \Carbon\Carbon::parse($video->updated_at)->format('m/d') }} UP</span>
+          <span class="movie-contents-item-details-name">{{ $video->name }}</span>
           </div>
 
           <div class="movie-contents-item-details-shop">
-            <span class="movie-contents-item-details-shop-text">シロガネーゼ</span>
+            <span class="movie-contents-item-details-shop-text">{{ $video->shop_name }}</span>
           </div>
         </div>
       </div>
@@ -415,7 +528,7 @@
     </div>
 
   </div>
-
+  @endif
   <x-public.groups.footer />
 </x-public-group-layout>
 
