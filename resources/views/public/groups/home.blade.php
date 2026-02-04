@@ -185,7 +185,7 @@
         <h2 class="section-title-jp-text">新人情報</h2>
       </div>
     </div>
-    <div class="newface-slide content-wrapper">
+    <div class="newface-slide swiper content-wrapper">
       <div class="swiper-wrapper">
         @foreach ($newfaces_this_week as $cast)
           <div class="swiper-slide">
@@ -277,7 +277,7 @@
             </div>
           @endforeach
         </div>
-        <div class="pickup-pagination">
+        <div class="pickup-pagination swiper">
           <div class="swiper-wrapper">
             @foreach($pickups as $pickup)
               <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
@@ -310,21 +310,31 @@
       </div>
     </div>
     <div class="pickup-contents sp-only">
-      <div class="pickup-contents-sp-img">
-        <img class="pickup-contents-sp-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
-        <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
-      </div>
-      <div class="pickup-contents-sp-contents">
-        <span class="pickup-contents-sp-contents-name">{{ $pickup->name }}</span>
-        <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
-        <span class="pickup-contents-sp-contents-shop">{{ $pickup->shop_name }}</span>
-        <div class="pickup-contents-sp-contents-schedule">
-          <span class="pickup-contents-sp-contents-schedule-text">
-            {{ $pickup->schedule_status }}
-          </span>
-        </div>
-        <div class="pickup-contents-sp-contents-manager">
-          <textarea class="pickup-contents-sp-contents-manager-text">{{ $pickup->manager_comment }}</textarea>
+      <div class="pickup-contents-slider swiper content-wrapper">
+        <div class="swiper-wrapper">
+          @foreach ( $pickups as $pickup)
+          <div class="swiper-slide">
+            <div class="pickup-contents-sp">
+              <div class="pickup-contents-sp-img">
+                <img class="pickup-contents-sp-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
+                <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
+              </div>
+              <div class="pickup-contents-sp-contents">
+                <span class="pickup-contents-sp-contents-name">{{ $pickup->name }}</span>
+                <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                <span class="pickup-contents-sp-contents-shop">{{ $pickup->shop_name }}</span>
+                <div class="pickup-contents-sp-contents-schedule">
+                  <span class="pickup-contents-sp-contents-schedule-text">
+                    {{ $pickup->schedule_status }}
+                  </span>
+                </div>
+                <div class="pickup-contents-sp-contents-manager">
+                  <textarea class="pickup-contents-sp-contents-manager-text">{{ $pickup->manager_comment }}</textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -537,7 +547,7 @@
   </div>
   @endif
   <x-public.groups.footer />
-</x-public-group-layout>
+</x-public-groups-layout>
 
 @once
   {{-- @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss','resources/scss/group/newstop.scss']) --}}
