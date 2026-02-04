@@ -138,6 +138,7 @@ class EventController extends Controller
     //   $event->published_at = $request->published_at;
       $event->published_status = $request->publish_type;
       $event->thumbnail = $file1 ? $file1->store($file_path, 'public') : $request->path_1;
+    //   dd($request,$request->event_content);
       $event->contents = $request->event_content;
       $event->save();
 
