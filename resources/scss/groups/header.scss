@@ -106,61 +106,60 @@
     }
   }
 
-  .mv-banner-bottom {
-    position: relative;
+}
+
+// Banner bottom styles (outside .mv component)
+.mv-banner-bottom {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100;
+  margin-top: 0;
+
+  &-wrapper {
     width: 100%;
-    overflow: hidden;
-    z-index: 1;
-    margin-top: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 
-    &-wrapper {
-      width: 100%;
-      overflow-x: hidden; // 自動スライドのためスクロールを無効化
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-
-      // スマホでも自動スライドを有効にする
-      @media #{media-query(sm)},#{media-query(xs)} {
-        width: 100vw; // 画面幅に制限
-        overflow-x: hidden; // 自動スライドのためスクロールを無効化
-      }
-
-      // PCでは自動スライドのみ
-      @media #{media-query(md)}, #{media-query(lg)} {
-        overflow-x: hidden;
-      }
+    @media #{media-query(sm)},#{media-query(xs)} {
+      width: 100vw;
+      overflow-x: hidden;
     }
 
-    &-slide {
-      display: flex;
-      width: 200%; // 2つの画像分の幅
-      animation: slideRightToLeft 30s linear infinite;
+    @media #{media-query(md)}, #{media-query(lg)} {
+      overflow-x: hidden;
+    }
+  }
 
-      @media #{media-query(sm)},#{media-query(xs)} {
-        // スマホでも自動スライドを有効にする
-        width: calc(400vw + 16px); // 2つの画像（各200vw）+ 余白
-        animation: slideRightToLeftMobile 30s linear infinite;
-      }
+  &-slide {
+    display: flex;
+    width: 200%; // 2つの画像分の幅
+    animation: slideRightToLeft 30s linear infinite;
 
-      img {
-        display: block;
-        height: auto;
-        flex-shrink: 0;
-        width: calc(50% - 10px); // 各画像はスライドコンテナの50%から余白の半分を引いた幅
+    @media #{media-query(sm)},#{media-query(xs)} {
+      width: calc(400vw + 16px); // 2つの画像（各200vw）+ 余白
+      animation: slideRightToLeftMobile 30s linear infinite;
+    }
 
-        // 最初の画像の後に余白を追加
-        &:first-child {
-          margin-right: 20px;
+    img {
+      display: block;
+      height: auto;
+      flex-shrink: 0;
+      width: calc(50% - 10px); // 各画像はスライドコンテナの50%から余白の半分を引いた幅
 
-          @media #{media-query(sm)},#{media-query(xs)} {
-            margin-right: 16px; // スマホでは少し小さめの余白
-          }
-        }
+      // 最初の画像の後に余白を追加
+      &:first-child {
+        margin-right: 20px;
 
         @media #{media-query(sm)},#{media-query(xs)} {
-          scroll-snap-align: start;
-          width: 200vw; // スマホでは画面幅の2倍（半分だけ見えるように）
+          margin-right: 16px; // スマホでは少し小さめの余白
         }
+      }
+
+      @media #{media-query(sm)},#{media-query(xs)} {
+        scroll-snap-align: start;
+        width: 200vw; // スマホでは画面幅の2倍（半分だけ見えるように）
       }
     }
   }
@@ -185,7 +184,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 10px)); // 余白を考慮した移動距離
+    transform: translateX(-50%); // 2つの画像のうち、最初の画像分だけ移動
   }
 }
 
@@ -195,7 +194,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-50% - 8px)); // スマホ用：余白を考慮した移動距離
+    transform: translateX(-50%); // 2つの画像のうち、最初の画像分だけ移動
   }
 }
 
