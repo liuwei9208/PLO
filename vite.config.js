@@ -295,7 +295,12 @@ export default defineConfig({
         'resources/scss/groups/newface-content.scss',
         'resources/scss/groups/pickup-content.scss',
         'resources/scss/groups/diary-content.scss',
-        'resources/scss/groups/movie-content.scss'
+        'resources/scss/groups/movie-content.scss',
+
+        'resources/scss/groups/header-sub.scss',
+        'resources/scss/groups/banner.scss',
+        'resources/scss/groups/photodiary.scss',
+        'resources/js/groups/photodiary.js'
       ],
       refresh: true,
     }),
