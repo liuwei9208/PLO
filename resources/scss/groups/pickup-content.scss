@@ -194,13 +194,18 @@
 
 .pickup-main {
   background: url('/assets/img/groups/bg-pickup.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   // display: flex;
   // flex-direction: row;
   // align-items: center;
   // justify-content: center;
   // column-gap: 20px;
   padding: 20px;
-  width: 100%;
+  // width: 100%;
+  width: 866px;
+  margin: 0 auto;
   // max-width: 500px;
   // box-sizing: border-box;
   // overflow: hidden;
@@ -216,7 +221,8 @@
     box-sizing: border-box;
     &-img{
       position: relative;
-      width: auto;
+      // width: auto;
+      width: 345px;
       flex:1;
       min-width: 0;
       height: 462px;
@@ -481,6 +487,11 @@
 // .swiper-slide {
 //   overflow: hidden;
 // }
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 .pickup-list {
