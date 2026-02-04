@@ -328,45 +328,57 @@
 
 <script>
   window.apiToken = "{{ $token }}"
-  ClassicEditor
-  .create(document.querySelector('#event_content'), {
-      language: 'ja',
-      toolbar: [
-        'heading','fontFamily','fontSize', 'fontColor', 'fontBackgroundColor', '|',
-        'bold', 'italic', 'underline', 'strikethrough', '|', 'superscript', 'subscript', '|',
-        'link', 'bulletedList', 'numberedList','blockQuote', '|',
-        'insertTable', '|',
-        'imageUpload', '|',
-        'alignment', '|',
-        'outdent', 'indent', '|',
-        'horizontalLine', '|',
-        'codeBlock', '|',
-        'mediaEmbed', '|',
-        'undo', 'redo'
-      ],
-      fontSize: {
-        options: [9, 11, 13, 'default', 17, 19, 21]
-      },
-      simpleUpload: {
-        uploadUrl: '/api/ckeditor/event_upload',
-        withCredentials: false,
-        headers: {
-          // 'Content-Type': 'multipart/form-data',
-          'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-          // 'Accept': 'application/json',
-          // 'X-Requested-With': 'XMLHttpRequest',
-          'Authorization': 'Bearer ' + window.apiToken
-        },
-      },
-    })
-    .catch(error => {
-      console.error(error);
-    });
+  let editorInstance;
+  // ClassicEditor
+  // .create(document.querySelector('#event_content'), {
+  //     language: 'ja',
+  //     toolbar: [
+  //       'heading','fontFamily','fontSize', 'fontColor', 'fontBackgroundColor', '|',
+  //       'bold', 'italic', 'underline', 'strikethrough', '|', 'superscript', 'subscript', '|',
+  //       'link', 'bulletedList', 'numberedList','blockQuote', '|',
+  //       'insertTable', '|',
+  //       'imageUpload', '|',
+  //       'alignment', '|',
+  //       'outdent', 'indent', '|',
+  //       'horizontalLine', '|',
+  //       'codeBlock', '|',
+  //       'mediaEmbed', '|',
+  //       'undo', 'redo'
+  //     ],
+  //     fontSize: {
+  //       options: [9, 11, 13, 'default', 17, 19, 21]
+  //     },
+  //     simpleUpload: {
+  //       uploadUrl: '/api/ckeditor/event_upload',
+  //       withCredentials: false,
+  //       headers: {
+  //         // 'Content-Type': 'multipart/form-data',
+  //         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+  //         // 'Accept': 'application/json',
+  //         // 'X-Requested-With': 'XMLHttpRequest',
+  //         'Authorization': 'Bearer ' + window.apiToken
+  //       },
+  //     },
+  //   })
+  //   .then(editor => {
+  //     editorInstance = editor;
+  //   })
+  //   .catch(error => {
+  //     console.error(error);
+  //   });
+
+
+  //   document.querySelector('form').addEventListener('submit', function () {
+  //   console.log(editorInstance.getData());
+  //   document.querySelector('#event_content').value = editorInstance.getData();
+  // });
+
 </script>
 @once
   @vite('resources/js/admin/event.js')
 @endonce
 <script>
+
 document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('input[type=file].event-gallery-input').forEach(input => {
     const item = input.parentElement

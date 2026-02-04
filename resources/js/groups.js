@@ -10,7 +10,7 @@ const pushbar = new Pushbar({
   overlay: true,
 });
 
-new Swiper('.newface-slide', {
+if (document.querySelector('.newface-slide')) new Swiper('.newface-slide', {
   modules: [ Autoplay, Navigation ],
   loop: true,
   autoplay: {
@@ -20,7 +20,7 @@ new Swiper('.newface-slide', {
   speed: 1000,
   breakpoints: {
     0: {
-      centeredSlides: 1,
+      centeredSlides: true,
       slidesPerView: 1.35,
       spaceBetween: 30,
     },
@@ -36,6 +36,31 @@ new Swiper('.newface-slide', {
   navigation: {
     prevEl: '.newface-slide-prev',
     nextEl: '.newface-slide-next',
+  },
+})
+
+if (document.querySelector('.pickup-contents-slider')) new Swiper('.pickup-contents-slider', {
+  modules: [ Autoplay ],
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  speed: 1000,
+  breakpoints: {
+    0: {
+      centeredSlides: true,
+      slidesPerView: 1.35,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    1366: {
+      slidesPerView: 3,
+      spaceBetween: 45,
+    }
   },
 })
 
