@@ -310,6 +310,29 @@ thumbsSwiper_pickup.on('click', function (swiper) {
   }
 });
 
+// Mobile dropdown menu for groups-shops-buttons
+document.addEventListener('DOMContentLoaded', function() {
+  const shopButton = document.querySelector('.groups-shop-button--main');
+  const shopsGrid = document.querySelector('.groups-shops-grid');
+  
+  if (shopButton && shopsGrid) {
+    shopButton.addEventListener('click', function() {
+      // Toggle active class on button and grid
+      shopButton.classList.toggle('active');
+      shopsGrid.classList.toggle('active');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const isClickInside = shopButton.contains(event.target) || shopsGrid.contains(event.target);
+      if (!isClickInside && window.innerWidth <= 850) {
+        shopButton.classList.remove('active');
+        shopsGrid.classList.remove('active');
+      }
+    });
+  }
+});
+
 
 // Add Intersection Observer for event-slider animation
 // const pickupSliderElement = document.querySelector('.pickup-slider');

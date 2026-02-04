@@ -28,6 +28,10 @@
     width: 100%;
     height: auto;
   }
+
+  @media screen and (max-width: 850px) {
+    margin-top: 35vh;
+  }
 }
 
 // Fixed banner background - similar to shizuku .banner-image pattern
@@ -46,20 +50,19 @@
     inset: 0;
     pointer-events: none;
     z-index: 0;
-
-    .banner-photodiary-bg-image {
-      position: absolute;
-      max-width: none;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-    }
+    background-image: var(--banner-bg-image, url('/assets/img/groups/banner.jpg'));
+    background-repeat: repeat-y;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
 
     .banner-photodiary-overlay {
       position: absolute;
-      background: rgba(255, 255, 255, 0.25);
+      background: rgba(255, 255, 255, var(--banner-overlay-opacity, 0.25));
       inset: 0;
       mix-blend-mode: overlay;
     }
@@ -81,6 +84,10 @@
     width: 100%;
     padding: 23px 0 15px;
     pointer-events: none;
+
+    @media screen and (max-width: 850px) {
+     top: 25%;
+    }
   }
 
   .banner-photodiary-title-en {
@@ -96,6 +103,19 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: 0.9px;
+
+    @media screen and (max-width: 850px) {
+      color: var(--b, #021A21);
+      leading-trim: both;
+      text-edge: cap;
+      -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: var(--b, #021A21);
+      font-family: Elina;
+      font-size: 50px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+    }
   }
 
   .banner-photodiary-title-ja-wrapper {
@@ -116,6 +136,16 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    
+    @media screen and (max-width: 850px) {
+      color: var(--b, #021A21);
+      -webkit-text-stroke-width: 0px;
+      font-family: YuGothic;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+    }
   }
 }
 
@@ -203,6 +233,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 0;
+    transition: all 0.3s ease;
     
     &::after {
       content: '';
@@ -212,6 +243,13 @@
       border-right: 6px solid transparent;
       border-top: 8.917px solid #021a21;
       flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    
+    &.active {
+      &::after {
+        transform: rotate(180deg);
+      }
     }
   }
 }
@@ -235,6 +273,19 @@
   
   @media screen and (max-width: 850px) {
     display: none;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    
+    &.active {
+      display: grid;
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: 10px;
+    }
   }
 }
 
@@ -265,7 +316,6 @@
   
   @media (min-width: 768px) {
     width: 100%;
-    max-width: 302px;
   }
 }
 
