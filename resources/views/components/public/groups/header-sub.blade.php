@@ -1,14 +1,14 @@
 <header class="header-sub" id="header-sub">
     <div class="left-header">
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('public.groups.home') }}">
                 <small>Top</small>
                 <span class="menu_newface">トップページ</span>
             </a>
         </div>
         <div class="header-separator"></div>
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('public.groups.newface') }}">
                 <small>New Face</small>
                 <span class="menu_newface">新人情報</span>
             </a>
