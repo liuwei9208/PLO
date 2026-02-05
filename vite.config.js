@@ -300,7 +300,9 @@ export default defineConfig({
         'resources/scss/groups/header-sub.scss',
         'resources/scss/groups/banner.scss',
         'resources/scss/groups/photodiary.scss',
-        'resources/js/groups/photodiary.js'
+        'resources/js/groups/photodiary.js',
+        'resources/scss/groups/newface-card.scss',
+        'resources/scss/groups/newface-page.scss'
       ],
       refresh: true,
     }),
