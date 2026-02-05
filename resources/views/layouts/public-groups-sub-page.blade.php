@@ -49,8 +49,11 @@
               />
             @endif
             
-            @if(request()->routeIs('public.groups.newface'))
+            @if($searchHeading)
               <h1 class="groups-search-heading">{{ $searchHeading }}</h1>
+            @endif
+            
+            @if(request()->routeIs('public.groups.newface') || request()->routeIs('public.groups.schedule'))
               <form method="GET" action="{{ url()->current() }}" class="groups-shops-buttons">
                 @foreach(request()->except('shop', 'page') as $key => $value)
                   @if(is_scalar($value))
