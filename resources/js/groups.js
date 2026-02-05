@@ -314,7 +314,7 @@ thumbsSwiper_pickup.on('click', function (swiper) {
 document.addEventListener('DOMContentLoaded', function() {
   const shopButton = document.querySelector('.groups-shop-button--main');
   const shopsGrid = document.querySelector('.groups-shops-grid');
-  
+
   if (shopButton && shopsGrid) {
     shopButton.addEventListener('click', function(event) {
       // On mobile, this acts as a dropdown toggle (prevent form submit if it's inside a form)
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     });
-    
+
     // Close dropdown when clicking outside
     document.addEventListener('click', function(event) {
       const isClickInside = shopButton.contains(event.target) || shopsGrid.contains(event.target);
