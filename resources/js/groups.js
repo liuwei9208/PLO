@@ -316,10 +316,32 @@ document.addEventListener('DOMContentLoaded', function() {
   const shopsGrid = document.querySelector('.groups-shops-grid');
   
   if (shopButton && shopsGrid) {
-    shopButton.addEventListener('click', function() {
-      // Toggle active class on button and grid
-      shopButton.classList.toggle('active');
-      shopsGrid.classList.toggle('active');
+    shopButton.addEventListener('click', function(event) {
+      // On mobile, this acts as a dropdown toggle (prevent form submit if it's inside a form)
+      if (window.innerWidth <= 850) {
+        const isSubmit = shopButton.getAttribute('type') === 'submit';
+        const isOpen = shopButton.classList.contains('active');
+
+        // First tap: open dropdown
+        if (!isOpen) {
+          event.preventDefault();
+          shopButton.classList.add('active');
+          shopsGrid.classList.add('active');
+          return;
+        }
+
+        // Second tap while open:
+        // - New Face (submit button): allow submit to reset to "all shops"
+        // - Other pages (type=button): just close the dropdown
+        if (!isSubmit) {
+          event.preventDefault();
+          shopButton.classList.remove('active');
+          shopsGrid.classList.remove('active');
+        } else {
+          shopButton.classList.remove('active');
+          shopsGrid.classList.remove('active');
+        }
+      }
     });
     
     // Close dropdown when clicking outside

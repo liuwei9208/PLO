@@ -254,6 +254,22 @@
   }
 }
 
+.groups-shop-button--main.is-active {
+  border-width: 2px;
+  background: var(--b, #021A21);
+  border-color: var(--b, #021A21);
+  color: #fff;
+}
+
+// New Face filter: when "All shops" is NOT active, text should be black.
+// (Scoped to submit button so other pages keep existing styles.)
+.groups-shop-button--main[type="submit"]:not(.is-active) {
+  color: #021a21;
+  background: #f7f6f6;
+  border-color: #9a9a9a;
+  box-shadow: none;
+}
+
 .groups-shops-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -306,6 +322,9 @@
   width: 100%;
   min-width: 0;
   text-decoration: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
   
   img {
     max-width: 100%;
@@ -317,6 +336,13 @@
   @media (min-width: 768px) {
     width: 100%;
   }
+}
+
+// Active state (used when the current page filters by shop)
+.groups-shop-button--shop.is-active {
+  border-width: 2px;
+  background: var(--b, #021A21);
+  border-color: var(--b, #021A21);
 }
 
 
