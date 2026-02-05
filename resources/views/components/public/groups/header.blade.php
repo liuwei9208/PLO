@@ -1,12 +1,12 @@
 @if (request()->routeIs('public.groups.home'))
 <header class="header" id="header">
-  <a href="{{ route('public.group.home') }}" class="header-logo sp-only">
+  <a href="{{ route('public.groups.home') }}" class="header-logo sp-only">
     <img src="{{ asset('assets/img/groups/plo-logo.png') }}" alt="">
   </a>
   <div class="header-user pc-only">
     {{-- <div class="header-user md lg"> --}}
     <div class="header-user-menu">
-      <a href="{{ route('public.group.newcomer') }}">
+      <a href="{{ route('public.groups.newface') }}">
         <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>

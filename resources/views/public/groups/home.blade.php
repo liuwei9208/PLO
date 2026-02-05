@@ -101,11 +101,11 @@
             </div>
           </div>
           <div class="schedule-grid-content-contents-measure pc-only">
-            <span class="schedule-grid-content-contents-measure-text">{{ $todayCast->name }} ({{ $todayCast->age }})／T.{{ $todayCast->height }} B.{{ $todayCast->bust }}(C) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
+            <span class="schedule-grid-content-contents-measure-text">{{ $todayCast->name }} ({{ $todayCast->age }})／T.{{ $todayCast->height }} B.{{ $todayCast->bust }}({{ $todayCast->bra}}) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
           </div>
           <div class="schedule-grid-content-contents-measure sp-only">
             <span class="schedule-grid-content-contents-measure-name">{{ $todayCast->name }} ({{ $todayCast->age }})</span>
-            <span class="schedule-grid-content-contents-measure-text">T.{{ $todayCast->height }} B.{{ $todayCast->bust }}(C) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
+            <span class="schedule-grid-content-contents-measure-text">T.{{ $todayCast->height }} B.{{ $todayCast->bust }}({{ $todayCast->bra}}) W.{{ $todayCast->waist }} H.{{ $todayCast->hip }}</span>
           </div>
           <div class="schedule-grid-content-contents-message">
             <textarea class="schedule-grid-content-contents-message-text">{{ $todayCast->appeal_point }}</textarea>
@@ -211,7 +211,7 @@
                   </div>
                 </div>
                 <div class="newface-content-contents-measure">
-                  <span class="newface-content-contents-measure-text">{{ $cast->age }}歳／T.{{ $cast->height }} B.{{ $cast->bust }}(C) W.{{ $cast->waist }} H.{{ $cast->hip }}</span>
+                  <span class="newface-content-contents-measure-text">{{ $cast->age }}歳／T.{{ $cast->height }} B.{{ $cast->bust }}({{$cast->bra}}) W.{{ $cast->waist }} H.{{ $cast->hip }}</span>
                 </div>
                 <div class="newface-content-contents-message">
                   <span class="newface-content-contents-message-text">{{ $cast->appeal_point }}</span>
@@ -223,7 +223,7 @@
       </div>
     </div>
     <div class="groups-button-more">
-      <a href="#" class="groups-button-more-btn">もっと見る</a>
+      <a href="{{ route('public.groups.newface')}}" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
   @endif
@@ -263,7 +263,7 @@
                   </div>
                   <div class="pickup-main-border-contents">
                     <span class="pickup-main-border-contents-name">{{ $pickup->name }}</span>
-                    <span class="pickup-main-border-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                    <span class="pickup-main-border-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{$pickup->bra}}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
                     <span class="pickup-main-border-contents-shop">{{ $pickup->shop_name }}</span>
                     <div class="pickup-main-border-contents-schedule">
                       <span class="pickup-main-border-contents-schedule-text">{{ $pickup->schedule_status }}</span>
@@ -288,7 +288,7 @@
                   </div>
                   <div class="pickup-slide-contents-detail">
                     <span class="pickup-slide-contents-detail-name">{{ $pickup->name }}</span>
-                    <span class="pickup-slide-contents-detail-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                    <span class="pickup-slide-contents-detail-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{$pickup->bra}}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
                     <span class="pickup-slide-contents-detail-shop">{{ $pickup->shop_name }}</span>
                     <div class="pickup-slide-contents-detail-schedule">
                       <span class="pickup-slide-contents-detail-schedule-text">{{ $pickup->schedule_status }}</span>
@@ -321,7 +321,7 @@
               </div>
               <div class="pickup-contents-sp-contents">
                 <span class="pickup-contents-sp-contents-name">{{ $pickup->name }}</span>
-                <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+                <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
                 <span class="pickup-contents-sp-contents-shop">{{ $pickup->shop_name }}</span>
                 <div class="pickup-contents-sp-contents-schedule">
                   <span class="pickup-contents-sp-contents-schedule-text">
@@ -364,7 +364,7 @@
         </div>
         <div class="pickup-list-item-contents">
           <span class="pickup-list-item-contents-name">{{ $pickup->name }}</span>
-          <span class="pickup-list-item-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}(C) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
+          <span class="pickup-list-item-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
           <span class="pickup-list-item-contents-shop">{{ $pickup->shop_name }}</span>
           <div class="pickup-list-item-contents-schedule">
             <span class="pickup-list-item-contents-schedule-text">{{ $pickup->schedule_status }}</span>
@@ -417,7 +417,7 @@
         </div>
         @endfor --}}
         @foreach($diaries as $diary)
-        <div class="diary-contents-border-item">
+        <a class="diary-contents-border-item" href="{{ route('public.shops.shop.photo-diary.detail',['shop'=>$diary->shop_slug, 'id'=>$diary->id]) }}">
           <div class="diary-contents-border-item-img">
             <img src="{{ asset('storage/diary/' . $diary->photo) }}">
           </div>
@@ -429,7 +429,7 @@
             </div>
             <div class="diary-contents-border-item-detail-contents">
               <span class="diary-contents-border-item-detail-contents-name">{{ $diary->name."(".$diary->cast_age.")" }}</span>
-              <span class="diary-contents-border-item-detail-contents-measure">T.{{ $diary->cast_height }} B.{{ $diary->cast_bust }}(C) W.{{ $diary->cast_waist }} H.{{ $diary->cast_hip }}</span>
+              <span class="diary-contents-border-item-detail-contents-measure">T.{{ $diary->cast_height }} B.{{ $diary->cast_bust }}({{$diary->cast_bra}}) W.{{ $diary->cast_waist }} H.{{ $diary->cast_hip }}</span>
 
             </div>
           </div>
@@ -437,7 +437,7 @@
             {{ $diary->shop_name }}
             {{-- <span class="diary-contents-border-item-shop-text">シロガネーゼ</span> --}}
           </span>
-        </div>
+        </a>
         @endforeach
       </div>
       <div class="diary-contents-slide content-wrapper sp-only">
@@ -493,7 +493,7 @@
         </div>
       </div>
       <div class="groups-button-more">
-        <a href="#" class="groups-button-more-btn">もっと見る</a>
+        <a href="{{ route('public.groups.photodiary')}}" class="groups-button-more-btn">もっと見る</a>
       </div>
     </div>
   </div>
