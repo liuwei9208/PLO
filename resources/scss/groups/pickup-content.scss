@@ -254,7 +254,7 @@
       flex-direction: column;
       row-gap: 16px;
       align-items: center;
-      justify-content: space-around;
+      justify-content: flex-start;
 
       &-name {
         @include inter();
@@ -318,7 +318,7 @@
         padding: 0 0px 0px 0px;
         border-radius: 9px;
         min-height: 0;
-        max-height: 75px;
+        max-height: 210px;
         &::-webkit-scrollbar {
           width: 5px;
         }
@@ -340,7 +340,7 @@
 
         &-text {
           width: 100%;
-          min-height: 120px;
+          min-height: 240px;
 
           @include YuGothic();
           font-size: 16px;

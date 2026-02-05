@@ -85,6 +85,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
         Route::get('photodiary', [GroupsController::class, 'showPhotoDiary'])->name('photodiary');
+        Route::get('newface', [GroupsController::class, 'showNewFace'])->name('newface');  
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
     /**
