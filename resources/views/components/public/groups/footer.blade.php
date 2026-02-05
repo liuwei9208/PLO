@@ -12,7 +12,7 @@
           <span class="footer-banner-items-item-detail-text">北海道札幌市中央区南6条西5丁目1-1</span>
         </div>
       </a>
-      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'lovestroy']) }}">
+      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'lovestory']) }}">
         <div class="footer-banner-items-item-img">
           <img class="footer-banner-items-item-img-photo" src="{{ asset('assets/img/groups/006.jpg') }}">
         </div>
