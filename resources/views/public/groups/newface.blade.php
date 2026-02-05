@@ -1,11 +1,16 @@
 <x-public-groups-sub-page-layout
   titleEn="New Face"
   titleJa="新人情報"
+  searchHeading="店舗で検索"
   :bannerImage="asset('assets/img/groups/newface-banner.jpg')"
   :vectorImage="asset('assets/img/groups/Vector.png')"
   :showButtonGroup="true"
   :buttonGroup="$buttonGroup ?? null"
   :showLoadMore="true"
+  :showDateSearchBar="true"
+  dateSearchHeading="出勤日で検索"
+  :dateSearchDates="null"
+  :dateSearchActiveDate="request('date')"
 >
   <!-- New Face Content -->
   <div class="newface">

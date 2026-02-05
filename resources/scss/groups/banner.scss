@@ -161,7 +161,7 @@
   max-width: 1440px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 50px;
+  padding: 50px 50px;
   border-radius: 50px;
   background: white;
 }
@@ -177,7 +177,7 @@
 
 .groups-shops-buttons {
   max-width: 1440px;
-  padding: 50px 0px 50px 0px;
+  // padding: 50px 0px 50px 0px;
   width: 100%;
   border-radius: 50px;
   margin: 0px auto;
@@ -367,4 +367,17 @@
     letter-spacing: -0.8px;
     text-align: center;
   }
+}
+
+.groups-search-heading{
+  color: var(--b, #021A21);
+  leading-trim: both;
+  text-edge: cap;
+  font-family: YuGothic;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  padding: 20px 20px;
 }

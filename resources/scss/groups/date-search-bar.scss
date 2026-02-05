@@ -1,0 +1,107 @@
+@use '../global/vars' as *;
+@use '../mixins/font' as *;
+
+.groups-date-search-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.groups-date-search-header {
+  background: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 63px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.groups-date-search-icon {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.groups-date-search-heading {
+  font-family: 'YuGothic', sans-serif;
+  font-weight: 700;
+  font-size: 27px;
+  line-height: normal;
+  color: #2a1a08;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.groups-date-search-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.groups-date-button {
+  background: white;
+  border: 2px solid #b19d67;
+  display: flex;
+  flex: 1 0 0;
+  align-items: center;
+  justify-content: center;
+  min-height: 1px;
+  min-width: 1px;
+  padding: 5px 20px;
+  border-radius: 26px;
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.1);
+  font-family: 'YuGothic', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: normal;
+  color: #2a1a08;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &.is-active {
+    background: #ff048e;
+    border-color: #b19d67;
+    color: white;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .groups-date-search-header {
+    padding: 10px 20px;
+  }
+  
+  .groups-date-search-heading {
+    font-size: 22px;
+  }
+  
+  .groups-date-search-buttons {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .groups-date-button {
+    flex: 0 1 calc(50% - 4px);
+    font-size: 18px;
+    padding: 5px 15px;
+  }
+}

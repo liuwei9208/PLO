@@ -39,7 +39,18 @@
       @if($showButtonGroup)
         <div class="groups-page-wrapper">
           <div class="groups-content-container">
+            
+            @if($showDateSearchBar)
+              <x-public.groups.date-search-bar
+                :icon="$dateSearchIcon"
+                :heading="$dateSearchHeading"
+                :dates="$dateSearchDates"
+                :activeDate="$dateSearchActiveDate"
+              />
+            @endif
+            
             @if(request()->routeIs('public.groups.newface'))
+              <h1 class="groups-search-heading">{{ $searchHeading }}</h1>
               <form method="GET" action="{{ url()->current() }}" class="groups-shops-buttons">
                 @foreach(request()->except('shop', 'page') as $key => $value)
                   @if(is_scalar($value))
