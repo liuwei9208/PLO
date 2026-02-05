@@ -310,6 +310,51 @@ thumbsSwiper_pickup.on('click', function (swiper) {
   }
 });
 
+// Mobile dropdown menu for groups-shops-buttons
+document.addEventListener('DOMContentLoaded', function() {
+  const shopButton = document.querySelector('.groups-shop-button--main');
+  const shopsGrid = document.querySelector('.groups-shops-grid');
+  
+  if (shopButton && shopsGrid) {
+    shopButton.addEventListener('click', function(event) {
+      // On mobile, this acts as a dropdown toggle (prevent form submit if it's inside a form)
+      if (window.innerWidth <= 850) {
+        const isSubmit = shopButton.getAttribute('type') === 'submit';
+        const isOpen = shopButton.classList.contains('active');
+
+        // First tap: open dropdown
+        if (!isOpen) {
+          event.preventDefault();
+          shopButton.classList.add('active');
+          shopsGrid.classList.add('active');
+          return;
+        }
+
+        // Second tap while open:
+        // - New Face (submit button): allow submit to reset to "all shops"
+        // - Other pages (type=button): just close the dropdown
+        if (!isSubmit) {
+          event.preventDefault();
+          shopButton.classList.remove('active');
+          shopsGrid.classList.remove('active');
+        } else {
+          shopButton.classList.remove('active');
+          shopsGrid.classList.remove('active');
+        }
+      }
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const isClickInside = shopButton.contains(event.target) || shopsGrid.contains(event.target);
+      if (!isClickInside && window.innerWidth <= 850) {
+        shopButton.classList.remove('active');
+        shopsGrid.classList.remove('active');
+      }
+    });
+  }
+});
+
 
 // Add Intersection Observer for event-slider animation
 // const pickupSliderElement = document.querySelector('.pickup-slider');

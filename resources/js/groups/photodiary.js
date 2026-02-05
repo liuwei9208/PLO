@@ -20,6 +20,10 @@ function initializeCalendar(calendarEl, calendarInstance) {
     contentHeight: "auto",
     fixedWeekCount: false,
     selectable: true,
+    // FullCalendar (ja locale) renders day numbers like "1日". We want "1"..."31" only.
+    dayCellContent: function (arg) {
+      return { html: arg.dayNumberText.replace(/日$/, "") };
+    },
     headerToolbar: {
       left: "prev",
       center: "title",
