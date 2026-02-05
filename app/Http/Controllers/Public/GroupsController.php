@@ -939,4 +939,8 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     {
         return view('public.groups.photodiary');
     }
+    public function showNewFace(Request $request): View
+    {
+        return view('public.groups.newface');
+    }
 }
