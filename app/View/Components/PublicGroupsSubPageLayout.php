@@ -14,6 +14,12 @@ class PublicGroupsSubPageLayout extends Component
     public bool $showButtonGroup;
     public ?array $buttonGroup;
     public bool $showLoadMore;
+    public ?string $searchHeading;
+    public bool $showDateSearchBar;
+    public ?array $dateSearchDates;
+    public ?string $dateSearchActiveDate;
+    public ?string $dateSearchIcon;
+    public ?string $dateSearchHeading;
 
     /**
      * Create a new component instance.
@@ -25,7 +31,13 @@ class PublicGroupsSubPageLayout extends Component
         ?string $vectorImage = null,
         bool $showButtonGroup = true,
         ?array $buttonGroup = null,
-        bool $showLoadMore = true
+        bool $showLoadMore = true,
+        ?string $searchHeading = null,
+        bool $showDateSearchBar = false,
+        ?array $dateSearchDates = null,
+        ?string $dateSearchActiveDate = null,
+        ?string $dateSearchIcon = null,
+        ?string $dateSearchHeading = null
     ) {
         $this->titleEn = $titleEn ?? 'Photo Diary';
         $this->titleJa = $titleJa ?? '写メ日記';
@@ -34,6 +46,12 @@ class PublicGroupsSubPageLayout extends Component
         $this->showButtonGroup = $showButtonGroup;
         $this->buttonGroup = $buttonGroup;
         $this->showLoadMore = $showLoadMore;
+        $this->searchHeading = $searchHeading;
+        $this->showDateSearchBar = $showDateSearchBar;
+        $this->dateSearchDates = $dateSearchDates;
+        $this->dateSearchActiveDate = $dateSearchActiveDate;
+        $this->dateSearchIcon = $dateSearchIcon;
+        $this->dateSearchHeading = $dateSearchHeading;
     }
 
     /**

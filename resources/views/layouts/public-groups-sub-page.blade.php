@@ -39,9 +39,23 @@
       @if($showButtonGroup)
         <div class="groups-page-wrapper">
           <div class="groups-content-container">
-            @if(request()->routeIs('public.groups.newface'))
+            
+            @if($showDateSearchBar)
+              <x-public.groups.date-search-bar
+                :icon="$dateSearchIcon"
+                :heading="$dateSearchHeading"
+                :dates="$dateSearchDates"
+                :activeDate="$dateSearchActiveDate"
+              />
+            @endif
+            
+            @if($searchHeading)
+              <h1 class="groups-search-heading">{{ $searchHeading }}</h1>
+            @endif
+            
+            @if(request()->routeIs('public.groups.newface') || request()->routeIs('public.groups.schedule'))
               <form method="GET" action="{{ url()->current() }}" class="groups-shops-buttons">
-                @foreach(request()->except('shop', 'page') as $key => $value)
+                @foreach(request()->except('shop', 'page', 'date') as $key => $value)
                   @if(is_scalar($value))
                     <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                   @endif
