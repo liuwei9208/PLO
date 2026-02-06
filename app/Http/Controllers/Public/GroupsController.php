@@ -338,46 +338,93 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     public function showSchedule(Request $request): View
     {
         Carbon::setLocale('ja');
-        $today = Carbon::now()->format('Y-m-d');
-        $days = array();
-        $weekDay = Carbon::now()->format('m/d').'('.Carbon::now()->getTranslatedMinDayName().')';
-        $days[0] = ['date'=>$today,'weekDay'=>$weekDay];
-        for ($i = 1; $i < 7; $i++) {
-            $date = Carbon::now()->addDays($i)->format('Y-m-d');
-            $weekDay = Carbon::now()->addDays($i)->format('m/d').'('.Carbon::now()->addDays($i)->getTranslatedMinDayName().')';
-            $days[$i] = ['date'=>$date,'weekDay'=>$weekDay] ;
+        
+        // Get selected date from request or default to today
+        $selectedDate = $request->query('date', Carbon::now()->format('Y-m-d'));
+        $selectedCarbon = Carbon::parse($selectedDate);
+        
+        // Get selected shop from request
+        $selectedShop = $request->query('shop', '');
+        
+        // Format the search heading with the selected date
+        $searchHeading = $selectedCarbon->format('m/d') . '（' . $selectedCarbon->getTranslatedMinDayName() . '）の出勤女性';
+        
+        // Generate date search dates (next 6 days)
+        $dateSearchDates = [];
+        for ($i = 0; $i < 6; $i++) {
+            $date = Carbon::now()->addDays($i);
+            $dateSearchDates[] = [
+                'date' => $date->format('Y-m-d'),
+                'display' => $date->format('m/d'),
+                'label' => $date->format('m/d')
+            ];
         }
-        Log::info($days);
-        // $attendances = Attendance::whereIn('date', $days)->get();
-        // $token =Auth::user()->createToken('schedule')->plainTextToken;
-        // $casts = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
-        // ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
-        // ->where('casts.is_public', 1)
-        // ->where('attendances.is_public', 1)
-        // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
-        // ->selectRaw("
-        //     attendances.id as attendance_id,
-        //     DATE_FORMAT(attendances.start_datetime, '%y:%m:%d') as start_datetime,
-        //     DATE_FORMAT(attendances.end_datetime, '%y:%m:%d') as end_datetime,
-        //     casts.name as cast_name,
-        //     casts.id as cast_id,
-        //     casts.shop_id as shop_id,
-        //     casts.gallery_1 as gallery_1,
-        //     casts.age as age,
-        //     casts.height as height,
-        //     casts.bust as bust,
-        //     casts.waist as waist,
-        //     casts.hip as hip,
-        //     casts.appeal_point as personality,
-        //     shops.name as shop_name,
-        //     shops.slug as shop_slug
-        //     ") // 必要に応じて
-        // ->get();
-        // dd($casts);
-        return view('public.group.schedule', [
-            'days' => $days,
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
-            // 'casts' => $casts,
+        
+        // Fetch casts with attendance for the selected date
+        $query = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('casts.is_public', 1)
+            ->where('attendances.is_public', 1)
+            ->whereRaw('DATE(attendances.start_datetime) = ?', [$selectedDate])
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter');
+        
+        // Filter by shop if selected
+        if ($selectedShop !== '') {
+            $shop = Shop::where('slug', $selectedShop)->first();
+            if ($shop) {
+                $query->where('casts.shop_id', $shop->id);
+            }
+        }
+        
+        $casts = $query->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.bra_size as bra_size',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            DB::raw("DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_datetime"),
+            DB::raw("DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_datetime"),
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+        ])
+        ->orderBy('shops.rank', 'asc')
+        ->orderBy('casts.name', 'asc')
+        ->get()
+        ->map(function ($cast) {
+            // Format time range
+            $cast->time_range = ($cast->start_datetime ?? '') . '〜' . ($cast->end_datetime ?? '');
+            $cast->status_text = '本日出勤';
+            $cast->is_working_today = true;
+            return $cast;
+        });
+        
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        // For schedule page, buttons work as form submit buttons (like newface page)
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+        
+        return view('public.groups.schedule', [
+            'searchHeading' => $searchHeading,
+            'dateSearchDates' => $dateSearchDates,
+            'selectedDate' => $selectedDate,
+            'buttonGroup' => $buttonGroup,
+            'casts' => $casts,
         ]);
     }
 
