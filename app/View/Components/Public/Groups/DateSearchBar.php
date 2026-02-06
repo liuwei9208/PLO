@@ -22,7 +22,7 @@ class DateSearchBar extends Component
         ?array $dates = null,
         ?string $activeDate = null
     ) {
-        $this->icon = $icon ?? asset('assets/img/groups/bxs_time.png');
+        $this->icon = $icon ?? asset('assets/img/groups/datesearch-icon.png');
         $this->heading = $heading ?? '出勤日で検索';
         
         // Generate dates if not provided (next 6 days from today)

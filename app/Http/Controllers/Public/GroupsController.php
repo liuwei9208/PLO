@@ -343,6 +343,9 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $selectedDate = $request->query('date', Carbon::now()->format('Y-m-d'));
         $selectedCarbon = Carbon::parse($selectedDate);
         
+        // Get selected shop from request
+        $selectedShop = $request->query('shop', '');
+        
         // Format the search heading with the selected date
         $searchHeading = $selectedCarbon->format('m/d') . '（' . $selectedCarbon->getTranslatedMinDayName() . '）の出勤女性';
         
@@ -356,6 +359,50 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 'label' => $date->format('m/d')
             ];
         }
+        
+        // Fetch casts with attendance for the selected date
+        $query = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('casts.is_public', 1)
+            ->where('attendances.is_public', 1)
+            ->whereRaw('DATE(attendances.start_datetime) = ?', [$selectedDate])
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter');
+        
+        // Filter by shop if selected
+        if ($selectedShop !== '') {
+            $shop = Shop::where('slug', $selectedShop)->first();
+            if ($shop) {
+                $query->where('casts.shop_id', $shop->id);
+            }
+        }
+        
+        $casts = $query->select([
+            'casts.id as id',
+            'casts.name as name',
+            'casts.age as age',
+            'casts.height as height',
+            'casts.bust as bust',
+            'casts.bra_size as bra_size',
+            'casts.waist as waist',
+            'casts.hip as hip',
+            'casts.gallery_1 as gallery_1',
+            'casts.appeal_point as appeal_point',
+            DB::raw("DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_datetime"),
+            DB::raw("DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_datetime"),
+            'shops.slug as shop_slug',
+            'shops.name as shop_name',
+        ])
+        ->orderBy('shops.rank', 'asc')
+        ->orderBy('casts.name', 'asc')
+        ->get()
+        ->map(function ($cast) {
+            // Format time range
+            $cast->time_range = ($cast->start_datetime ?? '') . '〜' . ($cast->end_datetime ?? '');
+            $cast->status_text = '本日出勤';
+            $cast->is_working_today = true;
+            return $cast;
+        });
         
         // Button group (2 rows of 3) - used by the shared sub page layout.
         // For schedule page, buttons work as form submit buttons (like newface page)
@@ -377,6 +424,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'dateSearchDates' => $dateSearchDates,
             'selectedDate' => $selectedDate,
             'buttonGroup' => $buttonGroup,
+            'casts' => $casts,
         ]);
     }
 
