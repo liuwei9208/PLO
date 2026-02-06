@@ -302,7 +302,8 @@ export default defineConfig({
         'resources/scss/groups/photodiary.scss',
         'resources/js/groups/photodiary.js',
         'resources/scss/groups/newface-card.scss',
-        'resources/scss/groups/newface-page.scss'
+        'resources/scss/groups/newface-page.scss',
+        'resources/scss/groups/schedule.scss'
       ],
       refresh: true,
     }),
