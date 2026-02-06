@@ -48,7 +48,7 @@
             ['name' => 'キャスト名(27)', 'age' => '27', 'height' => '164', 'bust' => '89', 'braSize' => 'D', 'waist' => '63', 'hip' => '87', 'shopName' => 'シロガネーゼ', 'frameImage' => 'shiroganeze', 'timeRange' => '17:00〜29:00'],
           ];
         @endphp
-        @foreach($staticCasts as $staticCast)
+        {{-- @foreach($staticCasts as $staticCast)
           <x-public.groups.schedule-card
             :name="$staticCast['name']"
             :age="$staticCast['age']"
@@ -66,7 +66,7 @@
             :timeRange="$staticCast['timeRange']"
             :isWorkingToday="true"
           />
-        @endforeach
+        @endforeach --}}
       @endif
     </div>
   </div>
