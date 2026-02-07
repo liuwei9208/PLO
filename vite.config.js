@@ -304,7 +304,9 @@ export default defineConfig({
         'resources/scss/groups/newface-card.scss',
         'resources/scss/groups/newface-page.scss',
         'resources/scss/groups/schedule.scss',
-        'resources/scss/groups/schedule-card.scss'
+        'resources/scss/groups/schedule-card.scss',
+        'resources/scss/groups/event-card.scss',
+        'resources/scss/groups/event.scss'
       ],
       refresh: true,
     }),
