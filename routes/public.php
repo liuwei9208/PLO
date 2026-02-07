@@ -66,8 +66,8 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         // Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupsController::class, 'showSchedule'])->name('schedule');
-        Route::get('event', [GroupController::class, 'showEvent'])->name('event');
-        Route::get('event/{id}', [GroupController::class, 'showEventDetail'])->name('event.detail');
+        Route::get('event', [GroupsController::class, 'showEvent'])->name('event');
+        Route::get('event/{id}', [GroupsController::class, 'showEventDetail'])->name('event.detail');
         Route::get('search', [GroupController::class, 'showSearch'])->name('search');
         Route::post('search', [GroupController::class, 'searchResult']);
         Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');

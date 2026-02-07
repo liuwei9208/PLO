@@ -430,32 +430,148 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
 
     public function showEvent(Request $request): View
     {
-        $events = Event::where('published_status', 1)
-            ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
-            ->orWhere(function($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', Carbon::now());
+        // Get shops for validation
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get(['id', 'name', 'slug']);
+
+        $allowedSlugs = $shops->pluck('slug')->all();
+        $selectedShop = (string) $request->query('shop', '');
+        if ($selectedShop !== '' && !in_array($selectedShop, $allowedSlugs, true)) {
+            $selectedShop = '';
+        }
+
+        // Build event query - similar to original but with shop filtering
+        $headquarterShopId = Shop::where('slug', 'headquarter')->first()->id;
+        
+        $eventQuery = Event::with('shop')
+            ->leftJoin('shops', 'events.shop_id', '=', 'shops.id')
+            ->where(function($query) use ($headquarterShopId, $selectedShop) {
+                // Published status 1 (headquarter shop events) - only when no shop filter
+                if ($selectedShop === '') {
+                    $query->where(function($q) use ($headquarterShopId) {
+                        $q->where('events.published_status', 1)
+                          ->where('events.shop_id', $headquarterShopId);
+                    });
+                }
+                // Published status 2 (scheduled, published)
+                $query->orWhere(function($q) {
+                    $q->where('events.published_status', 2)
+                      ->where('events.published_at', '<=', Carbon::now());
+                })
+                // Published status 4 (recently published)
+                ->orWhere(function($q) {
+                    $q->where('events.published_status', 4)
+                      ->where('events.published_at', '>=', Carbon::now()->subMonth(1));
+                });
             })
-            ->orWhere('published_status',4)
-            ->where('published_at', '>=', Carbon::now()->subMonth(1))
-            ->orderBy('published_at', 'desc')
-            ->get();        // $events = Event::where('published_status', 1)
-        // ->where('shop_id', Shop::where('slug', 'headquarter')->first()->id)
-        // ->orWhere(function($query) {
-        //     $query->where('published_status', 2)
-        //         ->where('published_at', '<=', Carbon::now());
-        // })
-        // ->orderBy('published_at', 'desc')
-        // ->get();
-        return view('public.group.event', [
+            ->whereNot('shops.slug', 'touchvip');
+
+        // Filter by shop if selected
+        if ($selectedShop !== '') {
+            $shop = Shop::where('slug', $selectedShop)->first();
+            if ($shop) {
+                $eventQuery->where('events.shop_id', $shop->id);
+            }
+        } else {
+            // When no shop selected, exclude headquarter from individual shop events list
+            // (headquarter events with published_status 1 are already included above)
+            $eventQuery->where(function($q) use ($headquarterShopId) {
+                $q->where('events.shop_id', $headquarterShopId)
+                  ->orWhere('events.shop_id', '!=', $headquarterShopId);
+            });
+        }
+
+        $events = $eventQuery
+            ->select('events.*')
+            ->orderBy('events.published_at', 'desc')
+            ->get();
+
+        // Generate date search dates (next 6 days)
+        $dateSearchDates = [];
+        for ($i = 0; $i < 6; $i++) {
+            $date = Carbon::now()->addDays($i);
+            $dateSearchDates[] = [
+                'date' => $date->format('Y-m-d'),
+                'display' => $date->format('m/d'),
+                'label' => $date->format('m/d')
+            ];
+        }
+
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        // Form-based filtering (like newface and schedule pages)
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+
+        return view('public.groups.event', [
             'events' => $events,
+            'dateSearchDates' => $dateSearchDates,
+            'selectedDate' => $request->query('date'),
+            'selectedShop' => $selectedShop,
+            'buttonGroup' => $buttonGroup,
         ]);
     }
     public function showEventDetail(Request $request, string $id): View
     {
-        $event = Event::find($id);
-        return view('public.group.eventDetail', [
+        $event = Event::with('shop')->findOrFail($id);
+        
+        $headquarterShopId = Shop::where('slug', 'headquarter')->first()->id;
+        
+        // Get previous event
+        $prevEvent = Event::where('id', '<', $event->id)
+            ->where(function($query) use ($headquarterShopId) {
+                $query->where(function($q) use ($headquarterShopId) {
+                    $q->where('published_status', 1)
+                      ->where('shop_id', $headquarterShopId);
+                })
+                ->orWhere(function($q) {
+                    $q->where('published_status', 2)
+                      ->where('published_at', '<=', Carbon::now());
+                })
+                ->orWhere(function($q) {
+                    $q->where('published_status', 4)
+                      ->where('published_at', '>=', Carbon::now()->subMonth(1));
+                });
+            })
+            ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+            ->orderBy('id', 'desc')
+            ->first();
+        
+        // Get next event
+        $nextEvent = Event::where('id', '>', $event->id)
+            ->where(function($query) use ($headquarterShopId) {
+                $query->where(function($q) use ($headquarterShopId) {
+                    $q->where('published_status', 1)
+                      ->where('shop_id', $headquarterShopId);
+                })
+                ->orWhere(function($q) {
+                    $q->where('published_status', 2)
+                      ->where('published_at', '<=', Carbon::now());
+                })
+                ->orWhere(function($q) {
+                    $q->where('published_status', 4)
+                      ->where('published_at', '>=', Carbon::now()->subMonth(1));
+                });
+            })
+            ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
+            ->orderBy('id', 'asc')
+            ->first();
+        
+        return view('public.groups.eventDetail', [
             'event' => $event,
+            'prevEvent' => $prevEvent,
+            'nextEvent' => $nextEvent,
         ]);
     }
     public function showSearch(Request $request): View
