@@ -329,9 +329,35 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     }
     public function showShop(Request $request): View
     {
-        return view('public.group.shop', [
-            'pickups' => Pickup::inRandomOrder()->get(),
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get();
+
+        // Card images (fallbacks) used on the Groups "Shop List" page.
+        $shopImages = [
+            'shizuku' => 'assets/img/shops/shizuku/001.jpg',
+            'pussycat' => 'assets/img/shops/shizuku/002.jpg',
+            'miyabi' => 'assets/img/shops/shizuku/003.jpg',
+            'shiroganeze' => 'assets/img/shops/shizuku/004.jpg',
+            'en' => 'assets/img/shops/shizuku/005.jpg',
+            'lovestory' => 'assets/img/shops/shizuku/006.jpg',
+        ];
+
+        // Descriptions (fallbacks) used on the Groups "Shop List" page.
+        $shopDescriptions = [
+            'shizuku' => '雫は、札幌の歓楽街「すすきの」でハイレベルな女性のみが在籍する高級ヘルス。ススキノに数多くあるヘルス街から少し離れた場所にあり、外観もオシャレな見た目となっています。また他のお客様と目が合わぬよう、それぞれ仕切りで独立した待合スペースをご用意しております。',
+            'pussycat' => 'プッシーキャットは、すすきので屈指の開店前から長蛇の列ができる有名ヘルスです。その理由は、女の子を実際に目で見てから選べる他店にはないシステム。札幌のみならず全国でも有名なお店となっており、お仲間と入場するだけでも、これまでに味わったことのない楽しい時間を過ごすことができます。',
+            'miyabi' => '雅は、王様イスを使った密着洗体が人気のラグジュアリーなヘルスです。淡白なサービスではなく、濃厚で肌と肌が触れ合う密着度が高いサービスを求めている貴方にはぴったり。エロさ×密着度300％で快楽に溺れられる空間です。',
+            'lovestory' => 'ラブストーリーは、20代前半のあどけない美少女を育てられる育成型ヘルスです。男性経験が少ないけど、大人の世界を知りたい…そんな女の子を成長させられる楽しみがある新感覚ヘルスになっています。料金もリーズナブルなので、推しの女の子を探して、自分色に染めてみませんか？',
+            'en' => 'ファッションヘルス「艶〜エン〜」は、人妻や若妻などの大人女性によるヘルスサービスが楽しめるお店。サラリーマンや学生の方でも、ご来店頂きやすい激安料金システムが魅力。',
+            'shiroganeze' => 'シロガネーゼは、ススキノ屈指の腕前を持つセラピストが在籍するプレミアムメンズエステです。体のコリをほぐす本格的なアロママッサージと共に、回春サービスが一緒なので全身をリフレッシュしたい方にオススメのお店となっております。',
+        ];
+
+        return view('public.groups.shop', [
+            'shops' => $shops,
+            'shopImages' => $shopImages,
+            'shopDescriptions' => $shopDescriptions,
         ]);
     }
 
