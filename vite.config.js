@@ -306,7 +306,8 @@ export default defineConfig({
         'resources/scss/groups/schedule.scss',
         'resources/scss/groups/schedule-card.scss',
         'resources/scss/groups/event-card.scss',
-        'resources/scss/groups/event.scss'
+        'resources/scss/groups/event.scss',
+        'resources/scss/groups/event-detail.scss'
       ],
       refresh: true,
     }),
