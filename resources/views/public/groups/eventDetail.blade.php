@@ -47,8 +47,10 @@
             </div>
           @endforeach
         @endif
+        <div class="event-detail-image-additional-container">
+          <img src="{{ asset('assets/img/groups/event-details-banner.jpg') }}" alt="{{ $event->title }}">
+        </div>
       </div>
-
       <div class="event-detail-navigation">
         <div class="event-detail-nav-buttons">
           @if($nextEvent ?? null)
