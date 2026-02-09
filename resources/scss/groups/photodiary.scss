@@ -170,7 +170,7 @@
 
 .diary-cards-grid{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     width: 100%;
     
@@ -401,14 +401,14 @@
 .diary-pagination{
     display: flex;
     gap: 16px;
-    align-items: flex-end;
+    align-items: center;
     justify-content: flex-end;
-    width: 264px;
+    flex-wrap: wrap;
 }
 
 .diary-pagination-btn{
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border: 1px solid #bebebe;
     border-radius: 4px;
     background: white;
@@ -430,8 +430,9 @@
 }
 
 .diary-pagination-page{
-    width: 40px;
-    height: 40px;
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
     border: 1px solid #bebebe;
     border-radius: 4px;
     background: white;
@@ -451,4 +452,17 @@
         border-color: #EB8E9B;
         color: white;
     }
+}
+
+.diary-pagination-ellipsis{
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: normal;
+    color: #000;
 }

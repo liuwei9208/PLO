@@ -1130,7 +1130,84 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
      */
     public function showPhotoDiary(Request $request): View
     {
-        return view('public.groups.photodiary');
+        // Build diary query - fetch from all shops except touchvip and headquarter
+        $query = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
+            ->select([
+                'diaries.id',
+                'diaries.subject',
+                'diaries.photo',
+                'diaries.body',
+                'diaries.created_at',
+                'diaries.updated_at',
+                'casts.id as cast_id',
+                'casts.name as cast_name',
+                'casts.age',
+                'casts.height',
+                'casts.bust',
+                'casts.waist',
+                'casts.hip',
+                'casts.bra_size',
+                'casts.gallery_1',
+                'shops.id as shop_id',
+                'shops.name as shop_name',
+                'shops.slug as shop_slug',
+            ]);
+
+        // Build query for calendar dates
+        $query_date = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
+            ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
+
+        // Filter by date if provided
+        if ($request->has('date') && $request->date != '') {
+            $date = $request->date;
+            $query->whereDate('diaries.created_at', $date);
+            $query_date->whereDate('diaries.created_at', $date);
+        }
+
+        // Paginate diaries
+        $diaries = $query->orderBy('diaries.created_at', 'desc')
+            ->orderBy('diaries.id', 'desc')
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->onEachSide(0)
+            ->appends([
+                'date' => $request->date ?? '',
+            ])
+            ->withPath('photodiary');
+
+        // Get dates for calendar (grouped by date)
+        $diarys_date = $query_date->groupBy('date')
+            ->get();
+
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+
+        return view('public.groups.photodiary', [
+            'diaries' => $diaries,
+            'diarys_date' => $diarys_date,
+            'date' => $request->date ?? '',
+            'buttonGroup' => $buttonGroup,
+        ]);
     }
     public function showNewFace(Request $request): View
     {
