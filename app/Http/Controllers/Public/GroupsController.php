@@ -1288,10 +1288,196 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $styles = Style::where('is_public', true)->get();
         $options = Option::where('is_public', true)->get();
 
+        $searchResults = null;
+        $searchCriteria = [
+            'name' => null,
+            'height' => null,
+            'age' => null,
+            'bust' => null,
+            'personality' => null,
+            'style' => null,
+            'option' => null,
+        ];
+        $attendanceData = [];
+
+        // Handle search if POST request
+        if ($request->isMethod('post')) {
+            $names = $request->input('name');
+            $name_match = $request->input('name_match');
+            $personality = $request->input('personality');
+            $style = $request->input('style');
+            $option = $request->input('option');
+            $age = $request->input('age');
+            $height = $request->input('height');
+            $bust = $request->input('bust');
+            $status = $request->input('status');
+            $date = Carbon::now()->format('Y-m-d');
+
+            // Build search query (reuse logic from searchResult)
+            $query = Cast::query();
+            $query->leftjoin('cast_option', 'casts.id', '=', 'cast_option.cast_id');
+            $query->leftjoin('cast_personality', 'casts.id', '=', 'cast_personality.cast_id');
+            $query->leftjoin('cast_style', 'casts.id', '=', 'cast_style.cast_id');
+            $query->leftjoin('shops', 'casts.shop_id', '=', 'shops.id');
+
+            if ($status == 'working') {
+                $query->leftjoin('attendances', 'casts.id', '=', 'attendances.cast_id')
+                    ->where('attendances.is_public', 1)
+                    ->whereDate('attendances.start_datetime', '<=', $date)
+                    ->whereDate('attendances.end_datetime', '>=', $date);
+            }
+
+            $query->where('casts.is_public', 1);
+
+            // Name search
+            if ($names) {
+                $namess = mb_convert_kana($names, 's');
+                $nameArray = explode(' ', $namess);
+                $nameArray = array_filter($nameArray, 'strlen');
+                if ($name_match == 'partial') {
+                    $query->where(function($q) use ($nameArray) {
+                        foreach ($nameArray as $name) {
+                            $q->orWhere('casts.name', 'like', "%$name%");
+                        }
+                    });
+                } else if ($name_match == 'full') {
+                    $query->where(function($q) use ($nameArray) {
+                        foreach ($nameArray as $name) {
+                            $q->where('casts.name', 'like', "%$name%");
+                        }
+                    });
+                }
+            }
+
+            // Height filter
+            if ($height) {
+                switch ($height) {
+                    case '150': $query->where('casts.height', '<=', 150); break;
+                    case '155': $query->where('casts.height', '<=', 155)->where('casts.height', '>', 150); break;
+                    case '160': $query->where('casts.height', '<=', 160)->where('casts.height', '>', 155); break;
+                    case '165': $query->where('casts.height', '<=', 165)->where('casts.height', '>', 160); break;
+                    case '170': $query->where('casts.height', '>=', 170); break;
+                }
+            }
+
+            // Age filter
+            if ($age) {
+                if ($age == '30') {
+                    $query->where('casts.age', '>=', 30);
+                } else {
+                    $query->where('casts.age', '=', $age);
+                }
+            }
+
+            // Bust filter
+            if ($bust) {
+                $query->where('casts.bra_size', '=', $bust);
+            }
+
+            // Personality filter
+            if ($personality && $personality != -1) {
+                $query->where('cast_personality.personality_id', $personality);
+            }
+
+            // Style filter
+            if ($style && $style != -1) {
+                $query->where('cast_style.style_id', $style);
+            }
+
+            // Option filter
+            if ($option && $option != -1) {
+                $query->where('cast_option.option_id', $option);
+            }
+
+            // Exclude touchvip and headquarter
+            $shops = Shop::where('slug', 'touchvip')->orWhere('slug', 'headquarter')->orderBy('rank', 'asc')->get();
+            foreach ($shops as $shop) {
+                $query->whereNot('casts.shop_id', $shop->id);
+            }
+
+            $query->groupBy('casts.id');
+            
+            if ($status == 'working') {
+                $query->select(
+                    'casts.*', 
+                    'shops.name as shop_name', 
+                    'shops.slug as shop_slug',
+                    DB::raw("DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_datetime"),
+                    DB::raw("DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_datetime")
+                );
+            } else {
+                $query->select('casts.*', 'shops.name as shop_name', 'shops.slug as shop_slug');
+            }
+
+            $searchResults = $query->get();
+
+            // Get attendance data for all results (check today's attendance)
+            if ($searchResults->isNotEmpty()) {
+                $castIds = $searchResults->pluck('id')->toArray();
+                $today = Carbon::now()->format('Y-m-d');
+                
+                // Always fetch attendance data separately to ensure we have it
+                // Check if today falls within the attendance period (start <= today <= end)
+                $attendances = Attendance::whereIn('cast_id', $castIds)
+                    ->where('is_public', 1)
+                    ->whereDate('start_datetime', '<=', $today)
+                    ->whereDate('end_datetime', '>=', $today)
+                    ->get()
+                    ->keyBy('cast_id');
+                
+                foreach ($searchResults as $cast) {
+                    $foundAttendance = false;
+                    
+                    // If status is 'working', check if query already has formatted time data
+                    if ($status == 'working' && isset($cast->start_datetime) && isset($cast->end_datetime)) {
+                        // start_datetime and end_datetime are already formatted as 'H:i' from DATE_FORMAT
+                        $startTime = trim((string)$cast->start_datetime);
+                        $endTime = trim((string)$cast->end_datetime);
+                        if (!empty($startTime) && !empty($endTime) && $startTime !== '00:00' && $endTime !== '00:00') {
+                            $attendanceData[$cast->id] = [
+                                'start' => $startTime,
+                                'end' => $endTime,
+                            ];
+                            $foundAttendance = true;
+                        }
+                    }
+                    
+                    // Also check attendance table (in case query data wasn't available or status is not 'working')
+                    if (!$foundAttendance && isset($attendances[$cast->id])) {
+                        $attendance = $attendances[$cast->id];
+                        if ($attendance->start_datetime && $attendance->end_datetime) {
+                            $startTime = date('H:i', strtotime($attendance->start_datetime));
+                            $endTime = date('H:i', strtotime($attendance->end_datetime));
+                            if ($startTime && $endTime && $startTime !== '00:00' && $endTime !== '00:00') {
+                                $attendanceData[$cast->id] = [
+                                    'start' => $startTime,
+                                    'end' => $endTime,
+                                ];
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Build search criteria for display
+            $searchCriteria = [
+                'name' => $names ?: null,
+                'height' => $height ?: null,
+                'age' => $age ?: null,
+                'bust' => $bust ?: null,
+                'personality' => ($personality && $personality != -1) ? Personality::find($personality) : null,
+                'style' => ($style && $style != -1) ? Style::find($style) : null,
+                'option' => ($option && $option != -1) ? Option::find($option) : null,
+            ];
+        }
+
         return view('public.groups.girl-search', [
             'personalities' => $personalities,
             'styles' => $styles,
             'options' => $options,
+            'searchResults' => $searchResults,
+            'searchCriteria' => $searchCriteria,
+            'attendanceData' => $attendanceData,
         ]);
     }
 }
