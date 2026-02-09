@@ -87,6 +87,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('photodiary', [GroupsController::class, 'showPhotoDiary'])->name('photodiary');
         Route::get('newface', [GroupsController::class, 'showNewFace'])->name('newface');
         Route::get('movie', [GroupsController::class, 'showMovie'])->name('movie');
+        Route::get('girl-search', [GroupsController::class, 'showGirlSearch'])->name('girl-search');
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
     /**

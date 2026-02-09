@@ -1278,4 +1278,20 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shopNameForHeading' => $shopNameForHeading,
         ]);
     }
+
+    /**
+     * Display the girl search page.
+     */
+    public function showGirlSearch(Request $request): View
+    {
+        $personalities = Personality::where('is_public', true)->get();
+        $styles = Style::where('is_public', true)->get();
+        $options = Option::where('is_public', true)->get();
+
+        return view('public.groups.girl-search', [
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
+        ]);
+    }
 }
