@@ -329,9 +329,35 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     }
     public function showShop(Request $request): View
     {
-        return view('public.group.shop', [
-            'pickups' => Pickup::inRandomOrder()->get(),
-            'shops' => Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('rank', 'asc')->get(),
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get();
+
+        // Card images (fallbacks) used on the Groups "Shop List" page.
+        $shopImages = [
+            'shizuku' => 'assets/img/shops/shizuku/001.jpg',
+            'pussycat' => 'assets/img/shops/shizuku/002.jpg',
+            'miyabi' => 'assets/img/shops/shizuku/003.jpg',
+            'shiroganeze' => 'assets/img/shops/shizuku/004.jpg',
+            'en' => 'assets/img/shops/shizuku/005.jpg',
+            'lovestory' => 'assets/img/shops/shizuku/006.jpg',
+        ];
+
+        // Descriptions (fallbacks) used on the Groups "Shop List" page.
+        $shopDescriptions = [
+            'shizuku' => '雫は、札幌の歓楽街「すすきの」でハイレベルな女性のみが在籍する高級ヘルス。ススキノに数多くあるヘルス街から少し離れた場所にあり、外観もオシャレな見た目となっています。また他のお客様と目が合わぬよう、それぞれ仕切りで独立した待合スペースをご用意しております。',
+            'pussycat' => 'プッシーキャットは、すすきので屈指の開店前から長蛇の列ができる有名ヘルスです。その理由は、女の子を実際に目で見てから選べる他店にはないシステム。札幌のみならず全国でも有名なお店となっており、お仲間と入場するだけでも、これまでに味わったことのない楽しい時間を過ごすことができます。',
+            'miyabi' => '雅は、王様イスを使った密着洗体が人気のラグジュアリーなヘルスです。淡白なサービスではなく、濃厚で肌と肌が触れ合う密着度が高いサービスを求めている貴方にはぴったり。エロさ×密着度300％で快楽に溺れられる空間です。',
+            'lovestory' => 'ラブストーリーは、20代前半のあどけない美少女を育てられる育成型ヘルスです。男性経験が少ないけど、大人の世界を知りたい…そんな女の子を成長させられる楽しみがある新感覚ヘルスになっています。料金もリーズナブルなので、推しの女の子を探して、自分色に染めてみませんか？',
+            'en' => 'ファッションヘルス「艶〜エン〜」は、人妻や若妻などの大人女性によるヘルスサービスが楽しめるお店。サラリーマンや学生の方でも、ご来店頂きやすい激安料金システムが魅力。',
+            'shiroganeze' => 'シロガネーゼは、ススキノ屈指の腕前を持つセラピストが在籍するプレミアムメンズエステです。体のコリをほぐす本格的なアロママッサージと共に、回春サービスが一緒なので全身をリフレッシュしたい方にオススメのお店となっております。',
+        ];
+
+        return view('public.groups.shop', [
+            'shops' => $shops,
+            'shopImages' => $shopImages,
+            'shopDescriptions' => $shopDescriptions,
         ]);
     }
 
@@ -1168,6 +1194,104 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shops' => $shops,
             'selectedShop' => $selectedShop,
             'buttonGroup' => $buttonGroup,
+        ]);
+    }
+
+    /**
+     * Display the movie page.
+     */
+    public function showMovie(Request $request): View
+    {
+        // Get shops for validation
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get(['id', 'name', 'slug']);
+
+        $allowedSlugs = $shops->pluck('slug')->all();
+        $selectedShop = (string) $request->query('shop', '');
+        if ($selectedShop !== '' && !in_array($selectedShop, $allowedSlugs, true)) {
+            $selectedShop = '';
+        }
+
+        // Build video query
+        $videoQuery = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('videos.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter');
+
+        // Filter by shop if selected
+        if ($selectedShop !== '') {
+            $shop = Shop::where('slug', $selectedShop)->first();
+            if ($shop) {
+                $videoQuery->where('casts.shop_id', $shop->id);
+            }
+        }
+
+        $videos = $videoQuery
+            ->select([
+                'videos.id as video_id',
+                'videos.video_url',
+                'videos.thumb_url',
+                'videos.updated_at as video_updated_at',
+                'casts.id as cast_id',
+                'casts.name as cast_name',
+                'casts.age',
+                'casts.height',
+                'casts.bust',
+                'casts.bra_size',
+                'casts.waist',
+                'casts.hip',
+                'casts.gallery_1',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ])
+            ->orderBy('videos.updated_at', 'desc')
+            ->get();
+
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+
+        // Get shop name for heading
+        $shopNameForHeading = $selectedShop !== '' 
+            ? ($shops->firstWhere('slug', $selectedShop)->name ?? '全店舗')
+            : '全店舗';
+
+        return view('public.groups.movie', [
+            'videos' => $videos,
+            'shops' => $shops,
+            'selectedShop' => $selectedShop,
+            'buttonGroup' => $buttonGroup,
+            'shopNameForHeading' => $shopNameForHeading,
+        ]);
+    }
+
+    /**
+     * Display the girl search page.
+     */
+    public function showGirlSearch(Request $request): View
+    {
+        $personalities = Personality::where('is_public', true)->get();
+        $styles = Style::where('is_public', true)->get();
+        $options = Option::where('is_public', true)->get();
+
+        return view('public.groups.girl-search', [
+            'personalities' => $personalities,
+            'styles' => $styles,
+            'options' => $options,
         ]);
     }
 }

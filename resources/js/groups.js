@@ -375,3 +375,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //   observer.observe(pickupSliderElement);
 // }
+
+// Video play button functionality for movie page
+document.addEventListener('DOMContentLoaded', function() {
+  const videoWrappers = document.querySelectorAll('.groups-movie-card__video-wrapper');
+  
+  videoWrappers.forEach(wrapper => {
+    const video = wrapper.querySelector('.groups-movie-card__video');
+    const playButton = wrapper.querySelector('.groups-movie-card__play-button');
+    
+    if (!video || !playButton) return;
+    
+    // Click on wrapper to play video
+    wrapper.addEventListener('click', function(e) {
+      // Don't trigger if clicking directly on video controls
+      if (e.target === video || video.contains(e.target)) {
+        return;
+      }
+      
+      // Show video controls and play
+      video.setAttribute('controls', 'controls');
+      video.style.display = 'block';
+      playButton.style.display = 'none';
+      video.play().catch(err => {
+        console.log('Video play failed:', err);
+      });
+    });
+    
+    // Hide play button when video starts playing
+    video.addEventListener('play', function() {
+      playButton.style.display = 'none';
+    });
+    
+    // Show play button when video is paused (but not if controls are visible)
+    video.addEventListener('pause', function() {
+      if (!video.hasAttribute('controls')) {
+        playButton.style.display = 'block';
+      }
+    });
+    
+    // Show play button when video ends
+    video.addEventListener('ended', function() {
+      playButton.style.display = 'block';
+      video.removeAttribute('controls');
+      video.style.display = 'none';
+    });
+  });
+});
