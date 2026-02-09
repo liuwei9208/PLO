@@ -1196,4 +1196,86 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'buttonGroup' => $buttonGroup,
         ]);
     }
+
+    /**
+     * Display the movie page.
+     */
+    public function showMovie(Request $request): View
+    {
+        // Get shops for validation
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get(['id', 'name', 'slug']);
+
+        $allowedSlugs = $shops->pluck('slug')->all();
+        $selectedShop = (string) $request->query('shop', '');
+        if ($selectedShop !== '' && !in_array($selectedShop, $allowedSlugs, true)) {
+            $selectedShop = '';
+        }
+
+        // Build video query
+        $videoQuery = Video::leftJoin('casts', 'videos.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('videos.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter');
+
+        // Filter by shop if selected
+        if ($selectedShop !== '') {
+            $shop = Shop::where('slug', $selectedShop)->first();
+            if ($shop) {
+                $videoQuery->where('casts.shop_id', $shop->id);
+            }
+        }
+
+        $videos = $videoQuery
+            ->select([
+                'videos.id as video_id',
+                'videos.video_url',
+                'videos.thumb_url',
+                'videos.updated_at as video_updated_at',
+                'casts.id as cast_id',
+                'casts.name as cast_name',
+                'casts.age',
+                'casts.height',
+                'casts.bust',
+                'casts.bra_size',
+                'casts.waist',
+                'casts.hip',
+                'casts.gallery_1',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ])
+            ->orderBy('videos.updated_at', 'desc')
+            ->get();
+
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+
+        // Get shop name for heading
+        $shopNameForHeading = $selectedShop !== '' 
+            ? ($shops->firstWhere('slug', $selectedShop)->name ?? '全店舗')
+            : '全店舗';
+
+        return view('public.groups.movie', [
+            'videos' => $videos,
+            'shops' => $shops,
+            'selectedShop' => $selectedShop,
+            'buttonGroup' => $buttonGroup,
+            'shopNameForHeading' => $shopNameForHeading,
+        ]);
+    }
 }
