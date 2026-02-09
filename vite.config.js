@@ -307,7 +307,10 @@ export default defineConfig({
         'resources/scss/groups/schedule-card.scss',
         'resources/scss/groups/event-card.scss',
         'resources/scss/groups/event.scss',
-        'resources/scss/groups/event-detail.scss'
+        'resources/scss/groups/event-detail.scss',
+        'resources/scss/groups/shop.scss',
+        'resources/scss/groups/movie.scss',
+        'resources/scss/groups/girl-search.scss'
       ],
       refresh: true,
     }),
