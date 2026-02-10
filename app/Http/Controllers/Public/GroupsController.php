@@ -1167,11 +1167,20 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereNot('shops.slug', 'headquarter')
             ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
 
-        // Filter by date if provided
-        if ($request->has('date') && $request->date != '') {
-            $date = $request->date;
+        // Filter by month if provided (format: YYYY-MM)
+        $month = $request->input('month', '');
+        if ($month != '') {
+            $query->whereRaw("DATE_FORMAT(diaries.created_at, '%Y-%m') = ?", [$month]);
+            $query_date->whereRaw("DATE_FORMAT(diaries.created_at, '%Y-%m') = ?", [$month]);
+        }
+
+        // Filter by date if provided (takes precedence over month)
+        $date = $request->input('date', '');
+        if ($date != '') {
             $query->whereDate('diaries.created_at', $date);
             $query_date->whereDate('diaries.created_at', $date);
+            // Extract month from date for highlighting
+            $month = substr($date, 0, 7);
         }
 
         // Paginate diaries
@@ -1180,13 +1189,28 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
             ->onEachSide(0)
             ->appends([
-                'date' => $request->date ?? '',
+                'date' => $date,
+                'month' => $month,
             ])
             ->withPath('photodiary');
 
         // Get dates for calendar (grouped by date)
         $diarys_date = $query_date->groupBy('date')
             ->get();
+
+        // Get available months for monthly picker (grouped by year-month)
+        $availableMonths = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
+            ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m') as month")
+            ->groupBy('month')
+            ->orderBy('month', 'desc')
+            ->get()
+            ->pluck('month')
+            ->toArray();
 
         // Button group (2 rows of 3) - used by the shared sub page layout.
         $buttonGroup = [
@@ -1202,10 +1226,16 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ],
         ];
 
+        // Determine current month for highlighting
+        $currentMonth = $month ?: (now()->format('Y-m'));
+
         return view('public.groups.photodiary', [
             'diaries' => $diaries,
             'diarys_date' => $diarys_date,
-            'date' => $request->date ?? '',
+            'date' => $date,
+            'month' => $month,
+            'currentMonth' => $currentMonth,
+            'availableMonths' => $availableMonths,
             'buttonGroup' => $buttonGroup,
         ]);
     }

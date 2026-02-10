@@ -11,9 +11,27 @@
   <div class="photodiary">
     <section>
       <div class="diary-content">
-        <!-- Calendar Sidebar -->
+        <!-- Calendar Sidebar (Desktop Only) -->
         <div class="diary-content-sidebar pc-only">
           <div class="diary-body-left-calendar-content" id="diary-calendar">
+          </div>
+          
+          <!-- Monthly Picker -->
+          <div class="diary-monthly-picker">
+            @if(!empty($availableMonths))
+              @foreach($availableMonths as $availableMonth)
+                @php
+                  $year = substr($availableMonth, 0, 4);
+                  $monthNum = substr($availableMonth, 5, 2);
+                  $monthLabel = $year . '年' . (int)$monthNum . '月';
+                  $isCurrentMonth = $availableMonth === $currentMonth;
+                @endphp
+                <a href="/groups/photodiary?month={{ $availableMonth }}" 
+                   class="diary-monthly-picker-item {{ $isCurrentMonth ? 'diary-monthly-picker-item--active' : '' }}">
+                  {{ $monthLabel }}
+                </a>
+              @endforeach
+            @endif
           </div>
         </div>
 
@@ -124,6 +142,31 @@
               </button>
             </div>
           @endif
+
+          <!-- Mobile Calendar and Monthly Picker -->
+          <div class="diary-mobile-calendar-section mobile-only">
+            <div class="diary-mobile-calendar-wrapper">
+              <div class="diary-body-left-calendar-content" id="diary-calendar-mobile">
+              </div>
+            </div>
+            
+            <div class="diary-mobile-monthly-picker">
+              @if(!empty($availableMonths))
+                @foreach($availableMonths as $availableMonth)
+                  @php
+                    $year = substr($availableMonth, 0, 4);
+                    $monthNum = substr($availableMonth, 5, 2);
+                    $monthLabel = $year . '年' . (int)$monthNum . '月';
+                    $isCurrentMonth = $availableMonth === $currentMonth;
+                  @endphp
+                  <a href="/groups/photodiary?month={{ $availableMonth }}" 
+                     class="diary-monthly-picker-item {{ $isCurrentMonth ? 'diary-monthly-picker-item--active' : '' }}">
+                    {{ $monthLabel }}
+                  </a>
+                @endforeach
+              @endif
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -131,6 +174,8 @@
 </x-public-groups-sub-page-layout>
 <script>
     let date = "{{ $date ?? '' }}";
+    let month = "{{ $month ?? '' }}";
+    let currentMonth = "{{ $currentMonth ?? '' }}";
     let diarys_date = {!! json_encode($diarys_date ?? []) !!};
 </script>
 @once
