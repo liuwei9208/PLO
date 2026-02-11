@@ -547,6 +547,7 @@
   </div>
   @endif
   <x-public.groups.footer />
+
 </x-public-groups-layout>
 
 @once
