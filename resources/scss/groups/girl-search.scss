@@ -12,13 +12,11 @@
   flex-direction: column;
   align-items: center;
   gap: 50px;
-  padding: 50px 0;
 }
 
 .groups-girl-search__panel {
   background-color: white;
   border-radius: 50px;
-  padding: 30px 20px;
   width: min(1240px, 100%);
   display: flex;
   flex-direction: column;
@@ -42,7 +40,6 @@
 
 .groups-girl-search__name-header {
   background-color: white;
-  padding: 20px 30px;
   border-radius: 30px;
 }
 
@@ -59,7 +56,7 @@
   display: flex;
   gap: 30px;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-wrap: wrap;
 }
 
@@ -276,7 +273,7 @@
 .groups-girl-search__feature-radio-label {
   display: flex;
   gap: 9px;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   cursor: pointer;
   user-select: none;
@@ -320,6 +317,7 @@
   font-size: 17px;
   color: black;
   line-height: normal;
+  overflow-wrap: anywhere;
 }
 
 // Action Buttons
@@ -396,6 +394,107 @@
   }
 }
 
+// Search Results Section
+.groups-girl-search__results {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+// Search Criteria Summary
+.groups-girl-search__criteria {
+  border-bottom: 1px solid #021a21;
+  padding-bottom: 20px;
+  width: 100%;
+}
+
+.groups-girl-search__criteria-header {
+  background-color: white;
+  padding: 20px 63px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.groups-girl-search__criteria-title {
+  font-family: 'YuGothic', 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  color: #2a1a08;
+  text-align: center;
+  margin: 0;
+  line-height: normal;
+  width: 800px;
+}
+
+.groups-girl-search__criteria-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.groups-girl-search__criteria-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 800px;
+}
+
+.groups-girl-search__criteria-item {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.groups-girl-search__criteria-label {
+  font-family: 'YuGothic', 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: black;
+  line-height: normal;
+}
+
+.groups-girl-search__criteria-value {
+  font-family: 'YuGothic', 'Noto Sans JP', sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  color: black;
+  line-height: normal;
+}
+
+// Search Results Grid
+.groups-girl-search__results-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @media screen and (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// Card Link Wrapper
+.groups-girl-search__card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: 100%;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
 // Responsive Design
 @media screen and (max-width: 850px) {
   .groups-girl-search {
@@ -404,7 +503,6 @@
   }
 
   .groups-girl-search__panel {
-    padding: 20px 15px;
     gap: 30px;
     border-radius: 30px;
   }
@@ -465,5 +563,24 @@
   .groups-girl-search__back-link {
     width: 100%;
     max-width: 319px;
+  }
+
+  .groups-girl-search__criteria-title {
+    width: 100%;
+    font-size: clamp(24px, 5vw, 36px);
+  }
+
+  .groups-girl-search__criteria-row {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .groups-girl-search__criteria-item {
+    flex-wrap: wrap;
+  }
+
+  .groups-girl-search__criteria-label,
+  .groups-girl-search__criteria-value {
+    font-size: clamp(18px, 3vw, 24px);
   }
 }

@@ -4,12 +4,102 @@
   :bannerImage="asset('assets/img/groups/movie-banner.jpg')"
   :vectorImage="asset('assets/img/groups/Vector.png')"
   :showButtonGroup="false"
-  :showLoadMore="false"
+  :showLoadMore="true"
   :showDateSearchBar="false"
 >
   <div class="groups-girl-search">
     <div class="groups-girl-search__panel">
-      <form action="{{ route('public.groups.searchResult') }}" method="POST" class="groups-girl-search__form">
+      @if($searchResults && $searchResults->count() > 0 && $searchCriteria)
+        <!-- Search Results Section -->
+        <div class="groups-girl-search__results">
+          <!-- Search Criteria Summary -->
+          <div class="groups-girl-search__criteria">
+            <div class="groups-girl-search__criteria-header">
+              <p class="groups-girl-search__criteria-title">検索条件</p>
+            </div>
+            <div class="groups-girl-search__criteria-content">
+              <div class="groups-girl-search__criteria-row">
+                @if(!empty($searchCriteria['name']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">女の子名</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['name'] }}」</span>
+                  </div>
+                @endif
+                @if(!empty($searchCriteria['height']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">身長</span>
+                    <span class="groups-girl-search__criteria-value">「
+                      @if($searchCriteria['height'] == '150')～150cm
+                      @elseif($searchCriteria['height'] == '155')151cm～155cm
+                      @elseif($searchCriteria['height'] == '160')156cm～160cm
+                      @elseif($searchCriteria['height'] == '165')161cm～165cm
+                      @elseif($searchCriteria['height'] == '170')170cm～
+                      @endif」</span>
+                  </div>
+                @endif
+                @if(!empty($searchCriteria['age']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">年齢</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['age'] == '30' ? '30歳～' : $searchCriteria['age'] . '歳' }}」</span>
+                  </div>
+                @endif
+                @if(!empty($searchCriteria['bust']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">バストカップ</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['bust'] }}」</span>
+                  </div>
+                @endif
+              </div>
+              <div class="groups-girl-search__criteria-row">
+                @if(!empty($searchCriteria['personality']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">性格</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['personality']->name }}」</span>
+                  </div>
+                @endif
+                @if(!empty($searchCriteria['style']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">スタイル</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['style']->name }}」</span>
+                  </div>
+                @endif
+                @if(!empty($searchCriteria['option']))
+                  <div class="groups-girl-search__criteria-item">
+                    <span class="groups-girl-search__criteria-label">オプション</span>
+                    <span class="groups-girl-search__criteria-value">「{{ $searchCriteria['option']->name }}」</span>
+                  </div>
+                @endif
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Results Grid -->
+          <div class="groups-girl-search__results-grid">
+            @foreach($searchResults as $cast)
+              <a href="{{ route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->id]) }}" class="groups-girl-search__card-link">
+                <x-public.groups.schedule-card
+                  :name="$cast->name ?? 'キャスト名'"
+                  :age="str_pad($cast->age ?? '00', 2, '0', STR_PAD_LEFT)"
+                  :height="$cast->height ?? '160'"
+                  :bust="$cast->bust ?? '85'"
+                  :braSize="$cast->bra_size ?? 'C'"
+                  :waist="$cast->waist ?? '60'"
+                  :hip="$cast->hip ?? '83'"
+                  :message="$cast->appeal_point ?? 'メッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージメッセージ'"
+                  :shopName="$cast->shop_name ?? '雫'"
+                  :imageUrl="$cast->gallery_1 ? asset('storage/' . $cast->gallery_1) : null"
+                  :frameImageUrl="$cast->shop_slug ? asset('assets/img/groups/card-frame-' . $cast->shop_slug . '.png') : null"
+                  :statusText="isset($attendanceData[$cast->id]) ? '本日出勤' : '出勤中'"
+                  :timeRange="isset($attendanceData[$cast->id]) ? ($attendanceData[$cast->id]['start'] . '〜' . $attendanceData[$cast->id]['end']) : '00:00〜00:00'"
+                  :isWorkingToday="isset($attendanceData[$cast->id])"
+                />
+              </a>
+            @endforeach
+          </div>
+        </div>
+      @endif
+
+      <form action="{{ route('public.groups.girl-search') }}" method="POST" class="groups-girl-search__form">
         @csrf
         
         <!-- Name Search Section -->
@@ -24,7 +114,7 @@
                 name="name" 
                 class="groups-girl-search__input" 
                 placeholder="名前入力で検索"
-                value="{{ old('name') }}"
+                value="{{ old('name', ($searchCriteria['name'] ?? null) ?? '') }}"
               >
             </div>
             <div class="groups-girl-search__radio-group">
@@ -34,7 +124,7 @@
                   name="name_match" 
                   value="partial" 
                   class="groups-girl-search__radio"
-                  {{ old('name_match', 'partial') === 'partial' ? 'checked' : '' }}
+                  {{ old('name_match', ($searchCriteria['name'] ?? null) ? 'partial' : 'partial') === 'partial' ? 'checked' : '' }}
                 >
                 <span class="groups-girl-search__radio-indicator"></span>
                 <span class="groups-girl-search__radio-text">いずれかを含む</span>
@@ -45,7 +135,7 @@
                   name="name_match" 
                   value="full" 
                   class="groups-girl-search__radio"
-                  {{ old('name_match') === 'full' ? 'checked' : '' }}
+                  {{ old('name_match', ($searchCriteria['name'] ?? null) ? 'partial' : 'partial') === 'full' ? 'checked' : '' }}
                 >
                 <span class="groups-girl-search__radio-indicator"></span>
                 <span class="groups-girl-search__radio-text">すべてを含む</span>
@@ -63,11 +153,11 @@
               <div class="groups-girl-search__select-wrapper">
                 <select name="height" class="groups-girl-search__select">
                   <option value="">選択する</option>
-                  <option value="150" {{ old('height') === '150' ? 'selected' : '' }}>～150cm</option>
-                  <option value="155" {{ old('height') === '155' ? 'selected' : '' }}>151cm～155cm</option>
-                  <option value="160" {{ old('height') === '160' ? 'selected' : '' }}>156cm～160cm</option>
-                  <option value="165" {{ old('height') === '165' ? 'selected' : '' }}>161cm～165cm</option>
-                  <option value="170" {{ old('height') === '170' ? 'selected' : '' }}>170cm～</option>
+                  <option value="150" {{ old('height', ($searchCriteria['height'] ?? null) ?? '') === '150' ? 'selected' : '' }}>～150cm</option>
+                  <option value="155" {{ old('height', ($searchCriteria['height'] ?? null) ?? '') === '155' ? 'selected' : '' }}>151cm～155cm</option>
+                  <option value="160" {{ old('height', ($searchCriteria['height'] ?? null) ?? '') === '160' ? 'selected' : '' }}>156cm～160cm</option>
+                  <option value="165" {{ old('height', ($searchCriteria['height'] ?? null) ?? '') === '165' ? 'selected' : '' }}>161cm～165cm</option>
+                  <option value="170" {{ old('height', ($searchCriteria['height'] ?? null) ?? '') === '170' ? 'selected' : '' }}>170cm～</option>
                 </select>
                 <svg class="groups-girl-search__select-arrow" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L8 8L15 1" stroke="#021A21" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -83,9 +173,9 @@
                   <option value="">選択する</option>
                   @for($i = 18; $i <= 30; $i++)
                     @if($i == 30)
-                      <option value="{{ $i }}" {{ old('age') == $i ? 'selected' : '' }}>30歳～</option>
+                      <option value="{{ $i }}" {{ old('age', ($searchCriteria['age'] ?? null) ?? '') == $i ? 'selected' : '' }}>30歳～</option>
                     @else
-                      <option value="{{ $i }}" {{ old('age') == $i ? 'selected' : '' }}>{{ $i }}歳</option>
+                      <option value="{{ $i }}" {{ old('age', ($searchCriteria['age'] ?? null) ?? '') == $i ? 'selected' : '' }}>{{ $i }}歳</option>
                     @endif
                   @endfor
                 </select>
@@ -102,7 +192,7 @@
                 <select name="bust" class="groups-girl-search__select">
                   <option value="">選択する</option>
                   @foreach(['A','B','C','D','E','F','G','H','I','J'] as $cup)
-                    <option value="{{ $cup }}" {{ old('bust') === $cup ? 'selected' : '' }}>{{ $cup }}</option>
+                    <option value="{{ $cup }}" {{ old('bust', ($searchCriteria['bust'] ?? null) ?? '') === $cup ? 'selected' : '' }}>{{ $cup }}</option>
                   @endforeach
                 </select>
                 <svg class="groups-girl-search__select-arrow" width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,7 +216,7 @@
                   name="personality" 
                   value="-1" 
                   class="groups-girl-search__feature-radio"
-                  {{ old('personality', '-1') === '-1' ? 'checked' : '' }}
+                  {{ old('personality', (($searchCriteria['personality'] ?? null) ? ($searchCriteria['personality']->id ?? '-1') : '-1')) == '-1' ? 'checked' : '' }}
                 >
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
@@ -138,7 +228,7 @@
                     name="personality" 
                     value="{{ $personality->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('personality') == $personality->id ? 'checked' : '' }}
+                    {{ old('personality', (($searchCriteria['personality'] ?? null) ? ($searchCriteria['personality']->id ?? '-1') : '-1')) == $personality->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $personality->name }}</span>
@@ -153,7 +243,7 @@
                     name="personality" 
                     value="{{ $personality->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('personality') == $personality->id ? 'checked' : '' }}
+                    {{ old('personality', (($searchCriteria['personality'] ?? null) ? ($searchCriteria['personality']->id ?? '-1') : '-1')) == $personality->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $personality->name }}</span>
@@ -168,7 +258,7 @@
                     name="personality" 
                     value="{{ $personality->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('personality') == $personality->id ? 'checked' : '' }}
+                    {{ old('personality', (($searchCriteria['personality'] ?? null) ? ($searchCriteria['personality']->id ?? '-1') : '-1')) == $personality->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $personality->name }}</span>
@@ -191,7 +281,7 @@
                   name="style" 
                   value="-1" 
                   class="groups-girl-search__feature-radio"
-                  {{ old('style', '-1') === '-1' ? 'checked' : '' }}
+                  {{ old('style', (($searchCriteria['style'] ?? null) ? ($searchCriteria['style']->id ?? '-1') : '-1')) == '-1' ? 'checked' : '' }}
                 >
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
@@ -203,7 +293,7 @@
                     name="style" 
                     value="{{ $style->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('style') == $style->id ? 'checked' : '' }}
+                    {{ old('style', (($searchCriteria['style'] ?? null) ? ($searchCriteria['style']->id ?? '-1') : '-1')) == $style->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $style->name }}</span>
@@ -218,7 +308,7 @@
                     name="style" 
                     value="{{ $style->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('style') == $style->id ? 'checked' : '' }}
+                    {{ old('style', (($searchCriteria['style'] ?? null) ? ($searchCriteria['style']->id ?? '-1') : '-1')) == $style->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $style->name }}</span>
@@ -233,7 +323,7 @@
                     name="style" 
                     value="{{ $style->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('style') == $style->id ? 'checked' : '' }}
+                    {{ old('style', (($searchCriteria['style'] ?? null) ? ($searchCriteria['style']->id ?? '-1') : '-1')) == $style->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $style->name }}</span>
@@ -256,7 +346,7 @@
                   name="option" 
                   value="-1" 
                   class="groups-girl-search__feature-radio"
-                  {{ old('option', '-1') === '-1' ? 'checked' : '' }}
+                  {{ old('option', (($searchCriteria['option'] ?? null) ? ($searchCriteria['option']->id ?? '-1') : '-1')) == '-1' ? 'checked' : '' }}
                 >
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
@@ -268,7 +358,7 @@
                     name="option" 
                     value="{{ $option->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('option') == $option->id ? 'checked' : '' }}
+                    {{ old('option', (($searchCriteria['option'] ?? null) ? ($searchCriteria['option']->id ?? '-1') : '-1')) == $option->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $option->name }}</span>
@@ -283,7 +373,7 @@
                     name="option" 
                     value="{{ $option->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('option') == $option->id ? 'checked' : '' }}
+                    {{ old('option', (($searchCriteria['option'] ?? null) ? ($searchCriteria['option']->id ?? '-1') : '-1')) == $option->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $option->name }}</span>
@@ -298,7 +388,7 @@
                     name="option" 
                     value="{{ $option->id }}" 
                     class="groups-girl-search__feature-radio"
-                    {{ old('option') == $option->id ? 'checked' : '' }}
+                    {{ old('option', (($searchCriteria['option'] ?? null) ? ($searchCriteria['option']->id ?? '-1') : '-1')) == $option->id ? 'checked' : '' }}
                   >
                   <span class="groups-girl-search__feature-radio-indicator"></span>
                   <span class="groups-girl-search__feature-radio-text">{{ $option->name }}</span>
@@ -318,13 +408,6 @@
           </button>
         </div>
       </form>
-    </div>
-
-    <!-- Back to Top Button -->
-    <div class="groups-girl-search__back-to-top">
-      <a href="{{ route('public.groups.home') }}" class="groups-girl-search__back-link">
-        トップページへもどる
-      </a>
     </div>
   </div>
 </x-public-groups-sub-page-layout>
