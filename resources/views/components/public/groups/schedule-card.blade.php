@@ -17,11 +17,9 @@
       <!-- Overlay Buttons -->
       <div class="schedule-card-overlay">
         <div class="schedule-card-overlay-buttons">
-          @if($isWorkingToday)
-            <div class="schedule-card-status-button">
-              <span class="schedule-card-status-text">{{ $statusText }}</span>
-            </div>
-          @endif
+          <div class="schedule-card-status-button">
+            <span class="schedule-card-status-text">{{ $statusText }}</span>
+          </div>
           <div class="schedule-card-time-button">
             <span class="schedule-card-time-text">{{ $timeRange }}</span>
           </div>
