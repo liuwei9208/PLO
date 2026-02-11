@@ -12,10 +12,18 @@ function initializeCalendar(calendarEl, calendarInstance) {
     return null;
   }
 
+  // Get the selected date from the page (if any)
+  const selectedDate = typeof date !== "undefined" && date !== '' ? date : null;
+  // Get the selected month from the page (if any)
+  const selectedMonth = typeof month !== "undefined" && month !== '' ? month + '-01' : null;
+  // Use date if available, otherwise use month, otherwise use current date
+  const initialDate = selectedDate || selectedMonth || undefined;
+  
   const cal = new Calendar(calendarEl, {
     locales: allLocales,
     locale: "ja",
     initialView: "dayGridMonth",
+    initialDate: initialDate,
     plugins: [interactionPlugin, dayGridPlugin],
     contentHeight: "auto",
     fixedWeekCount: false,
@@ -24,6 +32,13 @@ function initializeCalendar(calendarEl, calendarInstance) {
     dayCellContent: function (arg) {
       return { html: arg.dayNumberText.replace(/日$/, "") };
     },
+    // Add class to selected date cell
+    dayCellClassNames: function (arg) {
+      if (selectedDate && arg.dateStr === selectedDate) {
+        return ['selected-date-cell'];
+      }
+      return [];
+    },
     headerToolbar: {
       left: "prev",
       center: "title",
@@ -31,19 +46,13 @@ function initializeCalendar(calendarEl, calendarInstance) {
     },
     dateClick: function (info) {
       console.log("Date clicked:", info.dateStr);
-      // Handle date click if needed
-      if (typeof diarys_date !== "undefined" && diarys_date.length > 0) {
-        for (let i = 0; i < diarys_date.length; i++) {
-          if (diarys_date[i].date == info.dateStr) {
-            const date = info.dateStr;
-            if (date != '') {
-              window.location.href = `/groups/photodiary?date=${date}`;
-            } else {
-              window.location.href = `/groups/photodiary`;
-            }
-            return;
-          }
-        }
+      // Handle date click - redirect to show diaries for the selected date
+      // Clear month parameter when clicking a specific date
+      const date = info.dateStr;
+      if (date != '') {
+        window.location.href = `/groups/photodiary?date=${date}`;
+      } else {
+        window.location.href = `/groups/photodiary`;
       }
     },
   });
@@ -68,5 +77,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const calendarEl = document.getElementById("diary-calendar");
   if (calendarEl) {
     calendar = initializeCalendar(calendarEl, calendar);
+  }
+  
+  // Initialize mobile calendar
+  const mobileCalendarEl = document.getElementById("diary-calendar-mobile");
+  if (mobileCalendarEl) {
+    initializeCalendar(mobileCalendarEl, null);
   }
 });
