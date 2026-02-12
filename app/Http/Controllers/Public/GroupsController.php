@@ -1241,6 +1241,11 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     }
     public function showNewFace(Request $request): View
     {
+        Carbon::setLocale('ja');
+        
+        // Get selected date from request
+        $selectedDate = $request->query('date', '');
+        
         $shops = Shop::whereNot('slug', 'touchvip')
             ->whereNot('slug', 'headquarter')
             ->orderBy('rank', 'asc')
@@ -1259,8 +1264,13 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->when($selectedShop !== '', function ($q) use ($selectedShop) {
                 $q->where('shops.slug', $selectedShop);
             })
-            // New face: joined within the last month (adjust as needed)
-            ->where('casts.joined_at', '>=', Carbon::now()->subMonth(1))
+            ->when($selectedDate !== '', function ($q) use ($selectedDate) {
+                // Filter by specific date if provided
+                $q->whereDate('casts.joined_at', $selectedDate);
+            }, function ($q) {
+                // Otherwise, show casts joined within the last month
+                $q->where('casts.joined_at', '>=', Carbon::now()->subMonth(1));
+            })
             ->orderBy('casts.joined_at', 'desc')
             ->select([
                 'casts.id as id',
@@ -1282,6 +1292,17 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->limit(30)
             ->get();
 
+        // Generate date search dates (next 6 days)
+        $dateSearchDates = [];
+        for ($i = 0; $i < 6; $i++) {
+            $date = Carbon::now()->addDays($i);
+            $dateSearchDates[] = [
+                'date' => $date->format('Y-m-d'),
+                'display' => $date->format('m/d'),
+                'label' => $date->format('m/d')
+            ];
+        }
+
         // Button group (2 rows of 3) - used by the shared sub page layout.
         $buttonGroup = [
             [
@@ -1301,6 +1322,8 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shops' => $shops,
             'selectedShop' => $selectedShop,
             'buttonGroup' => $buttonGroup,
+            'dateSearchDates' => $dateSearchDates,
+            'selectedDate' => $selectedDate,
         ]);
     }
 
