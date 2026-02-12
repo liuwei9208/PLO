@@ -69,6 +69,86 @@
         </div>
     </div>
 </header>
+
+<!-- Groups Menu Overlay Component -->
+<x-public.groups.menu-overlay 
+    :menu-links="[
+        'top' => route('public.groups.home'),
+        'new' => route('public.groups.newface'),
+        'shop' => route('public.group.newcomer'),
+        'schedule' => route('public.group.newcomer'),
+        'pickup' => '#',
+        'diary' => '#',
+        'login' => route('login'),
+        'register' => route('register'),
+        'news' => '#',
+        'movie' => '#',
+        'event' => route('public.group.newcomer'),
+        'recruit-female' => '#',
+        'recruit-male' => '#',
+    ]"
+    :bottom-buttons="[
+        'group' => route('public.groups.home'),
+        'recruit' => '#',
+    ]"
+    :bottom-button-images="[
+        'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
+        'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
+    ]"
+/>
+
 @once
   @vite('resources/scss/groups/header-sub.scss')
 @endonce
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  // Menu toggle functionality
+  const menuButton = document.getElementById("drawer-toggle");
+  const menuOverlay = document.getElementById("groupsMenuOverlay");
+  const menuClose = document.getElementById("groupsMenuClose");
+
+  function openMenu() {
+    if (menuOverlay) {
+      menuOverlay.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+  }
+
+  function closeMenu() {
+    if (menuOverlay) {
+      menuOverlay.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  }
+
+  // Add click handler for menu button
+  if (menuButton && menuOverlay) {
+    menuButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      openMenu();
+    });
+  }
+
+  // Add click handler for close button
+  if (menuClose) {
+    menuClose.addEventListener("click", closeMenu);
+  }
+
+  // Close menu when clicking outside content
+  if (menuOverlay) {
+    menuOverlay.addEventListener("click", function (e) {
+      if (e.target === menuOverlay) {
+        closeMenu();
+      }
+    });
+
+    // Close menu with Escape key
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && menuOverlay.classList.contains("active")) {
+        closeMenu();
+      }
+    });
+  }
+});
+</script>

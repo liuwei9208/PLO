@@ -204,6 +204,13 @@
         </div>
 
         <!-- Personality Section -->
+        @php
+          $personalitiesCount = $personalities->count();
+          $personalitiesPerColumn = ceil($personalitiesCount / 3);
+          $personalitiesCol1 = $personalities->take($personalitiesPerColumn);
+          $personalitiesCol2 = $personalities->skip($personalitiesPerColumn)->take($personalitiesPerColumn);
+          $personalitiesCol3 = $personalities->skip($personalitiesPerColumn * 2);
+        @endphp
         <div class="groups-girl-search__feature-section">
           <div class="groups-girl-search__feature-header">
             <p class="groups-girl-search__feature-label">性格</p>
@@ -221,7 +228,7 @@
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
               </label>
-              @foreach($personalities->take(4) as $personality)
+              @foreach($personalitiesCol1 as $personality)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -236,7 +243,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($personalities->skip(4)->take(5) as $personality)
+              @foreach($personalitiesCol2 as $personality)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -251,7 +258,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($personalities->skip(9) as $personality)
+              @foreach($personalitiesCol3 as $personality)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -269,6 +276,13 @@
         </div>
 
         <!-- Style Section -->
+        @php
+          $stylesCount = $styles->count();
+          $stylesPerColumn = ceil($stylesCount / 3);
+          $stylesCol1 = $styles->take($stylesPerColumn);
+          $stylesCol2 = $styles->skip($stylesPerColumn)->take($stylesPerColumn);
+          $stylesCol3 = $styles->skip($stylesPerColumn * 2);
+        @endphp
         <div class="groups-girl-search__feature-section">
           <div class="groups-girl-search__feature-header">
             <p class="groups-girl-search__feature-label">スタイル</p>
@@ -286,7 +300,7 @@
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
               </label>
-              @foreach($styles->take(4) as $style)
+              @foreach($stylesCol1 as $style)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -301,7 +315,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($styles->skip(4)->take(5) as $style)
+              @foreach($stylesCol2 as $style)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -316,7 +330,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($styles->skip(9) as $style)
+              @foreach($stylesCol3 as $style)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -334,6 +348,13 @@
         </div>
 
         <!-- Option Section -->
+        @php
+          $optionsCount = $options->count();
+          $optionsPerColumn = ceil($optionsCount / 3);
+          $optionsCol1 = $options->take($optionsPerColumn);
+          $optionsCol2 = $options->skip($optionsPerColumn)->take($optionsPerColumn);
+          $optionsCol3 = $options->skip($optionsPerColumn * 2);
+        @endphp
         <div class="groups-girl-search__feature-section">
           <div class="groups-girl-search__feature-header">
             <p class="groups-girl-search__feature-label">オプション</p>
@@ -351,7 +372,7 @@
                 <span class="groups-girl-search__feature-radio-indicator"></span>
                 <span class="groups-girl-search__feature-radio-text">すべて</span>
               </label>
-              @foreach($options->take(4) as $option)
+              @foreach($optionsCol1 as $option)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -366,7 +387,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($options->skip(4)->take(5) as $option)
+              @foreach($optionsCol2 as $option)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
@@ -381,7 +402,7 @@
               @endforeach
             </div>
             <div class="groups-girl-search__feature-column">
-              @foreach($options->skip(9) as $option)
+              @foreach($optionsCol3 as $option)
                 <label class="groups-girl-search__feature-radio-label">
                   <input 
                     type="radio" 
