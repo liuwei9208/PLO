@@ -258,25 +258,25 @@ class DateSearchBar {
     const day = String(this.selectedDate.getDate()).padStart(2, '0');
     const dateString = `${year}-${month}-${day}`;
     
-    // Find and click the corresponding date button
+    // Find and update the corresponding date button if it exists
     const dateButton = Array.from(this.dateButtons).find(btn => 
       btn.dataset.date === dateString
     );
     
+    // Remove active class from all buttons
+    this.dateButtons.forEach(btn => {
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-pressed', 'false');
+    });
+    
+    // If a matching button exists, activate it
     if (dateButton) {
-      // Remove active class from all buttons
-      this.dateButtons.forEach(btn => {
-        btn.classList.remove('is-active');
-        btn.setAttribute('aria-pressed', 'false');
-      });
-      
-      // Add active class to selected button
       dateButton.classList.add('is-active');
       dateButton.setAttribute('aria-pressed', 'true');
-      
-      // Submit form with date parameter
-      this.submitFormWithDate(dateString);
     }
+    
+    // Submit form with date parameter (regardless of whether button exists)
+    this.submitFormWithDate(dateString);
     
     // Update calendar display
     this.currentDate = new Date(this.selectedDate);
