@@ -82,7 +82,7 @@
     </div> --}}
   </div>
   @if (request()->routeIs('public.groups.home'))
-  <button class="drawer-toggle" id="drawer-toggle" data-pushbar-target="right">
+  <button class="drawer-toggle" id="drawer-toggle">
     <div class="drawer-toggle-bars">
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
@@ -101,6 +101,36 @@
   </button>
   @endif
 </header>
+
+<!-- Groups Menu Overlay Component (for home page) -->
+@if (request()->routeIs('public.groups.home'))
+<x-public.groups.menu-overlay 
+    :menu-links="[
+        'top' => route('public.groups.home'),
+        'new' => route('public.groups.newface'),
+        'shop' => route('public.groups.shop'),
+        'schedule' => route('public.groups.schedule'),
+        'pickup' => '#',
+        'diary' => route('public.groups.photodiary'),
+        'login' => route('login'),
+        'register' => route('register'),
+        'news' => '#',
+        'movie' => route('public.groups.movie'),
+        'event' => route('public.groups.event'),
+        'recruit-female' => '#',
+        'recruit-male' => '#',
+    ]"
+    :bottom-buttons="[
+        'group' => route('public.groups.home'),
+        'recruit' => '#',
+    ]"
+    :bottom-button-images="[
+        'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
+        'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
+    ]"
+/>
+@endif
+
 @else
 <header class="header-child" id="header">
   <a href="{{ route('public.group.home') }}" class="header-child-logo sm">
@@ -185,7 +215,7 @@
     </div>
   </div>
   @if (request()->routeIs('public.groups.home'))
-  <button class="drawer-toggle" id="drawer-toggle" data-pushbar-target="right">
+  <button class="drawer-toggle" id="drawer-toggle">
     <div class="drawer-toggle-bars">
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>

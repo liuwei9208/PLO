@@ -5,6 +5,7 @@ import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
 import './group/date-search-bar'
+import initGroupsHeaderMenu from './groups/header'
 
 const pushbar = new Pushbar({
   blur: true,

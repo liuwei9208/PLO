@@ -9,8 +9,8 @@
   :showLoadMore="true"
   :showDateSearchBar="true"
   dateSearchHeading="出勤日で検索"
-  :dateSearchDates="null"
-  :dateSearchActiveDate="request('date')"
+  :dateSearchDates="$dateSearchDates ?? null"
+  :dateSearchActiveDate="$selectedDate ?? request('date')"
 >
   <!-- New Face Content -->
   <div class="newface">
