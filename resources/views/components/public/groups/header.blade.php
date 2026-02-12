@@ -10,15 +10,15 @@
         <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>
-      <a href="{{ route('public.group.schedule') }}">
+      <a href="{{ route('public.groups.schedule') }}">
         <small>SCHEDULE</small>
         <span class="menu_schedule">出勤情報</span>
       </a>
-      <a href="{{ route('public.group.event') }}">
+      <a href="{{ route('public.groups.event') }}">
         <small>EVENT</small>
         <span class="menu_event">イベント情報</span>
       </a>
-      <a href="{{ route('public.group.shop') }}">
+      <a href="{{ route('public.groups.shop') }}">
         <small>SHOP</small>
         <span class="menu_shop">店舗一覧</span>
       </a>
