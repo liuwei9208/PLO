@@ -5,7 +5,7 @@
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
     </div>
-    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+    <span class="drawer-toggle-menu rainbow-text">Menu</span>
   </button>
   <nav class="drawer-nav">
     <ul>
