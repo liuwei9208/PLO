@@ -1186,7 +1186,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         // Paginate diaries
         $diaries = $query->orderBy('diaries.created_at', 'desc')
             ->orderBy('diaries.id', 'desc')
-            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 9)
+            ->paginate($request->header('User-Agent') && preg_match('/(iPhone|iPod|Android.*Mobile|Windows Phone)/', $request->header('User-Agent')) ? 6 : 8)
             ->onEachSide(0)
             ->appends([
                 'date' => $date,
