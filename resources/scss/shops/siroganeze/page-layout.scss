@@ -18,7 +18,7 @@ p{
     position: relative;
 }
 .banner-image{
-    background-image: url('/assets/img/shops/shiroganeze/system-banner.png');
+    background-image: url('/assets/img/shops/siroganeze/system-banner.png');
     background-attachment: scroll;
     background-repeat: no-repeat;
     width: 100%;
@@ -28,18 +28,18 @@ p{
     position: fixed;
     overflow: visible;
     z-index: -100;
-    
+
   }
   @media screen and (max-width: 850px) {
     .banner-image{
       background-position: center;
       background-attachment: scroll;
       // background-image: url('../../../img/shops/shizuku/home-banner-sp.jpg');
-      background-image: url('/assets/img/shops/shiroganeze/system-banner.png');
-  
+      background-image: url('/assets/img/shops/siroganeze/system-banner.png');
+
     }
   }
-  
+
 // Common gradient overlay
 .home-gradient-overlay {
     position: fixed;
@@ -166,7 +166,7 @@ p{
     text-align: center;
     transition: all 0.3s ease;
     width: 37.5rem;
-    
+
     &:hover {
         background: #F5F5F5;
         transform: translateY(-2px);

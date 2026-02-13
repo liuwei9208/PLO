@@ -12,7 +12,7 @@
    'shizuku',
    'miyabi',
    'en',
-   'shiroganeze',
+   'siroganeze',
    'lovestory'
  );
 
@@ -251,8 +251,8 @@
             background-color: darken($shop-color-en, 15%);
           }
         }
-        &[data-shop="shiroganeze"] {
-          background-color: $shop-color-shiroganeze;
+        &[data-shop="siroganeze"] {
+          background-color: $shop-color-siroganeze;
           @media #{media-query(sm)} {
             font-size: 10px;
           }
@@ -263,7 +263,7 @@
             font-size: 20px;
           }
           &:hover {
-            background-color: darken($shop-color-shiroganeze, 15%);
+            background-color: darken($shop-color-siroganeze, 15%);
           }
         }
         &[data-shop="lovestory"] {
@@ -413,8 +413,8 @@
     //        font-size: 22px;
     //      }
     //    }
-    //    &[data-shop="shiroganeze"] {
-    //      background-color: $shop-color-shiroganeze;
+    //    &[data-shop="siroganeze"] {
+    //      background-color: $shop-color-siroganeze;
     //      @media #{media-query(sm)} {
     //        font-size: 10px;
     //      }
@@ -558,8 +558,8 @@
           &.--en {
            border: 5px solid $shop-color-en;
           }
-          &.--shiroganeze {
-           border: 5px solid $shop-color-shiroganeze;
+          &.--siroganeze {
+           border: 5px solid $shop-color-siroganeze;
           }
           &.--lovestory {
            border: 5px solid $shop-color-lovestory;
@@ -610,8 +610,8 @@
         &.--en .pickup-shop {
           background-color: $shop-color-en;
         }
-        &.--shiroganeze .pickup-shop {
-          background-color: $shop-color-shiroganeze;
+        &.--siroganeze .pickup-shop {
+          background-color: $shop-color-siroganeze;
         }
         &.--lovestory .pickup-shop {
           background-color: $shop-color-lovestory;
@@ -629,8 +629,8 @@
         &.--en .pickup-name {
           color: $shop-color-en;
         }
-        &.--shiroganeze .pickup-name {
-          color: $shop-color-shiroganeze;
+        &.--siroganeze .pickup-name {
+          color: $shop-color-siroganeze;
         }
         &.--lovestory .pickup-name {
           color: $shop-color-lovestory;
@@ -673,8 +673,8 @@
          &.--en {
            color: $shop-color-en;
          }
-         &.--shiroganeze {
-           color: $shop-color-shiroganeze;
+         &.--siroganeze {
+           color: $shop-color-siroganeze;
          }
          &.--lovestory {
            color: $shop-color-lovestory;
@@ -709,8 +709,8 @@
          &.--en {
            color: $shop-color-en;
          }
-         &.--shiroganeze {
-           color: $shop-color-shiroganeze;
+         &.--siroganeze {
+           color: $shop-color-siroganeze;
          }
          &.--lovestory {
            color: $shop-color-lovestory;
@@ -958,8 +958,8 @@
   //   &.--en .pickup-shop {
   //     background-color: $shop-color-en;
   //   }
-  //   &.--shiroganeze .pickup-shop {
-  //     background-color: $shop-color-shiroganeze;
+  //   &.--siroganeze .pickup-shop {
+  //     background-color: $shop-color-siroganeze;
   //   }
   //   &.--lovestory .pickup-shop {
   //     background-color: $shop-color-lovestory;
@@ -976,8 +976,8 @@
   //   &.--en .pickup-shop {
   //     background-color: $shop-color-en;
   //   }
-  //   &.--shiroganeze .pickup-shop {
-  //     background-color: $shop-color-shiroganeze;
+  //   &.--siroganeze .pickup-shop {
+  //     background-color: $shop-color-siroganeze;
   //   }
   //   &.--lovestory .pickup-shop {
   //     background-color: $shop-color-lovestory;
@@ -995,8 +995,8 @@
   //   &.--en .pickup-name {
   //     color: $shop-color-en;
   //   }
-  //   &.--shiroganeze .pickup-name {
-  //     color: $shop-color-shiroganeze;
+  //   &.--siroganeze .pickup-name {
+  //     color: $shop-color-siroganeze;
   //   }
   //   &.--lovestory .pickup-name {
   //     color: $shop-color-lovestory;

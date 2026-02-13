@@ -84,7 +84,7 @@
         <span>店舗にてお問い合わせください</span>
         @elseif ($shop->slug == 'en')
         <span>店舗にてお問い合わせください</span>
-        @elseif ($shop->slug == 'shiroganeze')
+        @elseif ($shop->slug == 'siroganeze')
         <span>オイルマッサージ	回春マッサージ	鼠径部マッサージ	ハンドフィニッシュ</span>
         @elseif ($shop->slug == 'lovestory')
         <span>シャワー	濃厚キス	全身リップ	全力素股</span>

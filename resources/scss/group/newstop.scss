@@ -6,7 +6,7 @@
 .plo_news {
   padding: 40px 20px;
   margin: 80px auto;
-  
+
   @media #{media-query(sm)} {
     padding: 30px 15px;
     margin: 0 auto;
@@ -56,7 +56,7 @@
     margin-bottom: 40px;
     list-style: none;
     padding: 0;
-    
+
     @media #{media-query(sm)} {
       gap: 10px;
       margin-bottom: 30px;
@@ -134,7 +134,7 @@
         color: #fff;
         border-color: $shop-color-pussycat;
       }
-      &.--shizuku {   
+      &.--shizuku {
         background-color: $shop-color-shizuku;
         color: #fff;
         border-color: $shop-color-shizuku;
@@ -147,18 +147,18 @@
       &.--en {
         background-color: $shop-color-en;
         color: #fff;
-        border-color: $shop-color-en; 
+        border-color: $shop-color-en;
       }
-      &.--shiroganeze {
-        background-color: $shop-color-shiroganeze;
+      &.--siroganeze {
+        background-color: $shop-color-siroganeze;
         color: #fff;
-        border-color: $shop-color-shiroganeze;
-      } 
+        border-color: $shop-color-siroganeze;
+      }
       &.--lovestory {
         background-color: $shop-color-lovestory;
         color: #fff;
         border-color: $shop-color-lovestory;
-      } 
+      }
     }
   }
 
@@ -235,8 +235,8 @@
         &.--en {
           background-color: $shop-color-en;
         }
-        &.--shiroganeze {
-          background-color: $shop-color-shiroganeze;
+        &.--siroganeze {
+          background-color: $shop-color-siroganeze;
         }
         &.--lovestory {
           background-color: $shop-color-lovestory;
@@ -319,19 +319,19 @@
           &.--pussycat {
             background-color: $shop-color-pussycat;
           }
-          &.--shizuku { 
+          &.--shizuku {
             background-color: $shop-color-shizuku;
           }
           &.--miyabi {
             background-color: $shop-color-miyabi;
           }
-          &.--en {  
+          &.--en {
             background-color: $shop-color-en;
           }
-          &.--shiroganeze {
-            background-color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            background-color: $shop-color-siroganeze;
           }
-          &.--lovestory { 
+          &.--lovestory {
             background-color: $shop-color-lovestory;
           }
         }
@@ -349,7 +349,7 @@
         text-overflow: ellipsis;
       }
     }
-    
+
     &-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -413,19 +413,19 @@
           &.--pussycat {
             background-color: $shop-color-pussycat;
           }
-          &.--shizuku { 
+          &.--shizuku {
             background-color: $shop-color-shizuku;
           }
           &.--miyabi {
             background-color: $shop-color-miyabi;
           }
-          &.--en {    
+          &.--en {
             background-color: $shop-color-en;
           }
-          &.--shiroganeze {
-            background-color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            background-color: $shop-color-siroganeze;
           }
-          &.--lovestory { 
+          &.--lovestory {
             background-color: $shop-color-lovestory;
           }
         }

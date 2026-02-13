@@ -589,8 +589,8 @@
         }
       }
 
-      &[data-shop="shiroganeze"] {
-        background-color: $shop-color-shiroganeze;
+      &[data-shop="siroganeze"] {
+        background-color: $shop-color-siroganeze;
         @media #{media-query(sm)} {
           font-size: 10px;
         }
@@ -602,7 +602,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-shiroganeze, 20%), lighten($shop-color-shiroganeze, 10%), $shop-color-shiroganeze);
+          background: linear-gradient(135deg, lighten($shop-color-siroganeze, 20%), lighten($shop-color-siroganeze, 10%), $shop-color-siroganeze);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }

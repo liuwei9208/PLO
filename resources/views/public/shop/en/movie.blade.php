@@ -1,5 +1,5 @@
 <x-en-page-layout page-title="MOVIE" page-subtitle="動画一覧"
-    breadcrumb="fashion health 艶 ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/shiroganeze/movie.scss']" :banners="$banners">
+    breadcrumb="fashion health 艶 ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/siroganeze/movie.scss']" :banners="$banners">
     <section class="movie-list">
 
         <div class="movie-list-item">

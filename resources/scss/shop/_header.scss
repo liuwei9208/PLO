@@ -40,9 +40,9 @@
   //     background-color: rgba($shop-color-en, 0.3);
   //   }
   // }
-  // &.--shiroganeze {
+  // &.--siroganeze {
   //   @media #{media-query(lg)} {
-  //     background-color: rgba($shop-color-shiroganeze, 0.3);
+  //     background-color: rgba($shop-color-siroganeze, 0.3);
   //   }
   // }
   // &.--lovestory {
@@ -163,8 +163,8 @@
     // &.--en {
     //   background-color: $shop-color-en;
     // }
-    // &.--shiroganeze {
-    //   background-color: $shop-color-shiroganeze;
+    // &.--siroganeze {
+    //   background-color: $shop-color-siroganeze;
     // }
     // &.--lovestory {
     //   background-color: $shop-color-lovestory;
@@ -368,7 +368,7 @@
         $bar-corner-radius: 2.5px,
         $bar-color: #000,
       );
-  
+
 
       // border-radius: 100%;
     }

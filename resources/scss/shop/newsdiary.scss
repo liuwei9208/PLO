@@ -12,12 +12,12 @@
     padding: 40px 0;
     // max-width: 1260px;
     margin: 0 auto;
-  
+
     @media #{media-query(sm)} {
       flex-direction: column;
       padding: 30px 0;
     }
-  
+
     .news, .diary-top {
       flex: 1;
       border-radius: 30px;
@@ -33,8 +33,8 @@
       // &.--en {
       //   border-color: $shop-color-en;
       // }
-      // &.--shiroganeze {
-      //   border-color: $shop-color-shiroganeze;
+      // &.--siroganeze {
+      //   border-color: $shop-color-siroganeze;
       // }
       // &.--lovestory {
       //   border-color: $shop-color-lovestory;
@@ -42,9 +42,9 @@
       // &.--pussycat {
       //   border-color: $shop-color-pussycat;
       // }
-      
-      
-      
+
+
+
       .news-body {
         padding: 0 20px 20px;
         @media #{media-query(sm)} {
@@ -54,13 +54,13 @@
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           gap: 20px;
-  
+
           @media (max-width: 767px) {
             gap: 15px;
             padding: 0 10px 15px;
           }
         }
-  
+
         &-item {
           @media #{media-query(sm)} {
             height: 100%;
@@ -73,14 +73,14 @@
             overflow: hidden;
             border-radius: 8px;
             margin-bottom: 10px;
-  
+
             img {
               width: 100%;
               height: 100%;
               object-fit: cover;
             }
           }
-  
+
           &-published {
             font-size: 1rem;
             color: #000;
@@ -90,7 +90,7 @@
               border-bottom: none;
             }
           }
-  
+
           &-contents {
             font-size: 1rem;
             line-height: 1.5;
@@ -109,7 +109,7 @@
         }
       }
     }
-  
+
     .news-header, .diary-top-header {
       display: flex;
       justify-content: space-between;
@@ -132,8 +132,8 @@
       // &.--en {
       //   background-color: $shop-color-en;
       // }
-      // &.--shiroganeze {
-      //   background-color: $shop-color-shiroganeze;
+      // &.--siroganeze {
+      //   background-color: $shop-color-siroganeze;
       // }
       // &.--lovestory {
       //   background-color: $shop-color-lovestory;
@@ -141,11 +141,11 @@
       // &.--pussycat {
       //   background-color: $shop-color-pussycat;
       // }
-      
+
       @media #{media-query(lg)} {
         padding: 50px 20px;
       }
-      
+
       &-title {
         display: flex;
         align-items: center;
@@ -156,7 +156,7 @@
           // font-size: $title-font-size-md;
           font-weight: $title-font-weight-md;
           margin: 0;
-  
+
           @media #{media-query(sm)} {
             font-size: 25px;
           }
@@ -184,7 +184,7 @@
           }
         }
       }
-  
+
       &-button {
         &-link {
           color: #000;
@@ -202,22 +202,22 @@
         }
       }
     }
-  
-  
-  
+
+
+
     .diary-top-items {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
       padding: 0 20px;
-  
+
       @media (max-width: 767px) {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 0 10px;
       }
     }
-  
+
     .diary-top-item {
       &-image {
         width: 100%;
@@ -226,13 +226,13 @@
         border-radius: 8px;
         margin-bottom: 10px;
         position: relative;
-  
+
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
         }
-  
+
         .diary-top-item-title {
           position: absolute;
           bottom: 0;
@@ -249,14 +249,14 @@
           text-overflow: ellipsis;
         }
       }
-  
+
       &-name {
         font-size: 1.2rem;
         color: #666;
         margin-bottom: 5px;
         text-align: center;
       }
-  
+
       &-date {
         font-size: 1rem;
         color: #999;

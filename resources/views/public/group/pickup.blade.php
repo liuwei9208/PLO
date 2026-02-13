@@ -48,10 +48,10 @@
           <span class="shop-name">艶</span>
         </span>
       </li>
-      <li class="pickup-shop-detail" data-shop="shiroganeze">
+      <li class="pickup-shop-detail" data-shop="siroganeze">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="shop-text">
-          <span class="shop-slug">shiroganeze</span>
+          <span class="shop-slug">siroganeze</span>
           <span class="shop-name">シロガネーゼ</span>
         </span>
       </li>

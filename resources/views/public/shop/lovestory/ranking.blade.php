@@ -236,7 +236,7 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shiroganeze/no4.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/siroganeze/no4.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
@@ -273,7 +273,7 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shiroganeze/no5.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/siroganeze/no5.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
@@ -310,7 +310,7 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shiroganeze/no6.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/siroganeze/no6.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">
@@ -347,7 +347,7 @@
             <div class="ranking-no4567-container">
                 <div class="ranking-no4567-header">
                     <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shiroganeze/no7.png') }}" alt="ranking-no4">
+                        <img src="{{ asset('assets/img/shops/siroganeze/no7.png') }}" alt="ranking-no4">
                     </div>
                 </div>
                 <div class="ranking-no4567-content-container">

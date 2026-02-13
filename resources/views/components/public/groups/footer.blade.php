@@ -20,7 +20,7 @@
           <span class="footer-banner-items-item-detail-text">北海道札幌市中央区南5条西5丁目3-3<br>第8旭観光ビル1F</span>
         </div>
       </a>
-      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'shiroganeze']) }}">
+      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'siroganeze']) }}">
         <div class="footer-banner-items-item-img">
           <img class="footer-banner-items-item-img-photo" src="{{ asset('assets/img/groups/005.jpg') }}">
         </div>

@@ -65,9 +65,9 @@
                   </div>
                 </div>
                 @break
-              @case('shiroganeze')
+              @case('siroganeze')
                 <div class="shop-group-item-logo">
-                  <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="shiroganeze">
+                  <img src="{{ asset('assets/img/logo/siroganeze-logo.png') }}" alt="siroganeze">
                 </div>
                 <div class="shop-group-item-text">
                   <div class="shop-group-item-text-content">

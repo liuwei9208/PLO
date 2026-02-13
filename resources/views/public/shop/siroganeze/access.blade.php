@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="ACCESS" page-subtitle="アクセス情報"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ アクセス情報" :assets="['resources/scss/shops/shiroganeze/access.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="ACCESS" page-subtitle="アクセス情報"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ アクセス情報" :assets="['resources/scss/shops/siroganeze/access.scss']" :banners="$banners">
     <section class="access-section">
         <h1 class="access-title">ABOUT</h1>
         <div class="access-content">
@@ -38,4 +38,4 @@
             <img src="{{ asset('assets/img/shops/shizuku/map-sp.png') }}" alt="Map" class="sp-only"> --}}
         </div>
     </section>
-</x-shiroganeze-page-layout>
+</x-siroganeze-page-layout>

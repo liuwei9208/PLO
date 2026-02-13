@@ -142,10 +142,10 @@
           <span class="shop-name">艶</span>
         </span>
       </li>
-      <li class="pickup-shop" data-shop="shiroganeze">
+      <li class="pickup-shop" data-shop="siroganeze">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="shop-text">
-          <span class="shop-slug">shiroganeze</span>
+          <span class="shop-slug">siroganeze</span>
           <span class="shop-name">シロガネーゼ</span>
         </span>
       </li>
@@ -317,7 +317,7 @@
       <a href="{{ route('public.shop.diarylist', ['shop' => 'shizuku']) }}"><li class="diary-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'miyabi']) }}"><li class="diary-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'en']) }}"><li class="diary-content-bottom-shops-item " data-shop="en">艶</li></a>
-      <a href="{{ route('public.shop.diarylist', ['shop' => 'shiroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'siroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="siroganeze">シロガネーゼ</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'lovestory']) }}"><li class="diary-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
     </ul>
 
@@ -358,7 +358,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const moreButton = document.getElementById('diary_more_button');
   const shopsList = document.querySelector('.diary-content-bottom-shops');
-  
+
   if (moreButton && shopsList) {
     moreButton.addEventListener('click', function(e) {
       e.preventDefault();

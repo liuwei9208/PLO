@@ -38,7 +38,7 @@ class ScheduleController extends Controller
             Log::info($user);
             $date = $request->input('date') ? Carbon::parse($request->input('date')) : Carbon::today();
             $tomorrow = $date->copy()->addDays(1);
-            
+
             $is_public = $request->input('public') !== null ? (bool)$request->input('public') : true;
 
             $query = Cast::where('is_public',1)
@@ -95,9 +95,9 @@ class ScheduleController extends Controller
                             $query->where('slug', 'maki');
                         });
                         break;
-                    case 'shiroganeze@plo-group.jp':
+                    case 'siroganeze@plo-group.jp':
                         $query->whereHas('shop', function ($query) {
-                            $query->where('slug', 'shiroganeze');
+                            $query->where('slug', 'siroganeze');
                         });
                         break;
                     case 'lovestory@plo-group.jp':

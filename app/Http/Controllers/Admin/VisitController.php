@@ -111,7 +111,7 @@ class VisitController extends Controller{
         }else if (Auth::user()->email === "en@plo-group.jp") {
             $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 5';
             $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 5';
-        }else if (Auth::user()->email === "shiroganeze@plo-group.jp") {
+        }else if (Auth::user()->email === "siroganeze@plo-group.jp") {
             $sql .= ' AND `'.env('DB_DATABASE').'`.shops.id = 6';
             $sql_total .= ' AND `'.env('DB_DATABASE').'`.shops.id = 6';
         }else if (Auth::user()->email === "lovestory@plo-group.jp") {
