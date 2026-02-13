@@ -181,7 +181,7 @@
                 </div>
             </div>
         </a>
-        <a href="{{ route('public.shops.shop.home', ['shop' => 'shiroganeze']) }}" class="shop-list-card">
+        <a href="{{ route('public.shops.shop.home', ['shop' => 'siroganeze']) }}" class="shop-list-card">
             <div class="shop-list-card-image">
                 <img src="{{ asset('assets/img/shops/shizuku/005.jpg') }}" alt="Shop List Card Image">
             </div>

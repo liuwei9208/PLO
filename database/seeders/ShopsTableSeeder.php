@@ -90,14 +90,14 @@ class ShopsTableSeeder extends Seeder
 
         DB::table('shops')->insert([
             'id' => 6,
-            'slug' => 'shiroganeze',
-            'url' => '/shiroganeze/',
+            'slug' => 'siroganeze',
+            'url' => '/siroganeze/',
             'name' => 'シロガネーゼ',
             'postcode' => '064-0805',
             'address1' => '北海道札幌市中央区南5条西5丁目4-1',
             'address2' => '第8旭観光ビル2F',
             'tel' => '011-521-3593',
-            'email' => 'shiroganeze@plo-group.jp',
+            'email' => 'siroganeze@plo-group.jp',
             'map' => '',
             'folder' => '',
             'video_folder' => '',

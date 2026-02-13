@@ -74,8 +74,8 @@
     // &.--en {
     //   background-color: $shop-color-en;
     // }
-    // &.--shiroganeze {
-    //   background-color: $shop-color-shiroganeze;
+    // &.--siroganeze {
+    //   background-color: $shop-color-siroganeze;
     // }
     // &.--lovestory {
     //   background-color: $shop-color-lovestory;
@@ -97,8 +97,8 @@
     // &.--en {
     //   background-color: $shop-color-en;
     // }
-    // &.--shiroganeze {
-    //   background-color: $shop-color-shiroganeze;
+    // &.--siroganeze {
+    //   background-color: $shop-color-siroganeze;
     // }
     // &.--lovestory {
     //   background-color: $shop-color-lovestory;
@@ -225,7 +225,7 @@
           // }
           // background-color: #000;
         }
-  
+
         img {
           width: 100%;
           height: 100%;
@@ -253,8 +253,8 @@
           &.--en {
             background-color: $shop-color-en;
           }
-          &.--shiroganeze {
-            background-color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            background-color: $shop-color-siroganeze;
           }
           &.--lovestory {
             background-color: $shop-color-lovestory;
@@ -286,7 +286,7 @@
             border-radius: 25px;
             width: 330px;
           }
-  
+
           img {
             width: 30px;
             height: 30px;
@@ -295,7 +295,7 @@
               height: 20px;
             }
           }
-  
+
           .today-status-label {
             color: #FF0;
             font-weight: 500;
@@ -309,7 +309,7 @@
               font-size: 22px;
             }
           }
-  
+
           .today-status-separator {
             color: #FFF;
             @media #{media-query(sm)} {
@@ -322,9 +322,9 @@
               font-size: 20px;
             }
           }
-  
+
           .today-status-time {
-  
+
             // color: #FFF;
             background-color: #fff;
             padding: 10px 10px;
@@ -352,8 +352,8 @@
             &.--en {
               color: $shop-color-en;
             }
-            &.--shiroganeze {
-              color: $shop-color-shiroganeze;
+            &.--siroganeze {
+              color: $shop-color-siroganeze;
             }
             &.--lovestory {
               color: $shop-color-lovestory;
@@ -398,7 +398,7 @@
             font-size: 24px;
             bottom: 0px;
           }
-  
+
           .today-profile-schedule {
             display: flex;
             align-items:center;
@@ -416,7 +416,7 @@
               }
             }
           }
-  
+
           .today-profile-name {
             display: flex;
             align-items:center;
@@ -442,7 +442,7 @@
               // font-size: 21px;
             }
           }
-  
+
           .today-profile-size {
             display: flex;
             align-items:center;
@@ -470,7 +470,7 @@
               // font-size: 15px;
             }
           }
-          
+
         }
         .today-profile-sp {
           display: flex;
@@ -506,7 +506,7 @@
 
             @include shop.shop-color-modifiers;
           }
-  
+
           &-size {
             display: flex;
             align-items:center;
@@ -538,7 +538,7 @@
 
         }
 
-        
+
       }
       .today-hover {
         display: none;
@@ -592,8 +592,8 @@
           &.--en {
             color: $shop-color-en;
           }
-          &.--shiroganeze {
-            color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            color: $shop-color-siroganeze;
           }
           &.--lovestory {
             color: $shop-color-lovestory;
@@ -630,7 +630,7 @@
       //   }
       //   .today-hover {
       //     display: flex;
-          
+
       //     // background-color: #000;
       //   }
       // }
@@ -654,8 +654,8 @@
       //   &.--en {
       //     background-color: $shop-color-en;
       //   }
-      //   &.--shiroganeze {
-      //     background-color: $shop-color-shiroganeze;
+      //   &.--siroganeze {
+      //     background-color: $shop-color-siroganeze;
       //   }
       //   &.--lovestory {
       //     background-color: $shop-color-lovestory;
@@ -737,8 +737,8 @@
       //     &.--en {
       //       color: $shop-color-en;
       //     }
-      //     &.--shiroganeze {
-      //       color: $shop-color-shiroganeze;
+      //     &.--siroganeze {
+      //       color: $shop-color-siroganeze;
       //     }
       //     &.--lovestory {
       //       color: $shop-color-lovestory;
@@ -756,7 +756,7 @@
       //   display: flex;
       //   flex-direction: column;
       //   padding-left: 10px;
-        
+
       //   // background-color: rgba(0, 0, 0, 0.5);
       //   background: linear-gradient(to right, rgba(0,0,0,1) 0%, rgba(17,17,17,0.8) 40%, rgba(102,102,102,0.6) 75%, rgba(255,255,255,0) 100%);
       //   color: #fff;
@@ -931,7 +931,7 @@
               top: 68px;
               width: 220px;
             }
-            
+
             // height: 100%;
         }
         &-contents {
@@ -1015,8 +1015,8 @@
               // &.--en {
               //   color: $shop-color-en;
               // }
-              // &.--shiroganeze {
-              //   color: $shop-color-shiroganeze;
+              // &.--siroganeze {
+              //   color: $shop-color-siroganeze;
               // }
               // &.--lovestory {
               //   color: $shop-color-lovestory;
@@ -1087,8 +1087,8 @@
         // &.--en {
         //   color: $shop-color-en;
         // }
-        // &.--shiroganeze {
-        //   color: $shop-color-shiroganeze;
+        // &.--siroganeze {
+        //   color: $shop-color-siroganeze;
         // }
         // &.--lovestory {
         //   color: $shop-color-lovestory;
@@ -1096,9 +1096,9 @@
         // &.--pussycat {
         //   color: $shop-color-pussycat;
         // }
-        
-        
-        
+
+
+
       }
       &-image {
         width: 100%;
@@ -1154,8 +1154,8 @@
         &.--en {
           color: $shop-color-en;
         }
-        &.--shiroganeze {
-          color: $shop-color-shiroganeze;
+        &.--siroganeze {
+          color: $shop-color-siroganeze;
         }
         &.--lovestory {
           color: $shop-color-lovestory;

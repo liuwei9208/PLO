@@ -1,9 +1,9 @@
-<x-shiroganeze-page-layout page-title="REVIEW" page-subtitle="口コミ一覧"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 口コミ一覧" :assets="['resources/scss/shops/shiroganeze/review.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="REVIEW" page-subtitle="口コミ一覧"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 口コミ一覧" :assets="['resources/scss/shops/siroganeze/review.scss']" :banners="$banners">
     <section class="review-section">
         <div class="review-header">
             <h2 class="review-header-label">名前で検索 </h2>
-            <form action="{{ route('public.shops.shop.review', ['shop' => 'shiroganeze', 'id' => null]) }}" method="get"
+            <form action="{{ route('public.shops.shop.review', ['shop' => 'siroganeze', 'id' => null]) }}" method="get"
                 class="review-header-search">
                 <select class="review-header-search-input" name="cast_id" onchange="cast_change(this.value)">
                     <option value="">女の子の名前</option>
@@ -23,7 +23,7 @@
         </div>
         <div class="review-body">
             {{-- @for ($i = 0; $i < 6; $i++)
-                <x-public.shops.review-card scss="resources/scss/shops/shiroganeze/component/review-card.scss"
+                <x-public.shops.review-card scss="resources/scss/shops/siroganeze/component/review-card.scss"
                     fillStarColor="#DF8E70" emptyStarColor="none" />
                 <div class="review-row-border" data-index="{{ $i }}"></div>
             @endfor --}}
@@ -32,12 +32,12 @@
                     measurements="{{ $review->cast_age }}歳 / T.{{ $review->cast_height }} B.{{ $review->cast_bust }} ({{ $review->cast_cup }}) W.{{ $review->cast_waist }} H.{{ $review->cast_hip }}"
                     rating="{{ $review->review_average_point }}" girl-rating="{{ $review->review_cast_point }}"
                     play-rating="{{ $review->review_play_point }}" staff-rating="{{ $review->review_stuff_point }}"
-                    frame-image="assets/img/shops/shiroganeze/card-frame.png"
+                    frame-image="assets/img/shops/siroganeze/card-frame.png"
                     girl-image="{{ asset('storage/' . $review->cast_gallery) }}"
                     reviewer-name="{{ $review->member_name }}" comment="{{ $review->review_content }}"
                     shop-reply-title="お店からの返信コメント" shop-reply="{{ $review->review_manager_comment }}"
                     fillStarColor="#DF8E70" emptyStarColor="none"
-                    scss="resources/scss/shops/shiroganeze/component/review-card.scss" />
+                    scss="resources/scss/shops/siroganeze/component/review-card.scss" />
                 <div class="review-row-border" data-index="{{ $loop->index }}"　></div>
             @endforeach
         </div>
@@ -78,13 +78,13 @@
             </nav> --}}
         </div>
     </section>
-</x-shiroganeze-page-layout>
+</x-siroganeze-page-layout>
 <script>
     function cast_change(value) {
         if (value) {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}/" + value;
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'siroganeze']) }}/" + value;
         } else {
-            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'shiroganeze']) }}";
+            window.location.href = "{{ route('public.shops.shop.review', ['shop' => 'siroganeze']) }}";
         }
     }
 </script>

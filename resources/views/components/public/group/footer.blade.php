@@ -71,7 +71,7 @@
     <div class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
         <div class="shopintro-contents-item-photo-logo">
-          <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="logo">
+          <img src="{{ asset('assets/img/logo/siroganeze-logo.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>

@@ -10,15 +10,15 @@
       'xlink' => 'http://localhost/shizuku'
       // 'xlink' => 'https://plo-group.jp/shizuku'
     ],
-    'shiroganeze' => [
+    'siroganeze' => [
       'name' => 'Siroganeze',
       'japanese' => 'シロガネーゼ',
       'description' => '大人の回春メンズエステ',
-      'logo' => 'shiroganeze-logo.png',
-      'link' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
-      'banner' => 'shiroganeze.png',
-      'xlink' => 'http://localhost/shiroganeze'
-      // 'xlink' => 'https://plo-group.jp/shiroganeze'
+      'logo' => 'siroganeze-logo.png',
+      'link' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
+      'banner' => 'siroganeze.png',
+      'xlink' => 'http://localhost/siroganeze'
+      // 'xlink' => 'https://plo-group.jp/siroganeze'
     ],
     'lovestory' => [
       'name' => 'Love Story',
@@ -103,7 +103,7 @@
                 <img src="{{ asset('assets/img/shop banner/phone-en.png' ) }}" alt="En" />
               </div>
               <div class="pg-phone__banner-item" data-xlink="https://x.com/EstheSiroganeze">
-                <img src="{{ asset('assets/img/shop banner/phone-shiroganeze.png' ) }}" alt="Shiroganeze" />
+                <img src="{{ asset('assets/img/shop banner/phone-siroganeze.png' ) }}" alt="siroganeze" />
               </div>
               <div class="pg-phone__banner-item" data-xlink="https://x.com/lovestory9911">
                 <img src="{{ asset('assets/img/shop banner/phone-lovestory.png' ) }}" alt="Love Story" />

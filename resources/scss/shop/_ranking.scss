@@ -36,8 +36,8 @@
     &.--en {
       color: $shop-color-en;
     }
-    &.--shiroganeze {
-      color: $shop-color-shiroganeze;
+    &.--siroganeze {
+      color: $shop-color-siroganeze;
     }
     &.--lovestory {
       color: $shop-color-lovestory;
@@ -55,7 +55,7 @@
   &-one {
 
     &-item {
-    
+
       &-content {
         // display: flex;
         // flex-direction: row;
@@ -235,7 +235,7 @@
             height: 100%;
             object-fit: cover;
           }
-          
+
         }
       }
       &-appeal {
@@ -429,14 +429,14 @@
           z-index: 10;
           width: 60px;
           cursor: pointer;
-          
+
           & img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
         }
-        
+
         &-prev {
           position: absolute;
           left: 0;
@@ -445,7 +445,7 @@
           z-index: 10;
           width: 60px;
           cursor: pointer;
-          
+
           & img {
             width: 100%;
             height: 100%;
@@ -485,14 +485,14 @@
           z-index: 10;
           width: 60px;
           cursor: pointer;
-          
+
           & img {
             width: 100%;
             height: 100%;
             object-fit: cover;
           }
         }
-        
+
         &-prev {
           position: absolute;
           left: 0;
@@ -501,7 +501,7 @@
           z-index: 10;
           width: 60px;
           cursor: pointer;
-          
+
           & img {
             width: 100%;
             height: 100%;

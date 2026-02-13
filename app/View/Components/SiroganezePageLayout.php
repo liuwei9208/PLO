@@ -5,7 +5,7 @@ namespace App\View\Components;
 use Illuminate\View\Component;
 use Illuminate\View\View;
 
-class ShiroganezePageLayout extends Component
+class SiroganezePageLayout extends Component
 {
     public string $pageTitle;
     public string $pageSubtitle;
@@ -47,7 +47,7 @@ class ShiroganezePageLayout extends Component
      */
     public function render(): View
     {
-        return view('components.shiroganeze-page-layout');
+        return view('components.siroganeze-page-layout');
     }
 }
 

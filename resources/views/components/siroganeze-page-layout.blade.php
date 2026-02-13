@@ -4,21 +4,21 @@
 
         <div class="home-gradient-overlay"></div>
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}"
-            logo-alt="Shiroganeze Logo" :menu-links="[
-                'top' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
-                'schedule' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
-                'pricing' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
-                'new' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
-                'cast' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
-                'news' => route('public.shops.shop.news', ['shop' => 'shiroganeze']),
-                'event' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
-                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
-                'movie' => route('public.shops.shop.movie', ['shop' => 'shiroganeze']),
-                'review' => route('public.shops.shop.review', ['shop' => 'shiroganeze']),
-                'ranking' => route('public.shops.shop.ranking', ['shop' => 'shiroganeze']),
-                'shop' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze']),
-                'access' => route('public.shops.shop.access', ['shop' => 'shiroganeze']),
+        <x-public.shops.menu-overlay logo-image="{{ asset('assets/img/shops/siroganeze/footer-logo.png') }}"
+            logo-alt="siroganeze Logo" :menu-links="[
+                'top' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
+                'pricing' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'siroganeze']),
+                'cast' => route('public.shops.shop.castlist', ['shop' => 'siroganeze']),
+                'news' => route('public.shops.shop.news', ['shop' => 'siroganeze']),
+                'event' => route('public.shops.shop.event', ['shop' => 'siroganeze']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']),
+                'movie' => route('public.shops.shop.movie', ['shop' => 'siroganeze']),
+                'review' => route('public.shops.shop.review', ['shop' => 'siroganeze']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'siroganeze']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'siroganeze']),
+                'access' => route('public.shops.shop.access', ['shop' => 'siroganeze']),
                 'recruit-male' => '#',
                 'login' => route('login'),
                 'recruit-female' => '#',
@@ -51,8 +51,8 @@
                 'recruit-male' => '#525CF6',
             ]" />
         <div class="banner">
-            <x-public.shops.contact-info phone-icon="assets/img/shops/shiroganeze/phone.png" phone-number="011-521-3593"
-                email="@EstheSiroganeze" address="〒064-0805</br> 
+            <x-public.shops.contact-info phone-icon="assets/img/shops/siroganeze/phone.png" phone-number="011-521-3593"
+                email="@EstheSiroganeze" address="〒064-0805</br>
 北海道札幌市中央区南5条西5丁目 第8旭観光ビル2F" hours="9:00 ~ 0:00"
                 credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。" phone-background="#132126"
                 address-background="#fff" />
@@ -65,42 +65,42 @@
             </div>
         </div>
         <div class="page-content">
-            <x-public.shops.home-header logo-image="assets/img/shops/shiroganeze/footer-logo-black.png"
+            <x-public.shops.home-header logo-image="assets/img/shops/siroganeze/footer-logo-black.png"
                 logo-alt="Shizuku Logo" stroke-color="#E2EAF5" :menu-items="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => 'キャスト一覧',
                         'subtitle' => 'cast list',
-                        'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.castlist', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '写メ日記',
                         'subtitle' => 'photo diary',
-                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => 'イベント一覧',
                         'subtitle' => 'event',
-                        'url' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.event', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '新人情報',
                         'subtitle' => 'new cast',
-                        'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.newcast', ['shop' => 'siroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]" menu-button-id="mobileMenuButton"
@@ -108,17 +108,17 @@
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]"
@@ -127,7 +127,7 @@
 </svg>' />
             {{ $slot }}
             <div class="top-page-link-button">
-                <a href="{{ route('public.shops.shop.home', ['shop' => 'shiroganeze']) }}" class="top-page-link">
+                <a href="{{ route('public.shops.shop.home', ['shop' => 'siroganeze']) }}" class="top-page-link">
                     トップページはこちら
                 </a>
             </div>
@@ -196,15 +196,15 @@
                     'url' => '#',
                 ],
             ]" :external-links="$banner_list"
-                footerLogo="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}" svgIconColor="#132126"
+                footerLogo="{{ asset('assets/img/shops/siroganeze/footer-logo.png') }}" svgIconColor="#132126"
                 :menu-links="[
-                    ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze'])],
-                    ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze'])],
-                    ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze'])],
-                    ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze'])],
-                    ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze'])],
+                    ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'siroganeze'])],
+                    ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze'])],
+                    ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'siroganeze'])],
+                    ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'siroganeze'])],
+                    ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'siroganeze'])],
                     ['text' => 'SNS', 'url' => '#'],
-                    ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze'])],
+                    ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'siroganeze'])],
                     ['text' => 'ログイン', 'url' => route('login')],
                     ['text' => '新規会員登録', 'url' => route('register')],
                     [
@@ -220,8 +220,8 @@
                         'target' => '_blank',
                     ],
                     ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-                ]" ploLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}"
-                groupSiteLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}" />
+                ]" ploLogo="{{ asset('assets/img/shops/siroganeze/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/siroganeze/plo-logo.png') }}" />
         </div>
         <!-- Fixed Phone Button -->
         <x-public.shops.fixed-phone-button phone-number="0115213593" phone-display="011-521-3593" hours="8:30〜24:00まで"
@@ -229,14 +229,14 @@
             icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="white"/>
 </svg>'
-            mobileImage="{{ asset('assets/img/shops/shiroganeze/TEL-y1.png') }}" />
+            mobileImage="{{ asset('assets/img/shops/siroganeze/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons
-            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'siroganeze']) }}" />
     </div>
     @push('styles')
-        @vite(['resources/scss/shops/shiroganeze/page-layout.scss', ...$assets])
+        @vite(['resources/scss/shops/siroganeze/page-layout.scss', ...$assets])
         @vite(['resources/js/shops/home-header.js'])
     @endpush
 </x-shizuku-layout>

@@ -32,8 +32,8 @@
     &.--en {
       color: $shop-color-en;
     }
-    &.--shiroganeze {
-      color: $shop-color-shiroganeze;
+    &.--siroganeze {
+      color: $shop-color-siroganeze;
     }
     &.--lovestory {
       color: $shop-color-lovestory;
@@ -166,7 +166,7 @@
           @media #{media-query(sm)} {
             font-size: 12px;
           }
-          
+
           &-text{
             @include text.multiline-ellipsis(3);
           }
@@ -177,4 +177,4 @@
 
     }
   }
-}  
+}

@@ -273,8 +273,8 @@
         background-color: rgba($shop-color-en, 1);
         // color: #000;
       }
-      &.--shiroganeze {
-        background-color: rgba($shop-color-shiroganeze, 1);
+      &.--siroganeze {
+        background-color: rgba($shop-color-siroganeze, 1);
       }
       &.--lovestory {
         background-color: rgba($shop-color-lovestory, 1);
@@ -400,8 +400,8 @@
           &.--en {
             color: $shop-color-en;
           }
-          &.--shiroganeze {
-            color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            color: $shop-color-siroganeze;
           }
           &.--lovestory {
             color: $shop-color-lovestory;
@@ -456,9 +456,9 @@
         border: 2px solid $shop-color-en;
         color: #000;
       }
-      &.--shiroganeze {
-        // background-color: rgba($shop-color-shiroganeze, 0.5);
-        border: 2px solid $shop-color-shiroganeze;
+      &.--siroganeze {
+        // background-color: rgba($shop-color-siroganeze, 0.5);
+        border: 2px solid $shop-color-siroganeze;
       }
       &.--lovestory {
         // background-color: rgba($shop-color-lovestory, 0.5);
