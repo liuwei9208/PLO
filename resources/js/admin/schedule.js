@@ -15,7 +15,7 @@ console.log(window.apiToken);
 function generateTimeOptions(strTime) {
     if (strTime === "00:00")
         strTime = "23:59";
-    
+
     let options = '';
     for (let hour = 8; hour <= 24; hour++) {
         for (let min = 0; min < 60; min += 30) {
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         generateDateTabs(currentWeekStart);
         scheduleDate.textContent = `${formatDate(currentWeekStart)}の予約状況`;
         updatePrevWeekButtonState();
-        
+
         selectedDate = currentWeekStart.toDateString();
         await getCastsSchedule(castName, shop, is_public, selectedDate, page, limit, skip, pages, total);
         await generateScheduleCasts();
@@ -874,7 +874,7 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
 
                             reservationHTML += newForm.outerHTML;
                         });
-                        for ( var i = 0 ; i < ( 6 - reservationTimes.length ) ; i++ ){
+                        for ( var i = 0 ; i < ( 10 - reservationTimes.length ) ; i++ ){
                             reservationHTML += `<div class="add-form-btn">＋</div>`;
                         }
                     }else{
@@ -885,10 +885,18 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
                             <div class="add-form-btn">＋</div>
                             <div class="add-form-btn">＋</div>
                             <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
+                            <div class="add-form-btn">＋</div>
                         `;
                     }
                 }else{
                     reservationHTML = `
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
+                    <div class="add-form-btn">＋</div>
                     <div class="add-form-btn">＋</div>
                     <div class="add-form-btn">＋</div>
                     <div class="add-form-btn">＋</div>
@@ -950,9 +958,9 @@ async function getCastsSchedule(castName, shop, is_public, date_l, page_l, limit
                 </div>
             `;
             }).join('');
-            
+
             await reDrawScheduleCasts();
-            
+
 
             return {page, limit, skip, pages, total,selectedDate};
             // window.scrollTo({top:0, behavior: 'smooth'});
@@ -992,7 +1000,7 @@ function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total
     console.log({pages_l});
     // ページネーションの範囲を計算
     let start, end;
-        
+
     if (pages_l <= 7) {
         // 7ページ以下の場合は全て表示
         start = 1;
@@ -1055,7 +1063,7 @@ function generateScheduleCastsPagination(page_l, limit_l, skip_l, pages_l, total
             if (targetElement.tagName === 'svg' || targetElement.tagName === 'path') {
                 targetElement = e.currentTarget; // button要素を取得
             }
-            
+
             selectedDate = targetElement.dataset.date;
             page = targetElement.dataset.page;
             limit = targetElement.dataset.limit;

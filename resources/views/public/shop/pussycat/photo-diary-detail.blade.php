@@ -64,7 +64,7 @@
                 <hr>
                 <div class="blog-pagination">
                     @if ($prevDiary)
-                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $prevDiary->id]) }}"
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'pussycat', 'id' => $prevDiary->id]) }}"
                             class="blog-pagination-btn blog-pagination-prev">
                             <p>前の投稿</p>
                         </a>
@@ -73,12 +73,12 @@
                             <p>前の投稿</p>
                         </div>
                     @endif
-                    <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'shizuku']) }}"
+                    <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'pussycat']) }}"
                         class="blog-pagination-btn blog-pagination-list">
                         <p>一覧へ</p>
                     </a>
                     @if ($nextDiary)
-                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'shizuku', 'id' => $nextDiary->id]) }}"
+                        <a href="{{ route('public.shops.shop.photo-diary.detail', ['shop' => 'pussycat', 'id' => $nextDiary->id]) }}"
                             class="blog-pagination-btn blog-pagination-next">
                             <p>次の投稿</p>
                         </a>

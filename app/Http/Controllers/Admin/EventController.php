@@ -20,7 +20,11 @@ class EventController extends Controller
      */
     public function index(Request $request): View
     {
-        $this->setPostEnd();
+        // dd('aaaa');
+
+        // $this->setPostEnd();
+        // dd('aaaa');
+
         $user = Auth::guard('web')->user();
         $query = Event::query();
         if ( $user->hasRole('admin') ) {
@@ -39,6 +43,9 @@ class EventController extends Controller
       // if ($request->has('public') && $request->query('public') !== null) {
       //   $query->where('is_public', $request->query('public') ? true : false);
       // }
+
+    //   dd('aaaa');
+
       if ( $request->has('publish_type') && $request->query('publish_type') !== null) {
         if ( $request->query('publish_type') == "1" ) {
           $query->where('published_status', $request->query('publish_type'));
@@ -48,6 +55,8 @@ class EventController extends Controller
           $query->where('published_status', $request->query('publish_type'));
         }
       }
+    //   dd('aaaa');
+
       if ( $request->has('published_at') && $request->query('published_at') !== null) {
         $query->where('published_at', $request->query('published_at'));
       }
@@ -97,6 +106,7 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $imagePath = storage_path('app/public/' . $event->thumbnail);
         [$width, $height] = getimagesize($imagePath);
+        // dd($event);
         // dd($width, $height);
         return view('admin.event.detail', [
             'event' => Event::findOrFail($id),
@@ -142,6 +152,7 @@ class EventController extends Controller
       $event->contents = $request->event_content;
       $event->save();
 
+    //   dd($request);
 
       return redirect('/admin/event')->with('success', __('message.admin_event_update_success'));
     }

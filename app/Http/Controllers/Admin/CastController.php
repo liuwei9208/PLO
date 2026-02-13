@@ -251,7 +251,7 @@ class CastController extends Controller
         if ($request->filled('redirect')) {
             return redirect($request->input('redirect'))->with('success', 'キャスト情報を更新しました');
         }
-        return redirect('/admin/cast');
+        return redirect('/admin/cast/sort');
     }
 
     /**
@@ -548,6 +548,6 @@ class CastController extends Controller
         $cast = Cast::find($id);
         $cast->delete();
 
-        return redirect('admin/cast');
+        return redirect('admin/cast/sort');
     }
 }
