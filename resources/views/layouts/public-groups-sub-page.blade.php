@@ -27,11 +27,11 @@
     <x-public.groups.header-sub />
 
     <!-- Dynamic Banner -->
-    <x-public.groups.banner 
-      :backgroundImage="$bannerImage" 
-      :titleEn="$titleEn" 
-      :titleJa="$titleJa" 
-      :vectorImage="$vectorImage" 
+    <x-public.groups.banner
+      :backgroundImage="$bannerImage"
+      :titleEn="$titleEn"
+      :titleJa="$titleJa"
+      :vectorImage="$vectorImage"
     />
 
     <!-- Main -->
@@ -115,7 +115,7 @@
                       <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'shizuku']) }}" class="groups-shop-button--shop all-shops-button--shizuku">
                         <img src="{{ asset('assets/img/groups/photo-diary-button1.png') }}" alt="Shizuku">
                       </a>
-                      <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']) }}" class="groups-shop-button--shop">
+                      <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']) }}" class="groups-shop-button--shop">
                         <img src="{{ asset('assets/img/groups/photo-diary-button2.png') }}" alt="Siroganeze">
                       </a>
                       <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'lovestory']) }}" class="groups-shop-button--shop">

@@ -120,7 +120,7 @@
       <li class="today-shops-item" data-shop="{{$shop->slug}}">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-slug">{{$shop->name}}</span>          
+          <span class="today-shops-item-slug">{{$shop->name}}</span>
           <span class="today-shops-item-name">{{$shop->slug}}</span>
         </span>
       </li>
@@ -129,42 +129,42 @@
       <li class="today-shops-item" data-shop="lovestory">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">ラブストーリー</span>          
+          <span class="today-shops-item-text-slug">ラブストーリー</span>
           <span class="today-shops-item-text-name">育成型ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="pussycat">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">プッシーキャット</span>          
+          <span class="today-shops-item-text-slug">プッシーキャット</span>
           <span class="today-shops-item-text-name">エンターテイメントヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="en">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">艶</span>          
+          <span class="today-shops-item-text-slug">艶</span>
           <span class="today-shops-item-text-name">素人系人妻ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="miyabi">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">雅</span>          
+          <span class="today-shops-item-text-slug">雅</span>
           <span class="today-shops-item-text-name">人妻ヘルス</span>
         </span>
       </li>
       <li class="today-shops-item" data-shop="shizuku">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">雫</span>          
+          <span class="today-shops-item-text-slug">雫</span>
           <span class="today-shops-item-text-name">ハイグレードヘルス</span>
         </span>
       </li>
-      <li class="today-shops-item" data-shop="shiroganeze">
+      <li class="today-shops-item" data-shop="siroganeze">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="today-shops-item-text">
-          <span class="today-shops-item-text-slug">シロガネーゼ</span>          
+          <span class="today-shops-item-text-slug">シロガネーゼ</span>
           <span class="today-shops-item-text-name">大人の回春メンズエステ</span>
         </span>
       </li>
@@ -380,10 +380,10 @@
           <span class="shop-name">ハイグレードヘルス</span>
         </span>
       </li>
-      <li class="pickup-shop" data-shop="shiroganeze">
+      <li class="pickup-shop" data-shop="siroganeze">
         <img src="{{ asset('assets/img/search.png') }}" alt="search">
         <span class="shop-text">
-          {{-- <span class="shop-slug">shiroganeze</span>
+          {{-- <span class="shop-slug">siroganeze</span>
           <span class="shop-name">シロガネーゼ</span> --}}
           <span class="shop-slug">シロガネーゼ</span>
           <span class="shop-name">大人の回春メンズエステ</span>
@@ -476,7 +476,7 @@
       <a href="{{ route('public.shop.diarylist', ['shop' => 'shizuku']) }}"><li class="diary-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'miyabi']) }}"><li class="diary-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'en']) }}"><li class="diary-content-bottom-shops-item " data-shop="en">艶</li></a>
-      <a href="{{ route('public.shop.diarylist', ['shop' => 'shiroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.diarylist', ['shop' => 'siroganeze']) }}"><li class="diary-content-bottom-shops-item " data-shop="siroganeze">シロガネーゼ</li></a>
       <a href="{{ route('public.shop.diarylist', ['shop' => 'lovestory']) }}"><li class="diary-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
     </ul>
 
@@ -596,7 +596,7 @@
       <a href="{{ route('public.shop.movielist', ['shop' => 'shizuku']) }}"><li class="movie-content-bottom-shops-item " data-shop="shizuku">雫</li></a>
       <a href="{{ route('public.shop.movielist', ['shop' => 'miyabi']) }}"><li class="movie-content-bottom-shops-item " data-shop="miyabi">雅</li></a>
       <a href="{{ route('public.shop.movielist', ['shop' => 'en']) }}"><li class="movie-content-bottom-shops-item " data-shop="en">艶</li></a>
-      <a href="{{ route('public.shop.movielist', ['shop' => 'shiroganeze']) }}"><li class="movie-content-bottom-shops-item " data-shop="shiroganeze">シロガネーゼ</li></a>
+      <a href="{{ route('public.shop.movielist', ['shop' => 'siroganeze']) }}"><li class="movie-content-bottom-shops-item " data-shop="siroganeze">シロガネーゼ</li></a>
       <a href="{{ route('public.shop.movielist', ['shop' => 'lovestory']) }}"><li class="movie-content-bottom-shops-item " data-shop="lovestory">ラブストーリー</li></a>
     </ul>
 

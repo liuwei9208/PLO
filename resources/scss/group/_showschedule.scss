@@ -394,8 +394,8 @@
         // }
       }
 
-      &.--shiroganeze {
-        background-color: $shop-color-shiroganeze;
+      &.--siroganeze {
+        background-color: $shop-color-siroganeze;
         @media #{media-query(sm)} {
           font-size: 10px;
         }
@@ -406,14 +406,14 @@
           font-size: 20px;
         }
         &:hover {
-          background-color: darken($shop-color-shiroganeze, 15%);
+          background-color: darken($shop-color-siroganeze, 15%);
         }        // .schedule-shop-list-item-button {
-        //   background: $shop-color-shiroganeze;
+        //   background: $shop-color-siroganeze;
         //   color: $white;
-        //   border-color: $shop-color-shiroganeze;
+        //   border-color: $shop-color-siroganeze;
 
         //   &:hover {
-        //     background: darken($shop-color-shiroganeze, 10%);
+        //     background: darken($shop-color-siroganeze, 10%);
         //   }
         // }
       }
@@ -486,7 +486,7 @@
         flex-direction: column;
         gap: 15px;
         transition: all 0.3s ease;
-        
+
         // padding: 15px;
         // border: 1px solid #ddd;
         // border-radius: 8px;
@@ -528,7 +528,7 @@
           img {
             transform: scale(1.15);
           }
- 
+
           &::after {
             content: '';
             position: absolute;
@@ -551,8 +551,8 @@
           &.--en {
             border: 5px solid $shop-color-en;
           }
-          &.--shiroganeze {
-            border: 5px solid $shop-color-shiroganeze;
+          &.--siroganeze {
+            border: 5px solid $shop-color-siroganeze;
           }
           &.--lovestory {
             border: 5px solid $shop-color-lovestory;
@@ -567,12 +567,12 @@
          .schedule-person-info-name{
           transform: translateY(-5px);
           text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
- 
+
          }
          .schedule-person-info-property{
           transform: translateY(-3px);
           opacity: 0.8;
-         } 
+         }
          .schedule-person-info-message{
           transform: translateY(-2px);
           opacity: 0.9;
@@ -588,8 +588,8 @@
            &.--en {
             color: $shop-color-en;
            }
-           &.--shiroganeze {
-            color: $shop-color-shiroganeze;
+           &.--siroganeze {
+            color: $shop-color-siroganeze;
            }
            &.--lovestory {
             color: $shop-color-lovestory;
@@ -628,8 +628,8 @@
           &.--en {
             border: 5px solid $shop-color-en;
           }
-          &.--shiroganeze {
-            border: 5px solid $shop-color-shiroganeze;
+          &.--siroganeze {
+            border: 5px solid $shop-color-siroganeze;
           }
           &.--lovestory {
             border: 5px solid $shop-color-lovestory;
@@ -677,8 +677,8 @@
             color: $shop-color-en;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
-          &.--shiroganeze {
-            color: $shop-color-shiroganeze;
+          &.--siroganeze {
+            color: $shop-color-siroganeze;
             text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
           }
           &.--lovestory {
@@ -772,8 +772,8 @@
         background: $shop-color-en;
       }
 
-      &.--shiroganeze {
-        background: $shop-color-shiroganeze;
+      &.--siroganeze {
+        background: $shop-color-siroganeze;
       }
 
       &.--lovestory {
@@ -823,8 +823,8 @@
         color: $shop-color-en;
       }
 
-      &.--shiroganeze {
-        color: $shop-color-shiroganeze;
+      &.--siroganeze {
+        color: $shop-color-siroganeze;
       }
 
       &.--lovestory {
@@ -852,8 +852,8 @@
         color: $shop-color-en;
       }
 
-      &.--shiroganeze {
-        color: $shop-color-shiroganeze;
+      &.--siroganeze {
+        color: $shop-color-siroganeze;
       }
 
       &.--lovestory {
@@ -982,7 +982,7 @@
           grid-column: 2 / 3;
           grid-row: 3 / 4;
         }
-  
+
         &-date {
           width: 90px;
           // padding: 8px 0;

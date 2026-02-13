@@ -28,8 +28,8 @@
       // &.--en {
       //   background-color: $shop-color-en;
       // }
-      // &.--shiroganeze {
-      //   background-color: $shop-color-shiroganeze;
+      // &.--siroganeze {
+      //   background-color: $shop-color-siroganeze;
       // }
       // &.--lovestory {
       //   background-color: $shop-color-lovestory;
@@ -37,7 +37,7 @@
       // &.--pussycat {
       //   background-color: $shop-color-pussycat;
       // }
-  
+
       &-title {
         display: flex;
         align-items: center;
@@ -72,7 +72,7 @@
           }
         }
       }
-  
+
       &-button {
         // display: block;
         position: absolute;
@@ -116,23 +116,23 @@
         }
       }
     }
-  
+
     &-list {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
     //   padding: 0 20px;
-  
+
       @media #{media-query(sm)} {
         display: none;
       }
     }
-  
+
     &-item {
         display: flex;
         flex-direction: row;
         // gap: 10px;
-        // 
+        //
         // aspect-ratio: 531/453;
         // aspect-ratio: 885/404;
         // @media #{media-query(sm)} {
@@ -144,7 +144,7 @@
         // @media #{media-query(lg)} {
           aspect-ratio: 885/418;
         // }
-        
+
         width: 100%;
         background-color: #F8EEEF;
         border-radius: 40px;
@@ -188,7 +188,7 @@
                   top: 68px;
                   width: 220px;
                 }
-                
+
                 // height: 100%;
             }
             &-contents {
@@ -271,8 +271,8 @@
                   &.--en {
                     color: $shop-color-en;
                   }
-                  &.--shiroganeze {
-                    color: $shop-color-shiroganeze;
+                  &.--siroganeze {
+                    color: $shop-color-siroganeze;
                   }
                   &.--lovestory {
                     color: $shop-color-lovestory;
@@ -342,8 +342,8 @@
             &.--en {
               color: $shop-color-en;
             }
-            &.--shiroganeze {
-              color: $shop-color-shiroganeze;
+            &.--siroganeze {
+              color: $shop-color-siroganeze;
             }
             &.--lovestory {
               color: $shop-color-lovestory;
@@ -351,9 +351,9 @@
             &.--pussycat {
               color: $shop-color-pussycat;
             }
-            
-            
-            
+
+
+
           }
           &-image {
             width: 100%;
@@ -409,8 +409,8 @@
             &.--en {
               color: $shop-color-en;
             }
-            &.--shiroganeze {
-              color: $shop-color-shiroganeze;
+            &.--siroganeze {
+              color: $shop-color-siroganeze;
             }
             &.--lovestory {
               color: $shop-color-lovestory;
@@ -428,7 +428,7 @@
             // filter: brightness(1.4);
             filter: opacity(0.6);
           // }
-          
+
           &::before {
             content: '';
             position: absolute;
@@ -469,7 +469,7 @@
               transform: translateY(0);
             }
             50% {
-              transform: translateY(-12px); 
+              transform: translateY(-12px);
             }
             75% {
               transform: translateY(-6px);
@@ -483,26 +483,26 @@
           // }
         }
     }
-  
+
     &-slider {
       display: none;
       position: relative;
       padding: 0 40px;
       margin: 0 auto;
-  
+
       @media (max-width: 767px) {
         display: block;
       }
-  
+
       .swiper-wrapper {
         display: flex;
         // gap: 15px;
       }
-  
+
       .swiper-slide {
         // width: 240px;
         transition: transform 0.3s ease;
-  
+
         img {
           width: 100%;
           height: auto;
@@ -593,7 +593,7 @@
 
       }
     }
-  
+
     &-slide {
       &-prev,
       &-next {
@@ -610,33 +610,33 @@
         transition: all 0.3s ease;
         border: none;
         padding: 0;
-  
+
         img {
           width: 30px;
           height: 30px;
           object-fit: contain;
         }
-  
+
         &:hover {
           background: #fff;
         }
-  
+
         &:disabled {
           opacity: 0.35;
           cursor: auto;
           pointer-events: none;
         }
       }
-  
+
       &-prev {
         left: 0;
       }
-  
+
       &-next {
         right: 0;
       }
     }
-  
+
     // &-content-wrapper {
     //   width: 1260px;
     //   margin: 0 auto;
@@ -646,19 +646,19 @@
     //   @media #{media-query(sm)} {
     //     width: calc(100% - 40px);
     //   }
-  
+
     // }
-  
+
     &-footer-button {
       display: none;
       text-align: center;
       margin-top: 20px;
       padding: 0 20px;
-  
+
       @media (max-width: 767px) {
         display: block;
       }
-  
+
       &-link {
         color: #000;
         text-decoration: none;
@@ -669,7 +669,7 @@
         transition: all 0.3s ease;
         background-color: #fff;
         display: inline-block;
-  
+
         &:hover {
           background-color: #000;
           color: #fff;
@@ -677,30 +677,30 @@
       }
     }
   }
-  
+
   .new-girls-sp-slider {
     display: none;
-  
+
     @media (max-width: 767px) {
       display: block;
     }
   }
-  
+
   .news-girls-slider {
     position: relative;
     padding: 0 0;
     width: 100%;
     margin: 0 auto;
-  
+
     .swiper-wrapper {
       display: flex;
       // gap: 15px;
     }
-  
+
     .swiper-slide {
       // width: 240px;
       transition: transform 0.3s ease;
-  
+
       img {
         width: 100%;
         height: auto;
@@ -708,7 +708,7 @@
       }
     }
   }
-  
+
   .new-girls-slide {
     &-prev,
     &-next {
@@ -725,30 +725,29 @@
       transition: all 0.3s ease;
       border: none;
       padding: 0;
-  
+
       img {
         width: 40px;
         height: 40px;
         object-fit: contain;
       }
-  
+
       &:hover {
         background: #fff;
       }
-  
+
       &:disabled {
         opacity: 0.35;
         cursor: auto;
         pointer-events: none;
       }
     }
-  
+
     &-prev {
       left: 0;
     }
-  
+
     &-next {
       right: 0;
     }
   }
-  

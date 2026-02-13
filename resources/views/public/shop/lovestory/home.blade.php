@@ -220,7 +220,7 @@ contentGradientStart="#F2387C"
             @endphp
             <x-public.shops.pickup-section header-background-image="assets/img/shops/lovestory/pickup-bg.png"
                 title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
-                :cast-images="$pickupImages" frame-image="assets/img/shops/lovestory/card-frame-2.png" :Colorchange=false overlay="linear-gradient(0deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.30) 100%), url('/assets/img/shops/shiroganeze/ranking-bg.png') lightgray 50% / no-repeat"
+                :cast-images="$pickupImages" frame-image="assets/img/shops/lovestory/card-frame-2.png" :Colorchange=false overlay="linear-gradient(0deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.30) 100%), url('/assets/img/shops/siroganeze/ranking-bg.png') lightgray 50% / no-repeat"
                 badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="188" height="188" viewBox="0 0 188 188" fill="none">
 <path d="M94 0L141.525 46.4754L188 94L141.525 141.525L94 188L46.4754 141.525L0 94L46.4754 46.4754L94 0Z" fill="#FFDE32"/>
 </svg>' lightningIcon='<svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" viewBox="0 0 18 32" fill="none">

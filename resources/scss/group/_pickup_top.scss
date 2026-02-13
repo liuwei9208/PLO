@@ -10,7 +10,7 @@ $shops: (
   'shizuku',
   'miyabi',
   'en',
-  'shiroganeze',
+  'siroganeze',
   'lovestory'
 );
 
@@ -195,8 +195,8 @@ $shops: (
           font-size: 22px;
         }
       }
-      &[data-shop="shiroganeze"] {
-        background-color: $shop-color-shiroganeze;
+      &[data-shop="siroganeze"] {
+        background-color: $shop-color-siroganeze;
         @media #{media-query(sm)} {
           font-size: 10px;
         }
@@ -323,8 +323,8 @@ $shops: (
           font-size: 22px;
         }
       }
-      &[data-shop="shiroganeze"] {
-        background-color: $shop-color-shiroganeze;
+      &[data-shop="siroganeze"] {
+        background-color: $shop-color-siroganeze;
         @media #{media-query(sm)} {
           font-size: 10px;
         }
@@ -485,8 +485,8 @@ $shops: (
       &.--en .pickup-shop {
         background-color: $shop-color-en;
       }
-      &.--shiroganeze .pickup-shop {
-        background-color: $shop-color-shiroganeze;
+      &.--siroganeze .pickup-shop {
+        background-color: $shop-color-siroganeze;
       }
       &.--lovestory .pickup-shop {
         background-color: $shop-color-lovestory;
@@ -504,8 +504,8 @@ $shops: (
       &.--en .pickup-name {
         color: $shop-color-en;
       }
-      &.--shiroganeze .pickup-name {
-        color: $shop-color-shiroganeze;
+      &.--siroganeze .pickup-name {
+        color: $shop-color-siroganeze;
       }
       &.--lovestory .pickup-name {
         color: $shop-color-lovestory;
