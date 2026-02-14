@@ -1810,9 +1810,9 @@
 
 // Main content positioning
 .main {
-  // margin-top: 100vh;
+  margin-top: 100vh;
   // margin-top: 65vh;
-  margin-top: fluid-clamp(64vh, 73vh, 1440px, 2560px);;
+  // margin-top: fluid-clamp(64vh, 73vh, 1440px, 2560px);;
   @media #{media-query(sm)} {
     // margin-top: 100vh; // Space for fixed MV
     // padding-bottom: 100px; // Space for fixed search-girl

@@ -7,14 +7,14 @@
         <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="" class="pc-only">
       {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
     {{-- </picture> --}}
-    {{-- <div class="mv-banner-bottom pc-only">
+    <div class="mv-banner-bottom pc-only">
       <div class="mv-banner-bottom-wrapper">
         <div class="mv-banner-bottom-slide">
           <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
           <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
         </div>
       </div>
-    </div> --}}
+    </div>
   </div>
 
   {{-- <div class="mv-text">
