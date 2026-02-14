@@ -72,7 +72,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::post('search', [GroupController::class, 'searchResult']);
         Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
         Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
-        Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
+        Route::get('pickup', [GroupsController::class, 'showPickup'])->name('pickup');
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
