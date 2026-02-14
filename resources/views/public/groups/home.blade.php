@@ -2,14 +2,14 @@
   <x-public.groups.sidebar />
   <!-- Main Visual -->
   <x-public.groups.mv />
-  <div class="mv-banner-bottom">
+  {{-- <div class="mv-banner-bottom">
     <div class="mv-banner-bottom-wrapper">
       <div class="mv-banner-bottom-slide">
         <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
         <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
       </div>
     </div>
-  </div>
+  </div> --}}
   @if($todayCasts->count() > 0)
   <div class="section-title">
     <h1 class="section-title-en">Today Schecule</h1>
