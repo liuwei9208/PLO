@@ -1,6 +1,6 @@
 <x-public-groups-sub-page-layout
-  titleEn="New Face"
-  titleJa="新人情報"
+  titleEn="PickUp"
+  titleJa="ピックアップ"
   searchHeading="店舗で検索"
   :bannerImage="asset('assets/img/groups/newface-banner.jpg')"
   :vectorImage="asset('assets/img/groups/Vector.png')"
@@ -13,10 +13,10 @@
   :dateSearchActiveDate="$selectedDate ?? request('date')"
 >
   <!-- New Face Content -->
-  <div class="newface">
+  <div class="pickup">
     <section>
-      <div class="newface-cards-container">
-        <div class="newface-cards-grid">
+      <div class="pickup-cards-container">
+        <div class="pickup-cards-grid">
             @forelse(($casts ?? collect()) as $cast)
               <x-public.groups.newface-card
                 :date="\Carbon\Carbon::parse($cast->joined_at)->format('m/d')"
@@ -36,7 +36,7 @@
                 :showNew="true"
               />
             @empty
-              <div class="newface-empty">
+              <div class="pickup-empty">
                 <p>表示できる新人情報がありません。</p>
               </div>
             @endforelse
@@ -47,5 +47,5 @@
 </x-public-groups-sub-page-layout>
 
 @once
-  @vite(['resources/scss/groups/newface-page.scss'])
+  @vite(['resources/scss/groups/pickup-page.scss'])
 @endonce
