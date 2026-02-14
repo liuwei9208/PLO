@@ -36,6 +36,7 @@
 
     <!-- Footer -->
     {{-- <x-public.groups.footer /> --}}
+    <x-public.group.bottom-nav />
     @stack('scripts')
   </body>
 </html>
