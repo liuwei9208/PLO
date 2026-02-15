@@ -114,14 +114,16 @@
             <textarea class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif" style="background: linear-gradient(180deg, {{ $messageGradientStart }} 20.67%, {{ $messageGradientEnd }} 100%); background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;">{!! $message !!}</textarea>
           </div>
         @else
+        <div class="schedule-card-message-container">
             <textarea class="schedule-card-message @if ($variant === 'castlist' || $variant === 'castlist_top') castlist-card-message @endif"
-                style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">
+                style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{!! $message !!}</textarea>
                 {{-- <span
                     class="@if ($variant === 'schedule') schedule-card-message-text @else schedule-card-message-text-castlist @endif"
                     style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span> --}}
-                <span class="schedule-card-message-text"
-                    style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{{ $message }}　{{ $message }}</span>
-            </textarea>
+                {{-- <span class="schedule-card-message-text"
+                    style="color: {{ $messageColor }}; -webkit-text-fill-color: {{ $messageColor }};">{!! $message !!}</span> --}}
+        </div>
+
         @endif
     </div>
 

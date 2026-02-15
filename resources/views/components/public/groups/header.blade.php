@@ -110,7 +110,7 @@
         'new' => route('public.groups.newface'),
         'shop' => route('public.groups.shop'),
         'schedule' => route('public.groups.schedule'),
-        'pickup' => '#',
+        'pickup' => route('public.groups.pickup'),
         'diary' => route('public.groups.photodiary'),
         'login' => route('login'),
         'register' => route('register'),
