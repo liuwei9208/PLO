@@ -135,7 +135,7 @@
 
             <!-- Column 3 -->
             <div class="groups-menu-column">
-                <a href="{{ $menuLinks['news'] ?? '#' }}" class="groups-menu-item">
+                {{-- <a href="{{ $menuLinks['news'] ?? '#' }}" class="groups-menu-item">
                     <div class="groups-menu-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="23" viewBox="0 0 25 23" fill="none">
                             <path d="M0.0971798 7.23882C0.197765 6.49834 1.09132 5.31048 1.896 5.31048H8.16843V14.5665H1.79932C1.73389 14.5665 1.17725 14.2917 1.07667 14.2233C0.57374 13.882 0.173351 13.1328 0.0981564 12.5418C-0.0297727 11.5487 -0.0356321 8.22228 0.0981564 7.23882H0.0971798Z" fill="#8A6620"/>
@@ -145,7 +145,7 @@
                         </svg>
                     </div>
                     <span class="groups-menu-text">新着情報</span>
-                </a>
+                </a> --}}
                 <a href="{{ $menuLinks['movie'] ?? '#' }}" class="groups-menu-item">
                     <div class="groups-menu-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="25" height="18" viewBox="0 0 25 18" fill="none">

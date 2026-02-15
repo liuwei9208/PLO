@@ -28,7 +28,7 @@
           <span class="footer-banner-items-item-detail-text">北海道札幌市中央区南5条西5丁目<br>第8旭観光ビル2F</span>
         </div>
       </a>
-      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'en']) }}">
+      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'miyabi']) }}">
         <div class="footer-banner-items-item-img">
           <img class="footer-banner-items-item-img-photo" src="{{ asset('assets/img/groups/004.jpg') }}">
         </div>
@@ -36,7 +36,7 @@
           <span class="footer-banner-items-item-detail-text">北海道札幌市中央区南5条西5丁目<br>第8旭観光ビル2F</span>
         </div>
       </a>
-      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'miyabi']) }}">
+      <a class="footer-banner-items-item" href="{{ route('public.shops.shop.home',['shop'=>'en']) }}">
         <div class="footer-banner-items-item-img">
           <img class="footer-banner-items-item-img-photo" src="{{ asset('assets/img/groups/003.jpg') }}">
         </div>
