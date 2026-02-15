@@ -517,7 +517,7 @@
     <div class="movie-contents">
       @foreach ($videos as $video)
       <div class="movie-contents-item">
-        <video class="movie-contents-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+        <video class="movie-contents-item-movie" controls  muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
           <source src="{{ $video->video_url }}" type="video/mp4">
         </video>
         <div class="movie-contents-item-detail pc-only">

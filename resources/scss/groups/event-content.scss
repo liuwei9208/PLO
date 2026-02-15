@@ -20,7 +20,8 @@
 .event {
   &-main {
     // max-width: 800px;
-    width: 100%;
+    // width: 100%;
+    width: 835px;
     margin: 0 auto 40px;
     text-align: center;
     font-family: $font-gothic-min;
@@ -277,7 +278,8 @@
       opacity: 1;
 
       &-active {
-        background: #333;
+        // background: #333;
+        background: none;
       }
     }
   }
