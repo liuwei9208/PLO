@@ -155,6 +155,20 @@
     </main>
     <!-- Footer -->
     <x-public.groups.footer />
+    
+    <!-- Fixed Button -->
+    <a href="{{ route('public.groups.girl-search') }}" class="fixed-groups-button" aria-label="女の子検索">
+      <div class="fixed-groups-button__inner">
+        <div class="fixed-groups-button__icon">
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.5 25.5C21.4706 25.5 25.5 21.4706 25.5 16.5C25.5 11.5294 21.4706 7.5 16.5 7.5C11.5294 7.5 7.5 11.5294 7.5 16.5C7.5 21.4706 11.5294 25.5 16.5 25.5Z" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24 24L28.5 28.5" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="fixed-groups-button__text">女の子検索</p>
+      </div>
+    </a>
+    
     @stack('scripts')
   </body>
 </html>
