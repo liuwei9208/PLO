@@ -177,6 +177,39 @@
 .castlist-card-measurements{
   // color: #132126 !important;
 }
+.schedule-card-message-container {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  overflow-y: auto;
+  padding: 0 0px 0px 0px;
+  border-radius: 9px;
+  min-height: 0;
+  max-height: 75px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(---N_, #BD5EA1);
+    border-radius: 2.5px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(---N_, #BD5EA1);
+  }
+
+  scrollbar-width: thin;
+  scrollbar-color: var(---N_, #BD5EA1) transparent;
+}
 .schedule-card-message {
   @include M_PLUS_1();
   @include responsive-font(17px, 20.6px);
@@ -190,9 +223,26 @@
   // -webkit-box-orient: vertical;
   // overflow: hidden;
   // text-overflow: ellipsis;
-  white-space: nowrap;
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: none;
+  margin: 0;
+  padding: 5.5px 3px 0 3px;
+  line-height: 19px;
+  text-align: left;
+
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
   overflow: hidden;
-  position: relative;
+  min-height: 120px;
+  height: auto;
   // color: #132126 !important;
   .schedule-card-message-text {
     display: inline-block;

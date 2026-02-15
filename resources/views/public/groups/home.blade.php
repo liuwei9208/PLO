@@ -375,7 +375,7 @@
       @endforeach
     </div>
     <div class="groups-button-more">
-      <a href="#" class="groups-button-more-btn">もっと見る</a>
+      <a href="{{ route('public.groups.pickup') }}" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
   @endif
