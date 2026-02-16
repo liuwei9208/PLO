@@ -36,14 +36,27 @@ class ShizukuController extends Controller
     public function showHome(Request $request): View
     {
         $shop = $request->route('shop', 'shizuku');
+        // dd($shop);
+        // $events = Event::where('published_status', 1)
+        //     ->orWhere(function ($query) {
+        //         $query->where('published_status', 2)
+        //             ->where('published_at', '<=', Carbon::now());
+        //     })
+        //     ->orWhere('published_status', 4)
+        //     ->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        //     ->orderBy('published_at', 'desc')
+        //     ->get();
+        $shopModel = Shop::where('slug', $shop)->firstOrFail();
 
-        $events = Event::where('published_status', 1)
-            ->orWhere(function ($query) {
-                $query->where('published_status', 2)
-                    ->where('published_at', '<=', Carbon::now());
+        $events = Event::where('shop_id', $shopModel->id)
+            ->where(function ($query) {
+                $query->where('published_status', 1)
+                    ->orWhere(function ($query) {
+                        $query->where('published_status', 2)
+                            ->where('published_at', '<=', now());
+                    })
+                    ->orWhere('published_status', 4);
             })
-            ->orWhere('published_status', 4)
-            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
             ->orderBy('published_at', 'desc')
             ->get();
         // dd($events);
@@ -214,7 +227,7 @@ class ShizukuController extends Controller
             ->get();
         // dd($rankings);
         // dd($banners);
-        // dd($news);
+        // dd($events);
         return view('public.shop.' . $shop . '.home', [
             'shop' => Shop::where('slug', $shop)->get()->first(),
             'todayCasts' => $todayCasts,

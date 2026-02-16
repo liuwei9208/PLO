@@ -108,6 +108,7 @@
   align-items: center;
   padding: 0;
   box-sizing: border-box;
+  background: #10040E;
 }
 
 .ranking-no1-content-item {
@@ -216,7 +217,7 @@
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    background: var(---N__, #2a1a08);
+    background: var(---N__, #10040E);
   }
 
   .rankig-no1-content {
@@ -236,7 +237,7 @@
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    background: var(---N__, #2a1a08);
+    background: var(---N__, #10040E);
     &::-webkit-scrollbar {
       display: none;
     }
@@ -274,7 +275,7 @@
 }
 
 .no1-person-info-container {
-  background: var(---N__, #2a1a08);
+  background: var(---N__, #10040E);
   padding: 20px;
 }
 
@@ -362,7 +363,7 @@
   left: 0;
   width: 100%;
   height: 100%; // 593px / 589px * 100%
-  object-fit: cover;
+  object-fit: contain;
   z-index: 0;
 }
 
@@ -494,7 +495,7 @@
   left: 0;
   width: 100%;
   height: 100%; // 593px / 589px * 100%
-  object-fit: cover;
+  object-fit: contain;
   z-index: 0;
 }
 

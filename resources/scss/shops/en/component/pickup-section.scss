@@ -142,9 +142,9 @@
 }
 
 .pickup-badge-text {
-  @include YuGothic();
-  @include responsive-font(16px, 27.8px);
-  font-weight: 700;
+  @include yu-mincho-regular();
+  @include responsive-font(16px, 26.4px);
+  font-weight: 600;
   line-height: normal;
   color: #EAF205;
   text-align: center;

@@ -578,11 +578,11 @@ p {
 }
 
 .ranking-badge-text {
-  @include yu-mincho-regular();
-  @include responsive-font(16px, 27.8px);
+  @include YuGothic();
+  @include responsive-font(16px, 26.5px);
   font-weight: 600;
   line-height: normal;
-  color: #2a1a08;
+  color: #FFF;
   text-align: center;
   white-space: nowrap;
   margin: 0;
