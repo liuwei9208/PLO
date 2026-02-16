@@ -7,7 +7,7 @@
   :showButtonGroup="true"
   :buttonGroup="$buttonGroup ?? null"
   :showLoadMore="true"
-  :showDateSearchBar="true"
+  :showDateSearchBar="false"
   dateSearchHeading="出勤日で検索"
   :dateSearchDates="$dateSearchDates ?? null"
   :dateSearchActiveDate="$selectedDate ?? request('date')"
@@ -42,6 +42,11 @@
             @endforelse
         </div>
       </div>
+      
+      <!-- Pagination -->
+      @if(isset($casts) && method_exists($casts, 'hasPages') && $casts->hasPages())
+        <x-public.groups.pagination :paginator="$casts" />
+      @endif
     </section>
   </div>
 </x-public-groups-sub-page-layout>
