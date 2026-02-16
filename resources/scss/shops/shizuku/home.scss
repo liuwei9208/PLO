@@ -578,7 +578,7 @@ p {
 
 .ranking-badge-text {
   @include yu-mincho-regular();
-  @include responsive-font(16px, 27.8px);
+  @include responsive-font(16px, 26.4px);
   font-weight: 600;
   line-height: normal;
   color: #2a1a08;

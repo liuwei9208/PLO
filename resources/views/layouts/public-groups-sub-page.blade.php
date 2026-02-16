@@ -146,16 +146,16 @@
 
 
       @if($showLoadMore)
-        <div class="go-to-top-page">
+        <a class="go-to-top-page" href="{{ route('public.groups.home') }}">
           <p>
             トップページへもどる
           </p>
-          </div>
+          </a>
       @endif
     </main>
     <!-- Footer -->
     <x-public.groups.footer />
-    
+
     <!-- Fixed Button -->
     <a href="{{ route('public.groups.girl-search') }}" class="fixed-groups-button" aria-label="女の子検索">
       <div class="fixed-groups-button__inner">
@@ -168,7 +168,7 @@
         <p class="fixed-groups-button__text">女の子検索</p>
       </div>
     </a>
-    
+
     @stack('scripts')
   </body>
 </html>
