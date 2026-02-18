@@ -570,7 +570,7 @@ p {
 
 .ranking-badge-text {
   @include yu-mincho-regular();
-  @include responsive-font(16px, 27.8px);
+  @include responsive-font(16px, 26.4px);
   font-weight: 600;
   line-height: normal;
   color: #132240;
@@ -612,10 +612,10 @@ p {
 .ranking-header-shadow {
   position: absolute;
   inset: 0;
-  // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") lightgray -251px 1.44px / 150.701% 117.723% no-repeat;
+  // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/siroganeze/ranking-bg.png") lightgray -251px 1.44px / 150.701% 117.723% no-repeat;
 
-  // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") no-repeat;
-  background: linear-gradient(0deg, rgba(106, 40, 119, 0.40) 0%, rgba(106, 40, 119, 0.40) 100%), url("/assets/img/shops/shiroganeze/ranking-bg.png") no-repeat;
+  // background: linear-gradient(0deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.70) 100%), url("/assets/img/shops/siroganeze/ranking-bg.png") no-repeat;
+  background: linear-gradient(0deg, rgba(106, 40, 119, 0.40) 0%, rgba(106, 40, 119, 0.40) 100%), url("/assets/img/shops/siroganeze/ranking-bg.png") no-repeat;
   background-size: contain;
   background-position: center;
   box-shadow: 0 4px 4px 4px rgba(0, 0, 0, 0.25) inset;

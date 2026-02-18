@@ -7,21 +7,21 @@
         <div class="home-gradient-overlay"></div>
 
         <!-- Menu Overlay Component -->
-        <x-public.shops.menu-overlay logo-image="assets/img/shops/shiroganeze/footer-logo.png" logo-alt="Shizuku Logo"
+        <x-public.shops.menu-overlay logo-image="assets/img/shops/siroganeze/footer-logo.png" logo-alt="Shizuku Logo"
             :menu-links="[
-                'top' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
-                'schedule' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
-                'pricing' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
-                'new' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
-                'cast' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
-                'news' => route('public.shops.shop.news', ['shop' => 'shiroganeze']),
-                'event' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
-                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
-                'movie' => route('public.shops.shop.movie', ['shop' => 'shiroganeze']),
-                'review' => route('public.shops.shop.review', ['shop' => 'shiroganeze']),
-                'ranking' => route('public.shops.shop.ranking', ['shop' => 'shiroganeze']),
-                'shop' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze']),
-                'access' => route('public.shops.shop.access', ['shop' => 'shiroganeze']),
+                'top' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
+                'schedule' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
+                'pricing' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
+                'new' => route('public.shops.shop.newcast', ['shop' => 'siroganeze']),
+                'cast' => route('public.shops.shop.castlist', ['shop' => 'siroganeze']),
+                'news' => route('public.shops.shop.news', ['shop' => 'siroganeze']),
+                'event' => route('public.shops.shop.event', ['shop' => 'siroganeze']),
+                'diary' => route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']),
+                'movie' => route('public.shops.shop.movie', ['shop' => 'siroganeze']),
+                'review' => route('public.shops.shop.review', ['shop' => 'siroganeze']),
+                'ranking' => route('public.shops.shop.ranking', ['shop' => 'siroganeze']),
+                'shop' => route('public.shops.shop.shop-list', ['shop' => 'siroganeze']),
+                'access' => route('public.shops.shop.access', ['shop' => 'siroganeze']),
                 'recruit-male' => '#',
                 'login' => route('login'),
                 'recruit-female' => '#',
@@ -55,7 +55,7 @@
             ]" />
 
         <div class="banner">
-            <x-public.shops.contact-info phone-icon="assets/img/shops/shiroganeze/phone.png" phone-number="011-521-3593"
+            <x-public.shops.contact-info phone-icon="assets/img/shops/siroganeze/phone.png" phone-number="011-521-3593"
                 email="@EstheSiroganeze" address="〒064-0805</br>
 北海道札幌市中央区南5条西5丁目 第8旭観光ビル2F" hours="9:00 ~ 0:00"
                 credit-text="クレジット決済可能" note="電話予約の対応時間は朝8:30~となります。" phone-background="#132126"
@@ -69,42 +69,42 @@
             <div class="breadcrumb-navigation">
                 <p>すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ</p>
             </div>
-            <x-public.shops.home-header logo-image="assets/img/shops/shiroganeze/footer-logo-black.png"
+            <x-public.shops.home-header logo-image="assets/img/shops/siroganeze/footer-logo-black.png"
                 logo-alt="Shizuku Logo" stroke-color="#E2EAF5" :menu-items="[
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => 'キャスト一覧',
                         'subtitle' => 'cast list',
-                        'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.castlist', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '写メ日記',
                         'subtitle' => 'photo diary',
-                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => 'イベント一覧',
                         'subtitle' => 'event',
-                        'url' => route('public.shops.shop.event', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.event', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '新人情報',
                         'subtitle' => 'new cast',
-                        'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.newcast', ['shop' => 'siroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]" menu-button-id="mobileMenuButton"
@@ -112,17 +112,17 @@
                     [
                         'title' => 'トップページ',
                         'subtitle' => 'top page',
-                        'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '出勤情報',
                         'subtitle' => 'schedule',
-                        'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze']),
                     ],
                     [
                         'title' => '料金システム',
                         'subtitle' => 'system',
-                        'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze']),
+                        'url' => route('public.shops.shop.system', ['shop' => 'siroganeze']),
                     ],
                     ['title' => 'ログイン', 'subtitle' => 'login', 'url' => route('login')],
                 ]"
@@ -133,11 +133,11 @@
                 <div class="home-schedule">
                     <x-public.shops.section-title text="schedule" letter-spacing="6px" color="#F2F2F2" :gradient=false
                         :backgroundGradient=false color="#394022" backgroundColor="rgba(255, 255, 255, 0.90)" />
-                    <x-public.shops.schedule-info icon-image="assets/img/shops/shiroganeze/calender-g.png"
+                    <x-public.shops.schedule-info icon-image="assets/img/shops/siroganeze/calender-g.png"
                         icon-alt="出勤情報" title="出勤情報" description="本日出勤するキャスト一覧になります。" button-text="一覧を見る"
                         background-color="rgba(255, 255, 255, 0.90)" text-color="#132126" border-color="#132126"
                         underlineColor="#132126" responsive-variant="new-girl" :gradient='false'
-                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'shiroganeze']) }}" />
+                        buttonHref="{{ route('public.shops.shop.schedule', ['shop' => 'siroganeze']) }}" />
                     <div class="home-schedule-cards">
                         {{-- @for ($i = 0; $i < 12; $i++)
                             <x-public.shops.schedule-card
@@ -153,7 +153,7 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/siroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-icon='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <path d="M12.5 0C5.6075 0 0 5.6075 0 12.5C0 19.3925 5.6075 25 12.5 25C19.3925 25 25 19.3925 25 12.5C25 5.6075 19.3925 0 12.5 0ZM19.6875 13.75H11.25V5H13.75V11.25H19.6875V13.75Z" fill="#BF5A75"/>
@@ -170,7 +170,7 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $todayCast->id]) }}"
                                     background-image="{{ asset('storage/' . $todayCast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/siroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ date('H:i', strtotime($todayCast->start_datetime)) . '~' . date('H:i', strtotime($todayCast->end_datetime)) }}"
                                     status-text="{{ '次回' . \Carbon\Carbon::createFromTimeString($todayCast->reservation)->format('H:i') . '~' }}"
                                     name="{{ $todayCast->name . '(' . $todayCast->age . ')' }}"
@@ -190,7 +190,7 @@
                     </div>
                     <div class="home-schedule-button-mobile">
                         <a class="schedule-info-button schedule-info-button-mobile"
-                            href="{{ route('public.shops.shop.schedule', ['shop' => 'shiroganeze']) }}"
+                            href="{{ route('public.shops.shop.schedule', ['shop' => 'siroganeze']) }}"
                             style="background: #FFFFFF; border-left-color: #2A1A08;">
                             <p style="color: #2A1A08;">一覧を見る</p>
                             <div class="schedule-info-underline" style="background: #BF5A75;"></div>
@@ -218,9 +218,9 @@
                     ['image' => asset('storage/' . $pickups[1]->gallery_1), 'alt' => 'Cast 2'],
                 ];
             @endphp
-            <x-public.shops.pickup-section header-background-image="assets/img/shops/shiroganeze/pickup-bg.png"
+            <x-public.shops.pickup-section header-background-image="assets/img/shops/siroganeze/pickup-bg.png"
                 title-en="PICK UP" title-ja="ピックアップ" description="当店の女の子イチオシ情報です" badge-text="当店一押し"
-                :cast-images="$pickupImages" frame-image="assets/img/shops/shiroganeze/card-frame-2.png" :Colorchange=false
+                :cast-images="$pickupImages" frame-image="assets/img/shops/siroganeze/card-frame-2.png" :Colorchange=false
                 badgeDiamondSvg='<svg xmlns="http://www.w3.org/2000/svg" width="228" height="228" viewBox="0 0 228 228" fill="none">
 <g filter="url(#filter0_d_701_11446)">
 <path d="M114 20L161.525 66.4754L208 114L161.525 161.525L114 208L66.4754 161.525L20 114L66.4754 66.4754L114 20Z" fill="#132126"/>
@@ -252,7 +252,7 @@
                         description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
                         text-color="#0B0B07" border-color="#394022" underlineColor="#132126"
                         responsive-variant="new-girl" :gradient=false
-                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
+                        button-href="{{ route('public.shops.shop.newcast', ['shop' => 'siroganeze']) }}" />
                 </div>
                 <div class="home-new-girl-slider">
                     <div class="new-girl-slider-cards">
@@ -333,7 +333,7 @@
                     </div>
                 </div>
                 @php
-                    $newGirlButtonHref = route('public.shops.shop.newcast', ['shop' => 'shiroganeze']); // Add href if needed
+                    $newGirlButtonHref = route('public.shops.shop.newcast', ['shop' => 'siroganeze']); // Add href if needed
                     $newGirlButtonOnClick = null; // Add onClick if needed
                 @endphp
                 <div class="home-new-girl-button-mobile">
@@ -359,7 +359,7 @@
                         :gradient=false color="#48593F" letter-spacing="0.375rem" />
                     <div class="home-castlist-info">
                         <div class="castlist-info-header">
-                            <img src="{{ asset('assets/img/shops/shiroganeze/girl-icon.png') }}" alt="出勤情報"
+                            <img src="{{ asset('assets/img/shops/siroganeze/girl-icon.png') }}" alt="出勤情報"
                                 class="castlist-info-icon">
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
@@ -367,7 +367,7 @@
                             <p>シロガネーゼのキャスト一覧になります。</p>
                         </div>
                         <a class="castlist-info-button"
-                            href="{{ route('public.shops.shop.castlist', ['shop' => 'shiroganeze']) }}">
+                            href="{{ route('public.shops.shop.castlist', ['shop' => 'siroganeze']) }}">
                             <p>一覧を見る</p>
                             <div class="castlist-info-underline"></div>
                         </a>
@@ -397,7 +397,7 @@
                                 <x-public.shops.schedule-card
                                     href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                                     background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                                    frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
+                                    frame-image="assets/img/shops/siroganeze/card-frame.png" badge-shift="本日出勤"
                                     badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                                     status-icon="" status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                                     measurements=" {{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
@@ -427,7 +427,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[0]->cast_gallery_1) }}" alt="Cast 1"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/siroganeze/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="154"
@@ -481,7 +481,7 @@
                         <div class="ranking-cast-image">
                             <img src="{{ asset('storage/' . $rankings[1]->cast_gallery_1) }}" alt="Cast 2"
                                 class="cast-image">
-                            <img src="{{ asset('assets/img/shops/shiroganeze/card-frame-3.png') }}" alt="Frame"
+                            <img src="{{ asset('assets/img/shops/siroganeze/card-frame-3.png') }}" alt="Frame"
                                 class="cast-frame">
                             <div class="ranking-badge ranking-no2">
                                 <svg width="220" height="137" viewBox="0 0 220 137" fill="none"
@@ -559,12 +559,12 @@
                                 </defs>
                             </svg>
                         </div>
-                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'shiroganeze']) }}"
+                        <a href="{{ route('public.shops.shop.ranking', ['shop' => 'siroganeze']) }}"
                             class="ranking-badge-text">一覧を見る</a>
                     </div>
                     <div class="ranking-header">
                         <div class="ranking-header-bg">
-                            <img src="{{ asset('assets/img/shops/shiroganeze/ranking.png') }}" alt="Background">
+                            <img src="{{ asset('assets/img/shops/siroganeze/ranking.png') }}" alt="Background">
                             <div class="ranking-header-overlay"></div>
                             <div class="ranking-header-shadow"></div>
                         </div>
@@ -594,7 +594,7 @@
                 }
             @endphp
             @if (count($events) > 0)
-                <x-public.shops.event-section background-image="assets/img/shops/shiroganeze/event-bg.png"
+                <x-public.shops.event-section background-image="assets/img/shops/siroganeze/event-bg.jpeg"
                     background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
                     :sub-banner-images="$event_list" />
             @endif
@@ -631,51 +631,51 @@
                     'alt' => 'Shop 1',
                     'text1' => '上品な空間、時を忘れる美貌とおもてなしが魅力のヘルス',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'shizuku']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/002.jpg',
                     'alt' => 'Shop 2',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'pussycat']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/003.jpg',
                     'alt' => 'Shop 3',
                     'text1' => '雅は、すすきの屈指の人妻・痴女が在籍するヘルス',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'miyabi']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/004.jpg',
                     'alt' => 'Shop 4',
                     'text1' => '若妻、人妻、淫乱妻など大人のエロさ溢れる人妻ヘルス店',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'en']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/005.jpg',
                     'alt' => 'Shop 5',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/006.jpg',
                     'alt' => 'Shop 6',
                     'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
                     'text2' => '',
-                    'url' => '#',
+                    'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
                 ],
             ]" :menu-links="[
-                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'shiroganeze'])],
-                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'shiroganeze'])],
-                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'shiroganeze'])],
-                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'shiroganeze'])],
-                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'shiroganeze'])],
+                ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'siroganeze'])],
+                ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'siroganeze'])],
+                ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'siroganeze'])],
+                ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'siroganeze'])],
+                ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'siroganeze'])],
                 ['text' => 'SNS', 'url' => '#'],
-                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'shiroganeze'])],
+                ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'siroganeze'])],
                 ['text' => 'ログイン', 'url' => route('login')],
                 ['text' => '新規会員登録', 'url' => route('register')],
                 [
@@ -688,9 +688,9 @@
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"
-                footerLogo="{{ asset('assets/img/shops/shiroganeze/footer-logo.png') }}" svgIconColor="#132126"
-                ploLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}"
-                groupSiteLogo="{{ asset('assets/img/shops/shiroganeze/plo-logo.png') }}" />
+                footerLogo="{{ asset('assets/img/shops/siroganeze/footer-logo.png') }}" svgIconColor="#132126"
+                ploLogo="{{ asset('assets/img/shops/siroganeze/plo-logo.png') }}"
+                groupSiteLogo="{{ asset('assets/img/shops/siroganeze/plo-logo.png') }}" />
         </div>
 
         <!-- Fixed Phone Button -->
@@ -699,13 +699,13 @@
             icon-svg='<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
 <path d="M23.5316 24.9894C20.6394 24.9894 17.7762 24.3646 14.9422 23.1152C12.1083 21.8657 9.5339 20.084 7.21915 17.7702C4.90439 15.4564 3.12274 12.888 1.8742 10.0652C0.625659 7.24229 0.000925532 4.37314 0 1.45771V0H8.19096L9.47513 6.9762L5.51848 10.9676C6.02753 11.8699 6.59441 12.7261 7.21915 13.5359C7.84388 14.3457 8.51489 15.0977 9.23218 15.7919C9.90319 16.4629 10.6381 17.1052 11.4368 17.7188C12.2355 18.3325 13.0972 18.9049 14.0218 19.4362L18.0479 15.4101L24.9894 16.8331V24.9894H23.5316Z" fill="white"/>
 </svg>'
-            mobileImage="{{ asset('assets/img/shops/shiroganeze/TEL-y1.png') }}" />
+            mobileImage="{{ asset('assets/img/shops/siroganeze/TEL-y1.png') }}" />
 
         <!-- Fixed Side Buttons -->
         <x-public.shops.fixed-side-buttons
-            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'shiroganeze']) }}" />
+            newGirlLink="{{ route('public.shops.shop.newcast', ['shop' => 'siroganeze']) }}" />
     </div>
     @push('styles')
-        @vite(['resources/scss/shops/shiroganeze/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
+        @vite(['resources/scss/shops/siroganeze/home.scss', 'resources/js/shops/shizuku/home.js', 'resources/js/shops/home-header.js', 'resources/js/shops/news-section.js', 'resources/js/shops/new-girl-slider.js', 'resources/js/shops/castlist-slider.js'])
     @endpush
 </x-shizuku-layout>

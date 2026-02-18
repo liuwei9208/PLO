@@ -47,10 +47,10 @@
         若妻、人妻、淫乱妻など大人にエロさ嗌れる人妻ヘルス店
       </div>
     </a>
-    <a href="{{ route('public.shop.home', ['shop' => 'shiroganeze']) }}" class="shopintro-contents-item">
+    <a href="{{ route('public.shop.home', ['shop' => 'siroganeze']) }}" class="shopintro-contents-item">
       <div class="shopintro-contents-item-photo">
-        <div class="shopintro-contents-item-photo-logo --shiroganeze">
-          <img src="{{ asset('assets/img/logo/shiroganeze-logo.png') }}" alt="logo">
+        <div class="shopintro-contents-item-photo-logo --siroganeze">
+          <img src="{{ asset('assets/img/logo/siroganeze-logo.png') }}" alt="logo">
         </div>
         <img class="shopintro-contents-item-photo-search" src="{{ asset('assets/img/search-b.png') }}" alt="photo">
       </div>

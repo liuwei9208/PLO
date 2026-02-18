@@ -77,7 +77,7 @@ class UsersTableSeeder extends Seeder
         User::factory()->create([
             'id' => 7,
             'name' => 'シロガネーゼ',
-            'email' => 'shiroganeze@plo-group.jp',
+            'email' => 'siroganeze@plo-group.jp',
             'password' => bcrypt('r_Ytnxh2!Y@zPe!@'),
         ])->assignRole('shop');
 

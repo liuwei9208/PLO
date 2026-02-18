@@ -57,7 +57,7 @@ class DiaryService
             case "en":
                 $mail_password = env('MAIL_EN');
                 break;
-            case "shiroganeze":
+            case "siroganeze":
                 $mail_password = env('MAIL_SHIROGANEZE');
                 break;
             case "lovestory":

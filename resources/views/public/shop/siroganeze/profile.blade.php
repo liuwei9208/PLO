@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子プロフィール" :assets="['resources/scss/shops/shiroganeze/profile.scss', 'resources/js/shops/shizuku/profile.js']" :banners="$banners">
+<x-siroganeze-page-layout page-title="PROFILE" page-subtitle="女の子プロフィール"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 女の子プロフィール" :assets="['resources/scss/shops/siroganeze/profile.scss', 'resources/js/shops/shizuku/profile.js']" :banners="$banners">
     <div class="flex w-full mt-6 mobile-profile-content max-md:mt-0">
         <div class="profile-left-colum">
             <div class="girl-info-section-wrapper">
@@ -15,7 +15,7 @@
                 <div class="girl-info-section">
                     <img src="{{ asset('storage/' . $cast->gallery_1) }}" alt="{{ $cast->name }}"
                         class="cast-image main-image" id="mainImage">
-                    <img src="{{ asset('assets/img/shops/shiroganeze/card-frame.png') }}" alt="Frame"
+                    <img src="{{ asset('assets/img/shops/siroganeze/card-frame.png') }}" alt="Frame"
                         class="cast-frame">
                 </div>
 
@@ -798,4 +798,4 @@
             @endif
         </div>
     </div>
-</x-shiroganeze-page-layout>
+</x-siroganeze-page-layout>

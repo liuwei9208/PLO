@@ -7,7 +7,7 @@
 .news-list {
   background-color: rgba(#fff, 0.9);
   // padding: 40px 20px;
-  
+
   @media #{media-query(sm)} {
     padding: 25px 0;
   }
@@ -33,8 +33,8 @@
     &.--en {
       color: $shop-color-en;
     }
-    &.--shiroganeze {
-      color: $shop-color-shiroganeze;
+    &.--siroganeze {
+      color: $shop-color-siroganeze;
     }
     &.--lovestory {
       color: $shop-color-lovestory;
@@ -98,7 +98,7 @@
 
     &-published-at {
       padding: 10px 15px 5px;
-      
+
       p {
         // font-size: 1rem;
         color: #000;
@@ -172,21 +172,21 @@
 
   &-pagination {
     text-align: center;
-    
+
     .pagination {
       justify-content: center;
-      
+
       .page-link {
         color: #333;
         border: 1px solid #ddd;
         margin: 0 2px;
-        
+
         &:hover {
           background-color: #f8f9fa;
           border-color: #ddd;
         }
       }
-      
+
       .page-item.active .page-link {
         background-color: #333;
         border-color: #333;

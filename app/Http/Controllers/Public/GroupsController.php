@@ -339,7 +339,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shizuku' => 'assets/img/shops/shizuku/001.jpg',
             'pussycat' => 'assets/img/shops/shizuku/002.jpg',
             'miyabi' => 'assets/img/shops/shizuku/003.jpg',
-            'shiroganeze' => 'assets/img/shops/shizuku/004.jpg',
+            'siroganeze' => 'assets/img/shops/shizuku/004.jpg',
             'en' => 'assets/img/shops/shizuku/005.jpg',
             'lovestory' => 'assets/img/shops/shizuku/006.jpg',
         ];
@@ -351,7 +351,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'miyabi' => '雅は、王様イスを使った密着洗体が人気のラグジュアリーなヘルスです。淡白なサービスではなく、濃厚で肌と肌が触れ合う密着度が高いサービスを求めている貴方にはぴったり。エロさ×密着度300％で快楽に溺れられる空間です。',
             'lovestory' => 'ラブストーリーは、20代前半のあどけない美少女を育てられる育成型ヘルスです。男性経験が少ないけど、大人の世界を知りたい…そんな女の子を成長させられる楽しみがある新感覚ヘルスになっています。料金もリーズナブルなので、推しの女の子を探して、自分色に染めてみませんか？',
             'en' => 'ファッションヘルス「艶〜エン〜」は、人妻や若妻などの大人女性によるヘルスサービスが楽しめるお店。サラリーマンや学生の方でも、ご来店頂きやすい激安料金システムが魅力。',
-            'shiroganeze' => 'シロガネーゼは、ススキノ屈指の腕前を持つセラピストが在籍するプレミアムメンズエステです。体のコリをほぐす本格的なアロママッサージと共に、回春サービスが一緒なので全身をリフレッシュしたい方にオススメのお店となっております。',
+            'siroganeze' => 'シロガネーゼは、ススキノ屈指の腕前を持つセラピストが在籍するプレミアムメンズエステです。体のコリをほぐす本格的なアロママッサージと共に、回春サービスが一緒なので全身をリフレッシュしたい方にオススメのお店となっております。',
         ];
 
         return view('public.groups.shop', [
@@ -364,17 +364,17 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     public function showSchedule(Request $request): View
     {
         Carbon::setLocale('ja');
-        
+
         // Get selected date from request or default to today
         $selectedDate = $request->query('date', Carbon::now()->format('Y-m-d'));
         $selectedCarbon = Carbon::parse($selectedDate);
-        
+
         // Get selected shop from request
         $selectedShop = $request->query('shop', '');
-        
+
         // Format the search heading with the selected date
         $searchHeading = $selectedCarbon->format('m/d') . '（' . $selectedCarbon->getTranslatedMinDayName() . '）の出勤女性';
-        
+
         // Generate date search dates (next 6 days)
         $dateSearchDates = [];
         for ($i = 0; $i < 6; $i++) {
@@ -385,7 +385,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 'label' => $date->format('m/d')
             ];
         }
-        
+
         // Fetch casts with attendance for the selected date
         $query = Attendance::leftJoin('casts', 'attendances.cast_id', '=', 'casts.id')
             ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
@@ -394,7 +394,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereRaw('DATE(attendances.start_datetime) = ?', [$selectedDate])
             ->whereNot('shops.slug', 'touchvip')
             ->whereNot('shops.slug', 'headquarter');
-        
+
         // Filter by shop if selected
         if ($selectedShop !== '') {
             $shop = Shop::where('slug', $selectedShop)->first();
@@ -402,7 +402,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 $query->where('casts.shop_id', $shop->id);
             }
         }
-        
+
         $casts = $query->select([
             'casts.id as id',
             'casts.name as name',
@@ -429,13 +429,13 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             $cast->is_working_today = true;
             return $cast;
         });
-        
+
         // Button group (2 rows of 3) - used by the shared sub page layout.
         // For schedule page, buttons work as form submit buttons (like newface page)
         $buttonGroup = [
             [
                 ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
-                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
                 ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
             ],
             [
@@ -444,7 +444,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
             ],
         ];
-        
+
         return view('public.groups.schedule', [
             'searchHeading' => $searchHeading,
             'dateSearchDates' => $dateSearchDates,
@@ -470,7 +470,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
 
         // Build event query - similar to original but with shop filtering
         $headquarterShopId = Shop::where('slug', 'headquarter')->first()->id;
-        
+
         $eventQuery = Event::with('shop')
             ->leftJoin('shops', 'events.shop_id', '=', 'shops.id')
             ->where(function($query) use ($headquarterShopId, $selectedShop) {
@@ -530,7 +530,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $buttonGroup = [
             [
                 ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
-                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
                 ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
             ],
             [
@@ -551,9 +551,9 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     public function showEventDetail(Request $request, string $id): View
     {
         $event = Event::with('shop')->findOrFail($id);
-        
+
         $headquarterShopId = Shop::where('slug', 'headquarter')->first()->id;
-        
+
         // Get previous event
         $prevEvent = Event::where('id', '<', $event->id)
             ->where(function($query) use ($headquarterShopId) {
@@ -573,7 +573,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
             ->orderBy('id', 'desc')
             ->first();
-        
+
         // Get next event
         $nextEvent = Event::where('id', '>', $event->id)
             ->where(function($query) use ($headquarterShopId) {
@@ -593,7 +593,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereNot('shop_id', Shop::where('slug', 'touchvip')->first()->id)
             ->orderBy('id', 'asc')
             ->first();
-        
+
         return view('public.groups.eventDetail', [
             'event' => $event,
             'prevEvent' => $prevEvent,
@@ -613,16 +613,16 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ]);
     }
 
-    public function showPickup(Request $request): View
-    {
-        $pickups = Pickup::with('cast')->whereHas('cast', function ($query) {
-            $query->where('is_public', true);
-        })->get();
+    // public function showPickup(Request $request): View
+    // {
+    //     $pickups = Pickup::with('cast')->whereHas('cast', function ($query) {
+    //         $query->where('is_public', true);
+    //     })->get();
 
-        return view('public.group.pickup', [
-            'pickups' => $pickups,
-        ]);
-}
+    //     return view('public.group.pickup', [
+    //         'pickups' => $pickups,
+    //     ]);
+    // }
 
     public function showPrivacyPolicy(Request $request): View
     {
@@ -1216,7 +1216,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $buttonGroup = [
             [
                 ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
-                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
                 ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
             ],
             [
@@ -1242,10 +1242,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
     public function showNewFace(Request $request): View
     {
         Carbon::setLocale('ja');
-        
+
         // Get selected date from request
         $selectedDate = $request->query('date', '');
-        
+
         $shops = Shop::whereNot('slug', 'touchvip')
             ->whereNot('slug', 'headquarter')
             ->orderBy('rank', 'asc')
@@ -1307,7 +1307,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $buttonGroup = [
             [
                 ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
-                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
                 ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
             ],
             [
@@ -1327,6 +1327,102 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ]);
     }
 
+    public function showPickup(Request $request): View
+    {
+
+        Carbon::setLocale('ja');
+
+        // Get selected date from request
+        $selectedDate = $request->query('date', '');
+
+        $shops = Shop::whereNot('slug', 'touchvip')
+            ->whereNot('slug', 'headquarter')
+            ->orderBy('rank', 'asc')
+            ->get(['id', 'name', 'slug']);
+
+        $allowedSlugs = $shops->pluck('slug')->all();
+        $selectedShop = (string) $request->query('shop', '');
+        if ($selectedShop !== '' && !in_array($selectedShop, $allowedSlugs, true)) {
+            $selectedShop = '';
+        }
+
+        $castQuery = Pickup::leftJoin('casts','pickups.cast_id','=','casts.id')
+            ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
+            ->where('casts.is_public', 1)
+            ->whereNot('casts.shop_id', Shop::where('slug', 'touchvip')->first()->id)
+            ->whereNot('casts.shop_id', Shop::where('slug', 'headquarter')->first()->id)
+            ->when($selectedShop !== '', function ($q) use ($selectedShop) {
+                $q->where('shops.slug', $selectedShop);
+            })
+            // ->when($selectedDate !== '', function ($q) use ($selectedDate) {
+            //     // Filter by specific date if provided
+            //     $q->whereDate('casts.joined_at', $selectedDate);
+            // }, function ($q) {
+            //     // Otherwise, show casts joined within the last month
+            //     $q->where('casts.joined_at', '>=', Carbon::now()->subMonth(1));
+            // })
+            ->orderBy('casts.joined_at', 'desc')
+            ->select([
+                'casts.id as id',
+                'casts.name as name',
+                'casts.age as age',
+                'casts.height as height',
+                'casts.bra_size as bra_size',
+                'casts.bust as bust',
+                'casts.waist as waist',
+                'casts.hip as hip',
+                'casts.gallery_1 as gallery_1',
+                'casts.joined_at as joined_at',
+                'casts.appeal_point as appeal_point',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ]);
+
+        $casts = $castQuery
+            ->limit(30)
+            ->get();
+
+        // Generate date search dates (next 6 days)
+        $dateSearchDates = [];
+        for ($i = 0; $i < 6; $i++) {
+            $date = Carbon::now()->addDays($i);
+            $dateSearchDates[] = [
+                'date' => $date->format('Y-m-d'),
+                'display' => $date->format('m/d'),
+                'label' => $date->format('m/d')
+            ];
+        }
+
+        // Button group (2 rows of 3) - used by the shared sub page layout.
+        $buttonGroup = [
+            [
+                ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
+            ],
+            [
+                ['shop' => 'pussycat', 'image' => 'assets/img/groups/photo-diary-button4.png', 'alt' => 'Pussycat', 'class' => 'all-shops-button--pussycat'],
+                ['shop' => 'miyabi', 'image' => 'assets/img/groups/photo-diary-button5.png', 'alt' => 'Miyabi', 'class' => 'all-shops-button--miyabi'],
+                ['shop' => 'en', 'image' => 'assets/img/groups/photo-diary-button6.png', 'alt' => 'En'],
+            ],
+        ];
+
+
+
+
+        // $pickups = Pickup::with('cast')->whereHas('cast', function ($query) {
+        //     $query->where('is_public', true);
+        // })->get();
+
+        return view('public.groups.pickup', [
+            'casts' => $casts,
+            'shops' => $shops,
+            'selectedShop' => $selectedShop,
+            'buttonGroup' => $buttonGroup,
+            'dateSearchDates' => $dateSearchDates,
+            'selectedDate' => $selectedDate,
+        ]);
+    }
     /**
      * Display the movie page.
      */
@@ -1385,7 +1481,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         $buttonGroup = [
             [
                 ['shop' => 'shizuku', 'image' => 'assets/img/groups/photo-diary-button1.png', 'alt' => 'Shizuku', 'class' => 'all-shops-button--shizuku'],
-                ['shop' => 'shiroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
+                ['shop' => 'siroganeze', 'image' => 'assets/img/groups/photo-diary-button2.png', 'alt' => 'Siroganeze'],
                 ['shop' => 'lovestory', 'image' => 'assets/img/groups/photo-diary-button3.png', 'alt' => 'Love Story'],
             ],
             [
@@ -1396,7 +1492,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         ];
 
         // Get shop name for heading
-        $shopNameForHeading = $selectedShop !== '' 
+        $shopNameForHeading = $selectedShop !== ''
             ? ($shops->firstWhere('slug', $selectedShop)->name ?? '全店舗')
             : '全店舗';
 
@@ -1526,11 +1622,11 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             }
 
             $query->groupBy('casts.id');
-            
+
             if ($status == 'working') {
                 $query->select(
-                    'casts.*', 
-                    'shops.name as shop_name', 
+                    'casts.*',
+                    'shops.name as shop_name',
                     'shops.slug as shop_slug',
                     DB::raw("DATE_FORMAT(attendances.start_datetime, '%H:%i') as start_datetime"),
                     DB::raw("DATE_FORMAT(attendances.end_datetime, '%H:%i') as end_datetime")
@@ -1545,7 +1641,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             if ($searchResults->isNotEmpty()) {
                 $castIds = $searchResults->pluck('id')->toArray();
                 $today = Carbon::now()->format('Y-m-d');
-                
+
                 // Always fetch attendance data separately to ensure we have it
                 // Check if today falls within the attendance period (start <= today <= end)
                 $attendances = Attendance::whereIn('cast_id', $castIds)
@@ -1554,10 +1650,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                     ->whereDate('end_datetime', '>=', $today)
                     ->get()
                     ->keyBy('cast_id');
-                
+
                 foreach ($searchResults as $cast) {
                     $foundAttendance = false;
-                    
+
                     // If status is 'working', check if query already has formatted time data
                     if ($status == 'working' && isset($cast->start_datetime) && isset($cast->end_datetime)) {
                         // start_datetime and end_datetime are already formatted as 'H:i' from DATE_FORMAT
@@ -1571,7 +1667,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                             $foundAttendance = true;
                         }
                     }
-                    
+
                     // Also check attendance table (in case query data wasn't available or status is not 'working')
                     if (!$foundAttendance && isset($attendances[$cast->id])) {
                         $attendance = $attendances[$cast->id];

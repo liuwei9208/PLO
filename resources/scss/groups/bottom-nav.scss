@@ -7,7 +7,7 @@
 .bottom-nav {
     display: none;
 
-    @media #{media-query(sm)} {
+    @media #{media-query(sm)} ,#{media-query(xs)} {
         display: block;
     }
 

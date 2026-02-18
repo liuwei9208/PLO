@@ -72,7 +72,7 @@
 
       @endfor --}}
       @foreach($todayCasts as $todayCast)
-      <div class="schedule-grid-content">{{-- flex col--}}
+      <a class="schedule-grid-content" href="{{ route('public.shops.shop.profile',[ 'shop'=>$todayCast->shop_slug,'id'=>$todayCast->id ]) }}">{{-- flex col--}}
         <div class="schedule-grid-content-img">
           <img class="schedule-grid-content-img-photo" src="{{ asset('storage/' . $todayCast->gallery_1) }}">
           <img class="schedule-grid-content-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$todayCast->shop_slug.'.png') }}">
@@ -111,12 +111,12 @@
             <textarea class="schedule-grid-content-contents-message-text">{{ $todayCast->appeal_point }}</textarea>
           </div>
         </div>
-      </div>
+      </a>
 
       @endforeach
     </div>
     <div class="groups-button-more">
-      <a href="#" class="groups-button-more-btn">もっと見る</a>
+      <a href="{{ route('public.groups.schedule') }}" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
   @endif
@@ -147,7 +147,7 @@
                 <h3 class="event-main-content-title">{{ $event->title }}</h3>
               </div>
               <div class="event-main-image">
-                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                <a href="{{ route('public.groups.event.detail', ['id' => $event->id]) }}">
                   <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
                 </a>
               </div>
@@ -191,7 +191,7 @@
           <div class="swiper-slide">
 
 
-            <div class="newface-content">
+            <a class="newface-content" href="{{ route('public.shops.shop.profile',[ 'shop'=>$cast->shop_slug,'id'=>$cast->id ]) }}">
               <div class="newface-content-top">
                 <div class="newface-content-top-newdate">
                   <span class="newface-content-top-newdate-date">{{ \Carbon\Carbon::parse($cast->joined_at)->format('m/d') }}</span>
@@ -217,7 +217,7 @@
                   <span class="newface-content-contents-message-text">{{ $cast->appeal_point }}</span>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         @endforeach
       </div>
@@ -255,7 +255,7 @@
           <div class="swiper-wrapper">
           @foreach($pickups as $pickup)
             <div class="swiper-slide">
-              <div class="pickup-main">
+              <a class="pickup-main" href="{{ route('public.shops.shop.profile',[ 'shop'=>$pickup->shop_slug,'id'=>$pickup->id ]) }}">
                 <div class="pickup-main-border">
                   <div class="pickup-main-border-img">
                     <img class="pickup-main-border-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
@@ -273,7 +273,7 @@
                       </div>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           @endforeach
         </div>
@@ -314,7 +314,7 @@
         <div class="swiper-wrapper">
           @foreach ( $pickups as $pickup)
           <div class="swiper-slide">
-            <div class="pickup-contents-sp">
+            <a class="pickup-contents-sp" href="{{ route('public.shops.shop.profile',[ 'shop'=>$pickup->shop_slug,'id'=>$pickup->id ]) }}">
               <div class="pickup-contents-sp-img">
                 <img class="pickup-contents-sp-img-photo" src="{{ asset('storage/' . $pickup->gallery_1) }}">
                 <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
@@ -332,7 +332,7 @@
                   <textarea class="pickup-contents-sp-contents-manager-text">{{ $pickup->manager_comment }}</textarea>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
           @endforeach
         </div>
@@ -375,7 +375,7 @@
       @endforeach
     </div>
     <div class="groups-button-more">
-      <a href="#" class="groups-button-more-btn">もっと見る</a>
+      <a href="{{ route('public.groups.pickup') }}" class="groups-button-more-btn">もっと見る</a>
     </div>
   </div>
   @endif
@@ -517,7 +517,7 @@
     <div class="movie-contents">
       @foreach ($videos as $video)
       <div class="movie-contents-item">
-        <video class="movie-contents-item-movie" controls autoplay muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
+        <video class="movie-contents-item-movie" controls  muted  poster="{{ asset('storage/' . $video->thumb_url) }}">
           <source src="{{ $video->video_url }}" type="video/mp4">
         </video>
         <div class="movie-contents-item-detail pc-only">
@@ -541,13 +541,14 @@
       @endforeach
     </div>
     <div class="groups-button-more">
-      <a href="#" class="groups-button-more-btn">もっと見る</a>
+      <a href="{{ route('public.groups.movie') }}" class="groups-button-more-btn">もっと見る</a>
     </div>
 
   </div>
   @endif
   <x-public.groups.footer />
-  
+
+
   <!-- Fixed Button -->
   <a href="{{ route('public.groups.girl-search') }}" class="fixed-groups-button" aria-label="女の子検索">
     <div class="fixed-groups-button__inner">

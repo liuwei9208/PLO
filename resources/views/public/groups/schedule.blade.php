@@ -39,16 +39,16 @@
         @php
           $staticCasts = [
             ['name' => 'キャスト名(25)', 'age' => '25', 'height' => '160', 'bust' => '85', 'braSize' => 'C', 'waist' => '60', 'hip' => '83', 'shopName' => '雫', 'frameImage' => 'shizuku', 'timeRange' => '12:00〜24:00'],
-            ['name' => 'キャスト名(22)', 'age' => '22', 'height' => '165', 'bust' => '88', 'braSize' => 'D', 'waist' => '58', 'hip' => '85', 'shopName' => 'シロガネーゼ', 'frameImage' => 'shiroganeze', 'timeRange' => '14:00〜26:00'],
+            ['name' => 'キャスト名(22)', 'age' => '22', 'height' => '165', 'bust' => '88', 'braSize' => 'D', 'waist' => '58', 'hip' => '85', 'shopName' => 'シロガネーゼ', 'frameImage' => 'siroganeze', 'timeRange' => '14:00〜26:00'],
             ['name' => 'キャスト名(23)', 'age' => '23', 'height' => '158', 'bust' => '82', 'braSize' => 'C', 'waist' => '59', 'hip' => '82', 'shopName' => 'ラブストーリー', 'frameImage' => 'lovestory', 'timeRange' => '13:00〜25:00'],
             ['name' => 'キャスト名(24)', 'age' => '24', 'height' => '162', 'bust' => '86', 'braSize' => 'C', 'waist' => '61', 'hip' => '84', 'shopName' => 'パシーキャット', 'frameImage' => 'pussycat', 'timeRange' => '15:00〜27:00'],
             ['name' => 'キャスト名(21)', 'age' => '21', 'height' => '159', 'bust' => '84', 'braSize' => 'C', 'waist' => '57', 'hip' => '81', 'shopName' => '雅', 'frameImage' => 'miyabi', 'timeRange' => '11:00〜23:00'],
             ['name' => 'キャスト名(26)', 'age' => '26', 'height' => '163', 'bust' => '87', 'braSize' => 'D', 'waist' => '62', 'hip' => '86', 'shopName' => 'EN', 'frameImage' => 'en', 'timeRange' => '16:00〜28:00'],
             ['name' => 'キャスト名(20)', 'age' => '20', 'height' => '157', 'bust' => '83', 'braSize' => 'C', 'waist' => '56', 'hip' => '80', 'shopName' => '雫', 'frameImage' => 'shizuku', 'timeRange' => '10:00〜22:00'],
-            ['name' => 'キャスト名(27)', 'age' => '27', 'height' => '164', 'bust' => '89', 'braSize' => 'D', 'waist' => '63', 'hip' => '87', 'shopName' => 'シロガネーゼ', 'frameImage' => 'shiroganeze', 'timeRange' => '17:00〜29:00'],
+            ['name' => 'キャスト名(27)', 'age' => '27', 'height' => '164', 'bust' => '89', 'braSize' => 'D', 'waist' => '63', 'hip' => '87', 'shopName' => 'シロガネーゼ', 'frameImage' => 'siroganeze', 'timeRange' => '17:00〜29:00'],
           ];
         @endphp
-        @foreach($staticCasts as $staticCast)
+        {{-- @foreach($staticCasts as $staticCast)
           <x-public.groups.schedule-card
             :name="$staticCast['name']"
             :age="$staticCast['age']"
@@ -66,7 +66,7 @@
             :timeRange="$staticCast['timeRange']"
             :isWorkingToday="true"
           />
-        @endforeach
+        @endforeach --}}
       @endif
     </div>
     

@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ キャスト一覧" :assets="['resources/scss/shops/shiroganeze/castlist.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ キャスト一覧" :assets="['resources/scss/shops/siroganeze/castlist.scss']" :banners="$banners">
     <div class="castlist-card-list">
         {{-- @for ($i = 1; $i <= 20; $i++)
         <x-public.shops.schedule-card
@@ -31,7 +31,7 @@
             <x-public.shops.schedule-card
                 href_cast_profile="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $cast->id]) }}"
                 background-image="{{ asset('storage/' . $cast->gallery_1) }}"
-                frame-image="assets/img/shops/shiroganeze/card-frame.png" badge-shift="本日出勤"
+                frame-image="assets/img/shops/siroganeze/card-frame.png" badge-shift="本日出勤"
                 badge-time="{{ $cast->start_datetime ? date('H:i', strtotime($cast->start_datetime)) . '~' . date('H:i', strtotime($cast->end_datetime)) : '' }}"
                 status-icon='' status-text="" name="{{ $cast->name . '　（' . $cast->age . ')' }}"
                 measurements="{{ 'T.' . $cast->height . ' B.' . $cast->bust . ' W.' . $cast->waist . ' H.' . $cast->hip }}"
@@ -45,7 +45,7 @@
     <div class="castlist-pagination">
         {{ $castlist->links('pagination::shops') }}
     </div>
-    </x-shiroganeze-page-layout>
+    </x-siroganeze-page-layout>
     {{-- @once
     @vite(['resources/scss/shops/pagination.scss'])
 @endonce --}}

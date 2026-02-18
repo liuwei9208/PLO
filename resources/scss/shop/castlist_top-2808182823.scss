@@ -32,8 +32,8 @@
     // &.--en {
     //   background-color: $shop-color-en;
     // }
-    // &.--shiroganeze {
-    //   background-color: $shop-color-shiroganeze;
+    // &.--siroganeze {
+    //   background-color: $shop-color-siroganeze;
     // }
     // &.--lovestory {
     //   background-color: $shop-color-lovestory;
@@ -41,8 +41,8 @@
     // &.--pussycat {
     //   background-color: $shop-color-pussycat;
     // }
-    
-    
+
+
     &-title {
       display: flex;
       justify-content: space-between;
@@ -109,8 +109,8 @@
     // &.--en {
     //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-en, .9) 100%);
     // }
-    // &.--shiroganeze {
-    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-shiroganeze, .9) 100%);
+    // &.--siroganeze {
+    //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-siroganeze, .9) 100%);
     // }
     // &.--lovestory {
     //   background: linear-gradient(to bottom, rgba(#fff, .9) 0%, rgba($shop-color-lovestory, .9) 100%);
@@ -277,7 +277,7 @@
     width: 100px;
     height: 100px;
   }
-  
+
   img {
     width: 100%;
     height: 100%;
@@ -296,11 +296,11 @@
   .castlist-body-footer-slide-prev {
     left: 5px;
   }
-  
+
   .castlist-body-footer-slide-next {
     right: 5px;
   }
-  
+
   .castlist-body-footer-slide-prev,
   .castlist-body-footer-slide-next {
     @media #{media-query(sm)} {
@@ -407,8 +407,8 @@
     &.--en {
       background-color: $shop-color-en;
     }
-    &.--shiroganeze {
-      background-color: $shop-color-shiroganeze;
+    &.--siroganeze {
+      background-color: $shop-color-siroganeze;
     }
     &.--lovestory {
       background-color: $shop-color-lovestory;
@@ -506,8 +506,8 @@
       &.--en {
         color: $shop-color-en;
       }
-      &.--shiroganeze {
-        color: $shop-color-shiroganeze;
+      &.--siroganeze {
+        color: $shop-color-siroganeze;
       }
       &.--lovestory {
         color: $shop-color-lovestory;
@@ -624,7 +624,7 @@
         // font-size: 15px;
       }
     }
-    
+
   }
   .castlist-profile-sp {
     display: flex;
@@ -694,7 +694,7 @@
 
   }
 
-  
+
 }
 
 .castlist-body-items-time {

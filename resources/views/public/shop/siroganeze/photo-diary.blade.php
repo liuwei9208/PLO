@@ -2,8 +2,8 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-shiroganeze-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/shiroganeze/photo-diary.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/siroganeze/photo-diary.scss']" :banners="$banners">
     <section class="photo-diary-section">
         <div class="diary-body-left-calendar pc-only">
             <div class="diary-body-left-calendar-content" id="diary-calendar">
@@ -175,5 +175,5 @@
         let diarys_date = {!! json_encode($diarys_date) !!};
     </script>
     @once
-        @vite(['resources/scss/shops/shiroganeze/photo-diary.scss', 'resources/js/shops/shiroganeze/photo-diary.js'])
+        @vite(['resources/scss/shops/siroganeze/photo-diary.scss', 'resources/js/shops/siroganeze/photo-diary.js'])
     @endonce

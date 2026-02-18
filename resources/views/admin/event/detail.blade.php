@@ -165,6 +165,7 @@
                 value="2"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
                 @if (2 == $event->published_status ) @checked(true) @endif
+                >
               <label for="publish_schedule" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                 予約配信
               </label>
@@ -193,6 +194,7 @@
                 value="3"
                 class="h-4 w-4 border-gray-300 text-brand-500 focus:ring-brand-500"
                 @if (3 == $event->published_status ) @checked(true) @endif
+                >
               <label for="publish_draft" class="ml-2 text-sm font-medium text-gray-700 dark:text-gray-400">
                 下書き
               </label>

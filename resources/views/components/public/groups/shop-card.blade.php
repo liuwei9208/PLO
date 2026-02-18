@@ -1,4 +1,4 @@
-<a href="{{ route('public.shop.home', ['shop' => $slug]) }}" class="groups-shop-card" aria-label="{{ $name }}">
+<a href="{{ route('public.shops.shop.home', ['shop' => $slug]) }}" class="groups-shop-card" aria-label="{{ $name }}">
   <div class="groups-shop-card__image">
     <img src="{{ $imageUrl }}" alt="{{ $name }}">
   </div>

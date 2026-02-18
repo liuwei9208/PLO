@@ -1,47 +1,12 @@
 <div class="mv">
   <div class="mv-main">
-    @if(request()->routeIs('public.group.search') || request()->routeIs('public.group.searchResult'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/search-girl.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/search-girl.jpg') }}" alt="">
-      <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/search-girl.jpg') }}">
-    </picture>
-    @elseif(request()->routeIs('public.group.shop'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/shop-list.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/shop-list.jpg') }}" alt="">
-      <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/shop-list.jpg') }}">
-    </picture>
-    @elseif(request()->routeIs('public.group.schedule'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/working.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/working.jpg') }}" alt="">
-      <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/working.jpg') }}">
-    </picture>
-    @elseif(request()->routeIs('public.group.event'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/event.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/event.jpg') }}" alt="">
+
+    {{-- <picture> --}}
+      {{-- <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.png') }}"> --}}
+        <img src="{{ asset('assets/img/group/mv/main-sm.png') }}" class="sp-only">
+        <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="" class="pc-only">
       {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
-    </picture>
-    @elseif(request()->routeIs('public.group.newcomer'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/sinjin.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/sinjin.jpg') }}" alt="">
-      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
-    </picture>
-    @elseif(request()->routeIs('public.group.pickup'))
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/pickup.jpg') }}">
-      <img src="{{ asset('assets/img/group/mv/pickup.jpg') }}" alt="">
-      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
-    </picture>
-    @else
-    <picture>
-      <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.png') }}">
-      <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
-      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
-    </picture>
+    {{-- </picture> --}}
     <div class="mv-banner-bottom pc-only">
       <div class="mv-banner-bottom-wrapper">
         <div class="mv-banner-bottom-slide">
@@ -50,7 +15,6 @@
         </div>
       </div>
     </div>
-    @endif
   </div>
 
   {{-- <div class="mv-text">

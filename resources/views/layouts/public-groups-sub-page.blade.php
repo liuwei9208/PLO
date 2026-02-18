@@ -27,11 +27,11 @@
     <x-public.groups.header-sub />
 
     <!-- Dynamic Banner -->
-    <x-public.groups.banner 
-      :backgroundImage="$bannerImage" 
-      :titleEn="$titleEn" 
-      :titleJa="$titleJa" 
-      :vectorImage="$vectorImage" 
+    <x-public.groups.banner
+      :backgroundImage="$bannerImage"
+      :titleEn="$titleEn"
+      :titleJa="$titleJa"
+      :vectorImage="$vectorImage"
     />
 
     <!-- Main -->
@@ -53,7 +53,7 @@
           @endif
 
           @if($showButtonGroup)
-            @if(request()->routeIs('public.groups.newface') || request()->routeIs('public.groups.photodiary') || request()->routeIs('public.groups.schedule') || request()->routeIs('public.groups.event') || request()->routeIs('public.groups.movie'))
+            @if(request()->routeIs('public.groups.newface') || request()->routeIs('public.groups.photodiary') || request()->routeIs('public.groups.schedule') || request()->routeIs('public.groups.event') || request()->routeIs('public.groups.movie') || request()->routeIs('public.groups.pickup'))
               <form method="GET" action="{{ url()->current() }}" class="groups-shops-buttons">
                 @foreach(request()->except('shop', 'page', 'date') as $key => $value)
                   @if(is_scalar($value))
@@ -115,7 +115,7 @@
                       <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'shizuku']) }}" class="groups-shop-button--shop all-shops-button--shizuku">
                         <img src="{{ asset('assets/img/groups/photo-diary-button1.png') }}" alt="Shizuku">
                       </a>
-                      <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'shiroganeze']) }}" class="groups-shop-button--shop">
+                      <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'siroganeze']) }}" class="groups-shop-button--shop">
                         <img src="{{ asset('assets/img/groups/photo-diary-button2.png') }}" alt="Siroganeze">
                       </a>
                       <a href="{{ route('public.shops.shop.photo-diary', ['shop' => 'lovestory']) }}" class="groups-shop-button--shop">
@@ -146,16 +146,16 @@
 
 
       @if($showLoadMore)
-        <div class="go-to-top-page">
+        <a class="go-to-top-page" href="{{ route('public.groups.home') }}">
           <p>
             トップページへもどる
           </p>
-          </div>
+          </a>
       @endif
     </main>
     <!-- Footer -->
     <x-public.groups.footer />
-    
+
     <!-- Fixed Button -->
     <a href="{{ route('public.groups.girl-search') }}" class="fixed-groups-button" aria-label="女の子検索">
       <div class="fixed-groups-button__inner">
@@ -168,7 +168,7 @@
         <p class="fixed-groups-button__text">女の子検索</p>
       </div>
     </a>
-    
+
     @stack('scripts')
   </body>
 </html>

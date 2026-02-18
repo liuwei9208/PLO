@@ -7,18 +7,18 @@
     {{-- <div class="header-user md lg"> --}}
     <div class="header-user-menu">
       <a href="{{ route('public.groups.newface') }}">
-        <small>NEW FACE</small>
+        <small>New Face</small>
         <span class="menu_newface">新人情報</span>
       </a>
-      <a href="{{ route('public.group.schedule') }}">
+      <a href="{{ route('public.groups.schedule') }}">
         <small>SCHEDULE</small>
         <span class="menu_schedule">出勤情報</span>
       </a>
-      <a href="{{ route('public.group.event') }}">
+      <a href="{{ route('public.groups.event') }}">
         <small>EVENT</small>
         <span class="menu_event">イベント情報</span>
       </a>
-      <a href="{{ route('public.group.shop') }}">
+      <a href="{{ route('public.groups.shop') }}">
         <small>SHOP</small>
         <span class="menu_shop">店舗一覧</span>
       </a>
@@ -88,7 +88,7 @@
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
     </div>
-    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+    <span class="drawer-toggle-menu rainbow-text">Menu</span>
   </button>
   @else
   <button class="drawer-toggle-child" id="drawer-toggle" data-pushbar-target="right">
@@ -97,20 +97,20 @@
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
     </div>
-    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+    <span class="drawer-toggle-menu rainbow-text">Menu</span>
   </button>
   @endif
 </header>
 
 <!-- Groups Menu Overlay Component (for home page) -->
 @if (request()->routeIs('public.groups.home'))
-<x-public.groups.menu-overlay 
+<x-public.groups.menu-overlay
     :menu-links="[
         'top' => route('public.groups.home'),
         'new' => route('public.groups.newface'),
         'shop' => route('public.groups.shop'),
         'schedule' => route('public.groups.schedule'),
-        'pickup' => '#',
+        'pickup' => route('public.groups.pickup'),
         'diary' => route('public.groups.photodiary'),
         'login' => route('login'),
         'register' => route('register'),
@@ -221,7 +221,7 @@
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
     </div>
-    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+    <span class="drawer-toggle-menu rainbow-text">Menu</span>
   </button>
   @else
   <button class="drawer-toggle-child" id="drawer-toggle" data-pushbar-target="right">
@@ -230,7 +230,7 @@
       <span class="drawer-toggle-bar"></span>
       <span class="drawer-toggle-bar"></span>
     </div>
-    <span class="drawer-toggle-menu rainbow-text">MENU</span>
+    <span class="drawer-toggle-menu rainbow-text">Menu</span>
   </button>
   @endif
 </header>

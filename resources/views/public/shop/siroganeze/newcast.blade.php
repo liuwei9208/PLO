@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="NEW CAST" page-subtitle="新人情報"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 新人情報" :assets="['resources/scss/shops/shiroganeze/newcast.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="NEW CAST" page-subtitle="新人情報"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 新人情報" :assets="['resources/scss/shops/siroganeze/newcast.scss']" :banners="$banners">
     <section class="newcast-section">
         {{-- @for ($i = 0; $i < 6; $i++)
             <x-public.shops.new-girl-card background-image="assets/img/shops/shizuku/new-girl.png"
@@ -30,4 +30,4 @@
     <div class="newcast-pagination">
         {{ $new_girls->links('pagination::shops') }}
     </div>
-</x-shiroganeze-page-layout>
+</x-siroganeze-page-layout>

@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="SYSTEM" page-subtitle="料金システム"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 料金システム" :assets="['resources/scss/shops/shiroganeze/system.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="SYSTEM" page-subtitle="料金システム"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 料金システム" :assets="['resources/scss/shops/siroganeze/system.scss']" :banners="$banners">
     <section class="system-section">
         {{-- <div class="system-card">
             <div class="system-card-image">
@@ -15,14 +15,11 @@
         {{-- <div class="system-card-content pc-only">
             <p>当店の利用料金システムになります。オプションをご希望の方はフロントスタッフにお伝えください。</p>
         </div> --}}
-        <div class="basic-price">
+        {{-- <div class="basic-price">
             <p>BASIC PRICE</p>
             <h2>基本料金</h2>
-        </div>
-        <div class="system-board">
-            {{-- <div class="system-all-time">
-                <p>オールタイム</p>
-            </div> --}}
+        </div> --}}
+        {{-- <div class="system-board">
             <div class="system-all-time-content">
               <div class="system-all-time-content-item">
                 <svg width="63" height="63" viewBox="0 0 63 63" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +35,8 @@
                   </svg>
                 <p>￥20,000-</p>
               </div>
-            </div>
-            <div class="system-all-time-fee">
+            </div> --}}
+            {{-- <div class="system-all-time-fee">
               <div class="system-all-time-fee-item">
                 <div class="fee-item-header">
                     <p>指名料</p>
@@ -53,7 +50,7 @@
                   <span>￥8,000-</span>
               </div>
 
-            </div>
+            </div> --}}
             {{-- <div class="system-all-time-content">
                 @foreach ($courses as $cours)
                     <div class="system-all-time-content-item">
@@ -379,4 +376,4 @@
             </div>
         </div>
     </section>
-</x-shiroganeze-page-layout>
+</x-siroganeze-page-layout>

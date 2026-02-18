@@ -1,5 +1,5 @@
-<x-shiroganeze-page-layout page-title="MOVIE" page-subtitle="動画一覧"
-    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/shiroganeze/movie.scss']" :banners="$banners">
+<x-siroganeze-page-layout page-title="MOVIE" page-subtitle="動画一覧"
+    breadcrumb="すすきの Premium Men’s Esthe シロガネーゼ ＞ トップページ ＞ 動画一覧" :assets="['resources/scss/shops/siroganeze/movie.scss']" :banners="$banners">
     <section class="movie-list">
 
         <div class="movie-list-item">

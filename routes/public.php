@@ -72,7 +72,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::post('search', [GroupController::class, 'searchResult']);
         Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
         Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
-        Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
+        Route::get('pickup', [GroupsController::class, 'showPickup'])->name('pickup');
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
@@ -96,8 +96,8 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
      *
      * @see \App\Http\Controllers\Public\ShopController
      */
-    $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
-    // $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
+    $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'siroganeze', 'lovestory'];
+    // $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'siroganeze', 'lovestory'];
     Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
         Route::get('/', [ShopController::class, 'showHome'])->name('home');
         Route::get('cast/{id}', [ShopController::class, 'showCastProfile'])->name('cast.profile');
@@ -120,7 +120,7 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
     });
 
     Route::prefix('shops')->name('shops.')->group(function () {
-        $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'shiroganeze', 'lovestory'];
+        $shop_list = ['shizuku', 'miyabi', 'pussycat', 'en', 'siroganeze', 'lovestory'];
         Route::prefix('{shop}')->name('shop.')->whereIn('shop', $shop_list)->group(function () {
             Route::get('/', [ShizukuController::class, 'showHome'])->name('home');
             Route::get('system', [ShizukuController::class, 'showSystem'])->name('system');

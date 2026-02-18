@@ -15,35 +15,35 @@
         </div>
         <div class="header-separator"></div>
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('public.groups.schedule') }}">
                 <small>Schedule</small>
                 <span class="menu_newface">出勤情報</span>
             </a>
         </div>
     </div>
     <div class="sub-header-logo">
-        <a href="{{ route('public.group.home') }}">
+        <a href="{{ route('public.groups.home') }}">
             <img src="{{ asset('assets/img/groups/PLO2.png') }}" alt="">
         </a>
     </div>
     <div class="right-header">
         <div class="right-header-menu">
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('public.groups.event') }}">
                 <small>Event</small>
                 <span class="menu_newface">イベント情報</span>
             </a>
         </div>
         <div class="header-separator header-separator--dark"></div>
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('public.groups.shop') }}">
                 <small>Shop</small>
                 <span class="menu_newface">店舗一覧</span>
             </a>
         </div>
         <div class="header-separator header-separator--dark"></div>
         <div class="header-user-menu">
-            <a href="{{ route('public.group.newcomer') }}">
+            <a href="{{ route('logoutAll') }}">
                 <small>Logout</small>
                 <span class="menu_newface">ログアウト</span>
             </a>
@@ -71,19 +71,19 @@
 </header>
 
 <!-- Groups Menu Overlay Component -->
-<x-public.groups.menu-overlay 
+<x-public.groups.menu-overlay
     :menu-links="[
         'top' => route('public.groups.home'),
         'new' => route('public.groups.newface'),
-        'shop' => route('public.group.newcomer'),
-        'schedule' => route('public.group.newcomer'),
-        'pickup' => '#',
-        'diary' => '#',
+        'shop' => route('public.groups.shop'),
+        'schedule' => route('public.groups.schedule'),
+        'pickup' => route('public.groups.pickup'),
+        'diary' => route('public.groups.photodiary'),
         'login' => route('login'),
         'register' => route('register'),
         'news' => '#',
-        'movie' => '#',
-        'event' => route('public.group.newcomer'),
+        'movie' => route('public.groups.movie'),
+        'event' => route('public.groups.event'),
         'recruit-female' => '#',
         'recruit-male' => '#',
     ]"
