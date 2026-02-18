@@ -78,70 +78,7 @@
           </div>
 
           <!-- Pagination -->
-          @if($diaries->hasPages())
-            @php
-              $currentPage = $diaries->currentPage();
-              $lastPage = $diaries->lastPage();
-              $onEachSide = 2; // Show 2 pages on each side of current page
-              
-              // Calculate page ranges
-              $start = max(1, $currentPage - $onEachSide);
-              $end = min($lastPage, $currentPage + $onEachSide);
-              
-              // Build pagination array
-              $pages = [];
-              
-              // Always add first page
-              if ($start > 1) {
-                $pages[] = ['page' => 1, 'url' => $diaries->url(1), 'type' => 'page'];
-                if ($start > 2) {
-                  $pages[] = ['page' => null, 'type' => 'ellipsis'];
-                }
-              }
-              
-              // Add pages around current
-              for ($i = $start; $i <= $end; $i++) {
-                $pages[] = ['page' => $i, 'url' => $diaries->url($i), 'type' => 'page'];
-              }
-              
-              // Add ellipsis and last page if needed
-              if ($end < $lastPage) {
-                if ($end < $lastPage - 1) {
-                  $pages[] = ['page' => null, 'type' => 'ellipsis'];
-                }
-                $pages[] = ['page' => $lastPage, 'url' => $diaries->url($lastPage), 'type' => 'page'];
-              }
-            @endphp
-            
-            <div class="diary-pagination">
-              <button class="diary-pagination-btn diary-pagination-btn--prev" 
-                      {{ $diaries->onFirstPage() ? 'disabled' : '' }}
-                      onclick="window.location.href='{{ $diaries->previousPageUrl() }}'">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M15 18L9 12L15 6" stroke="{{ $diaries->onFirstPage() ? '#BEBEBE' : '#021A21' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              
-              @foreach($pages as $item)
-                @if($item['type'] === 'ellipsis')
-                  <span class="diary-pagination-ellipsis">...</span>
-                @else
-                  <button class="diary-pagination-page {{ $diaries->currentPage() == $item['page'] ? 'diary-pagination-page--active' : '' }}"
-                          onclick="window.location.href='{{ $item['url'] }}'">
-                    {{ $item['page'] }}
-                  </button>
-                @endif
-              @endforeach
-              
-              <button class="diary-pagination-btn diary-pagination-btn--next"
-                      {{ $diaries->hasMorePages() ? '' : 'disabled' }}
-                      onclick="window.location.href='{{ $diaries->nextPageUrl() }}'">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                  <path d="M9 6L15 12L9 18" stroke="{{ $diaries->hasMorePages() ? '#021A21' : '#BEBEBE' }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-            </div>
-          @endif
+          <x-public.groups.pagination :paginator="$diaries" />
 
           <!-- Mobile Calendar and Monthly Picker -->
           <div class="diary-mobile-calendar-section mobile-only">

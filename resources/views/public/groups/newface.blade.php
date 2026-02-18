@@ -42,6 +42,11 @@
             @endforelse
         </div>
       </div>
+      
+      <!-- Pagination -->
+      @if(isset($casts) && method_exists($casts, 'hasPages') && $casts->hasPages())
+        <x-public.groups.pagination :paginator="$casts" />
+      @endif
     </section>
   </div>
 </x-public-groups-sub-page-layout>

@@ -30,6 +30,11 @@
         </div>
       @endforelse
     </div>
+    
+    <!-- Pagination -->
+    @if(isset($events) && method_exists($events, 'hasPages') && $events->hasPages())
+      <x-public.groups.pagination :paginator="$events" />
+    @endif
   </div>
 </x-public-groups-sub-page-layout>  
 
