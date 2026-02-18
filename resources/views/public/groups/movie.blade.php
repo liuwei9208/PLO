@@ -68,6 +68,11 @@
           </div>
         @endforelse
       </div>
+      
+      <!-- Pagination -->
+      @if(isset($videos) && method_exists($videos, 'hasPages') && $videos->hasPages())
+        <x-public.groups.pagination :paginator="$videos" />
+      @endif
     </div>
   </div>
 </x-public-groups-sub-page-layout>

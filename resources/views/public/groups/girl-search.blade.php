@@ -96,6 +96,11 @@
               </a>
             @endforeach
           </div>
+          
+          <!-- Pagination -->
+          @if(isset($searchResults) && method_exists($searchResults, 'hasPages') && $searchResults->hasPages())
+            <x-public.groups.pagination :paginator="$searchResults" />
+          @endif
         </div>
       @endif
 
