@@ -33,15 +33,15 @@
 .shop-info-grid-header {
   display: none;
   width: 100%;
-  border-bottom: 3px solid #FFFFFF;
+  border-bottom: 3px solid #010307;
   padding: 15px 0;
   text-align: center;
 
   p {
-    @include yu-mincho-regular();
+    @include M_PLUS_1();
     @include responsive-font(19px, 20px);
     line-height: 20px;
-    color: #FFFFFF;
+    color: #010307;
     margin: 0;
     font-weight: 400;
   }
@@ -391,7 +391,7 @@
     width: 100%;
     margin: 0 auto;
     padding: 0;
-    border: 3px solid #FFFFFF;
+    border: 3px solid #010307;
     border-radius: 15px;
     background: transparent;
     flex-direction: column;
@@ -444,7 +444,7 @@
       font-weight: 400;
       text-align: left;
       white-space: normal;
-      color: #FFFFFF;
+      color: #010307;
       margin: 0;
     }
   }
