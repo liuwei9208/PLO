@@ -117,12 +117,12 @@
         'news' => '#',
         'movie' => route('public.groups.movie'),
         'event' => route('public.groups.event'),
-        'recruit-female' => '#',
-        'recruit-male' => '#',
+        'recruit-female' => route('public.recruit.female'),
+        'recruit-male' => route('public.recruit.male'),
     ]"
     :bottom-buttons="[
         'group' => route('public.groups.home'),
-        'recruit' => '#',
+        'recruit' => route('public.recruit.male'),
     ]"
     :bottom-button-images="[
         'group' => 'assets/img/shops/shizuku/plo-group-btn.png',

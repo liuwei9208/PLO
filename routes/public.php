@@ -10,6 +10,7 @@ use App\Http\Middleware\AuthenticateMultiple;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\Public\ShizukuController;
 use App\Http\Controllers\Public\GroupsController;
+use App\Http\Controllers\Public\RecruitController;
 
 // Route::middleware([AuthenticateMultiple::class])->group(function () {
 
@@ -90,6 +91,15 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('girl-search', [GroupsController::class, 'showGirlSearch'])->name('girl-search');
         Route::post('girl-search', [GroupsController::class, 'showGirlSearch']);
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
+    });
+
+    /**
+     * Recruit routes
+     */
+    Route::prefix('recruit')->name('recruit.')->group(function () {
+        Route::get('male', [RecruitController::class, 'showMale'])->name('male');
+        Route::get('female', [RecruitController::class, 'showFemale'])->name('female');
+        Route::post('submit', [RecruitController::class, 'submitForm'])->name('submit');
     });
     /**
      * Shop routes

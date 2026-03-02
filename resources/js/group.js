@@ -23,7 +23,7 @@ const pushbar = new Pushbar({
 });
 
 new Swiper('.newface-slide', {
-  modules: [ Autoplay, Navigation ],
+  modules: [Autoplay, Navigation],
   loop: true,
   autoplay: {
     delay: 5000,
@@ -177,7 +177,7 @@ const eventSlider = new Swiper('.event-slider', {
 
       // サムネイルスライダーを同期
       if (thumbsSwiper.slides) {
-        console.log({realIndex});
+        console.log({ realIndex });
         thumbsSwiper.slideToLoop(realIndex, 0);
 
         // すべてのサムネイルからアクティブクラスを削除
@@ -336,21 +336,21 @@ window.addEventListener('resize', () => {
 function resizeModule() {
   const header_child_menu_logo = document.querySelector('.header-child-user-menu-logo');
   if (header_child_menu_logo) {
-    console.log(header_child_menu_logo.getBoundingClientRect().x) ;
+    console.log(header_child_menu_logo.getBoundingClientRect().x);
     const header_child_logo = document.querySelector('.header-child-logo');
     if (header_child_logo) {
-      console.log(header_child_menu_logo.getBoundingClientRect().left) ;
+      console.log(header_child_menu_logo.getBoundingClientRect().left);
       let logo_left = header_child_menu_logo.getBoundingClientRect().left;
       document.documentElement.style.setProperty('--logo-left', `${logo_left + 10}px`);
       // header_child_logo.style.left = `${header_child_menu_logo.getBoundingClientRect().x}px`;
-      console.log(header_child_logo.getBoundingClientRect()) ;
+      console.log(header_child_logo.getBoundingClientRect());
     }
   }
   const mv = document.querySelector('.mv');
   const body = document.querySelector('body');
 
   if (mv) {
-    console.log({mv});
+    console.log({ mv });
     console.log(body.clientWidth);
     console.log(mv.offsetWidth);
     console.log(mv.clientWidth);
@@ -367,7 +367,7 @@ function resizeModule() {
     const draw = document.querySelector('.drawer-toggle');
     if (draw) {
       const draw_height = draw.offsetHeight;
-      console.log({draw_height});
+      console.log({ draw_height });
 
       // if (logo_height > draw_height) {
       //   draw.style.top = `${logo_height - draw_height}px`;
@@ -380,20 +380,20 @@ function resizeModule() {
     //   mv.style.width = `${body.clientWidth}px`;
 
     // }
-    console.log({logo_height});
+    console.log({ logo_height });
     // console.log(logo.clientHeight);
     const main = document.querySelector('.main');
     if (main) {
-      if ( logo_height > 0){
-        mv.style.top = `${logo_height}px`;
+      if (logo_height > 0) {
+        // mv.style.top = `${logo_height}px`; // Managed by CSS
         main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
       }
-      if ( logo_child_logo_height > 0){
-        mv.style.top = `${logo_child_logo_height}px`;
+      if (logo_child_logo_height > 0) {
+        // mv.style.top = `${logo_child_logo_height}px`; // Managed by CSS
         main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
       }
-      if (logo_child_logo_height == 0 && logo_height == 0){
-        mv.style.top = `0px`;
+      if (logo_child_logo_height == 0 && logo_height == 0) {
+        // mv.style.top = `0px`; // Managed by CSS
         main.style.marginTop = `${mv.offsetHeight}px`;
       }
     }
@@ -410,21 +410,21 @@ function resizeModule() {
   const newface = document.querySelector('.newface');
   if (newface) {
     let newfaceHeight = newface.offsetHeight;
-    console.log({newfaceHeight});
+    console.log({ newfaceHeight });
     const newfaceBorder = document.querySelector('.newface-main');
-    console.log({newfaceBorder});
+    console.log({ newfaceBorder });
     if (newfaceBorder) {
       console.log(newfaceBorder.offsetHeight);
       const fullWidth = body.clientWidth;
-      console.log({fullWidth});
+      console.log({ fullWidth });
       if (fullWidth < 768) {
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight + 10;
       } else if (fullWidth >= 768 && fullWidth < 1440) {
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 0;
-      }else{
+      } else {
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 30;
       }
-      console.log({newfaceHeight});
+      console.log({ newfaceHeight });
       document.documentElement.style.setProperty('--newface-height', `${newfaceHeight}px`);
       // newfaceBorder.style.setProperty('--newface-height', `${newfaceHeight}px`);
       // const border = document.querySelector('.section-title');

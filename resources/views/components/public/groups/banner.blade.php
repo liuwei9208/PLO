@@ -3,10 +3,25 @@
     'titleEn' => 'Photo Diary',
     'titleJa' => '写メ日記',
     'vectorImage' => asset('assets/img/groups/Vector.png'),
-    'overlayOpacity' => '0.25'
+    'overlayOpacity' => '0.25',
+    'extraClass' => '',
 ])
 
-<div class="banner-photodiary" style="--banner-bg-image: url('{{ $backgroundImage }}'); --banner-overlay-opacity: {{ $overlayOpacity }};">
+@php
+  // Build style attribute dynamically so that specific pages (e.g. recruit male)
+  // can opt-out of setting the background image inline and rely on CSS instead.
+  $styleParts = [];
+
+  if (!empty($backgroundImage)) {
+      $styleParts[] = "--banner-bg-image: url('{$backgroundImage}')";
+  }
+
+  $styleParts[] = "--banner-overlay-opacity: {$overlayOpacity}";
+
+  $styleAttribute = implode('; ', $styleParts) . ';';
+@endphp
+
+<div class="banner-photodiary {{ $extraClass }}" style="{{ $styleAttribute }}">
   <div class="banner-photodiary-background" aria-hidden="true">
     <div class="banner-photodiary-overlay"></div>
   </div>
@@ -16,10 +31,7 @@
       <p class="banner-photodiary-title-ja">{{ $titleJa }}</p>
     </div>
   </div>
-</div>
-<div class="banner-vector-scroll">
-  <img src="{{ $vectorImage }}" alt="">
-</div>
+ </div>
 @once
   @vite('resources/scss/groups/banner.scss')
 @endonce

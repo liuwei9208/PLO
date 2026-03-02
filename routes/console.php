@@ -16,14 +16,14 @@ foreach ($casts as $cast) {
     // }
 }
 
-Schedule::command('backup:clean')->daily()->at('04:00');
+Schedule::command('backup:clean')->daily()->at('01:50');
     // ->onSuccess(function () {
     //     \Log::info('Backup clean completed successfully.');
     // })
     // ->onFailure(function () {
     //     \Log::error('Backup clean failed.');
     // });
-Schedule::command('backup:run')->daily()->at('04:30');
+Schedule::command('backup:run')->daily()->at('02:00');
     // ->onSuccess(function () {
     //     \Log::info('Backup completed successfully.');
     // })

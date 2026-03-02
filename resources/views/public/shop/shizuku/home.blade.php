@@ -616,8 +616,8 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list" />

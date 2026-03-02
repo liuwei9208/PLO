@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../global/vars' as *;
 @use '../global/reset';
 @use '../global/base';
@@ -149,7 +150,7 @@
           border-color: $shop-color-pussycat;
 
           &:hover {
-            background: darken($shop-color-pussycat, 10%);
+            background: color.adjust($shop-color-pussycat, $lightness: -10%);
           }
         }
       }
@@ -161,7 +162,7 @@
           border-color: $shop-color-shizuku;
 
           &:hover {
-            background: lighten($shop-color-shizuku, 20%);
+            background: color.adjust($shop-color-shizuku, $lightness: 20%);
           }
         }
       }
@@ -173,7 +174,7 @@
           border-color: $shop-color-miyabi;
 
           &:hover {
-            background: darken($shop-color-miyabi, 10%);
+            background: color.adjust($shop-color-miyabi, $lightness: -10%);
           }
         }
       }
@@ -185,7 +186,7 @@
           border-color: $shop-color-en;
 
           &:hover {
-            background: darken($shop-color-en, 10%);
+            background: color.adjust($shop-color-en, $lightness: -10%);
           }
         }
       }
@@ -197,7 +198,7 @@
           border-color: $shop-color-siroganeze;
 
           &:hover {
-            background: darken($shop-color-siroganeze, 10%);
+            background: color.adjust($shop-color-siroganeze, $lightness: -10%);
           }
         }
       }
@@ -209,7 +210,7 @@
           border-color: $shop-color-lovestory;
 
           &:hover {
-            background: darken($shop-color-lovestory, 10%);
+            background: color.adjust($shop-color-lovestory, $lightness: -10%);
           }
         }
       }

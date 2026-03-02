@@ -13,7 +13,6 @@
   background-attachment: fixed;
   margin-left: 0px;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.8);
 }
 
 // Vector logo container - scrolls with content
@@ -37,7 +36,6 @@
 // Fixed banner background - similar to shizuku .banner-image pattern
 .banner-photodiary {
   position: fixed;
-  top: 0;
   left: 0;
   width: 100%;
   min-height: 100vh;
@@ -146,6 +144,91 @@
       font-weight: 700;
       line-height: normal;
     }
+  }
+}
+
+// Recruit male page: use non-fixed hero banner placed directly under header,
+// and swap background image responsively.
+//  - ~768px:  home_page4.png
+//  - 769–1440px: home_page3.png
+//  - 1441–1920px: home_page2.png
+//  - 1921px+: home_page.png
+.banner-photodiary--male {
+  position: relative;
+  top: 0;
+  // Giữ đúng tỉ lệ ảnh 2560x1393 (68:37) và ưu tiên hiển thị đủ ảnh
+  width: 100%;
+  aspect-ratio: 68 / 37;
+  min-height: auto;
+  z-index: 0;
+  pointer-events: auto;
+
+  .banner-photodiary-background {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    // Ưu tiên hiển thị đủ ảnh, không cắt
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    --banner-bg-image: url('/assets/img/male/home_page3.png');
+
+    @media screen and (min-width: 1441px) {
+      --banner-bg-image: url('/assets/img/male/home_page2.png');
+    }
+
+    @media screen and (min-width: 1921px) {
+      --banner-bg-image: url('/assets/img/male/home_page.png');
+    }
+  }
+
+  .banner-photodiary-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    // căn giữa text trong vùng banner có aspect-ratio cố định
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+  }
+}
+
+// Recruit female page: non-fixed hero banner placed directly under header,
+// uses inline --banner-bg-image from Blade (home-page.png).
+.banner-photodiary--female {
+  position: relative;
+  top: 0;
+  width: 100%;
+  // Giữ tỉ lệ hero tương tự trang nam để đồng bộ layout
+  aspect-ratio: 68 / 37;
+  min-height: auto;
+  z-index: 0;
+  pointer-events: auto;
+
+  .banner-photodiary-background {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+  }
+
+  .banner-photodiary-content {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
   }
 }
 

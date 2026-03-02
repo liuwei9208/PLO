@@ -249,7 +249,7 @@
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
+                        description="新入デビュー♪ シロガネーゼの新人入店情報になります" button-text="一覧を見る" background-color="#fff"
                         text-color="#0B0B07" border-color="#394022" underlineColor="#132126"
                         responsive-variant="new-girl" :gradient=false
                         button-href="{{ route('public.shops.shop.newcast', ['shop' => 'siroganeze']) }}" />
@@ -683,8 +683,8 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"

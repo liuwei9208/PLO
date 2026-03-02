@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../global/vars' as *;
 @use '../mixins/text';
 @use '../global/reset';
@@ -504,7 +505,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-pussycat, 20%), lighten($shop-color-pussycat, 10%), $shop-color-pussycat);
+          background: linear-gradient(135deg, color.adjust($shop-color-pussycat, $lightness: 20%), color.adjust($shop-color-pussycat, $lightness: 10%), $shop-color-pussycat);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
@@ -522,7 +523,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-shizuku, 20%), lighten($shop-color-shizuku, 10%), $shop-color-shizuku);
+          background: linear-gradient(135deg, color.adjust($shop-color-shizuku, $lightness: 20%), color.adjust($shop-color-shizuku, $lightness: 10%), $shop-color-shizuku);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
@@ -540,7 +541,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-miyabi, 20%), lighten($shop-color-miyabi, 10%), $shop-color-miyabi);
+          background: linear-gradient(135deg, color.adjust($shop-color-miyabi, $lightness: 20%), color.adjust($shop-color-miyabi, $lightness: 10%), $shop-color-miyabi);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
@@ -558,7 +559,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-en, 20%), lighten($shop-color-en, 10%), $shop-color-en);
+          background: linear-gradient(135deg, color.adjust($shop-color-en, $lightness: 20%), color.adjust($shop-color-en, $lightness: 10%), $shop-color-en);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
@@ -576,7 +577,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-siroganeze, 20%), lighten($shop-color-siroganeze, 10%), $shop-color-siroganeze);
+          background: linear-gradient(135deg, color.adjust($shop-color-siroganeze, $lightness: 20%), color.adjust($shop-color-siroganeze, $lightness: 10%), $shop-color-siroganeze);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
@@ -594,7 +595,7 @@
         }
 
         &:hover {
-          background: linear-gradient(135deg, lighten($shop-color-lovestory, 20%), lighten($shop-color-lovestory, 10%), $shop-color-lovestory);
+          background: linear-gradient(135deg, color.adjust($shop-color-lovestory, $lightness: 20%), color.adjust($shop-color-lovestory, $lightness: 10%), $shop-color-lovestory);
           animation: shopPulse 0.4s ease-in-out infinite, shopGlow 1s ease-in-out infinite;
         }
       }
