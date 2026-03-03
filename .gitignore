@@ -24,3 +24,5 @@ yarn-error.log
 /.zed
 yarn.lock
 composer.lock
+*.zip
+build.zip
