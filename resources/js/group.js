@@ -22,34 +22,106 @@ const pushbar = new Pushbar({
   overlay: true,
 });
 
-new Swiper('.newface-slide', {
-  modules: [Autoplay, Navigation],
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
-  speed: 1000,
-  breakpoints: {
-    0: {
-      centeredSlides: 1,
-      slidesPerView: 1.35,
-      spaceBetween: 30,
-    },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30,
-    },
-    1366: {
-      slidesPerView: 3,
-      spaceBetween: 45,
+// Use app-specific state class names to avoid unintended CSS collisions
+const sliderStateClassNames = {
+  slideActiveClass: 'is-swiper-active',
+  slideNextClass: 'is-swiper-next',
+  slidePrevClass: 'is-swiper-prev',
+};
+
+function initNewfaceSlider(sliderElement) {
+  const track = sliderElement.querySelector('.newface-track, .swiper-wrapper');
+  if (!track) return;
+
+  const slides = Array.from(track.children).filter(
+    (child) => child.classList.contains('newface-slide-item') || child.classList.contains('swiper-slide'),
+  );
+  if (slides.length <= 1) return;
+
+  // Prevent native image/link dragging so pointer drag always scrolls the slider.
+  track.querySelectorAll('img, a').forEach((node) => {
+    node.setAttribute('draggable', 'false');
+  });
+
+  let dragging = false;
+  let moved = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let activePointerId = null;
+
+  const handlePointerDown = (event) => {
+    if (event.pointerType === 'mouse' && event.button !== 0) return;
+
+    dragging = true;
+    moved = false;
+    startX = event.clientX;
+    startScrollLeft = sliderElement.scrollLeft;
+    activePointerId = event.pointerId;
+
+    sliderElement.classList.add('is-dragging');
+    sliderElement.style.scrollSnapType = 'none';
+
+    if (sliderElement.setPointerCapture) {
+      sliderElement.setPointerCapture(activePointerId);
     }
-  },
-  navigation: {
-    prevEl: '.newface-slide-prev',
-    nextEl: '.newface-slide-next',
-  },
-})
+  };
+
+  const handlePointerMove = (event) => {
+    if (!dragging || (activePointerId !== null && event.pointerId !== activePointerId)) return;
+
+    const deltaX = event.clientX - startX;
+    if (Math.abs(deltaX) > 6) moved = true;
+    sliderElement.scrollLeft = startScrollLeft - deltaX;
+  };
+
+  const finishDrag = () => {
+    if (!dragging) return;
+
+    dragging = false;
+    sliderElement.classList.remove('is-dragging');
+    sliderElement.style.scrollSnapType = 'x mandatory';
+
+    if (activePointerId !== null && sliderElement.releasePointerCapture) {
+      try {
+        sliderElement.releasePointerCapture(activePointerId);
+      } catch (error) {
+        // Ignore pointer capture release errors when pointer is already gone.
+      }
+    }
+
+    activePointerId = null;
+  };
+
+  sliderElement.addEventListener('pointerdown', handlePointerDown);
+  sliderElement.addEventListener('pointermove', handlePointerMove);
+  sliderElement.addEventListener('pointerup', finishDrag);
+  sliderElement.addEventListener('pointercancel', finishDrag);
+  sliderElement.addEventListener('dragstart', (event) => {
+    event.preventDefault();
+  });
+  sliderElement.addEventListener('pointerleave', (event) => {
+    if (event.pointerType === 'mouse') finishDrag();
+  });
+  sliderElement.addEventListener('click', (event) => {
+    if (moved) {
+      event.preventDefault();
+      event.stopPropagation();
+      moved = false;
+    }
+  }, true);
+
+  sliderElement.style.touchAction = 'pan-y';
+  sliderElement.style.scrollBehavior = 'auto';
+  track.style.touchAction = 'pan-y';
+  slides.forEach((slide) => {
+    slide.style.touchAction = 'pan-y';
+  });
+}
+
+const newfaceSliderElement = document.querySelector('.newface-slide');
+if (newfaceSliderElement) {
+  initNewfaceSlider(newfaceSliderElement);
+}
 
 
 /** ピックアップの「店舗名」ボタン */
@@ -115,6 +187,7 @@ const newfaceMore = document.querySelector('.newface-more')
 
 // Create thumbnail swiper for pagination
 const thumbsSwiper = new Swiper('.event-pagination', {
+  ...sliderStateClassNames,
   slidesPerView: 'auto',
   centeredSlides: true,
   slideToClickedSlide: true,
@@ -137,6 +210,7 @@ const thumbsSwiper = new Swiper('.event-pagination', {
 
 // Main event slider
 const eventSlider = new Swiper('.event-slider', {
+  ...sliderStateClassNames,
   modules: [Navigation, Pagination, Autoplay],
   slidesPerView: 'auto',
   spaceBetween: 20,

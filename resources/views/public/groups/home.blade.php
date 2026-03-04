@@ -768,9 +768,6 @@
   @endif
   @if($displayNewfaces->count() > 0)
 <section class="newface" aria-labelledby="newface-title">
-  
-
-  <div class="container">
     {{-- Header --}}
     <header class="section-title newface__header">
       <h1 id="newface-title" class="section-title-en">New Face</h1>
@@ -788,12 +785,11 @@
     @endphp
 
     {{-- Slider (danh sách card kéo ngang) --}}
-    <div class="newface-slide swiper content-wrapper" aria-label="New Face slider">
-      <div class="swiper-wrapper">
+    <div class="newface-slide content-wrapper" aria-label="New Face slider">
+      <div class="newface-track">
         @foreach ($newfaceSlidesForHome as $cast)
-          <div class="swiper-slide">
-            <a class="newface-content"
-               href="{{ route('public.shops.shop.profile', ['shop'=>$cast->shop_slug,'id'=>$cast->id]) }}">
+          <div class="newface-slide-item">
+            <div class="newface-content">
 
               {{-- Top: date + underbar --}}
               <div class="newface-content-top">
@@ -826,7 +822,7 @@
                      loading="lazy"
                      decoding="async">
 
-		                <img class="newface-content-img-frame"
+		            <img class="newface-content-img-frame"
 		                     src="{{ $newfaceFrameUrl }}"
 		                     alt=""
 	                     loading="lazy"
@@ -837,9 +833,9 @@
               <div class="newface-content-contents">
                 <div class="newface-content-contents-top">
                   <span class="newface-content-contents-top-name">{{ $cast->name }}</span>
-                  <div class="newface-content-contents-top-shop">
+                  <a class="newface-content-contents-top-shop" href="{{ route('public.shops.shop.profile', ['shop' => $cast->shop_slug, 'id' => $cast->id]) }}">
                     <span class="newface-content-contents-top-shop-text">{{ $cast->shop_name }}</span>
-                  </div>
+                  </a>
                 </div>
 
                 <div class="newface-content-contents-measure">
@@ -855,22 +851,24 @@
                 </div>
               </div>
 
-            </a>
+        </div>
           </div>
         @endforeach
       </div>
+      {{-- More --}}
+      
+      
     </div>
 
-    {{-- More --}}
     <div class="groups-button-more">
-      <a href="{{ route('public.groups.newface') }}" class="groups-button-more-btn">もっと見る</a>
-    </div>
-  </div>
+        <a href="{{ route('public.groups.newface') }}" class="groups-button-more-btn">もっと見る</a>
+      </div>
+  
 </section>
 @endif
 
   @if($displayPickups->count() > 0)
-  <div class="pickup">
+  <section class="pickup">
     <div class="section-title">
       <h1 class="section-title-en">Pickup Girl</h1>
       <div class="section-title-jp">
@@ -891,139 +889,71 @@
         <h2 class="section-title-jp-text">ピックアップ</h2>
       </div>
     </div>
-    <div class="pickup-contents pc-only"> {{--flex col--}}
-        <div class="pickup-slider swiper content-wrapper">
-          <div class="swiper-wrapper">
-          @foreach($displayPickupsForHome as $pickup)
-            <div class="swiper-slide">
-              <a class="pickup-main" href="{{ route('public.groups.pickup') }}">
-                <div class="pickup-main-border">
-                  <div class="pickup-main-border-img">
-                    <img class="pickup-main-border-img-photo" src="{{ $pickup->featured_photo_url }}">
-                    <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
-                  </div>
-                  <div class="pickup-main-border-contents">
-                    <span class="pickup-main-border-contents-name">キャスト名</span>
-                    <span class="pickup-main-border-contents-measure">T.160 B.85(C) W.60 H.83</span>
-                    <span class="pickup-main-border-contents-shop">プッシーキャット</span>
-                    <div class="pickup-main-border-contents-schedule">
-                      <span class="pickup-main-border-contents-schedule-text">本日出勤中</span>
-                    </div>
-                    <div class="pickup-main-border-contents-manager">
-                      <span class="pickup-main-border-contents-manager-text">店長メッセージ店長メッセージ店長メッセージ</span>
-                    </div>
-                  </div>
+    <div class="pickup-contents">
+      <div class="pickup-girl__inner">
+          <div class="pickup-main-border-img">
+            <img class="pickup-main-border-img-photo" src="{{ asset('assets/img/home/pickupgirl/0d50d8cad0a0b77a8542dc16dfab0bca65297c3f.jpg') }}">
+            <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/home/pickupgirl/0d50d8cad0a0b77a8542dc16dfab0bca65297c3f.jpg') }}">
+          </div>
+        <div class="pickup-girl__content">
+          <h3 class="pickup-girl__name">キャスト名</h3>
+          <p class="pickup-girl__meta">T.160 B.85(C) W.60 H.83</p>
+
+          <h4 class="pickup-girl__title">プッシュキャット</h4>
+
+          <div class="pickup-girl__status">本日出勤中</div>
+
+          <div class="pickup-girl__message">
+            店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ 店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pickup-contents-bottom">
+      <div class="pickup-contents-slider-content-wrapper">
+        <div class="pickup-contents-track">
+          @foreach ($displayPickupsForHome as $pickup)
+            <div class="pickup-contents-slide-item">
+              <a class="pickup-card"
+                href="{{ route('public.shops.shop.profile', ['shop' => $pickup->shop_slug, 'id' => $pickup->id]) }}">
+
+                <!-- Image -->
+                <div class="pickup-slide-contents-img">
+                  <img class="pickup-slide-contents-img-photo" src="{{ $pickup->featured_photo_url }}" alt="{{ $pickup->name }}">
+                  <img class="pickup-slide-contents-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}" alt="">
                 </div>
+
+                <!-- Content -->
+                <div class="pickup-card__body">
+                  <h3 class="pickup-card__name">{{ $pickup->name }}</h3>
+
+                  <p class="pickup-card__measure">
+                    T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }})
+                    W.{{ $pickup->waist }} H.{{ $pickup->hip }}
+                  </p>
+
+                  <p class="pickup-card__shop">{{ $pickup->shop_name }}</p>
+
+                  <div class="pickup-card__status">
+                    <span class="pickup-card__statusText">{{ $pickup->schedule_status }}</span>
+                  </div>
+
+                  <p class="pickup-card__message">
+                    女の子メッセージ女の子メッセージ女の子メッセージ
+                  </p>
+                </div>
+
               </a>
             </div>
           @endforeach
         </div>
-        <div class="pickup-pagination swiper">
-          <div class="swiper-wrapper">
-            @foreach($displayPickupsForHome as $pickup)
-              <div class="swiper-slide" data-swiper-slide-index="{{ $loop->index }}">
-                <div class="pickup-slide-contents">
-                  <div class="pickup-slide-contents-img">
-                    <img class="pickup-slide-contents-img-photo" src="{{ $pickup->featured_photo_url }}">
-                    <img class="pickup-slide-contents-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
-                  </div>
-                  <div class="pickup-slide-contents-detail">
-                    <span class="pickup-slide-contents-detail-name">{{ $pickup->name }}</span>
-                    <span class="pickup-slide-contents-detail-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{$pickup->bra}}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
-                    <span class="pickup-slide-contents-detail-shop">{{ $pickup->shop_name }}</span>
-                    <div class="pickup-slide-contents-detail-schedule">
-                      <span class="pickup-slide-contents-detail-schedule-text">{{ $pickup->schedule_status }}</span>
-                    </div>
-                    <span class="pickup-slide-contents-detail-message">女の子メッセージ女の子メッセージ女の子メッセージ</span>
-
-                  </div>
-                </div>
-              </div>
-            @endforeach
-          </div>
-        </div>
-        {{-- <button class="event-slide-prev">
-          <img src="{{ asset('assets/img/group/newface/prev.svg') }}" alt="">
-        </button>
-        <button class="event-slide-next">
-          <img src="{{ asset('assets/img/group/newface/next.svg') }}" alt="">
-        </button> --}}
       </div>
     </div>
-    <div class="pickup-contents sp-only">
-      <div class="pickup-contents-slider swiper content-wrapper">
-        <div class="swiper-wrapper">
-          @foreach ( $displayPickupsForHome as $pickup)
-          <div class="swiper-slide">
-            <a class="pickup-contents-sp" href="{{ route('public.shops.shop.profile',[ 'shop'=>$pickup->shop_slug,'id'=>$pickup->id ]) }}">
-              <div class="pickup-contents-sp-img">
-                <img class="pickup-contents-sp-img-photo" src="{{ $pickup->featured_photo_url }}">
-                <img class="pickup-contents-sp-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
-              </div>
-              <div class="pickup-contents-sp-contents">
-                <span class="pickup-contents-sp-contents-name">{{ $pickup->name }}</span>
-                <span class="pickup-contents-sp-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
-                <span class="pickup-contents-sp-contents-shop">{{ $pickup->shop_name }}</span>
-                <div class="pickup-contents-sp-contents-schedule">
-                  <span class="pickup-contents-sp-contents-schedule-text">
-                    {{ $pickup->schedule_status }}
-                  </span>
-                </div>
-                <div class="pickup-contents-sp-contents-manager">
-                  <span class="pickup-contents-sp-contents-manager-text">女の子メッセージ女の子メッセージ女の子メッセージ</span>
-                </div>
-              </div>
-            </a>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </div>
-    <div class="pickup-list sp-only">
-      {{-- @for( $i=1 ; $i < 10 ; $i++)
-      <div class="pickup-list-item">
-        <div class="pickup-list-item-img">
-          <img class="pickup-list-item-img-photo" src="{{ asset('assets/img/groups/castphoto.png') }}">
-          <img class="pickup-list-item-img-frame" src="{{ asset('assets/img/groups/card-frame.png') }}">
-        </div>
-        <div class="pickup-list-item-contents">
-          <span class="pickup-list-item-contents-name">ă‚­ăƒ£ă‚¹ăƒˆå</span>
-          <span class="pickup-list-item-contents-measure">T.160 B.85(C) W.60 H.83</span>
-          <span class="pickup-list-item-contents-shop">ăƒ—ăƒƒă‚·ăƒ¼ă‚­ăƒ£ăƒƒăƒˆ</span>
-          <div class="pickup-list-item-contents-schedule">
-            <span class="pickup-list-item-contents-schedule-text">æœ¬æ—¥å‡ºå‹¤ä¸­</span>
-          </div>
-          <span class="pickup-list-item-contents-message">å¥³ă®å­ăƒ¡ăƒƒă‚»ăƒ¼ă‚¸å¥³ă®å­ăƒ¡</span>
-        </div>
-      </div>
-      @endfor --}}
-      @foreach($displayPickupsForHome as $pickup)
-      <div class="pickup-list-item">
-        <div class="pickup-list-item-img">
-          <img class="pickup-list-item-img-photo" src="{{ $pickup->featured_photo_url }}">
-          <img class="pickup-list-item-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}">
-        </div>
-        <div class="pickup-list-item-contents">
-          <span class="pickup-list-item-contents-name">{{ $pickup->name }}</span>
-          <span class="pickup-list-item-contents-measure">T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }}) W.{{ $pickup->waist }} H.{{ $pickup->hip }}</span>
-          <span class="pickup-list-item-contents-shop">{{ $pickup->shop_name }}</span>
-          <div class="pickup-list-item-contents-schedule">
-            <span class="pickup-list-item-contents-schedule-text">{{ $pickup->schedule_status }}</span>
-          </div>
-          <span class="pickup-list-item-contents-message">女の子メッセージ女の子メッセージ女の子メッセージ</span>
-        </div>
-      </div>
-      @endforeach
-    </div>
-    <div class="groups-button-more">
-      <a href="{{ route('public.groups.pickup') }}" class="groups-button-more-btn">もっと見る</a>
-    </div>
-  </div>
+  </section>
   @endif
   @if($displayDiariesForHome->count() > 0)
 <section class="diary" aria-labelledby="photo-diary-title">
   <div class="container">
-
     {{-- Title --}}
     <header class="section-title">
       <h1 id="photo-diary-title" class="section-title-en">Photo Diary</h1>

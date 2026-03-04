@@ -288,30 +288,8 @@
   }
 }
 
-// ============================================================
-// Card grid
-// ============================================================
-.photodiary-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
 
-// ============================================================
-// Diary card
-// ============================================================
-.photodiary-card {
-  background: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
 
-  &:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.16);
-    transform: translateY(-2px);
-  }
-}
 
 .photodiary-card-link {
   display: flex;
@@ -321,293 +299,121 @@
   color: inherit;
 }
 
-.photodiary-card-image {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #f0f0f0;
-  overflow: hidden;
-  flex-shrink: 0;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-  }
-}
 
-.photodiary-card:hover .photodiary-card-image img {
-  transform: scale(1.04);
-}
 
-.photodiary-card-body {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
-.photodiary-card-info {
-  padding: 10px 12px 6px;
-}
 
-.photodiary-card-title {
-  margin: 0 0 4px;
-  color: #2a1a08;
-  font-family: "toppan-bunkyu-mincho-pr6n", serif;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 1.5;
-  letter-spacing: 0.02em;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  min-height: 42px;
-}
 
-.photodiary-card-time {
-  display: block;
-  color: #999;
-  font-family: "toppan-bunkyu-gothic-pr6n", serif;
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.4;
-  margin-top: 2px;
-}
 
-// ---- Cast block ----
-.photodiary-card-cast {
-  margin-top: auto;
-  overflow: hidden;
-}
 
-.photodiary-cast-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: linear-gradient(to bottom, #ffe8f5 0%, #ffc8e8 100%);
-  border-top: 1px solid #ffbde0;
-  border-bottom: 1px solid #ffbde0;
-  padding: 7px 10px;
-}
 
-.photodiary-cast-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-}
 
-.photodiary-cast-info {
-  flex: 1;
-  min-width: 0;
-}
 
-.photodiary-cast-name {
-  margin: 0 0 2px;
-  color: #2a1a08;
-  font-family: "toppan-bunkyu-gothic-pr6n", serif;
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.photodiary-cast-stats {
-  margin: 0;
-  color: #555;
-  font-family: "toppan-bunkyu-gothic-pr6n", serif;
-  font-size: 9px;
-  font-weight: 400;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.photodiary-cast-shop {
-  background: #fff;
-  padding: 6px 10px 8px;
-  text-align: center;
-}
-
-.photodiary-shop-btn {
-  display: inline-block;
-  width: 100%;
-  padding: 4px 10px;
-  border: 1px solid #b0b0b0;
-  border-radius: 20px;
-  background: #fff;
-  color: #333;
-  font-family: "toppan-bunkyu-mincho-pr6n", serif;
-  font-size: 11px;
-  font-weight: 600;
-  line-height: 1.6;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  &:hover {
-    background: #f5f5f5;
-    border-color: #888;
-  }
-}
-
-// ============================================================
-// Empty state
-// ============================================================
-.photodiary-empty {
-  grid-column: 1 / -1;
-  border: 1px dashed #bfbfbf;
-  border-radius: 8px;
-  background: #fafafa;
-  padding: 40px 20px;
-  text-align: center;
-
-  p {
-    margin: 0;
-    color: #666;
-    font-family: "toppan-bunkyu-mincho-pr6n", serif;
-    font-size: 14px;
-  }
-}
-
-// ============================================================
-// Pagination
-// ============================================================
-.photodiary .groups-pagination {
-  justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.photodiary .groups-pagination-btn,
-.photodiary .groups-pagination-page {
-  width: 32px;
-  min-width: 32px;
-  height: 32px;
-  border-radius: 4px;
-  border: 1px solid #d5d5d5;
-  background: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  color: #2a1a08;
-  transition: all 0.2s ease;
-
-  &:hover {
-    border-color: #a58c1b;
-    background: #fffbf0;
-  }
-}
-
-.photodiary .groups-pagination-page--active {
-  border-color: #EB8E9B;
-  background: #EB8E9B;
-  color: #fff;
-  font-weight: 700;
-}
-
-.photodiary .groups-pagination-ellipsis {
-  width: 32px;
-  height: 32px;
-  font-size: 13px;
-  color: #999;
-}
-
-// ============================================================
-// Responsive - tablet (<= 1024px)
-// ============================================================
-@media screen and (max-width: 1024px) {
-  .groups-content-container.groups-content-container--photodiary {
-    padding: 22px 16px 28px;
-    border-radius: 24px;
-  }
-
-  .photodiary-container {
+@media screen and (min-width: 1440px){
+  .photodiary .photodiary-grid{
+    display: flex;
     flex-direction: column;
-    gap: 18px;
+    align-items: flex-end;
+    gap: 25px;
+    border-radius: 30px;
   }
-
-  .photodiary-sidebar {
-    width: 100%;
-    max-width: 100%;
-    min-width: unset;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-
-  .photodiary-calendar {
-    width: 300px;
-    height: 300px;
-    flex-shrink: 0;
-  }
-
-  .photodiary-months {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .photodiary-months-list {
-    max-height: 300px;
-    width: auto;
-    margin: 0;
-  }
-
-  .photodiary-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-}
-
-// ============================================================
-// Responsive - mobile (<= 700px)
-// ============================================================
-@media screen and (max-width: 700px) {
-  .groups-content-container.groups-content-container--photodiary {
-    padding: 16px 12px 24px;
-    border-radius: 18px;
-  }
-
-  .photodiary-sidebar {
-    flex-direction: column;
+  .photodiary .photodiary-row{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 10px;
   }
-
-  .photodiary-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .photodiary .photodiary-card{
+    display: flex;
+    width: 400px;
+    height: 603px;
+    padding: 25px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.90);
+    box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  .photodiary .photodiary-card img{
+    height: 350px;
+align-self: stretch;
+aspect-ratio: 1/1;
+background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+  }
+  .photodiary .photodiary-card-content{
+    display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+align-self: stretch;
+  }
+  .photodiary .photodiary-card-info{
+    height: 51px;
+align-self: stretch;
+margin-bottom: 20px;
+  }
+  .photodiary .photodiary-card-title{
+    color: var(--b, #021A21);
+    font-family: Inter;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 308px;
+  }
+  .photodiary .photodiary-card-time{
+    width: 350px;
+    color: var(--b, #021A21);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  .photodiary .photodiary-cast-header{
+    display: flex;
+padding: 10px 20px;
+align-items: center;
+gap: 10px;
+align-self: stretch;
+border-bottom: 1px solid #FF048E;
+background: #FFE7F9;
+  }
+  .photodiary .photodiary-cast-name{
+    color: var(--b, #021A21);
+text-align: center;
+font-family: Inter;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
+  .photodiary .photodiary-cast-stats{
+    color: var(--b, #021A21);
+font-family: YuGothic;
+font-size: 13px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+letter-spacing: -0.52px;
+  }
+  .photodiary .photodiary-cast-avatar img{
+    width: 63px;
+height: 63px;
+border-radius: 63px;
+background: url(<path-to-image>) lightgray 50% / cover no-repeat;
+  }
+  .photodiary .photodiary-cast-shop{
+    color: var(--b, #021A21);
+font-family: YuGothic;
+font-size: 19px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+margin: 0 auto;
   }
 
-  .photodiary-card-title {
-    font-size: 13px;
-    min-height: 39px;
-  }
-
-  .photodiary .groups-pagination {
-    gap: 4px;
-  }
-
-  .photodiary .groups-pagination-btn,
-  .photodiary .groups-pagination-page {
-    width: 28px;
-    min-width: 28px;
-    height: 28px;
-    font-size: 12px;
-  }
 }
