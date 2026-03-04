@@ -171,11 +171,35 @@
 
     </ul>
     {{-- <div class="content-wrapper"> --}}
+    @php
+      $homeScheduleImages = collect(glob(public_path('assets/img/home/*')) ?: [])
+        ->filter(function ($path) {
+          if (!is_file($path)) {
+            return false;
+          }
+
+          return in_array(strtolower(pathinfo($path, PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif'], true);
+        })
+        ->sort()
+        ->values()
+        ->map(function ($path) {
+          return asset('assets/img/home/' . rawurlencode(basename($path)));
+        });
+    @endphp
     <div class="today-casts ">
       @foreach($todayCasts as $todayCast)
+        @php
+          $scheduleImageUrl = $homeScheduleImages->isNotEmpty()
+            ? $homeScheduleImages[$loop->index % $homeScheduleImages->count()]
+            : (
+              !empty($todayCast->gallery_1)
+                ? asset('storage/' . ltrim($todayCast->gallery_1, '/'))
+                : asset('assets/img/groups/pickup-cast-1.png')
+            );
+        @endphp
         <a href="{{ route('public.shop.cast.profile', ['shop' => $todayCast->shop_slug, 'id' => $todayCast->id]) }}" class="today-casts-item --{{ $todayCast->shop_slug }}">
           <div class="today-casts-item-image --{{ $todayCast->shop_slug }}">
-            <img src="{{ asset('storage/' . $todayCast->gallery_1) }}" alt="{{ $todayCast->name }}">
+            <img src="{{ $scheduleImageUrl }}" alt="{{ $todayCast->name }}">
           </div>
           <div class="today-casts-item-shop --{{ $todayCast->shop_slug }}">
             <span class="today-casts-item-shop-name">{{ $todayCast->shop_name }}</span>

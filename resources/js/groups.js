@@ -12,42 +12,84 @@ const pushbar = new Pushbar({
   overlay: true,
 });
 
-if (document.querySelector('.newface-slide')) new Swiper('.newface-slide', {
-  modules: [Autoplay, Navigation],
-  loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
-  speed: 1000,
-  breakpoints: {
-    0: {
-      centeredSlides: true,
-      slidesPerView: 1.35,
-      spaceBetween: 30,
+const newfaceHomeSliderElement = document.querySelector('.newface-slide');
+if (newfaceHomeSliderElement) {
+  const newfaceHomeWrapper = newfaceHomeSliderElement.querySelector('.swiper-wrapper');
+  const newfaceHomeSlidesCount = newfaceHomeWrapper ? newfaceHomeWrapper.children.length : 0;
+
+  new Swiper(newfaceHomeSliderElement, {
+    modules: [Navigation, Pagination],
+    loop: newfaceHomeSlidesCount > 1,
+    watchOverflow: true,
+    speed: 1000,
+    autoplay: false,
+    centeredSlides: true,
+    slidesPerView: 1.25,
+    spaceBetween: 20,
+    breakpoints: {
+      0: {
+        centeredSlides: true,
+        slidesPerView: 1.25,
+        spaceBetween: 20,
+      },
+      768: {
+        centeredSlides: true,
+        slidesPerView: 1.6,
+        spaceBetween: 24,
+      },
+      1366: {
+        centeredSlides: true,
+        slidesPerView: 2.2,
+        spaceBetween: 30,
+      },
     },
-    768: {
-      slidesPerView: 2,
-      spaceBetween: 30,
+  });
+}
+
+const newfaceCardsSliderElement = document.querySelector('.newface-cards-slider');
+if (newfaceCardsSliderElement) {
+  const newfaceCardsCount = newfaceCardsSliderElement.querySelectorAll('.swiper-slide').length;
+
+  new Swiper(newfaceCardsSliderElement, {
+    modules: [Autoplay, Pagination],
+    loop: newfaceCardsCount > 1,
+    watchOverflow: true,
+    speed: 900,
+    autoplay: newfaceCardsCount > 1
+      ? {
+          delay: 4500,
+          disableOnInteraction: false,
+        }
+      : false,
+    slidesPerView: 1,
+    spaceBetween: 16,
+    pagination: {
+      el: '.newface-cards-pagination',
+      clickable: true,
     },
-    1366: {
-      slidesPerView: 3,
-      spaceBetween: 45,
-    }
-  },
-  navigation: {
-    prevEl: '.newface-slide-prev',
-    nextEl: '.newface-slide-next',
-  },
-})
+    breakpoints: {
+      640: {
+        slidesPerView: 1.1,
+        spaceBetween: 18,
+      },
+      900: {
+        slidesPerView: 1.25,
+        spaceBetween: 22,
+      },
+      1200: {
+        slidesPerView: 1.4,
+        spaceBetween: 24,
+      },
+      1600: {
+        slidesPerView: 1.6,
+        spaceBetween: 28,
+      },
+    },
+  });
+}
 
 if (document.querySelector('.pickup-contents-slider')) new Swiper('.pickup-contents-slider', {
-  modules: [Autoplay],
   loop: true,
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
   speed: 1000,
   breakpoints: {
     0: {
@@ -130,11 +172,7 @@ const eventSlider = new Swiper('.event-slider', {
   loop: true,
   loopedSlides: 4,
   speed: 1000,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-    reverseDirection: false,
-  },
+  autoplay: false,
   thumbs: {
     swiper: thumbsSwiper,
     multipleActiveThumbs: false,
@@ -223,7 +261,7 @@ const thumbsSwiper_pickup = new Swiper('.pickup-pagination', {
   slidesPerView: 'auto',
   centeredSlides: true,
   slideToClickedSlide: true,
-  spaceBetween: 4,
+  spaceBetween: 36,
   watchSlidesProgress: true,
   loop: true,
   loopedSlides: 5,
@@ -242,18 +280,14 @@ const thumbsSwiper_pickup = new Swiper('.pickup-pagination', {
 
 // Main event slider
 const pickupSlider = new Swiper('.pickup-slider', {
-  modules: [Navigation, Pagination, Autoplay],
+  modules: [Navigation, Pagination],
   slidesPerView: 'auto',
   spaceBetween: 20,
   centeredSlides: true,
   loop: true,
   loopedSlides: 4,
   speed: 1000,
-  autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-    reverseDirection: false,
-  },
+  autoplay: false,
   thumbs: {
     swiper: thumbsSwiper_pickup,
     multipleActiveThumbs: false,

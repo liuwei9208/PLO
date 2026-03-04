@@ -64,6 +64,11 @@ class GroupsController extends Controller
                 'casts.hip as hip',
                 'casts.bra_size as bra',
                 'casts.gallery_1 as gallery_1',
+                'casts.gallery_2 as gallery_2',
+                'casts.gallery_3 as gallery_3',
+                'casts.gallery_4 as gallery_4',
+                'casts.gallery_5 as gallery_5',
+                'casts.gallery_6 as gallery_6',
                 'casts.joined_at as joined_at',
                 'casts.appeal_point as appeal_point',
                 'shops.slug as shop_slug',
@@ -101,43 +106,33 @@ class GroupsController extends Controller
         ->orderBy('published_at', 'desc')
         ->get();
 
-        $diaries_sql = 'SELECT
-        `'.env('DB_DATABASE').'`.diaries.id as id,
-        `'.env('DB_DATABASE').'`.diaries.subject,
-        DATE_FORMAT(`'.env("DB_DATABASE").'`.diaries.updated_at, "%m/%d %H:%i") as updated_at,
-        `'.env('DB_DATABASE').'`.casts.name,
-        `'.env('DB_DATABASE').'`.diaries.photo,
-        `'.env('DB_DATABASE').'`.casts.id as cast_id,
-        `'.env('DB_DATABASE').'`.casts.gallery_1 as gallery_1,
-        `'.env('DB_DATABASE').'`.casts.age as cast_age,
-        `'.env('DB_DATABASE').'`.casts.height as cast_height,
-        `'.env('DB_DATABASE').'`.casts.bust as cast_bust,
-        `'.env('DB_DATABASE').'`.casts.waist as cast_waist,
-        `'.env('DB_DATABASE').'`.casts.hip as cast_hip,
-        `'.env('DB_DATABASE').'`.casts.bra_size as cast_bra,
-        `'.env('DB_DATABASE').'`.shops.slug as shop_slug,
-        `'.env('DB_DATABASE').'`.shops.name as shop_name
-        FROM `'.env('DB_DATABASE').'`.diaries
-LEFT JOIN `'.env('DB_DATABASE').'`.casts
-ON `'.env('DB_DATABASE').'`.diaries.`cast_id` = `'.env('DB_DATABASE').'`.casts.`id`
-INNER JOIN (
-SELECT `'.env('DB_DATABASE').'`.casts.`shop_id` AS shop_id , MAX(`'.env('DB_DATABASE').'`.diaries.`updated_at`) AS last_created
-FROM `'.env('DB_DATABASE').'`.diaries
-LEFT JOIN `'.env('DB_DATABASE').'`.casts
-ON `'.env('DB_DATABASE').'`.casts.`id` = `'.env('DB_DATABASE').'`.diaries.`cast_id`
-WHERE `'.env('DB_DATABASE').'`.diaries.`is_public` = 1 AND `'.env('DB_DATABASE').'`.casts.`is_public` = 1
-GROUP BY `'.env('DB_DATABASE').'`.casts.shop_id
-) AS qry1
-ON qry1.shop_id = `'.env('DB_DATABASE').'`.casts.`shop_id` AND `'.env('DB_DATABASE').'`.diaries.`updated_at` = qry1.last_created
-LEFT JOIN `'.env('DB_DATABASE').'`.shops
-ON `'.env('DB_DATABASE').'`.casts.`shop_id` = `'.env('DB_DATABASE').'`.shops.`id`
-WHERE `'.env('DB_DATABASE').'`.diaries.`is_public` = 1 AND `'.env('DB_DATABASE').'`.casts.`is_public` = 1
-AND `'.env('DB_DATABASE').'`.shops.`slug` != "touchvip" AND `'.env('DB_DATABASE').'`.shops.`slug` != "headquarter"
-ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
-        // dd($diaries_sql);
-        // DB::select() returns a plain array, so wrap it in a Collection
-        // to keep Blade code using ->count() and collection helpers working.
-        $diaries = collect(DB::select($diaries_sql));
+        $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+            ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
+            ->where('diaries.is_public', 1)
+            ->where('casts.is_public', 1)
+            ->whereNot('shops.slug', 'touchvip')
+            ->whereNot('shops.slug', 'headquarter')
+            ->orderBy('diaries.updated_at', 'desc')
+            ->orderBy('diaries.id', 'desc')
+            ->select([
+                'diaries.id as id',
+                'diaries.subject',
+                DB::raw('DATE_FORMAT(diaries.updated_at, "%m/%d %H:%i") as updated_at'),
+                'casts.name',
+                'diaries.photo',
+                'casts.id as cast_id',
+                'casts.gallery_1 as gallery_1',
+                'casts.age as cast_age',
+                'casts.height as cast_height',
+                'casts.bust as cast_bust',
+                'casts.waist as cast_waist',
+                'casts.hip as cast_hip',
+                'casts.bra_size as cast_bra',
+                'shops.slug as shop_slug',
+                'shops.name as shop_name',
+            ])
+            ->limit(6)
+            ->get();
         // dd($diaries);
         // $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
         //     ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
@@ -1282,6 +1277,11 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
                 'casts.waist as waist',
                 'casts.hip as hip',
                 'casts.gallery_1 as gallery_1',
+                'casts.gallery_2 as gallery_2',
+                'casts.gallery_3 as gallery_3',
+                'casts.gallery_4 as gallery_4',
+                'casts.gallery_5 as gallery_5',
+                'casts.gallery_6 as gallery_6',
                 'casts.joined_at as joined_at',
                 'casts.appeal_point as appeal_point',
                 'shops.slug as shop_slug',

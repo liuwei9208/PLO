@@ -70,18 +70,22 @@
       <div class="mt-3 grid gap-3 md:grid-cols-3 xl:grid-cols-5">
         <div class="relative">
           <input
-            type="date"
+            type="text"
             name="date_from"
             value="{{ request('date_from') }}"
-            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+            placeholder="yyyy-mm-dd"
+            class="recruit-date-input h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+            data-date-from
           >
         </div>
         <div class="relative">
           <input
-            type="date"
+            type="text"
             name="date_to"
             value="{{ request('date_to') }}"
-            class="h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+            placeholder="yyyy-mm-dd"
+            class="recruit-date-input h-11 w-full rounded-lg border border-gray-300 bg-transparent px-4 py-2.5 text-sm text-gray-800 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90"
+            data-date-to
           >
         </div>
         <div class="relative">

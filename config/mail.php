@@ -41,17 +41,24 @@ return [
             'transport' => 'smtp',
             'scheme' => env('MAIL_SCHEME'),
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
-            'encryption' => env('MAIL_ENCRYPTION', 'tls'),
-            'username' => env('MAIL_USERNAME'),
+            'host' => env('SMTP_HOST', env('MAIL_HOST', 'plo-group.sakura.ne.jp')), // SMTP host (separate from IMAP)
+            'port' => env('SMTP_PORT', env('MAIL_PORT', 587)), // SMTP port: 587 (TLS) or 465 (SSL)
+            'encryption' => env('SMTP_ENCRYPTION', env('MAIL_ENCRYPTION', 'tls')), // TLS for port 587, SSL for port 465
+            'username' => env('MAIL_USERNAME', 'info@plo-group.jp'), // Username: "info" or full email "info@plo-group.jp"
             'password' => env('MAIL_PASSWORD'),
-            'timeout' => null,
-            'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url(env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+            'timeout' => 60, // Increase timeout for slow connections
+            'local_domain' => env('MAIL_EHLO_DOMAIN', 'plo-group.sakura.ne.jp'), // Use SMTP server domain for EHLO
         ],
-        'from' => [
-            'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-            'name' => env('MAIL_FROM_NAME', 'Example'),
+
+        'en_smtp' => [
+            'transport' => 'smtp',
+            'host' => env('SMTP_HOST', env('MAIL_HOST', 'plo-group.sakura.ne.jp')), // SMTP host (separate from IMAP)
+            'port' => env('SMTP_PORT', env('MAIL_PORT', 587)), // SMTP port: 587 (TLS) or 465 (SSL)
+            'encryption' => env('SMTP_ENCRYPTION', env('MAIL_ENCRYPTION', 'tls')), // TLS for port 587, SSL for port 465
+            'username' => env('MAIL_USERNAME', 'info@plo-group.jp'), // Username: "info" or full email "info@plo-group.jp"
+            'password' => env('MAIL_PASSWORD'), // Dùng chung với default mailer: iD&BKX6z%Zdb
+            'timeout' => 60, // Increase timeout for slow connections
+            'local_domain' => env('MAIL_EHLO_DOMAIN', 'plo-group.sakura.ne.jp'), // Use SMTP server domain for EHLO
         ],
         'ses' => [
             'transport' => 'ses',
@@ -113,8 +120,22 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'hello@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'info@plo-group.jp'),
+        'name' => env('MAIL_FROM_NAME', 'Passion Leisure Office'),
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Production SMTP Settings (from client)
+    |--------------------------------------------------------------------------
+    |
+    | メールアドレス：info@plo-group.jp
+    | MAIL_USERNAME：info（もしくはメールアドレス）
+    | MAIL_PASSWORD：iD&BKX6z%Zdb
+    | SMTPサーバー情報：plo-group.sakura.ne.jp
+    | ポート番号：587
+    | 暗号化方式（SSL / TLS など）：SSL
+    |
+    */
 
 ];

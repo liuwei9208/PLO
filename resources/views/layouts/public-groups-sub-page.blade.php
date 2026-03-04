@@ -55,7 +55,7 @@
     @else
       <main class="main" id="main">
         <div class="groups-page-wrapper">
-          <div class="groups-content-container">
+          <div class="groups-content-container {{ request()->routeIs('public.groups.photodiary') ? 'groups-content-container--photodiary' : '' }} {{ request()->routeIs('public.groups.newface') ? 'groups-content-container--newface' : '' }}">
 
             @if($showDateSearchBar)
               <x-public.groups.date-search-bar
@@ -170,6 +170,9 @@
         @endif
       </main>
     @endif
+
+    <!-- Footer -->
+    <x-public.groups.footer />
 
     @stack('scripts')
   </body>

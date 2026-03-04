@@ -3,7 +3,7 @@
 @use '../mixins/font' as *;
 
 // Main section - scrolls over fixed banner (similar to shizuku .page-content)
-.banner-photodiary ~ .main {
+.banner-photodiary~.main {
   position: relative;
   z-index: 1;
   margin-top: 0;
@@ -22,6 +22,7 @@
   z-index: 2;
   margin-top: 58vh; // Push it below the fixed banner
   opacity: 0.95;
+
   img {
     display: block;
     width: 100%;
@@ -84,11 +85,12 @@
     pointer-events: none;
 
     @media screen and (max-width: 850px) {
-     top: 25%;
+      top: 25%;
     }
   }
 
   .banner-photodiary-title-en {
+    margin: 0;
     color: var(--b, #021A21);
     leading-trim: both;
     text-edge: cap;
@@ -123,9 +125,11 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+    margin: 0;
   }
 
   .banner-photodiary-title-ja {
+    margin: 0;
     color: var(--b, #021A21);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #FFF;
@@ -134,7 +138,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    
+
     @media screen and (max-width: 850px) {
       color: var(--b, #021A21);
       -webkit-text-stroke-width: 0px;
@@ -144,6 +148,89 @@
       font-weight: 700;
       line-height: normal;
     }
+  }
+
+  .banner-girl-search-btn {
+    position: fixed;
+    right: 0;
+    bottom: 120px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 233px;
+    height: 81px;
+    padding: 0 16px;
+    border-radius: 30px 0 0 30px;
+    background: var(--medaru, linear-gradient(90deg, #EE5F8B 0%, #FF048E 100%));
+    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25) inset;
+    color: #fff;
+    text-decoration: none;
+    font-family: YuGothic;
+    font-size: 16px;
+    font-weight: 700;
+    pointer-events: auto;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.85;
+    }
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    @media screen and (max-width: 850px) {
+      width: 180px;
+      height: 60px;
+      padding: 0 12px;
+      font-size: 14px;
+      bottom: 72px;
+    }
+  }
+}
+
+// Newface sub-page: keep title block 139px below the fixed header (header height = 90px).
+.banner-photodiary--newface {
+  .banner-photodiary-content {
+    top: calc(90px + 139px);
+    transform: translateX(-50%);
+  }
+
+  .banner-photodiary-title-en {
+    color: var(--b, #021A21);
+    leading-trim: both;
+    text-edge: cap;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #021A21;
+    font-family: Elina;
+    font-size: 90px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-shadow: none;
+    letter-spacing: normal;
+  }
+
+  .banner-photodiary-title-ja {
+    color: var(--b, #021A21);
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #FFF;
+    font-family: YuGothic;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2.4px;
+  }
+
+  .banner-girl-search-btn {
+    right: 0;
+    top: calc(90px + 309px);
+    bottom: auto;
   }
 }
 
@@ -247,20 +334,22 @@
   padding: 50px 50px;
   border-radius: 50px;
   background: white;
-  
+
   @media screen and (min-width: 1920px) and (max-width: 2560px) {
     max-width: 1440px;
   }
+
   @media screen and (min-width: 2560px) {
     max-width: 1920px;
-}
+  }
 }
 
 @media screen and (max-width: 850px) {
-  .groups-page-wrapper{
+  .groups-page-wrapper {
     padding: 10px;
   }
-  .groups-content-container{
+
+  .groups-content-container {
     padding: 10px;
   }
 }
@@ -276,12 +365,15 @@
   justify-content: center;
   align-items: flex-start;
   gap: 15px;
+
   @media screen and (min-width: 1920px) and (max-width: 2560px) {
     max-width: 1440px;
   }
-    @media screen and (min-width: 2560px) {
-      max-width: 1680px;
+
+  @media screen and (min-width: 2560px) {
+    max-width: 1680px;
   }
+
   @media screen and (max-width: 850px) {
     padding: 10px;
     flex-direction: column;
@@ -313,7 +405,7 @@
   white-space: nowrap;
   cursor: pointer;
   position: relative;
-  
+
   @media screen and (max-width: 850px) {
     width: 100%;
     max-width: none;
@@ -329,7 +421,7 @@
     align-items: center;
     gap: 0;
     transition: all 0.3s ease;
-    
+
     &::after {
       content: '';
       width: 0;
@@ -340,7 +432,7 @@
       flex-shrink: 0;
       transition: transform 0.3s ease;
     }
-    
+
     &.active {
       &::after {
         transform: rotate(180deg);
@@ -371,17 +463,17 @@
   gap: 10px;
   width: 100%;
   flex: 1;
-  
+
   @media (min-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   @media (min-width: 768px) {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, auto);
     max-width: calc(302px * 3 + 10px * 2);
   }
-  
+
   @media screen and (max-width: 850px) {
     display: none;
     max-height: 0;
@@ -390,7 +482,7 @@
     opacity: 0;
     grid-template-columns: 1fr;
     gap: 10px;
-    
+
     &.active {
       display: grid;
       max-height: 1000px;
@@ -420,14 +512,14 @@
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  
+
   img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
     max-height: 36px;
   }
-  
+
   @media (min-width: 768px) {
     width: 100%;
   }
@@ -449,6 +541,7 @@
   justify-content: center;
   gap: 10px;
   padding-bottom: 50px;
+
   p {
     color: #FFF;
     padding: 15px 65px;
@@ -464,7 +557,7 @@
   }
 }
 
-.groups-search-heading{
+.groups-search-heading {
   color: var(--b, #021A21);
   leading-trim: both;
   text-edge: cap;

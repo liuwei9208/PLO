@@ -95,7 +95,7 @@ class RecruitController extends Controller
 
         try {
             // Gửi notification email đến todinhthi@gmail.com
-            // Sử dụng mailer 'en_smtp' với credentials từ MAIL_EN (giống DiaryService)
+            // Sử dụng mailer 'en_smtp' với credentials từ info@plo-group.jp (dùng chung với default mailer)
             Mail::mailer('en_smtp')
                 ->to('todinhthi@gmail.com')
                 ->send(new RecruitNotificationMail($application));

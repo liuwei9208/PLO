@@ -25,8 +25,7 @@ use App\Http\Controllers\Public\RecruitController;
 
 // Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
 
-Route::middleware([AuthenticateMultiple::class])->name('public.')->group(function () {
-// Route::name('public.')->group(function () {
+Route::name('public.')->group(function () {
         // Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
     // Route::get('/qrcode/{memberId}', function ($memberId) {
     //     dd($memberId);
@@ -38,7 +37,8 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
      * @see \App\Http\Controllers\Public\GroupController
      */
     Route::prefix('/')->name('group.')->group(function () {
-        Route::get('/', [GroupController::class, 'showHome'])->name('home');
+        Route::get('/', [GroupsController::class, 'showHome'])->name('home');
+        Route::get('home', [GroupsController::class, 'showHome'])->name('home-v2');
         Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
@@ -52,18 +52,21 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
-        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
-        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
-        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
-        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
-        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
-        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
+        Route::middleware([AuthenticateMultiple::class])->group(function () {
+            Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
+            Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
+            Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
+            Route::get('password', [GroupController::class, 'showPassword'])->name('password');
+            Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
+            Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
+        });
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
         // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
     Route::prefix('groups')->name('groups.')->group(function () {
         Route::get('/', [GroupsController::class, 'showHome'])->name('home');
+        Route::get('home', [GroupsController::class, 'showHome'])->name('home-v2');
         // Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupsController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupsController::class, 'showSchedule'])->name('schedule');
@@ -77,12 +80,14 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
         Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
         Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
         Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
-        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
-        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
-        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
-        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
-        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
-        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
+        Route::middleware([AuthenticateMultiple::class])->group(function () {
+            Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
+            Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
+            Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
+            Route::get('password', [GroupController::class, 'showPassword'])->name('password');
+            Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
+            Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
+        });
         Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
         Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
         Route::get('photodiary', [GroupsController::class, 'showPhotoDiary'])->name('photodiary');

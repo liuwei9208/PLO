@@ -118,7 +118,7 @@
         <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
       </div>
     </div>    <div class="footer-bottom-logo">
-      <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}"
+      <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}">
     </div>
   </div>
 </div>
