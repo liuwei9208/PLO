@@ -1,6 +1,14 @@
 <x-shizuku-layout>
+    @php
+        // Swap this path when replacing the overlay effect video.
+        $mainVisualOverlayVideo = 'assets/video/pussy_%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%93%e3%82%b8%e3%83%a5%e3%82%a2%e3%83%ab%e7%94%a8%e9%80%8f%e9%81%8e%e5%8b%95%e7%94%bb/91898_1920x1080.mp4';
+    @endphp
     <div class="home">
         <div class="banner-image">
+            <video class="banner-image__overlay-video" autoplay muted loop playsinline preload="metadata"
+                aria-hidden="true">
+                <source src="{{ asset($mainVisualOverlayVideo) }}" type="video/mp4">
+            </video>
             {{-- <img class="pc-only" src="/assets/img/shops/shizuku/home-banner.png" alt="home gradient overlay">
             <img class="sp-only" src="/assets/img/shops/shizuku/home-banner-sp.jpg" alt="home gradient overlay"> --}}
         </div>
