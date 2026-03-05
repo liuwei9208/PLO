@@ -150,46 +150,43 @@
     }
   }
 
-  .banner-girl-search-btn {
-    position: fixed;
-    right: 0;
-    bottom: 120px;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    width: 233px;
-    height: 81px;
-    padding: 0 16px;
-    border-radius: 30px 0 0 30px;
-    background: var(--medaru, linear-gradient(90deg, #EE5F8B 0%, #FF048E 100%));
-    box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25) inset;
-    color: #fff;
-    text-decoration: none;
-    font-family: YuGothic;
-    font-size: 16px;
-    font-weight: 700;
-    pointer-events: auto;
-    transition: opacity 0.2s;
-    white-space: nowrap;
-    cursor: pointer;
+}
 
-    &:hover {
-      opacity: 0.85;
-    }
+.banner-girl-search-btn {
+  position: fixed;
+  right: 0;
+  bottom: 120px;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 233px;
+  height: 81px;
+  padding: 0 16px;
+  border-radius: 30px 0 0 30px;
+  background: var(--medaru, linear-gradient(90deg, #EE5F8B 0%, #FF048E 100%));
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25) inset;
+  color: #fff;
+  text-decoration: none;
+  font-family: YuGothic;
+  font-size: 16px;
+  font-weight: 700;
+  pointer-events: auto;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
 
-    svg {
-      flex-shrink: 0;
-    }
+  &:hover {
+    opacity: 0.85;
+  }
 
-    @media screen and (max-width: 850px) {
-      width: 180px;
-      height: 60px;
-      padding: 0 12px;
-      font-size: 14px;
-      bottom: 72px;
-    }
+  svg {
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 850px) {
+    display: none;
   }
 }
 
@@ -227,11 +224,12 @@
     letter-spacing: 2.4px;
   }
 
-  .banner-girl-search-btn {
-    right: 0;
-    top: calc(90px + 309px);
-    bottom: auto;
-  }
+}
+
+.banner-girl-search-btn--newface {
+  right: 0;
+  top: calc(90px + 309px);
+  bottom: auto;
 }
 
 // Recruit male page: use non-fixed hero banner placed directly under header,
