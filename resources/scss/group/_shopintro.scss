@@ -53,12 +53,12 @@
     }
 
     // md: 2列表示 (768px以上1024px未満)
-    @media (min-width: 768px) and (max-width: 1023px) {
+    @media (min-width: 851px) and (max-width: 1023px) {
       grid-template-columns: repeat(2, 1fr);
     }
 
     // sm: 1列表示 (768px未満)
-    @media (max-width: 767px) {
+    @media (max-width: 850px) {
       grid-template-columns: 1fr;
     }
 

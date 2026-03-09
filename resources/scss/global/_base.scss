@@ -187,44 +187,18 @@ a {
 }
 
 .sp-only {
-  // display: block;
-  @media #{media-query(xs)} {
-    display: block;
-  }
   @media #{media-query(sm)} {
-    display: block;
+    display: block !important;
   }
-  @media #{media-query(md)} {
-    display: block;
-  }
-  @media #{media-query(lg)} {
-    display: none !important;
-  }
-  @media #{media-query(xl)} {
-    display: none !important;
-  }
-  @media #{media-query(xxl)} {
+  @media screen and (min-width: 851px) {
     display: none !important;
   }
 }
 .pc-only {
-  // display: block;
-  @media #{media-query(xs)} {
-    display: none !important;
-  }
   @media #{media-query(sm)} {
     display: none !important;
   }
-  @media #{media-query(md)} {
-    display: none !important;
-  }
-  @media #{media-query(lg)} {
-    display: block;
-  }
-  @media #{media-query(xl)} {
-    display: block;
-  }
-  @media #{media-query(xxl)} {
-    display: block;
+  @media screen and (min-width: 851px) {
+    display: block !important;
   }
 }

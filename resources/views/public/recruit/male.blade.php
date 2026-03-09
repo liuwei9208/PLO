@@ -910,7 +910,7 @@
           </div>
 
           <div class="recruit-form-male__actions">
-            <button type="submit" class="recruit-form-male__submit">送信確認画面へ</button>
+            <button type="submit" class="recruit-form-male__submit">送信する</button>
           </div>
         </form>
       </div>

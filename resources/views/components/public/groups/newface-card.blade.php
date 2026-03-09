@@ -15,6 +15,9 @@
     'imageUrls' => [],
     'frameImageUrl' => null,
     'profileUrl' => '#',
+    'statusText' => null,
+    'timeRange' => null,
+    'isWorkingToday' => null,
     'showNew' => true,
 ])
 
@@ -22,6 +25,10 @@
     $formattedDate = $date;
     if (is_string($showNew)) {
         $showNew = $showNew === 'true' || $showNew === '1';
+    }
+
+    if (is_string($isWorkingToday)) {
+        $isWorkingToday = $isWorkingToday === 'true' || $isWorkingToday === '1';
     }
 
     $normalizeImageUrl = function ($url) {
@@ -50,50 +57,70 @@
 	        $normalizedImageUrls = collect([$normalizeImageUrl($imageUrl)])->filter()->values();
 	    }
 	    $displayImageUrl = $normalizedImageUrls->first();
+        $shouldShowAttendance = filled($statusText) || filled($timeRange);
+        $hasProfileUrl = filled($profileUrl) && $profileUrl !== '#';
 	@endphp
 
+    @if($hasProfileUrl)
+        <a href="{{ $profileUrl }}" class="newface-card-link" aria-label="{{ $name }}">
+    @endif
 	<div class="newface-card {{ $shopSlug ? 'newface-card--' . $shopSlug : '' }}">
-	    <div class="newface-card-image" aria-label="{{ $name }}">
-	        @if($displayImageUrl)
-	            <img src="{{ $displayImageUrl }}" alt="{{ $name }}" class="newface-card-image-photo">
-	        @else
-	            <div class="newface-card-image-placeholder" aria-hidden="true"></div>
-	        @endif
+        <div class="newface-card-image" aria-label="{{ $name }}">
+            @if($displayImageUrl)
+                <img src="{{ $displayImageUrl }}" alt="{{ $name }}" class="newface-card-image-photo">
+            @else
+                <div class="newface-card-image-placeholder" aria-hidden="true"></div>
+            @endif
 
         @if(!empty($frameImageUrl))
             <img src="{{ $frameImageUrl }}" alt="" class="newface-card-image-frame" aria-hidden="true">
         @endif
-    </div>
+        </div>
 
-    <div class="newface-card-info">
-        <div class="newface-card-header">
-            <div class="newface-card-date-new">
-                <span class="newface-card-date">{{ $formattedDate }}</span>
-                @if($showNew)
-                    <span class="newface-card-new">New</span>
-                @endif
+        <div class="newface-card-info">
+            <div class="newface-card-header">
+                <div class="newface-card-date-new">
+                    <span class="newface-card-date">{{ $formattedDate }}</span>
+                    @if($showNew)
+                        <span class="newface-card-new">New</span>
+                    @endif
+                </div>
+                <div class="newface-card-divider"></div>
             </div>
-            <div class="newface-card-divider"></div>
-        </div>
 
-        <div class="newface-card-stats-group">
-            <h3 class="newface-card-name">{{ $name }}（{{ $age }}）</h3>
-            <p class="newface-card-measurements">
-                T.{{ $height }} B.{{ $bust }}({{ $braSize }}) W.{{ $waist }} H.{{ $hip }}
-            </p>
-        </div>
-
-        <div class="newface-card-message">
-            <div class="newface-card-message-content">
-                <p class="newface-card-message-text">{{ $message }}</p>
+            <div class="newface-card-stats-group">
+                <h3 class="newface-card-name">{{ $name }}（{{ $age }}）</h3>
+                <p class="newface-card-measurements">
+                    T.{{ $height }} B.{{ $bust }}({{ $braSize }}) W.{{ $waist }} H.{{ $hip }}
+                </p>
             </div>
-        </div>
 
-        <a href="{{ $profileUrl }}" class="newface-card-shop-button">
-            <span class="newface-card-shop-button-text">{{ $shopName }}</span>
-        </a>
+            @if($shouldShowAttendance)
+                <div class="newface-card-attendance {{ $isWorkingToday ? 'is-working' : 'is-rest' }}">
+                    @if(filled($statusText))
+                        <span class="newface-card-attendance-status">{{ $statusText }}</span>
+                    @endif
+                    @if(filled($timeRange))
+                        <span class="newface-card-attendance-time">{{ $timeRange }}</span>
+                    @endif
+                </div>
+            @endif
+
+            <div class="newface-card-message">
+                <div class="newface-card-message-content">
+                    <p class="newface-card-message-text">{{ $message }}</p>
+                </div>
+            </div>
+
+            <span class="newface-card-shop-button">
+                <span class="newface-card-shop-button-text">{{ $shopName }}</span>
+            </span>
+        </div>
     </div>
 </div>
+    @if($hasProfileUrl)
+        </a>
+    @endif
 
 @once
   @vite(['resources/scss/groups/newface-card.scss'])

@@ -591,8 +591,11 @@
     </div>
   </div> --}}
   @if($displayTodayCastsForSchedule->count() > 0)
-  <div class="section-title">
-    <h1 class="section-title-en">Today Schedule</h1>
+  
+
+  <div class="schedule"> {{-- grid --}}
+    <div class="section-title schedule-section-title">
+    <h1 class="section-title-en">Today Schedul</h1>
     <div class="section-title-jp">
       <svg xmlns="http://www.w3.org/2000/svg" width="21" height="23" viewBox="0 0 21 23" fill="none">
         <path d="M2.01123 23C0.795273 22.7404 0.127176 22.0539 0.0186893 20.8024C0.114519 15.1935 -0.158505 9.53781 0.158818 3.95402C0.251936 3.42664 1.30245 2.51562 1.78521 2.51562H4.09055V4.62695C4.09055 4.89648 4.76046 5.4068 5.0606 5.4598C5.60304 5.55504 7.2674 5.54156 7.84238 5.48047C8.32876 5.42836 8.66055 5.23699 8.8721 4.79676C8.90736 4.72309 9.06286 4.30082 9.06286 4.26758V2.51562H11.9558V4.26758C11.9558 4.82371 12.5245 5.41578 13.0841 5.48227C13.6437 5.54875 15.4428 5.55234 15.9581 5.4598C16.2781 5.4023 16.9281 4.945 16.9281 4.62695V2.51562H19.2335C19.2895 2.51562 19.9341 2.82559 20.0318 2.89027C20.642 3.29277 20.896 3.92797 20.9955 4.62785L21 20.8024C20.9376 21.992 20.1014 22.8661 18.9171 23H2.01123ZM19.4595 7.99609H1.5592V20.9785C1.5592 21.1843 2.07722 21.558 2.32313 21.4771H18.6043C18.8682 21.5293 19.4595 21.2418 19.4595 20.9785V7.99609Z" fill="#021A21"/>
@@ -605,9 +608,7 @@
       <h2 class="section-title-jp-text">出勤情報</h2>
     </div>
   </div>
-
-  <div class="schedule"> {{-- grid --}}
-    <div class="schedule-grid">
+    <div class="schedule-grid-switcher">
       {{-- @for ($i=1 ; $i <= 10 ; $i++)
       <div class="schedule-grid-content">
         <div class="schedule-grid-content-img">
@@ -641,76 +642,31 @@
             <span class="schedule-grid-content-contents-measure-text">キャスト名(00)／T.160 B.85(C) W.60 H.83</span>
           </div>
           <div class="schedule-grid-content-contents-measure sp-only">
-            <span class="schedule-grid-content-contents-measure-name">ă‚­ăƒ£ă‚¹ăƒˆå(00)</span>
+            <span class="schedule-grid-content-contents-measure-name"></span>
             <span class="schedule-grid-content-contents-measure-text">T.160 B.85(C) W.60 H.83</span>
           </div>
-          <div class="schedule-grid-content-contents-message">
+          <div class="C
             <span class="schedule-grid-content-contents-message-text">{{ \Illuminate\Support\Str::limit($todayCast->appeal_point, 60, '...') }}</span>
           </div>
         </div>
       </div>
 
       @endfor --}}
-      @foreach($displayTodayCastsForSchedule->chunk(3) as $row)
-      <div class="schedule-grid-row">
-      @foreach($row as $todayCast)
-      @php
-        $scheduleImageUrl = $homeSchedulePhotos->isNotEmpty()
-          ? $homeSchedulePhotos[(($loop->parent->index * 3) + $loop->index) % $homeSchedulePhotos->count()]
-          : (
-            !empty($todayCast->gallery_1)
-              ? asset('storage/' . ltrim($todayCast->gallery_1, '/'))
-              : asset('assets/img/groups/pickup-cast-1.png')
-          );
+      @include('public.groups._schedule-grid', [
+        'casts' => $displayTodayCastsForSchedule,
+        'chunkSize' => 2,
+        'variant' => 'two',
+        'homeSchedulePhotos' => $homeSchedulePhotos,
+        'homeScheduleFrames' => $homeScheduleFrames,
+      ])
 
-        $scheduleFrameUrl = $homeScheduleFrames->isNotEmpty()
-          ? $homeScheduleFrames[(($loop->parent->index * 3) + $loop->index) % $homeScheduleFrames->count()]
-          : asset('assets/img/groups/card-frame-'.$todayCast->shop_slug.'.png');
-      @endphp
-      <a class="schedule-grid-content" href="{{ route('public.shops.shop.profile',[ 'shop'=>$todayCast->shop_slug,'id'=>$todayCast->id ]) }}">{{-- flex col--}}
-        <div class="schedule-grid-content-img" aria-label="{{ $todayCast->name }}">
-          <img class="schedule-grid-content-img-photo" src="{{ $scheduleImageUrl }}" alt="{{ $todayCast->name }}">
-          <img class="schedule-grid-content-img-frame" src="{{ $scheduleFrameUrl }}" alt="">
-        </div>
-        <div class="schedule-grid-content-contents">{{-- flex col--}}
-          <div class="schedule-grid-content-contents-top pc-only">{{-- flex row--}}
-            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
-              </svg>
-              <span class="schedule-grid-content-contents-top-times-text">{{ date('H:i', strtotime($todayCast->start_datetime)) }} - {{ date('H:i', strtotime($todayCast->end_datetime)) }}</span>
-            </div>
-            <div class="schedule-grid-content-contents-top-shop">
-              <span class="schedule-grid-content-contents-top-shop-name">{{ $todayCast->shop_name }}</span>
-            </div>
-          </div>
-          <div class="schedule-grid-content-contents-top sp-only">{{-- flex row--}}
-            <div class="schedule-grid-content-contents-top-shop">
-              <span class="schedule-grid-content-contents-top-shop-name">{{ $todayCast->shop_name }}</span>
-            </div>
-            <div class="schedule-grid-content-contents-top-times">{{-- flex row--}}
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                <path d="M10 0C4.486 0 0 4.486 0 10C0 15.514 4.486 20 10 20C15.514 20 20 15.514 20 10C20 4.486 15.514 0 10 0ZM15.75 11H9V4H11V9H15.75V11Z" fill="#021A21"/>
-              </svg>
-              <span class="schedule-grid-content-contents-top-times-text">{{ date('H:i', strtotime($todayCast->start_datetime)) }} - {{ date('H:i', strtotime($todayCast->end_datetime)) }}</span>
-            </div>
-          </div>
-          <div class="schedule-grid-content-contents-measure pc-only">
-            <span class="schedule-grid-content-contents-measure-text">キャスト名(00)／T.160 B.85(C) W.60 H.83</span>
-          </div>
-          <div class="schedule-grid-content-contents-measure sp-only">
-            <span class="schedule-grid-content-contents-measure-name">{{ $todayCast->name }} ({{ $todayCast->age }})</span>
-            <span class="schedule-grid-content-contents-measure-text">キャスト名(00)／T.160 B.85(C) W.60 H.83</span>
-          </div>
-          <div class="schedule-grid-content-contents-message">
-            <span class="schedule-grid-content-contents-message-text">{{ \Illuminate\Support\Str::limit($todayCast->appeal_point, 60, '...') }}</span>
-          </div>
-        </div>
-      </a>
-
-      @endforeach
-      </div>
-      @endforeach
+      @include('public.groups._schedule-grid', [
+        'casts' => $displayTodayCastsForSchedule,
+        'chunkSize' => 3,
+        'variant' => 'three',
+        'homeSchedulePhotos' => $homeSchedulePhotos,
+        'homeScheduleFrames' => $homeScheduleFrames,
+      ])
     </div>
     <div class="groups-button-more">
       <a href="{{ route('public.groups.schedule') }}" class="groups-button-more-btn">もっと見る</a>
@@ -893,24 +849,26 @@
       <div class="pickup-girl__inner">
           <div class="pickup-main-border-img">
             <img class="pickup-main-border-img-photo" src="{{ asset('assets/img/home/pickupgirl/0d50d8cad0a0b77a8542dc16dfab0bca65297c3f.jpg') }}">
-            <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/home/pickupgirl/0d50d8cad0a0b77a8542dc16dfab0bca65297c3f.jpg') }}">
+            <img class="pickup-main-border-img-frame" src="{{ asset('assets/img/home/0e0618a222c6603fcea83f5f586cbd23fae85438.png') }}">
           </div>
         <div class="pickup-girl__content">
           <h3 class="pickup-girl__name">キャスト名</h3>
           <p class="pickup-girl__meta">T.160 B.85(C) W.60 H.83</p>
-
-          <h4 class="pickup-girl__title">プッシュキャット</h4>
-
-          <div class="pickup-girl__status">本日出勤中</div>
-
-          <div class="pickup-girl__message">
-            店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ 店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ
+          <div class="pickup-girl__title-wrapper">
+            <h4 class="pickup-girl__title">プッシュキャット</h4>
           </div>
+          
+
+          <div class="pickup-girl__status"><span class="pickup-girl__status-content">本日出勤中</span> </div>
+          <div class="pickup-girl-content-wrapper"><div class="pickup-girl__message">
+            店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ 店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ店長メッセージ
+          </div></div>
+          
         </div>
       </div>
     </div>
     <div class="pickup-contents-bottom">
-      <div class="pickup-contents-slider-content-wrapper">
+      <div class="pickup-contents-slider-content-wrapper pc-only">
         <div class="pickup-contents-track">
           @foreach ($displayPickupsForHome as $pickup)
             <div class="pickup-contents-slide-item">
@@ -931,8 +889,8 @@
                     T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }})
                     W.{{ $pickup->waist }} H.{{ $pickup->hip }}
                   </p>
-
-                  <p class="pickup-card__shop">{{ $pickup->shop_name }}</p>
+                  <div class="pickup-girl__title-wrapper"><p class="pickup-card__shop">{{ $pickup->shop_name }}</p></div>
+                  
 
                   <div class="pickup-card__status">
                     <span class="pickup-card__statusText">{{ $pickup->schedule_status }}</span>
@@ -948,6 +906,47 @@
           @endforeach
         </div>
       </div>
+      <div class="pickup-contents-grid sp-only">
+        @foreach ($displayPickupsForHome->chunk(2) as $pickupRow)
+          <div class="pickup-contents-row">
+            @foreach ($pickupRow as $pickup)
+              <div class="pickup-contents-slide-item">
+                <a class="pickup-card"
+                  href="{{ route('public.shops.shop.profile', ['shop' => $pickup->shop_slug, 'id' => $pickup->id]) }}">
+
+                  <div class="pickup-slide-contents-img">
+                    <img class="pickup-slide-contents-img-photo" src="{{ $pickup->featured_photo_url }}" alt="{{ $pickup->name }}">
+                    <img class="pickup-slide-contents-img-frame" src="{{ asset('assets/img/groups/card-frame-'.$pickup->shop_slug.'.png') }}" alt="">
+                  </div>
+
+                  <div class="pickup-card__body">
+                    <h3 class="pickup-card__name">{{ $pickup->name }}</h3>
+
+                    <p class="pickup-card__measure">
+                      T.{{ $pickup->height }} B.{{ $pickup->bust }}({{ $pickup->bra }})
+                      W.{{ $pickup->waist }} H.{{ $pickup->hip }}
+                    </p>
+
+                   <div class="pickup-girl__title-wrapper"><p class="pickup-card__shop">{{ $pickup->shop_name }}</p></div>
+
+                    <div class="pickup-card__status">
+                      <span class="pickup-card__statusText">{{ $pickup->schedule_status }}</span>
+                    </div>
+
+                    <p class="pickup-card__message">
+                      女の子メッセージ女の子メッセージ女の子メッセージ
+                    </p>
+                  </div>
+
+                </a>
+              </div>
+            @endforeach
+          </div>
+        @endforeach
+      </div>
+    </div>
+    <div class="groups-button-more">
+      <a href="{{ route('public.groups.pickup') }}" class="groups-button-more-btn">もっと見る</a>
     </div>
   </section>
   @endif
@@ -1040,7 +1039,7 @@
                 <div class="diary-contents-slide-item-img">
                   <img src="{{ $diary->featured_photo_url }}" alt="{{ $diary->subject ?? 'Photo Diary' }}" loading="lazy" decoding="async">
                 </div>
-
+                
                 <span class="diary-contents-slide-item-title">{{ $diary->subject }}</span>
                 <span class="diary-contents-slide-item-datetime">
                   {{ \Carbon\Carbon::parse($diary->updated_at)->format('m月d日(D) H:i') }}
@@ -1073,10 +1072,10 @@
 
       {{-- More --}}
       <div class="groups-button-more">
-      <a href="{{ route('public.groups.movie') }}" class="groups-button-more-btn">もっと見る</a>
-    </div>
+        <a href="{{ route('public.groups.movie') }}" class="groups-button-more-btn">もっと見る</a>
+      </div>
 
-    </div>
+      </div>
   </div>
 </section>
 @endif
@@ -1146,7 +1145,7 @@
 
 @once
   {{-- @vite(['resources/scss/group/_pickup_top.scss','resources/scss/group/diary_top.scss','resources/scss/group/newstop.scss']) --}}
-  @vite(['resources/scss/groups/section-title.scss','resources/scss/groups/schedule-content.scss','resources/scss/groups/event-content.scss','resources/scss/groups/newface-content.scss','resources/scss/groups/pickup-content.scss','resources/scss/groups/diary-content.scss','resources/scss/groups/movie-content.scss'])
+  @vite(['resources/scss/groups/section-title.scss','resources/scss/groups/event-content.scss','resources/scss/groups/newface-content.scss','resources/scss/groups/pickup-content.scss','resources/scss/groups/diary-content.scss','resources/scss/groups/movie-content.scss'])
 @endonce
 <!-- {{-- <script>
 document.addEventListener('DOMContentLoaded', function() {

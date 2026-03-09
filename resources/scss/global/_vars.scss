@@ -137,8 +137,8 @@ $normal-font-style-lg: normal;
  */
 $media-query: (
   xs: '(max-width: 375px)',
-  sm: '(min-width: 376px) and (max-width: 767px)',
-  md: '(min-width: 768px) and (max-width: 1439px)',
+  sm: '(max-width: 850px)',
+  md: '(min-width: 851px) and (max-width: 1439px)',
   lg: '(min-width: 1440px) and (max-width: 1919px)',
   xl: '(min-width: 1920px) and (max-width: 2559px)',
   xxl: '(min-width: 2560px)'
@@ -156,4 +156,3 @@ $media-query: (
     #{$max}
   );
 }
-

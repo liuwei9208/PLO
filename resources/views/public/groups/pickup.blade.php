@@ -30,9 +30,12 @@
                 :message="$cast->appeal_point ?? ''"
                 :shopName="$cast->shop_name ?? ''"
                 :shopSlug="$cast->shop_slug ?? ''"
-                :imageUrl="$cast->gallery_1 ? asset('storage/' . $cast->gallery_1) : asset('assets/img/groups/newface-card.png')"
+                :imageUrl="$cast->gallery_1 ? asset('storage/' . ltrim($cast->gallery_1, '/')) : asset('assets/img/groups/newface-card.png')"
                 :frameImageUrl="$cast->shop_slug ? asset('assets/img/groups/card-frame-' . $cast->shop_slug . '.png') : null"
                 :profileUrl="$cast->shop_slug ? route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->id]) : '#'"
+                :statusText="$cast->status_text ?? null"
+                :timeRange="$cast->time_range ?? null"
+                :isWorkingToday="$cast->is_working_today ?? false"
                 :showNew="true"
               />
             @empty

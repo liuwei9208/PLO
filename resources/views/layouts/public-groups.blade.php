@@ -18,7 +18,7 @@
 
     @stack('styles')
   </head>
-  <body class="{{ request()->routeIs('public.group.home') || request()->routeIs('public.groups.home') || request()->routeIs('public.group.home-v2') || request()->routeIs('public.groups.home-v2') ? 'groups-home-page' : '' }}">
+  <body class="{{ request()->routeIs('public.group.home') || request()->routeIs('public.groups.home') || request()->routeIs('public.group.home-v2') || request()->routeIs('public.groups.home-v2') || request()->routeIs('public.recruit.confirmation') ? 'groups-home-page' : '' }} {{ request()->routeIs('public.recruit.confirmation') ? 'recruit-confirmation-page' : '' }}">
 
     <!-- 年齢確認モーダル -->
     {{-- <x-age-verification-modal /> --}}

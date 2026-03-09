@@ -331,12 +331,13 @@ class GroupsController extends Controller
 
         // Card images (fallbacks) used on the Groups "Shop List" page.
         $shopImages = [
-            'shizuku' => 'assets/img/shops/shizuku/001.jpg',
-            'pussycat' => 'assets/img/shops/shizuku/002.jpg',
-            'miyabi' => 'assets/img/shops/shizuku/003.jpg',
-            'siroganeze' => 'assets/img/shops/shizuku/005.jpg',
-            'en' => 'assets/img/shops/shizuku/004.jpg',
-            'lovestory' => 'assets/img/shops/shizuku/006.jpg',
+            'shizuku' => 'assets/img/logo/shizuku-logo.png',
+            'pussycat' => 'assets/img/logo/pussycat-logo.png',
+            'miyabi' => 'assets/img/logo/miyabi-logo-m.png',
+            'siroganeze' => 'assets/img/logo/siroganeze-logo.png',
+            // Use the latest "艶" logo asset.
+            'en' => 'assets/img/logo/en-logo-m.png',
+            'lovestory' => 'assets/img/logo/lovestory-logo.png',
         ];
 
         // Descriptions (fallbacks) used on the Groups "Shop List" page.
@@ -1292,6 +1293,8 @@ class GroupsController extends Controller
             ->limit(30)
             ->get();
 
+        $casts = $this->attachTodayAttendance($casts);
+
         // Generate date search dates (next 6 days)
         $dateSearchDates = [];
         for ($i = 0; $i < 6; $i++) {
@@ -1382,6 +1385,8 @@ class GroupsController extends Controller
             ->limit(30)
             ->get();
 
+        $casts = $this->attachTodayAttendance($casts);
+
         // Generate date search dates (next 6 days)
         $dateSearchDates = [];
         for ($i = 0; $i < 6; $i++) {
@@ -1423,6 +1428,49 @@ class GroupsController extends Controller
             'selectedDate' => $selectedDate,
         ]);
     }
+
+    private function attachTodayAttendance($casts)
+    {
+        if ($casts->isEmpty()) {
+            return $casts;
+        }
+
+        $today = Carbon::now()->toDateString();
+        $castIds = $casts->pluck('id')->filter()->unique()->values()->all();
+
+        if (empty($castIds)) {
+            return $casts;
+        }
+
+        $attendancesByCast = Attendance::whereIn('cast_id', $castIds)
+            ->where('is_public', 1)
+            ->whereDate('start_datetime', '<=', $today)
+            ->whereDate('end_datetime', '>=', $today)
+            ->orderBy('start_datetime', 'asc')
+            ->get()
+            ->groupBy('cast_id');
+
+        return $casts->map(function ($cast) use ($attendancesByCast) {
+            $attendanceGroup = $attendancesByCast->get($cast->id);
+            $attendance = $attendanceGroup ? $attendanceGroup->first() : null;
+
+            $startTime = $attendance?->start_datetime
+                ? Carbon::parse($attendance->start_datetime)->format('H:i')
+                : null;
+            $endTime = $attendance?->end_datetime
+                ? Carbon::parse($attendance->end_datetime)->format('H:i')
+                : null;
+
+            $cast->time_range = $startTime && $endTime
+                ? $startTime . '〜' . $endTime
+                : null;
+            $cast->status_text = $cast->time_range ? '本日出勤' : '本日お休み';
+            $cast->is_working_today = (bool) $cast->time_range;
+
+            return $cast;
+        });
+    }
+
     /**
      * Display the movie page.
      */

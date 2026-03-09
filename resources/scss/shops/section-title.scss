@@ -8,6 +8,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media screen and (max-width: 850px) {
+    padding: 0 16px;
+  }
 }
 
 .section-title h2,
@@ -23,12 +27,21 @@
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
   margin: 0;
+  line-height: 0.95;
+  overflow-wrap: anywhere;
   @include responsive-font(43px, 155px);
+
+  @media screen and (max-width: 850px) {
+    @include responsive-font(32px, 56px);
+  }
 }
 
 // Variant for smaller font size (e.g., NEW GIRL)
 .section-title.section-title-small h2,
 .section-title.section-title-small .section-title-text {
   @include responsive-font(50px, 154px);
-}
 
+  @media screen and (max-width: 850px) {
+    @include responsive-font(28px, 44px);
+  }
+}

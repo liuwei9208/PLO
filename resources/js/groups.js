@@ -268,8 +268,8 @@ if (diaryContentsSliderElement) {
     breakpoints: {
       0: {
         centeredSlides: true,
-        slidesPerView: 1.4,
-        spaceBetween: 30,
+        slidesPerView: 1.2,
+        spaceBetween: 20,
       },
       768: {
         centeredSlides: true,
@@ -282,10 +282,6 @@ if (diaryContentsSliderElement) {
         spaceBetween: 45,
       }
     },
-    // navigation: {
-    //   prevEl: '.newface-slide-prev',
-    //   nextEl: '.newface-slide-next',
-    // },
   });
 }
 

@@ -7,7 +7,7 @@
   display: flex;
   gap: 20px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 850px) {
     flex-direction: column;
     gap: 20px;
   }
@@ -21,7 +21,8 @@
   border: none !important;
   box-shadow: none !important;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 850px) {
+    max-width: 100%;
     padding: 20px;
   }
 
@@ -149,7 +150,7 @@
     opacity: 0.9;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 850px) {
     width: 100%;
     min-width: auto;
   }

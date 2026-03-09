@@ -330,16 +330,16 @@
 
   <section class="recruit-female-movie" aria-labelledby="recruit-female-movie-title">
     @php
-      $staffVideos = collect(glob(public_path('assets/video/スタッフインタビュー動画/*.mp4')) ?: [])
+      $staffVideos = collect(glob(public_path('assets/video/recruit-male/*.mp4')) ?: [])
         ->sort()
         ->values()
-        ->map(fn ($path) => 'assets/video/スタッフインタビュー動画/' . basename($path))
+        ->map(fn ($path) => 'assets/video/recruit-male/' . basename($path))
         ->all();
 
-      $girlVideos = collect(glob(public_path('assets/video/女の子インタビュー動画/*.mp4')) ?: [])
+      $girlVideos = collect(glob(public_path('assets/video/recruit-female/*.mp4')) ?: [])
         ->sort()
         ->values()
-        ->map(fn ($path) => 'assets/video/女の子インタビュー動画/' . basename($path))
+        ->map(fn ($path) => 'assets/video/recruit-female/' . basename($path))
         ->all();
 
       $staffPrimaryVideo = $staffVideos[0] ?? 'assets/video/female/staff-interview.mp4';
@@ -1016,7 +1016,7 @@
         </div>
 
         <div class="recruit-female-contact__actions">
-          <button type="submit" class="recruit-female-contact__submit">送信内容を確認する</button>
+          <button type="submit" class="recruit-female-contact__submit">送信する</button>
         </div>
       </form>
     </div>
@@ -1169,3 +1169,4 @@
 </x-public-groups-sub-page-layout>
 
 {{-- Styles are included in groups.scss --}}
+

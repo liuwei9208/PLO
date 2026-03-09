@@ -12,12 +12,15 @@
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     height: 90px;
     z-index: 100;
     display: flex;
     align-items: flex-start;
     background: rgb(255, 255, 255);
     gap: 15px;
+    overflow-x: clip;
 }
 
 .header-buttons {
@@ -40,6 +43,7 @@
     align-items: center;
     gap: 0;
     flex: 1;
+    min-width: 0;
     justify-content: flex-end;
     padding: 15px 0;
 
@@ -54,6 +58,7 @@
     align-items: center;
     gap: 0;
     flex: 1;
+    min-width: 0;
     justify-content: space-between;
     padding: 15px 0;
 }
@@ -61,6 +66,7 @@
 .right-header-menu {
     display: flex;
     align-items: center;
+    min-width: 0;
 
     @media screen and (max-width: 850px) {
         display: none;
@@ -449,7 +455,7 @@
 }
 
 // ── Mobile/Tablet specific override (768px) ──
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
     .header-sub-recruit__nav {
         display: none !important;
     }
@@ -523,5 +529,72 @@
 
     &:hover {
         color: #fff42f;
+    }
+}
+
+// Final tablet/small-desktop override (851-1439):
+// collapse nav groups to logo + menu button only to prevent horizontal overflow.
+@media screen and (min-width: 851px) and (max-width: 1440px) {
+    .header-sub {
+        height: 72px;
+        width: 100%;
+        max-width: 100%;
+        gap: 0;
+        padding: 0 8px;
+        align-items: center;
+        justify-content: space-between;
+        overflow-x: hidden;
+    }
+
+    .left-header,
+    .right-header-menu,
+    .logout-button {
+        display: none;
+    }
+
+    .right-header {
+        flex: 0 0 auto;
+        height: 72px;
+        padding: 0;
+        justify-content: flex-end;
+    }
+
+    .sub-header-logo {
+        width: 180px;
+        height: 72px;
+        padding: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+
+        img {
+            width: 180px;
+            height: 72px;
+            object-fit: contain;
+        }
+    }
+
+    .header-buttons {
+        height: 72px;
+        gap: 0;
+        padding: 0;
+    }
+
+    .menu-button {
+        width: 72px;
+        height: 72px;
+        position: static;
+        padding: 0;
+        gap: 6px;
+
+        svg {
+            width: 44px;
+            height: 18px;
+        }
+
+        span {
+            font-size: 12px;
+            line-height: 1;
+        }
     }
 }

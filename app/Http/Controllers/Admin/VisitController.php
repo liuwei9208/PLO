@@ -41,7 +41,7 @@ class VisitController extends Controller{
   LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
+  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course1_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
 
   $sql = 'SELECT DATE_FORMAT(`'.env("MEMBER_DB_DATABASE").'`.histories.created_at, "%Y-%m-%d %H:%i:%s") as created_at,
@@ -62,7 +62,7 @@ class VisitController extends Controller{
   LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
+  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course1_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
 //   ORDER BY `'.env("MEMBER_DB_DATABASE").'`.histories.created_at DESC LIMIT 100';
 

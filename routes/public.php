@@ -39,7 +39,9 @@ Route::name('public.')->group(function () {
     Route::prefix('/')->name('group.')->group(function () {
         Route::get('/', [GroupsController::class, 'showHome'])->name('home');
         Route::get('home', [GroupsController::class, 'showHome'])->name('home-v2');
-        Route::get('/front', [GroupController::class, 'showFront'])->name('front');
+        Route::get('/front', function () {
+            return redirect()->route('public.group.home');
+        })->name('front');
         Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
         Route::get('event', [GroupController::class, 'showEvent'])->name('event');
@@ -104,6 +106,7 @@ Route::name('public.')->group(function () {
     Route::prefix('recruit')->name('recruit.')->group(function () {
         Route::get('male', [RecruitController::class, 'showMale'])->name('male');
         Route::get('female', [RecruitController::class, 'showFemale'])->name('female');
+        Route::get('confirmation', [RecruitController::class, 'showConfirmation'])->name('confirmation');
         Route::post('submit', [RecruitController::class, 'submitForm'])->name('submit');
     });
     /**

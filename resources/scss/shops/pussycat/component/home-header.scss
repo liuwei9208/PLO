@@ -9,8 +9,10 @@
   border-radius: 1.875rem 0 0 0;
   align-items: center;
   position: relative;
+  max-width: 100%;
   z-index: 10;
   transition: all 0.3s ease;
+  overflow-x: clip;
 
   &.fixed-header {
     position: fixed;
@@ -19,6 +21,57 @@
     width: calc(100% - 5rem);
     z-index: 1000;
     border-radius: 1.875rem 0 0 0;
+  }
+}
+
+// Tablet/small-desktop:
+// collapse to logo + menu button to avoid horizontal overflow.
+@media (min-width: 851px) and (max-width: 1440px) {
+  .home-header {
+    height: 75px;
+    border-radius: 0;
+    padding: 0;
+
+    &.fixed-header {
+      left: 0;
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+
+  .mobile-header-logo {
+    display: block;
+    padding-left: 1rem;
+  }
+
+  .menu-list-container {
+    display: none;
+  }
+
+  .menu-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3125rem;
+    padding: 1.1rem 1.275rem;
+
+    svg {
+      width: 39.131px;
+      height: 18.833px;
+    }
+
+    p {
+      font-size: 10px;
+      line-height: 17px;
+      letter-spacing: 0.7px;
+      padding-top: 0;
+      margin: 0;
+    }
+  }
+
+  .page-top-section {
+    display: none;
   }
 }
 
@@ -235,6 +288,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
+    box-sizing: border-box;
     background: #000000;
     z-index: 1000;
     align-items: center;

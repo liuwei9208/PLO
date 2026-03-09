@@ -2,7 +2,8 @@
   $isGroupsHome = request()->routeIs('public.group.home')
       || request()->routeIs('public.groups.home')
       || request()->routeIs('public.group.home-v2')
-      || request()->routeIs('public.groups.home-v2');
+      || request()->routeIs('public.groups.home-v2')
+      || request()->routeIs('public.recruit.confirmation');
 @endphp
 
 @if ($isGroupsHome)

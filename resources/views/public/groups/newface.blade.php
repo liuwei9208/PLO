@@ -12,18 +12,6 @@
   :dateSearchDates="$dateSearchDates ?? null"
   :dateSearchActiveDate="$selectedDate ?? request('date')"
 >
-  @php
-    $newfaceStaticImagePool = collect(
-      glob(public_path('assets/img/home/newface/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}'), GLOB_BRACE) ?: []
-    )->map(function ($path) {
-      return asset('assets/img/home/newface/' . basename($path));
-    })->values();
-
-    if ($newfaceStaticImagePool->isEmpty()) {
-      $newfaceStaticImagePool = collect([asset('assets/img/groups/newface-card.png')]);
-    }
-  @endphp
-
   <!-- New Face Content -->
   <div class="newface">
     <section>
@@ -32,10 +20,6 @@
           <div class="newface-cards-slider swiper" aria-label="New Face slider">
             <div class="swiper-wrapper">
 		              @foreach(($casts ?? collect()) as $cast)
-		                @php
-		                  $cardImageUrl = $newfaceStaticImagePool[$loop->index % $newfaceStaticImagePool->count()]
-		                    ?? asset('assets/img/groups/newface-card.png');
-		                @endphp
 		                <div class="swiper-slide">
 		                  <x-public.groups.newface-card
                     :date="\Carbon\Carbon::parse($cast->joined_at)->format('m/d')"
@@ -50,9 +34,12 @@
 		                    :message="$cast->appeal_point ?? ''"
 		                    :shopName="$cast->shop_name ?? ''"
 		                    :shopSlug="$cast->shop_slug ?? ''"
-		                    :imageUrl="$cardImageUrl"
+		                    :imageUrl="$cast->gallery_1 ? asset('storage/' . ltrim($cast->gallery_1, '/')) : asset('assets/img/groups/newface-card.png')"
 		                    :frameImageUrl="$cast->shop_slug ? asset('assets/img/groups/card-frame-' . $cast->shop_slug . '.png') : null"
 		                    :profileUrl="$cast->shop_slug ? route('public.shop.cast.profile', ['shop' => $cast->shop_slug, 'id' => $cast->id]) : '#'"
+                        :statusText="$cast->status_text ?? null"
+                        :timeRange="$cast->time_range ?? null"
+                        :isWorkingToday="$cast->is_working_today ?? false"
 		                    :showNew="true"
 	                  />
                 </div>
