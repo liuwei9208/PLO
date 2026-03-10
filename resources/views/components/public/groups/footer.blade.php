@@ -78,9 +78,9 @@
         <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.female') }}">女性求人</a>
+        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.male') }}">男性求人</a>
+        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
         <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
       </div>
@@ -110,15 +110,15 @@
       <div class="footer-bottom-menu-items">
         <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.female') }}">女性求人</a>
+        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.male') }}">男性求人</a>
+        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
       </div>
       <div class="footer-bottom-menu-items">
         <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
       </div>
     </div>    <div class="footer-bottom-logo">
-      <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}">
+      <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}"
     </div>
   </div>
 </div>

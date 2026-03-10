@@ -1,8 +1,7 @@
 /**
  * Pickup
  */
- @use 'sass:color';
-@use '../global/vars' as *;
+ @use '../global/vars' as *;
  @use '../mixins/text';
  @use '../global/reset';
  @use '../global/base';
@@ -204,7 +203,7 @@
             font-size: 19px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-pussycat, $lightness: -15%);
+            background-color: darken($shop-color-pussycat, 15%);
           }
         }
         &[data-shop="shizuku"] {
@@ -219,7 +218,7 @@
             font-size: 22px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-shizuku, $lightness: -15%);
+            background-color: darken($shop-color-shizuku, 15%);
           }
         }
         &[data-shop="miyabi"] {
@@ -234,7 +233,7 @@
             font-size: 22px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-miyabi, $lightness: -15%);
+            background-color: darken($shop-color-miyabi, 15%);
           }
         }
         &[data-shop="en"] {
@@ -249,7 +248,7 @@
             font-size: 22px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-en, $lightness: -15%);
+            background-color: darken($shop-color-en, 15%);
           }
         }
         &[data-shop="siroganeze"] {
@@ -264,7 +263,7 @@
             font-size: 20px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-siroganeze, $lightness: -15%);
+            background-color: darken($shop-color-siroganeze, 15%);
           }
         }
         &[data-shop="lovestory"] {
@@ -279,7 +278,7 @@
             font-size: 20px;
           }
           &:hover {
-            background-color: color.adjust($shop-color-lovestory, $lightness: -15%);
+            background-color: darken($shop-color-lovestory, 15%);
           }
         }        // @media #{media-query(sm)} {
         //   width: 80px;

@@ -22,7 +22,7 @@ $shops: (
   // @media #{media-query(md)} {
   //   padding: 90px 0 80px;
   // }
-  // @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+  // @media #{media-query(lg)} {
   //   padding: 120px 0 90px;
   // }
 
@@ -42,7 +42,7 @@ $shops: (
     // @media #{media-query(md)} {
     //   font-size: 28px;
     // }
-    // @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+    // @media #{media-query(lg)} {
     //   font-size: 36px;
     // }
   }
@@ -58,7 +58,7 @@ $shops: (
       // width: 640px;
       // margin: 50px auto 0;
     }
-    @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+    @media #{media-query(lg)} {
       // width: 840px;
       // margin: 60px auto 0;
     }
@@ -84,7 +84,7 @@ $shops: (
         // margin: 0 5px 15px;
         // border-radius: 35px;
       }
-      @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+      @media #{media-query(lg)} {
         width: 250px;
         height: 90px;
         margin: 0 5px 15px;
@@ -142,7 +142,7 @@ $shops: (
           font-size: 18px;
           border: 2px solid #707070;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 19px;
           border: 2px solid #707070;
         }
@@ -155,7 +155,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 15px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 19px;
         }
       }
@@ -167,7 +167,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -179,7 +179,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -191,7 +191,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -203,7 +203,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 16px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 20px;
         }
       }
@@ -215,7 +215,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 16px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 20px;
         }
       }
@@ -240,7 +240,7 @@ $shops: (
       //   margin: 0 5px 15px;
       //   border-radius: 35px;
       // }
-      // @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+      // @media #{media-query(lg)} {
       //   width: 250px;
       //   height: 90px;
       //   margin: 0 5px 15px;
@@ -267,7 +267,7 @@ $shops: (
           font-size: 18px;
           border: 2px solid #707070;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 19px;
           border: 2px solid #707070;
         }
@@ -283,7 +283,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 15px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 19px;
         }
       }
@@ -295,7 +295,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -307,7 +307,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -319,7 +319,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 18px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 22px;
         }
       }
@@ -331,7 +331,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 16px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 20px;
         }
       }
@@ -343,7 +343,7 @@ $shops: (
         @media #{media-query(md)} {
           font-size: 16px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 20px;
         }
       }
@@ -364,7 +364,7 @@ $shops: (
       width: 720px;
       margin: 50px auto 0;
     }
-    @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+    @media #{media-query(lg)} {
       grid-template-columns: repeat(3, 1fr);
       gap: 54px;
       width: 1260px;
@@ -424,7 +424,7 @@ $shops: (
         @media #{media-query(md)} {
           height: 375px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           height: 425px;
         }
 
@@ -463,7 +463,7 @@ $shops: (
           font-size: 16px;
           width: 100%;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           height: 42px;
           margin: 22px 10px 0;
           padding: 0 24px;
@@ -524,7 +524,7 @@ $shops: (
           margin: 30px 0 0;
           font-size: 30px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           margin: 35px 0 0;
           font-size: 35px;
         }
@@ -546,7 +546,7 @@ $shops: (
           font-size: 16px;
           margin: 24px 0 0;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           font-size: 18px;
           margin: 28px 0 0;
         }
@@ -568,7 +568,7 @@ $shops: (
           line-height: 30px;
           height: 60px;
         }
-        @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+        @media #{media-query(lg)} {
           margin: 15px 0 0;
           padding: 0 10px;
           font-size: 20px;
@@ -586,7 +586,7 @@ $shops: (
     @media #{media-query(md)} {
       margin: 60px auto 0;
     }
-    @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+    @media #{media-query(lg)} {
       margin: 60px auto 0;
     }
   }
@@ -639,7 +639,7 @@ $shops: (
         font-size: 14px;
       }
 
-      @media #{media-query(lg)}, #{media-query(xl)}, #{media-query(xxl)} {
+      @media #{media-query(lg)} {
         width: 42px;
         height: 42px;
         font-size: 16px;

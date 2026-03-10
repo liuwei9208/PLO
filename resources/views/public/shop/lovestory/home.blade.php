@@ -237,7 +237,7 @@ contentGradientStart="#F2387C"
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪  ラブストーリーの新人入店情報になります" button-text="一覧を見る" background-color="#fff"
+                        description="新入デビュー♪  ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
                         text-color="#1C2D48" border-color="#F2BBCF" underlineColor="#EAF205"
                         responsive-variant="new-girl" :gradient=false
                         button-href="{{ route('public.shops.shop.newcast', ['shop' => 'lovestory']) }}" />
@@ -660,8 +660,8 @@ contentGradientStart="#F2387C"
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => route('public.recruit.female')],
-                ['text' => '男性求人', 'url' => route('public.recruit.male')],
+                ['text' => '女性求人', 'url' => '#'],
+                ['text' => '男性求人', 'url' => '#'],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"

@@ -70,33 +70,9 @@
                                       来店一覧
                                   </a>
                               </li>
-                              <li>
-                                  <a href="{{ url('/admin/recruit-application') }}" class="menu-dropdown-item group"
-                                      :class="page === 'recruit-application' ? 'menu-dropdown-item-active' :
-                                          'menu-dropdown-item-inactive'">
-                                      求人応募一覧
-                                  </a>
-                              </li>
                           </ul>
                       </div>
                       <!-- Dropdown Menu End -->
-                    </li>
-
-                    <li>
-                        <a href="{{ route('admin.recruit-application.index') }}" @click="selected = (selected === 'RecruitApplications' ? '' : 'RecruitApplications')"
-                            class="menu-item group"
-                            :class="(selected === 'RecruitApplications') || (page === 'recruit-application') ? 'menu-item-active' : 'menu-item-inactive'">
-                            <svg :class="(selected === 'RecruitApplications') || (page === 'recruit-application') ? 'menu-item-icon-active' : 'menu-item-icon-inactive'"
-                                width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M7.25 3.5C5.73122 3.5 4.5 4.73122 4.5 6.25V17.75C4.5 19.2688 5.73122 20.5 7.25 20.5H16.75C18.2688 20.5 19.5 19.2688 19.5 17.75V8.41421C19.5 7.68586 19.2107 6.98796 18.695 6.47227L16.5277 4.30497C16.012 3.78928 15.3141 3.5 14.5858 3.5H7.25ZM6 6.25C6 5.55964 6.55964 5 7.25 5H14.5858C14.9168 5 15.2343 5.13147 15.4683 5.36563L17.6344 7.53171C17.8685 7.76566 18 8.0832 18 8.41421V17.75C18 18.4404 17.4404 19 16.75 19H7.25C6.55964 19 6 18.4404 6 17.75V6.25ZM8.25 10C8.25 9.58579 8.58579 9.25 9 9.25H15C15.4142 9.25 15.75 9.58579 15.75 10C15.75 10.4142 15.4142 10.75 15 10.75H9C8.58579 10.75 8.25 10.4142 8.25 10ZM8.25 14C8.25 13.5858 8.58579 13.25 9 13.25H15C15.4142 13.25 15.75 13.5858 15.75 14C15.75 14.4142 15.4142 14.75 15 14.75H9C8.58579 14.75 8.25 14.4142 8.25 14Z"
-                                    fill="" />
-                            </svg>
-                            <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
-                                求人応募管理
-                            </span>
-                        </a>
                     </li>
                     {{-- <!-- News -->
                     <li>
