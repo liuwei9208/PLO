@@ -199,12 +199,12 @@
       // padding: 0 20px;
     }
 
-    // &-items-swiper-wrapper {
-    //   display: flex;
-    //   gap: 30px;
-    //   align-items: stretch;
-    //   // min-height: 350px;
-    // }
+    &-items-swiper-wrapper {
+      display: flex;
+      gap: 30px;
+      align-items: stretch;
+      // min-height: 350px;
+    }
 
     &-item {
       display: flex;
@@ -385,10 +385,10 @@
   }
 }
 
-// .castlist-body-items-slider .swiper-wrapper {
-//   display: flex;
-//   align-items: stretch;
-// }
+.castlist-body-items-slider .swiper-wrapper {
+  display: flex;
+  align-items: stretch;
+}
 
 .castlist-body-items-slider .swiper-slide {
   display: flex;
@@ -834,10 +834,10 @@
       &-items {
         padding: 0 8px;
       }
-      // &-items-swiper-wrapper {
-      //   gap: 12px;
-      //   min-height: 220px;
-      // }
+      &-items-swiper-wrapper {
+        gap: 12px;
+        min-height: 220px;
+      }
     }
 
     .castlist-slide {

@@ -179,8 +179,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <div class="footer__nav-item"><a href="{{ route('terms.show') }}">新規会員登録</a></div>
       @endif
       <div class="footer__nav-item"><a href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.recruit.female') }}">女性求人</a></div>
-      <div class="footer__nav-item"><a href="{{ route('public.recruit.male') }}">男性求人</a></div>
+      <div class="footer__nav-item"><a href="{{ url('https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/') }}">女性求人</a></div>
+      <div class="footer__nav-item"><a href="">男性求人</a></div>
       {{-- <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">プライバシーポリシー</a></div> --}}
       <div class="footer__nav-item"><a href="{{ route('public.group.privacy-policy') }}">個人情報保護方針</a></div>
       <div class="footer__nav-item"><a href="mailto:mail@example.com">お問い合わせ</a></div>

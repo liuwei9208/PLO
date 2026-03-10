@@ -7,13 +7,9 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Event;
 use League\Flysystem\Filesystem;
 use Spatie\Dropbox\Client as DropboxClient;
 use Spatie\FlysystemDropbox\DropboxAdapter;
-use Spatie\Backup\Events\BackupWasSuccessful;
-use App\Listeners\UploadBackupToDropbox;
-
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -48,11 +44,5 @@ class AppServiceProvider extends ServiceProvider
         //     );
 
         // });
-
-        // Register backup event listener
-        Event::listen(
-            BackupWasSuccessful::class,
-            UploadBackupToDropbox::class
-        );
     }
 }

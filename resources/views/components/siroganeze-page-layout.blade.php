@@ -19,13 +19,13 @@
                 'ranking' => route('public.shops.shop.ranking', ['shop' => 'siroganeze']),
                 'shop' => route('public.shops.shop.shop-list', ['shop' => 'siroganeze']),
                 'access' => route('public.shops.shop.access', ['shop' => 'siroganeze']),
-                'recruit-male' => route('public.recruit.male'),
+                'recruit-male' => '#',
                 'login' => route('login'),
-                'recruit-female' => route('public.recruit.female'),
+                'recruit-female' => '#',
                 'register' => route('register'),
             ]" :bottom-buttons="[
-                'group' => route('public.groups.home'),
-                'recruit' => route('public.recruit.male'),
+                'group' => '#',
+                'recruit' => '#',
             ]" :bottom-button-images="[
                 'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
@@ -212,8 +212,8 @@
                         'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                         'target' => '_blank',
                     ],
-                    ['text' => '女性求人', 'url' => route('public.recruit.female')],
-                    ['text' => '男性求人', 'url' => route('public.recruit.male')],
+                    ['text' => '女性求人', 'url' => '#'],
+                    ['text' => '男性求人', 'url' => '#'],
                     [
                         'text' => '個人情報保護方針',
                         'url' => 'https://plo-group.jp/privacy-policy',

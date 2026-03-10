@@ -22,106 +22,34 @@ const pushbar = new Pushbar({
   overlay: true,
 });
 
-// Use app-specific state class names to avoid unintended CSS collisions
-const sliderStateClassNames = {
-  slideActiveClass: 'is-swiper-active',
-  slideNextClass: 'is-swiper-next',
-  slidePrevClass: 'is-swiper-prev',
-};
-
-function initNewfaceSlider(sliderElement) {
-  const track = sliderElement.querySelector('.newface-track, .swiper-wrapper');
-  if (!track) return;
-
-  const slides = Array.from(track.children).filter(
-    (child) => child.classList.contains('newface-slide-item') || child.classList.contains('swiper-slide'),
-  );
-  if (slides.length <= 1) return;
-
-  // Prevent native image/link dragging so pointer drag always scrolls the slider.
-  track.querySelectorAll('img, a').forEach((node) => {
-    node.setAttribute('draggable', 'false');
-  });
-
-  let dragging = false;
-  let moved = false;
-  let startX = 0;
-  let startScrollLeft = 0;
-  let activePointerId = null;
-
-  const handlePointerDown = (event) => {
-    if (event.pointerType === 'mouse' && event.button !== 0) return;
-
-    dragging = true;
-    moved = false;
-    startX = event.clientX;
-    startScrollLeft = sliderElement.scrollLeft;
-    activePointerId = event.pointerId;
-
-    sliderElement.classList.add('is-dragging');
-    sliderElement.style.scrollSnapType = 'none';
-
-    if (sliderElement.setPointerCapture) {
-      sliderElement.setPointerCapture(activePointerId);
+new Swiper('.newface-slide', {
+  modules: [ Autoplay, Navigation ],
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false
+  },
+  speed: 1000,
+  breakpoints: {
+    0: {
+      centeredSlides: 1,
+      slidesPerView: 1.35,
+      spaceBetween: 30,
+    },
+    768: {
+      slidesPerView: 2,
+      spaceBetween: 30,
+    },
+    1366: {
+      slidesPerView: 3,
+      spaceBetween: 45,
     }
-  };
-
-  const handlePointerMove = (event) => {
-    if (!dragging || (activePointerId !== null && event.pointerId !== activePointerId)) return;
-
-    const deltaX = event.clientX - startX;
-    if (Math.abs(deltaX) > 6) moved = true;
-    sliderElement.scrollLeft = startScrollLeft - deltaX;
-  };
-
-  const finishDrag = () => {
-    if (!dragging) return;
-
-    dragging = false;
-    sliderElement.classList.remove('is-dragging');
-    sliderElement.style.scrollSnapType = 'x mandatory';
-
-    if (activePointerId !== null && sliderElement.releasePointerCapture) {
-      try {
-        sliderElement.releasePointerCapture(activePointerId);
-      } catch (error) {
-        // Ignore pointer capture release errors when pointer is already gone.
-      }
-    }
-
-    activePointerId = null;
-  };
-
-  sliderElement.addEventListener('pointerdown', handlePointerDown);
-  sliderElement.addEventListener('pointermove', handlePointerMove);
-  sliderElement.addEventListener('pointerup', finishDrag);
-  sliderElement.addEventListener('pointercancel', finishDrag);
-  sliderElement.addEventListener('dragstart', (event) => {
-    event.preventDefault();
-  });
-  sliderElement.addEventListener('pointerleave', (event) => {
-    if (event.pointerType === 'mouse') finishDrag();
-  });
-  sliderElement.addEventListener('click', (event) => {
-    if (moved) {
-      event.preventDefault();
-      event.stopPropagation();
-      moved = false;
-    }
-  }, true);
-
-  sliderElement.style.touchAction = 'pan-y';
-  sliderElement.style.scrollBehavior = 'auto';
-  track.style.touchAction = 'pan-y';
-  slides.forEach((slide) => {
-    slide.style.touchAction = 'pan-y';
-  });
-}
-
-const newfaceSliderElement = document.querySelector('.newface-slide');
-if (newfaceSliderElement) {
-  initNewfaceSlider(newfaceSliderElement);
-}
+  },
+  navigation: {
+    prevEl: '.newface-slide-prev',
+    nextEl: '.newface-slide-next',
+  },
+})
 
 
 /** ピックアップの「店舗名」ボタン */
@@ -187,7 +115,6 @@ const newfaceMore = document.querySelector('.newface-more')
 
 // Create thumbnail swiper for pagination
 const thumbsSwiper = new Swiper('.event-pagination', {
-  ...sliderStateClassNames,
   slidesPerView: 'auto',
   centeredSlides: true,
   slideToClickedSlide: true,
@@ -210,7 +137,6 @@ const thumbsSwiper = new Swiper('.event-pagination', {
 
 // Main event slider
 const eventSlider = new Swiper('.event-slider', {
-  ...sliderStateClassNames,
   modules: [Navigation, Pagination, Autoplay],
   slidesPerView: 'auto',
   spaceBetween: 20,
@@ -251,7 +177,7 @@ const eventSlider = new Swiper('.event-slider', {
 
       // サムネイルスライダーを同期
       if (thumbsSwiper.slides) {
-        console.log({ realIndex });
+        console.log({realIndex});
         thumbsSwiper.slideToLoop(realIndex, 0);
 
         // すべてのサムネイルからアクティブクラスを削除
@@ -410,21 +336,21 @@ window.addEventListener('resize', () => {
 function resizeModule() {
   const header_child_menu_logo = document.querySelector('.header-child-user-menu-logo');
   if (header_child_menu_logo) {
-    console.log(header_child_menu_logo.getBoundingClientRect().x);
+    console.log(header_child_menu_logo.getBoundingClientRect().x) ;
     const header_child_logo = document.querySelector('.header-child-logo');
     if (header_child_logo) {
-      console.log(header_child_menu_logo.getBoundingClientRect().left);
+      console.log(header_child_menu_logo.getBoundingClientRect().left) ;
       let logo_left = header_child_menu_logo.getBoundingClientRect().left;
       document.documentElement.style.setProperty('--logo-left', `${logo_left + 10}px`);
       // header_child_logo.style.left = `${header_child_menu_logo.getBoundingClientRect().x}px`;
-      console.log(header_child_logo.getBoundingClientRect());
+      console.log(header_child_logo.getBoundingClientRect()) ;
     }
   }
   const mv = document.querySelector('.mv');
   const body = document.querySelector('body');
 
   if (mv) {
-    console.log({ mv });
+    console.log({mv});
     console.log(body.clientWidth);
     console.log(mv.offsetWidth);
     console.log(mv.clientWidth);
@@ -441,7 +367,7 @@ function resizeModule() {
     const draw = document.querySelector('.drawer-toggle');
     if (draw) {
       const draw_height = draw.offsetHeight;
-      console.log({ draw_height });
+      console.log({draw_height});
 
       // if (logo_height > draw_height) {
       //   draw.style.top = `${logo_height - draw_height}px`;
@@ -454,20 +380,20 @@ function resizeModule() {
     //   mv.style.width = `${body.clientWidth}px`;
 
     // }
-    console.log({ logo_height });
+    console.log({logo_height});
     // console.log(logo.clientHeight);
     const main = document.querySelector('.main');
     if (main) {
-      if (logo_height > 0) {
-        // mv.style.top = `${logo_height}px`; // Managed by CSS
+      if ( logo_height > 0){
+        mv.style.top = `${logo_height}px`;
         main.style.marginTop = `${mv.offsetHeight + logo_height}px`;
       }
-      if (logo_child_logo_height > 0) {
-        // mv.style.top = `${logo_child_logo_height}px`; // Managed by CSS
+      if ( logo_child_logo_height > 0){
+        mv.style.top = `${logo_child_logo_height}px`;
         main.style.marginTop = `${mv.offsetHeight + logo_child_logo_height}px`;
       }
-      if (logo_child_logo_height == 0 && logo_height == 0) {
-        // mv.style.top = `0px`; // Managed by CSS
+      if (logo_child_logo_height == 0 && logo_height == 0){
+        mv.style.top = `0px`;
         main.style.marginTop = `${mv.offsetHeight}px`;
       }
     }
@@ -484,21 +410,21 @@ function resizeModule() {
   const newface = document.querySelector('.newface');
   if (newface) {
     let newfaceHeight = newface.offsetHeight;
-    console.log({ newfaceHeight });
+    console.log({newfaceHeight});
     const newfaceBorder = document.querySelector('.newface-main');
-    console.log({ newfaceBorder });
+    console.log({newfaceBorder});
     if (newfaceBorder) {
       console.log(newfaceBorder.offsetHeight);
       const fullWidth = body.clientWidth;
-      console.log({ fullWidth });
+      console.log({fullWidth});
       if (fullWidth < 768) {
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight + 10;
       } else if (fullWidth >= 768 && fullWidth < 1440) {
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 0;
-      } else {
+      }else{
         newfaceHeight = newfaceHeight - newfaceBorder.offsetHeight - 30;
       }
-      console.log({ newfaceHeight });
+      console.log({newfaceHeight});
       document.documentElement.style.setProperty('--newface-height', `${newfaceHeight}px`);
       // newfaceBorder.style.setProperty('--newface-height', `${newfaceHeight}px`);
       // const border = document.querySelector('.section-title');

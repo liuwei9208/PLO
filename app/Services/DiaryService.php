@@ -65,12 +65,12 @@ class DiaryService
                 break;
         }
         $mailbox = new Mailbox([
-            'port' => env('IMAP_PORT', 993), // IMAP port for reading emails
+            'port' => 993,
             'username' => $cast->diary_email_to,
             // 'password' => $cast->diary_email_password,
             'password' => $mail_password,
-            'encryption' => env('IMAP_ENCRYPTION', 'ssl'), // IMAP encryption
-            'host' => env('IMAP_HOST', env('MAIL_HOST')), // IMAP host (fallback to MAIL_HOST for backward compatibility)
+            'encryption' => 'ssl',
+            'host' => env('MAIL_HOST'),
         ]);
 
         $inbox = $mailbox->inbox();

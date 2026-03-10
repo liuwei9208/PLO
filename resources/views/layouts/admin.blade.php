@@ -9,20 +9,19 @@
 
     <link rel="icon" href="favicon.ico">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    {{-- no indexing --}}
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="{{ asset('tailadmin/build/style.css') }}">
     <script defer src="{{ asset('tailadmin/build/bundle.js') }}"></script>
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
 
     @stack('head')
-
+  
     {{-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css" />
     <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.umd.js"></script> --}}
     <!-- Add if you use premium features. -->
     {{-- <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5-premium-features/43.0.0/ckeditor5-premium-features.css" />
     <script src="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5-premium-features.umd.js"></script> --}}
-
+    
   </head>
 
   <body
