@@ -19,13 +19,13 @@
                 'ranking' => route('public.shops.shop.ranking', ['shop' => 'shizuku']),
                 'shop' => route('public.shops.shop.shop-list', ['shop' => 'shizuku']),
                 'access' => route('public.shops.shop.access', ['shop' => 'shizuku']),
-                'recruit-male' => '#',
+                'recruit-male' => route('public.recruit.male'),
                 'login' => route('login'),
-                'recruit-female' => '#',
+                'recruit-female' => route('public.recruit.female'),
                 'register' => route('register'),
             ]" :bottom-buttons="[
-                'group' => '#',
-                'recruit' => '#',
+                'group' => route('public.groups.home'),
+                'recruit' => route('public.recruit.male'),
             ]" :bottom-button-images="[
                 'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
@@ -173,30 +173,32 @@
                     'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
                 ],
             ]" :external-links="$banner_list"
+
+
                 :menu-links="[
-                    ['text' => '店舗TOP', 'url' => '#'],
-                    ['text' => '出勤情報', 'url' => '#'],
-                    ['text' => '料金システム', 'url' => '#'],
-                    ['text' => 'キャスト一覧', 'url' => '#'],
-                    ['text' => '新着情報', 'url' => '#'],
-                    ['text' => 'SNS', 'url' => '#'],
-                    ['text' => '店舗一覧', 'url' => '#'],
-                    ['text' => 'ログイン', 'url' => '#'],
-                    ['text' => '新規会員登録', 'url' => '#'],
-                    [
-                        'text' => 'メルマガ',
-                        'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
-                        'target' => '_blank',
-                    ],
-                    ['text' => '女性求人', 'url' => '#'],
-                    ['text' => '男性求人', 'url' => '#'],
-                    [
-                        'text' => '個人情報保護方針',
-                        'url' => 'https://plo-group.jp/privacy-policy',
-                        'target' => '_blank',
-                    ],
-                    ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-                ]" />
+              ['text' => '店舗TOP', 'url' => route(  'public.shops.shop.home', ['shop' => 'en'])],
+              ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'en'])],
+              ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'en'])],
+              ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'en'])],
+              ['text' => '新着情報', 'url' => route('public.shops.shop.newcast', ['shop' => 'en'])],
+              ['text' => 'SNS', 'url' => '#'],
+              ['text' => '店舗一覧', 'url' => route('public.shops.shop.shop-list', ['shop' => 'en'])],
+              ['text' => 'ログイン', 'url' => route('login')],
+              ['text' => '新規会員登録', 'url' => route('register')],
+              [
+                  'text' => 'メルマガ',
+                  'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
+                  'target' => '_blank',
+              ],
+              ['text' => '女性求人', 'url' => route('public.recruit.female')],
+              ['text' => '男性求人', 'url' => route('public.recruit.male')],
+              ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
+              ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
+            ]" 
+            
+              
+                
+                />
         </div>
         <!-- Fixed Phone Button -->
         <x-public.shops.fixed-phone-button phone-number="0115338988" phone-display="011-533-8988" hours="8:30〜24:00まで"

@@ -1,6 +1,14 @@
 <x-shizuku-layout>
+    @php
+        // Swap this path when replacing the overlay effect video.
+        $mainVisualOverlayVideo = 'assets/video/pussy_%e3%83%a1%e3%82%a4%e3%83%b3%e3%83%93%e3%82%b8%e3%83%a5%e3%82%a2%e3%83%ab%e7%94%a8%e9%80%8f%e9%81%8e%e5%8b%95%e7%94%bb/91898_1920x1080.mp4';
+    @endphp
     <div class="home">
         <div class="banner-image">
+            <video class="banner-image__overlay-video" autoplay muted loop playsinline preload="metadata"
+                aria-hidden="true">
+                <source src="{{ asset($mainVisualOverlayVideo) }}" type="video/mp4">
+            </video>
             {{-- <img class="pc-only" src="/assets/img/shops/shizuku/home-banner.png" alt="home gradient overlay">
             <img class="sp-only" src="/assets/img/shops/shizuku/home-banner-sp.jpg" alt="home gradient overlay"> --}}
         </div>
@@ -247,7 +255,7 @@
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#FFFFFF"
+                        description="新入デビュー♪ プッシーキャットの新人入店情報になります" button-text="一覧を見る" background-color="#FFFFFF"
                         border-color="#05F2DB" text-color="#textColor" :gradient=false underlineColor="#EAF205"
                         underline-gradient-end="#BD902F" responsive-variant="new-girl"
                         button-href="{{ route('public.shops.shop.newcast', ['shop' => 'pussycat']) }}" />
@@ -361,7 +369,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>ヴィラコート雫のキャスト一覧です。</p>
+                            <p>プッシーキャットに在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'shizuku']) }}">
@@ -686,8 +694,8 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"

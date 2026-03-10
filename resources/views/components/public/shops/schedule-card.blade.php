@@ -38,7 +38,9 @@
             style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});"> --}}
         @if ($variant === 'schedule' || $variant === 'castlist')
             <div class="schedule-card-content @if ($variant === 'castlist') castlist-card-content @endif"
-                style="background: linear-gradient(90deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
+
+
+                style="background: linear-gradient(270deg, {{ $contentGradientStart }} {{ $contentGradientStartPercent }}, {{ $contentGradientEnd }} {{ $contentGradientEndPercent }});">
                 @if ($badgeTime != '')
                     <div class="schedule-card-badge @if ($variant === 'castlist') castlist-card-badge @endif"
                         style="border-color: {{ $badgeBorderColor }};">

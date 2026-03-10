@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
 
         User::factory()->create([
             'id' => 1,
-            'name' => '本部管理者',
+            'name' => 'Ravi',
             'email' => 'admin@plo-group.jp',
             'password' => bcrypt('9k@zC6iWZK_Qcp8j'),
         ])->assignRole('admin');

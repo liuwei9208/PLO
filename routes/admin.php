@@ -31,6 +31,8 @@ use App\Http\Controllers\Admin\IndividualityController;
 use App\Http\Controllers\Admin\PlaystyleController;
 use App\Http\Controllers\Admin\RankController;
 use App\Http\Controllers\Admin\SystemController;
+use App\Http\Controllers\Admin\RecruitApplicationController;
+use App\Http\Controllers\Admin\TestMailController;
 
 Route::middleware('guest')->prefix('admin')->name('admin.')->group(function () {
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
@@ -355,5 +357,15 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::get('{id}', [AppointController::class, 'show'])->where('id', '[0-9]+')->name('detail');
         Route::put('{id}', [AppointController::class, 'update']);
         Route::delete('{id}', [AppointController::class, 'destroy']);
+    });
+
+    Route::prefix('recruit-application')->name('recruit-application.')->group(function () {
+        Route::get('/', [RecruitApplicationController::class, 'index'])->name('index');
+        Route::get('{id}', [RecruitApplicationController::class, 'show'])->where('id', '[0-9]+')->name('detail');
+    });
+
+    Route::prefix('test-mail')->name('test-mail.')->group(function () {
+        Route::get('/', [TestMailController::class, 'show'])->name('show');
+        Route::post('/send', [TestMailController::class, 'send'])->name('send');
     });
 });

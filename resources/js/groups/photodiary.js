@@ -1,4 +1,3 @@
-// Import FullCalendar modules
 import { Calendar } from "@fullcalendar/core";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -6,36 +5,44 @@ import allLocales from "@fullcalendar/core/locales-all";
 
 let calendar;
 
-// Function to initialize a calendar
-function initializeCalendar(calendarEl, calendarInstance) {
+function buildDiaryUrl(selectedDate) {
+  const params = new URLSearchParams(window.location.search);
+
+  if (selectedDate) {
+    params.set("date", selectedDate);
+    params.delete("month");
+  } else {
+    params.delete("date");
+  }
+
+  const query = params.toString();
+  return query ? `/groups/photodiary?${query}` : "/groups/photodiary";
+}
+
+function initializeCalendar(calendarEl) {
   if (!calendarEl) {
     return null;
   }
 
-  // Get the selected date from the page (if any)
-  const selectedDate = typeof date !== "undefined" && date !== '' ? date : null;
-  // Get the selected month from the page (if any)
-  const selectedMonth = typeof month !== "undefined" && month !== '' ? month + '-01' : null;
-  // Use date if available, otherwise use month, otherwise use current date
+  const selectedDate = typeof date !== "undefined" && date !== "" ? date : null;
+  const selectedMonth = typeof month !== "undefined" && month !== "" ? `${month}-01` : null;
   const initialDate = selectedDate || selectedMonth || undefined;
-  
+
   const cal = new Calendar(calendarEl, {
     locales: allLocales,
     locale: "ja",
     initialView: "dayGridMonth",
-    initialDate: initialDate,
+    initialDate,
     plugins: [interactionPlugin, dayGridPlugin],
     contentHeight: "auto",
     fixedWeekCount: false,
     selectable: true,
-    // FullCalendar (ja locale) renders day numbers like "1日". We want "1"..."31" only.
-    dayCellContent: function (arg) {
+    dayCellContent(arg) {
       return { html: arg.dayNumberText.replace(/日$/, "") };
     },
-    // Add class to selected date cell
-    dayCellClassNames: function (arg) {
+    dayCellClassNames(arg) {
       if (selectedDate && arg.dateStr === selectedDate) {
-        return ['selected-date-cell'];
+        return ["selected-date-cell"];
       }
       return [];
     },
@@ -44,28 +51,28 @@ function initializeCalendar(calendarEl, calendarInstance) {
       center: "title",
       right: "next",
     },
-    dateClick: function (info) {
-      console.log("Date clicked:", info.dateStr);
-      // Handle date click - redirect to show diaries for the selected date
-      // Clear month parameter when clicking a specific date
-      const date = info.dateStr;
-      if (date != '') {
-        window.location.href = `/groups/photodiary?date=${date}`;
-      } else {
-        window.location.href = `/groups/photodiary`;
-      }
+    dateClick(info) {
+      window.location.href = buildDiaryUrl(info.dateStr);
     },
   });
 
-  // Add events if diarys_date is available
   if (typeof diarys_date !== "undefined" && diarys_date.length > 0) {
-    for (let i = 0; i < diarys_date.length; i++) {
+    diarys_date.forEach((item) => {
       cal.addEvent({
-        start: diarys_date[i].date,
-        color: "#FFDA89",
+        start: item.date,
+        color: "#ffe082",
         display: "background",
       });
-    }
+      
+      // Add class to highlight days with diary
+      const dayEl = cal.getDate(item.date);
+      if (dayEl) {
+        const cellEl = document.querySelector(`[data-date="${item.date}"]`);
+        if (cellEl) {
+          cellEl.classList.add('has-diary');
+        }
+      }
+    });
   }
 
   cal.render();
@@ -73,15 +80,8 @@ function initializeCalendar(calendarEl, calendarInstance) {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize desktop calendar
   const calendarEl = document.getElementById("diary-calendar");
   if (calendarEl) {
-    calendar = initializeCalendar(calendarEl, calendar);
-  }
-  
-  // Initialize mobile calendar
-  const mobileCalendarEl = document.getElementById("diary-calendar-mobile");
-  if (mobileCalendarEl) {
-    initializeCalendar(mobileCalendarEl, null);
+    calendar = initializeCalendar(calendarEl);
   }
 });

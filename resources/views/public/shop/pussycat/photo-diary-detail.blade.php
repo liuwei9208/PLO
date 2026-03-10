@@ -2,10 +2,10 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.19/index.global.min.css" rel="stylesheet">
 @endpush
 
-<x-pussycat-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="写メ日記詳細"
+<x-pussycat-page-layout page-title="PHOTO DIARY DETAIL" page-subtitle="{{ $diary->cast_name }}"
     breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記 ＞ 写メ日記詳細" :assets="['resources/scss/shops/pussycat/photo-diary-detail.scss']" :banners="$banners">
     <section class="photo-diary-details-section">
-        <h1 class="photo-diary-details-section-title">写メ日記詳細</h1>
+        <h1 class="photo-diary-details-section-title">{{ $diary->cast_name }}</h1>
         <div class="photo-diary-details-section-content">
             <div class="photo-diary-details-section-content-left">
                 <a class="profile-button"

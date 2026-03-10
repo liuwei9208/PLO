@@ -62,11 +62,11 @@
 
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">RECRUIT</span>
-        <a href="https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/" target="_blank" class="drawer-nav-ja">女性求人ページ</a>
+        <a href="{{ route('public.recruit.female') }}" target="_blank" class="drawer-nav-ja">女性求人ページ</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en"></span>
-        <a href="" target="_blank" class="drawer-nav-ja">男性求人ページ</a>
+        <a href="{{ route('public.recruit.male') }}" target="_blank" class="drawer-nav-ja">男性求人ページ</a>
       </li>
       {{-- <li class="drawer-nav-item">
         <span class="drawer-nav-en">PRIVACY POLICY</span>

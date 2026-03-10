@@ -327,7 +327,7 @@ export default defineConfig({
       targets: [
         { src: "node_modules/tinymce/skins", dest: "js/tinymce" },
         // { src: 'resources/fonts/*', dest: 'assets/fonts' },
-        { src: "public/assets/*", dest: "assets" },
+        // { src: "public/assets/*"},
       ],
     }),
   ],

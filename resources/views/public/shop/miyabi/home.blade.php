@@ -254,7 +254,7 @@
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#FEFEFE"
+                        description="新入デビュー♪ 雅の新人入店情報になります" button-text="一覧を見る" background-color="#FEFEFE"
                         text-color="#0D0A0C" border-color="#D90D32" underlineColor="#D90D32"
                         responsive-variant="new-girl" :gradient=false
                         button-href="{{ route('public.shops.shop.newcast', ['shop' => 'miyabi']) }}" />
@@ -370,7 +370,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>ヴィラコート雫のキャスト一覧です。</p>
+                            <p>雅に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'miyabi']) }}">
@@ -693,8 +693,8 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"

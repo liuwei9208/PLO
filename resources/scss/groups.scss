@@ -16,6 +16,8 @@
 @use 'groups/bottom-nav.scss';
 @use 'groups/fixed-button.scss';
 @use 'groups/pagination.scss';
+@use 'groups/home-theme.scss';
+@use 'recruit';
 
 .groups-button-more {
   text-align: center;
@@ -24,8 +26,8 @@
   justify-content: center;
   &-btn {
     @include YuGothic();
-    @include responsive-font(16px,20px);
-    // font-size: 20px;
+    width: 200px;
+    font-size: 20px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
@@ -34,14 +36,6 @@
     background: #021A21;
     padding: 15px 0;
     border-radius: 30px;
-    width: 225px;
     z-index: 1;
-    padding: 10px;
-    @media #{media-query(sm)}, #{media-query(xs)} {
-      width: 200px;
-      padding: 10px 0;
-      letter-spacing: -0.64px;
-
-    }
   }
 }

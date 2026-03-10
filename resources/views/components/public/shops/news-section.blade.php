@@ -155,7 +155,7 @@
                                 <img src="{{ asset('storage/diary/' . $item['photo']) }}"
                                     alt="{{ $item['subject'] ?? 'Card Image' }}">
                                 @if (isset($item['subject']) && !empty($item['subject']))
-                                    <div class="diary-content-card-image-text">
+                                 <div class="diary-content-card-image-text">
                                         <span>{{ $item['subject'] }}</span>
                                     </div>
                                 @endif

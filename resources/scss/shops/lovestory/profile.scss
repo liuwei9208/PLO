@@ -125,12 +125,12 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
   // border: 5px solid var(---N__, linear-gradient(180deg, #73071A 0%, #D90D32 100%));
 }
 
 .girl-basic-info-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -156,7 +156,7 @@
   margin: 0px 6px;
   text-align: center;
   border-bottom: 1px solid #e5d6b4;
-  background: #FEFEFE;
+  background: #fefefe;
 }
 @media screen and (max-width: 850px) {
   .girl-basic-info-body {
@@ -167,14 +167,14 @@
   @include M_PLUS_1();
   @include responsive-font(30px, 31px);
   font-weight: 600 !important;
-  color: #1C2D48;
+  color: #1c2d48;
 }
 
 .girl-basic-info-meta {
   @include Kulim_Park();
   @include responsive-font(18px, 19px);
   font-weight: 300 !important;
-  color: #0D0A0C;
+  color: #0d0a0c;
   margin: 0;
 }
 
@@ -182,11 +182,11 @@
   @include M_PLUS_1();
   @include responsive-font(18px, 23px);
   font-weight: 600 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   text-align: center;
   // padding: 10px 10px 15px;
   margin: 3px 6px 6px 6px;
-  background: #FEFEFE;
+  background: #fefefe;
   border-radius: 0px 0px 16px 16px;
 }
 
@@ -200,7 +200,7 @@
 .profile-image-prev,
 .profile-image-next {
   position: absolute;
-  background: rgba(19, 33, 38, 0.50);
+  background: rgba(19, 33, 38, 0.5);
   border: none;
   width: 57px;
   height: 139px;
@@ -333,7 +333,7 @@
   width: 100%;
   // border-radius: 15px 15px 0 0;
   border-radius: 15px;
-  background: var(---N__, #F2387C);
+  background: var(---N__, #f2387c);
   margin-top: 10px;
   padding-bottom: 10px;
 }
@@ -349,7 +349,7 @@
   @include M_PLUS_1();
   @include responsive-font(21px, 34.2px);
   font-weight: 400 !important;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -364,7 +364,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-radius: 15px;;
+  border-radius: 15px;
 }
 
 .girl-video-item {
@@ -387,12 +387,12 @@
   width: 100%;
   border-radius: 20px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
   overflow: hidden;
 }
 
 .girl-qa-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -429,7 +429,7 @@
 .girl-qa-row {
   display: grid;
   grid-template-columns: 45% 55%;
-  border-bottom: 1px solid #1C2D48;
+  border-bottom: 1px solid #1c2d48;
 }
 
 @media screen and (max-width: 850px) {
@@ -456,8 +456,8 @@
 }
 
 .girl-qa-question {
-  background: #FFF0F0;
-  border-right: 1px solid #1C2D48;
+  background: #fff0f0;
+  border-right: 1px solid #1c2d48;
 }
 
 .girl-qa-answer {
@@ -468,7 +468,7 @@
   @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   flex-shrink: 0;
 }
 
@@ -476,7 +476,7 @@
   @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   flex-shrink: 0;
 }
 
@@ -484,7 +484,7 @@
   @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   line-height: 1.6;
 }
 
@@ -492,7 +492,7 @@
   @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   line-height: 1.6;
 }
 
@@ -501,11 +501,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-play-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,7 +523,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  background: var(---N_, #FFF);
+  background: var(---N_, #fff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -564,11 +564,11 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  background: var(---N_, #F2387C);
+  background: var(---N_, #f2387c);
 }
 
 .girl-play-item-title h4 {
-  color: #FFF;
+  color: #fff;
   text-align: center;
   @include M_PLUS_1();
   @include responsive-font(21px, 21px);
@@ -596,7 +596,7 @@
   height: 15px;
 }
 .girl-play-item-details p {
-  color: var(---N__, #1C2D48);
+  color: var(---N__, #1c2d48);
   @include M_PLUS_1();
   font-size: 16px;
   font-style: normal;
@@ -672,11 +672,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-message-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -694,7 +694,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -713,7 +713,7 @@
 .girl-message-content p {
   @include M_PLUS_1();
   @include responsive-font(18px, 18px);
-  color: #1C2D48;
+  color: #1c2d48;
   line-height: 1.8;
   margin: 0;
 }
@@ -723,11 +723,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-diary-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -741,7 +741,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -754,7 +754,7 @@
   border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
-  padding: 20px 10px;
+  padding: 20px 10px 20px;
   overflow: hidden;
   padding-bottom: 40px;
   margin: 0px 6px 6px 6px;
@@ -823,7 +823,7 @@
   @include responsive-font(17px, 17px);
   font-weight: 600 !important;
   margin: 0;
-  color: #3A2D35;
+  color: #3a2d35;
 }
 
 .girl-diary-date {
@@ -831,7 +831,7 @@
   @include responsive-font(13px, 13px);
   font-weight: 400 !important;
   // font-size: 12px;
-  color: #3A2D35;
+  color: #3a2d35;
   margin: 2px 0 0;
 }
 
@@ -865,11 +865,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-schedule-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -887,7 +887,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -947,14 +947,14 @@
     justify-content: space-between;
     padding: 14px 16px !important;
     border-right: none;
-    border-bottom: 1px solid #10040E;
+    border-bottom: 1px solid #10040e;
     background: #fff;
   }
   .girl-schedule-day:last-child {
     border-bottom: none;
   }
   .girl-schedule-label {
-    background: #F2F2F2;
+    background: #f2f2f2;
     border-radius: 8px;
     padding: 8px 14px;
     margin-bottom: 0 !important;
@@ -969,17 +969,18 @@
   .girl-schedule-date {
     font-size: 21px !important;
     font-weight: 600;
-    color: #3A2D35;
+    color: #3a2d35;
   }
   .girl-schedule-label svg {
     width: 12px;
     height: 12px;
     flex-shrink: 0;
   }
-  .girl-schedule-time, .girl-schedule-rest {
+  .girl-schedule-time,
+  .girl-schedule-rest {
     font-size: 21px !important;
     text-align: left !important;
-    color: #3A2D35;
+    color: #3a2d35;
     font-weight: 400;
     margin-left: 16px;
     flex: 1;
@@ -998,7 +999,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 8px;
-  border-right: 1px solid #10040E;
+  border-right: 1px solid #10040e;
 }
 
 .girl-schedule-day:last-child {
@@ -1006,7 +1007,7 @@
 }
 
 .girl-schedule-label {
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 4px;
   padding: 6px 10px;
   display: flex;
@@ -1021,7 +1022,7 @@
   @include Kulim_Park();
   @include responsive-font(18px, 18px);
   font-weight: 700;
-  color: #1C2D48;
+  color: #1c2d48;
 }
 
 .girl-schedule-label svg {
@@ -1034,7 +1035,7 @@
   @include Kulim_Park();
   @include responsive-font(18px, 18px);
   font-weight: 700 !important;
-  color: #0F0002;
+  color: #0f0002;
   text-align: center;
   line-height: 0.8;
   // max-width: 46px;
@@ -1044,7 +1045,7 @@
   @include responsive-font(14px, 14px);
 
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   text-align: center;
   line-height: 0.8;
   // max-width: 43px;
@@ -1060,11 +1061,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-manager-comment-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1082,7 +1083,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1102,7 +1103,7 @@
   @include M_PLUS_1();
   @include responsive-font(18px, 18px);
   font-weight: 400;
-  color: #1C2D48;
+  color: #1c2d48;
   line-height: 1.8;
   margin: 0;
 }
@@ -1112,11 +1113,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-sales-points-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1134,7 +1135,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1164,8 +1165,8 @@
   @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 600;
-  color: #F2387C;
-  background: #F2BBCF;
+  color: #f2387c;
+  background: #f2bbcf;
   padding: 6px 12px;
   min-width: 100px;
   text-align: center;
@@ -1194,9 +1195,9 @@
   @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 600 !important;
-  color: #F2387C;
+  color: #f2387c;
   background: #ffffff;
-  border: 1px solid #F2BBCF;
+  border: 1px solid #f2bbcf;
   border-radius: 4px;
   padding: 6px 12px;
   white-space: nowrap;
@@ -1207,11 +1208,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: #F2387C;
+  background: #f2387c;
 }
 
 .girl-reviews-header {
-  background: #F2387C;
+  background: #f2387c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1229,7 +1230,7 @@
   font-weight: 400 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FFF;
+  color: #fff;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1288,7 +1289,7 @@
   @include Kulim_Park();
   @include responsive-font(17px, 17px);
   font-weight: 400;
-  color: #1C2D48;
+  color: #1c2d48;
   margin-left: 4px;
 }
 
@@ -1301,7 +1302,7 @@
   @include M_PLUS_1();
   @include responsive-font(14px, 14px);
   font-weight: 400;
-  color: #1C2D48;
+  color: #1c2d48;
 }
 
 .girl-review-body {
@@ -1314,7 +1315,7 @@
   @include M_PLUS_1();
   @include responsive-font(15px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   line-height: 1.8;
   max-height: 100px;
   overflow-y: auto;
@@ -1343,7 +1344,7 @@
   @include M_PLUS_1();
   @include responsive-font(18px, 18px);
   font-weight: 500;
-  color: #1C2D48;
+  color: #1c2d48;
   margin-bottom: 10px;
 }
 
@@ -1367,9 +1368,9 @@
   @include M_PLUS_1();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #1C2D48;
+  color: #1c2d48;
   background: #ffffff;
-  border: 1px solid #1C2D48;
+  border: 1px solid #1c2d48;
   border-radius: 24px;
   padding: 10px 32px;
   text-decoration: none;
@@ -1378,6 +1379,6 @@
 }
 
 .girl-reviews-more-btn:hover {
-  background: #1C2D48;
+  background: #1c2d48;
   color: #ffffff;
 }

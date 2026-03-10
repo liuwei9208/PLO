@@ -12,7 +12,7 @@
     display: flex;
     gap: clamp(12px, 2vw, 16px);
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     flex-wrap: wrap;
     
     @media #{media-query(sm)} {

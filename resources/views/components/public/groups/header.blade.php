@@ -1,4 +1,11 @@
-@if (request()->routeIs('public.groups.home'))
+@php
+  $isGroupsHome = request()->routeIs('public.group.home')
+      || request()->routeIs('public.groups.home')
+      || request()->routeIs('public.group.home-v2')
+      || request()->routeIs('public.groups.home-v2');
+@endphp
+
+@if ($isGroupsHome)
 <header class="header" id="header">
   <a href="{{ route('public.groups.home') }}" class="header-logo sp-only">
     <img src="{{ asset('assets/img/groups/plo-logo.png') }}" alt="">
@@ -22,17 +29,10 @@
         <small>SHOP</small>
         <span class="menu_shop">店舗一覧</span>
       </a>
-      @if (Auth::guard('member')->check() || Auth::guard('web')->check())
-      <a href="{{ route('logoutAll') }}">
-        <small>LOGOUT</small>
-        <span>ログアウト</span>
-      </a>
-      @else
       <a href="{{ route('login') }}">
         <small>LOGIN</small>
         <span>ログイン</span>
       </a>
-      @endif
 
     </div>
     {{-- <div class="header-user-logbox">
@@ -81,7 +81,7 @@
     {{-- @endif
     </div> --}}
   </div>
-  @if (request()->routeIs('public.groups.home'))
+  @if ($isGroupsHome)
   <button class="drawer-toggle" id="drawer-toggle">
     <div class="drawer-toggle-bars">
       <span class="drawer-toggle-bar"></span>
@@ -103,7 +103,7 @@
 </header>
 
 <!-- Groups Menu Overlay Component (for home page) -->
-@if (request()->routeIs('public.groups.home'))
+@if ($isGroupsHome)
 <x-public.groups.menu-overlay
     :menu-links="[
         'top' => route('public.groups.home'),
@@ -117,12 +117,12 @@
         'news' => '#',
         'movie' => route('public.groups.movie'),
         'event' => route('public.groups.event'),
-        'recruit-female' => '#',
-        'recruit-male' => '#',
+        'recruit-female' => route('public.recruit.female'),
+        'recruit-male' => route('public.recruit.male'),
     ]"
     :bottom-buttons="[
         'group' => route('public.groups.home'),
-        'recruit' => '#',
+        'recruit' => route('public.recruit.male'),
     ]"
     :bottom-button-images="[
         'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
@@ -214,7 +214,7 @@
     @endif
     </div>
   </div>
-  @if (request()->routeIs('public.groups.home'))
+  @if ($isGroupsHome)
   <button class="drawer-toggle" id="drawer-toggle">
     <div class="drawer-toggle-bars">
       <span class="drawer-toggle-bar"></span>

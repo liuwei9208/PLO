@@ -5,7 +5,8 @@
 <x-shizuku-page-layout page-title="PHOTO DIARY" page-subtitle="写メ日記"
     breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 写メ日記" :assets="['resources/scss/shops/shizuku/photo-diary-detail.scss']" :banners="$banners">
     <section class="photo-diary-details-section">
-        <h1 class="photo-diary-details-section-title">写メ日記詳細</h1>
+             <!-- <p>のが正解です</p> -->
+        <h1 class="photo-diary-details-section-title">{{ $diary->cast->name ?? '名前なし' }}</h1>
         <div class="photo-diary-details-section-content">
             <div class="photo-diary-details-section-content-left">
                 <a class="profile-button"

@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../global/vars' as *;
 @use '../global/reset';
 @use '../global/base';
@@ -80,7 +81,7 @@
       &[data-shop="all"] {
         background-color: #CAA668;
         &:hover {
-          background-color: darken(#CAA668, 10%);
+          background-color: color.adjust(#CAA668, $lightness: -10%);
         }
       }
       @include shop.data-shop-bgcolor-modifiers;

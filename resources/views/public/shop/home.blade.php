@@ -363,7 +363,7 @@
         <div class="castlist-header --{{ $shop->slug }}">
             <div class="castlist-header-title ">
                 <h2 class="castlist-header-title-content title-font-midashi">
-                    Cast List
+                    Cast List 
                     {{-- <img src="{{ asset('assets/img/shop/attachment1.png') }}" alt="Cast List"/> --}}
                 </h2>
                 <div class="castlist-header-button">

@@ -27,6 +27,7 @@ class Shop extends Model
         'open_start',
         'open_end',
         'memo',
+        'rank'
     ];
 
     protected $casts = [

@@ -9,11 +9,6 @@
 >
   @push('styles')
     <style>
-      .recruit-interview__answer,
-      .recruit-faq__answer,
-      .icon_active {
-        display: none;
-      }
       @media screen and (min-width: 1280px) {
         .banner-photodiary--male ~ .main {
           margin-left: auto !important;
@@ -74,15 +69,17 @@
 
         .banner-photodiary--male ~ .main .recruit-faq__inner {
           min-height: 955px;
+          height: 955px;
         }
 
         .banner-photodiary--male ~ .main .recruit-requirements__inner {
           min-height: 1149px;
+          height: 1149px;
         }
 
         .banner-photodiary--male ~ .main .recruit-requirements__card {
           max-width: 500px;
-          height: fit-content;
+          height: 733px;
         }
 
         .banner-photodiary--male ~ .main .recruit-form-male__inner {
@@ -179,7 +176,7 @@
               </p>
             </div>
             <div class="recruit-point__cardImage">
-              <img src="{{ asset('assets/img/male/section2.png') }}" alt="スタッフ写真">
+              <img src="{{ asset('assets/img/male/section2-1.png') }}" alt="スタッフ写真">
             </div>
           </article>
 
@@ -191,7 +188,7 @@
               </p>
             </div>
             <div class="recruit-point__cardImage">
-              <img src="{{ asset('assets/img/male/section2-1.png') }}" alt="食事補助イメージ">
+              <img src="{{ asset('assets/img/male/section2.png') }}" alt="食事補助イメージ">
             </div>
           </article>
 
@@ -439,47 +436,36 @@
           </header>
 
           <div class="recruit-interview__qas">
+            <article class="recruit-interview__qa recruit-interview__qa--active">
+              <div class="recruit-interview__question">
+                <p>Q なぜこのお店を選んだのですか？</p>
+                <span class="recruit-interview__icon">▲</span>
+              </div>
+              <div class="recruit-interview__answer">
+                <p>物価高騰など、暮らしに不安を感じる時代。</p>
+                <p>PLOグループでは、社員一人ひとりが</p>
+                <p>安心して働ける職場環境づくりに取り組んでいます。</p>
+              </div>
+            </article>
+
             <article class="recruit-interview__qa">
               <div class="recruit-interview__question">
                 <p>Q なぜこのお店を選んだのですか？</p>
-                <span class="recruit-interview__icon icon_active">▲</span>
-                <span class="recruit-interview__icon">▼</span>
-              </div>
-              <div class="recruit-interview__answer">
-                <p>知人からの紹介で、 雫の社長を 紹介 して頂 き 色々 お話 をさせていたただいた 上で、働  くことを決めました。</p>
+                <span class="recruit-interview__icon">▲</span>
               </div>
             </article>
 
             <article class="recruit-interview__qa">
               <div class="recruit-interview__question">
-                <p>Q この業界は初 めて？ 未経験でも 働 けますか？</p>
-                <span class="recruit-interview__icon icon_active">▲</span>
-                <span class="recruit-interview__icon">▼</span>
-              </div>
-              <div class="recruit-interview__answer">
-                <p>飲食店での経験はありますが、 風俗業界は初 めてなので、 未経験でも 働 くことができます。</p>
+                <p>Q なぜこのお店を選んだのですか？</p>
+                <span class="recruit-interview__icon">▲</span>
               </div>
             </article>
 
             <article class="recruit-interview__qa">
               <div class="recruit-interview__question">
-                <p>Q このグループで働いて、 イイなと思ったところはありますか？</p>
-                <span class="recruit-interview__icon icon_active">▲</span>
-                <span class="recruit-interview__icon">▼</span>
-              </div>
-              <div class="recruit-interview__answer">
-                <p>北海道ならではですが、 暖房手当 や食事補助 といった福利厚生が手厚いところがおすすめです。</p>
-              </div>
-            </article>
-
-            <article class="recruit-interview__qa">
-              <div class="recruit-interview__question">
-                <p>Q 学歴や資格は必要ですか？</p>
-                <span class="recruit-interview__icon icon_active">▲</span>
-                <span class="recruit-interview__icon">▼</span>
-              </div>
-              <div class="recruit-interview__answer">
-                <p>いいえ、 必要ありません。 難 しいお仕事 はほとんどありませんので、 熱意と  チャレンジ精神があればお仕事ができます。</p>
+                <p>Q なぜこのお店を選んだのですか？</p>
+                <span class="recruit-interview__icon">▲</span>
               </div>
             </article>
           </div>
@@ -488,7 +474,7 @@
     </div>
   </section>
 
-  <section class="recruit-blog" style="display: none;">
+  <section class="recruit-blog">
     <div class="recruit-blog__inner">
       <header class="recruit-blog__header">
         <div class="recruit-blog__titleWrapper">
@@ -551,72 +537,28 @@
       <div class="recruit-faq__list">
         <article class="recruit-faq__item recruit-faq__item--active">
           <div class="recruit-faq__question">
-            <p class="recruit-faq__questionText">風俗業界が未経験でも 応募可能ですか？</p>
-            <span class="recruit-faq__icon icon_active">▲</span>
-            <span class="recruit-faq__icon">▼</span>
+            <p class="recruit-faq__questionText">よくある質問</p>
+            <span class="recruit-faq__icon">▲</span>
           </div>
           <div class="recruit-faq__divider"></div>
           <div class="recruit-faq__answer">
             <p>
-               は い、もちろん可能です。 成人以上 の方でしたら、 特別 な制限はありませんのでご安心 ください。
+              回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります
             </p>
           </div>
         </article>
 
-        <article class="recruit-faq__item recruit-faq__item--active">
+        <article class="recruit-faq__item">
           <div class="recruit-faq__question">
-            <p class="recruit-faq__questionText">女性でもス タッフ として働 けますか？</p>
-            <span class="recruit-faq__icon icon_active">▲</span>
+            <p class="recruit-faq__questionText">よくある質問</p>
             <span class="recruit-faq__icon">▼</span>
-          </div>
-          <div class="recruit-faq__divider"></div>
-          <div class="recruit-faq__answer">
-            <p>
-              大丈夫です。女 性のみの スタッフ もありますので、 遠慮なくご応募 ください。
-            </p>
           </div>
         </article>
 
-        <article class="recruit-faq__item recruit-faq__item--active">
+        <article class="recruit-faq__item">
           <div class="recruit-faq__question">
-            <p class="recruit-faq__questionText">社保はついてますか？</p>
-            <span class="recruit-faq__icon icon_active">▲</span>
+            <p class="recruit-faq__questionText">よくある質問</p>
             <span class="recruit-faq__icon">▼</span>
-          </div>
-          <div class="recruit-faq__divider"></div>
-          <div class="recruit-faq__answer">
-            <p>
-               は い、もちろんついております。
-            </p>
-          </div>
-        </article>
-
-        <article class="recruit-faq__item recruit-faq__item--active">
-          <div class="recruit-faq__question">
-            <p class="recruit-faq__questionText">社員寮などはありますか？</p>
-            <span class="recruit-faq__icon icon_active">▲</span>
-            <span class="recruit-faq__icon">▼</span>
-          </div>
-          <div class="recruit-faq__divider"></div>
-          <div class="recruit-faq__answer">
-            <p>
-               当 グループでは、即 日入居可能 な社員寮 も 用意 しておりますので、ご希望の方 は面接時 にご案内 いたします。
-            </p>
-          </div>
-        </article>
-
-        <article class="recruit-faq__item recruit-faq__item--active">
-          <div class="recruit-faq__question">
-            <p class="recruit-faq__questionText">ア ルバイト からでも 働 くことができますか？</p>
-            <span class="recruit-faq__icon icon_active">▲</span>
-            <span class="recruit-faq__icon">▼</span>
-
-          </div>
-          <div class="recruit-faq__divider"></div>
-          <div class="recruit-faq__answer">
-            <p>
-               は い、 アルバイトで 勤務 も 可能です。
-            </p>
           </div>
         </article>
       </div>
@@ -646,7 +588,7 @@
                 <p>募集店舗</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>【雫・ シロガネーゼ・艶 】</p>
+                <p>雫</p>
               </div>
             </div>
 
@@ -655,7 +597,7 @@
                 <p>雇用形態</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>正社員/アルバイト</p>
+                <p>正社員／アルバイト</p>
               </div>
             </div>
 
@@ -665,24 +607,25 @@
               </div>
               <div class="recruit-requirements__value">
                 <p>正社員　月給 25万5000円～</p>
+                <p>25.5万円～（昇給・昇格査定あり）</p>
                 <p>ーーーーーーーーー</p>
-                <p>（昇給あり/ 試用期間あり /通勤交通費支給）</p>
-                <p>アルバイト 時給 1,500 円～</p>
+                <p>◆準社員　月給：20万円～</p>
+                <p>アルバイト　時給 1,300円～</p>
               </div>
             </div>
 
             <div class="recruit-requirements__row">
               <div class="recruit-requirements__label">
-                <p>応募年齢/資格</p>
+                <p>応募年齢・資格</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>18 歳以上～60 歳 くらいまで</p>
+                <p>18歳以上～</p>
                 <p class="bullet-text">・18歳以上の方</p>
-                <p class="bullet-text">・能力/学歴 / 職歴不問</p>
+                <p class="bullet-text">・能力不問</p>
+                <p class="bullet-text">・学歴 / 職歴不問</p>
                 <p class="bullet-text">・経験不問 未経験歓迎</p>
-                <p class="bullet-text">・必要最低限の コミュニケーション能力が あれば OK</p>
-                <p class="bullet-text">・女性 も活 躍中</p>
-                <p class="bullet-text">・50 代の方 も 歓迎</p>
+                <p class="bullet-text">・必要最低限のコミュニケーション能力<br>があればOK</p>
+                <p class="bullet-text">・女性も活躍中</p>
               </div>
             </div>
 
@@ -691,13 +634,12 @@
                 <p>休日</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>■正社員 ー 週休２日制</p>
-                <p class="bullet-text">・月 6 休(正社員)</p>
-                <p class="bullet-text">・年末年始、 お盆、 GW 期間 に休暇あり</p>
+                <p>■正社員</p>
+                <p class="bullet-text">・月6休（週5～6日勤務）</p>
+                <p class="bullet-text">・年末年始、お盆、GW期間に休暇あり</p>
                 <p class="bullet-text">・慶弔休暇あり</p>
-                <p class="mt-2">■アルバイト ー 週３日以上勤務</p>
-                <p class="bullet-text">・シフト 制 に付 き 応相談可</p>
-
+                <p>希望休ご相談受けます。</p>
+                <p class="mt-2">■アルバイトの場合はシフト制</p>
               </div>
             </div>
           </div>
@@ -717,7 +659,7 @@
                 <p>募集店舗</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>【雅】</p>
+                <p>雫</p>
               </div>
             </div>
 
@@ -726,7 +668,7 @@
                 <p>雇用形態</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>正社員/契約社員/アルバイト</p>
+                <p>正社員／アルバイト</p>
               </div>
             </div>
 
@@ -735,11 +677,11 @@
                 <p>給与/報酬</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>正社員 月給 25 万 5000 円～</p>
-                <p>（昇給あり/ 試用期間あり /通勤交通費支給）</p>
+                <p>正社員　月給 25万5000円～</p>
+                <p>25.5万円～（昇給・昇格査定あり）</p>
                 <p>ーーーーーーーーー</p>
-                <p>契約社員 月給 22 万円～</p>
-                <p>アルバイト 時給 1,500 円～</p>
+                <p>◆準社員　月給：20万円～</p>
+                <p>アルバイト　時給 1,300円～</p>
               </div>
             </div>
 
@@ -748,13 +690,13 @@
                 <p>応募年齢・資格</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>18 歳以上～60 歳 くらいまで</p>
+                <p>18歳以上～</p>
                 <p class="bullet-text">・18歳以上の方</p>
-                <p class="bullet-text">・能力/学歴 /  職歴不問</p>
+                <p class="bullet-text">・能力不問</p>
+                <p class="bullet-text">・学歴 / 職歴不問</p>
                 <p class="bullet-text">・経験不問 未経験歓迎</p>
-                <p class="bullet-text">・必要最低限の コミュニケーション能力が あれば OK</p>
-                <p class="bullet-text">・女性 も活 躍中</p>
-                <p class="bullet-text">・50 代の方 も 歓迎</p>
+                <p class="bullet-text">・必要最低限のコミュニケーション能力<br>があればOK</p>
+                <p class="bullet-text">・女性も活躍中</p>
               </div>
             </div>
 
@@ -763,14 +705,12 @@
                 <p>休日</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>■正社員 ー 週休２日制</p>
-                <p class="bullet-text">・月 6 休(正社員)</p>
-                <p class="bullet-text">・年末年始、 お盆、 GW 期間 に休暇あり</p>
+                <p>■正社員</p>
+                <p class="bullet-text">・月6休（週5～6日勤務）</p>
+                <p class="bullet-text">・年末年始、お盆、GW期間に休暇あり</p>
                 <p class="bullet-text">・慶弔休暇あり</p>
-                <p class="mt-2">■契約社員</p>
-                <p class="bullet-text">・完全週休二日制</p>
-                <p class="mt-2">■アルバイト ー 週３日以上勤務</p>
-                <p class="bullet-text">・シフト 制 に付 き 応相談可</p>
+                <p>希望休ご相談受けます。</p>
+                <p class="mt-2">■アルバイトの場合はシフト制</p>
               </div>
             </div>
           </div>
@@ -790,7 +730,7 @@
                 <p>募集店舗</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>【ラブストーリー】</p>
+                <p>雫</p>
               </div>
             </div>
 
@@ -799,7 +739,7 @@
                 <p>雇用形態</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>正社員/準社員/アルバイト</p>
+                <p>正社員／アルバイト</p>
               </div>
             </div>
 
@@ -809,10 +749,10 @@
               </div>
               <div class="recruit-requirements__value">
                 <p>正社員　月給 25万5000円～</p>
-                <p>（昇給あり/ 試用期間あり /通勤交通費支給）</p>
+                <p>25.5万円～（昇給・昇格査定あり）</p>
                 <p>ーーーーーーーーー</p>
-                <p>準社員 月給 20 万円～</p>
-                <p>アルバイト 時給 1,500 円～</p>
+                <p>◆準社員　月給：20万円～</p>
+                <p>アルバイト　時給 1,300円～</p>
               </div>
             </div>
 
@@ -821,12 +761,13 @@
                 <p>応募年齢・資格</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>18 歳以上～60 歳 くらいまで</p>
+                <p>18歳以上～</p>
                 <p class="bullet-text">・18歳以上の方</p>
-                <p class="bullet-text">・能力/学歴 /  職歴不問</p>
+                <p class="bullet-text">・能力不問</p>
+                <p class="bullet-text">・学歴 / 職歴不問</p>
                 <p class="bullet-text">・経験不問 未経験歓迎</p>
-                <p class="bullet-text">・必要最低限の コミュニケーション能力が あれば OK </p>
-                <p class="bullet-text">・女性 も活 躍中</p>
+                <p class="bullet-text">・必要最低限のコミュニケーション能力<br>があればOK</p>
+                <p class="bullet-text">・女性も活躍中</p>
               </div>
             </div>
 
@@ -835,80 +776,12 @@
                 <p>休日</p>
               </div>
               <div class="recruit-requirements__value">
-                <p>■正社員 ー 週休２日制</p>
-                <p class="bullet-text">・月 6 休(正社員)</p>
-                <p class="bullet-text">・年末年始、 お盆、 GW 期間 に休暇あり</p>
+                <p>■正社員</p>
+                <p class="bullet-text">・月6休（週5～6日勤務）</p>
+                <p class="bullet-text">・年末年始、お盆、GW期間に休暇あり</p>
                 <p class="bullet-text">・慶弔休暇あり</p>
-                <p class="mt-2">■アルバイト ーシフト 制</p>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <article class="recruit-requirements__card">
-          <header class="recruit-requirements__cardHeader">
-            <div class="recruit-requirements__cardHeaderMain">
-              <p class="recruit-requirements__position">店舗スタッフ</p>
-              <p class="recruit-requirements__updated">更新日：00.00.00</p>
-            </div>
-          </header>
-
-          <div class="recruit-requirements__rows">
-            <div class="recruit-requirements__row">
-              <div class="recruit-requirements__label recruit-requirements__label--highlight">
-                <p>募集店舗</p>
-              </div>
-              <div class="recruit-requirements__value">
-                <p>【プッシーキャット】</p>
-              </div>
-            </div>
-
-            <div class="recruit-requirements__row">
-              <div class="recruit-requirements__label">
-                <p>雇用形態</p>
-              </div>
-              <div class="recruit-requirements__value">
-                <p>正社員/アルバイト</p>
-              </div>
-            </div>
-
-            <div class="recruit-requirements__row">
-              <div class="recruit-requirements__label">
-                <p>給与/報酬</p>
-              </div>
-              <div class="recruit-requirements__value">
-                <p>正社員　月給 25万5000円～</p>
-                <p>（昇給あり/ 試用期間あり /通勤交通費支給）</p>
-                <p>ーーーーーーーーー</p>
-                <p>準社員 月給 20 万円～</p>
-                <p>アルバイト 時給 1,500 円～</p>
-              </div>
-            </div>
-
-            <div class="recruit-requirements__row">
-              <div class="recruit-requirements__label">
-                <p>応募年齢・資格</p>
-              </div>
-              <div class="recruit-requirements__value">
-                <p>18 歳以上～60 歳 くらいまで</p>
-                <p class="bullet-text">・18歳以上の方</p>
-                <p class="bullet-text">・能力/学歴 /  職歴不問</p>
-                <p class="bullet-text">・経験不問 未経験歓迎</p>
-                <p class="bullet-text">・必要最低限の コミュニケーション能力が あれば OK </p>
-                <p class="bullet-text">・女性 も活 躍中</p>
-              </div>
-            </div>
-
-            <div class="recruit-requirements__row">
-              <div class="recruit-requirements__label">
-                <p>休日</p>
-              </div>
-              <div class="recruit-requirements__value">
-                <p>■正社員 ー 週休２日制</p>
-                <p class="bullet-text">・月 6 休(正社員)</p>
-                <p class="bullet-text">・年末年始、 お盆、 GW 期間 に休暇あり</p>
-                <p class="bullet-text">・慶弔休暇あり</p>
-                <p class="mt-2">■アルバイト ーシフト 制</p>
+                <p>希望休ご相談受けます。</p>
+                <p class="mt-2">■アルバイトの場合はシフト制</p>
               </div>
             </div>
           </div>
@@ -1121,44 +994,7 @@
       </div>
     </div>
   </section>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const requirements = document.querySelectorAll('.recruit-interview__qa');
-          requirements.forEach(function(item) {
-              item.addEventListener('click', function() {
-                  const value = this.querySelector('.recruit-interview__answer');
-                  const iconActive = this.querySelector('.icon_active');
-                  const iconInactive = this.querySelector('.recruit-interview__icon:not(.icon_active)');
-                  if (value.style.display === 'block') {
-                      value.style.display = 'none';
-                      iconActive.style.display = 'none';
-                      iconInactive.style.display = 'block';
-                  } else {
-                      value.style.display = 'block';
-                      iconActive.style.display = 'block';
-                      iconInactive.style.display = 'none';
-                  }
-              });
-          });
-        const requirements_faq = document.querySelectorAll('.recruit-faq__item');
-          requirements_faq.forEach(function(item) {
-              item.addEventListener('click', function() {
-                  const value = this.querySelector('.recruit-faq__answer');
-                  const iconActive = this.querySelector('.icon_active');
-                  const iconInactive = this.querySelector('.recruit-faq__icon:not(.icon_active)');
-                  if (value.style.display === 'block') {
-                      value.style.display = 'none';
-                      iconActive.style.display = 'none';
-                      iconInactive.style.display = 'block';
-                  } else {
-                      value.style.display = 'block';
-                      iconActive.style.display = 'block';
-                      iconInactive.style.display = 'none';
-                  }
-              });
-          });
-      });
-    </script>
+
   <footer class="recruit-female-footer recruit-female-footer--male">
     <p class="recruit-female-footer__copy">
       Copyright © PLO Group All Rights Reserved.

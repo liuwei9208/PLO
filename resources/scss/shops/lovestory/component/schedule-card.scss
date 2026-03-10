@@ -97,7 +97,7 @@
     white-space: nowrap;
     // padding: 0 0.625rem;
     // padding: 0 0.125rem;
-    padding: 0 1.27rem 0.0rem 1.27rem;
+    padding: 0 1.27rem 0rem 1.27rem;
     @media #{media-query(sm)} {
       padding: 0 0.08rem;
     }
@@ -163,7 +163,7 @@
   // color: #132126 ;
 }
 .castlist-card-name {
-  @include M_PLUS_1() ;
+  @include M_PLUS_1();
   font-weight: 600;
   // color: #132126 !important;
 }
@@ -175,7 +175,7 @@
   margin: 0;
   line-height: 1.4;
 }
-.castlist-card-measurements{
+.castlist-card-measurements {
   // color: #132126 !important;
 }
 .schedule-card-message-container {
@@ -200,19 +200,19 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(---N_, #F2387C);
+    background: var(---N_, #f2387c);
     border-radius: 2.5px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(---N_, #F2387C);
+    background: var(---N_, #f2387c);
   }
 
   scrollbar-width: thin;
-  scrollbar-color: var(---N_, #F2387C) transparent;
+  scrollbar-color: var(---N_, #f2387c) transparent;
 }
 .schedule-card-message {
-  @include M_PLUS_1();
+  @include yu-mincho-regular();
   @include responsive-font(17px, 20.6px);
   // background-clip: text;
   // -webkit-background-clip: text;

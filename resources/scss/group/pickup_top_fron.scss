@@ -2,6 +2,7 @@
  * Pickup
  */
 
+@use 'sass:color';
 @use '../global/vars' as *;
 @use '../global/reset';
 @use '../global/base';
@@ -306,7 +307,7 @@
            width: 100%;
          }
          &:hover {
-          background-color: darken(#CAA668, 15%);
+          background-color: color.adjust(#CAA668, $lightness: -15%);
           //  background-color: #333 !important;
            color: #fff !important;
           //  border-color: #333 !important;
@@ -324,7 +325,7 @@
            font-size: 19px;
          }
          &:hover {
-           background-color: darken($shop-color-pussycat, 15%);
+           background-color: color.adjust($shop-color-pussycat, $lightness: -15%);
          }
        }
        &[data-shop="shizuku"] {
@@ -339,7 +340,7 @@
            font-size: 22px;
          }
          &:hover {
-           background-color: darken($shop-color-shizuku, 15%);
+           background-color: color.adjust($shop-color-shizuku, $lightness: -15%);
          }
        }
        &[data-shop="miyabi"] {
@@ -354,7 +355,7 @@
            font-size: 22px;
          }
          &:hover {
-           background-color: darken($shop-color-miyabi, 15%);
+           background-color: color.adjust($shop-color-miyabi, $lightness: -15%);
          }
        }
        &[data-shop="en"] {
@@ -369,7 +370,7 @@
            font-size: 22px;
          }
          &:hover {
-           background-color: darken($shop-color-en, 15%);
+           background-color: color.adjust($shop-color-en, $lightness: -15%);
          }
        }
        &[data-shop="siroganeze"] {
@@ -384,7 +385,7 @@
            font-size: 20px;
          }
          &:hover {
-           background-color: darken($shop-color-siroganeze, 15%);
+           background-color: color.adjust($shop-color-siroganeze, $lightness: -15%);
          }
        }
        &[data-shop="lovestory"] {
@@ -399,7 +400,7 @@
            font-size: 20px;
          }
          &:hover {
-           background-color: darken($shop-color-lovestory, 15%);
+           background-color: color.adjust($shop-color-lovestory, $lightness: -15%);
          }
        }
      }
@@ -462,7 +463,7 @@
            color: #fff;
            &:hover {
              color: #fff !important;
-             background-color: darken(#CAA668, 15%) !important;
+             background-color: color.adjust(#CAA668, $lightness: -15%) !important;
            }
          }
        }

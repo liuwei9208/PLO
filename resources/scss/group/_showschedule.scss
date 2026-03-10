@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../global/vars' as *;
 @use '../global/reset';
 @use '../global/base';
@@ -310,7 +311,7 @@
           font-size: 19px;
         }
         &:hover {
-          background-color: darken($shop-color-pussycat, 15%);
+          background-color: color.adjust($shop-color-pussycat, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-pussycat;
         //   color: $white;
@@ -334,7 +335,7 @@
           font-size: 22px;
         }
         &:hover {
-          background-color: darken($shop-color-shizuku, 15%);
+          background-color: color.adjust($shop-color-shizuku, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-shizuku;
         //   color: $white;
@@ -358,7 +359,7 @@
           font-size: 22px;
         }
         &:hover {
-          background-color: darken($shop-color-miyabi, 15%);
+          background-color: color.adjust($shop-color-miyabi, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-miyabi;
         //   color: $white;
@@ -382,7 +383,7 @@
           font-size: 22px;
         }
         &:hover {
-          background-color: darken($shop-color-en, 15%);
+          background-color: color.adjust($shop-color-en, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-en;
         //   color: $white;
@@ -406,7 +407,7 @@
           font-size: 20px;
         }
         &:hover {
-          background-color: darken($shop-color-siroganeze, 15%);
+          background-color: color.adjust($shop-color-siroganeze, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-siroganeze;
         //   color: $white;
@@ -430,7 +431,7 @@
           font-size: 20px;
         }
         &:hover {
-          background-color: darken($shop-color-lovestory, 15%);
+          background-color: color.adjust($shop-color-lovestory, $lightness: -15%);
         }        // .schedule-shop-list-item-button {
         //   background: $shop-color-lovestory;
         //   color: $white;

@@ -249,7 +249,7 @@
 </svg>';
                     @endphp
                     <x-public.shops.schedule-info :icon-svg="$newGirlIconSvg" title="新人情報"
-                        description="新入デビュー♪ ヴィラコート雫の新人入店情報になります" button-text="一覧を見る" background-color="#fff"
+                        description="新入デビュー♪ シロガネーゼの新人入店情報になります" button-text="一覧を見る" background-color="#fff"
                         text-color="#0B0B07" border-color="#394022" underlineColor="#132126"
                         responsive-variant="new-girl" :gradient=false
                         button-href="{{ route('public.shops.shop.newcast', ['shop' => 'siroganeze']) }}" />
@@ -364,7 +364,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>シロガネーゼのキャスト一覧になります。</p>
+                            <p>白銀祭に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'siroganeze']) }}">
@@ -666,7 +666,7 @@
                     'alt' => 'Shop 6',
                     'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
                     'text2' => '',
-                    'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
+                    'url' => route('public.shops.shop.home', parameters: ['shop' => 'lovestory']),
                 ],
             ]" :menu-links="[
                 ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'siroganeze'])],
@@ -683,8 +683,8 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
                 ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
                 ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
             ]" :external-links="$banner_list"

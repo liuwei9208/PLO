@@ -760,4 +760,412 @@
           </div>
           <div class="recruit-female-flow__content">
             <h3 class="recruit-female-flow__title">
-              <span class="recruit-female-flo
+              <span class="recruit-female-flow__title--pc">講習が終わったらお仕事デビュー！</span>
+              <span class="recruit-female-flow__title--sp">講習が終わったら<br>お仕事デビュー！</span>
+            </h3>
+            <p class="recruit-female-flow__text">
+              <span class="recruit-female-flow__text--pc">デビューの時から完全日払いですので、初日からお給料日♪</span>
+              <span class="recruit-female-flow__text--sp">デビューの時から完全日払い日ですので、<br>初日からお給料日♪</span>
+            </p>
+          </div>
+        </article>
+      </div>
+
+      <a class="recruit-female-flow__cta" href="#recruit-form" aria-label="お問い合わせ・応募はこちら！">
+        <img src="{{ asset('assets/img/female/section4-5.png') }}" alt="" aria-hidden="true">
+        <span class="recruit-female-flow__ctaText">お問い合わせ・応募はこちら！</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="recruit-female-faq" aria-labelledby="recruit-female-faq-title">
+    <div class="recruit-female-faq__inner">
+      <header class="recruit-female-faq__header">
+        <h2 id="recruit-female-faq-title" class="recruit-female-faq__heading">FAQ</h2>
+        <p class="recruit-female-faq__subheading">よくある質問</p>
+      </header>
+
+      <div class="recruit-female-faq__frame">
+        <div class="recruit-female-faq__list">
+          <details class="recruit-female-faq__item" open>
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">質問が入ります質問が入ります質問が入ります</span>
+                <span class="recruit-female-faq__text--sp">質問が入ります質問が<br>入ります質問が入りま<br>す</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+                  回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります
+                </span>
+                <span class="recruit-female-faq__text--sp">
+                  回答が入ります回答が入ります回答<br>
+                  が入ります回答が入ります回答が入<br>
+                  ります回答が入ります回答が入りま<br>
+                  す回答が入ります回答が入ります回<br>
+                  答が入ります回答が入ります回答が<br>
+                  入ります回答が入ります回答が入り<br>
+                  ます
+                </span>
+              </p>
+            </div>
+          </details>
+
+          @for ($i = 0; $i < 4; $i++)
+            <details class="recruit-female-faq__item">
+              <summary class="recruit-female-faq__question">
+                <span class="recruit-female-faq__q">Q</span>
+                <span class="recruit-female-faq__questionText">
+                  <span class="recruit-female-faq__text--pc">質問が入ります質問が入ります質問が入ります</span>
+                  <span class="recruit-female-faq__text--sp">質問が入ります質問が<br>入ります質問が入りま<br>す</span>
+                </span>
+                <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+              </summary>
+              <div class="recruit-female-faq__answer">
+                <span class="recruit-female-faq__a">A</span>
+                <p class="recruit-female-faq__answerText">
+                  <span class="recruit-female-faq__text--pc">
+                    回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります
+                  </span>
+                  <span class="recruit-female-faq__text--sp">
+                    回答が入ります回答が入ります回答<br>
+                    が入ります回答が入ります回答が入<br>
+                    ります回答が入ります回答が入りま<br>
+                    す回答が入ります回答が入ります回<br>
+                    答が入ります回答が入ります回答が<br>
+                    入ります回答が入ります回答が入り<br>
+                    ます
+                  </span>
+                </p>
+              </div>
+            </details>
+          @endfor
+        </div>
+
+        <div class="recruit-female-faq__ornament" aria-hidden="true">
+          <img src="{{ asset('assets/img/female/section5.png') }}" alt="">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit-female-blog" aria-labelledby="recruit-female-blog-title">
+    <div class="recruit-female-blog__inner">
+      <header class="recruit-female-blog__header">
+        <h2 id="recruit-female-blog-title" class="recruit-female-blog__heading">STAFF BLOG</h2>
+        <p class="recruit-female-blog__subheading">お店のスタッフブログ</p>
+      </header>
+
+      <div class="recruit-female-blog__grid">
+        @for ($i = 0; $i < 6; $i++)
+          <article class="recruit-female-blog__card">
+            <div class="recruit-female-blog__cardHeader">
+              <p class="recruit-female-blog__shop">プッシーキャット</p>
+            </div>
+            <div class="recruit-female-blog__cardBody">
+              <div class="recruit-female-blog__thumb">
+                <img src="{{ asset('assets/img/female/section6.png') }}" alt="スタッフブログサムネイル">
+              </div>
+              <div class="recruit-female-blog__content">
+                <div class="recruit-female-blog__titleWrapper">
+                  <h3 class="recruit-female-blog__title">
+                    <span class="recruit-female-blog__title--pc">スタッフブログタイトル</span>
+                    <span class="recruit-female-blog__title--sp">スタッフブログタ<br>イトル</span>
+                  </h3>
+                </div>
+                <p class="recruit-female-blog__excerpt">
+                  <span class="recruit-female-blog__excerpt--pc">
+                    テキストテキストテキストテキストテキストテキストテキストテキストテキスト...
+                  </span>
+                  <span class="recruit-female-blog__excerpt--sp">
+                    テキストテキストテキ<br>
+                    ストテキストテキスト<br>
+                    テキスト...
+                  </span>
+                </p>
+                <p class="recruit-female-blog__date">00.00.00 UP</p>
+              </div>
+            </div>
+          </article>
+        @endfor
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit-female-contact" id="recruit-form" aria-labelledby="recruit-female-contact-title">
+    <div class="recruit-female-contact__inner">
+      <header class="recruit-female-contact__header">
+        <h2 id="recruit-female-contact-title" class="recruit-female-contact__heading">CONTACT</h2>
+        <p class="recruit-female-contact__subheading">お問い合わせ＆応募フォーム</p>
+      </header>
+
+      <form action="{{ route('public.recruit.submit') }}" method="POST" class="recruit-female-contact__form">
+        @csrf
+        <input type="hidden" name="type" value="female">
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">希望するお店</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <select name="shop" class="recruit-female-contact__select" required>
+              <option value="shizuku" @selected(old('shop') === 'shizuku')>雫</option>
+              <option value="miyabi" @selected(old('shop') === 'miyabi')>雅</option>
+              <option value="pussycat" @selected(old('shop') === 'pussycat')>プッシーキャット</option>
+              <option value="en" @selected(old('shop') === 'en')>艶</option>
+              <option value="siroganeze" @selected(old('shop') === 'siroganeze')>シロガネーゼ</option>
+              <option value="lovestory" @selected(old('shop') === 'lovestory')>ラブストーリー</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">お名前</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <input type="text" name="name" value="{{ old('name') }}" class="recruit-female-contact__input" placeholder="ニックネーム可" required>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">ご年齢</div>
+          <div class="recruit-female-contact__req recruit-female-contact__req--empty" aria-hidden="true"></div>
+          <div class="recruit-female-contact__field">
+            <input type="text" name="age" value="{{ old('age') }}" class="recruit-female-contact__input">
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">お仕事経験</div>
+          <div class="recruit-female-contact__req recruit-female-contact__req--empty" aria-hidden="true"></div>
+          <div class="recruit-female-contact__field">
+            <div class="recruit-female-contact__radios">
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="experience" value="yes" @checked(old('experience') === 'yes')>
+                <span>あり</span>
+              </label>
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="experience" value="no" @checked(old('experience') === 'no')>
+                <span>なし</span>
+              </label>
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="experience" value="working" @checked(old('experience') === 'working')>
+                <span>働いている</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">件名</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <div class="recruit-female-contact__radios">
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="subject" value="trial" @checked(old('subject', 'trial') === 'trial') required>
+                <span>体験入店希望</span>
+              </label>
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="subject" value="join" @checked(old('subject') === 'join')>
+                <span>入店希望</span>
+              </label>
+              <label class="recruit-female-contact__radio">
+                <input type="radio" name="subject" value="inquiry" @checked(old('subject') === 'inquiry')>
+                <span>お問い合わせ</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row recruit-female-contact__row--textarea">
+          <div class="recruit-female-contact__label">問い合わせ内容</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <textarea name="inquiry" class="recruit-female-contact__textarea" rows="6" placeholder="ご質問など" required>{{ old('inquiry') }}</textarea>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">メールアドレス</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <input type="email" name="email" value="{{ old('email') }}" class="recruit-female-contact__input" placeholder="ニックネーム可" required>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row">
+          <div class="recruit-female-contact__label">メールアドレス（確認）</div>
+          <div class="recruit-female-contact__req">必須</div>
+          <div class="recruit-female-contact__field">
+            <input type="email" name="email_confirmation" value="{{ old('email_confirmation') }}" class="recruit-female-contact__input" placeholder="ニックネーム可" required>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__row recruit-female-contact__row--policy">
+          <div class="recruit-female-contact__label"></div>
+          <div class="recruit-female-contact__req recruit-female-contact__req--empty" aria-hidden="true"></div>
+          <div class="recruit-female-contact__field">
+            <label class="recruit-female-contact__radio recruit-female-contact__radio--policy">
+              <input type="checkbox" name="privacy" value="1" @checked(old('privacy')) required>
+              <span>「プライバシーポリシー」に同意します</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="recruit-female-contact__actions">
+          <button type="submit" class="recruit-female-contact__submit">送信内容を確認する</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="recruit-female-staff-link" aria-labelledby="recruit-female-staff-link-title">
+    <div class="recruit-female-staff-link__inner">
+      <div class="recruit-female-staff-link__bg" aria-hidden="true">
+        <img src="{{ asset('assets/img/female/section7.png') }}" alt="">
+      </div>
+
+      <div class="recruit-female-staff-link__content">
+        <h2 id="recruit-female-staff-link-title" class="recruit-female-staff-link__heading">
+          <span class="recruit-female-staff-link__text--pc">女性も活躍中！スタッフ求人はこちら</span>
+          <span class="recruit-female-staff-link__text--sp">女性も活躍中！<br>スタッフ求人はこちら</span>
+        </h2>
+
+        <div class="recruit-female-staff-link__banner">
+          <a href="{{ route('public.recruit.male') }}">
+            <img src="{{ asset('assets/img/female/section7-1.png') }}" alt="スタッフ求人バナー">
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="recruit-stores">
+    <div class="recruit-stores__inner">
+      <div class="recruit-stores__logo">
+        <img
+          src="{{ asset('assets/img/female/logo.png') }}"
+          alt="Passion Leisure Office"
+        >
+      </div>
+      <div class="recruit-stores__grid">
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/8988/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>上品な空間、時を忘れる美貌と</p>
+              <p>おもてなしが魅力のヘルス</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/pussycat011/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-1.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>女の子を見て選べる唯一無二の</p>
+              <p>エンターテインメントヘルス</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/miyabi0930/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-2.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>雅は、すすきの屈指の人妻・痴女が</p>
+              <p>在籍するヘルス</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/group/hinaShizuku/1/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-3.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>若妻、人妻、淫乱妻など大人のエロさ溢れる</p>
+              <p>人妻ヘルス店</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/siroganeze/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-5.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>容姿端麗なオトナ女性による</p>
+              <p>丁寧な本格マッサージ店</p>
+            </div>
+          </article>
+        </a>
+
+        <a class="recruit-stores__cardLink" href="https://hokkaido-tohoku.qzin.jp/lovesS/" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-4.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>アナタ色のエッチな女の子に育てられる</p>
+              <p>育成型ヘルス</p>
+            </div>
+          </article>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="recruit-female-footer">
+    <p class="recruit-female-footer__copy">
+      Copyright © PLO Group All Rights Reserved.
+    </p>
+  </footer>
+
+  @push('scripts')
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var thumbButtons = document.querySelectorAll('.recruit-female-movie__thumbButton');
+
+        thumbButtons.forEach(function(button) {
+          button.addEventListener('click', function() {
+            var targetId = button.getAttribute('data-target-video');
+            var nextSrc = button.getAttribute('data-video-src');
+            var targetVideo = document.getElementById(targetId);
+
+            if (!targetVideo || !nextSrc) {
+              return;
+            }
+
+            var source = targetVideo.querySelector('source');
+            if (!source) {
+              return;
+            }
+
+            if (source.getAttribute('src') === nextSrc) {
+              return;
+            }
+
+            targetVideo.pause();
+            source.setAttribute('src', nextSrc);
+            targetVideo.load();
+          });
+        });
+      });
+    </script>
+  @endpush
+
+</x-public-groups-sub-page-layout>
+
+{{-- Styles are included in groups.scss --}}
