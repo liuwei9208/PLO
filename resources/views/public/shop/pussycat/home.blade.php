@@ -369,7 +369,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>プッシーキャットのキャスト一覧です。</p>
+                            <p>プッシーキャットに在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'shizuku']) }}">

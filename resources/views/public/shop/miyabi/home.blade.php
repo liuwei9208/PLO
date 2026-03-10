@@ -370,7 +370,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>雅のキャスト一覧です。</p>
+                            <p>雅に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'miyabi']) }}">

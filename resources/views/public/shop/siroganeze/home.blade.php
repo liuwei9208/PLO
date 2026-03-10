@@ -364,7 +364,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>シロガネーゼのキャスト一覧になります。</p>
+                            <p>白銀祭に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'siroganeze']) }}">
@@ -666,7 +666,7 @@
                     'alt' => 'Shop 6',
                     'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
                     'text2' => '',
-                    'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
+                    'url' => route('public.shops.shop.home', parameters: ['shop' => 'lovestory']),
                 ],
             ]" :menu-links="[
                 ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'siroganeze'])],

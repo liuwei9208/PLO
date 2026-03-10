@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shop_id')
-            ->constrained('shops_news')
+            ->constrained('shops')
             ->onUpdate('cascade')
-            ->onDelete('cascade'); // ショップ削除時に紐づくニュースも削除
+            ->onDelete('cascade');
 
             $table->dateTime('published_at')->nullable();
             $table->string('title')->nullable();

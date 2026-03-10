@@ -7,7 +7,7 @@
     <section class="newface">
       <div class="section-title --{{ $shop->slug }}">
         <span class="section-title-en title-font-midashi">
-          CAST LIST
+          CAST LIST 
           {{-- <img src="{{ asset('assets/img/group/newface/title-en.svg') }}" alt="New Face"> --}}
         </span>
         <h2 class="section-title-ja title-font-sm-midashi">キャスト一覧</h2>

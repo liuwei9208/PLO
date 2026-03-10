@@ -186,17 +186,19 @@
                     'alt' => 'Shop 5',
                     'text1' => '女の子を見て選べる唯一無二のエンターテインメントヘルス',
                     'text2' => '',
-                    'url' => route('public.shops.shop.home', ['shop' => 'siroganeze']),
+                    'url' => route('public.shops.shop.home', parameters: ['shop' => 'siroganeze']),
                 ],
                 [
                     'image' => 'assets/img/shops/shizuku/006.jpg',
                     'alt' => 'Shop 6',
                     'text1' => 'アナタ色のエッチな女の子に育てられる育成型ヘルス',
                     'text2' => '',
-                    'url' => route('public.shops.shop.home', ['shop' => 'lovestory']),
+                    'url' => route('public.shops.shop.home', parameters: ['shop' => 'lovestory']),
                 ],
-            ]" :menu-links="[
-              ['text' => '店舗TOP', 'url' => route('public.shops.shop.home', ['shop' => 'en'])],
+            ]"
+            
+            :menu-links="[
+              ['text' => '店舗TOP', 'url' => route(  'public.shops.shop.home', ['shop' => 'en'])],
               ['text' => '出勤情報', 'url' => route('public.shops.shop.schedule', ['shop' => 'en'])],
               ['text' => '料金システム', 'url' => route('public.shops.shop.system', ['shop' => 'en'])],
               ['text' => 'キャスト一覧', 'url' => route('public.shops.shop.castlist', ['shop' => 'en'])],
@@ -214,7 +216,9 @@
               ['text' => '男性求人', 'url' => route('public.recruit.male')],
               ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
               ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
-            ]" :external-links="$banner_list"
+            ]" 
+            
+            :external-links="$banner_list"
               footerLogo="{{ asset('assets/img/shops/en/footer-logo.png') }}" svgIconColor="#A24395"
               ploLogo="{{ asset('assets/img/shops/en/plo-logo.png') }}"
               groupSiteLogo="{{ asset('assets/img/shops/en/plo-logo.png') }}" />

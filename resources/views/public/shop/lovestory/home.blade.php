@@ -352,7 +352,7 @@ contentGradientStart="#F2387C"
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>ラブストーリーのキャスト一覧になります。</p>
+                            <p>ラブストーリーに在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'lovestory']) }}">

@@ -1,4 +1,4 @@
-<x-shizuku-page-layout page-title="CAST LIST" page-subtitle="キャスト一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧"
+<x-shizuku-page-layout page-title="CASTLIST" page-subtitle="キャスト一覧" breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ キャスト一覧"
     :assets="['resources/scss/shops/shizuku/castlist.scss']" :banners="$banners">
     <div class="castlist-card-list">
         {{-- @for ($i = 1; $i <= 20; $i++)

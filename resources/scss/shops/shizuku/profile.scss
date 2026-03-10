@@ -739,7 +739,7 @@
   border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
-  padding: 20px 10px;
+  padding: 20px 10px 20px;
   overflow: hidden;
   padding-bottom: 40px;
 }
@@ -758,6 +758,8 @@
 }
 
 .girl-diary-card {
+  height: 140px;
+
   width: 140px;
   flex-shrink: 0;
   display: flex;
@@ -878,7 +880,7 @@
 }
 
 .girl-schedule-content {
-  background: #f5f0e8;
+  background: #fff;
   border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
@@ -956,7 +958,8 @@
     height: 12px;
     flex-shrink: 0;
   }
-  .girl-schedule-time, .girl-schedule-rest {
+  .girl-schedule-time,
+  .girl-schedule-rest {
     font-size: 21px !important;
     text-align: left !important;
     color: #2a1a08;
@@ -1069,7 +1072,7 @@
 }
 
 .girl-manager-comment-content {
-  background: #f5f0e8;
+  background: #fff;
   border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;

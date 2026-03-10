@@ -156,7 +156,7 @@
   margin: 0px 6px;
   text-align: center;
   border-bottom: 1px solid #e5d6b4;
-  background: #FEFEFE;
+  background: #fefefe;
 }
 @media screen and (max-width: 850px) {
   .girl-basic-info-body {
@@ -186,7 +186,7 @@
   text-align: center;
   // padding: 10px 10px 15px;
   margin: 3px 6px 6px 6px;
-  background: #FEFEFE;
+  background: #fefefe;
   border-radius: 0px 0px 16px 16px;
 }
 
@@ -200,7 +200,7 @@
 .profile-image-prev,
 .profile-image-next {
   position: absolute;
-  background: rgba(19, 33, 38, 0.50);
+  background: rgba(19, 33, 38, 0.5);
   border: none;
   width: 57px;
   height: 139px;
@@ -349,7 +349,7 @@
   @include yu-mincho-regular();
   @include responsive-font(21px, 34.2px);
   font-weight: 600 !important;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -364,7 +364,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-radius: 15px;;
+  border-radius: 15px;
 }
 
 .girl-video-item {
@@ -456,7 +456,7 @@
 }
 
 .girl-qa-question {
-  background: #FFFDF0;
+  background: #fffdf0;
   border-right: 1px solid #e5d6b4;
 }
 
@@ -468,7 +468,7 @@
   @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
   font-weight: 600 !important;
-  color: #2A1A08;
+  color: #2a1a08;
   flex-shrink: 0;
 }
 
@@ -476,7 +476,7 @@
   @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #2A1A08;
+  color: #2a1a08;
   flex-shrink: 0;
 }
 
@@ -484,7 +484,7 @@
   @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
   font-weight: 600 !important;
-  color: #10040E;
+  color: #10040e;
   line-height: 1.6;
 }
 
@@ -492,7 +492,7 @@
   @include yu-mincho-regular();
   @include responsive-font(16px, 16px);
   font-weight: 400 !important;
-  color: #10040E;
+  color: #10040e;
   line-height: 1.6;
 }
 
@@ -501,11 +501,11 @@
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.25);
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: linear-gradient(180deg, #73071a 0%, #d90d32 100%);
 }
 
 .girl-play-header {
-  background: linear-gradient(180deg, #73071A 0%, #D90D32 100%);
+  background: linear-gradient(180deg, #73071a 0%, #d90d32 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -523,7 +523,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  background: var(---N_, #FEFEFE);
+  background: var(---N_, #fefefe);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -564,11 +564,11 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
-  background: var(---N_, #D90D32);
+  background: var(---N_, #d90d32);
 }
 
 .girl-play-item-title h4 {
-  color: #FEFEFE;
+  color: #fefefe;
   text-align: center;
   @include lustria();
   @include responsive-font(21px, 21px);
@@ -596,7 +596,7 @@
   height: 15px;
 }
 .girl-play-item-details p {
-  color: var(---N__, #0F0002);
+  color: var(---N__, #0f0002);
   @include yu-mincho-regular();
   font-size: 16px;
   font-style: normal;
@@ -694,7 +694,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -713,7 +713,7 @@
 .girl-message-content p {
   @include Hiragino_Mincho_Pro();
   @include responsive-font(18px, 18px);
-  color: #10040E;
+  color: #10040e;
   line-height: 1.8;
   margin: 0;
 }
@@ -741,7 +741,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -754,7 +754,7 @@
   border: 1px solid #8b6f47;
   border-top: none;
   border-radius: 0 0 20px 20px;
-  padding: 20px 10px;
+  padding: 20px 10px 20px;
   overflow: hidden;
   padding-bottom: 40px;
   margin: 0px 6px 6px 6px;
@@ -774,6 +774,7 @@
 }
 
 .girl-diary-card {
+  height: 140px;
   width: 140px;
   flex-shrink: 0;
   display: flex;
@@ -823,7 +824,7 @@
   @include responsive-font(17px, 17px);
   font-weight: 600 !important;
   margin: 0;
-  color: #10040E;
+  color: #10040e;
 }
 
 .girl-diary-date {
@@ -831,7 +832,7 @@
   @include responsive-font(13px, 13px);
   font-weight: 400 !important;
   // font-size: 12px;
-  color: #10040E;
+  color: #10040e;
   margin: 2px 0 0;
 }
 
@@ -887,7 +888,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -947,14 +948,14 @@
     justify-content: space-between;
     padding: 14px 16px !important;
     border-right: none;
-    border-bottom: 1px solid #10040E;
+    border-bottom: 1px solid #10040e;
     background: #fff;
   }
   .girl-schedule-day:last-child {
     border-bottom: none;
   }
   .girl-schedule-label {
-    background: #F2F2F2;
+    background: #f2f2f2;
     border-radius: 8px;
     padding: 8px 14px;
     margin-bottom: 0 !important;
@@ -976,7 +977,8 @@
     height: 12px;
     flex-shrink: 0;
   }
-  .girl-schedule-time, .girl-schedule-rest {
+  .girl-schedule-time,
+  .girl-schedule-rest {
     font-size: 21px !important;
     text-align: left !important;
     color: #2a1a08;
@@ -998,7 +1000,7 @@
   flex-direction: column;
   align-items: center;
   padding: 0 8px;
-  border-right: 1px solid #10040E;
+  border-right: 1px solid #10040e;
 }
 
 .girl-schedule-day:last-child {
@@ -1006,7 +1008,7 @@
 }
 
 .girl-schedule-label {
-  background: #F2F2F2;
+  background: #f2f2f2;
   border-radius: 4px;
   padding: 6px 10px;
   display: flex;
@@ -1021,7 +1023,7 @@
   @include times-new-roman();
   @include responsive-font(18px, 18px);
   font-weight: 700;
-  color: #10040E;
+  color: #10040e;
 }
 
 .girl-schedule-label svg {
@@ -1034,7 +1036,7 @@
   @include times-new-roman();
   @include responsive-font(18px, 18px);
   font-weight: 700 !important;
-  color: #0F0002;
+  color: #0f0002;
   text-align: center;
   line-height: 0.8;
   max-width: 43px;
@@ -1044,7 +1046,7 @@
   @include responsive-font(14px, 14px);
 
   font-weight: 600 !important;
-  color: #0F0002;
+  color: #0f0002;
   text-align: center;
   line-height: 0.8;
   max-width: 43px;
@@ -1082,7 +1084,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1102,7 +1104,7 @@
   @include Hiragino_Mincho_Pro();
   @include responsive-font(18px, 18px);
   font-weight: 300;
-  color: #10040E;
+  color: #10040e;
   line-height: 1.8;
   margin: 0;
 }
@@ -1134,7 +1136,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1165,7 +1167,7 @@
   @include responsive-font(14px, 14px);
   font-weight: 600;
   color: #010307;
-  background: #E2EAF5;
+  background: #e2eaf5;
   padding: 6px 12px;
   min-width: 100px;
   text-align: center;
@@ -1229,7 +1231,7 @@
   font-weight: 600 !important;
   margin: 0;
   letter-spacing: 0.08em;
-  color: #FEFEFE;
+  color: #fefefe;
   // background: var(---N_, linear-gradient(180deg, #fff2d7 20.67%, #bd902f 100%));
   // background-clip: text;
   // -webkit-background-clip: text;
@@ -1288,7 +1290,7 @@
   @include times-new-roman();
   @include responsive-font(17px, 17px);
   font-weight: 400;
-  color: #0F0002;
+  color: #0f0002;
   margin-left: 4px;
 }
 
@@ -1301,7 +1303,7 @@
   @include yu-mincho-regular();
   @include responsive-font(14px, 14px);
   font-weight: 400;
-  color: #0F0002;
+  color: #0f0002;
 }
 
 .girl-review-body {
@@ -1314,7 +1316,7 @@
   @include yu-mincho-regular();
   @include responsive-font(15px, 16px);
   font-weight: 600 !important;
-  color: #0F0002;
+  color: #0f0002;
   line-height: 1.8;
   max-height: 100px;
   overflow-y: auto;
@@ -1343,7 +1345,7 @@
   @include Hiragino_Mincho_Pro_NW6();
   @include responsive-font(18px, 18px);
   font-weight: 700;
-  color: #0F0002;
+  color: #0f0002;
   margin-bottom: 10px;
 }
 

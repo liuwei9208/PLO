@@ -20,9 +20,11 @@
     'externalLinks' => [],
 
     // Footer Menu
-    'menuLinks' => [],
+   'menuLinks' => [
+       
+    ],
     'footerLogo' => 'assets/img/shops/shizuku/footer-logo.png',
-    'footerLogoAlt' => 'Villa Cort Shizuku',
+    'footerLogoAlt' => 'Villa Court Shizuku',
 
     // Footer Copyright
     'copyrightText' => 'Copyright © PLO Group All Rights Reserved.',

@@ -17,7 +17,7 @@
         "rutorika/sortable": "^9.3",
         "spatie/dropbox-api": "^1.23",
         "spatie/flysystem-dropbox": "*",
-        "spatie/laravel-backup": "^9.3",
+        "spatie/laravel-backup": "9.3.6",
         "spatie/laravel-permission": "^6.16",
         "twilio/sdk": "^8.7"
     },

@@ -304,7 +304,7 @@
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>ヴィラコート雫のキャスト一覧です。</p>
+                            <p>ヴィラコート雫に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'shizuku']) }}">

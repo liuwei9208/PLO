@@ -363,7 +363,7 @@ measurementsColor="#000" nameColor="#000" messageColor="#000" />
                             <p class="castlist-info-title">キャスト一覧</p>
                         </div>
                         <div class="castlist-info-description">
-                            <p>艶のキャスト一覧になります。</p>
+                            <p>艶に在籍する女の子一覧です</p>
                         </div>
                         <a class="castlist-info-button"
                             href="{{ route('public.shops.shop.castlist', ['shop' => 'en']) }}">
