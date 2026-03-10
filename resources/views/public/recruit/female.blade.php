@@ -791,8 +791,8 @@
             <summary class="recruit-female-faq__question">
               <span class="recruit-female-faq__q">Q</span>
               <span class="recruit-female-faq__questionText">
-                <span class="recruit-female-faq__text--pc">質問が入ります質問が入ります質問が入ります</span>
-                <span class="recruit-female-faq__text--sp">質問が入ります質問が<br>入ります質問が入りま<br>す</span>
+                <span class="recruit-female-faq__text--pc">未経験でも働けますか？</span>
+                <span class="recruit-female-faq__text--sp">未経験でも働けますか？</span>
               </span>
               <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
             </summary>
@@ -800,50 +800,160 @@
               <span class="recruit-female-faq__a">A</span>
               <p class="recruit-female-faq__answerText">
                 <span class="recruit-female-faq__text--pc">
-                  回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります
+                  未経験でもすぐに始めて頂くことができます。また女性講師がお教えしますので、ご安心ください。
                 </span>
                 <span class="recruit-female-faq__text--sp">
-                  回答が入ります回答が入ります回答<br>
-                  が入ります回答が入ります回答が入<br>
-                  ります回答が入ります回答が入りま<br>
-                  す回答が入ります回答が入ります回<br>
-                  答が入ります回答が入ります回答が<br>
-                  入ります回答が入ります回答が入り<br>
-                  ます
+                  未経験でもすぐに始めて頂くことができます。また女性講師がお教えしますので、ご安心ください。
                 </span>
               </p>
             </div>
           </details>
 
-          @for ($i = 0; $i < 4; $i++)
-            <details class="recruit-female-faq__item">
-              <summary class="recruit-female-faq__question">
-                <span class="recruit-female-faq__q">Q</span>
-                <span class="recruit-female-faq__questionText">
-                  <span class="recruit-female-faq__text--pc">質問が入ります質問が入ります質問が入ります</span>
-                  <span class="recruit-female-faq__text--sp">質問が入ります質問が<br>入ります質問が入りま<br>す</span>
+          <!-- @for ($i = 0; $i < 4; $i++) -->
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">体験入店したら絶対に入店しないとダメですか？</span>
+                <span class="recruit-female-faq__text--sp">体験入店したら絶対に入店しないとダメですか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+                  いえ、必ず入店しないといけないといった事はございません。実際に働いてみて「少し違う
+かも」と感じた場合は、途中のタイミングでも遠慮なく辞退して大丈夫です。勤務いただいた
+分のお給料は、きちんとお支払いします
                 </span>
-                <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
-              </summary>
-              <div class="recruit-female-faq__answer">
-                <span class="recruit-female-faq__a">A</span>
-                <p class="recruit-female-faq__answerText">
-                  <span class="recruit-female-faq__text--pc">
-                    回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります回答が入ります
-                  </span>
-                  <span class="recruit-female-faq__text--sp">
-                    回答が入ります回答が入ります回答<br>
-                    が入ります回答が入ります回答が入<br>
-                    ります回答が入ります回答が入りま<br>
-                    す回答が入ります回答が入ります回<br>
-                    答が入ります回答が入ります回答が<br>
-                    入ります回答が入ります回答が入り<br>
-                    ます
-                  </span>
-                </p>
-              </div>
-            </details>
-          @endfor
+                <span class="recruit-female-faq__text--sp">
+                  いえ、必ず入店しないといけないといった事はございません。実際に働いてみて「少し違う
+かも」と感じた場合は、途中のタイミングでも遠慮なく辞退して大丈夫です。勤務いただいた
+分のお給料は、きちんとお支払いします
+                </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">身バレが怖いのですが、親や知人にバレないように働くことはできますか？</span>
+                <span class="recruit-female-faq__text--sp">身バレが怖いのですが、親や知人にバレないように働くことはできますか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+ご安心ください。写真にモザイクをかけたり、接客前にモニターでお客様の顔を確認できるな
+ど店舗によって、様々な身バレ対策を実施しております。                </span>
+                <span class="recruit-female-faq__text--sp">
+ご安心ください。写真にモザイクをかけたり、接客前にモニターでお客様の顔を確認できるな
+ど店舗によって、様々な身バレ対策を実施しております。                </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">体系や見た目、年齢的に自信がないのですが、働けますか？</span>
+                <span class="recruit-female-faq__text--sp">体系や見た目、年齢的に自信がないのですが、働けますか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+ご安心ください。体系や見た目に自信がない方でも貴女の魅力にあった店舗をご案内させてい          </span>
+                <span class="recruit-female-faq__text--sp">
+ただきます。          </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">身バレが怖いのですが、親や知人にバレないように働くことはできますか？</span>
+                <span class="recruit-female-faq__text--sp">身バレが怖いのですが、親や知人にバレないように働くことはできますか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+ご安心ください。体系や見た目に自信がない方でも貴女の魅力にあった店舗をご案内させてい </span>
+                <span class="recruit-female-faq__text--sp">
+ご安心ください。体系や見た目に自信がない方でも貴女の魅力にあった店舗をご案内させてい </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">出勤について、休日に月 1～2 回の出勤でも働けますか？</span>
+                <span class="recruit-female-faq__text--sp">出勤について、休日に月 1～2 回の出勤でも働けますか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+もちろん大丈夫です。貴女の空いている時間に合わせて出勤が可能です。              </span>
+                <span class="recruit-female-faq__text--sp">
+もちろん大丈夫です。貴女の空いている時間に合わせて出勤が可能です。              </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">遠方から札幌に出てきて働きたいと考えています。寮など住み込みで働く環境はあります
+か？</span>
+                <span class="recruit-female-faq__text--sp">遠方から札幌に出てきて働きたいと考えています。寮など住み込みで働く環境はあります
+か？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+はい、「敷金・礼金」なしで即日入居可能な寮を用意しております。              </span>
+                <span class="recruit-female-faq__text--sp">
+はい、「敷金・礼金」なしで即日入居可能な寮を用意しております。              </span>
+              </p>
+            </div>
+          </details>
+          <details class="recruit-female-faq__item">
+            <summary class="recruit-female-faq__question">
+              <span class="recruit-female-faq__q">Q</span>
+              <span class="recruit-female-faq__questionText">
+                <span class="recruit-female-faq__text--pc">男性スタッフに抵抗があるのですが、女性スタッフがいるお店はありますか？</span>
+                <span class="recruit-female-faq__text--sp">男性スタッフに抵抗があるのですが、女性スタッフがいるお店はありますか？</span>
+              </span>
+              <span class="recruit-female-faq__toggle" aria-hidden="true">+</span>
+            </summary>
+            <div class="recruit-female-faq__answer">
+              <span class="recruit-female-faq__a">A</span>
+              <p class="recruit-female-faq__answerText">
+                <span class="recruit-female-faq__text--pc">
+はい、女性スタッフのみの店舗もありますのでご安心ください。             </span>
+                <span class="recruit-female-faq__text--sp">
+はい、女性スタッフのみの店舗もありますのでご安心ください。              </span>
+              </p>
+            </div>
+          </details>
+          <!-- @endfor -->
         </div>
 
         <div class="recruit-female-faq__ornament" aria-hidden="true">
