@@ -1,7 +1,7 @@
 <x-public-groups-layout>
   <x-public.groups.sidebar />
   <!-- Main Visual -->
-  <x-public.groups.mv />
+  <x-public.groups.mv :images="$mainVisualImages ?? collect()" />
   {{-- <div class="mv-banner-bottom">
     <div class="mv-banner-bottom-wrapper">
       <div class="mv-banner-bottom-slide">

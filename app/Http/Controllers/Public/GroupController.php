@@ -14,6 +14,7 @@ use App\Models\Style;
 use App\Models\Option;
 use App\Models\Event;
 use App\Models\Banner;
+use App\Models\MainVisualImage;
 use App\Models\News;
 use App\Models\Attendance;
 use App\Models\Member;
@@ -178,6 +179,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         // $response = Http::withHeader('User-Agent', 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1')
         //     ->get($url);
         // $shizukuX = $response->body();
+        $headquarterShop = Shop::where('slug', 'headquarter')->first();
+        $mainVisualImages = $headquarterShop
+            ? MainVisualImage::where('shop_id', $headquarterShop->id)->whereNotNull('image_path')->orderBy('sort_order')->get()
+            : collect();
         return view('public.group.front', [
             'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
@@ -190,7 +195,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'news' => $news,
             'videos' => $videos,
             'todayCasts' => $todayCasts,
-            // 'shizukuX' => $shizukuX,
+            'mainVisualImages' => $mainVisualImages,
         ]);
     }
     public function showFront(Request $request): View

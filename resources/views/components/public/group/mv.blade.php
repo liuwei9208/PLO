@@ -1,6 +1,10 @@
+@props(['images' => collect()])
+
 <div class="mv">
   <div class="mv-main">
-    @if(request()->routeIs('public.group.search') || request()->routeIs('public.group.searchResult'))
+    @if(request()->routeIs('public.group.home') && $images->isNotEmpty())
+    <x-public.main-visual-slider :images="$images" />
+    @elseif(request()->routeIs('public.group.search') || request()->routeIs('public.group.searchResult'))
     <picture>
       <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/search-girl.jpg') }}">
       <img src="{{ asset('assets/img/group/mv/search-girl.jpg') }}" alt="">

@@ -89,6 +89,53 @@
     }
   }
 
+  .mv-main-slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .mv-main-slider-item {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      pointer-events: none;
+
+      &.is-active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .mv-main-slider-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      .mv-main-slider-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .sp-only {
+        display: none;
+        @media #{media-query(sm)} {
+          display: block;
+        }
+      }
+
+      .pc-only {
+        display: block;
+        @media #{media-query(sm)} {
+          display: none !important;
+        }
+      }
+    }
+  }
+
   .mv-scroll {
     position: absolute;
     bottom: 0rem;

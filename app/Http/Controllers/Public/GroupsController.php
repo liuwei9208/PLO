@@ -14,6 +14,7 @@ use App\Models\Style;
 use App\Models\Option;
 use App\Models\Event;
 use App\Models\Banner;
+use App\Models\MainVisualImage;
 use App\Models\News;
 use App\Models\Attendance;
 use App\Models\Member;
@@ -245,6 +246,10 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         //     ->get($url);
         // $shizukuX = $response->body();
         // dd($diaries);
+        $headquarterShop = Shop::where('slug', 'headquarter')->first();
+        $mainVisualImages = $headquarterShop
+            ? MainVisualImage::where('shop_id', $headquarterShop->id)->whereNotNull('image_path')->orderBy('sort_order')->get()
+            : collect();
         return view('public.groups.home', [
             'pickups' => $pickups,
             'newfaces_this_week' => $newfaces_this_week,
@@ -257,7 +262,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'news' => $news,
             'videos' => $videos,
             'todayCasts' => $todayCasts,
-            // 'shizukuX' => $shizukuX,
+            'mainVisualImages' => $mainVisualImages,
         ]);
     }
     public function showFront(Request $request): View

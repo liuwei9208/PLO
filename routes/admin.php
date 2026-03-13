@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\RankingController;
 use App\Http\Controllers\Admin\QaController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\MainVisualController;
 use App\Http\Controllers\Admin\ScheduleController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\FeeController;
@@ -255,7 +256,13 @@ Route::middleware(['auth', 'role:admin|shop'])->prefix('admin')->name('admin.')-
         Route::put('{id}', [EventController::class, 'update']);
         Route::delete('{id}', [EventController::class, 'destroy']);
     });
-        /**
+        Route::prefix('main-visual')->name('main-visual.')->group(function () {
+        Route::get('/', [MainVisualController::class, 'index'])->name('index');
+        Route::put('/', [MainVisualController::class, 'update']);
+        Route::delete('image/{id}', [MainVisualController::class, 'destroyImage'])->name('destroy-image');
+    });
+
+    /**
      * Banner master
      *
      * @see \App\Http\Controllers\Admin\BannerController

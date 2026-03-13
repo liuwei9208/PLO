@@ -1,12 +1,13 @@
+@props(['images' => collect()])
+
 <div class="mv">
   <div class="mv-main">
-
-    {{-- <picture> --}}
-      {{-- <source media="(max-width: 767px)" srcset="{{ asset('assets/img/group/mv/main-sm.png') }}"> --}}
-        <img src="{{ asset('assets/img/group/mv/main-sm.png') }}" class="sp-only">
-        <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="" class="pc-only">
-      {{-- <source media="(min-width: 768px)" srcset="{{ asset('assets/img/group/mv/main-lg.jpg') }}"> --}}
-    {{-- </picture> --}}
+    @if($images->isNotEmpty())
+    <x-public.main-visual-slider :images="$images" />
+    @else
+    <img src="{{ asset('assets/img/group/mv/main-sm.png') }}" class="sp-only">
+    <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="" class="pc-only">
+    @endif
     <div class="mv-banner-bottom pc-only">
       <div class="mv-banner-bottom-wrapper">
         <div class="mv-banner-bottom-slide">

@@ -3,7 +3,7 @@
     <x-public.group.sidebar />
 
   <!-- Main Visual -->
-  <x-public.group.mv />
+  <x-public.group.mv :images="$mainVisualImages ?? collect()" />
   {{-- @if($news->count() > 0)
   <section class="plo_news content-wrapper">
     <div class="plo_news-title">

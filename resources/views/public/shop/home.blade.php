@@ -1,7 +1,7 @@
 <x-public-shop-layout :shop="$shop">
 
     <!-- Main Visual -->
-    <x-public.shop.mv :shop="$shop" />
+    <x-public.shop.mv :shop="$shop" :images="$mainVisualImages ?? collect()" />
     {{-- <div class="phone-link-container --mv">
     <x-public.shop.phone-link :shop="$shop" />
   </div> --}}

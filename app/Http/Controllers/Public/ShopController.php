@@ -12,6 +12,7 @@ use App\Models\Diary;
 use App\Models\Qa;
 use App\Models\Event;
 use App\Models\Banner;
+use App\Models\MainVisualImage;
 use App\Models\Attendance;
 use App\Models\Reservation;
 use App\Models\Video;
@@ -163,9 +164,9 @@ WHERE cast_style.cast_id = $new_girl->id;";
         ->get();
         // dd($castlist);
         // dd($diaries);
+        $mainVisualImages = MainVisualImage::where('shop_id', $shopModel->id)->whereNotNull('image_path')->orderBy('sort_order')->get();
         return view('public.shop.home', [
             'shop' => $shopModel,
-            // 'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
             'todayCasts' => $todayCasts,
             'events' => $events,
             'banners' => $banners,
@@ -174,6 +175,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             'new_girls_month' => $new_girls_month,
             'castlist' => $castlist,
             'news' => $news,
+            'mainVisualImages' => $mainVisualImages,
         ]);
     }
 

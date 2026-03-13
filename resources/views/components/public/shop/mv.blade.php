@@ -1,8 +1,10 @@
+@props(['shop', 'images' => collect()])
+
 <div class="mv">
   <div class="mv-main">
-    {{-- <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-sm.jpg') }}" alt="" class="sp-only">
-    <img src="{{ asset('assets/img/shop/' . $shop->slug . '/mv/main-lg.jpg') }}" alt="" class="pc-only"> --}}
-    @if(request()->routeIs('public.shop.newslist') || request()->routeIs('public.shop.newsdetail'))
+    @if(request()->routeIs('public.shop.home') && $images->isNotEmpty())
+    <x-public.main-visual-slider :images="$images" />
+    @elseif(request()->routeIs('public.shop.newslist') || request()->routeIs('public.shop.newsdetail'))
     <img src="{{ asset('assets/img/shop/mv/news.jpg') }}" alt="" class="sp-only">
     <img src="{{ asset('assets/img/shop/mv/news.jpg') }}" alt="" class="pc-only">
     @elseif(request()->routeIs('public.shop.diarylist') || request()->routeIs('public.shop.diarydetail'))

@@ -801,6 +801,24 @@
                             </span>
                         </a>
                     </li> --}}
+                    <!-- Main Visual -->
+                    <li>
+                        <a href="{{ url('/admin/main-visual') }}"
+                            @click="selected = (selected === 'MainVisual' ? '':'MainVisual')" class="menu-item group"
+                            :class="(selected === 'MainVisual') ? 'menu-item-active' : 'menu-item-inactive'">
+                            <svg :class="(selected === 'MainVisual') && (page === 'main-visual') ? 'menu-item-icon-active' :
+                            'menu-item-icon-inactive'"
+                                width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M2 5C2 4.44772 2.44772 4 3 4H21C21.5523 4 22 4.44772 22 5V19C22 19.5523 21.5523 20 21 20H3C2.44772 20 2 19.5523 2 19V5ZM4 6V18H20V6H4ZM7 9C7 8.44772 7.44772 8 8 8H16C16.5523 8 17 8.44772 17 9V14C17 14.5523 16.5523 15 16 15H8C7.44772 15 7 14.5523 7 14V9ZM9 10V13H15V10H9Z"
+                                    fill=""></path>
+                            </svg>
+                            <span class="menu-item-text" :class="sidebarToggle ? 'lg:hidden' : ''">
+                                メインビジュアル画像管理
+                            </span>
+                        </a>
+                    </li>
                     <!-- Banner -->
                     <li>
                         <a href="{{ url('/admin/banner') }}"

@@ -48,4 +48,9 @@ class Shop extends Model
     {
         return $this->belongsToMany(Rank::class, 'shop_rank')->withTimestamps();
     }
+
+    public function mainVisualImages()
+    {
+        return $this->hasMany(MainVisualImage::class)->orderBy('sort_order');
+    }
 }
