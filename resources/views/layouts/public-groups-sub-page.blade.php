@@ -174,9 +174,11 @@
         @endif
       </main>
     @endif
-    
+
+    @if(!$isSimpleRecruitLayout)
     <!-- Footer -->
     <x-public.groups.footer />
+    @endif
 
     @stack('scripts')
   </body>

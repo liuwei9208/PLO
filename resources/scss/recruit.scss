@@ -1988,7 +1988,29 @@
 }
 
 .recruit-line-cta:not(.recruit-line-cta--female) {
-  display: none;
+  display: block;
+  background-color: #28c254;
+}
+
+@media screen and (min-width: 1025px) {
+  .recruit-line-cta:not(.recruit-line-cta--female) .recruit-line-cta__inner {
+    padding: 16px 96px;
+    justify-content: center;
+  }
+
+  .recruit-line-cta:not(.recruit-line-cta--female) .recruit-message__line-ctaLink {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .recruit-line-cta:not(.recruit-line-cta--female) .recruit-message__line-ctaText {
+    font-size: 26px;
+  }
+
+  .recruit-line-cta:not(.recruit-line-cta--female) .recruit-message__line-ctaIcon {
+    width: 38px;
+    height: 38px;
+  }
 }
 
 @media screen and (max-width: 1024px) {
