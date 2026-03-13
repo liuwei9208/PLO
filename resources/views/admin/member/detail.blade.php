@@ -204,7 +204,7 @@
     </div>
 
     <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 p-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-6 p-6">
         <div class="flex items-center gap-4">
           <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">会員番号</label>
           <input type="text" value="{{ $member->id ?? '' }}" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
@@ -230,8 +230,8 @@
 
     <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <form id="visitForm" onsubmit="saveVisit(event)" class="p-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="space-y-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+          <div class="space-y-5">
             @if(auth()->user()?->hasRole('admin') && $shops->count() > 1)
             <div class="flex items-center gap-4">
               <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">店舗</label>
@@ -309,7 +309,7 @@
             </div>
             @endfor
           </div>
-          <div class="space-y-4">
+          <div class="space-y-5">
             <div class="flex items-center gap-4">
               <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">利用ポイント</label>
               <input type="number" id="point_use" name="point_use" value="0" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
@@ -340,7 +340,7 @@
               <label class="w-24 shrink-0 pt-2 text-sm font-medium text-gray-500 dark:text-gray-400">メモ</label>
               <textarea id="memo" name="memo" rows="4" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2"></textarea>
             </div>
-            <div class="flex justify-end gap-3 pt-4">
+            <div class="flex justify-end gap-3 pt-6">
               <button type="submit" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">保存</button>
               <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">戻る</a>
             </div>
