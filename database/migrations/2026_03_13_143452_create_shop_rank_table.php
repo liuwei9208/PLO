@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('shop_rank', function (Blueprint $table) {
             $table->id();
             $table->foreignId('shop_id')->constrained()->onDelete('cascade');
+            $table->unsignedTinyInteger('position')->default(1);
             $table->foreignId('rank_id')->constrained()->onDelete('cascade');
             $table->timestamps();
-            $table->unique(['shop_id', 'rank_id']);
+            $table->unique(['shop_id', 'position']);
         });
     }
 

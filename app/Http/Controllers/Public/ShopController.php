@@ -297,7 +297,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
     public function showRanking(Request $request, string $shop): View
     {
         $shopModel = Shop::where('slug', $shop)->firstOrFail();
-        $shopRankIds = $shopModel->ranks()->pluck('ranks.id')->toArray();
+        $shopRankIds = $shopModel->shopRanks()->whereNotNull('rank_id')->pluck('rank_id')->toArray();
 
         if (empty($shopRankIds)) {
             return view('public.shop.ranking', [
@@ -316,7 +316,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             ->where('casts.shop_id', $shopModel->id)
             ->where('casts.is_public', 1)
             ->where('rankings.rank_id', $rank_id)
-            ->where('rankings.rank', '<=', 5)
+            ->where('rankings.rank', '<=', 7)
             ->select('rankings.*', 'casts.*', 'rankings.rank as ranking_rank')
             ->orderBy('rankings.rank', 'asc')
             ->get();

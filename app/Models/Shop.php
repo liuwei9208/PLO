@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Rank;
+use App\Models\ShopRank;
 
 class Shop extends Model
 {
@@ -46,7 +47,12 @@ class Shop extends Model
 
     public function ranks()
     {
-        return $this->belongsToMany(Rank::class, 'shop_rank')->withTimestamps();
+        return $this->belongsToMany(Rank::class, 'shop_rank')->withPivot('position')->withTimestamps();
+    }
+
+    public function shopRanks()
+    {
+        return $this->hasMany(ShopRank::class)->orderBy('position');
     }
 
     public function mainVisualImages()

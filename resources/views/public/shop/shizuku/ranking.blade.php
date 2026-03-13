@@ -317,6 +317,76 @@
                     </div>
                 </div>
             </div>
+            @if (isset($rankings[5]))
+            <div class="ranking-no4567-container">
+                <div class="ranking-no4567-header">
+                    <div class="ranking-no4567-image">
+                        <img src="{{ asset('assets/img/shops/shizuku/no6.png') }}" alt="ranking-no6">
+                    </div>
+                </div>
+                <div class="ranking-no4567-content-container">
+                    <div class="ranking-no4567-content">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[5]->cast_id]) }}">
+                            <div class="ranking-no4567-content-item-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ranking-no4567-info-container">
+                        <div class="ranking-no4567-info">
+                            <h2 class="no4567-person-name">{{ $rankings[5]->cast->name }}</h2>
+                            <p class="no4567-person-details">
+                                {{ $rankings[5]->cast->age }}歳<br>T.{{ $rankings[5]->cast->height }}
+                                B.{{ $rankings[5]->cast->bust }}({{ $rankings[5]->cast->bra_size }})
+                                W.{{ $rankings[5]->cast->waist }} H.{{ $rankings[5]->cast->hip }}
+                            </p>
+                        </div>
+                        <hr class="ranking-no4567-hr pc-only">
+                        <div class="ranking-no4567-services">
+                            <p>{{ $rankings[5]->cast->appeal_point }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
+            @if (isset($rankings[6]))
+            <div class="ranking-no4567-container">
+                <div class="ranking-no4567-header">
+                    <div class="ranking-no4567-image">
+                        <img src="{{ asset('assets/img/shops/shizuku/no7.png') }}" alt="ranking-no7">
+                    </div>
+                </div>
+                <div class="ranking-no4567-content-container">
+                    <div class="ranking-no4567-content">
+                        <a class="ranking-no4567-content-item" href="{{ route('public.shops.shop.profile', ['shop' => 'shizuku', 'id' => $rankings[6]->cast_id]) }}">
+                            <div class="ranking-no4567-content-item-image">
+                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
+                                    alt="ranking-frame" class="ranking-frame">
+                                <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
+                                    alt="ranking-image" class="ranking-image">
+                            </div>
+                        </a>
+                    </div>
+                    <div class="ranking-no4567-info-container">
+                        <div class="ranking-no4567-info">
+                            <h2 class="no4567-person-name">{{ $rankings[6]->cast->name }}</h2>
+                            <p class="no4567-person-details">
+                                {{ $rankings[6]->cast->age }}歳<br>T.{{ $rankings[6]->cast->height }}
+                                B.{{ $rankings[6]->cast->bust }}({{ $rankings[6]->cast->bra_size }})
+                                W.{{ $rankings[6]->cast->waist }} H.{{ $rankings[6]->cast->hip }}
+                            </p>
+                        </div>
+                        <hr class="ranking-no4567-hr pc-only">
+                        <div class="ranking-no4567-services">
+                            <p>{{ $rankings[6]->cast->appeal_point }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endif
         </div>
         @endif
         @endif
