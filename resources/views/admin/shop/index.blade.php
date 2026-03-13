@@ -33,6 +33,15 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
+                    slug
+                  </p>
+                </div>
+              </th>
+              <th class="px-5 py-3 sm:px-6">
+                <div class="flex items-center">
+                  <p
+                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
+                  >
                     ログインID
                   </p>
                 </div>
@@ -62,6 +71,13 @@
                   <div class="flex items-center">
                     <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
                       {{ $shop->name }}
+                    </p>
+                  </div>
+                </td>
+                <td class="px-5 py-4 sm:px-6">
+                  <div class="flex items-center">
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
+                      {{ $shop->slug }}
                     </p>
                   </div>
                 </td>
