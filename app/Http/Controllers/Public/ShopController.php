@@ -34,16 +34,17 @@ class ShopController extends Controller
      */
     public function showHome(Request $request, string $shop): View
     {
+        $shopModel = Shop::where('slug', $shop)->firstOrFail();
         $events = Event::where('published_status', 1)
             ->orWhere(function($query) {
                 $query->where('published_status', 2)
                     ->where('published_at', '<=', Carbon::now());
             })
             ->orWhere('published_status',4)
-            ->where('shop_id', Shop::where('slug', $shop)->first()->id)
+            ->where('shop_id', $shopModel->id)
             ->orderBy('published_at', 'desc')
             ->get();
-        $banners = Banner::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->orderBy('updated_at', 'desc')->get();
+        $banners = Banner::where('is_public', 1)->where('shop_id', $shopModel->id)->orderBy('updated_at', 'desc')->get();
         Log::info("todayCasts");
 
         $todayCasts = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
@@ -69,7 +70,7 @@ class ShopController extends Controller
                 ]) // 必要に応じて明示的に
             ->get();
         Log::info($todayCasts);
-        $shop_id = Shop::where('slug', $shop)->first()->id;
+        $shop_id = $shopModel->id;
         // dd($shop_id);
         $diaries = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->where('diaries.is_public', 1)
@@ -86,7 +87,7 @@ class ShopController extends Controller
             ->orderBy('diaries.created_at', 'desc') // ここを明示
             ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 6 : 4)
             ->get();
-        $new_girls = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        $new_girls = Cast::where('is_public', 1)->where('shop_id', $shopModel->id)
         ->where('created_at', '>=', Carbon::now()->subWeek(2))
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 4)
         ->get();
@@ -113,7 +114,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             });
         }
         // dd($new_girls);
-        $new_girls_month = Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)
+        $new_girls_month = Cast::where('is_public', 1)->where('shop_id', $shopModel->id)
         ->where('created_at', '>=', Carbon::now()->subMonth(1))
         ->limit($request->header('User-Agent') && preg_match('/mobile/i', $request->header('User-Agent')) ? 4 : 3)
         ->get();
@@ -121,7 +122,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
         $castlist = Cast::leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
         // ->leftJoin('shops', 'shops.id', '=', 'casts.shop_id')
         ->where('casts.is_public', 1)
-        ->where('casts.shop_id', Shop::where('slug', $shop)->first()->id)
+        ->where('casts.shop_id', $shopModel->id)
         // ->whereRaw('DATE(attendances.start_datetime) = CURDATE()')
         ->inRandomOrder()
         ->select([
@@ -150,7 +151,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
             });
         }
 
-        $news = News::where('shop_id', Shop::where('slug', $shop)->first()->id)
+        $news = News::where('shop_id', $shopModel->id)
         ->where('published_status', 1)
         ->orWhere(function($query) {
             $query->where('published_status', 2)
@@ -163,7 +164,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
         // dd($castlist);
         // dd($diaries);
         return view('public.shop.home', [
-            'shop' => Shop::where('slug', $shop)->get()->first(),
+            'shop' => $shopModel,
             // 'todayCasts' => Cast::where('is_public', 1)->where('shop_id', Shop::where('slug', $shop)->first()->id)->get(),
             'todayCasts' => $todayCasts,
             'events' => $events,

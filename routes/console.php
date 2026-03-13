@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Schedule;
 /**
  * Fetch diaries of all casts.
  */
-$casts = Cast::all();
+try {
+    $casts = Cast::all();
+} catch (\Throwable $e) {
+    $casts = collect();
+}
 foreach ($casts as $cast) {
     // if ($cast->id == 258) {
         Schedule::command(FetchDiariesCommand::class, [$cast->id])
