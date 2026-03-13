@@ -41,10 +41,16 @@ class RankingController extends Controller
         //     'shops' => $shops,
         // ]);
 
+        $shop = Shop::findOrFail($shop_id);
+        $shopRankIds = $shop->ranks()->pluck('id')->toArray();
+        $displayRanks = $shopRankIds ? Rank::whereIn('id', $shopRankIds)->orderBy('id', 'asc')->get() : collect();
+
         return view('admin.ranking.detail', [
             'ranks' => $ranks,
             'shops' => $shops,
-            'shop' => Shop::findOrFail($shop_id),
+            'shop' => $shop,
+            'shopRankIds' => $shopRankIds,
+            'displayRanks' => $displayRanks,
             'casts' => Cast::where('shop_id', $shop_id)->where('is_public', 1)->get(),
             'rankings' => $query->orderBy('rank_id', 'asc')->orderBy('rank', 'asc')->get(),
         ]);
@@ -55,9 +61,15 @@ class RankingController extends Controller
     {
         $ranks = Rank::orderBy('id', 'asc')->get();
         $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get();
+        $shop = Shop::findOrFail($id);
+        $shopRankIds = $shop->ranks()->pluck('id')->toArray();
+        $displayRanks = $shopRankIds ? Rank::whereIn('id', $shopRankIds)->orderBy('id', 'asc')->get() : collect();
+
         return view('admin.ranking.detail', [
             'ranks' => $ranks,
-            'shop' => Shop::findOrFail($id),
+            'shop' => $shop,
+            'shopRankIds' => $shopRankIds,
+            'displayRanks' => $displayRanks,
             'casts' => Cast::where('shop_id', $id)->where('is_public', 1)->get(),
             'rankings' => Ranking::where('shop_id', $id)->get(),
             'shops' => $shops,
@@ -69,43 +81,44 @@ class RankingController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        // $rankings = $request->input('rank', []);
-        $rankings_req = $request->input('rank',[[]]);
-        // dd($rankings_req);
-        foreach ($rankings_req as $rankings) {
-            // 同じcast_idがないかチェック（nullは除外）
+        $rankings_req = $request->input('rank', [[]]);
+        $shopRankIds = array_map('intval', $request->input('shop_rank_ids', []));
+        foreach ($rankings_req as $rank_id => $rankings) {
+            if (!in_array((int) $rank_id, $shopRankIds)) {
+                continue;
+            }
             $nonNullRankings = array_filter($rankings, function($value) {
                 return $value !== null && $value !== '';
             });
             $uniqueRankings = array_unique($nonNullRankings);
-            $duplicateRankings = array_diff_assoc($nonNullRankings, $uniqueRankings);
             if (count($uniqueRankings) !== count($nonNullRankings)) {
-                $duplicateCastIDs = array_unique($duplicateRankings);
+                $duplicateCastIDs = array_unique(array_diff_assoc($nonNullRankings, $uniqueRankings));
                 $duplicateCastNames = array_map(function($value) {
                     return Cast::find($value)->name;
                 }, $duplicateCastIDs);
                 return redirect()->back()->withInput()->withErrors(['error' => '同じキャストは複数選択できません。キャスト名: ' . implode(', ', $duplicateCastNames)]);
             }
         }
+        $shop = Shop::findOrFail($id);
+        $shop->ranks()->sync($request->input('shop_rank_ids', []));
+
         Ranking::where('shop_id', $id)->delete();
 
+        $shopRankIds = array_map('intval', $request->input('shop_rank_ids', []));
         foreach ($rankings_req as $rank_id => $rankings) {
-            // dd($rankings,$rank_id);
-            // $rank_id = $rankings;
-            foreach ($rankings as $index => $cast_id) {
-                // dd($cast_id,$index,$rank_id,$rankings);
-                if (is_numeric($cast_id)) {
+            if (!in_array((int) $rank_id, $shopRankIds)) {
+                continue;
+            }
+            $rankings = array_slice($rankings, 0, 5, true);
+            foreach ($rankings as $position => $cast_id) {
+                if ((int) $position > 5) {
+                    continue;
+                }
+                if (is_numeric($cast_id) && $cast_id !== '') {
                     Ranking::create([
                         'shop_id' => $id,
                         'cast_id' => $cast_id,
-                        'rank' => $index,
-                        'rank_id' => $rank_id,
-                    ]);
-                }else if ( $cast_id === null ) {
-                    Ranking::create([
-                        'shop_id' => $id,
-                        'cast_id' => null,
-                        'rank' => $index + 1,
+                        'rank' => (int) $position,
                         'rank_id' => $rank_id,
                     ]);
                 }

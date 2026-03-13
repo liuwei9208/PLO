@@ -17,4 +17,9 @@ class Rank extends Model
         'description',
         'is_public',
     ];
+
+    public function shops()
+    {
+        return $this->belongsToMany(\App\Models\Shop::class, 'shop_rank')->withTimestamps();
+    }
 }

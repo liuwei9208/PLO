@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Rank;
 
 class Shop extends Model
 {
@@ -41,5 +42,10 @@ class Shop extends Model
     public function events()
     {
         return $this->hasMany(Event::class);
+    }
+
+    public function ranks()
+    {
+        return $this->belongsToMany(Rank::class, 'shop_rank')->withTimestamps();
     }
 }

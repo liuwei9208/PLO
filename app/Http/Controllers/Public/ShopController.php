@@ -294,19 +294,35 @@ WHERE cast_style.cast_id = $new_girl->id;";
 
     public function showRanking(Request $request, string $shop): View
     {
-        $shop = Shop::where('slug', $shop)->get()->first();
+        $shopModel = Shop::where('slug', $shop)->firstOrFail();
+        $shopRankIds = $shopModel->ranks()->pluck('id')->toArray();
 
-        $rankings = Ranking::where('rankings.shop_id', $shop->id)
+        if (empty($shopRankIds)) {
+            return view('public.shop.ranking', [
+                'shop' => $shopModel,
+                'rankings' => collect(),
+                'rankingDisabled' => true,
+            ]);
+        }
+
+        $rank_id = $request->has('rank_id') && in_array((int) $request->rank_id, $shopRankIds)
+            ? (int) $request->rank_id
+            : $shopRankIds[0];
+
+        $rankings = Ranking::where('rankings.shop_id', $shopModel->id)
             ->join('casts', 'rankings.cast_id', '=', 'casts.id')
-            ->where('casts.shop_id', $shop->id)
-            ->where('casts.is_public',1)
-            ->select('rankings.*', 'casts.*','rankings.rank as ranking_rank')
+            ->where('casts.shop_id', $shopModel->id)
+            ->where('casts.is_public', 1)
+            ->where('rankings.rank_id', $rank_id)
+            ->where('rankings.rank', '<=', 5)
+            ->select('rankings.*', 'casts.*', 'rankings.rank as ranking_rank')
             ->orderBy('rankings.rank', 'asc')
             ->get();
-        // dd($rankings);
+
         return view('public.shop.ranking', [
-            'shop' => $shop,
+            'shop' => $shopModel,
             'rankings' => $rankings,
+            'rankingDisabled' => false,
         ]);
     }
 

@@ -1,6 +1,11 @@
 <x-miyabi-page-layout page-title="RANKING" page-subtitle="女の子ランキング" breadcrumb="すすきの Luxury Room 雅 ＞ トップページ ＞ 女の子ランキング"
     :assets="['resources/scss/shops/miyabi/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
+        @if ($rankingDisabled ?? false)
+            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem;">
+                ランキングの登録はありません
+            </div>
+        @else
         <form action="{{ route('public.shops.shop.ranking', ['shop' => 'miyabi']) }}" method="get"
             class="ranking-searchbar" name="ranking-searchbar">
             <select name="rank_id" onchange="this.form.submit()"
@@ -61,6 +66,11 @@
                 </button> --}}
             </div>
         </form>
+        @if ($rankings->isEmpty())
+            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem;">
+                ランキングの登録はありません
+            </div>
+        @else
         <div class="ranking-list-no1">
             <div class="ranking-no1-header">
                 <div class="ranking-no1-image">
@@ -307,80 +317,8 @@
                     </div>
                 </div>
             </div>
-            <div class="ranking-no4567-container">
-                <div class="ranking-no4567-header">
-                    <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no6.png') }}" alt="ranking-no4">
-                    </div>
-                </div>
-                <div class="ranking-no4567-content-container">
-                    <a class="ranking-no4567-content" href="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $rankings[5]->cast_id]) }}">
-                        <div class="ranking-no4567-content-item">
-                            <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
-                                    alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('storage/' . $rankings[5]->cast->gallery_1) }}"
-                                    alt="ranking-image" class="ranking-image">
-                            </div>
-                        </div>
-                    </a>
-                    <div class="ranking-no4567-info-container">
-                        <div class="ranking-no4567-info">
-                            <h2 class="no4567-person-name">
-                                {{ $rankings[5]->cast->name }}
-                            </h2>
-                            <p class="no4567-person-details">
-                                {{ $rankings[5]->cast->age }}歳／T.{{ $rankings[5]->cast->height }}
-                                B.{{ $rankings[5]->cast->bust }}({{ $rankings[5]->cast->bra_size }})
-                                W.{{ $rankings[5]->cast->waist }} H.{{ $rankings[5]->cast->hip }}
-                            </p>
-                        </div>
-                        <hr class="ranking-no4567-hr pc-only">
-                        <div class="ranking-no4567-services">
-                            <p>
-                                {{ $rankings[5]->cast->appeal_point }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ranking-no4567-container">
-                <div class="ranking-no4567-header">
-                    <div class="ranking-no4567-image">
-                        <img src="{{ asset('assets/img/shops/shizuku/no7.png') }}" alt="ranking-no4">
-                    </div>
-                </div>
-                <div class="ranking-no4567-content-container">
-                    <a class="ranking-no4567-content" href="{{ route('public.shops.shop.profile', ['shop' => $shop->slug, 'id' => $rankings[6]->cast_id]) }}">
-                        <div class="ranking-no4567-content-item">
-                            <div class="ranking-no4567-content-item-image">
-                                <img src="{{ asset('assets/img/shops/shizuku/card-frame-2.png') }}"
-                                    alt="ranking-frame" class="ranking-frame">
-                                <img src="{{ asset('storage/' . $rankings[6]->cast->gallery_1) }}"
-                                    alt="ranking-image" class="ranking-image">
-                            </div>
-                        </div>
-                    </a>
-                    <div class="ranking-no4567-info-container">
-                        <div class="ranking-no4567-info">
-                            <h2 class="no4567-person-name">
-                                {{ $rankings[6]->cast->name }}
-                            </h2>
-                            <p class="no4567-person-details">
-                                {{ $rankings[6]->cast->age }}歳／T.{{ $rankings[6]->cast->height }}
-                                B.{{ $rankings[6]->cast->bust }}({{ $rankings[6]->cast->bra_size }})
-                                W.{{ $rankings[6]->cast->waist }} H.{{ $rankings[6]->cast->hip }}
-                            </p>
-                        </div>
-                        <hr class="ranking-no4567-hr pc-only">
-                        <div class="ranking-no4567-services">
-                            <p>
-                                {{ $rankings[6]->cast->appeal_point }}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        @endif
+        @endif
     </section>
 </x-miyabi-page-layout>
