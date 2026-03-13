@@ -6,7 +6,7 @@ use App\Http\Controllers\Public\TouchVipDiaryController;
 use App\Http\Middleware\PublicAvailable;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Middleware\AuthenticateMultiple;
+use App\Http\Middleware\PublicBasicAuth;
 use App\Http\Controllers\QRCodeController;
 use App\Http\Controllers\Public\ShizukuController;
 use App\Http\Controllers\Public\GroupsController;
@@ -25,7 +25,7 @@ use App\Http\Controllers\Public\RecruitController;
 
 // Route::middleware([PublicAvailable::class])->name('public.')->group(function () {
 
-Route::middleware([AuthenticateMultiple::class])->name('public.')->group(function () {
+Route::middleware([PublicBasicAuth::class])->name('public.')->group(function () {
 // Route::name('public.')->group(function () {
         // Route::get('/qrcode/{memberId}', [QRCodeController::class, 'generate']);
     // Route::get('/qrcode/{memberId}', function ($memberId) {
@@ -163,12 +163,9 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
     });
 });
 
-/**
- * Touch VIP diary
- *
- * @see \App\Http\Controllers\Public\TouchVipDiaryController
- */
-Route::prefix('touchvip/diary')->name('touchvip.diary.')->group(function () {
-    Route::get('{slug}', [TouchVipDiaryController::class, 'show'])->name('detail');
-    Route::get('{cast_id}/{month}', [TouchVipDiaryController::class, 'index'])->name('index');
+Route::middleware([PublicBasicAuth::class])->group(function () {
+    Route::prefix('touchvip/diary')->name('touchvip.diary.')->group(function () {
+        Route::get('{slug}', [TouchVipDiaryController::class, 'show'])->name('detail');
+        Route::get('{cast_id}/{month}', [TouchVipDiaryController::class, 'index'])->name('index');
+    });
 });

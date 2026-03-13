@@ -51,6 +51,9 @@ return [
 
     'public_available' => (bool) env('APP_PUBLIC_AVAILABLE', true),
 
+    'public_basic_auth_user' => env('PUBLIC_BASIC_AUTH_USER', 'plo'),
+    'public_basic_auth_pass' => env('PUBLIC_BASIC_AUTH_PASS', 'plo-public-access'),
+
     /*
     |--------------------------------------------------------------------------
     | Application URL
