@@ -33,7 +33,7 @@
                   <p
                     class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
                   >
-                    slug
+                    URL識別子
                   </p>
                 </div>
               </th>

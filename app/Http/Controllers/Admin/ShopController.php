@@ -40,6 +40,7 @@ class ShopController extends Controller
         $validated = $request->validate([
             'shop_name' => 'required',
             'slug' => 'required|string|max:255|alpha_dash|unique:shops,slug,' . $id,
+            'url' => 'nullable|string|max:255|unique:shops,url,' . $id,
             'postcode' => 'required',
             'address1' => 'required',
             'tel' => 'required',
@@ -50,6 +51,7 @@ class ShopController extends Controller
 
         $shop->name = $request->shop_name;
         $shop->slug = $request->slug;
+        $shop->url = $request->url ?: '/' . $shop->slug . '/';
         $shop->postcode = $request->postcode;
         $shop->address1 = $request->address1;
         $shop->address2 = $request->address2;
