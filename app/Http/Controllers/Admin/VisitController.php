@@ -41,7 +41,6 @@ class VisitController extends Controller{
   LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
 
   $sql = 'SELECT DATE_FORMAT(`'.env("MEMBER_DB_DATABASE").'`.histories.created_at, "%Y-%m-%d %H:%i:%s") as created_at,
@@ -54,7 +53,7 @@ class VisitController extends Controller{
   `'.env("DB_DATABASE").'`.shops.name as shop_name,
   `'.env("DB_DATABASE").'`.casts.name as casts_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.call_name as call_name,
-  `'.env("MEMBER_DB_DATABASE").'`.courses.name as course_name,
+  `'.env("MEMBER_DB_DATABASE").'`.histories.course_name as course_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.extension_name as extension_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.price as price,
   `'.env("DB_DATABASE").'`.members.comment as user_comment
@@ -62,7 +61,6 @@ class VisitController extends Controller{
   LEFT JOIN `'.env("DB_DATABASE").'`.members ON `'.env("MEMBER_DB_DATABASE").'`.histories.user_id = `'.env("DB_DATABASE").'`.members.id
   LEFT JOIN `'.env("DB_DATABASE").'`.shops ON `'.env("MEMBER_DB_DATABASE").'`.histories.shop_id = `'.env("DB_DATABASE").'`.shops.id
   LEFT JOIN `'.env("DB_DATABASE").'`.casts ON `'.env("MEMBER_DB_DATABASE").'`.histories.cast_id = `'.env("DB_DATABASE").'`.casts.id
-  LEFT JOIN `'.env("MEMBER_DB_DATABASE").'`.courses ON `'.env("MEMBER_DB_DATABASE").'`.histories.course_id = `'.env("MEMBER_DB_DATABASE").'`.courses.id
   WHERE `'.env("MEMBER_DB_DATABASE").'`.histories.name IN ("来店", "PT有効期限切れ")';
 //   ORDER BY `'.env("MEMBER_DB_DATABASE").'`.histories.created_at DESC LIMIT 100';
 

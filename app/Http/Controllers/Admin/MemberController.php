@@ -165,6 +165,16 @@ class MemberController extends Controller{
     return redirect()->route('admin.member.detail', ['id' => $id]);
   }
 
+  public function destroy(int $id): RedirectResponse{
+    $member = Member::find($id);
+    if ($member) {
+      History::where('user_id', $id)->delete();
+      Point::where('user_id', $id)->delete();
+      $member->delete();
+    }
+    return redirect()->route('admin.member.index')->with('success', '会員を削除しました');
+  }
+
   public function qrcodeRead(): View{
     return view('admin.member.qrcode');
   }

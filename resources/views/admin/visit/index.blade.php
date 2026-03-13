@@ -42,7 +42,7 @@
               <option
                 value="{{ $shop->id }}"
                 class="text-gray-700 dark:bg-gray-900 dark:text-gray-400"
-                @selected($shop->slug === request()->shop)
+                @selected($shop->id == request()->shop)
               >
                 {{ $shop->name }}
               </option>
@@ -143,138 +143,81 @@
       class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]"
     >
       <div class="max-w-full overflow-x-auto">
-        <table class="min-w-full">
+        <table class="min-w-full table-fixed">
           <!-- table header start -->
           <thead>
             <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-32">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  日時
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">日時</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
+                <div class="flex items-center"></div>
+              </th>
+              <th class="px-3 py-3 sm:px-4 w-24">
                 <div class="flex items-center">
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">ニックネーム</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-16">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                    ニックネーム
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">来店数</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  来店数
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">グループ来店数</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  グループ来店数
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">店舗名</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  店舗名
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">キャスト名</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-16">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  キャスト名
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">指名</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-24">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  指名
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">コース</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  コース
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">延長</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  延長
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">料金</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-16">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  料金
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">ポイント</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  ポイント
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">利用ポイント</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4 w-20">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  利用ポイント
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">合計ポイント</p>
                 </div>
               </th>
-              <th class="px-5 py-3 sm:px-6">
+              <th class="px-3 py-3 sm:px-4" style="width: 30%;">
                 <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  合計ポイント
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p
-                    class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap"
-                  >
-                  会員メモ
-                  </p>
+                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400 white-space-nowrap">会員メモ</p>
                 </div>
               </th>
             </tr>
@@ -326,75 +269,54 @@
                     </p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->shop_name }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->shop_name }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->casts_name }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->casts_name }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-
-                      {{ $data->call_name }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->call_name }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->course_name }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->course_name }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->extension_name}}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->extension_name }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->price }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->price }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->point_pay }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->point_pay }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->point_use }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->point_use }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->point_valid }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">{{ $data->point_valid }}</p>
                   </div>
                 </td>
-                <td class="px-5 py-4 sm:px-6">
+                <td class="px-3 py-4 sm:px-4">
                   <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm white-space-nowrap dark:text-gray-400">
-                      {{ $data->user_comment }}
-                    </p>
+                    <p class="text-gray-500 text-theme-sm dark:text-gray-400 text-left break-words">{{ $data->user_comment }}</p>
                   </div>
                 </td>
               </tr>

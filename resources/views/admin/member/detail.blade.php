@@ -200,7 +200,6 @@
   <div class="p-4 mx-auto max-w-full md:p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
       <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">会員詳細</h2>
-      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">戻る</a>
     </div>
 
     <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
@@ -224,6 +223,10 @@
         <div class="flex items-center gap-4 md:col-span-2">
           <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">現在のポイント</label>
           <input type="text" value="{{ number_format($today_point ?? 0) }}pt" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
+        </div>
+        <div class="flex items-start gap-4 md:col-span-2">
+          <label class="w-28 shrink-0 pt-2 text-sm font-medium text-gray-500 dark:text-gray-400">会員メモ</label>
+          <textarea readonly rows="4" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">{{ $member->comment ?? '' }}</textarea>
         </div>
       </div>
     </div>
@@ -415,6 +418,15 @@
         <a href="{{ request()->fullUrlWithQuery(['page' => $page + 1]) }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">次へ</a>
         @endif
       </div>
+    </div>
+
+    <div class="mt-8 flex justify-end gap-3">
+      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">戻る</a>
+      <form method="POST" action="{{ route('admin.member.destroy', $member->id) }}" class="inline" onsubmit="return confirm('本当に削除しますか？');">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="flex items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700">削除</button>
+      </form>
     </div>
 
   </div>
