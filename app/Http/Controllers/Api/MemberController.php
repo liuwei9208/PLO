@@ -151,13 +151,20 @@ class MemberController extends Controller
         $discount = is_numeric($request->input('discount')) ? floatval($request->input('discount')) : 0;
         $plo_day = $request->input('plo_day') == 'on' ? true : false;
 
+        $request_shop_id = $request->input('shop_id');
         $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $shop_manager->id)->first();
-        if (!$shop_user) {
+        if ($request_shop_id && $shop_manager->hasRole('admin')) {
+            $shop_id = (int) $request_shop_id;
+        } elseif ($shop_user) {
+            $shop_id = $shop_user->shop_id;
+        } else {
+            $shop_id = null;
+        }
+        if (!$shop_id) {
             return response()->json([
                 'message' => 'ショップ情報が見つかりません'
             ], 404);
         }
-        $shop_id = $shop_user->shop_id;
         $history = new History();
         $history->user_id = $request->input('member_id');
         $history->name = '来店';
@@ -241,16 +248,19 @@ class MemberController extends Controller
     }
     public function getValues(Request $request){
         $shop_id = $request->input('shop_id');
-        $courses = CourseGroup::all();
-        $casts = Cast::where('shop_id', $shop_id)->where('is_public', 1)->get();
-        $options = Option::all();
-        $extends = Extend::all();
+        $courses = $shop_id ? CourseGroup::where('shop_id', $shop_id)->get() : [];
+        $casts = $shop_id ? Cast::where('shop_id', $shop_id)->where('is_public', 1)->get() : [];
+        $options = $shop_id ? \App\Models\OptionRS::leftJoin('options', 'options.id', '=', 'options_rs.option_id')
+            ->where('options_rs.shop_id', $shop_id)->get() : [];
+        $extends = $shop_id ? Extend::where('shop_id', $shop_id)->get() : [];
+        $appoints = $shop_id ? \App\Models\Appoint::where('shop_id', $shop_id)->get() : [];
 
         return response()->json([
           'courses' => $courses,
           'casts' => $casts,
           'options' => $options,
           'extends' => $extends,
+          'appoints' => $appoints,
         ]);
     }
     public function extendUpdate(Request $request): JsonResponse

@@ -2,315 +2,360 @@
   @push('head')
   <script>
     const token = '{{ $token }}';
-    // 即座に実行されるスクリプト
-    (function() {
-      // グローバル変数と関数を定義
-      window.dummyHistories = @json($dummyHistories);
-      window.currentEditId = null;
+    const memberId = {{ $member->id }};
+    const shopId = {{ $shop_id ?? 0 }};
+    const isAdmin = {{ auth()->user()?->hasRole('admin') ? 'true' : 'false' }};
 
-      // モーダルを開く関数（グローバルスコープに公開）
-      window.openEditModal = async function(historyId, point_pay, point_use, price, course_name, shop_id, shop_name, casts_name, created_at) {
-        // const history = window.dummyHistories.find(h => h.id === historyId);
-        // if (history) {
-            try {
-            const response = await fetch(`/api/member/getValues`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'Authorization': `Bearer ${token}`
-              },
-              body: JSON.stringify({
-                shop_id: shop_id
-              }),
-              // credentials: 'include'
-            });
-            // console.log(response.data.courses);
-            if (response.ok) {
-              console.log(response);
-              const data = await response.json();
-              console.log(data.courses);
-              console.log(data.casts);
-              let course = '<option value="">選択してください</option>';
-              let cast = '<option value="">選択してください</option>';
-              if (data.courses.length > 0) {
-                course += data.courses.map((course) =>{
-                  console.log(course.name);
-                  console.log(course_name);
-                  console.log(course_name);
-                  console.log(casts_name);
-                  return `<option value="${course.id}" ${course.name === course_name ? 'selected' : ''}>${course.name}</option>`;
-                }).join('');
-              }
-              if (data.casts.length > 0) {
-                cast += data.casts.map(cast => `<option value="${cast.id}" ${cast.name === casts_name ? 'selected' : ''}>${cast.name}</option>`).join('');
-              }
-              document.getElementById('course').innerHTML = course;
-              document.getElementById('cast_name').innerHTML = cast;
-              // 値の設定は削除（selected属性で制御するため）
-            } else {
-              console.error('更新に失敗しました');
-              alert('更新に失敗しました');
-            }
-          } catch (error) {
-            console.error('エラーが発生しました:', error);
-            alert('エラーが発生しました');
+    function updatePrice() {
+      let total = 0;
+      for (let i = 1; i <= 4; i++) {
+        const sel = document.getElementById('course' + i);
+        const cnt = parseInt(document.getElementById('course' + i + '_count')?.value || 0);
+        total += Number(sel?.options[sel.selectedIndex]?.dataset?.price || 0) * cnt;
+      }
+      const extSel = document.getElementById('extend');
+      const extCnt = parseInt(document.getElementById('extend_count')?.value || 0) || 0;
+      total += Number(extSel?.options[extSel?.selectedIndex]?.dataset?.price || 0) * extCnt;
+      for (let i = 1; i <= 5; i++) {
+        const sel = document.getElementById('option' + i);
+        const cnt = parseInt(document.getElementById('option' + i + '_count')?.value || 0);
+        total += Number(sel?.options[sel?.selectedIndex]?.dataset?.price || 0) * cnt;
+      }
+      const appSel = document.getElementById('appointment');
+      const appCnt = parseInt(document.getElementById('appointment_count')?.value || 0);
+      total += Number(appSel?.options[appSel?.selectedIndex]?.dataset?.price || 0) * appCnt;
+      const discount = Number(document.getElementById('discount')?.value || 0);
+      total += discount;
+      const ploDay = document.getElementById('plo_day')?.checked;
+      const point = ploDay ? Math.floor(total * 0.1) : Math.floor(total * 0.03);
+      document.getElementById('price').value = total;
+      document.getElementById('point').value = point;
+    }
+
+    async function onShopChange(shopIdVal) {
+      if (!shopIdVal) return;
+      try {
+        const response = await fetch(`/api/member/getValues`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ shop_id: shopIdVal }),
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const castOpts = (data.casts || []).map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+          document.getElementById('cast').innerHTML = '<option value="">選択してください</option>' + castOpts;
+          const courseOpts = (data.courses || []).map(c => `<option value="${c.id}" data-price="${c.price}">${c.course}</option>`).join('');
+          for (let i = 1; i <= 4; i++) {
+            document.getElementById('course' + i).innerHTML = '<option value="" data-price="0">選択してください</option>' + courseOpts;
           }
-
-          window.currentEditId = historyId;
-
-          // フォームに値を設定（select以外）
-          document.getElementById('createDate').value = created_at || '';
-          document.getElementById('shop_name').value = shop_name || '';
-          document.getElementById('cast_name').value = casts_name || '';
-          document.getElementById('course').value = course_name || '';
-          document.getElementById('price').value = price || 0;
-          document.getElementById('point').value = point_pay || 0;
-          document.getElementById('point_use').value = point_use || 0;
-
-          // モーダルを表示
-          document.getElementById('editModal').classList.remove('hidden');
-        // }
-      };
-
-      // モーダルを閉じる関数（グローバルスコープに公開）
-      window.closeEditModal = function() {
-        document.getElementById('editModal').classList.add('hidden');
-        window.currentEditId = null;
-      };
-
-      // フォーム送信処理
-      window.handleFormSubmit = async function(e) {
-        e.preventDefault();
-
-        if (!window.currentEditId) {
-          console.error('編集IDが設定されていません');
-          return;
-        }
-
-        const formData = {
-          id: window.currentEditId,
-          cast_id: document.getElementById('cast_name').value,
-          course: document.getElementById('course').value,
-          price: parseInt(document.getElementById('price').value) || 0,
-          point: parseInt(document.getElementById('point').value) || 0,
-          point_use: parseInt(document.getElementById('point_use').value) || 0
-        };
-
-        try {
-          const response = await fetch(`/api/member/update`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-              'Accept': 'application/json',
-              'X-Requested-With': 'XMLHttpRequest',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(formData),
-            // credentials: 'include'
-          });
-          console.log(response);
-          if (response.ok) {
-            window.location.reload();
-          } else {
-            console.error('更新に失敗しました');
-            alert('更新に失敗しました');
+          const extOpts = (data.extends || []).map(e => `<option value="${e.id}" data-price="${e.price}">${e.extend}(${Number(e.price).toLocaleString()}円)</option>`).join('');
+          document.getElementById('extend').innerHTML = '<option value="" data-price="0">選択してください</option>' + extOpts;
+          const optOpts = (data.options || []).map(o => `<option value="${o.option_id}" data-price="${o.price}">${o.name || o.option?.name}(${Number(o.price || 0).toLocaleString()}円)</option>`).join('');
+          for (let i = 1; i <= 5; i++) {
+            document.getElementById('option' + i).innerHTML = '<option value="" data-price="0">選択してください</option>' + optOpts;
           }
-        } catch (error) {
-          console.error('エラーが発生しました:', error);
-          alert('エラーが発生しました');
+          const appOpts = (data.appoints || []).map(a =>
+            `<option value="0" data-price="${a.panel_price}" data-id="${a.id}">パネル指名</option><option value="1" data-price="${a.repeat_price}" data-id="${a.id}">本指名</option>`
+          ).join('');
+          document.getElementById('appointment').innerHTML = '<option value="" data-price="0">選択してください</option>' + appOpts;
         }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    async function saveVisit(e) {
+      e.preventDefault();
+      const formShopId = document.getElementById('form_shop_id');
+      const formData = {
+        member_id: memberId,
+        shop_id: isAdmin && formShopId ? formShopId.value : shopId,
+        cast: document.getElementById('cast').value,
+        course1: document.getElementById('course1').value,
+        course1_count: document.getElementById('course1_count').value || 0,
+        course1_price: document.getElementById('course1').options[document.getElementById('course1').selectedIndex]?.dataset?.price || 0,
+        course2: document.getElementById('course2').value,
+        course2_count: document.getElementById('course2_count').value || 0,
+        course2_price: document.getElementById('course2').options[document.getElementById('course2').selectedIndex]?.dataset?.price || 0,
+        course3: document.getElementById('course3').value,
+        course3_count: document.getElementById('course3_count').value || 0,
+        course3_price: document.getElementById('course3').options[document.getElementById('course3').selectedIndex]?.dataset?.price || 0,
+        course4: document.getElementById('course4').value,
+        course4_count: document.getElementById('course4_count').value || 0,
+        course4_price: document.getElementById('course4').options[document.getElementById('course4').selectedIndex]?.dataset?.price || 0,
+        extend: document.getElementById('extend').value,
+        extend_count: document.getElementById('extend_count')?.value || 0,
+        extend_price: document.getElementById('extend').options[document.getElementById('extend').selectedIndex]?.dataset?.price || 0,
+        option1: document.getElementById('option1').value,
+        option1_count: document.getElementById('option1_count').value || 0,
+        option1_price: document.getElementById('option1').options[document.getElementById('option1').selectedIndex]?.dataset?.price || 0,
+        option2: document.getElementById('option2').value,
+        option2_count: document.getElementById('option2_count').value || 0,
+        option2_price: document.getElementById('option2').options[document.getElementById('option2').selectedIndex]?.dataset?.price || 0,
+        option3: document.getElementById('option3').value,
+        option3_count: document.getElementById('option3_count').value || 0,
+        option3_price: document.getElementById('option3').options[document.getElementById('option3').selectedIndex]?.dataset?.price || 0,
+        option4: document.getElementById('option4').value,
+        option4_count: document.getElementById('option4_count').value || 0,
+        option4_price: document.getElementById('option4').options[document.getElementById('option4').selectedIndex]?.dataset?.price || 0,
+        option5: document.getElementById('option5').value,
+        option5_count: document.getElementById('option5_count').value || 0,
+        option5_price: document.getElementById('option5').options[document.getElementById('option5').selectedIndex]?.dataset?.price || 0,
+        point_use: document.getElementById('point_use').value || 0,
+        point: document.getElementById('point').value || 0,
+        price: document.getElementById('price').value || 0,
+        memo: document.getElementById('memo').value || '',
+        discount: document.getElementById('discount')?.value || 0,
+        plo_day: document.getElementById('plo_day').checked ? 'on' : '',
+        appointmentType: document.getElementById('appointment').options[document.getElementById('appointment').selectedIndex]?.value || '',
+        appointmentID: document.getElementById('appointment').options[document.getElementById('appointment').selectedIndex]?.dataset?.id || '',
+        appointmentPrice: (document.getElementById('appointment').options[document.getElementById('appointment').selectedIndex]?.dataset?.price || 0) * (document.getElementById('appointment_count').value || 0),
+        appointment_count: document.getElementById('appointment_count').value || 0,
       };
-    })();
+      try {
+        const response = await fetch(`/api/member/qrupdate`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          alert('保存に失敗しました');
+        }
+      } catch (error) {
+        alert('エラーが発生しました');
+      }
+    }
+
+    async function editExtend(id) {
+      const editBtn = document.getElementById('edit_extend_btn_' + id);
+      const saveBtn = document.getElementById('save_extend_btn_' + id);
+      const cancelBtn = document.getElementById('cancel_extend_btn_' + id);
+      const extendVal = document.getElementById('extend_val_' + id);
+      const extendEdit = document.getElementById('extend_edit_' + id);
+      if (editBtn) editBtn.style.display = 'none';
+      if (saveBtn) saveBtn.style.display = 'inline-block';
+      if (cancelBtn) cancelBtn.style.display = 'inline-block';
+      if (extendVal) extendVal.style.display = 'none';
+      if (extendEdit) extendEdit.style.display = 'flex';
+    }
+
+    function cancelExtend(id) {
+      const editBtn = document.getElementById('edit_extend_btn_' + id);
+      const saveBtn = document.getElementById('save_extend_btn_' + id);
+      const cancelBtn = document.getElementById('cancel_extend_btn_' + id);
+      const extendVal = document.getElementById('extend_val_' + id);
+      const extendEdit = document.getElementById('extend_edit_' + id);
+      if (editBtn) editBtn.style.display = 'inline-block';
+      if (saveBtn) saveBtn.style.display = 'none';
+      if (cancelBtn) cancelBtn.style.display = 'none';
+      if (extendVal) extendVal.style.display = 'block';
+      if (extendEdit) extendEdit.style.display = 'none';
+    }
+
+    async function saveExtend(id) {
+      const extendSelect = document.getElementById('extend_select_' + id);
+      const extendCount = document.getElementById('extend_count_' + id);
+      const extendPrice = Number(extendSelect?.options[extendSelect?.selectedIndex]?.dataset?.price || 0);
+      const formData = {
+        id: id,
+        extend: extendSelect?.value || '',
+        extend_count: extendCount?.value || 0,
+        extend_price: extendPrice
+      };
+      try {
+        const response = await fetch(`/api/member/extend_update`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            'Accept': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(formData),
+        });
+        if (response.ok) {
+          window.location.reload();
+        } else {
+          alert('更新に失敗しました');
+        }
+      } catch (error) {
+        alert('エラーが発生しました');
+      }
+    }
   </script>
   @endpush
 
   <div class="p-4 mx-auto max-w-full md:p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">
-        会員情報
-      </h2>
+      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">会員詳細</h2>
+      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">戻る</a>
     </div>
 
     <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
-      <div class="max-w-full overflow-x-auto">
-        <table class="min-w-full">
-          <tbody>
-            <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    会員ID
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->id ?? '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    ニックネーム
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->name ?? '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    会員名
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->subname ?? '' }}
-                  </p>
-                </div>
-              </td>
-            </tr>
-            <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    登録日
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->created_at ? \Carbon\Carbon::parse($member->created_at)->format('Y-m-d') : '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    携帯番号
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->tel ?? '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    メールアドレス
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->email ?? '' }}
-                  </p>
-                </div>
-              </td>
-            </tr>
-            <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    都道府県
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    @php
-                      $prefectures = [
-                        "1" => "北海道", "2" => "青森県", "3" => "岩手県", "4" => "宮城県", "5" => "秋田県",
-                        "6" => "山形県", "7" => "福島県", "8" => "茨城県", "9" => "栃木県", "10" => "群馬県",
-                        "11" => "埼玉県", "12" => "千葉県", "13" => "東京都", "14" => "神奈川県", "15" => "新潟県",
-                        "16" => "富山県", "17" => "石川県", "18" => "福井県", "19" => "山梨県", "20" => "長野県",
-                        "21" => "岐阜県", "22" => "静岡県", "23" => "愛知県", "24" => "三重県", "25" => "滋賀県",
-                        "26" => "京都府", "27" => "大阪府", "28" => "兵庫県", "29" => "奈良県", "30" => "和歌山県",
-                        "31" => "鳥取県", "32" => "島根県", "33" => "岡山県", "34" => "広島県", "35" => "山口県",
-                        "36" => "徳島県", "37" => "香川県", "38" => "愛媛県", "39" => "高知県", "40" => "福岡県",
-                        "41" => "佐賀県", "42" => "長崎県", "43" => "熊本県", "44" => "大分県", "45" => "宮崎県",
-                        "46" => "鹿児島県", "47" => "沖縄県", "48" => "その他"
-                      ];
-                    @endphp
-                    {{ $prefectures[$member->pref_id] ?? '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    生年月日
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->birth ? \Carbon\Carbon::parse($member->birth)->format('Y-m-d') : '' }}
-                  </p>
-                </div>
-              </td>
-            </tr>
-            <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    住所
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6" colspan="3">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $member->address ?? '' }}
-                  </p>
-                </div>
-              </td>
-              <th class="px-5 py-3 sm:px-6 bg-gray-50 dark:bg-gray-800 text-left">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    現在のポイント数
-                  </p>
-                </div>
-              </th>
-              <td class="px-5 py-3 sm:px-6" colspan="3">
-                <div class="flex items-center">
-                  <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                    {{ $today_point ?? 0 }}
-                  </p>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4 p-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">会員番号</label>
+          <input type="text" value="{{ $member->id ?? '' }}" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">携帯番号</label>
+          <input type="text" value="{{ $member->tel ?? '' }}" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">現在のポイント</label>
+          <input type="text" value="{{ number_format($today_point ?? 0) }}pt" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">ニックネーム</label>
+          <input type="text" value="{{ $member->name ?? '' }}" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">会員名</label>
+          <input type="text" value="{{ $member->subname ?? '' }}" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+        </div>
       </div>
     </div>
 
-    <!-- 来店履歴 -->
+    <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+      <form id="visitForm" onsubmit="saveVisit(event)" class="p-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-3">
+            @if(auth()->user()?->hasRole('admin') && $shops->count() > 1)
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">店舗</label>
+              <select id="form_shop_id" onchange="onShopChange(this.value)" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                @foreach($shops as $s)
+                <option value="{{ $s->id }}" {{ ($shop_id ?? 0) == $s->id ? 'selected' : '' }}>{{ $s->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            @endif
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">キャスト名</label>
+              <select id="cast" name="cast" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                <option value="">選択してください</option>
+                @foreach($casts as $c)
+                <option value="{{ $c->id }}">{{ $c->name }}</option>
+                @endforeach
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">指名</label>
+              <div class="flex items-center gap-2">
+                <select id="appointment" name="appointment" onchange="updatePrice()" class="flex-1 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                  <option value="" data-price="0">選択してください</option>
+                  @foreach($appoints as $a)
+                  <option value="0" data-price="{{ $a->panel_price }}" data-id="{{ $a->id }}">パネル指名</option>
+                  <option value="1" data-price="{{ $a->repeat_price }}" data-id="{{ $a->id }}">本指名</option>
+                  @endforeach
+                </select>
+                <span>×</span>
+                <input type="number" id="appointment_count" name="appointment_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-16 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm text-right">
+              </div>
+            </div>
+            @for($i = 1; $i <= 4; $i++)
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">コース</label>
+              <div class="flex items-center gap-2">
+                <select id="course{{ $i }}" name="course{{ $i }}" onchange="updatePrice()" class="flex-1 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                  <option value="" data-price="0">選択してください</option>
+                  @foreach($courses as $c)
+                  <option value="{{ $c->id }}" data-price="{{ $c->price }}">{{ $c->course }}</option>
+                  @endforeach
+                </select>
+                <button type="button" class="text-gray-400 hover:text-gray-600">&times;</button>
+                <input type="number" id="course{{ $i }}_count" name="course{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-16 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm text-right">
+              </div>
+            </div>
+            @endfor
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">延長</label>
+              <div class="flex items-center gap-2">
+                <select id="extend" name="extend" onchange="updatePrice()" class="flex-1 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                  <option value="" data-price="0">選択してください</option>
+                  @foreach($extends as $e)
+                  <option value="{{ $e->id }}" data-price="{{ $e->price }}">{{ $e->extend }}({{ number_format($e->price) }}円)</option>
+                  @endforeach
+                </select>
+                <span>×</span>
+                <input type="number" id="extend_count" name="extend_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-16 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm text-right">
+              </div>
+            </div>
+            @for($i = 1; $i <= 5; $i++)
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">オプション</label>
+              <div class="flex items-center gap-2">
+                <select id="option{{ $i }}" name="option{{ $i }}" onchange="updatePrice()" class="flex-1 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                  <option value="" data-price="0">選択してください</option>
+                  @foreach($options as $o)
+                  <option value="{{ $o->option_id }}" data-price="{{ $o->price ?? 0 }}">{{ ($o->name ?? $o->option->name ?? '') }}({{ number_format($o->price ?? 0) }}円)</option>
+                  @endforeach
+                </select>
+                <button type="button" class="text-gray-400 hover:text-gray-600">&times;</button>
+                <input type="number" id="option{{ $i }}_count" name="option{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-16 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm text-right">
+              </div>
+            </div>
+            @endfor
+          </div>
+          <div class="space-y-3">
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">利用ポイント</label>
+              <input type="number" id="point_use" name="point_use" value="0" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">取得ポイント</label>
+              <input type="number" id="point" name="point" value="0" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+            </div>
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="plo_day" name="plo_day" value="1" onchange="updatePrice()" class="rounded border-gray-300 dark:border-gray-600 dark:bg-gray-800">
+              <label for="plo_day" class="text-sm font-medium text-gray-500 dark:text-gray-400">PLOの日</label>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">種別</label>
+              <select id="type" name="type" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                <option value="">選択してください</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">料金</label>
+              <input type="number" id="price" name="price" value="0" readonly class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">メモ</label>
+              <textarea id="memo" name="memo" rows="4" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">割引</label>
+              <select id="discount" name="discount" onchange="updatePrice()" class="block w-full rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                <option value="0">選択してください</option>
+                @for($i = -100; $i >= -50000; $i -= 100)
+                <option value="{{ $i }}">{{ number_format(abs($i)) }}円</option>
+                @endfor
+              </select>
+            </div>
+            <div class="flex gap-3 pt-4">
+              <button type="submit" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">保存</button>
+              <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">戻る</a>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">
-        来店履歴
-      </h2>
+      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">来店履歴</h2>
     </div>
 
     <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
@@ -318,251 +363,71 @@
         <table class="min-w-full">
           <thead>
             <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    来店日
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    店舗名
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    キャスト名
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    コース
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    料金
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    ポイント
-                  </p>
-                </div>
-              </th>
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    利用ポイント
-                  </p>
-                </div>
-              </th>
-              @role('admin')
-              <th class="px-5 py-3 sm:px-6">
-                <div class="flex items-center">
-                  <p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">
-                    操作
-                  </p>
-                </div>
-              </th>
-              @endrole
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">来店日</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">キャスト名</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">コース</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">延長</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">料金</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">利用ポイント</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">会員メモ</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">延長編集</p></th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
             @foreach ($histories as $history)
-              <tr>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->shop_name }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->casts_name }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->course_name_table }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ number_format($history->price_new) ?? 0 }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->point_pay ?? 0 }}
-                    </p>
-                  </div>
-                </td>
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <p class="text-gray-500 text-theme-sm dark:text-gray-400">
-                      {{ $history->point_use ?? 0 }}
-                    </p>
-                  </div>
-                </td>
-                @role('admin')
-                <td class="px-5 py-4 sm:px-6">
-                  <div class="flex items-center">
-                    <button
-                      type="button"
-                      onclick="openEditModal({{ $history->id }}, {{ $history->point_pay }}, {{ $history->point_use }}, {{ $history->price_new }}, '{{ $history->course_name_table }}','{{ $history->shop_id }}', '{{ $history->shop_name }}', '{{ $history->casts_name }}', '{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}' )"
-                      class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]"
-                    >
-                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                      編集
-                    </button>
-                  </div>
-                </td>
-                @endrole
-              </tr>
+            <tr>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->casts_name ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->course_name_table ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6">
+                <span id="extend_val_{{ $history->id }}">{{ $history->extend_name ?? '' }}</span>
+                <div id="extend_edit_{{ $history->id }}" style="display:none" class="flex items-center gap-2">
+                  <select id="extend_select_{{ $history->id }}" class="rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm">
+                    <option value="" data-price="0">選択してください</option>
+                    @foreach(($extendsByShop[$history->shop_id] ?? $extends) as $e)
+                    <option value="{{ $e->id }}" data-price="{{ $e->price }}" {{ ($history->extend_id ?? '') == $e->id ? 'selected' : '' }}>{{ $e->extend }}({{ number_format($e->price) }}円)</option>
+                    @endforeach
+                  </select>
+                  <span>×</span>
+                  <input type="number" id="extend_count_{{ $history->id }}" value="{{ $history->extend_count ?? 0 }}" min="0" max="60" class="w-16 rounded-md border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300 sm:text-sm text-right">
+                </div>
+              </td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ number_format($history->price_new ?? 0) }}円</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ number_format($history->point_use ?? 0) }}pt</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->memo ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6">
+                <button type="button" id="edit_extend_btn_{{ $history->id }}" onclick="editExtend({{ $history->id }})" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">編集</button>
+                <button type="button" id="save_extend_btn_{{ $history->id }}" style="display:none" onclick="saveExtend({{ $history->id }})" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">保存</button>
+                <button type="button" id="cancel_extend_btn_{{ $history->id }}" style="display:none" onclick="cancelExtend({{ $history->id }})" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">キャンセル</button>
+              </td>
+            </tr>
             @endforeach
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ページネーション -->
     <div class="mt-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <p class="text-sm text-gray-700 dark:text-gray-400">
-          全{{ $total }}件中 {{ ($page - 1) * $limit + 1 }}-{{ min($page * $limit, $total) }}件を表示
-        </p>
-      </div>
+      <p class="text-sm text-gray-700 dark:text-gray-400">全{{ $total }}件中 {{ ($page - 1) * $limit + 1 }}-{{ min($page * $limit, $total) }}件を表示</p>
       <div class="flex items-center gap-2">
         @if ($page > 1)
-          <a href="{{ request()->fullUrlWithQuery(['page' => $page - 1]) }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-            前へ
-          </a>
+        <a href="{{ request()->fullUrlWithQuery(['page' => $page - 1]) }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">前へ</a>
         @endif
-
         @for ($i = max(1, $page - 2); $i <= min($pages, $page + 2); $i++)
-          <a href="{{ request()->fullUrlWithQuery(['page' => $i]) }}" class="flex items-center justify-center rounded-lg border {{ $i === $page ? 'border-blue-500 bg-blue-50 text-blue-600 dark:border-blue-500 dark:bg-blue-500/[0.1] dark:text-blue-500' : 'border-gray-300 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]' }} px-3 py-2 text-sm font-medium">
-            {{ $i }}
-          </a>
+        <a href="{{ request()->fullUrlWithQuery(['page' => $i]) }}" class="flex items-center justify-center rounded-lg border {{ $i === $page ? 'border-blue-500 bg-blue-50 text-blue-600 dark:border-blue-500 dark:bg-blue-500/[0.1] dark:text-blue-500' : 'border-gray-300 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400' }} px-3 py-2 text-sm font-medium">{{ $i }}</a>
         @endfor
-
         @if ($page < $pages)
-          <a href="{{ request()->fullUrlWithQuery(['page' => $page + 1]) }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">
-            次へ
-          </a>
+        <a href="{{ request()->fullUrlWithQuery(['page' => $page + 1]) }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400">次へ</a>
         @endif
       </div>
     </div>
 
-    <!-- 編集モーダル -->
-    <div id="editModal" class="fixed inset-0 z-50 overflow-y-auto hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-      <div class="flex min-h-screen items-center justify-center p-4">
-        <div id="modalOverlay" class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-
-        <div id="modalContent" class="relative inline-block w-full max-w-md transform overflow-hidden rounded-lg bg-white px-6 pt-5 pb-4 text-left shadow-xl transition-all">
-          <div class="w-full">
-            <div class="w-full text-left">
-              <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4" id="modal-title">
-                来店情報の編集
-              </h3>
-              <div class="mt-2">
-                <form id="editForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
-                  <div class="space-y-3">
-                    <div>
-                      <label for="createDate" class="block text-sm font-medium text-gray-700">店舗日</label>
-                      <input type="text" name="createDate" id="createDate" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
-                    <div>
-                      <label for="shop_name" class="block text-sm font-medium text-gray-700">店舗名</label>
-                      <input type="text" name="shop_name" id="shop_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
-                    <div>
-                      <label for="cast_name" class="block text-sm font-medium text-gray-700">キャスト名</label>
-                      <input type="text" name="cast_name" id="cast_name" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                      {{-- <select readonly name="cast_name" id="cast_name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                        <option value="">選択してください</option>
-                      </select> --}}
-                    </div>
-                    <div>
-                      <label for="course" class="block text-sm font-medium text-gray-700">コース</label>
-                      <input type="text" name="course" id="course" readonly class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                      {{-- <select name="course" id="course" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                        <option value="">選択してください</option>
-                      </select> --}}
-                    </div>
-                    <div>
-                      <label for="price" class="block text-sm font-medium text-gray-700">料金</label>
-                      <input type="number" name="price" id="price" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
-                    <div>
-                      <label for="point" class="block text-sm font-medium text-gray-700">ポイント</label>
-                      <input type="number" name="point" id="point"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
-                    <div>
-                      <label for="point_use" class="block text-sm font-medium text-gray-700">利用ポイント</label>
-                      <input type="number" name="point_use" id="point_use"  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    </div>
-                  </div>
-                  <div class="mt-5 flex justify-end gap-3">
-                    <button type="button" class="inline-flex justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2" onclick="closeEditModal()">
-                      キャンセル
-                    </button>
-                    <button type="submit" class="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-black shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
-                      保存
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 
   @push('scripts')
   <script>
-    // DOMContentLoadedイベントで初期化
     document.addEventListener('DOMContentLoaded', function() {
-      // モーダル外クリックで閉じる
-      const modalOverlay = document.getElementById('modalOverlay');
-      if (modalOverlay) {
-        modalOverlay.addEventListener('click', closeEditModal);
-      }
-
-      // ESCキーでモーダルを閉じる
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeEditModal();
-        }
-      });
+      updatePrice();
     });
   </script>
   @endpush

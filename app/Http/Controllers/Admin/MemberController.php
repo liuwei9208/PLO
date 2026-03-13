@@ -71,49 +71,33 @@ class MemberController extends Controller{
   public function show(Request $request, int $id): View{
 
     $member = Member::find($id);
-    // $today_point = Point::where('user_id', $id)->whereDate('created_at', '=', Carbon::now()->format('Y-m-d'))
-    //               ->where('type', 3)
-    //               ->sum('point');
     $point_pay = Point::where('user_id', $id)->where('type', 3)->sum('point');
     $point_use = Point::where('user_id', $id)->where('type', 5)->sum('point');
     $today_point = $point_pay - $point_use;
 
-    // 来店履歴の仮データ
-    $dummyHistories = [
-      [
-        'id' => 1,
-        'created_at' => '2025-06-05',
-        'shop_name' => '雫',
-        'casts_name' => '',
-        'course_name' => '',
-        'price' => 0,
-        'point_pay' => 500,
-        'point_use' => 1500,
-        'memo' => '編集'
-      ],
-      [
-        'id' => 2,
-        'created_at' => '2025-05-24',
-        'shop_name' => '雫',
-        'casts_name' => '',
-        'course_name' => '',
-        'price' => 0,
-        'point_pay' => 1000,
-        'point_use' => 2000,
-        'memo' => '編集'
-      ],
-      [
-        'id' => 3,
-        'created_at' => '2024-12-26',
-        'shop_name' => 'シロガネーゼ',
-        'casts_name' => '',
-        'course_name' => '',
-        'price' => 0,
-        'point_pay' => 3000,
-        'point_use' => 0,
-        'memo' => '編集'
-      ]
-    ];
+    $shop_id = null;
+    $shops = collect();
+    $user = Auth::user();
+    $shop_user = DB::connection('mysql')->table('shop_user')->where('user_id', $user->id)->get();
+    if ($user->hasRole('admin') && count($shop_user) > 0) {
+      $shops = Shop::whereIn('id', $shop_user->pluck('shop_id'))->get();
+      $shop_id = $shop_user[0]->shop_id ?? Shop::first()?->id;
+    } elseif ($user->hasRole('shop') && count($shop_user) > 0) {
+      $shop_id = $shop_user[0]->shop_id;
+      $shops = Shop::where('id', $shop_id)->get();
+    } else {
+      $shops = Shop::all();
+      $shop_id = $shops->first()?->id;
+    }
+
+    $casts = $shop_id ? Cast::where('shop_id', $shop_id)->where('is_public', 1)->orderBy('name', 'asc')->get() : collect();
+    $courses = $shop_id ? CourseGroup::where('shop_id', $shop_id)->get() : collect();
+    $extends = $shop_id ? Extend::where('shop_id', $shop_id)->get() : collect();
+    $extendsByShop = Extend::all()->groupBy('shop_id');
+    $options = $shop_id ? OptionRS::leftJoin('options', 'options.id', '=', 'options_rs.option_id')
+      ->where('options_rs.shop_id', $shop_id)->get() : collect();
+    $appoints = $shop_id ? Appoint::where('shop_id', $shop_id)->get() : collect();
+
     $histories = History::where('user_id', $id)
                   ->whereIn('name', ['来店', 'PT有効期限切れ'])
                   ->orderBy('created_at', 'desc')
@@ -131,21 +115,25 @@ class MemberController extends Controller{
     if ($histories) {
       $histories = $histories->map(function ($history) {
         $history->casts_name = Cast::where('id', $history->cast_id)->first()->name ?? '';
-        $history->course_name_table = Course::where('id', $history->course_id)->first()->name ?? '';
+        $c1 = ($history->course1_id ? CourseGroup::where('id', $history->course1_id)->first() : null)?->course ?? '';
+        $c2 = ($history->course2_id ? CourseGroup::where('id', $history->course2_id)->first() : null)?->course ?? '';
+        $c3 = ($history->course3_id ? CourseGroup::where('id', $history->course3_id)->first() : null)?->course ?? '';
+        $c4 = ($history->course4_id ? CourseGroup::where('id', $history->course4_id)->first() : null)?->course ?? '';
+        $courseNames = array_filter([$c1, $c2, $c3, $c4]);
+        $history->course_name_table = !empty($courseNames) ? implode(',', $courseNames) : (Course::where('id', $history->course_id)->first()->name ?? '');
+        $history->extend_name = ($history->extend_id ? Extend::where('id', $history->extend_id)->first() : null)?->extend ?? '';
         $history->shop_name = Shop::where('id', $history->shop_id)->first()->name ?? '';
         $history->point_pay = Point::where('history_id', $history->id)->where('type', 3)->sum('point') ?? 0;
         $history->point_use = Point::where('history_id', $history->id)->where('type', 5)->sum('point') ?? 0;
         return $history;
       });
     }
-    $user = Auth::user();
+
     $token = $user->createToken('api-token')->plainTextToken;
 
-    // $courses = Course::where('shop_id', $member->shop_id)->get();
     return view('admin.member.detail', [
       'member' => $member,
       'today_point' => $today_point,
-      'dummyHistories' => $dummyHistories,
       'histories' => $histories,
       'page' => $page,
       'limit' => $limit,
@@ -153,6 +141,14 @@ class MemberController extends Controller{
       'total' => $total,
       'pages' => $pages,
       'token' => $token,
+      'shops' => $shops,
+      'shop_id' => $shop_id,
+      'casts' => $casts,
+      'courses' => $courses,
+      'extends' => $extends,
+      'extendsByShop' => $extendsByShop,
+      'options' => $options,
+      'appoints' => $appoints,
     ]);
   }
 
