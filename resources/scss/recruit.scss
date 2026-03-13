@@ -5,6 +5,19 @@
 @use 'mixins/font' as *;
 @use 'mixins/text';
 
+.banner-photodiary--male .banner-photodiary-background {
+  background-image: var(--banner-bg-image, url('/assets/img/male/section1.png'));
+}
+
+.banner-photodiary--female .banner-photodiary-background {
+  background-image: var(--banner-bg-image, url('/assets/img/female/home-page.png'));
+}
+
+.banner-photodiary--male ~ .main,
+.banner-photodiary--female ~ .main {
+  background: transparent !important;
+}
+
 .recruit-page {
   width: 100%;
   max-width: 1440px;
@@ -1990,9 +2003,16 @@
 .recruit-line-cta:not(.recruit-line-cta--female) {
   display: block;
   background-color: #28c254;
+  position: relative;
+  z-index: 2;
 }
 
 @media screen and (min-width: 1025px) {
+  .recruit-line-cta:not(.recruit-line-cta--female) {
+    margin-top: -222px;
+    margin-bottom: 40px;
+  }
+
   .recruit-line-cta:not(.recruit-line-cta--female) .recruit-line-cta__inner {
     padding: 16px 96px;
     justify-content: center;

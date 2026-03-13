@@ -23,7 +23,7 @@
           display: flex;
           flex-direction: column;
           align-items: center;
-          background: #ececec;
+          background: transparent;
           padding-bottom: 36px;
         }
 
