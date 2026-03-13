@@ -136,6 +136,7 @@
 }
 .schedule-area {
   flex: 1;
+  min-width: 0;
   padding: 16px;
   background: #eaffea;
   display: flex;
@@ -248,6 +249,7 @@
 }
 .schedule-form-area {
   flex: 1;
+  min-width: 0;
   padding: 16px;
   background: #eaffea;
   display: flex;
@@ -256,41 +258,49 @@
 }
 .schedule-forms {
   display: flex;
-  gap: 16px;
+  flex-wrap: nowrap;
+  gap: 6px;
 }
 .schedule-form {
   background: #eaffea;
   border: 1px solid #b2dfdb;
-  border-radius: 8px;
-  padding: 12px;
-  min-width: 220px;
+  border-radius: 6px;
+  padding: 8px;
+  flex: 1 1 0;
+  min-width: 0;
   position: relative;
   &.registered {
     opacity: 0.7;
   }
   .delete-form-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 4px;
+    right: 4px;
     background: #f44336;
     color: #fff;
     border: none;
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
     cursor: pointer;
   }
   .form-time-selector {
     display: flex;
-    gap: 8px;
-    margin: 15px 0;
+    gap: 2px;
+    margin: 6px 0;
     .form-start-time, .form-end-time {
-      padding: 4px 8px;
+      padding: 2px 4px;
       border-radius: 4px;
       border: 1px solid #ccc;
+      font-size: 11px;
+      min-width: 0;
+      flex: 1;
     }
     .form-time-separator {
-      font-size: 16px;
+      font-size: 12px;
       color: #888;
     }
   }
@@ -300,9 +310,9 @@
     color: #fff;
     border: none;
     border-radius: 4px;
-    padding: 6px 0;
+    padding: 4px 0;
+    font-size: 12px;
     font-weight: bold;
-    margin-bottom: 6px;
     &.registered {
       background: #1976d2;
     }
@@ -311,12 +321,14 @@
 .add-form-btn {
   background: #fff;
   border: 1px dashed #bbb;
-  border-radius: 8px;
-  min-width: 220px;
+  border-radius: 6px;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #bbb;
-  font-size: 40px;
+  font-size: 20px;
   cursor: pointer;
 }
