@@ -199,43 +199,43 @@
 
   <div class="p-4 mx-auto max-w-full md:p-6">
     <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
-      <h2 class="text-xl font-semibold text-gray-900">会員詳細</h2>
-      <a href="{{ route('admin.member.index') }}" class="inline-flex items-center justify-center rounded px-4 py-2 text-sm font-medium text-gray-700 bg-[#e9ecef] hover:bg-[#dee2e6]">戻る</a>
+      <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">会員詳細</h2>
+      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">戻る</a>
     </div>
 
-    <div class="mb-6 rounded border border-gray-200 bg-white shadow-sm">
+    <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-4 p-6">
         <div class="flex items-center gap-4">
-          <label class="w-28 shrink-0 text-sm font-medium text-gray-900">会員番号</label>
-          <input type="text" value="{{ $member->id ?? '' }}" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+          <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">会員番号</label>
+          <input type="text" value="{{ $member->id ?? '' }}" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
         </div>
         <div class="flex items-center gap-4">
-          <label class="w-28 shrink-0 text-sm font-medium text-gray-900">ニックネーム</label>
-          <input type="text" value="{{ $member->name ?? '' }}" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+          <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">ニックネーム</label>
+          <input type="text" value="{{ $member->name ?? '' }}" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
         </div>
         <div class="flex items-center gap-4">
-          <label class="w-28 shrink-0 text-sm font-medium text-gray-900">携帯番号</label>
-          <input type="text" value="{{ $member->tel ?? '' }}" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+          <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">携帯番号</label>
+          <input type="text" value="{{ $member->tel ?? '' }}" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
         </div>
         <div class="flex items-center gap-4">
-          <label class="w-28 shrink-0 text-sm font-medium text-gray-900">会員名</label>
-          <input type="text" value="{{ $member->subname ?? '' }}" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+          <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">会員名</label>
+          <input type="text" value="{{ $member->subname ?? '' }}" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
         </div>
         <div class="flex items-center gap-4 md:col-span-2">
-          <label class="w-28 shrink-0 text-sm font-medium text-gray-900">現在のポイント</label>
-          <input type="text" value="{{ number_format($today_point ?? 0) }}pt" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+          <label class="w-28 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">現在のポイント</label>
+          <input type="text" value="{{ number_format($today_point ?? 0) }}pt" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
         </div>
       </div>
     </div>
 
-    <div class="mb-6 rounded border border-gray-200 bg-white shadow-sm">
+    <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <form id="visitForm" onsubmit="saveVisit(event)" class="p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="space-y-4">
             @if(auth()->user()?->hasRole('admin') && $shops->count() > 1)
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">店舗</label>
-              <select id="form_shop_id" onchange="onShopChange(this.value)" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">店舗</label>
+              <select id="form_shop_id" onchange="onShopChange(this.value)" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                 @foreach($shops as $s)
                 <option value="{{ $s->id }}" {{ ($shop_id ?? 0) == $s->id ? 'selected' : '' }}>{{ $s->name }}</option>
                 @endforeach
@@ -243,8 +243,8 @@
             </div>
             @endif
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">キャスト名</label>
-              <select id="cast" name="cast" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">キャスト名</label>
+              <select id="cast" name="cast" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                 <option value="">選択してください</option>
                 @foreach($casts as $c)
                 <option value="{{ $c->id }}">{{ $c->name }}</option>
@@ -252,80 +252,80 @@
               </select>
             </div>
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">指名</label>
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">指名</label>
               <div class="flex flex-1 items-center gap-2">
-                <select id="appointment" name="appointment" onchange="updatePrice()" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+                <select id="appointment" name="appointment" onchange="updatePrice()" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                   <option value="" data-price="0">選択してください</option>
                   @foreach($appoints as $a)
                   <option value="0" data-price="{{ $a->panel_price }}" data-id="{{ $a->id }}">パネル指名</option>
                   <option value="1" data-price="{{ $a->repeat_price }}" data-id="{{ $a->id }}">本指名</option>
                   @endforeach
                 </select>
-                <span class="text-gray-600">×</span>
-                <input type="number" id="appointment_count" name="appointment_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded border border-gray-200 bg-white px-2 py-2 text-sm text-gray-900 text-right">
+                <span class="text-gray-500 dark:text-gray-400">×</span>
+                <input type="number" id="appointment_count" name="appointment_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-2 text-right">
               </div>
             </div>
             @for($i = 1; $i <= 4; $i++)
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">コース</label>
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">コース</label>
               <div class="flex flex-1 items-center gap-2">
-                <select id="course{{ $i }}" name="course{{ $i }}" onchange="updatePrice()" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+                <select id="course{{ $i }}" name="course{{ $i }}" onchange="updatePrice()" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                   <option value="" data-price="0">選択してください</option>
                   @foreach($courses as $c)
                   <option value="{{ $c->id }}" data-price="{{ $c->price }}">{{ $c->course }}</option>
                   @endforeach
                 </select>
-                <button type="button" class="text-gray-600 hover:text-gray-800">&times;</button>
-                <input type="number" id="course{{ $i }}_count" name="course{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded border border-gray-200 bg-white px-2 py-2 text-sm text-gray-900 text-right">
+                <button type="button" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">&times;</button>
+                <input type="number" id="course{{ $i }}_count" name="course{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-2 text-right">
               </div>
             </div>
             @endfor
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">延長</label>
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">延長</label>
               <div class="flex flex-1 items-center gap-2">
-                <select id="extend" name="extend" onchange="updatePrice()" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+                <select id="extend" name="extend" onchange="updatePrice()" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                   <option value="" data-price="0">選択してください</option>
                   @foreach($extends as $e)
                   <option value="{{ $e->id }}" data-price="{{ $e->price }}">{{ $e->extend }}({{ number_format($e->price) }}円)</option>
                   @endforeach
                 </select>
-                <span class="text-gray-600">×</span>
-                <input type="number" id="extend_count" name="extend_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded border border-gray-200 bg-white px-2 py-2 text-sm text-gray-900 text-right">
+                <span class="text-gray-500 dark:text-gray-400">×</span>
+                <input type="number" id="extend_count" name="extend_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-2 text-right">
               </div>
             </div>
             @for($i = 1; $i <= 5; $i++)
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">オプション</label>
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">オプション</label>
               <div class="flex flex-1 items-center gap-2">
-                <select id="option{{ $i }}" name="option{{ $i }}" onchange="updatePrice()" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+                <select id="option{{ $i }}" name="option{{ $i }}" onchange="updatePrice()" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                   <option value="" data-price="0">選択してください</option>
                   @foreach($options as $o)
                   <option value="{{ $o->option_id }}" data-price="{{ $o->price ?? 0 }}">{{ ($o->name ?? $o->option->name ?? '') }}({{ number_format($o->price ?? 0) }}円)</option>
                   @endforeach
                 </select>
-                <button type="button" class="text-gray-600 hover:text-gray-800">&times;</button>
-                <input type="number" id="option{{ $i }}_count" name="option{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded border border-gray-200 bg-white px-2 py-2 text-sm text-gray-900 text-right">
+                <button type="button" class="text-gray-500 hover:text-gray-600 dark:text-gray-400 dark:hover:text-gray-300">&times;</button>
+                <input type="number" id="option{{ $i }}_count" name="option{{ $i }}_count" value="0" min="0" max="60" onchange="updatePrice()" class="w-14 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-2 text-right">
               </div>
             </div>
             @endfor
           </div>
           <div class="space-y-4">
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">利用ポイント</label>
-              <input type="number" id="point_use" name="point_use" value="0" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">利用ポイント</label>
+              <input type="number" id="point_use" name="point_use" value="0" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
             </div>
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">取得ポイント</label>
-              <input type="number" id="point" name="point" value="0" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">取得ポイント</label>
+              <input type="number" id="point" name="point" value="0" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
             </div>
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">PLOの日</label>
-              <input type="checkbox" id="plo_day" name="plo_day" value="1" onchange="updatePrice()" class="h-4 w-4 rounded border-gray-300 text-[#007bff]">
-              <span class="text-sm text-gray-900"></span>
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">PLOの日</label>
+              <input type="checkbox" id="plo_day" name="plo_day" value="1" onchange="updatePrice()" class="h-4 w-4 rounded border-gray-300 text-blue-600 dark:border-gray-600 dark:bg-gray-800">
+              <span class="text-sm text-gray-500 dark:text-gray-400"></span>
             </div>
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">割引</label>
-              <select id="discount" name="discount" onchange="updatePrice()" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">割引</label>
+              <select id="discount" name="discount" onchange="updatePrice()" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
                 <option value="0">選択してください</option>
                 @for($i = -100; $i >= -50000; $i -= 100)
                 <option value="{{ $i }}">{{ number_format(abs($i)) }}円</option>
@@ -333,16 +333,16 @@
               </select>
             </div>
             <div class="flex items-center gap-4">
-              <label class="w-24 shrink-0 text-sm font-medium text-gray-900">料金</label>
-              <input type="number" id="price" name="price" value="0" readonly class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900">
+              <label class="w-24 shrink-0 text-sm font-medium text-gray-500 dark:text-gray-400">料金</label>
+              <input type="number" id="price" name="price" value="0" readonly class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2">
             </div>
             <div class="flex items-start gap-4">
-              <label class="w-24 shrink-0 pt-2 text-sm font-medium text-gray-900">メモ</label>
-              <textarea id="memo" name="memo" rows="4" class="flex-1 rounded border border-gray-200 bg-white px-3 py-2 text-sm text-gray-900"></textarea>
+              <label class="w-24 shrink-0 pt-2 text-sm font-medium text-gray-500 dark:text-gray-400">メモ</label>
+              <textarea id="memo" name="memo" rows="4" class="flex-1 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-3 py-2"></textarea>
             </div>
             <div class="flex justify-end gap-3 pt-4">
-              <button type="submit" class="rounded bg-[#007bff] px-6 py-2.5 text-sm font-medium text-white hover:bg-[#0069d9]">保存</button>
-              <a href="{{ route('admin.member.index') }}" class="rounded bg-[#e9ecef] px-6 py-2.5 text-sm font-medium text-gray-700 hover:bg-[#dee2e6]">戻る</a>
+              <button type="submit" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">保存</button>
+              <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">戻る</a>
             </div>
           </div>
         </div>
@@ -353,47 +353,47 @@
       <h2 class="text-xl font-semibold text-gray-800 dark:text-white/90">来店履歴</h2>
     </div>
 
-    <div class="mb-6 overflow-hidden rounded border border-gray-200 bg-white shadow-sm">
+    <div class="mb-6 overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
       <div class="max-w-full overflow-x-auto">
         <table class="min-w-full">
           <thead>
             <tr class="border-b border-gray-100 dark:border-gray-800">
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">来店日</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">キャスト名</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">コース</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">延長</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">料金</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">利用ポイント</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">会員メモ</p></th>
-              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-900 text-sm">延長編集</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">来店日</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">キャスト名</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">コース</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">延長</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">料金</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">利用ポイント</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">会員メモ</p></th>
+              <th class="px-5 py-3 sm:px-6 text-left"><p class="font-medium text-gray-500 text-theme-xs dark:text-gray-400">延長編集</p></th>
             </tr>
           </thead>
           <tbody class="divide-y divide-gray-100 dark:divide-gray-800">
             @foreach ($histories as $history)
             <tr>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</p></td>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ $history->casts_name ?? '' }}</p></td>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ $history->course_name_table ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->created_at ? \Carbon\Carbon::parse($history->created_at)->format('Y-m-d') : '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->casts_name ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->course_name_table ?? '' }}</p></td>
               <td class="px-5 py-4 sm:px-6">
                 <span id="extend_val_{{ $history->id }}">{{ $history->extend_name ?? '' }}</span>
                 <div id="extend_edit_{{ $history->id }}" style="display:none" class="flex items-center gap-2">
-                  <select id="extend_select_{{ $history->id }}" class="rounded border border-gray-200 bg-white px-2 py-1 text-sm text-gray-900">
+                  <select id="extend_select_{{ $history->id }}" class="rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-1">
                     <option value="" data-price="0">選択してください</option>
                     @foreach(($extendsByShop[$history->shop_id] ?? $extends) as $e)
                     <option value="{{ $e->id }}" data-price="{{ $e->price }}" {{ ($history->extend_id ?? '') == $e->id ? 'selected' : '' }}>{{ $e->extend }}({{ number_format($e->price) }}円)</option>
                     @endforeach
                   </select>
                   <span>×</span>
-                  <input type="number" id="extend_count_{{ $history->id }}" value="{{ $history->extend_count ?? 0 }}" min="0" max="60" class="w-14 rounded border border-gray-200 bg-white px-2 py-1 text-sm text-gray-900 text-right">
+                  <input type="number" id="extend_count_{{ $history->id }}" value="{{ $history->extend_count ?? 0 }}" min="0" max="60" class="w-14 rounded-md border border-gray-300 shadow-sm dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 sm:text-sm px-2 py-1 text-right">
                 </div>
               </td>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ number_format($history->price_new ?? 0) }}円</p></td>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ number_format($history->point_use ?? 0) }}pt</p></td>
-              <td class="px-5 py-4 sm:px-6"><p class="text-gray-900 text-sm">{{ $history->memo ?? '' }}</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ number_format($history->price_new ?? 0) }}円</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ number_format($history->point_use ?? 0) }}pt</p></td>
+              <td class="px-5 py-4 sm:px-6"><p class="text-gray-500 text-theme-sm dark:text-gray-400">{{ $history->memo ?? '' }}</p></td>
               <td class="px-5 py-4 sm:px-6">
-                <button type="button" id="edit_extend_btn_{{ $history->id }}" onclick="editExtend({{ $history->id }})" class="rounded bg-[#007bff] px-4 py-2 text-sm font-medium text-white hover:bg-[#0069d9]">編集</button>
-                <button type="button" id="save_extend_btn_{{ $history->id }}" style="display:none" onclick="saveExtend({{ $history->id }})" class="rounded bg-[#007bff] px-4 py-2 text-sm font-medium text-white hover:bg-[#0069d9]">保存</button>
-                <button type="button" id="cancel_extend_btn_{{ $history->id }}" style="display:none" onclick="cancelExtend({{ $history->id }})" class="rounded bg-[#e9ecef] px-4 py-2 text-sm font-medium text-gray-700 hover:bg-[#dee2e6]">キャンセル</button>
+                <button type="button" id="edit_extend_btn_{{ $history->id }}" onclick="editExtend({{ $history->id }})" class="flex items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">編集</button>
+                <button type="button" id="save_extend_btn_{{ $history->id }}" style="display:none" onclick="saveExtend({{ $history->id }})" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">保存</button>
+                <button type="button" id="cancel_extend_btn_{{ $history->id }}" style="display:none" onclick="cancelExtend({{ $history->id }})" class="flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-white/[0.03]">キャンセル</button>
               </td>
             </tr>
             @endforeach
