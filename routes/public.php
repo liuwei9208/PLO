@@ -96,7 +96,9 @@ Route::middleware([AuthenticateMultiple::class])->name('public.')->group(functio
     Route::prefix('recruit')->name('recruit.')->group(function () {
         Route::get('male', [RecruitController::class, 'showMale'])->name('male');
         Route::get('female', [RecruitController::class, 'showFemale'])->name('female');
+        Route::post('confirm', [RecruitController::class, 'confirmForm'])->name('confirm');
         Route::post('submit', [RecruitController::class, 'submitForm'])->name('submit');
+        Route::get('complete', [RecruitController::class, 'showComplete'])->name('complete');
     });
 
     /**

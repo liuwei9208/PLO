@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\RecruitThankYouMail;
 use App\Mail\RecruitNotificationMail;
 use App\Models\RecruitApplication;
+use App\Models\Shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -14,26 +15,38 @@ use Illuminate\View\View;
 
 class RecruitController extends Controller
 {
-    /**
-     * Display the male recruit page.
-     */
+    private const SHOP_LABELS = [
+        'shizuku' => '雫',
+        'miyabi' => '雅',
+        'pussycat' => 'プッシーキャット',
+        'en' => '艶',
+        'siroganeze' => 'シロガネーゼ',
+        'lovestory' => 'ラブストーリー',
+    ];
+
+    private const EXPERIENCE_LABELS = [
+        'yes' => 'あり',
+        'no' => 'なし',
+        'working' => '働いている',
+    ];
+
+    private const SUBJECT_LABELS = [
+        'trial' => '体験入店希望',
+        'join' => '入店希望',
+        'inquiry' => 'お問い合わせ',
+    ];
+
     public function showMale(): View
     {
         return view('public.recruit.male');
     }
 
-    /**
-     * Display the female recruit page.
-     */
     public function showFemale(): View
     {
         return view('public.recruit.female');
     }
 
-    /**
-     * Handle the recruit form submission.
-     */
-    public function submitForm(Request $request)
+    public function confirmForm(Request $request)
     {
         $type = (string) $request->input('type');
 
@@ -63,6 +76,46 @@ class RecruitController extends Controller
 
         $validated = $request->validate($rules);
 
+        $data = [
+            'type' => $validated['type'],
+            'shop' => $validated['shop'],
+            'name' => $validated['name'],
+            'furigana' => $validated['furigana'] ?? null,
+            'email' => $validated['email'],
+            'phone' => $validated['phone'] ?? null,
+            'age' => $validated['age'] ?? null,
+            'experience' => $validated['experience'] ?? null,
+            'subject' => $validated['subject'] ?? null,
+            'inquiry' => $validated['inquiry'],
+            'privacy' => $validated['privacy'] ?? null,
+        ];
+
+        $request->session()->put('recruit_confirm', $data);
+
+        $shopLabel = self::SHOP_LABELS[$data['shop']] ?? $data['shop'];
+        $experienceLabel = self::EXPERIENCE_LABELS[$data['experience'] ?? ''] ?? $data['experience'] ?? '';
+        $subjectLabel = self::SUBJECT_LABELS[$data['subject'] ?? ''] ?? $data['subject'] ?? '';
+
+        return view('public.recruit.confirm', [
+            'type' => $type,
+            'data' => $data,
+            'shopLabel' => $shopLabel,
+            'experienceLabel' => $experienceLabel,
+            'subjectLabel' => $subjectLabel,
+        ]);
+    }
+
+    public function submitForm(Request $request)
+    {
+        $data = $request->session()->get('recruit_confirm');
+
+        if (!$data || !in_array($data['type'] ?? '', ['male', 'female'])) {
+            return redirect()->route('public.recruit.male')
+                ->with('error', 'セッションが切れました。最初から入力し直してください。');
+        }
+
+        $validated = $data;
+
         $application = RecruitApplication::create([
             'type' => $validated['type'],
             'shop' => $validated['shop'],
@@ -74,7 +127,7 @@ class RecruitController extends Controller
             'experience' => $validated['experience'] ?? null,
             'subject' => $validated['subject'] ?? null,
             'inquiry' => $validated['inquiry'],
-            'privacy_agreed' => (bool) ($validated['privacy'] ?? false),
+            'privacy_agreed' => (bool) ($data['privacy'] ?? false),
             'meta' => [
                 'ip' => $request->ip(),
                 'user_agent' => (string) $request->userAgent(),
@@ -82,9 +135,10 @@ class RecruitController extends Controller
             'status' => 'new',
         ]);
 
+        $request->session()->forget('recruit_confirm');
+
         try {
-            // Gửi thank-you email cho người đăng ký
-            Mail::to($validated['email'])->send(new RecruitThankYouMail());
+            Mail::to($validated['email'])->send(new RecruitThankYouMail($validated['name']));
         } catch (\Throwable $e) {
             Log::error('Failed to send recruit thank-you mail', [
                 'email' => $validated['email'],
@@ -93,21 +147,26 @@ class RecruitController extends Controller
             ]);
         }
 
-        try {
-            // Gửi notification email đến todinhthi@gmail.com
-            // Sử dụng mailer 'en_smtp' với credentials từ info@plo-group.jp (dùng chung với default mailer)
-            Mail::mailer('en_smtp')
-                ->to('todinhthi@gmail.com')
-                ->send(new RecruitNotificationMail($application));
-        } catch (\Throwable $e) {
-            Log::error('Failed to send recruit notification mail', [
-                'application_id' => $application->id,
-                'email' => $validated['email'],
-                'type' => $validated['type'],
-                'message' => $e->getMessage(),
-            ]);
+        $shop = Shop::where('slug', $validated['shop'])->first();
+        $notificationEmail = $shop?->email ?? config('mail.from.address', 'info@plo-group.jp');
+
+        if (filter_var($notificationEmail, FILTER_VALIDATE_EMAIL)) {
+            try {
+                Mail::to($notificationEmail)->send(new RecruitNotificationMail($application));
+            } catch (\Throwable $e) {
+                Log::error('Failed to send recruit notification mail', [
+                    'application_id' => $application->id,
+                    'email' => $notificationEmail,
+                    'message' => $e->getMessage(),
+                ]);
+            }
         }
 
-        return redirect()->back()->with('success', 'お問い合わせありがとうございます。担当者よりご連絡いたします。');
+        return redirect()->route('public.recruit.complete');
+    }
+
+    public function showComplete(): View
+    {
+        return view('public.recruit.complete');
     }
 }

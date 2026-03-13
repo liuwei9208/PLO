@@ -35,12 +35,10 @@
       $isMaleRecruit = request()->routeIs('public.recruit.male');
       // All recruit pages (male / female / others) should bypass groups wrapper
       $isSimpleRecruitLayout = request()->routeIs('public.recruit.*');
-      // On male recruit page we want to control the banner background purely via CSS
-      // so we skip passing the background image prop.
-      $computedBannerImage = $isMaleRecruit ? null : $bannerImage;
+      $computedBannerImage = $bannerImage;
       $bannerExtraClass = $isMaleRecruit
         ? 'banner-photodiary--male'
-        : (request()->routeIs('public.recruit.female') ? 'banner-photodiary--female' : '');
+        : (request()->routeIs('public.recruit.female') ? 'banner-photodiary--female' : 'banner-photodiary--male');
     @endphp
     <x-public.groups.banner
       :backgroundImage="$computedBannerImage"

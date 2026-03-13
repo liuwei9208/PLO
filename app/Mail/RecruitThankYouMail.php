@@ -12,16 +12,13 @@ class RecruitThankYouMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public string $name;
+
+    public function __construct(string $name = '')
     {
+        $this->name = $name;
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -29,9 +26,6 @@ class RecruitThankYouMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(

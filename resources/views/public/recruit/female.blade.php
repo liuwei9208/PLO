@@ -198,9 +198,9 @@
     </style>
   @endpush
 
-  @if (session('success'))
-    <div style="max-width: 960px; margin: 16px auto; padding: 12px 16px; border-radius: 8px; background: #e8f7ec; color: #165b2c; font-weight: 700;">
-      {{ session('success') }}
+  @if (session('error'))
+    <div style="max-width: 960px; margin: 16px auto; padding: 12px 16px; border-radius: 8px; background: #fdeaea; color: #7d1d1d; font-weight: 700;">
+      {{ session('error') }}
     </div>
   @endif
 
@@ -1013,7 +1013,7 @@
         <p class="recruit-female-contact__subheading">お問い合わせ＆応募フォーム</p>
       </header>
 
-      <form action="{{ route('public.recruit.submit') }}" method="POST" class="recruit-female-contact__form">
+      <form action="{{ route('public.recruit.confirm') }}" method="POST" class="recruit-female-contact__form">
         @csrf
         <input type="hidden" name="type" value="female">
 
