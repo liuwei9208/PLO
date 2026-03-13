@@ -13,6 +13,10 @@ return new class extends Migration
             return;
         }
         Schema::table('shop_rank', function (Blueprint $table) {
+            $table->dropForeign(['shop_id']);
+            $table->dropForeign(['rank_id']);
+        });
+        Schema::table('shop_rank', function (Blueprint $table) {
             $table->dropUnique(['shop_id', 'rank_id']);
         });
         Schema::table('shop_rank', function (Blueprint $table) {
@@ -26,11 +30,17 @@ return new class extends Migration
         }
         Schema::table('shop_rank', function (Blueprint $table) {
             $table->unique(['shop_id', 'position']);
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->foreign('rank_id')->references('id')->on('ranks')->onDelete('cascade');
         });
     }
 
     public function down(): void
     {
+        Schema::table('shop_rank', function (Blueprint $table) {
+            $table->dropForeign(['shop_id']);
+            $table->dropForeign(['rank_id']);
+        });
         Schema::table('shop_rank', function (Blueprint $table) {
             $table->dropUnique(['shop_id', 'position']);
         });
@@ -39,6 +49,8 @@ return new class extends Migration
         });
         Schema::table('shop_rank', function (Blueprint $table) {
             $table->unique(['shop_id', 'rank_id']);
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->foreign('rank_id')->references('id')->on('ranks')->onDelete('cascade');
         });
     }
 };
