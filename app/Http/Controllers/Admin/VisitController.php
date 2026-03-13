@@ -3,10 +3,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Member;
+use App\Models\History;
+use App\Models\CourseGroup;
+use App\Models\Extend;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use App\Models\History;
 use Illuminate\Support\Facades\DB;
 use App\Http\Resources\HistoryResource;
 use Illuminate\Support\Facades\Auth;
@@ -53,8 +55,6 @@ class VisitController extends Controller{
   `'.env("DB_DATABASE").'`.shops.name as shop_name,
   `'.env("DB_DATABASE").'`.casts.name as casts_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.call_name as call_name,
-  `'.env("MEMBER_DB_DATABASE").'`.histories.course_name as course_name,
-  `'.env("MEMBER_DB_DATABASE").'`.histories.extension_name as extension_name,
   `'.env("MEMBER_DB_DATABASE").'`.histories.price as price,
   `'.env("DB_DATABASE").'`.members.comment as user_comment
   FROM `'.env("MEMBER_DB_DATABASE").'`.histories
@@ -271,7 +271,20 @@ class VisitController extends Controller{
     $datas = [];
     if ($results) {
         $datas = collect($results)->map(function ($item) {
-            $item->history_shop_count = \App\Models\History::where('user_id', $item->user_id)
+            $history = History::find($item->id);
+            if ($history) {
+                $c1 = ($history->course1_id ? CourseGroup::find($history->course1_id) : null)?->course ?? '';
+                $c2 = ($history->course2_id ? CourseGroup::find($history->course2_id) : null)?->course ?? '';
+                $c3 = ($history->course3_id ? CourseGroup::find($history->course3_id) : null)?->course ?? '';
+                $c4 = ($history->course4_id ? CourseGroup::find($history->course4_id) : null)?->course ?? '';
+                $courseNames = array_filter([$c1, $c2, $c3, $c4]);
+                $item->course_name = !empty($courseNames) ? implode(',', $courseNames) : '';
+                $item->extension_name = ($history->extend_id ? Extend::find($history->extend_id) : null)?->extend ?? '';
+            } else {
+                $item->course_name = '';
+                $item->extension_name = '';
+            }
+            $item->history_shop_count = History::where('user_id', $item->user_id)
             ->where('id', '<=', $item->id)
             ->where('shop_id', '=', $item->shop_id)
             ->where('name', '来店')
@@ -287,12 +300,12 @@ class VisitController extends Controller{
                 ->whereIn('type', [3, 5])
                 ->where('confirm', 1)
                 ->sum('valid_point');
-            $item->history_count = \App\Models\History::where('user_id', $item->user_id)
+            $item->history_count = History::where('user_id', $item->user_id)
             ->where('id', '<=', $item->id)
             ->where('office_id', '=', $item->office_id)
             ->where('name', '来店')
             ->count();
-            $item->user_comment = (str_replace(["\\r\\n"], "\n", $item->user_comment));
+            $item->user_comment = (str_replace(["\\r\\n"], "\n", $item->user_comment ?? ''));
             return $item;
             // dd($item);
         });
