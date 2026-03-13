@@ -421,11 +421,11 @@
     </div>
 
     <div class="mt-8 flex justify-end gap-3">
-      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-700">戻る</a>
+      <a href="{{ route('admin.member.index') }}" class="flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-sm" style="background-color: #2563eb; color: white; border: none; cursor: pointer;">戻る</a>
       <form method="POST" action="{{ route('admin.member.destroy', $member->id) }}" class="inline" onsubmit="return confirm('本当に削除しますか？');">
         @csrf
         @method('DELETE')
-        <button type="submit" class="flex items-center justify-center rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700">削除</button>
+        <button type="submit" class="flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium shadow-sm" style="background-color: #dc2626; color: white; border: none; cursor: pointer;">削除</button>
       </form>
     </div>
 
