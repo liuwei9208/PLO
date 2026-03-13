@@ -594,7 +594,7 @@
                 }
             @endphp
             @if (count($events) > 0)
-                <x-public.shops.event-section background-image="assets/img/shops/siroganeze/event-bg.jpeg"
+                <x-public.shops.event-section background-image="build/assets/img/shops/siroganeze/shirogane-news.jpeg"
                     background-alt="Event Background" {{-- main-banner-image="assets/img/shops/shizuku/event-main.png" --}} main-banner-alt="Main Banner Background"
                     :sub-banner-images="$event_list" />
             @endif
