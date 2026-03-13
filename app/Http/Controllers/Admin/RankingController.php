@@ -42,7 +42,7 @@ class RankingController extends Controller
         // ]);
 
         $shop = Shop::findOrFail($shop_id);
-        $shopRankIds = $shop->ranks()->pluck('id')->toArray();
+        $shopRankIds = $shop->ranks()->pluck('ranks.id')->toArray();
         $displayRanks = $shopRankIds ? Rank::whereIn('id', $shopRankIds)->orderBy('id', 'asc')->get() : collect();
 
         return view('admin.ranking.detail', [
@@ -62,7 +62,7 @@ class RankingController extends Controller
         $ranks = Rank::orderBy('id', 'asc')->get();
         $shops = Shop::whereNot('slug', 'touchvip')->whereNot('slug', 'headquarter')->orderBy('id', 'asc')->get();
         $shop = Shop::findOrFail($id);
-        $shopRankIds = $shop->ranks()->pluck('id')->toArray();
+        $shopRankIds = $shop->ranks()->pluck('ranks.id')->toArray();
         $displayRanks = $shopRankIds ? Rank::whereIn('id', $shopRankIds)->orderBy('id', 'asc')->get() : collect();
 
         return view('admin.ranking.detail', [

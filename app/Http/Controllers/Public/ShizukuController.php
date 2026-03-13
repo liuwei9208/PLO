@@ -745,7 +745,7 @@ class ShizukuController extends Controller
         $shop = $request->route('shop', 'shizuku');
         $shop_unit = Shop::where('slug', $shop)->firstOrFail();
         $banners = Banner::where('is_public', 1)->where('shop_id', $shop_unit->id)->orderBy('updated_at', 'desc')->get();
-        $shopRankIds = $shop_unit->ranks()->pluck('id')->toArray();
+        $shopRankIds = $shop_unit->ranks()->pluck('ranks.id')->toArray();
         $ranks = $shopRankIds ? Rank::whereIn('id', $shopRankIds)->orderBy('id', 'asc')->get() : collect();
 
         if ($ranks->isEmpty()) {

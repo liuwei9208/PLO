@@ -295,7 +295,7 @@ WHERE cast_style.cast_id = $new_girl->id;";
     public function showRanking(Request $request, string $shop): View
     {
         $shopModel = Shop::where('slug', $shop)->firstOrFail();
-        $shopRankIds = $shopModel->ranks()->pluck('id')->toArray();
+        $shopRankIds = $shopModel->ranks()->pluck('ranks.id')->toArray();
 
         if (empty($shopRankIds)) {
             return view('public.shop.ranking', [
