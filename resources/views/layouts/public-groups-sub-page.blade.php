@@ -12,7 +12,11 @@
     <link rel="icon" href="favicon.ico">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Scripts -->
-    @vite(['resources/scss/groups.scss', 'resources/js/groups.js'])
+    @vite(array_filter([
+      'resources/scss/groups.scss',
+      'resources/js/groups.js',
+      request()->routeIs('public.recruit.*') ? 'resources/scss/recruit.scss' : null,
+    ]))
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 

@@ -311,7 +311,8 @@ export default defineConfig({
         'resources/scss/groups/shop.scss',
         'resources/scss/groups/movie.scss',
         'resources/scss/groups/girl-search.scss',
-        'resources/scss/groups/pickup-page.scss'
+        'resources/scss/groups/pickup-page.scss',
+        'resources/scss/recruit.scss'
       ],
       refresh: true,
     }),
