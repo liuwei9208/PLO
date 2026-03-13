@@ -215,16 +215,29 @@ class ShizukuController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
         // dd($news);
-        $rank_id = Rank::where('is_public', 1)->orderBy('id', 'asc')->first()->id;
-        $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
-            ->where('rankings.shop_id', $shop_id)
-            ->where('rankings.rank_id', $rank_id)
-            ->select([
-                'casts.gallery_1 as cast_gallery_1',
-            ])
-            ->orderBy('rankings.rank', 'asc')
-            ->limit(2)
-            ->get();
+        $shopModel = Shop::where('slug', $shop)->first();
+        $shopRankIds = $shopModel ? $shopModel->shopRanks()->whereNotNull('rank_id')->pluck('rank_id')->toArray() : [];
+        $rankings = collect();
+        if (!empty($shopRankIds) && Ranking::where('shop_id', $shop_id)->whereIn('rank_id', $shopRankIds)->exists()) {
+            $rank_id = $shopRankIds[0];
+            $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
+                ->where('rankings.shop_id', $shop_id)
+                ->where('rankings.rank_id', $rank_id)
+                ->select(['casts.gallery_1 as cast_gallery_1'])
+                ->orderBy('rankings.rank', 'asc')
+                ->limit(2)
+                ->get();
+            if ($rankings->isEmpty()) {
+                $rank_id = Ranking::where('shop_id', $shop_id)->whereIn('rank_id', $shopRankIds)->orderBy('rank')->first()->rank_id;
+                $rankings = Ranking::leftJoin('casts', 'casts.id', '=', 'rankings.cast_id')
+                    ->where('rankings.shop_id', $shop_id)
+                    ->where('rankings.rank_id', $rank_id)
+                    ->select(['casts.gallery_1 as cast_gallery_1'])
+                    ->orderBy('rankings.rank', 'asc')
+                    ->limit(2)
+                    ->get();
+            }
+        }
         // dd($rankings);
         // dd($banners);
         // dd($events);

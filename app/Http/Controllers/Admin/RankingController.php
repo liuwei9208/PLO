@@ -87,6 +87,10 @@ class RankingController extends Controller
             $nonNullRankings = array_filter($rankings, function($value) {
                 return $value !== null && $value !== '';
             });
+            if (count($nonNullRankings) > 0 && count($nonNullRankings) < 3) {
+                $rankName = Rank::find($rank_id)?->name ?? "ランキング#{$rank_id}";
+                return redirect()->back()->withInput()->withErrors(['error' => "{$rankName}: 最低3名は登録してください。"]);
+            }
             $uniqueRankings = array_unique($nonNullRankings);
             if (count($uniqueRankings) !== count($nonNullRankings)) {
                 $duplicateCastIDs = array_unique(array_diff_assoc($nonNullRankings, $uniqueRankings));

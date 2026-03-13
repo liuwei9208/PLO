@@ -2,7 +2,7 @@
     breadcrumb="すすきのhigh grade health 雫 ＞ トップページ ＞ 女の子ランキング" :assets="['resources/scss/shops/shizuku/ranking.scss', 'resources/js/shops/shizuku/ranking.js']" :banners="$banners">
     <section class="ranking-section">
         @if ($rankingDisabled ?? false)
-            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem;">
+            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem; color: white;">
                 ランキングの登録はありません
             </div>
         @else
@@ -67,7 +67,7 @@
             </div>
         </form>
         @if ($rankings->isEmpty())
-            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem;">
+            <div class="ranking-empty-message" style="padding: 2rem; text-align: center; font-size: 1.125rem; color: white;">
                 ランキングの登録はありません
             </div>
         @else
