@@ -19,7 +19,7 @@
     </div>
 
     <div class="groups-shop-card__row">
-      <div class="groups-shop-card__label groups-shop-card__label--tel">TEL</div>
+      <div class="groups-shop-card__label groups-shop-card__label--tel">T　E　L</div>
       <div class="groups-shop-card__sep" aria-hidden="true"></div>
       <div class="groups-shop-card__value">{{ $tel }}</div>
     </div>

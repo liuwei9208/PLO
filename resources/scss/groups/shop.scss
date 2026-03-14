@@ -116,9 +116,6 @@
   text-align: center;
 }
 
-.groups-shop-card__label--tel {
-  letter-spacing: 16.15px; // matches design "TEL" tracking look
-}
 
 .groups-shop-card__sep {
   width: 1px;
@@ -129,7 +126,7 @@
 }
 
 .groups-shop-card__row--address .groups-shop-card__sep {
-  height: 44px; // matches longer separator in Figma for multi-line address
+  height: 4em;
 }
 
 .groups-shop-card__value {

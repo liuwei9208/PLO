@@ -16,6 +16,10 @@
             $desc = $shopDescriptions[$shop->slug] ?? ($shop->memo ?? '');
           @endphp
 
+          @php
+            $openStart = $shop->open_start ? $shop->open_start->format('H:i') : ($shop->slug === 'en' ? '09:00' : null);
+            $openEnd = $shop->open_end ? $shop->open_end->format('H:i') : ($shop->slug === 'en' ? '00:00' : null);
+          @endphp
           <x-public.groups.shop-card
             :name="$shop->name"
             :slug="$shop->slug"
@@ -24,8 +28,8 @@
             :address1="$shop->address1 ?? ''"
             :address2="$shop->address2 ?? ''"
             :tel="$shop->tel ?? ''"
-            :openStart="$shop->open_start ? $shop->open_start->format('H:i') : null"
-            :openEnd="$shop->open_end ? $shop->open_end->format('H:i') : null"
+            :openStart="$openStart"
+            :openEnd="$openEnd"
           />
         @endforeach
       </div>

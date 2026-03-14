@@ -344,8 +344,8 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'shizuku' => 'assets/img/shops/shizuku/001.jpg',
             'pussycat' => 'assets/img/shops/shizuku/002.jpg',
             'miyabi' => 'assets/img/shops/shizuku/003.jpg',
-            'siroganeze' => 'assets/img/shops/shizuku/005.jpg',
-            'en' => 'assets/img/shops/shizuku/004.jpg',
+            'siroganeze' => 'assets/img/shops/shizuku/004.jpg',
+            'en' => 'assets/img/shops/shizuku/005.jpg',
             'lovestory' => 'assets/img/shops/shizuku/006.jpg',
         ];
 
