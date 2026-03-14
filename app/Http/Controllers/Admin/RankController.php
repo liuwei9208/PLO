@@ -100,7 +100,7 @@ class RankController extends Controller
 
         $rank->save();
 
-        return redirect('/admin/rank/' . $rank->id);
+        return redirect()->route('admin.rank.index');
     }
 
     /**

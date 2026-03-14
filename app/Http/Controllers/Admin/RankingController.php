@@ -80,24 +80,44 @@ class RankingController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $rankings_req = $request->input('rank', []);
+        $rank_req = $request->input('rank', []);
         $shopRankCategories = $request->input('shop_rank_category', []);
 
-        foreach ($rankings_req as $rank_id => $rankings) {
-            $nonNullRankings = array_filter($rankings, function($value) {
-                return $value !== null && $value !== '';
-            });
-            if (count($nonNullRankings) > 0 && count($nonNullRankings) < 3) {
+        $selectedRankIds = [];
+        for ($position = 1; $position <= 5; $position++) {
+            $rankId = $shopRankCategories[$position] ?? '';
+            if (is_numeric($rankId) && $rankId !== '') {
+                if (in_array($rankId, $selectedRankIds)) {
+                    $rankName = Rank::find($rankId)?->name ?? "ランキング#{$rankId}";
+                    return redirect()->back()->withInput()->withErrors(['error' => "カテゴリで同じランキング（{$rankName}）を選択できません。"]);
+                }
+                $selectedRankIds[] = $rankId;
+            }
+        }
+
+        $rankingsByRankId = [];
+        for ($position = 1; $position <= 5; $position++) {
+            $rankId = $shopRankCategories[$position] ?? '';
+            if (!is_numeric($rankId) || $rankId === '') {
+                continue;
+            }
+            $positionData = $rank_req[$position] ?? [];
+            $rankData = is_array($positionData) ? ($positionData[$rankId] ?? []) : [];
+            $rankData = is_array($rankData) ? $rankData : [];
+            $filtered = array_filter($rankData, fn($v) => $v !== null && $v !== '');
+            $rankingsByRankId[$rankId] = $filtered;
+        }
+
+        foreach ($rankingsByRankId as $rank_id => $rankings) {
+            if (count($rankings) > 0 && count($rankings) < 3) {
                 $rankName = Rank::find($rank_id)?->name ?? "ランキング#{$rank_id}";
                 return redirect()->back()->withInput()->withErrors(['error' => "{$rankName}: 最低3名は登録してください。"]);
             }
-            $uniqueRankings = array_unique($nonNullRankings);
-            if (count($uniqueRankings) !== count($nonNullRankings)) {
-                $duplicateCastIDs = array_unique(array_diff_assoc($nonNullRankings, $uniqueRankings));
-                $duplicateCastNames = array_map(function($value) {
-                    return Cast::find($value)->name;
-                }, $duplicateCastIDs);
-                return redirect()->back()->withInput()->withErrors(['error' => '同じランキングで同じキャストは選べません。キャスト名: ' . implode(', ', $duplicateCastNames)]);
+            $uniqueRankings = array_unique($rankings);
+            if (count($uniqueRankings) !== count($rankings)) {
+                $duplicateCastIDs = array_unique(array_diff_assoc($rankings, $uniqueRankings));
+                $duplicateCastNames = array_map(fn($v) => Cast::find($v)?->name ?? '', $duplicateCastIDs);
+                return redirect()->back()->withInput()->withErrors(['error' => '同じランキングで同じキャストは選べません。キャスト名: ' . implode(', ', array_filter($duplicateCastNames))]);
             }
         }
 
@@ -117,7 +137,7 @@ class RankingController extends Controller
 
         Ranking::where('shop_id', $id)->delete();
 
-        foreach ($rankings_req as $rank_id => $rankings) {
+        foreach ($rankingsByRankId as $rank_id => $rankings) {
             $rankings = array_slice($rankings, 0, 7, true);
             foreach ($rankings as $pos => $cast_id) {
                 if ((int) $pos > 7) {

@@ -68,8 +68,11 @@
                                 class="shop-rank-category-select dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
                                 <option value="" @selected($selectedRankId === '')>非表示</option>
                                 @foreach ($ranks as $rank)
-                                    <option value="{{ $rank->id }}" @selected($selectedRankId == $rank->id)>
-                                        {{ $rank->name }}
+                                    @php
+                                        $usedInOtherPosition = collect($rankByPosition)->filter(fn($sr, $pos) => $pos != $position && $sr && $sr->rank_id == $rank->id)->isNotEmpty();
+                                    @endphp
+                                    <option value="{{ $rank->id }}" @selected($selectedRankId == $rank->id) @disabled($usedInOtherPosition)>
+                                        {{ $rank->name }}{{ $usedInOtherPosition ? '（他で選択中）' : '' }}
                                     </option>
                                 @endforeach
                             </select>
@@ -102,8 +105,9 @@
                                             {{ $label }}
                                         </label>
                                         <div class="relative z-20 w-full max-w-[380px] bg-transparent">
-                                            <select name="rank[{{ $rank->id }}][{{ $index + 1 }}]"
-                                                class="dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30">
+                                            <select name="rank[{{ $position }}][{{ $rank->id }}][{{ $index + 1 }}]"
+                                                class="rank-cast-select dark:bg-dark-900 shadow-theme-xs focus:border-brand-300 focus:ring-brand-500/10 dark:focus:border-brand-800 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pr-11 text-sm text-gray-800 placeholder:text-gray-400 focus:ring-3 focus:outline-hidden dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30"
+                                                data-position="{{ $position }}" data-rank-id="{{ $rank->id }}">
                                                 <option value="">選択してください</option>
                                                 @foreach ($casts as $cast)
                                                     <option value="{{ $cast->id }}"
@@ -138,6 +142,22 @@
         </form>
     </div>
     <script>
+        function updateCategoryOptions() {
+            const selects = document.querySelectorAll('.shop-rank-category-select');
+            const selectedByPosition = {};
+            selects.forEach(s => {
+                const pos = s.id.replace('shop_rank_category_', '');
+                selectedByPosition[pos] = s.value;
+            });
+            selects.forEach(select => {
+                const currentPos = select.id.replace('shop_rank_category_', '');
+                select.querySelectorAll('option:not([value=""])').forEach(opt => {
+                    const usedElsewhere = Object.entries(selectedByPosition).some(([pos, val]) => pos !== currentPos && val === opt.value);
+                    opt.disabled = usedElsewhere;
+                    opt.textContent = opt.textContent.replace(/\s*（他で選択中）$/, '') + (usedElsewhere ? '（他で選択中）' : '');
+                });
+            });
+        }
         document.querySelectorAll('.shop-rank-category-select').forEach(select => {
             select.addEventListener('change', function() {
                 const position = this.id.replace('shop_rank_category_', '');
@@ -149,7 +169,32 @@
                         div.style.display = div.dataset.rankId === rankId ? '' : 'none';
                     });
                 }
+                updateCategoryOptions();
             });
         });
+        updateCategoryOptions();
+
+        function updateCastOptions() {
+            document.querySelectorAll('.cast-ranks-container').forEach(container => {
+                const position = container.dataset.position;
+                const categorySelect = document.getElementById('shop_rank_category_' + position);
+                const selectedRankId = categorySelect ? categorySelect.value : '';
+                container.querySelectorAll('.rank-casts').forEach(rankCasts => {
+                    if (rankCasts.dataset.rankId !== selectedRankId) return;
+                    const selects = rankCasts.querySelectorAll('.rank-cast-select');
+                    const selectedIds = Array.from(selects).map(s => s.value).filter(Boolean);
+                    selects.forEach(select => {
+                        const currentVal = select.value;
+                        select.querySelectorAll('option:not([value=""])').forEach(opt => {
+                            opt.disabled = selectedIds.includes(opt.value) && opt.value !== currentVal;
+                        });
+                    });
+                });
+            });
+        }
+        document.querySelectorAll('.rank-cast-select').forEach(select => {
+            select.addEventListener('change', updateCastOptions);
+        });
+        updateCastOptions();
     </script>
 </x-admin-layout>
