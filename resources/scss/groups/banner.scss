@@ -42,7 +42,7 @@
   width: 100%;
   min-height: 100vh;
   z-index: -100;
-  overflow: visible;
+  overflow: hidden;
   pointer-events: none;
 
   .banner-photodiary-background {
@@ -51,14 +51,20 @@
     pointer-events: none;
     z-index: 0;
     background-image: var(--banner-bg-image, url('/assets/img/groups/banner.jpg'));
-    background-repeat: repeat-y;
+    background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center;
+    min-height: 100vh;
+    min-width: 100%;
+
+    @media screen and (max-width: 850px) {
+      background-attachment: scroll;
+    }
+
+    @media screen and (min-width: 851px) {
+      background-attachment: fixed;
+    }
 
     .banner-photodiary-overlay {
       position: absolute;
@@ -69,7 +75,6 @@
   }
 
 
-  // Content that stays fixed with banner
   .banner-photodiary-content {
     display: flex;
     flex-direction: column;
@@ -85,12 +90,19 @@
     padding: 23px 0 15px;
     pointer-events: none;
 
+    @media screen and (min-width: 851px) {
+      align-items: flex-end;
+      justify-content: center;
+      padding-right: 12%;
+    }
+
     @media screen and (max-width: 850px) {
       top: 25%;
       inset: auto;
       margin: 0;
       transform: translate(-50%, -50%);
       left: 50%;
+      align-items: center;
     }
   }
 
@@ -106,6 +118,8 @@
     font-style: normal;
     font-weight: 400;
     letter-spacing: 0.9px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 
     @media screen and (max-width: 850px) {
       color: var(--b, #021A21);
@@ -127,22 +141,29 @@
     overflow: hidden;
     position: relative;
     z-index: 1;
+
+    @media screen and (min-width: 851px) {
+      justify-content: flex-end;
+    }
   }
 
   .banner-photodiary-title-ja {
     color: var(--b, #021A21);
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #FFF;
-    font-family: YuGothic;
+    font-family: YuGothic, "Yu Gothic", "Hiragino Sans", "Noto Sans JP", sans-serif;
     font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+
     @media screen and (max-width: 850px) {
       color: var(--b, #021A21);
       -webkit-text-stroke-width: 0px;
-      font-family: YuGothic;
+      font-family: YuGothic, "Yu Gothic", "Hiragino Sans", "Noto Sans JP", sans-serif;
       font-size: 20px;
       font-style: normal;
       font-weight: 700;
