@@ -75,7 +75,7 @@
             @if($showButtonGroup)
               @if(request()->routeIs('public.groups.newface') || request()->routeIs('public.groups.photodiary') || request()->routeIs('public.groups.schedule') || request()->routeIs('public.groups.event') || request()->routeIs('public.groups.movie') || request()->routeIs('public.groups.pickup'))
                 <form method="GET" action="{{ url()->current() }}" class="groups-shops-buttons">
-                  @foreach(request()->except('shop', 'page', 'date') as $key => $value)
+                  @foreach(request()->except('shop', 'page') as $key => $value)
                     @if(is_scalar($value))
                       <input type="hidden" name="{{ $key }}" value="{{ $value }}">
                     @endif

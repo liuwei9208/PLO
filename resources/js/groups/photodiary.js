@@ -45,15 +45,11 @@ function initializeCalendar(calendarEl, calendarInstance) {
       right: "next",
     },
     dateClick: function (info) {
-      console.log("Date clicked:", info.dateStr);
-      // Handle date click - redirect to show diaries for the selected date
-      // Clear month parameter when clicking a specific date
-      const date = info.dateStr;
-      if (date != '') {
-        window.location.href = `/photodiary?date=${date}`;
-      } else {
-        window.location.href = `/photodiary`;
-      }
+      const params = new URLSearchParams(window.location.search);
+      params.set('date', info.dateStr);
+      params.delete('month');
+      params.delete('page');
+      window.location.href = '/photodiary?' + params.toString();
     },
   });
 

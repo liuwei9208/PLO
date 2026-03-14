@@ -26,7 +26,7 @@
                   $monthLabel = $year . '年' . (int)$monthNum . '月';
                   $isCurrentMonth = $availableMonth === $currentMonth;
                 @endphp
-                <a href="{{ route('public.groups.photodiary') }}?month={{ $availableMonth }}" 
+                <a href="{{ route('public.groups.photodiary') }}?month={{ $availableMonth }}{{ request('shop') ? '&shop=' . request('shop') : '' }}" 
                    class="diary-monthly-picker-item {{ $isCurrentMonth ? 'diary-monthly-picker-item--active' : '' }}">
                   {{ $monthLabel }}
                 </a>
@@ -96,7 +96,7 @@
                     $monthLabel = $year . '年' . (int)$monthNum . '月';
                     $isCurrentMonth = $availableMonth === $currentMonth;
                   @endphp
-                  <a href="{{ route('public.groups.photodiary') }}?month={{ $availableMonth }}" 
+                  <a href="{{ route('public.groups.photodiary') }}?month={{ $availableMonth }}{{ request('shop') ? '&shop=' . request('shop') : '' }}" 
                      class="diary-monthly-picker-item {{ $isCurrentMonth ? 'diary-monthly-picker-item--active' : '' }}">
                     {{ $monthLabel }}
                   </a>

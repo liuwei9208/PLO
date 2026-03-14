@@ -1172,6 +1172,13 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->whereNot('shops.slug', 'headquarter')
             ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m-%d') as date, diaries.id");
 
+        $allowedShopSlugs = ['shizuku', 'siroganeze', 'lovestory', 'pussycat', 'miyabi', 'en'];
+        $shop = (string) $request->input('shop', '');
+        if ($shop !== '' && in_array($shop, $allowedShopSlugs, true)) {
+            $query->where('shops.slug', $shop);
+            $query_date->where('shops.slug', $shop);
+        }
+
         // Filter by month if provided (format: YYYY-MM)
         $month = $request->input('month', '');
         if ($month != '') {
@@ -1184,7 +1191,6 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
         if ($date != '') {
             $query->whereDate('diaries.created_at', $date);
             $query_date->whereDate('diaries.created_at', $date);
-            // Extract month from date for highlighting
             $month = substr($date, 0, 7);
         }
 
@@ -1196,6 +1202,7 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->appends([
                 'date' => $date,
                 'month' => $month,
+                'shop' => $shop,
             ])
             ->withPath('photodiary');
 
@@ -1204,12 +1211,16 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             ->get();
 
         // Get available months for monthly picker (grouped by year-month)
-        $availableMonths = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
+        $availableMonthsQuery = Diary::leftJoin('casts', 'diaries.cast_id', '=', 'casts.id')
             ->leftJoin('shops', 'casts.shop_id', '=', 'shops.id')
             ->where('diaries.is_public', 1)
             ->where('casts.is_public', 1)
             ->whereNot('shops.slug', 'touchvip')
-            ->whereNot('shops.slug', 'headquarter')
+            ->whereNot('shops.slug', 'headquarter');
+        if ($shop !== '') {
+            $availableMonthsQuery->where('shops.slug', $shop);
+        }
+        $availableMonths = $availableMonthsQuery
             ->selectRaw("DATE_FORMAT(diaries.created_at, '%Y-%m') as month")
             ->groupBy('month')
             ->orderBy('month', 'desc')
