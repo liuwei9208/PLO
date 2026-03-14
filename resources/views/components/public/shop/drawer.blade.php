@@ -27,10 +27,10 @@
           </a></li>
           <li><a href="{{ route('public.shop.movielist', $shop->slug) }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">MOVIE一覧
           </a></li>
-          <li><a href="{{ route('public.group.shop') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">店舗一覧
+          <li><a href="{{ route('public.groups.shop') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">店舗一覧
           </a></li>
           @if(Auth::guard('member')->check())
-          <li><a href="{{ route('public.group.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
+          <li><a href="{{ route('public.groups.mypage') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">マイページ
           </a></li>
           @elseif (Auth::guard('web')->check())
           <li><a href="{{ route('admin.home') }}"><img src="{{ asset('assets/img/raindrop.png') }}" alt="" class="raindrop-icon">管理者

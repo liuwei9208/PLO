@@ -13,12 +13,12 @@
       <h2 class="plo_news-title-ja title-font-sm">新着情報</h2>
     </div>
     <ul class="plo_news-shops">
-      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.group.newslist',['shop' => 'all']) }}">
+      <a class="plo_news-shops-shop --all content-font" href="{{ route('public.groups.newslist',['shop' => 'all']) }}">
         ALL
       </a>
       @foreach($shops as $shop)
         @if($shop->slug == 'headquarter')
-          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.group.newslist', ['shop' => 'headquarter']) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">headquarters</span><span class="shop-name">{{ $shop->name }}</span></span></a>
+          <a class="plo_news-shops-shop --headquarter content-font" href="{{ route('public.groups.newslist', ['shop' => 'headquarter']) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">headquarters</span><span class="shop-name">{{ $shop->name }}</span></span></a>
         @else
           <a class="plo_news-shops-shop --{{ $shop->slug }} content-font" href="{{ route('public.shop.newslist', ['shop' => $shop->slug]) }}"><img src="{{ asset('assets/img/search.png') }}" alt="search"><span class="shop-text"><span class="shop-slug">{{$shop->slug}}</span><span class="shop-name">{{ $shop->name }}</span></span></a>
         @endif
@@ -28,7 +28,7 @@
       @foreach($news as $news_item)
         <div class="plo_news-list-item">
           @if($news_item->slug == 'headquarter')
-          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          <a href="{{ route('public.groups.newsdetail', ['id' => $news_item->id]) }}">
           @else
           <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
           @endif
@@ -51,7 +51,7 @@
     <div class="plo_news-items sp-only">
       <div class="plo_news-items-top">
         @if($news_item->slug == 'headquarter')
-        <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+        <a href="{{ route('public.groups.newsdetail', ['id' => $news_item->id]) }}">
         @else
         <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
         @endif
@@ -75,7 +75,7 @@
       @foreach($news->skip(1) as $news_item)
         <div class="plo_news-items-list-item">
           @if($news_item->slug == 'headquarter')
-          <a href="{{ route('public.group.newsdetail', ['id' => $news_item->id]) }}">
+          <a href="{{ route('public.groups.newsdetail', ['id' => $news_item->id]) }}">
           @else
           <a href="{{ route('public.shop.newsdetail', ['shop' => $news_item->slug, 'id' => $news_item->id]) }}">
           @endif
@@ -97,7 +97,7 @@
       </div>
     </div>
     <div class="plo_news-more ">
-      <a href="{{ route('public.group.newslist', ['shop' => 'all']) }}" class="plo_news-more-button">もっと見る</a>
+      <a href="{{ route('public.groups.newslist', ['shop' => 'all']) }}" class="plo_news-more-button">もっと見る</a>
     </div>
   </section>
   @endif --}}
@@ -201,7 +201,7 @@
     </div>
     </div>
     {{-- </div> --}}
-    <a href="{{ route('public.group.schedule') }}" class="today-more more-button more-button-title">もっと見る</a>
+    <a href="{{ route('public.groups.schedule') }}" class="today-more more-button more-button-title">もっと見る</a>
 
   </section>
   @endif
@@ -224,7 +224,7 @@
                 <h3 class="event-main-title">{{ $event->published_at->format('y.m.d')."  |  " .$event->title}}</h3>
               </div>
               <div class="event-main-image">
-                <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                <a href="{{ route('public.groups.event.detail', ['id' => $event->id]) }}">
                   <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
                 </a>
               </div>
@@ -306,7 +306,7 @@
       @endforeach
     </div>
     @if($newfaces_this_month->count() > 0)
-    <a href="{{ route('public.group.newcomer') }}"  class="newface-more more-button more-button-title">もっと見る</a>
+    <a href="{{ route('public.groups.newcomer') }}"  class="newface-more more-button more-button-title">もっと見る</a>
     @endif
   @if($newfaces_this_month->count() > 0)
   {{-- </div> --}}
@@ -419,7 +419,7 @@
       </div>
     </div>
     </div>
-    <a href="{{ route('public.group.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
+    <a href="{{ route('public.groups.pickup') }}" class="pickup-more more-button more-button-title">もっと見る</a>
   </section>
   @endif
 

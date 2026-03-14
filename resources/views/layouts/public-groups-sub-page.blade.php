@@ -25,7 +25,7 @@
   <body class="">
 
     <!-- 年齢確認モーダル -->
-    {{-- <x-age-verification-modal /> --}}
+    <x-age-verification-modal />
 
     <!-- Header -->
     <x-public.groups.header-sub />

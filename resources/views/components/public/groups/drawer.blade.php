@@ -11,32 +11,32 @@
     <ul>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">TOP</span>
-        <a href="{{ route('public.group.home') }}" class="drawer-nav-ja">ホーム</a>
+        <a href="{{ route('public.groups.home') }}" class="drawer-nav-ja">ホーム</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">SHOP LIST</span>
-        <a href="{{ route('public.group.shop') }}" class="drawer-nav-ja">店舗一覧</a>
+        <a href="{{ route('public.groups.shop') }}" class="drawer-nav-ja">店舗一覧</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">SCHEDULE</span>
-        <a href="{{ route('public.group.schedule') }}" class="drawer-nav-ja">出勤情報</a>
+        <a href="{{ route('public.groups.schedule') }}" class="drawer-nav-ja">出勤情報</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">NEW FACE</span>
-        <a href="{{ route('public.group.newcomer') }}" class="drawer-nav-ja">新人情報</a>
+        <a href="{{ route('public.groups.newcomer') }}" class="drawer-nav-ja">新人情報</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">EVENT LIST</span>
-        <a href="{{ route('public.group.event') }}" class="drawer-nav-ja">イベント一覧</a>
+        <a href="{{ route('public.groups.event') }}" class="drawer-nav-ja">イベント一覧</a>
       </li>
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">SEARCH</span>
-        <a href="{{ route('public.group.search') }}" class="drawer-nav-ja">女の子検索ページ</a>
+        <a href="{{ route('public.groups.girl-search') }}" class="drawer-nav-ja">女の子検索ページ</a>
       </li>
       @if (Auth::guard('member')->check())
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">MYPAGE</span>
-        <a href="{{ route('public.group.mypage') }}" class="drawer-nav-ja">マイページ</a>
+        <a href="{{ route('public.groups.mypage') }}" class="drawer-nav-ja">マイページ</a>
       </li>
       @else
       <li class="drawer-nav-item">
@@ -70,7 +70,7 @@
       </li>
       {{-- <li class="drawer-nav-item">
         <span class="drawer-nav-en">PRIVACY POLICY</span>
-        <a href="{{ route('public.group.privacy-policy') }}" class="drawer-nav-ja">プライバシー<br class="sm">ポリシー</a>
+        <a href="{{ route('public.groups.privacy-policy') }}" class="drawer-nav-ja">プライバシー<br class="sm">ポリシー</a>
       </li> --}}
       <li class="drawer-nav-item">
         <span class="drawer-nav-en">CONTACT</span>

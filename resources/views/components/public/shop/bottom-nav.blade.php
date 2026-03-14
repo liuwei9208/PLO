@@ -15,7 +15,7 @@
         @if (Auth::guard('member')->check() || Auth::guard('web')->check())
 
           @if (Auth::guard('member')->check())
-          <a href="{{ route('public.group.mypage') }}" class="bottom-nav__button group">
+          <a href="{{ route('public.groups.mypage') }}" class="bottom-nav__button group">
               <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
               <span class="bottom-nav__button__text">マイページ</span>
           </a>
@@ -32,7 +32,7 @@
             <span class="bottom-nav__button__text">ログイン</span>
         </a>
         @endif
-        {{-- <a href="{{ route('public.group.newcomer') }}" class="bottom-nav__button group">
+        {{-- <a href="{{ route('public.groups.newcomer') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
             <span class="bottom-nav__button__text">マイページ</span>
         </a> --}}

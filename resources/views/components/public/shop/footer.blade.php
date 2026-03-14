@@ -18,7 +18,7 @@
         @if (Auth::guard('web')->check())
         <div class="footer__nav-item"><a href="{{ route('admin.home') }}">管理画面</a></div>
         @elseif (Auth::guard('member')->check())
-        <div class="footer__nav-item"><a href="{{ route('public.group.mypage') }}">マイページ</a></div>
+        <div class="footer__nav-item"><a href="{{ route('public.groups.mypage') }}">マイページ</a></div>
         @endif
       @else
       <div class="footer__nav-item"><a href="{{ route('terms.show') }}">新規会員登録</a></div>
@@ -28,7 +28,7 @@
       <div class="footer__nav-item"><a href="">男性求人</a></div>
       <div class="footer__nav-item"><a href="{{ url('/privacy-policy') }}">個人情報保護方針</a></div>
       <div class="footer__nav-item"><a href="{{ url('/') }}">グループTOP</a></div>
-      {{-- <div class="footer__nav-item"><a href="{{ route('public.group.home') }}">グループTOP</a></div> --}}
+      {{-- <div class="footer__nav-item"><a href="{{ route('public.groups.home') }}">グループTOP</a></div> --}}
     </nav>
     <div class="footer__nav_logo">
       {{-- <img src="{{ asset('assets/img/shop/footer.svg') }}" alt="logo"> --}}

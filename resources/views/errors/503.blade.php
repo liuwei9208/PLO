@@ -9,7 +9,7 @@
       しばらく時間をおいて再度アクセスしてください。<br>
       ご不便をおかけして申し訳ございません。
     </p>
-    <a href="{{ route('public.group.home') }}" class="error-page__link">トップページに戻る</a>
+    <a href="{{ route('public.groups.home') }}" class="error-page__link">トップページに戻る</a>
   </div>
 </div>
 

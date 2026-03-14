@@ -8,7 +8,7 @@
       しばらく時間をおいて再度アクセスしてください。<br>
       問題が解決しない場合は、管理者にお問い合わせください。
     </p>
-    <a href="{{ route('public.group.home') }}" class="error-page__link">トップページに戻る</a>
+    <a href="{{ route('public.groups.home') }}" class="error-page__link">トップページに戻る</a>
   </div>
 </div>
 </x-error-layout>

@@ -1090,14 +1090,14 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'email.email' => 'メールアドレスが不正です。',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('public.group.memberinfo')->withErrors($validator)->withInput();
+            return redirect()->route('public.groups.memberinfo')->withErrors($validator)->withInput();
         }
         $member = Auth::guard('member')->user();
         $member->name = $request->name;
         $member->tel = $request->tel;
         $member->email = $request->email;
         $member->save();
-        return redirect()->route('public.group.memberinfo');
+        return redirect()->route('public.groups.memberinfo');
     }
     public function showPassword(Request $request)
     {
@@ -1118,15 +1118,15 @@ ORDER BY `'.env('DB_DATABASE').'`.shops.`rank` ASC';
             'new_password.min' => '新しいパスワードは8文字以上で入力してください。',
         ]);
         if ($validator->fails()) {
-            return redirect()->route('public.group.password')->withErrors($validator)->withInput();
+            return redirect()->route('public.groups.password')->withErrors($validator)->withInput();
         }
         $member = Auth::guard('member')->user();
         if (Hash::check($request->password, $member->password)) {
             $member->password = Hash::make($request->new_password);
             $member->save();
-            return redirect()->route('public.group.password')->with('success', 'パスワードを変更しました。');
+            return redirect()->route('public.groups.password')->with('success', 'パスワードを変更しました。');
         } else {
-            return redirect()->route('public.group.password')->withErrors(['password' => '以前のパスワードが間違っています。']);
+            return redirect()->route('public.groups.password')->withErrors(['password' => '以前のパスワードが間違っています。']);
         }
     }
 

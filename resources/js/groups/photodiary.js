@@ -50,9 +50,9 @@ function initializeCalendar(calendarEl, calendarInstance) {
       // Clear month parameter when clicking a specific date
       const date = info.dateStr;
       if (date != '') {
-        window.location.href = `/groups/photodiary?date=${date}`;
+        window.location.href = `/photodiary?date=${date}`;
       } else {
-        window.location.href = `/groups/photodiary`;
+        window.location.href = `/photodiary`;
       }
     },
   });

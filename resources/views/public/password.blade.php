@@ -3,41 +3,41 @@
       <div class="password-container">
         <div class="password-container-sidebar">
           <ul class="password-container-sidebar-list">
-            @if (request()->routeIs('public.group.mypage'))
+            @if (request()->routeIs('public.groups.mypage'))
             <li class="password-container-sidebar-list-item active">
-              <a href="{{route('public.group.mypage')}}">
+              <a href="{{route('public.groups.mypage')}}">
                 <span>マイページ</span>
               </a>
             </li>
             @else
             <li class="password-container-sidebar-list-item">
-              <a href="{{route('public.group.mypage')}}">
+              <a href="{{route('public.groups.mypage')}}">
                 <span>マイページ</span>
               </a>
             </li>
             @endif
-            @if (request()->routeIs('public.group.memberinfo'))
+            @if (request()->routeIs('public.groups.memberinfo'))
             <li class="password-container-sidebar-list-item active">
-              <a href="{{route('public.group.memberinfo')}}">
+              <a href="{{route('public.groups.memberinfo')}}">
                 <span>会員情報変更</span>
               </a>
             </li>
             @else
             <li class="password-container-sidebar-list-item">
-              <a href="{{route('public.group.memberinfo')}}">
+              <a href="{{route('public.groups.memberinfo')}}">
                 <span>会員情報変更</span>
               </a>
             </li>
             @endif
-            @if (request()->routeIs('public.group.password'))
+            @if (request()->routeIs('public.groups.password'))
             <li class="password-container-sidebar-list-item active">
-              <a href="{{route('public.group.password')}}">
+              <a href="{{route('public.groups.password')}}">
                 <span>パスワード変更</span>
               </a>
             </li>
             @else
             <li class="password-container-sidebar-list-item">
-              <a href="{{route('public.group.password')}}">
+              <a href="{{route('public.groups.password')}}">
                 <span>パスワード変更</span>
               </a>
             </li>
@@ -53,41 +53,41 @@
         <div class="password-container-main">
           <div class="password-container-main-nav sp-only">
             <ul class="password-container-main-nav-list">
-              @if (request()->routeIs('public.group.mypage'))
+              @if (request()->routeIs('public.groups.mypage'))
               <li class="password-container-main-nav-list-item active">
-                <a href="{{route('public.group.mypage')}}">
+                <a href="{{route('public.groups.mypage')}}">
                   <span>マイページ</span>
                 </a>
               </li>
               @else
               <li class="password-container-main-nav-list-item">
-                <a href="{{route('public.group.mypage')}}">
+                <a href="{{route('public.groups.mypage')}}">
                   <span>マイページ</span>
                 </a>
               </li>
               @endif
-              @if (request()->routeIs('public.group.memberinfo'))
+              @if (request()->routeIs('public.groups.memberinfo'))
               <li class="password-container-main-nav-list-item active">
-                <a href="{{route('public.group.memberinfo')}}">
+                <a href="{{route('public.groups.memberinfo')}}">
                   <span>会員情報</span>
                 </a>
               </li>
               @else
               <li class="password-container-main-nav-list-item">
-                <a href="{{route('public.group.memberinfo')}}">
+                <a href="{{route('public.groups.memberinfo')}}">
                   <span>会員情報</span>
                 </a>
               </li>
               @endif
-              @if (request()->routeIs('public.group.password'))
+              @if (request()->routeIs('public.groups.password'))
               <li class="password-container-main-nav-list-item active">
-                <a href="{{route('public.group.password')}}">
+                <a href="{{route('public.groups.password')}}">
                   <span>パスワード</span>
                 </a>
               </li>
               @else
               <li class="password-container-main-nav-list-item">
-                <a href="{{route('public.group.password')}}">
+                <a href="{{route('public.groups.password')}}">
                   <span>パスワード</span> 
                 </a>
               </li>
@@ -101,7 +101,7 @@
               <span>パスワード変更</span>
             </div>
             {{-- <div class="member-container-main-content-form"> --}}
-              <form action="{{route('public.group.password')}}" method="post" class="password-container-main-content-form">
+              <form action="{{ route('public.groups.password') }}" method="post" class="password-container-main-content-form">
                 @csrf
                 @if (session('success'))
                 <div class="password-container-main-content-form-success">

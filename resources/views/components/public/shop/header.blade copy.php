@@ -39,7 +39,7 @@
       <div class="header-nav-lists-signup">
         @if (Auth::guard('member')->check() || Auth::guard('web')->check())
           @if (Auth::guard('member')->check())
-          <a href="{{ route('public.group.mypage') }}">
+          <a href="{{ route('public.groups.mypage') }}">
             <img src="{{ asset('assets/img/shop/signup.png') }}" alt="">
             <span>マイページ</span>
           </a>

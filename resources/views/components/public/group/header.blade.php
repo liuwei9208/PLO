@@ -1,5 +1,5 @@
 <header class="header" id="header">
-  <a href="{{ route('public.group.home') }}" class="header-logo sm">
+  <a href="{{ route('public.groups.home') }}" class="header-logo sm">
     <img src="{{ asset('assets/img/group/header/logo.png') }}" alt="">
   </a>
   <div class="header-user md lg">

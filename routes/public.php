@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Public\GroupController;
 use App\Http\Controllers\Public\ShopController;
 use App\Http\Controllers\Public\TouchVipDiaryController;
 use App\Http\Middleware\PublicAvailable;
@@ -32,66 +31,39 @@ Route::middleware([PublicBasicAuth::class])->name('public.')->group(function () 
     //     dd($memberId);
     //     return view('public.qrcode', ['memberId' => $memberId]);
     // });
-    /**
-     * Group routes
-     *
-     * @see \App\Http\Controllers\Public\GroupController
-     */
-    Route::prefix('/')->name('group.')->group(function () {
-        Route::get('/', [GroupController::class, 'showHome'])->name('home');
-        Route::get('/front', [GroupController::class, 'showFront'])->name('front');
-        Route::get('shop', [GroupController::class, 'showShop'])->name('shop');
-        Route::get('schedule', [GroupController::class, 'showSchedule'])->name('schedule');
-        Route::get('event', [GroupController::class, 'showEvent'])->name('event');
-        Route::get('event/{id}', [GroupController::class, 'showEventDetail'])->name('event.detail');
-        Route::get('search', [GroupController::class, 'showSearch'])->name('search');
-        Route::post('search', [GroupController::class, 'searchResult']);
-        Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
-        Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
-        Route::get('pickup', [GroupController::class, 'showPickup'])->name('pickup');
-        Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
-        Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
-        Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
-        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
-        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
-        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
-        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
-        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
-        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
-        Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
-        Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
-        // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
-    });
-    Route::prefix('groups')->name('groups.')->group(function () {
+    Route::prefix('')->name('groups.')->group(function () {
         Route::get('/', [GroupsController::class, 'showHome'])->name('home');
-        // Route::get('/front', [GroupController::class, 'showFront'])->name('front');
         Route::get('shop', [GroupsController::class, 'showShop'])->name('shop');
         Route::get('schedule', [GroupsController::class, 'showSchedule'])->name('schedule');
         Route::get('event', [GroupsController::class, 'showEvent'])->name('event');
         Route::get('event/{id}', [GroupsController::class, 'showEventDetail'])->name('event.detail');
-        Route::get('search', [GroupController::class, 'showSearch'])->name('search');
-        Route::post('search', [GroupController::class, 'searchResult']);
-        Route::get('searchResult', [GroupController::class, 'searchResult'])->name('searchResult');
-        Route::post('searchResult', [GroupController::class, 'searchResult'])->name('searchResult.post');
+        Route::get('search', [GroupsController::class, 'showSearch'])->name('search');
+        Route::post('search', [GroupsController::class, 'searchResult']);
+        Route::get('searchResult', [GroupsController::class, 'searchResult'])->name('searchResult');
+        Route::post('searchResult', [GroupsController::class, 'searchResult'])->name('searchResult.post');
         Route::get('pickup', [GroupsController::class, 'showPickup'])->name('pickup');
-        Route::get('privacy-policy', [GroupController::class, 'showPrivacyPolicy'])->name('privacy-policy');
-        Route::get('personal-policy', [GroupController::class, 'showPersonalPolicy'])->name('personal-policy');
-        Route::get('newcomer', [GroupController::class, 'showNewcomer'])->name('newcomer');
-        Route::get('mypage', [GroupController::class, 'showMypage'])->name('mypage');
-        Route::get('memberinfo', [GroupController::class, 'showMemberInfo'])->name('memberinfo');
-        Route::post('memberinfo', [GroupController::class, 'updateMemberInfo'])->name('memberinfo.update');
-        Route::get('password', [GroupController::class, 'showPassword'])->name('password');
-        Route::post('password', [GroupController::class, 'updatePassword'])->name('password.update');
-        Route::get('review', [GroupController::class, 'wirteReview'])->name('review');
-        Route::get('newslist/{shop}', [GroupController::class, 'showNewsList'])->name('newslist');
-        Route::get('newsdetail/{id}', [GroupController::class, 'showNewsDetail'])->name('newsdetail');
+        Route::get('privacy-policy', [GroupsController::class, 'showPrivacyPolicy'])->name('privacy-policy');
+        Route::get('personal-policy', [GroupsController::class, 'showPersonalPolicy'])->name('personal-policy');
+        Route::get('newcomer', [GroupsController::class, 'showNewcomer'])->name('newcomer');
+        Route::get('mypage', [GroupsController::class, 'showMypage'])->name('mypage');
+        Route::get('memberinfo', [GroupsController::class, 'showMemberInfo'])->name('memberinfo');
+        Route::post('memberinfo', [GroupsController::class, 'updateMemberInfo'])->name('memberinfo.update');
+        Route::get('password', [GroupsController::class, 'showPassword'])->name('password');
+        Route::post('password', [GroupsController::class, 'updatePassword'])->name('password.update');
+        Route::get('review', [GroupsController::class, 'wirteReview'])->name('review');
+        Route::get('newslist/{shop}', [GroupsController::class, 'showNewsList'])->name('newslist');
+        Route::get('newsdetail/{id}', [GroupsController::class, 'showNewsDetail'])->name('newsdetail');
         Route::get('photodiary', [GroupsController::class, 'showPhotoDiary'])->name('photodiary');
         Route::get('newface', [GroupsController::class, 'showNewFace'])->name('newface');
         Route::get('movie', [GroupsController::class, 'showMovie'])->name('movie');
         Route::get('girl-search', [GroupsController::class, 'showGirlSearch'])->name('girl-search');
         Route::post('girl-search', [GroupsController::class, 'showGirlSearch']);
-        // Route::get('twitter', [GroupController::class, 'showTwitter'])->name('twitter');
     });
+
+    Route::redirect('/groups', '/');
+    Route::get('/groups/{path}', function ($path) {
+        return redirect('/' . $path, 301);
+    })->where('path', '.*');
 
     Route::prefix('recruit')->name('recruit.')->group(function () {
         Route::get('male', [RecruitController::class, 'showMale'])->name('male');

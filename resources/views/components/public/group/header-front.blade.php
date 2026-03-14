@@ -1,23 +1,23 @@
-@if (request()->routeIs('public.group.home'))
+@if (request()->routeIs('public.groups.home'))
 <header class="header" id="header">
-  <a href="{{ route('public.group.home') }}" class="header-logo sm">
+  <a href="{{ route('public.groups.home') }}" class="header-logo sm">
     <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
   </a>
   <div class="header-user md lg">
     <div class="header-user-menu">
-      <a href="{{ route('public.group.newcomer') }}">
+      <a href="{{ route('public.groups.newcomer') }}">
         <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>
-      <a href="{{ route('public.group.schedule') }}">
+      <a href="{{ route('public.groups.schedule') }}">
         <small>SCHEDULE</small>
         <span class="menu_schedule">出勤情報</span>
       </a>
-      <a href="{{ route('public.group.event') }}">
+      <a href="{{ route('public.groups.event') }}">
         <small>EVENT</small>
         <span class="menu_event">イベント情報</span>
       </a>
-      <a href="{{ route('public.group.shop') }}">
+      <a href="{{ route('public.groups.shop') }}">
         <small>SHOP</small>
         <span class="menu_shop">店舗一覧</span>
       </a>
@@ -39,7 +39,7 @@
       @if (Auth::guard('member')->check())
       <div class="header-user-logbox-last">
         <span></span>
-        <a href="{{ route('public.group.mypage') }}">
+        <a href="{{ route('public.groups.mypage') }}">
           <small>MYPAGE</small>
           <span>マイページ</span>
         </a>
@@ -72,7 +72,7 @@
 </header>
 @else
 <header class="header-child" id="header">
-  <a href="{{ route('public.group.home') }}" class="header-child-logo sm">
+  <a href="{{ route('public.groups.home') }}" class="header-child-logo sm">
     <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
   </a>
   <div class="header-child-user md lg">
@@ -80,30 +80,30 @@
       <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
     </div>
     <div class="header-child-user-menu">
-      <a href="{{ route('public.group.home') }}">
+      <a href="{{ route('public.groups.home') }}">
         <small>TOP</small>
         <span class="menu_top">トップページ</span>
       </a>
-      <a href="{{ route('public.group.newcomer') }}">
+      <a href="{{ route('public.groups.newcomer') }}">
         <small>NEW FACE</small>
         <span class="menu_newface">新人情報</span>
       </a>
-      <a href="{{ route('public.group.schedule') }}">
+      <a href="{{ route('public.groups.schedule') }}">
         <small>SCHEDULE</small>
         <span class="menu_schedule">出勤情報</span>
       </a>
-      <a href="{{ route('public.group.home') }}" class="header-child-user-menu-logo">
+      <a href="{{ route('public.groups.home') }}" class="header-child-user-menu-logo">
         <small>plo</small>
         <span class="menu_schedule">plo</span>
         {{-- <div class="header-child-user-menu-logo-img">
           <img src="{{ asset('assets/img/group/header/plo-logo.png') }}" alt="">
         </div> --}}
       </a>
-      <a href="{{ route('public.group.event') }}">
+      <a href="{{ route('public.groups.event') }}">
         <small>EVENT</small>
         <span class="menu_event">イベント情報</span>
       </a>
-      <a href="{{ route('public.group.shop') }}">
+      <a href="{{ route('public.groups.shop') }}">
         <small>SHOP</small>
         <span class="menu_shop">店舗一覧</span>
       </a>
@@ -124,7 +124,7 @@
       @if (Auth::guard('member')->check())
       {{-- <div class="header-child-user-logbox-last">
         <span></span> --}}
-        <a href="{{ route('public.group.mypage') }}">
+        <a href="{{ route('public.groups.mypage') }}">
           <small>MYPAGE</small>
           <span>マイページ</span>
         </a>
@@ -155,7 +155,7 @@
   </div>  
 </header>
 @endif
-@if (request()->routeIs('public.group.home'))
+@if (request()->routeIs('public.groups.home'))
 <button class="drawer-toggle" id="drawer-toggle" data-pushbar-target="right">
   <div class="drawer-toggle-bars">
     <span class="drawer-toggle-bar"></span>

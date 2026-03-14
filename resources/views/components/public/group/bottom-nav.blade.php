@@ -1,18 +1,18 @@
 <nav class="bottom-nav">
     <div class="bottom-nav__container">
-        <a href="{{ route('public.group.home') }}" class="bottom-nav__button group">
+        <a href="{{ route('public.groups.home') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/home.png') }}" alt="">
             <span class="bottom-nav__button__text">Top</span>
         </a>
-        <a href="{{ route('public.group.shop') }}" class="bottom-nav__button group">
+        <a href="{{ route('public.groups.shop') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/shop.png') }}" alt="">
             <span class="bottom-nav__button__text">店舗</span>
         </a>
-        <a href="{{ route('public.group.schedule') }}" class="bottom-nav__button group">
+        <a href="{{ route('public.groups.schedule') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/schedule.png') }}" alt="">
             <span class="bottom-nav__button__text">出勤</span>
         </a>
-        <a href="{{ route('public.group.newcomer') }}" class="bottom-nav__button group">
+        <a href="{{ route('public.groups.newcomer') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
             <span class="bottom-nav__button__text">新人</span>
         </a>
@@ -23,7 +23,7 @@
         </a> --}}
 
           @if (Auth::guard('member')->check())
-          <a href="{{ route('public.group.mypage') }}" class="bottom-nav__button group">
+          <a href="{{ route('public.groups.mypage') }}" class="bottom-nav__button group">
               <img src="{{ asset('assets/img/group/bottom-nav/newgirl.png') }}" alt="">
               <span class="bottom-nav__button__text">マイページ</span>
           </a>

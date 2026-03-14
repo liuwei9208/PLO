@@ -9,7 +9,7 @@
     // Shop Info Section
     'ploLogo' => 'assets/img/shops/shizuku/plo-logo.png',
     'areaText' => 'すすきのエリア 全６店舗',
-    'groupSiteUrl' => '#',
+    'groupSiteUrl' => route('public.groups.home'),
     'groupSiteLogo' => 'assets/img/shops/shizuku/plo-logo.png',
     'shopGridHeader' => '店舗一覧',
     'shops' => [],

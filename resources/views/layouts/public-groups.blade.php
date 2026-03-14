@@ -21,7 +21,7 @@
   <body class="">
 
     <!-- 年齢確認モーダル -->
-    {{-- <x-age-verification-modal /> --}}
+    <x-age-verification-modal />
 
     <!-- Header -->
     <x-public.groups.header />
@@ -36,7 +36,7 @@
 
     <!-- Footer -->
     {{-- <x-public.groups.footer /> --}}
-    <x-public.group.bottom-nav />
+    <x-public.groups.bottom-nav />
     @stack('scripts')
   </body>
 </html>

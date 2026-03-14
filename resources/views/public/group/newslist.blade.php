@@ -8,7 +8,7 @@
       @foreach ($news as $new)
         <div class="news-list-item">
           @if($new->shop_slug == 'headquarter')
-            <a href="{{ route('public.group.newsdetail', ['id' => $new->id]) }}">
+            <a href="{{ route('public.groups.newsdetail', ['id' => $new->id]) }}">
           @else
             <a href="{{ route('public.shop.newsdetail', ['shop' => $new->shop_slug, 'id' => $new->id]) }}">
           @endif

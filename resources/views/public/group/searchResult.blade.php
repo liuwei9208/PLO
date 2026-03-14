@@ -12,7 +12,7 @@
       <h2 class="schedule-title-ja title-font-sm">在籍情報</h2>
       @endif
     </div>
-    <form name="searchResultForm" action="{{ route('public.group.searchResult.post') }}" method="post">
+    <form name="searchResultForm" action="{{ route('public.groups.searchResult.post') }}" method="post">
       @csrf
       <input type="hidden" name="names" value="{{ $names }}">
       <input type="hidden" name="name_match" value="{{ $name_match }}">

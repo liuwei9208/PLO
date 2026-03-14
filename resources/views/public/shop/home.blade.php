@@ -298,7 +298,7 @@
                                         {{ $event->published_at->format('y.m.d') . '  |  ' . $event->title }}</h3>
                                 </div>
                                 <div class="event-main-image">
-                                    <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+                                    <a href="{{ route('public.groups.event.detail', ['id' => $event->id]) }}">
                                         <img src="{{ asset('storage/' . $event->thumbnail) }}"
                                             alt="{{ $event->title }}">
                                     </a>

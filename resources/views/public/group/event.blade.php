@@ -14,7 +14,7 @@
     <div class="event-list content-wrapper">
       @foreach ($events as $event)
         <div class="event-list-item">
-          <a href="{{ route('public.group.event.detail', ['id' => $event->id]) }}">
+          <a href="{{ route('public.groups.event.detail', ['id' => $event->id]) }}">
             <div class="event-list-item-image">
               <img src="{{ asset('storage/' . $event->thumbnail) }}" alt="{{ $event->title }}">
           </div>
