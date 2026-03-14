@@ -31,7 +31,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 2,
             'slug' => 'shizuku',
-            'url' => '/shizuku/',
+            'url' => '/shops/shizuku/',
             'name' => '雫',
             'postcode' => '064-0806',
             'address1' => '北海道札幌市中央区南6条西5丁目1-1',
@@ -46,7 +46,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 3,
             'slug' => 'miyabi',
-            'url' => '/miyabi/',
+            'url' => '/shops/miyabi/',
             'name' => '雅',
             'postcode' => '064-0806',
             'address1' => '北海道札幌市中央区南6条西5丁目13-2',
@@ -61,7 +61,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 4,
             'slug' => 'pussycat',
-            'url' => '/pussycat/',
+            'url' => '/shops/pussycat/',
             'name' => 'プッシーキャット',
             'postcode' => '064-0806',
             'address1' => '北海道札幌市中央区南6条西5丁目13-2',
@@ -76,7 +76,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 5,
             'slug' => 'en',
-            'url' => '/en/',
+            'url' => '/shops/en/',
             'name' => '艶',
             'postcode' => '064-0805',
             'address1' => '北海道札幌市中央区南5条西5丁目4-1',
@@ -91,7 +91,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 6,
             'slug' => 'siroganeze',
-            'url' => '/siroganeze/',
+            'url' => '/shops/siroganeze/',
             'name' => 'シロガネーゼ',
             'postcode' => '064-0805',
             'address1' => '北海道札幌市中央区南5条西5丁目4-1',
@@ -106,7 +106,7 @@ class ShopsTableSeeder extends Seeder
         DB::table('shops')->insert([
             'id' => 7,
             'slug' => 'lovestory',
-            'url' => '/lovestory/',
+            'url' => '/shops/lovestory/',
             'name' => 'ラブストーリー',
             'postcode' => '064-0805',
             'address1' => '北海道札幌市中央区南5条西5丁目4-1',

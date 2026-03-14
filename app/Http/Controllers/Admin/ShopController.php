@@ -51,7 +51,7 @@ class ShopController extends Controller
 
         $shop->name = $request->shop_name;
         $shop->slug = $request->slug;
-        $shop->url = $request->url ?: '/' . $shop->slug . '/';
+        $shop->url = $request->url ?: '/shops/' . $shop->slug . '/';
         $shop->postcode = $request->postcode;
         $shop->address1 = $request->address1;
         $shop->address2 = $request->address2;

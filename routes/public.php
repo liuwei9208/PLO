@@ -65,6 +65,12 @@ Route::middleware([PublicBasicAuth::class])->name('public.')->group(function () 
         return redirect('/' . $path, 301);
     })->where('path', '.*');
 
+    $shopRedirects = ['shizuku', 'miyabi', 'pussycat', 'en', 'siroganeze', 'lovestory'];
+    foreach ($shopRedirects as $slug) {
+        Route::redirect("/{$slug}", "/shops/{$slug}", 301);
+        Route::redirect("/{$slug}/", "/shops/{$slug}", 301);
+    }
+
     Route::prefix('recruit')->name('recruit.')->group(function () {
         Route::get('male', [RecruitController::class, 'showMale'])->name('male');
         Route::get('female', [RecruitController::class, 'showFemale'])->name('female');
