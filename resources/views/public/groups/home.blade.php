@@ -1,5 +1,7 @@
 <x-public-groups-layout>
-  <x-public.groups.sidebar />
+  <div class="groups-home-layout">
+    <x-public.groups.sidebar />
+    <div class="groups-home-content">
   <!-- Main Visual -->
   <x-public.groups.mv :images="$mainVisualImages ?? collect()" />
   {{-- <div class="mv-banner-bottom">
@@ -547,7 +549,8 @@
   </div>
   @endif
   <x-public.groups.footer />
-
+    </div>
+  </div>
 
   <!-- Fixed Button -->
   <a href="{{ route('public.groups.girl-search') }}" class="fixed-groups-button" aria-label="女の子検索">
