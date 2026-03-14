@@ -17,7 +17,7 @@
     <div class="event-content-list">
       @forelse($events ?? [] as $event)
         <x-public.groups.event-card
-          :shopName="$event->shop->name ?? '雫'"
+          :shopName="($event->shop && $event->shop->slug === 'headquarter') ? '全店舗' : ($event->shop->name ?? '雫')"
           :imageUrl="asset('storage/' . $event->thumbnail)"
           imageAlt="{{ $event->title }}"
           :date="$event->published_at ? $event->published_at->format('Y/m/d') : ''"

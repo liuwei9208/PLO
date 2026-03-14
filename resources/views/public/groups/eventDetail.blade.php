@@ -16,7 +16,7 @@
           <p class="event-detail-date">{{ $event->published_at ? $event->published_at->format('Y/m/d') : '' }}</p>
           @if($event->shop)
             <div class="event-detail-shop-badge">
-              <p class="event-detail-shop-name">{{ $event->shop->name }}</p>
+              <p class="event-detail-shop-name">{{ ($event->shop->slug === 'headquarter') ? '全店舗' : $event->shop->name }}</p>
             </div>
           @endif
         </div>
