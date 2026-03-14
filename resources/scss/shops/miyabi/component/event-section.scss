@@ -201,8 +201,11 @@
   width: 100%;
   max-width: 62.5rem;
   z-index: 3;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .event-sub-banners-static {
@@ -243,12 +246,12 @@
 .event-sub-banners-slider {
   position: relative;
   width: 100%;
-  margin: 0;
+  max-width: 62.5rem;
+  margin: 0 auto;
   padding: 0;
 
   .swiper-wrapper {
     display: flex;
-    // gap: 0.625rem;
     justify-content: center;
     align-items: center;
     margin: 0;
@@ -441,10 +444,10 @@
 
   .event-sub-banners {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    left: auto;
+    transform: none;
     bottom: auto;
-    margin: 1.25rem 0;
+    margin: 1.25rem auto;
     padding: 0 1.25rem;
 
     .event-sub-banners-slider {

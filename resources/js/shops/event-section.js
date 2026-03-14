@@ -26,27 +26,27 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize sub-banners slider (visible smaller banners)
   const thumbsSwiper = new Swiper(paginationElement, {
     slidesPerView: "auto",
-    centeredSlides: false,
+    centeredSlides: true,
     slideToClickedSlide: true,
     spaceBetween: 10,
     watchSlidesProgress: true,
-    loop: false, // Disable loop to show all 4 images properly
-    speed: 500, // Match main slider speed
+    loop: false,
+    speed: 500,
     breakpoints: {
       320: {
         slidesPerView: 3,
         spaceBetween: 10,
-        centeredSlides: false,
+        centeredSlides: true,
       },
       768: {
         slidesPerView: 4,
         spaceBetween: 10,
-        centeredSlides: false,
+        centeredSlides: true,
       },
       1024: {
         slidesPerView: 4,
         spaceBetween: 10,
-        centeredSlides: false,
+        centeredSlides: true,
       },
     },
   });
