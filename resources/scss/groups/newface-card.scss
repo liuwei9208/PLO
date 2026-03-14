@@ -11,6 +11,8 @@
 .newface-card {
   background: $white;
   display: flex;
+  text-decoration: none;
+  color: inherit;
   flex-direction: column;
   gap: 10px;
   align-items: center;

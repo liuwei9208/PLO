@@ -26,7 +26,7 @@
     }
 @endphp
 
-<div class="newface-card">
+<a href="{{ $profileUrl }}" class="newface-card">
     <div class="newface-card-content">
         <!-- Date and New Badge -->
         <div class="newface-card-top">
@@ -73,12 +73,12 @@
             </div>
 
             <!-- Shop Button -->
-            <a href="{{ $profileUrl }}" class="newface-card-shop-button">
+            <span class="newface-card-shop-button">
                 <span class="newface-card-shop-button-text">{{ $shopName }}</span>
-            </a>
+            </span>
         </div>
     </div>
-</div>
+</a>
 
 @once
   @vite(['resources/scss/groups/newface-card.scss'])
