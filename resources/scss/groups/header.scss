@@ -179,11 +179,11 @@
     display: flex;
     // width: 200%; // 2つの画像分の幅
     width: 100%; // 2つの画像分の幅
-    animation: slideRightToLeft 30s linear infinite;
+    // animation: slideRightToLeft 30s linear infinite;
 
     @media #{media-query(sm)},#{media-query(xs)} {
       width: calc(400vw + 16px); // 2つの画像（各200vw）+ 余白
-      animation: slideRightToLeftMobile 30s linear infinite;
+      // animation: slideRightToLeftMobile 30s linear infinite;
     }
 
     img {

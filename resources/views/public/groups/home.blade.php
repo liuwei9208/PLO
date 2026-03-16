@@ -1,14 +1,14 @@
 <x-public-groups-layout>
+  <x-public.groups.sidebar />
   <div class="groups-home-layout">
-    <x-public.groups.sidebar />
     <div class="groups-home-content">
   <!-- Main Visual -->
   <x-public.groups.mv :images="$mainVisualImages ?? collect()" />
   {{-- <div class="mv-banner-bottom">
     <div class="mv-banner-bottom-wrapper">
       <div class="mv-banner-bottom-slide">
-        <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
-        <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
+        <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
+        <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
       </div>
     </div>
   </div> --}}

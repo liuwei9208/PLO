@@ -11,8 +11,8 @@
     <div class="mv-banner-bottom pc-only">
       <div class="mv-banner-bottom-wrapper">
         <div class="mv-banner-bottom-slide">
-          <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
-          <img src="{{ asset('assets/img/groups/banner-bottom.png') }}" alt="">
+          <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
+          <img src="{{ asset('assets/img/group/mv/main-lg.jpg') }}" alt="">
         </div>
       </div>
     </div>

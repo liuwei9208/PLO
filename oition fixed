@@ -1,0 +1,247 @@
+[33mcommit da8d0d7a02ef6e744a74f2afdd2a32203ca902b4[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 05:15:21 2026 +0900
+
+    fix: ranking page
+
+[33mcommit b848ceeb9e97fe828d599d54005314b18eaf6c5b[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 05:05:08 2026 +0900
+
+    fix: shop module
+
+[33mcommit 0e842966304c8e8e70aea89a57dc21a83df3094f[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 05:00:16 2026 +0900
+
+    fix: mismatching image & content
+
+[33mcommit 6fa21dd353f15e24181e6306d05ec4f9f46c6462[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:54:48 2026 +0900
+
+    fix: store filtering
+
+[33mcommit f0830d8535fc749be662ef18996e222d36516bff[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:52:48 2026 +0900
+
+    fix: missing images
+
+[33mcommit c6a79c0f851c044bf9a9301e9af4a58be932daca[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:48:49 2026 +0900
+
+    fix: store image style
+
+[33mcommit 1c58fbd9c5c194e0f9e385801975824ba6a7ba17[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:46:58 2026 +0900
+
+    fix: store banner image
+
+[33mcommit 9d843d1f4d5e6639e70c520792d0ead3002d8763[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:43:11 2026 +0900
+
+    fix: photodiary banner
+
+[33mcommit 8afba72d83757505c1b7c87f3ee30f8207cd3292[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:33:15 2026 +0900
+
+    fix: image size
+
+[33mcommit 69f513edd4190eb43919c8f2e66e0f391898e670[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:31:52 2026 +0900
+
+    fix: horizontal slide
+
+[33mcommit b473340700bc0db696cf8afa481e0f8ddd508554[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:26:04 2026 +0900
+
+    feat: new cast list
+
+[33mcommit fccf0c49ca186e0c28c184e783ad5e4abe52b92d[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:23:43 2026 +0900
+
+    fix: event page text
+
+[33mcommit 658f2a4d336552f82c7f2e43a7b2a0acf562f0b1[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:20:30 2026 +0900
+
+    feat: place images center
+
+[33mcommit 46d4f66eb457d334a011afabfad0ffcbb1736933[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 04:15:43 2026 +0900
+
+    fix: scroll
+
+[33mcommit b96b53769b807b7b7cc146b7347ead9d1d6625c2[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 03:49:44 2026 +0900
+
+    fix: left sidebar logo padding
+
+[33mcommit 007d49580dc8e932a76c71440962944b0de2657a[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sun Mar 15 03:37:21 2026 +0900
+
+    feat: update urls
+
+[33mcommit fd6e86a3af426c0eec2151344bba9b62055d5611[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 06:15:53 2026 +0900
+
+    feat: implement basic auth
+
+[33mcommit b3a18fb2f68f73e4e5843eaa1a0edfa1a7c00582[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 06:10:48 2026 +0900
+
+    fix: recruit page
+
+[33mcommit a2864fd300690e52efa0295d3d8e2f6279f56d31[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:43:29 2026 +0900
+
+    fix: member detail page
+
+[33mcommit 82e9f1953b8eeb14f037bbdbd04ffa7b10d956a2[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:40:34 2026 +0900
+
+    fix: top section of recruit page
+
+[33mcommit 2a14a4bab516a50ee0488111e7be29d0bb144c5f[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:32:14 2026 +0900
+
+    fix: button style
+
+[33mcommit 2adb51f103a10ed6ced4fa72ab8f94bcc243ac18[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:29:41 2026 +0900
+
+    fix: admin visit page
+
+[33mcommit abaca4b7127832782016f8c5641fcb0c2ce11ffb[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:26:16 2026 +0900
+
+    fix: member management page
+
+[33mcommit 023b0182dafc62113d3e82b611d47d585d7e5b4a[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:21:11 2026 +0900
+
+    fix: style of recruit page
+
+[33mcommit fa110a751d50f7566ba210051ba2a77c4205f0a0[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 05:14:03 2026 +0900
+
+    fix: style of schedule page
+
+[33mcommit 48a1ebc686e7f4a8e35a1e2e3833c091666aa067[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 04:51:47 2026 +0900
+
+    fix: style of recruit page
+
+[33mcommit 5cb8cd37b7be207b7828eee6ee62d0b85c174f39[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 04:38:09 2026 +0900
+
+    feat: add recruit page
+
+[33mcommit e3520cfaa2f4ef2dc1cbf5769a4b3e1c5de02a92[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 03:58:50 2026 +0900
+
+    fix: label of main visual page
+
+[33mcommit e3503d750428b1948f249ffa95e21ae700891dc3[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 03:51:43 2026 +0900
+
+    fix: shop ranking alter migration
+
+[33mcommit 33449a1232192f201988d5a294de19f5ab2ecd5e[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 03:46:32 2026 +0900
+
+    feat: update ranking page
+
+[33mcommit 59447b963dc68eebb42f4bc0709521241a7bc0f8[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 03:24:36 2026 +0900
+
+    feat: implement main visual manage feature
+
+[33mcommit 5127f9ae170264b29b68c767386c16c06d4d34a2[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 03:00:13 2026 +0900
+
+    fix: ranking db query
+
+[33mcommit 2d4df14cbbd2e16bd5514dd7e771b29d9348ecf2[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 02:58:52 2026 +0900
+
+    fix: member detail page style
+
+[33mcommit 268e6595aee467f66c370a7ebd8e4126b4d005cb[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Sat Mar 14 02:09:46 2026 +0900
+
+    feat: replace image
+
+[33mcommit dc307922822d6312a49278255ea57f4ea8b664ca[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 21:53:46 2026 +0900
+
+    feat: add some gap
+
+[33mcommit f0bdf1f2500b0f6e8d5d8a7fe1b330ed3ea2c5f1[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 21:51:06 2026 +0900
+
+    feat: update style of member detail page
+
+[33mcommit 68981df2f231a0e35497ee45f8a1e8ee1be380f0[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 21:46:54 2026 +0900
+
+    会員詳細ページスタイルアップデート
+
+[33mcommit 7453d641f4567a51e9a55e04133b3123223bb36c[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 21:41:50 2026 +0900
+
+    会員詳細ページスタイルアップデート
+
+[33mcommit 406c61ecce7cebc6d416d9e370bc9d1448abb909[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 21:38:57 2026 +0900
+
+    会員詳細ページ更新
+
+[33mcommit 64e0471e250b5f8b24f3d1befd1dd12fafeae062[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 20:27:37 2026 +0900
+
+    #7 シロガネーゼのTOPにある「イベント情報」の背景画像の差し替え
+
+[33mcommit cb432ada190deb7d3a9e353735aae9bf2056b338[m
+Author: liuwei9208 <213440720+liuwei9208@users.noreply.github.com>
+Date:   Fri Mar 13 20:10:56 2026 +0900
+
+    URL編集フィールドの追加
+
+[33mcommit 8758a89497d64f7d47f9670adc67

@@ -22,7 +22,7 @@
         width: 100%;
 
         .pg-fixed-sidebar {
-            position: sticky;
+            position: fixed;
             top: 0;
             left: auto;
             height: 100vh;
@@ -174,7 +174,7 @@
         margin-left: 300px;
     }
     body .main:has(.groups-home-layout) {
-        margin-left: 0;
+        margin-left: 300px;
     }
     .mv {
         left: 300px !important;

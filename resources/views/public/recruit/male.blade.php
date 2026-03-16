@@ -1058,66 +1058,84 @@
 
   <section class="recruit-stores recruit-stores--male">
     <div class="recruit-stores__inner">
+      <div class="recruit-stores__logo">
+        <img
+          src="{{ asset('assets/img/female/logo.png') }}"
+          alt="Passion Leisure Office"
+        >
+      </div>
       <div class="recruit-stores__grid">
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>上品な空間、時を忘れる美貌と</p>
-            <p>おもてなしが魅力のヘルス</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/shizuku" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>上品な空間、時を忘れる美貌と</p>
+              <p>おもてなしが魅力のヘルス</p>
+            </div>
+          </article>
+        </a>
 
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7-1.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>女の子を見て選べる唯一無二の</p>
-            <p>エンターテインメントヘルス</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/pussycat" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-1.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>女の子を見て選べる唯一無二の</p>
+              <p>エンターテインメントヘルス</p>
+            </div>
+          </article>
+        </a>
 
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7-2.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>雅は、すすきの屈指の人妻・痴女が</p>
-            <p>在籍するヘルス</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/miyabi" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-2.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>雅は、すすきの屈指の人妻・痴女が</p>
+              <p>在籍するヘルス</p>
+            </div>
+          </article>
+        </a>
 
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7-3.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>若妻、人妻、淫乱妻など大人のエロさ溢れる</p>
-            <p>人妻ヘルス店</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/en" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-3.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>若妻、人妻、淫乱妻など大人のエロさ溢れる</p>
+              <p>人妻ヘルス店</p>
+            </div>
+          </article>
+        </a>
 
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7-5.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>容姿端麗なオトナ女性による</p>
-            <p>丁寧な本格マッサージ店</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/siroganeze" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-5.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>容姿端麗なオトナ女性による</p>
+              <p>丁寧な本格マッサージ店</p>
+            </div>
+          </article>
+        </a>
 
-        <article class="recruit-stores__card">
-          <div class="recruit-stores__image">
-            <img src="{{ asset('assets/img/male/section7-4.png') }}" alt="">
-          </div>
-          <div class="recruit-stores__text">
-            <p>アナタ色のエッチな女の子に育てられる</p>
-            <p>育成型ヘルス</p>
-          </div>
-        </article>
+        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/lovestory" target="_blank" rel="noopener noreferrer">
+          <article class="recruit-stores__card">
+            <div class="recruit-stores__image">
+              <img src="{{ asset('assets/img/male/section7-4.png') }}" alt="">
+            </div>
+            <div class="recruit-stores__text">
+              <p>アナタ色のエッチな女の子に育てられる</p>
+              <p>育成型ヘルス</p>
+            </div>
+          </article>
+        </a>
       </div>
     </div>
   </section>
