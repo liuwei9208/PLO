@@ -58,64 +58,64 @@
   <div class="footer-bottom">
     <div class="footer-bottom-menu pc-only">
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">TOP</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">出勤情報</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">ピックアップ</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">イベント情報</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">店舗一覧</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.home') }}">TOP</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.schedule') }}">出勤情報</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.pickup') }}">ピックアップ</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.event') }}">イベント情報</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.shop') }}">店舗一覧</a>
+        <div class="footer-bottom-menu-items-item">|</div>
         <a class="footer-bottom-menu-items-item" href="#">SNS</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">ログイン</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">新規会員登録</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
+        <a class="footer-bottom-menu-items-item" href="{{ route('login') }}">ログイン</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('terms.show') }}">新規会員登録</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.female') }}">女性求人</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.male') }}">男性求人</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.privacy-policy') }}">個人情報保護方針</a>
       </div>
     </div>
     <div class="footer-bottom-menu sp-only">
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">TOP</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">出勤情報</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">料金システム</a>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.home') }}">TOP</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.schedule') }}">出勤情報</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.shop') }}">店舗一覧</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">キャスト一覧</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">最新情報</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.girl-search') }}">キャスト一覧</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.photodiary') }}">最新情報</a>
+        <div class="footer-bottom-menu-items-item">|</div>
         <a class="footer-bottom-menu-items-item" href="#">SNS</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">店舗一覧</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">ログイン</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">新規会員登録</a>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.shop') }}">店舗一覧</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('login') }}">ログイン</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('terms.show') }}">新規会員登録</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
-        <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
+        <a class="footer-bottom-menu-items-item" href="https://17auto.biz/plogroup/registp/entryform2.htm">メルマガ</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.female') }}">女性求人</a>
+        <div class="footer-bottom-menu-items-item">|</div>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.recruit.male') }}">男性求人</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
+        <a class="footer-bottom-menu-items-item" href="{{ route('public.groups.privacy-policy') }}">個人情報保護方針</a>
       </div>
     </div>    <div class="footer-bottom-logo">
       <img class="footer-bottom-logo-img" src="{{ asset('assets/img/groups/plo-logo.png') }}"
