@@ -60,7 +60,7 @@
       <div class="footer-bottom-menu-items">
         <a class="footer-bottom-menu-items-item" href="#">TOP</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">出勤情報</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/terms">出勤情報</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
         <a class="footer-bottom-menu-items-item" href="#">ピックアップ</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
@@ -71,18 +71,18 @@
         <a class="footer-bottom-menu-items-item" href="#">SNS</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">ログイン</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/login">ログイン</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">新規会員登録</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/terms">新規会員登録</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
         <a class="footer-bottom-menu-items-item" href="#">メルマガ</a>
       </div>
       <div class="footer-bottom-menu-items">
-        <a class="footer-bottom-menu-items-item" href="#">女性求人</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/recruit/female">女性求人</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">男性求人</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/recruit/male">男性求人</a>
         <div class="footer-bottom-menu-items-item" href="#">|</div>
-        <a class="footer-bottom-menu-items-item" href="#">個人情報保護方針</a>
+        <a class="footer-bottom-menu-items-item" href="https://plo-test.jp/privacy-policy">個人情報保護方針</a>
       </div>
     </div>
     <div class="footer-bottom-menu sp-only">
