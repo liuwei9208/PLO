@@ -4,7 +4,7 @@
     'newGirlLink' => '#',
     'recruitImage' => 'assets/img/shops/shizuku/side-recruit.png',
     'recruitAlt' => '女の子募集中',
-    'recruitLink' => '#',
+    'recruitLink' => route('public.recruit.female'),
 ])
 
 <div class="fixed-side-buttons">

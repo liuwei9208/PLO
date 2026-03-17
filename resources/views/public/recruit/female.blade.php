@@ -1162,7 +1162,7 @@
         >
       </div>
       <div class="recruit-stores__grid">
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/shizuku" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'shizuku']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7.png') }}" alt="">
@@ -1174,7 +1174,7 @@
           </article>
         </a>
 
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/pussycat" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'pussycat']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7-1.png') }}" alt="">
@@ -1186,7 +1186,7 @@
           </article>
         </a>
 
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/miyabi" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'miyabi']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7-2.png') }}" alt="">
@@ -1198,7 +1198,7 @@
           </article>
         </a>
 
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/en" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'en']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7-3.png') }}" alt="">
@@ -1210,7 +1210,7 @@
           </article>
         </a>
 
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/siroganeze" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'siroganeze']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7-5.png') }}" alt="">
@@ -1222,7 +1222,7 @@
           </article>
         </a>
 
-        <a class="recruit-stores__cardLink" href="https://plo-group.jp/shops/lovestory" target="_blank" rel="noopener noreferrer">
+        <a class="recruit-stores__cardLink" href="{{ route('public.shops.shop.home', ['shop' => 'lovestory']) }}" target="_blank" rel="noopener noreferrer">
           <article class="recruit-stores__card">
             <div class="recruit-stores__image">
               <img src="{{ asset('assets/img/male/section7-4.png') }}" alt="">
