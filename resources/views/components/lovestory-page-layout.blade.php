@@ -19,13 +19,13 @@
                 'ranking' => route('public.shops.shop.ranking', ['shop' => 'lovestory']),
                 'shop' => route('public.shops.shop.shop-list', ['shop' => 'lovestory']),
                 'access' => route('public.shops.shop.access', ['shop' => 'lovestory']),
-                'recruit-male' => '#',
+                'recruit-male' => route('public.recruit.male'),
                 'login' => route('login'),
-                'recruit-female' => '#',
+                'recruit-female' => route('public.recruit.female'),
                 'register' => route('register'),
             ]" :bottom-buttons="[
-                'group' => '#',
-                'recruit' => '#',
+                'group' => route('public.groups.home'),
+                'recruit' => route('public.recruit.female'),
             ]" :bottom-button-images="[
                 'group' => 'assets/img/shops/shizuku/plo-group-btn.png',
                 'recruit' => 'assets/img/shops/shizuku/recruit-btn.png',
@@ -210,10 +210,10 @@
       'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
       'target' => '_blank',
   ],
-  ['text' => '女性求人', 'url' => '#'],
-  ['text' => '男性求人', 'url' => '#'],
-  ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
-  ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
+  ['text' => '女性求人', 'url' => route('public.recruit.female')],
+  ['text' => '男性求人', 'url' => route('public.recruit.male')],
+  ['text' => '個人情報保護方針', 'url' => route('public.groups.privacy-policy'), 'target' => '_blank'],
+  ['text' => 'グループTOP', 'url' => route('public.groups.home'), 'target' => '_blank'],
 ]" :external-links="$banner_list"
   footerLogo="{{ asset('assets/img/shops/lovestory/footer-logo.png') }}" svgIconColor="#F2387C"
   ploLogo="{{ asset('assets/img/shops/lovestory/plo-logo.png') }}"

@@ -683,10 +683,10 @@
                     'url' => 'https://17auto.biz/plogroup/registp/entryform2.htm',
                     'target' => '_blank',
                 ],
-                ['text' => '女性求人', 'url' => '#'],
-                ['text' => '男性求人', 'url' => '#'],
-                ['text' => '個人情報保護方針', 'url' => 'https://plo-group.jp/privacy-policy', 'target' => '_blank'],
-                ['text' => 'グループTOP', 'url' => 'https://plo-group.jp/', 'target' => '_blank'],
+                ['text' => '女性求人', 'url' => route('public.recruit.female')],
+                ['text' => '男性求人', 'url' => route('public.recruit.male')],
+                ['text' => '個人情報保護方針', 'url' => route('public.groups.privacy-policy'), 'target' => '_blank'],
+                ['text' => 'グループTOP', 'url' => route('public.groups.home'), 'target' => '_blank'],
             ]" :external-links="$banner_list"
                 footerLogo="{{ asset('assets/img/shops/siroganeze/footer-logo.png') }}" svgIconColor="#132126"
                 ploLogo="{{ asset('assets/img/shops/siroganeze/plo-logo.png') }}"
