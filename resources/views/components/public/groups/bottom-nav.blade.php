@@ -54,7 +54,7 @@
           </a>
           @endif --}}
         @else
-        <a href="{{ route('register') }}" class="bottom-nav__button group">
+        <a href="{{ route('terms.show') }}" class="bottom-nav__button group">
             <img src="{{ asset('assets/img/group/bottom-nav/user.png') }}" alt="">
             <span class="bottom-nav__button__text">新規登録</span>
         </a>
