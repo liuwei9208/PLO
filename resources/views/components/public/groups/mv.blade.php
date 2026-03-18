@@ -16,6 +16,14 @@
         </div>
       </div>
     </div>
+    <div class="mv-banner-bottom sp-only">
+      <div class="mv-banner-bottom-wrapper">
+        <div class="mv-banner-bottom-slide">
+          <img src="{{ asset('assets/img/group/mv/main-sm.jpg') }}" alt="">
+          <img src="{{ asset('assets/img/group/mv/main-sm.jpg') }}" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 
   {{-- <div class="mv-text">
